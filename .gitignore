@@ -1,0 +1,10 @@
+/configure
+/build-aux/missing
+/build-aux/install-sh
+/autom4te.cache
+/aclocal.m4
+/config.log
+/Makefile.in
+*.go
+/config.status
+/Makefile
