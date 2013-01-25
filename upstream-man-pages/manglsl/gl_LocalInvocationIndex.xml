@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_LocalInvocationIndex">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2012</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_LocalInvocationIndex</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_LocalInvocationIndex</refname>
+        <refpurpose>contains the local linear index of work item currently being operated on by a compute shader</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>in uint gl_LocalInvocationIndex</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            In the compute language, <function>gl_LocalInvocationIndex</function>
+            is a derived input variable containing the 1-dimensional linearized index of the
+            work invocation within the work group that the current shader is
+            executing on. The value of <function>gl_LocalInvocationIndex</function> is equal to
+            <function>gl_LocalInvocationID.z</function> * <function>gl_WorkGroupSize.x</function> * <function>gl_WorkGroupSize.y</function> + 
+            <function>gl_LocalInvocationID.y</function> * <function>gl_WorkGroupSize.x</function> + 
+            <function>gl_LocalInvocationID.x</function>.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #VARTABLEHEADER#
+                    <row>
+                        <entry>gl_LocalInvocationIndex</entry>#newin43#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_NumWorkGroups</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_WorkGroupID</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_WorkGroupSize</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_LocalInvocationID</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011-2012 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

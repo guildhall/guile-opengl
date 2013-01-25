@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_PatchVerticesIn">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_PatchVerticesIn</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_PatchVerticesIn</refname>
+        <refpurpose>contains the number of vertices in the current patch</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>in int gl_PatchVerticesIn;</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            Available only in the tessellation control and evaluation languages, <function>gl_PatchVerticesIn</function>
+            contains the number of vertices in the input being processed by the shader. A single tessellation control or
+            evaluation shader can read patches of differing sizes, and so th value of <function>gl_PatchVertexIn</function>
+            may differ between patches.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #VARTABLEHEADER#
+                    <row>
+                        <entry>gl_PatchVerticesIn</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_TessLevelOuter</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_TessLevelInner</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_TessCoord</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

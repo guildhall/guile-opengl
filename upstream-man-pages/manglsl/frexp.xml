@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="frexp">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>frexp</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>frexp</refname>
+        <refpurpose>split a floating point number</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genType <function>frexp</function></funcdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+                <paramdef>out genIType <parameter>exp</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>genDType <function>frexp</function></funcdef>
+                <paramdef>genDType <parameter>x</parameter></paramdef>
+                <paramdef>out genIType <parameter>exp</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the value from which significand and exponent are to be extracted.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>out exp</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the variable into which to place the exponent
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>frexp</function> extracts <parameter>x</parameter> into a floating-point significand
+            in the range [0.5, 1.0) and in integral exponent of two, such that:
+        </para>
+        <para>
+            <inlineequation><mml:math>
+                <mml:mi>x</mml:mi>
+                <mml:mo>=</mml:mo>
+                <mml:mi>significand</mml:mi>
+                <mml:mo lspace='2px' rspace='2px'>&sdot;</mml:mo>
+                <mml:msup>
+                <mml:mn>2</mml:mn>
+                <mml:mi>exponent</mml:mi>
+                </mml:msup>
+            </mml:math></inlineequation>
+        </para>
+        <para>
+            The significand is returned by the function and the exponent is returned in the output
+            parameter <parameter>exp</parameter>. For a floating-point value of zero, the
+            significand and exponent are both zero. For a floating-point value that is an
+            infinity or a floating-point NaN, the results are undefined.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>frexp (genType)</entry>#newin40#
+                    </row>
+                    <row>
+                        <entry>frexp (genDType)</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>ldexp</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

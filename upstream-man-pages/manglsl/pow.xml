@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="pow">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>pow</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>pow</refname>
+        <refpurpose>return the value of the first parameter raised to the power of the second</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genType <function>pow</function></funcdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+                <paramdef>genType <parameter>y</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specify the value to raise to the power <parameter>y</parameter>.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>y</parameter></term>
+            <listitem>
+                <para>
+                    Specify the power to which to raise <parameter>x</parameter>.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>pow</function> returns the value of <parameter>x</parameter> raised to the <parameter>y</parameter> power. i.e.,
+            <inlineequation><mml:math><mml:msup><mml:mi>x</mml:mi><mml:mi>y</mml:mi></mml:msup></mml:math></inlineequation>.
+            Results are undefined if <inlineequation><mml:math><mml:apply><mml:lt /><mml:mi>x</mml:mi><mml:mn>0</mml:mn></mml:apply></mml:math></inlineequation>
+            or if <inlineequation><mml:math><mml:apply><mml:eq /><mml:mi>x</mml:mi><mml:mn>0</mml:mn></mml:apply></mml:math></inlineequation> and
+            <inlineequation><mml:math><mml:apply><mml:eq /><mml:mi>y</mml:mi><mml:mn>0</mml:mn></mml:apply></mml:math></inlineequation>.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>pow</entry>#newin11#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>sin</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>cos</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>sinh</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>cosh</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="sign">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>sign</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>sign</refname>
+        <refpurpose>extract the sign of the parameter</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genType <function>sign</function></funcdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genIType <function>sign</function></funcdef>
+                <paramdef>genIType <parameter>x</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genDType <function>sign</function></funcdef>
+                <paramdef>genDType <parameter>x</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specify the value from which to extract the sign.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>abs</function> returns 1.0 if
+            <inlineequation><mml:math><mml:apply><mml:lt /><mml:mi>x</mml:mi><mml:mn>0.0</mml:mn></mml:apply></mml:math></inlineequation>,
+            0.0 if
+            <inlineequation><mml:math><mml:apply><mml:eq /><mml:mi>x</mml:mi><mml:mn>0.0</mml:mn></mml:apply></mml:math></inlineequation> and
+            1.0 if
+            <inlineequation><mml:math><mml:apply><mml:gt /><mml:mi>x</mml:mi><mml:mn>0.0</mml:mn></mml:apply></mml:math></inlineequation>.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>sign (genType)</entry>#newin13#
+                    </row>
+                    <row>
+                        <entry>sign (genIType)</entry>#newin15#
+                    </row>
+                    <row>
+                        <entry>sign (genDType)</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>sign</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

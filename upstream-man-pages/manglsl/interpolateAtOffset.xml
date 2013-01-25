@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="interpolateAtOffset">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>interpolateAtOffset</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>interpolateAtOffset</refname>
+        <refpurpose>sample a varying at specified offset from the center of a pixel</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>float <function>interpolateAtOffset</function></funcdef>
+                <paramdef>float <parameter>interpolant</parameter></paramdef>
+                <paramdef>vec2 <parameter>offset</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>interpolateAtOffset</function></funcdef>
+                <paramdef>vec2 <parameter>interpolant</parameter></paramdef>
+                <paramdef>vec2 <parameter>offset</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec3 <function>interpolateAtOffset</function></funcdef>
+                <paramdef>vec3 <parameter>interpolant</parameter></paramdef>
+                <paramdef>vec2 <parameter>offset</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec4 <function>interpolateAtOffset</function></funcdef>
+                <paramdef>vec4 <parameter>interpolant</parameter></paramdef>
+                <paramdef>vec2 <parameter>offset</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>interpolant</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the interpolant to be sampled at the specified offset.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>offset</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the offset from the center of the pixel at which to sample <parameter>interpolant</parameter>.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>interpolateAtOffset</function> returns the value of the input varying <parameter>interpolant</parameter>
+            sampled at an offset from the center of the pixel specified by <parameter>offset</parameter>. The two floating-point
+            components of <parameter>offset</parameter> give the offset in pixels in the <emphasis>x</emphasis> and <emphasis>y</emphasis>
+            directions from the center of the pixel, respectively. An offset of (0, 0) identifies the center of the pixel. The range and granularity of
+            offsets supported by this function is implementation-dependent.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>interpolateAtoOffset</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>interpolateAtCentroid</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>interpolateAtSample</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="outerProduct">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>outerProduct</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>outerProduct</refname>
+        <refpurpose>calculate the outer product of a pair of vectors</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>mat2 <function>outerProduct</function></funcdef>
+                <paramdef>vec2 <parameter>c</parameter></paramdef>
+                <paramdef>vec2 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat3 <function>outerProduct</function></funcdef>
+                <paramdef>vec3 <parameter>c</parameter></paramdef>
+                <paramdef>vec3 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat4 <function>outerProduct</function></funcdef>
+                <paramdef>vec4 <parameter>c</parameter></paramdef>
+                <paramdef>vec4 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat2x3 <function>outerProduct</function></funcdef>
+                <paramdef>vec3 <parameter>c</parameter></paramdef>
+                <paramdef>vec2 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat3x2 <function>outerProduct</function></funcdef>
+                <paramdef>vec2 <parameter>c</parameter></paramdef>
+                <paramdef>vec3 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat2x4 <function>outerProduct</function></funcdef>
+                <paramdef>vec4 <parameter>c</parameter></paramdef>
+                <paramdef>vec2 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat4x2 <function>outerProduct</function></funcdef>
+                <paramdef>vec2 <parameter>c</parameter></paramdef>
+                <paramdef>vec4 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat3x4 <function>outerProduct</function></funcdef>
+                <paramdef>vec4 <parameter>c</parameter></paramdef>
+                <paramdef>vec3 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat4x3 <function>outerProduct</function></funcdef>
+                <paramdef>vec3 <parameter>c</parameter></paramdef>
+                <paramdef>vec4 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat2 <function>outerProduct</function></funcdef>
+                <paramdef>dvec2 <parameter>c</parameter></paramdef>
+                <paramdef>dvec2 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat3 <function>outerProduct</function></funcdef>
+                <paramdef>dvec3 <parameter>c</parameter></paramdef>
+                <paramdef>dvec3 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat4 <function>outerProduct</function></funcdef>
+                <paramdef>dvec4 <parameter>c</parameter></paramdef>
+                <paramdef>dvec4 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat2x3 <function>outerProduct</function></funcdef>
+                <paramdef>dvec3 <parameter>c</parameter></paramdef>
+                <paramdef>dvec2 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat3x2 <function>outerProduct</function></funcdef>
+                <paramdef>dvec2 <parameter>c</parameter></paramdef>
+                <paramdef>dvec3 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat2x4 <function>outerProduct</function></funcdef>
+                <paramdef>dvec4 <parameter>c</parameter></paramdef>
+                <paramdef>dvec2 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat4x2 <function>outerProduct</function></funcdef>
+                <paramdef>dvec2 <parameter>c</parameter></paramdef>
+                <paramdef>dvec4 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat3x4 <function>outerProduct</function></funcdef>
+                <paramdef>dvec4 <parameter>c</parameter></paramdef>
+                <paramdef>dvec3 <parameter>r</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat4x3 <function>outerProduct</function></funcdef>
+                <paramdef>dvec3 <parameter>c</parameter></paramdef>
+                <paramdef>dvec4 <parameter>r</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>c</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the parameter to be treated as a column vector.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>r</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the parameter to be treated as a row vector.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>outerProduct</function> treats the first parameter <parameter>c</parameter> as a column
+            vector (matrix with one column) and the second parameter <parameter>r</parameter> as a row vector
+            (matrix with one row) and does a linear algebraic matrix multiply <parameter>c</parameter> * <parameter>r</parameter>,
+            yielding a matrix whose number of rows is the number of components in <parameter>c</parameter> and
+            whose number of columns is the number of components in <parameter>r</parameter>.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>outerProduct (float)</entry>#newin12#
+                    </row>
+                    <row>
+                        <entry>outerProduct (double)</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>dot</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

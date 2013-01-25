@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "xhtml1-transitional.dtd">
+<!-- saved from url=(0013)about:internet -->
+<?xml-stylesheet type="text/xsl" href="mathml.xsl"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" pref:renderer="mathplayer-dl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="opengl-man.css" /><title>removedTypes - OpenGL 4 Reference Pages</title><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /></head><body><div class="refentry" lang="en" xml:lang="en"><a id="removedTypes"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>removedTypes — Describes types removed and replaced in the OpenGL API in OpenGL 4.2</p></div><div class="refsect1" lang="en" xml:lang="en"><a id="description"></a><h2>Description</h2><p>
+            In the May, 2012 update of the OpenGL 4.2 Specification, all
+            APIs using the types GLclampf and GLclampd were modified to
+            use GLfloat and GLdouble, respectively, instead. Language
+            was added to the Specification requiring that these
+            parameters be clamped, when required, at use time rather
+            than at specification time.
+        </p><p>
+            This change allows specifying parameters in ranges
+            appropriate for non-fixed-point framebuffers (integer and
+            floating-point formats). The change does not require any
+            changes to user code calling these functions, because the
+            actual underlying types are identical, the behavior is
+            externally unchanged, and the header files continue to
+            define the old types for compatibility with older code.
+        </p></div><div class="refsect1" lang="en" xml:lang="en"><a id="seealso"></a><h2>See Also</h2><p>
+            <a href="glBlendColor.xml"><span class="citerefentry"><span class="refentrytitle">glBlendColor</span></span></a>,            
+            <a href="glClearColor.xml"><span class="citerefentry"><span class="refentrytitle">glClearColor</span></span></a>,            
+            <a href="glClearDepth.xml"><span class="citerefentry"><span class="refentrytitle">glClearDepth</span></span></a>,            
+            <a href="glDepthRange.xml"><span class="citerefentry"><span class="refentrytitle">glDepthRange</span></span></a>,            
+            <a href="glDepthRangeArray.xml"><span class="citerefentry"><span class="refentrytitle">glDepthRangeArray</span></span></a>,       
+            <a href="glDepthRangeIndexed.xml"><span class="citerefentry"><span class="refentrytitle">glDepthRangeIndexed</span></span></a>,     
+            <a href="glMinSampleShading.xml"><span class="citerefentry"><span class="refentrytitle">glMinSampleShading</span></span></a>,      
+            <a href="glSampleCoverage.xml"><span class="citerefentry"><span class="refentrytitle">glSampleCoverage</span></span></a>        
+        </p></div><div class="refsect1" lang="en" xml:lang="en"><a id="Copyright"></a><h2>Copyright</h2><p>
+            Copyright <span class="trademark"></span>© 2012 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <a href="http://opencontent.org/openpub/" target="_top">http://opencontent.org/openpub/</a>.
+        </p></div></div></body></html>

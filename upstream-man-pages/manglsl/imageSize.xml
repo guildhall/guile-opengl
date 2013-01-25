@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="imageSize">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2012</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>imageSize</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>imageSize</refname>
+        <refpurpose>retrieve the dimensions of an image</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>int <function>imageSize</function></funcdef>
+                <paramdef>gimage1D <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec2 <function>imageSize</function></funcdef>
+                <paramdef>gimage2D <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec3 <function>imageSize</function></funcdef>
+                <paramdef>gimage3D <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec2 <function>imageSize</function></funcdef>
+                <paramdef>gimageCube <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec3 <function>imageSize</function></funcdef>
+                <paramdef>gimageCubeArray <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec2 <function>imageSize</function></funcdef>
+                <paramdef>gimageRect <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec2 <function>imageSize</function></funcdef>
+                <paramdef>gimage1DArray <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec3 <function>imageSize</function></funcdef>
+                <paramdef>gimage2DArray <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>int <function>imageSize</function></funcdef>
+                <paramdef>gimageBuffer <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec2 <function>imageSize</function></funcdef>
+                <paramdef>gimage2DMS <parameter>image</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>ivec3 <function>imageSize</function></funcdef>
+                <paramdef>gimage2DMSArray <parameter>image</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>image</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the image to which the texture whose dimensions to retrieve is bound.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>imageSize</function> returns the dimensions of the image bound to <parameter>image</parameter>.
+            The components in the return value are filled in,
+            in order, with the width, height and depth of the image. For the array forms, the last component of the
+            return value is the number of layers in the texture array.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>imageSize</entry>#newin43#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>textureSize</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageLoad</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageStore</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011-2012 Khronos Group.
+            This material may be distributed subject to the terms and conditions set forth in
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

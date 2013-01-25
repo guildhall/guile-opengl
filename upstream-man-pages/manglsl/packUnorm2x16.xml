@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="packUnorm">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>packUnorm</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>packUnorm</refname>
+        <refpurpose>pack floating-point values into an unsigned integer</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>uint <function>packUnorm2x16</function></funcdef>
+                <paramdef>vec2 <parameter>v</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>uint <function>packSnorm2x16</function></funcdef>
+                <paramdef>vec2 <parameter>v</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>uint <function>packUnorm4x8</function></funcdef>
+                <paramdef>vec4 <parameter>v</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>uint <function>packSnorm4x8</function></funcdef>
+                <paramdef>vec4 <parameter>v</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>v</parameter></term>
+            <listitem>
+                <para>
+                    Specifies a vector of values to be packed into an unsigned integer.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>packUnorm2x16</function>, <function>packSnorm2x16</function>, <function>packUnorm4x8</function> and <function>packSnorm4x8</function> convert
+            each component of the normalized floating-ponit value <parameter>v</parameter> into 8- or 16-bit integer
+            values and then packs the results into a 32-bit unsigned intgeter.
+        </para>
+        <para>
+            The conversion for component <parameter>c</parameter> of <parameter>v</parameter> to fixed-point is
+            performed as follows:
+            <itemizedlist>
+                <listitem><function>packUnorm2x16</function>: <code><citerefentry><refentrytitle>round</refentrytitle></citerefentry>(<citerefentry><refentrytitle>clamp</refentrytitle></citerefentry>(<parameter>c</parameter>, 0.0, 1.0) * 65535.0)</code></listitem>
+                <listitem><function>packSnorm2x16</function>: <code><citerefentry><refentrytitle>round</refentrytitle></citerefentry>(<citerefentry><refentrytitle>clamp</refentrytitle></citerefentry>(<parameter>c</parameter>, -1.0, 1.0) * 32767.0)</code></listitem>
+                <listitem><function>packUnorm4x8</function>: <code><citerefentry><refentrytitle>round</refentrytitle></citerefentry>(<citerefentry><refentrytitle>clamp</refentrytitle></citerefentry>(<parameter>c</parameter>, 0.0, 1.0) * 255.0)</code></listitem>
+                <listitem><function>packSnorm4x8</function>: <code><citerefentry><refentrytitle>round</refentrytitle></citerefentry>(<citerefentry><refentrytitle>clamp</refentrytitle></citerefentry>(<parameter>c</parameter>, -1.0, 1.0) * 127.0)</code></listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            The first component of the vector will be written to the least significant bits of the output;
+            the last component will be written to the most significant bits.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>packUnorm2x16</entry>#newin41#
+                    </row>
+                    <row>
+                        <entry>packSnorm2x16</entry>#newin42#
+                    </row>
+                    <row>
+                        <entry>packUnorm4x8</entry>#newin41#
+                    </row>
+                    <row>
+                        <entry>packSnorm4x8</entry>#newin41#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>unpackUnorm2x16</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>unpackSnorm2x16</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>unpackUnorm4x8</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>unpackSnorm4x8</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

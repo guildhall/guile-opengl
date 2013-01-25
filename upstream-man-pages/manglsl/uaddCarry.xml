@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="uaddCarry">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>uaddCarry</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>uaddCarry</refname>
+        <refpurpose>add unsigned integers and generate carry</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genUType <function>uaddCarry</function></funcdef>
+                <paramdef>genUType <parameter>x</parameter></paramdef>
+                <paramdef>genUType <parameter>y</parameter></paramdef>
+                <paramdef>out genUType <parameter>carry</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the first vector to be used in the summation operation.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>y</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the second vector to be used in the summation operation.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>carry</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the variable to receive the carry output of the sum.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>uaddCarry</function> adds two 32-bit unsigned integer variables (scalars or vectors) and generates
+            a 32-bit unsigned integer result, along with a carry output. The result is the sum of <parameter>x</parameter> and
+            <parameter>y</parameter> modulo <inlineequation><mml:math><mml:msup><mml:mn>2</mml:mn><mml:mn>32</mml:mn></mml:msup></mml:math></inlineequation>.
+            The value <parameter>carry</parameter> is set to 0 if the sum is less than
+            <inlineequation><mml:math><mml:msup><mml:mn>2</mml:mn><mml:mn>32</mml:mn></mml:msup></mml:math></inlineequation>
+            and to 1 otherwise.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>uaddCarry</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>usubBorrow</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

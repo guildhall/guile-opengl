@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<table frame="topbot"><title>Base Internal Formats</title>
+<tgroup cols="3" align="left">
+    <colspec align="left"/>
+    <colspec align="left"/>
+    <colspec align="left"/>
+    <thead>
+        <row>
+            <entry rowsep="1" align="left"><emphasis role="bold">
+            Base Internal Format
+            </emphasis></entry>
+            <entry rowsep="1" align="left"><emphasis role="bold">
+            RGBA, Depth and Stencil Values
+            </emphasis></entry>
+            <entry rowsep="1" align="left"><emphasis role="bold">
+            Internal Components
+            </emphasis></entry>
+        </row>
+    </thead>
+    <tbody>
+        <row>
+            <entry><constant>GL_DEPTH_COMPONENT</constant></entry>
+            <entry>Depth</entry>
+            <entry>D</entry>
+        </row>
+        <row>
+            <entry><constant>GL_DEPTH_STENCIL</constant></entry>
+            <entry>Depth, Stencil</entry>
+            <entry>D, S</entry>
+        </row>
+        <row>
+            <entry><constant>GL_RED</constant></entry>
+            <entry>Red</entry>
+            <entry>R</entry>
+        </row>
+        <row>
+            <entry><constant>GL_RG</constant></entry>
+            <entry>Red, Green</entry>
+            <entry>R, G</entry>
+        </row>
+        <row>
+            <entry><constant>GL_RGB</constant></entry>
+            <entry>Red, Green, Blue</entry>
+            <entry>R, G, B</entry>
+        </row>
+        <row>
+            <entry><constant>GL_RGBA</constant></entry>
+            <entry>Red, Green, Blue, Alpha</entry>
+            <entry>R, G, B, A</entry>
+        </row>
+    </tbody>
+</tgroup>
+</table>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_PointSize">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_PointSize</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_PointSize</refname>
+        <refpurpose>contains size of rasterized points, in pixels</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <para>
+            <function>gl_PointSize</function> is a member of the <function>gl_PerVertex</function>
+            named block:
+        </para>
+        <funcsynopsis>
+<programlisting><![CDATA[    out gl_PerVertex {
+        vec4 gl_Position;
+        float gl_PointSize;
+        float gl_ClipDistance[];
+    };]]></programlisting>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            In the vertex, tessellation evaluation and geoemtry languages, a single
+            global instance of the <function>gl_PerVertex</function> named block is available and
+            its <function>gl_PointSize</function> member is an output that receives the
+            intended size of the point to be rasterized, in pixels. It may be written at any time
+            during shader execution. If <constant>GL_PROGRAM_POINT_SIZE</constant> is enabled,
+            <function>gl_PointSize</function> is used to determine the size of rasterized
+            points, otherwise it is ignored by the rasterization stage.
+        </para>
+        <para>
+            In the tessellation control language, the <function>gl_PerVertex</function> named block
+            is used to construct an array, <function>gl_out[]</function>, whose members become
+            available as inputs to the subsequent tessellation evaluation shader.
+        </para>
+        <para>
+            The value of <function>gl_PointSize</function> (or the <function>gl_PointSize</function> member of the <function>gl_out[]</function>
+            array, in the case of the tessellation control shader)
+            is undefined after the vertex, tessellation control, and tessellation evaluation
+            shading stages if the corresponding shader executable does
+            not write to gl_PointSize. It is also undefined after the geometry processing stage if the geometry shader executable calls
+            <citerefentry><refentrytitle>EmitVertex</refentrytitle></citerefentry> without having
+            written <function>gl_PointSize</function> since the last call to <citerefentry><refentrytitle>EmitVertex</refentrytitle></citerefentry>
+            (or hasn't written it at all).
+        </para>
+        <para>
+            In the tessellation control, tessellation evaluation and geoemetry languages,
+            the <function>gl_PerVertex</function> named block is used to construct an array, <function>gl_in[]</function>
+            of per-vertex or per-control point inputs whose content represents the corresponding
+            outputs written by the previous stage.
+         </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #VARTABLEHEADER#
+                    <row>
+                        <entry>gl_PointSize (vertex shader)</entry>#newin11#
+                    </row>
+                    <row>
+                        <entry>gl_PointSize (geometry shader)</entry>#newin15#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_Position</refentrytitle></citerefentry>, <citerefentry><refentrytitle>gl_ClipDistance</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

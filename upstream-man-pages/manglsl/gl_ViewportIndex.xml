@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_ViewportIndex">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_ViewportIndex</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_ViewportIndex</refname>
+        <refpurpose>contains the index of the viewport to be used in viewport transformation and scissoring</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>out int gl_ViewportIndex; // Geometry stage</function>
+        </funcsynopsis>
+        <funcsynopsis>
+            <function>in  int gl_ViewportIndex; // Fragment stage</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            In the geometry language, <function>gl_ViewportIndex</function> is used to specify the index
+            of the viewport to which the next primitive emitted from the shader should be drawn. Primitives generated
+            by the geometry shader will undergo viewport transformation and scissor testing using the viewport
+            transformation and scissor rectangle selected by the value of <function>gl_ViewportIndex</function>.
+            The viewport index used will come from one of the vertices in the primitive being shaded. However, which
+            vertex the viewport index comes from is implementation-defined, and so it is recommended to use the same
+            viewport index for all vertices of a primitive. If a geometry shader does not assign a value to
+            <function>gl_ViewportIndex</function>, viewport transform and scissor rectangle zero will be used.
+            If a geometry shader statically assigns a value to <function>gl_ViewportIndex</function> and there
+            is a path through the shader that does not assign a value to <function>gl_ViewportIndex</function>,
+            the value of <function>gl_ViewportIndex</function> is undefined for executions of the shader that take
+            that path.
+        </para>
+        <para>
+            In the fragment language, <function>gl_ViewportIndex</function> will have the same value that was written to the 
+            output variable <function>gl_ViewportIndex</function> in the geometry stage.  If the geometry stage does not dynamically
+            assign to <function>gl_ViewportIndex</function>, the value of <function>gl_ViewportIndex</function> in the fragment shader will be undefined. If
+            the geometry stage makes no static assignment to <function>gl_ViewportIndex</function>, the fragment stage will read zero.
+            Otherwise, the fragment stage will read the same value written by the geometry stage, even if that value is
+            out of range. If a fragment shader contains a static access to <function>gl_ViewportIndex</function>, it will count against the
+            implementation defined limit for the maximum number of inputs to the fragment stage.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>gl_ViewportIndex (geometry stage)</entry>#newin15#
+                    </row>
+                    <row>
+                        <entry>gl_ViewportIndex (fragment stage)</entry>#newin43#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_Layer</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+base_url=https://cvs.khronos.org/svn/repos/ogl/trunk/ecosystem/public/sdk/docs
+
+for i in man2 man3 man4 manglsl; do
+    rm -rf $i
+    svn export $base_url/$i
+done

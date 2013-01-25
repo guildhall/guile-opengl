@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_FragCoord">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_FragCoord</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_FragCoord</refname>
+        <refpurpose>contains the window-relative coordinates of the current fragment</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>in vec4 gl_FragCoord;</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            Available only in the fragment language, <function>gl_FragCoord</function> is an input variable that contains the
+            window relative coordinate (x, y, z, 1/w) values for the fragment. If multi-sampling,
+            this value can be for any location within the pixel, or one of the fragment samples.
+            This value is the result of fixed functionality that interpolates primitives after vertex
+            processing to generate fragments. The z component is the depth value that would be used for the
+            fragment's depth if no shader contained any writes to <citerefentry><refentrytitle>gl_FragDepth</refentrytitle></citerefentry>.
+        </para>
+        <para>
+            <function>gl_FragCoord</function> may be redeclared with the additional layout qualifier identifiers
+            <function>origin_upper_left</function> or <function>pixel_center_integer</function>. By
+            default, <function>gl_FragCoord</function> assumes a lower-left origin for window coordinates
+            and assumes pixel centers are located at half-pixel centers. For example, the (x, y) location
+            (0.5, 0.5) is returned for the lower-left-most pixel in a window. The origin of
+            <function>gl_FragCoord</function> may be changed by redeclaring <function>gl_FragCoord</function>
+            with the <function>origin_upper_left</function> identifier. The values returned can also be
+            shifted by half a pixel in both x and y by <function>pixel_center_integer</function> so it
+            appears the pixels are centered at whole number pixel offsets. This moves the (x, y) value returned by
+            <function>gl_FragCoord</function> of (0.5, 0.5) by default to (0.0, 0.0) with
+            <function>pixel_center_integer</function>.
+        </para>
+        <para>
+            If <function>gl_FragCoord</function> is redeclared in any fragment shader in a program, it must be redeclared
+            in all fragment shaders in that program that have static use of <function>gl_FragCoord</function>. Redeclaring
+            <function>gl_FragCoord</function> with any accepted qualifier affects only <function>gl_FragCoord.x</function>
+            and <function>gl_FragCoord.y</function>. It has no affect on rasterization, transformation or any other part
+            of the OpenGL pipline or language features.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #VARTABLEHEADER#
+                    <row>
+                        <entry>gl_ClipDistance</entry>#newin11#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_FragCoord</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

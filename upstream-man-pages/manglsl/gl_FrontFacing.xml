@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_FrontFacing">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_FrontFacing</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_FrontFacing</refname>
+        <refpurpose>indicates whether a primitive is front or back facing</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>in bool gl_FrontFacing;</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            Available only in the fragment language, <function>gl_FrontFacing</function> is an input variable
+            whose value is <function>true</function> if the fragment belongs to a front-facing primitive and
+            false otherwise. The determination of whether a triangle primitive is front-facing is made by
+            examining the sign of the area of the triangle, including a possible reversal of this sign
+            as controlled by <function>glFrontFace</function>. One way to compute this area is:
+        </para>
+        <para>
+            <inlineequation><mml:math>
+                <mml:mi>a</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfrac>
+                <mml:msubsup><mml:mo>&#x2211;</mml:mo><mml:mrow>
+                    <mml:mi>j</mml:mi><mml:mo>=</mml:mo><mml:mn>0</mml:mn>
+                </mml:mrow>
+                <mml:mrow>
+                    <mml:mi>n</mml:mi><mml:mo>-</mml:mo><mml:mn>1</mml:mn>
+                </mml:mrow></mml:msubsup>
+                <mml:msubsup><mml:mi>x</mml:mi><mml:mrow>w</mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msubsup>
+                <mml:msubsup><mml:mi>y</mml:mi><mml:mrow>w</mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mo>+</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:msubsup>
+                <mml:mo>-</mml:mo>
+                <mml:msubsup><mml:mi>x</mml:mi><mml:mrow>w</mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mo>+</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:msubsup>
+                <mml:msubsup><mml:mi>y</mml:mi><mml:mrow>w</mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msubsup>
+            </mml:math></inlineequation>
+        </para>
+        <para>
+            where <inlineequation><mml:math><mml:msubsup><mml:mi>x</mml:mi><mml:mrow>w</mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msubsup></mml:math></inlineequation> and
+            <inlineequation><mml:math><mml:msubsup><mml:mi>y</mml:mi><mml:mrow>w</mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msubsup></mml:math></inlineequation> are
+            the x and y window coordinates of the <emphasis>i</emphasis>th vertex of the n-vertex polygon.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            <tgroup cols="3" align="left">
+                <colspec colwidth="1.1*" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <thead>
+                    <row>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Variable
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.10
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.20
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.30
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.40
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.50
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 3.30
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 4.00
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 4.10
+                        </emphasis></entry>
+                    </row>
+                    <row>
+                        <entry>
+                            gl_FrontFacing
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 1.10, OpenGL 2.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 1.20, OpenGL 2.1 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 1.30, OpenGL 3.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 1.40, OpenGL 3.1 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 1.50, OpenGL 3.2 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 3.30, OpenGL 3.3 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 4.00, OpenGL 4.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 4.10, OpenGL 4.1 -->
+                        </entry>
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_FragCoord</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="memoryBarrierImage">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2012</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+            <refentrytitle>memoryBarrierImage</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>memoryBarrierImage</refname>
+        <refpurpose>controls the ordering of operations on image variables issued by a single shader invocation</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>void <function>memoryBarrierImage</function></funcdef>
+                <paramdef>void</paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>memoryBarrierImage</function> waits on the completion of all memory accesses resulting
+            from the use of image variables and then returns with no other effect.  When this function returns, the
+            results of any modifications to the content of image variables will be visible
+            to any access to the same buffer from other shader invocations.  In particular,
+            any modifications made in one shader stage are guaranteed to be visible to accesses
+            performed by shader invocations in subsequent stages when those invocations were triggered by the
+            execution of the original shader invocation (e.g., fragment shader invocations for a primitive resulting
+            from a particular geometry shader invocation).
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>memoryBarrierImage</entry>#newin43#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>memoryBarrier</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>memoryBarrierShared</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>memoryBarrierBuffer</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>groupMemoryBarrier</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011-2012 Khronos Group.
+            This material may be distributed subject to the terms and conditions set forth in
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

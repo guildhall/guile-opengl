@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="inverse">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>inverse</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>inverse</refname>
+        <refpurpose>calculate the inverse of a matrix</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>mat2 <function>inverse</function></funcdef>
+                <paramdef>mat2 <parameter>m</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat3 <function>inverse</function></funcdef>
+                <paramdef>mat3 <parameter>m</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>mat4 <function>inverse</function></funcdef>
+                <paramdef>mat4 <parameter>m</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat2 <function>inverse</function></funcdef>
+                <paramdef>dmat2 <parameter>m</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat3 <function>inverse</function></funcdef>
+                <paramdef>dmat3 <parameter>m</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>dmat4 <function>inverse</function></funcdef>
+                <paramdef>dmat4 <parameter>m</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>m</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the matrix of which to take the inverse.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>inverse</function> returns the inverse of the matrix <parameter>m</parameter>. The values in the
+            returned matrix are undefined if <parameter>m</parameter> is singular or poorly-conditioned (nearly singular).
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>inverse (float)</entry>#newin14#
+                    </row>
+                    <row>
+                        <entry>inverse (double)</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>transpose</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>determinant</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

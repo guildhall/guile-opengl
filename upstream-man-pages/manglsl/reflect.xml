@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="reflect">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>reflect</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>reflect</refname>
+        <refpurpose>calculate the reflection direction for an incident vector</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genType <function>reflect</function></funcdef>
+                <paramdef>genType <parameter>I</parameter></paramdef>
+                <paramdef>genType <parameter>N</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>genDType <function>reflect</function></funcdef>
+                <paramdef>genDType <parameter>I</parameter></paramdef>
+                <paramdef>genDType <parameter>N</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>I</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the incident vector.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>N</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the normal vector.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            For a given incident vector <parameter>I</parameter> and surface normal <parameter>N</parameter> <function>reflect</function> returns
+            the reflection direction calculated as <code><parameter>I</parameter> - 2.0 * <citerefentry><refentrytitle>dot</refentrytitle></citerefentry>(<parameter>N</parameter>, <parameter>I</parameter>) * <parameter>N</parameter></code>.
+        </para>
+        <para>
+            <parameter>N</parameter> should be normalized in order to achieve the desired result.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>reflect (genType)</entry>#newin11#
+                    </row>
+                    <row>
+                        <entry>reflect (genDType)</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>dot</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>refract</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

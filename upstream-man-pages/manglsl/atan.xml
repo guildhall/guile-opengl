@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="radians">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>atan</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>atan</refname>
+        <refpurpose>return the arc-tangent of the parameters</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genType <function>atan</function></funcdef>
+                <paramdef>genType <parameter>y</parameter></paramdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genType <function>atan</function></funcdef>
+                <paramdef>genType <parameter>y_over_x</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>y</parameter></term>
+            <listitem>
+                <para>
+                    Specify the numerator of the fraction whose arctangent to return.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specify the denominator of the fraction whose arctangent to return.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>y_over_x</parameter></term>
+            <listitem>
+                <para>
+                    Specify the fraction whose arctangent to return.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>atan</function> returns the angle whose trigonometric arctangent is
+            <inlineequation><mml:math>
+                <!-- eqn: b sub 0: -->
+                <mml:mfrac>
+                    <mml:mrow>
+                        <mml:mi mathvariant="italic">y</mml:mi>
+                    </mml:mrow>
+                    <mml:mrow>
+                        <mml:mi mathvariant="italic">x</mml:mi>
+                    </mml:mrow>
+                </mml:mfrac>
+            </mml:math></inlineequation> or <inlineequation><mml:math><mml:mi mathvariant="italic">y_over_x</mml:mi></mml:math></inlineequation>,
+            depending on which overload is invoked. In the first overload, the signs of <inlineequation><mml:math><mml:mi mathvariant="italic">y</mml:mi></mml:math></inlineequation>
+            and <inlineequation><mml:math><mml:mi mathvariant="italic">x</mml:mi></mml:math></inlineequation> are used to determine the quadrant
+            that the angle lies in. The values returned by <function>atan</function> in this case are in the range
+            <inlineequation><mml:math>
+                <mml:list order="numeric">
+                    <mml:csymbol><mml:mo>&minus;</mml:mo><mml:pi/></mml:csymbol>
+                    <mml:pi/>
+                    </mml:list>
+            </mml:math></inlineequation>. Results are undefined if <inlineequation><mml:math><mml:mi mathvariant="italic">x</mml:mi></mml:math></inlineequation> is zero.
+        </para>
+        <para>
+            For the second overload, <function>atan</function> returns the angle whose tangent is
+            <inlineequation><mml:math><mml:mi mathvariant="italic">y_over_x</mml:mi></mml:math></inlineequation>. Values
+            returned in this case are in the range
+            <inlineequation><mml:math>
+                <mml:list order="numeric">
+                    <mml:mrow>
+                        <mml:mo>&minus;</mml:mo>
+                        <mml:mfrac>
+                            <mml:csymbol><mml:pi/></mml:csymbol>
+                            <mml:mn>2</mml:mn>
+                        </mml:mfrac>
+                    </mml:mrow>
+                    <mml:mfrac>
+                        <mml:pi/>
+                        <mml:mn>2</mml:mn>
+                    </mml:mfrac>
+                </mml:list>
+            </mml:math></inlineequation>.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>atan</entry>#newin11#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>sin</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>cos</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>tan</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

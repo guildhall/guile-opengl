@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="imageStore">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>imageStore</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>imageStore</refname>
+        <refpurpose>write a single texel into an image</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage1D <parameter>image</parameter></paramdef>
+                <paramdef>int <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage2D <parameter>image</parameter></paramdef>
+                <paramdef>ivec2 <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage3D <parameter>image</parameter></paramdef>
+                <paramdef>ivec3 <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage2DRect <parameter>image</parameter></paramdef>
+                <paramdef>ivec2 <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimageCube <parameter>image</parameter></paramdef>
+                <paramdef>ivec3 <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gbufferImage <parameter>image</parameter></paramdef>
+                <paramdef>int <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage1DArray <parameter>image</parameter></paramdef>
+                <paramdef>ivec2 <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage2DArray <parameter>image</parameter></paramdef>
+                <paramdef>ivec3 <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimageCubeArray <parameter>image</parameter></paramdef>
+                <paramdef>ivec3 <parameter>P</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage2DMS <parameter>image</parameter></paramdef>
+                <paramdef>ivec2 <parameter>P</parameter></paramdef>
+                <paramdef>int <parameter>sample</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>void <function>imageStore</function></funcdef>
+                <paramdef>gimage2DMSArray <parameter>image</parameter></paramdef>
+                <paramdef>ivec3 <parameter>P</parameter></paramdef>
+                <paramdef>int <parameter>sample</parameter></paramdef>
+                <paramdef>gvec4 <parameter>data</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>image</parameter></term>
+            <listitem>
+                <para>
+                    Specify the image unit into which to store a texel.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>P</parameter></term>
+            <listitem>
+                <para>
+                    Specify the coordinate at which to store the texel.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>sample</parameter></term>
+            <listitem>
+                <para>
+                    When present, specifies the sample within the image to store into.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>data</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the data to store into the image.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>imageStore</function> stores <parameter>data</parameter> into the texel at the coordinate <parameter>P</parameter> from 
+            the image specified by <parameter>image</parameter>.  For multi-sample stores, the sample number is given by <parameter>sample</parameter>.  When 
+            <parameter>image</parameter>, <parameter>P</parameter>, and <parameter>sample</parameter> identify a valid texel, the bits 
+            used to represent data are converted to the format of the image unit in the manner described in of the OpenGL Specification and stored to 
+            the specified texel.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>imageStore</entry>#newin42#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>imageLoad</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicAdd</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicMin</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicMax</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicAnd</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicOr</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicXor</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicExchange</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>imageAtomicCompSwap</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

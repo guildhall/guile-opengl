@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="distance">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>distance</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>distance</refname>
+        <refpurpose>calculate the distance between two points</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>float <function>distance</function></funcdef>
+                <paramdef>genType <parameter>p0</parameter></paramdef>
+                <paramdef>genType <parameter>p1</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>double <function>distance</function></funcdef>
+                <paramdef>genDType <parameter>p0</parameter></paramdef>
+                <paramdef>genDType <parameter>p1</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>p0</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the first of two points
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>p1</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the second of two points
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>distance</function> returns the distance between the two points <parameter>p0</parameter> and <parameter>p1</parameter>. i.e.,
+            <code><citerefentry><refentrytitle>length</refentrytitle></citerefentry>(<parameter>p0</parameter>, <parameter>p1</parameter>);</code>
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>distance (genType)</entry>#newin11#
+                    </row>
+                    <row>
+                        <entry>distance (genDType)</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>length</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>normalize</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="intBitsToFloat">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>intBitsToFloat</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>intBitsToFloat, uintBitsToFloat</refname>
+        <refpurpose>produce a floating point using an encoding supplied as an integer</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>genType <function>intBitsToFloat</function></funcdef>
+                <paramdef>genIType <parameter>x</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>genType <function>uintBitsToFloat</function></funcdef>
+                <paramdef>genUType <parameter>x</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the bit encoding to return as a floating point value.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>intBitsToFloat</function> and <function>uintBitsToFloat</function> return the encoding
+            passed in parameter <parameter>x</parameter> as a floating-point value. If the encoding of
+            a NaN is passed in <parameter>x</parameter>, it will not signal and the resulting value will
+            be undefined. If the encoding of a floating point infinity is passed in parameter <parameter>x</parameter>,
+            the resulting floating-point value is the corresponding (positive or negative) floating
+            point infinity.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>intBitsToFloat</entry>#newin33#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>floatBitsToInt</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>floatBitsToUint</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>isnan</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>isinf</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_Position">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_Position</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_Position</refname>
+        <refpurpose>contains the position of the current vertex</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <para>
+            <function>gl_Position</function> is a member of the <function>gl_PerVertex</function>
+            named block:
+        </para>
+        <funcsynopsis>
+<programlisting><![CDATA[    out gl_PerVertex {
+        vec4 gl_Position;
+        float gl_PointSize;
+        float gl_ClipDistance[];
+    };]]></programlisting>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            In the vertex, tessellation evaluation and geoemtry languages, a single
+            global instance of the <function>gl_PerVertex</function> named block is available and
+            its <function>gl_Position</function> member is an output that receives the
+            homogeneous vertex position. It may be written at any time during shader execution.
+            The value written to <function>gl_Position</function> will be used by primitive assembly,
+            clipping, culling and other fixed functionality operations, if present, that operate on
+            primitives after vertex processing has occurred.
+        </para>
+        <para>
+            In the tessellation control language, the <function>gl_PerVertex</function> named block
+            is used to construct an array, <function>gl_out[]</function>, whose <function>gl_Position</function>
+            members hold the homogeneous control point position, which become available as inputs to the subsequent
+            tessellation evaluation shader.
+        </para>
+        <para>
+            The value of <function>gl_Position</function> (or the <function>gl_Position</function> member of the <function>gl_out[]</function>
+            array, in the case of the tessellation control shader)
+            is undefined after the vertex, tessellation control, and tessellation evaluation
+            shading stages if the corresponding shader executable does
+            not write to gl_Position. It is also undefined after the geometry processing stage if the geometry shader executable calls
+            <citerefentry><refentrytitle>EmitVertex</refentrytitle></citerefentry> without having
+            written <function>gl_Position</function> since the last call to <citerefentry><refentrytitle>EmitVertex</refentrytitle></citerefentry>
+            (or hasn't written it at all).
+        </para>
+        <para>
+            In the tessellation control, tessellation evaluation and geoemetry languages,
+            the <function>gl_PerVertex</function> named block is used to construct an array, <function>gl_in[]</function>
+            of per-vertex or per-control point inputs whose content represents the corresponding
+            outputs written by the previous stage.
+         </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            <tgroup cols="3" align="left">
+                <colspec colwidth="1.1*" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <thead>
+                    <row>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Variable
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.10
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.20
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.30
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.40
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.50
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 3.30
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 4.00
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 4.10
+                        </emphasis></entry>
+                    </row>
+                    <row>
+                        <entry>
+                            gl_Position
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>1</superscript>  <!-- 1.10, OpenGL 2.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>1</superscript>  <!-- 1.20, OpenGL 2.1 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>1</superscript>  <!-- 1.30, OpenGL 3.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>1</superscript>  <!-- 1.40, OpenGL 3.1 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>2</superscript>  <!-- 1.50, OpenGL 3.2 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>2</superscript>  <!-- 3.30, OpenGL 3.3 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 4.00, OpenGL 4.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 4.10, OpenGL 4.1 -->
+                        </entry>
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+        <para>Versions 1.10 to 1.40 - vertex shader only.</para>
+        <para>Versions 1.50 to 3.30 - vertex and geometry shaders only.</para>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_PointSize</refentrytitle></citerefentry>, <citerefentry><refentrytitle>gl_ClipDistance</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

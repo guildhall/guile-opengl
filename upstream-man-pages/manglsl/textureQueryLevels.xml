@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="textureQueryLevels">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2012</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>textureQueryLevels</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>textureQueryLevels</refname>
+        <refpurpose>compute the number of accessible mipmap levels of a texture</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler1D <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler2D <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler3D <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsamplerCube <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler1DArray <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler2DDArray <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsamplerCubeArray <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler1DShadow <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler2DShadow <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsamplerCubeShadow <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler1DArrayShadow <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsampler2DArrayShadow <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>textureQueryLevels</function></funcdef>
+                <paramdef>gsamplerCubeArrayShadow <parameter>sampler</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>sampler</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the sampler to which the texture whose mipmap level count will be queried is bound.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>textureQueryLevels</function> returns the number of accessible mipmap levels
+            are in the texture associated with <parameter>sampler</parameter>.
+        </para>
+        <para>
+            If called on an incomplete texture, or if no texture is associated with <parameter>sampler</parameter>, zero is returned.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>textureQueryLevels</entry>#newin43#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>texelFetch</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>texelFetchOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>texture</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureGather</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureGatherOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureGatherOffsets</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureGrad</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureGradOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureLod</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureLodOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureProj</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureProjGrad</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureProjGradOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureProjLod</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureProjLodOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureProjOffset</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>textureSize</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2012 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_WorkGroupID">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2012</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_WorkGroupID</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_WorkGroupID</refname>
+        <refpurpose>contains the index of the workgroup currently being operated on by a compute shader</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>in uvec3 gl_WorkGroupID</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            In the compute language, <function>gl_WorkGroupID</function>
+            contains the 3-dimensional index of the global work group 
+            that the current compute shader invocation is executing within. The possible values range
+            across the parameters passed into <function>glDispatchCompute</function>, i.e., from (0, 0, 0) to
+            (<function>gl_NumWorkGroups.x</function> - 1, <function>gl_NumWorkGroups.y</function> - 1, <function>gl_NumWorkGroups.z</function> - 1).
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #VARTABLEHEADER#
+                    <row>
+                        <entry>gl_WorkGroupID</entry>#newin43#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_NumWorkGroups</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_WorkGroupID</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_LocalInvocationID</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011-2012 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

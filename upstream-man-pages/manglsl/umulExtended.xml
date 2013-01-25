@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="umulExtended">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>umulExtended</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>umulExtended</refname>
+        <refpurpose>perform a 32- by 32-bit multiply to produce a 64-bit result</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>void <function>umulExtended</function></funcdef>
+                <paramdef>genUType <parameter>x</parameter></paramdef>
+                <paramdef>genUType <parameter>y</parameter></paramdef>
+                <paramdef>out genUType <parameter>msb</parameter></paramdef>
+                <paramdef>out genUType <parameter>lsb</parameter></paramdef>
+            </funcprototype>            <funcprototype>
+                <funcdef>void <function>imulExtended</function></funcdef>
+                <paramdef>genIType <parameter>x</parameter></paramdef>
+                <paramdef>genIType <parameter>y</parameter></paramdef>
+                <paramdef>out genIType <parameter>msb</parameter></paramdef>
+                <paramdef>out genIType <parameter>lsb</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the first multiplicand.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>y</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the second multiplicand..
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>msb</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the variable to receive the most significant word of the product.
+                </para>
+            </listitem>
+        </varlistentry>
+        <varlistentry>
+            <term><parameter>lsb</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the variable to receive the least significant word of the product.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>umulExtended</function> and <function>imulExtended</function> perform multiplication of the two 32-bit integer
+            quantities <parameter>x</parameter> and <parameter>y</parameter>, producing a 64-bit integer result. The 32 least
+            significant bits of this product are returned in <parameter>lsb</parameter> and the 32 most significant bits are returned
+            in <parameter>msb</parameter>. <function>umulExtended</function> and <function>imulExtended</function> perform
+            unsigned and signed multiplication, respectively.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>umulExtended</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>uaddCarry</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

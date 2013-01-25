@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="barrier">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>barrier</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>barrier</refname>
+        <refpurpose>synchronize execution of multiple shader invocations</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>void <function>barrier</function></funcdef>
+                <paramdef>void</paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <emphasis>Available only in the Tessellation Control and Compute Shaders</emphasis>, <function>barrier</function> provides
+            a partially defined order of execution between shader invocations. For any given static instance of <function>barrier</function>,
+            in a tessellation control shader, all invocations for a single input patch must enter it before any will be allowed
+            to continue beyond it. For any given static instance of <function>barrier</function> in a compute shader, all invocations
+            within a single work group must enter it before any are allowed to continue beyond it.
+            This ensures that values written by one invocation prior to a given static instance
+            of <function>barrier</function> can be safely read by other invocations after their call to the same static
+            instance of <function>barrier</function>. Because invocations may execute in undefined order between these
+            <function>barrier</function> calls, the values of a per-vertex or per-patch output variable, or any shared variable will be undefined
+            in a number of cases.
+        </para>
+        <para>
+            <function>barrier</function> may only be placed inside the function <code>main()</code> of the tessellation
+            control shader, but may be placed anywhere in a compute shader. Calls to <function>barrier</function> may not
+            be placed within any control flow. Barriers are also disallowed after a return
+            statement in the function <code>main()</code>.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>barrier</entry>#newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011-2012 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

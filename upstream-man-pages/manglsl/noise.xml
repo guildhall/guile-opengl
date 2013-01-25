@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="noise">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>noise</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>noise</refname>
+        <refpurpose>generate values with a pseudo-random noise function</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>float <function>noise1</function></funcdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec2 <function>noise2</function></funcdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec3 <function>noise3</function></funcdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+            </funcprototype>
+            <funcprototype>
+                <funcdef>vec4 <function>noise4</function></funcdef>
+                <paramdef>genType <parameter>x</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="parameters"><title>Parameters</title>
+        <variablelist>
+        <varlistentry>
+            <term><parameter>x</parameter></term>
+            <listitem>
+                <para>
+                    Specifies the value to be used to seed the noise function.
+                </para>
+            </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsect1>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>noise1</function>,  <function>noise2</function>, <function>noise3</function> and <function>noise4</function> return
+            noise values (vector or scalar) based on the input value <parameter>x</parameter>. The noise function is a stochastic function
+            that can be used to increase visual complexity. Values returned by the noise functions give the appearance of randomness,
+            but are not truly random. They are defined to have the following characteristics:
+        </para>
+        <para>
+            <itemizedlist>
+                <listitem>The return value(s) are always in the range [-1.0,1.0], and cover at least the range [-0.6, 0.6], with a Gaussian-like distribution.</listitem>
+                <listitem>The return value(s) have an overall average of 0.0.</listitem>
+                <listitem>They are repeatable, in that a particular input value will always produce the same return value.</listitem>
+                <listitem>They are statistically invariant under rotation (i.e., no matter how the domain is rotated, it has the same statistical character).</listitem>
+                <listitem>They have a statistical invariance under translation (i.e., no matter how the domain is translated, it has the same statistical character).</listitem>
+                <listitem>They typically give different results under translation.</listitem>
+                <listitem>The spatial frequency is narrowly concentrated, centered somewhere between 0.5 to 1.0.</listitem>
+                <listitem>They are C1 continuous everywhere (i.e., the first derivative is continuous).</listitem>
+            </itemizedlist>
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>noise1</entry>#newin11#
+                    </row>
+                    <row>
+                        <entry>noise2</entry>#newin11#
+                    </row>
+                    <row>
+                        <entry>noise3</entry>#newin11#
+                    </row>
+                    <row>
+                        <entry>noise4</entry>#newin11#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

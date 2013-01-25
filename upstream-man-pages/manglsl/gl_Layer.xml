@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_Layer">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2012</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_Layer</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_Layer</refname>
+        <refpurpose>contains the selected layer of a multi-layer framebuffer attachment</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>out int gl_Layer; // Geometry stage</function>
+        </funcsynopsis>
+        <funcsynopsis>
+            <function>in int gl_Layer; // Fragment stage</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            In the geometry language, <function>gl_Layer</function> is used to select a specific
+            layer (or face and layer of cube map) in a multi-layer framebuffer attachment. The actual
+            layer used will come from one of the vertices in the primitive being shaded. Which vertex
+            the layer comes from is undefined and as such it is recommended to write the same value
+            to <function>gl_Layer</function> for all vertices in the primitive. If a shader statically
+            assigns a value to <function>gl_Layer</function>, layered rendering mode is enabled.
+            If a shader statically assigns a value to <function>gl_Layer</function>, and there is an execution path through
+            the shader that does not set <function>gl_Layer</function>, then the value of <function>gl_Layer</function>
+            is undefined for invocations of the shader that take that path.
+        </para>
+        <para>
+            When used with an array of cube map textures, the <function>gl_Layer</function> output variable
+            takes on a special value. Instead of referring to only the layer, it is used to select a cube map
+            face and a layer. Setting <function>gl_Layer</function> to the value
+            <inlineequation><mml:math><mml:mi>layer</mml:mi><mml:mo>*</mml:mo><mml:mn>6</mml:mn><mml:mo>+</mml:mo><mml:mi>face</mml:mi></mml:math></inlineequation>
+            will render to <inlineequation><mml:math><mml:mi>face</mml:mi></mml:math></inlineequation>
+            of the cube defined in <inlineequation><mml:math><mml:mi>layer</mml:mi></mml:math></inlineequation>.
+            The face values are as follows:
+        <informaltable frame="topbot">
+            <tgroup cols="2" align="left">
+                <colspec colwidth="1.1*" />
+                <colspec colwidth="1*" align="center" />
+                <thead>
+                    <row>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Face Value
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Resulting Target
+                        </emphasis></entry>
+                    </row>
+                    <row>
+                        <entry>
+                            0
+                        </entry>
+                        <entry>
+                            <constant>GL_TEXTURE_CUBEMAP_POSITIVE_X</constant>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            1
+                        </entry>
+                        <entry>
+                            <constant>GL_TEXTURE_CUBEMAP_NEGATIVE_X</constant>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            2
+                        </entry>
+                        <entry>
+                            <constant>GL_TEXTURE_CUBEMAP_POSITIVE_Y</constant>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            3
+                        </entry>
+                        <entry>
+                            <constant>GL_TEXTURE_CUBEMAP_NEGATIVE_Y</constant>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            4
+                        </entry>
+                        <entry>
+                            <constant>GL_TEXTURE_CUBEMAP_POSITIVE_Z</constant>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            5
+                        </entry>
+                        <entry>
+                            <constant>GL_TEXTURE_CUBEMAP_NEGATIVE_Z</constant>
+                        </entry>
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+        </para>
+        <para>
+            For example, to render to the positive y cube map face located in the 5<superscript>th</superscript> layer of the
+            cube map array, <function>gl_Layer</function> should be set to
+            <inlineequation><mml:math><mml:mn>5</mml:mn><mml:mo>*</mml:mo><mml:mn>6</mml:mn><mml:mo>+</mml:mo><mml:mn>2</mml:mn></mml:math></inlineequation>.
+        </para>
+        <para>
+            The input variable <function>gl_Layer</function> in the fragment language will have the same value that was written to the
+            output variable <function>gl_Layer</function> in the geometry language. If the geometry stage does not dynamically assign a
+            value to <function>gl_Layer</function>, the value of <function>gl_Layer</function> in the fragment stage will be undefined.  If the geometry stage
+            makes no static assignment to <function>gl_Layer</function>, the input <function>gl_Layer</function> in the fragment stage will be zero.  Otherwise,
+            the fragment stage will read the same value written by the geometry stage, even if that value is out of
+            range.  If a fragment shader contains a static access to <function>gl_Layer</function>, it will count against the implementation
+            defined limit for the maximum number of inputs to the fragment stage.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            #VARTABLECOLS#
+                <thead>
+                    #FUNCTABLEHEADER#
+                    <row>
+                        <entry>gl_Layer (geometry stage)</entry>#newin15#
+                    </row>
+                    <row>
+                        <entry>gl_Layer (fragment stage)</entry>#newin43#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_ViewportIndex</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011-2012 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_SampleMaskIn">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_SampleMaskIn</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_SampleMaskIn</refname>
+        <refpurpose>contains the computed sample coverage mask for the current fragment</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>in int gl_SampleMaskIn[];</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            <function>gl_SampleMaskIn</function> is a fragment language that indicates the
+            set of samples covered by the primitive generating the fragment during
+            multisample rasterization. It has a sample bit set if and only if the sample
+            is considered covered for this fragment shader invocation. Bit
+            <emphasis>B</emphasis> of mask <function>gl_SampleMask[M]</function>
+            corresponds to sample 32 * <emphasis>M</emphasis> + <emphasis>B</emphasis>.
+            The array has <function>ceil</function>(<emphasis>s</emphasis> / 32) elements
+            where <emphasis>s</emphasis> is the maximum number of color samples supported
+            by the implementation.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            <tgroup cols="10" align="left">
+                <colspec colwidth="1.1*" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <thead>
+                    #VARTABLEHEADER#
+                    <row>
+                        <entry>
+                            gl_SampleMaskIn
+                        </entry>
+                        #newin40#
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_SampleMask</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_SampleID</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_SamplePosition</refentrytitle></citerefentry>,
+            <citerefentry><refentrytitle>gl_FragCoord</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>

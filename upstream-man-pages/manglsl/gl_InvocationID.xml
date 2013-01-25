@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
+              "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
+<refentry id="gl_InvocationID">
+    <refmeta>
+        <refmetainfo>
+            <copyright>
+                <year>2011</year>
+                <holder>Khronos Group</holder>
+            </copyright>
+        </refmetainfo>
+        <refentrytitle>gl_InvocationID</refentrytitle>
+        <manvolnum>3G</manvolnum>
+    </refmeta>
+    <refnamediv>
+        <refname>gl_InvocationID</refname>
+        <refpurpose>contains the invocation index of the current shader</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv><title>Declaration</title>
+        <funcsynopsis>
+            <function>in int gl_InvocationID;</function>
+        </funcsynopsis>
+    </refsynopsisdiv>
+    <refsect1 id="description"><title>Description</title>
+        <para>
+            In the tessellation control language, <function>gl_InvocationID</function>
+            contains the index of the output patch vertex assigned to the shader invocation.
+            It is assigned an integer value in the range [0, N-1] where N is the number of output
+            patch vertices.
+        </para>
+        <para>
+            In the geometry language, <function>gl_InvocationID</function> identifies
+            the invocation number assigned to the geometry shader invocation. It is assigned
+            an integer value in the range [0, N-1] where N is the number of geometry shader
+            invocations per primitive.
+        </para>
+    </refsect1>
+    <refsect1 id="versions"><title>Version Support</title>
+        <informaltable frame="topbot">
+            <tgroup cols="3" align="left">
+                <colspec colwidth="1.1*" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <colspec colwidth="1*" align="center" />
+                <thead>
+                    <row>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Variable
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.10
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.20
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.30
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.40
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 1.50
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 3.30
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 4.00
+                        </emphasis></entry>
+                        <entry rowsep="1" align="left"><emphasis role="bold">
+                        Version 4.10
+                        </emphasis></entry>
+                    </row>
+                    <row>
+                        <entry>
+                            gl_InvocationID
+                        </entry>
+                        <entry>
+                            <emphasis>-</emphasis>  <!-- 1.10, OpenGL 2.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>-</emphasis>  <!-- 1.20, OpenGL 2.1 -->
+                        </entry>
+                        <entry>
+                            <emphasis>-</emphasis>  <!-- 1.30, OpenGL 3.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>-</emphasis>  <!-- 1.40, OpenGL 3.1 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>1</superscript>  <!-- 1.50, OpenGL 3.2 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis><superscript>1</superscript>  <!-- 3.30, OpenGL 3.3 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 4.00, OpenGL 4.0 -->
+                        </entry>
+                        <entry>
+                            <emphasis>Y</emphasis>  <!-- 4.10, OpenGL 4.1 -->
+                        </entry>
+                    </row>
+                </thead>
+            </tgroup>
+        </informaltable>
+        <para>[1] Versions 1.50 to 3.30 - geometry shaders only.</para>
+    </refsect1>
+    <refsect1 id="seealso"><title>See Also</title>
+        <para>
+            <citerefentry><refentrytitle>gl_InstanceID</refentrytitle></citerefentry>
+        </para>
+    </refsect1>
+    <refsect1 id="Copyright"><title>Copyright</title>
+        <para>
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            This material may be distributed subject to the terms and conditions set forth in 
+            the Open Publication License, v 1.0, 8 June 1999.
+            <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.
+        </para>
+    </refsect1>
+</refentry>
