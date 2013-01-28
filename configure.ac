@@ -15,7 +15,7 @@ else
    AC_MSG_ERROR([Guile 2.0 required.])
 fi
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile figl/config.scm])
 AC_CONFIG_FILES([env], [chmod +x env])
 
 AC_OUTPUT

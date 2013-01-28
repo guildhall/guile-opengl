@@ -4,7 +4,8 @@ moddir=$(prefix)/share/guile/site/2.0
 godir=$(libdir)/guile/2.0/ccache
 
 SOURCES = \
-	figl.scm
+	figl.scm \
+	figl/config.scm
 
 EXTRA_DIST += env.in COPYING COPYING.LESSER
 
