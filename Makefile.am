@@ -5,7 +5,8 @@ godir=$(libdir)/guile/2.0/ccache
 
 SOURCES = \
 	figl.scm \
-	figl/config.scm
+	figl/config.scm \
+	figl/parse.scm
 
 EXTRA_DIST += env.in COPYING COPYING.LESSER
 
