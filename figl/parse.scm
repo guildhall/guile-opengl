@@ -26,15 +26,12 @@
   #:use-module (sxml simple)
   #:use-module ((sxml xpath) #:hide (filter))
   #:use-module (sxml transform)
-  #:use-module ((srfi srfi-1) #:select (filter))
+  #:use-module ((srfi srfi-1) #:select (filter fold))
   #:use-module (texinfo docbook)
   #:use-module (texinfo serialize)
   #:use-module (ice-9 ftw)
   #:use-module (ice-9 match)
-  #:export ())
-
-;; OpenGL 2.x only.
-(define *man-sections* '("man2"))
+  #:export (fold-gl-definitions))
 
 (define *namespaces*
   '((mml . "http://www.w3.org/1998/Math/MathML")))
@@ -121,17 +118,19 @@
                                      (trim-whitespace text)
                                      text))))))
 
-(define (parse-man-xml section filename)
+(define (parse-man-xml version filename)
+  (define subdir (format #f "man~A" version))
   (call-with-input-file (in-vicinity (upstream-man-pages)
-                                     (in-vicinity section filename))
+                                     (in-vicinity subdir filename))
     (lambda (port)
       (zap-whitespace
        (xml->sxml port #:declare-namespaces? #t
                   #:default-entity-handler default-entity-handler
                   #:doctype-handler docbook-with-mathml-handler)))))
 
-(define (xml-files section)
-  (scandir (in-vicinity (upstream-man-pages) section)
+(define (xml-files version)
+  (define subdir (format #f "man~A" version))
+  (scandir (in-vicinity (upstream-man-pages) subdir)
            (lambda (x) (string-suffix? ".xml" x))))
 
 (define (take-first proc)
@@ -360,3 +359,22 @@
                                               (xml-parameters xml)
                                               (xml-description xml)
                                               (xml-errors xml)))))
+
+(define (fold-gl-definitions proc version . seeds)
+  (apply
+   values
+   (fold (lambda (file seeds)
+           (let ((xml (parse-man-xml version file)))
+             (call-with-values
+                 (lambda ()
+                   (apply proc
+                          (xml-name xml)
+                          (parse-prototype (xml-prototype xml))
+                          (generate-documentation (xml-purpose xml)
+                                                  (xml-parameters xml)
+                                                  (xml-description xml)
+                                                  (xml-errors xml))
+                          seeds))
+               list)))
+         seeds
+         (xml-files version))))
