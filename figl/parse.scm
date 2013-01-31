@@ -28,7 +28,7 @@
   #:use-module (sxml transform)
   #:use-module ((srfi srfi-1) #:select (filter fold))
   #:use-module (texinfo docbook)
-  #:use-module (texinfo serialize)
+  #:use-module (texinfo plain-text)
   #:use-module (ice-9 ftw)
   #:use-module (ice-9 match)
   #:export (fold-gl-definitions))
@@ -345,12 +345,13 @@
 
 ;; Produces an stexinfo fragment.
 (define (generate-documentation purpose parameters description errors)
-  (stexi->texi
-   `(*fragment*
-     (heading ,purpose)
-     ,@(if parameters (sdocbook->stexi parameters) '())
-     ,@(if description (sdocbook->stexi description) '())
-     ,@(if errors (sdocbook->stexi errors) '()))))
+  (string-trim-both
+   (stexi->plain-text
+    `(*fragment*
+      (heading ,purpose)
+      ,@(if parameters (sdocbook->stexi parameters) '())
+      ,@(if description (sdocbook->stexi description) '())
+      ,@(if errors (sdocbook->stexi errors) '())))))
 
 (define (xml->definition xml)
   `((name . ,(xml-name xml))
