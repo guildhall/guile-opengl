@@ -28,11 +28,13 @@
   #:use-module (sxml transform)
   #:use-module ((srfi srfi-1) #:select (filter))
   #:use-module (texinfo docbook)
+  #:use-module (texinfo serialize)
   #:use-module (ice-9 ftw)
+  #:use-module (ice-9 match)
   #:export ())
 
-(define *man-sections*
-  '("man2" "man3" "man4"))
+;; OpenGL 2.x only.
+(define *man-sections* '("man2"))
 
 (define *namespaces*
   '((mml . "http://www.w3.org/1998/Math/MathML")))
@@ -158,6 +160,23 @@
 (define (parse-prototype xml)
   xml)
 
+(define (collapse-fragments nodeset)
+  (match nodeset
+    ((('*fragment* elts ...) nodes ...)
+     (append (collapse-fragments elts)
+             (collapse-fragments nodes)))
+    ((((and tag (? symbol?)) elts ...) nodes ...)
+     (acons tag (collapse-fragments elts) (collapse-fragments nodes)))
+    ((elt nodes ...)
+     (cons elt (collapse-fragments nodes)))
+    (() '())))
+
+(define (list-intersperse src-l elem)
+  (if (null? src-l) src-l
+      (let loop ((l (cdr src-l)) (dest (cons (car src-l) '())))
+        (if (null? l) (reverse dest)
+            (loop (cdr l) (cons (car l) (cons elem dest)))))))
+
 (define *rules*
   `((refsect1
      . ,(lambda (tag id . body)
@@ -168,25 +187,19 @@
     (variablelist
      ((varlistentry
        . ,(lambda (tag term . body)
-            `(entry (% (heading ,@(cdr term))) ,@body)))
+            `(entry (% (heading ,@(cdar term))) ,@(apply append body))))
       (listitem
+       . ,(lambda (tag . body)
+            (map (lambda (x)
+                   (if (string? x)
+                       `(para ,x)
+                       x))
+                 body)))
+      (term
        . ,(lambda (tag . rest)
-            (cond ((null? rest)
-                   (warn "null listitem")
-                   '(*fragment*))
-                  ((pair? (car rest))
-                   (if (not (null? (cdr rest)))
-                       (warn "ignoring listitem extra contents:" (cddr rest)))
-                   (car rest))
-                  (else
-                   (list 'para rest))))))
+            `((itemx ,@rest)))))
      . ,(lambda (tag . body)
-          `(table (% (formatter (var))) ,@body)))
-    (term
-     . ,(lambda (tag param . rest)
-          (if (pair? param)
-              param
-              (list 'var param))))
+          `(table (% (formatter (asis))) ,@body)))
     (parameter
      . ,(lambda (tag body)
           `(var ,body)))
@@ -196,13 +209,133 @@
     (constant
      . ,(lambda (tag . body)
           `(code . ,body)))
+    (code
+     . ,(lambda (tag . body)
+          `(code . ,body)))
     (function
      . ,(lambda (tag body . ignored)
           (or (null? ignored) (warn "ignored function tail" ignored))
           `(code ,body)))
     (emphasis
-     . ,(lambda (tag . body)
-          `(var . ,body)))
+     . ,(match-lambda*
+         ((_) "")
+         ((_ ('@ ('role "bold")) . body) `(strong ,@body))
+         ((_ body) `(var ,body))))
+    (citerefentry
+     . ,(lambda (tag contents)
+          contents))
+    (refentrytitle
+     . ,(lambda (tag contents)
+          `(code ,contents)))
+    (inlineequation
+     . ,(lambda (tag contents)
+          contents))
+    (informalequation
+     . ,(lambda (tag contents)
+          contents))
+    (informaltable
+     . ,(lambda (tag attrs tgroup)
+          tgroup))
+    (tgroup
+     ((thead
+       . ,(lambda (tag . rows)
+            rows))
+      (colspec
+       . ,(lambda _
+            #f))
+      (tbody
+       . ,(lambda (tag . rows)
+            rows))
+      (row
+       . ,(lambda (tag first . rest)
+            `(entry (% (heading ,first))
+                    ,@(list-intersperse rest ", "))))
+      (entry
+       . ,(match-lambda*
+           ((_) "")
+           ((_ ('@ . _)) "")
+           ((_ ('@ . _) x) x)
+           ((_ ('@ . _) x ...) `(*fragment* ,@x))
+           ((_ x) x)
+           ((_ x ...) `(*fragment* ,@x)))))
+     . ,(lambda (tag attrs . contents)
+          `(table (% (formatter (asis)))
+                  ,@(apply append (filter identity contents)))))
+
+    ;; Poor man's mathml.
+    (mml:math
+     . ,(lambda (tag . contents)
+          `(math . ,(collapse-fragments contents))))
+    (mml:mn
+     . ,(lambda (tag n . rest)
+          (if (pair? rest)
+              `(*fragment* ,n . ,rest)
+              n)))
+    (mml:mi
+     . ,(case-lambda
+          ((tag contents)
+           `(code ,contents))
+          ((tag attrs contents)
+           (match attrs
+             (('@ (mathvariant "italic"))
+              `(var ,contents))
+             (_ `(code ,contents))))))
+    ;; It would be possible to represent a matrix as a @multitable, but
+    ;; Guile doesn't really have support for that.  So instead print
+    ;; each row in parentheses.
+    (mml:mtable
+     ((mml:mtr
+       . ,(lambda (tag . body)
+            `("(" ,@(list-intersperse body " ") ")")))
+      (mml:mtd
+       . ,(match-lambda*
+           ((tag ('@ . _) body ...)
+            `(*fragment* ,@body))
+           ((tag body ...)
+            `(*fragment* ,@body)))))
+     . ,(lambda (tag . rows)
+          ;; Rely on outer mfence for outer parens, if any
+          (let ((rows (if (and (pair? rows) (eq? (caar rows) '@))
+                          (cdr rows)
+                          rows)))
+            `(*fragment* ,@(apply append (list-intersperse rows '(", ")))))))
+    (mml:mspace
+     . ,(lambda (tag . _)
+          " "))
+    (mml:msup
+     . ,(lambda (tag base exponent)
+          `(*fragment* ,base "^" ,exponent)))
+    (mml:msub
+     . ,(lambda (tag base exponent)
+          `(*fragment* ,base "_" ,exponent)))
+    (mml:mover
+     . ,(lambda (tag base over)
+          `(*fragment* ,base ,over)))
+    (mml:munderover
+     . ,(lambda (tag under base over)
+          `(*fragment* ,under ,base ,over)))
+    (mml:mfrac
+     . ,(lambda (tag num denom)
+          `(*fragment* ,num "/" ,denom)))
+    (mml:msqrt
+     . ,(lambda (tag base)
+          `(*fragment* "√" ,base)))
+    (mml:infinity
+     . ,(lambda (tag)
+          "∞"))
+    (mml:mo
+     . ,(lambda (tag operator)
+          operator))
+    (mml:mrow
+     . ,(lambda (tag . contents)
+          `(*fragment* . ,contents)))
+    (mml:mfenced
+     . ,(lambda (tag attrs left . right)
+          `(*fragment* ,@(assq-ref attrs 'open)
+                       ,left
+                       ","
+                       ,@right
+                       ,@(assq-ref attrs 'close))))
     (*text*
      . ,(lambda (tag text)
           text))
@@ -213,11 +346,12 @@
 
 ;; Produces an stexinfo fragment.
 (define (generate-documentation purpose parameters description errors)
-  `(*fragment*
-    (heading ,purpose)
-    ,@(sdocbook->stexi parameters)
-    ,@(sdocbook->stexi description)
-    ,@(sdocbook->stexi errors)))
+  (stexi->texi
+   `(*fragment*
+     (heading ,purpose)
+     ,@(if parameters (sdocbook->stexi parameters) '())
+     ,@(if description (sdocbook->stexi description) '())
+     ,@(if errors (sdocbook->stexi errors) '()))))
 
 (define (xml->definition xml)
   `((name . ,(xml-name xml))
