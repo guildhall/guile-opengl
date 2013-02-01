@@ -23,10 +23,17 @@
 
 (define-module (figl low-level support)
   #:use-module (system foreign)
-  #:export (define-gl-procedure))
+  #:export (current-gl-resolver
+            define-gl-procedure))
+
+(define (default-foreign-resolver name)
+  (dynamic-pointer name (dynamic-link)))
+
+(define current-gl-resolver
+  (make-parameter default-foreign-resolver))
 
 (define (resolve-foreign name)
-  (error "unimplemented!" name))
+  ((current-gl-resolver) name))
 
 (define-syntax foreign-trampoline
   (lambda (stx)
