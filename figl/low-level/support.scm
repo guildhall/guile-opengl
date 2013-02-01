@@ -22,7 +22,25 @@
 ;;; Code:
 
 (define-module (figl low-level support)
+  #:use-module (system foreign)
   #:export (define-gl-procedure))
+
+(define (resolve-foreign name)
+  (error "unimplemented!" name))
+
+(define-syntax foreign-trampoline
+  (lambda (stx)
+    (syntax-case stx (->)
+      ((_ trampoline
+          name (pname ptype) ... -> type)
+       (with-syntax ((sname (symbol->string (syntax->datum #'name))))
+         #'(lambda (pname ...)
+             (let ((ptr (resolve-foreign sname)))
+               (set! trampoline
+                     (pointer->procedure type
+                                         ptr
+                                         (list ptype ...)))
+               (trampoline pname ...))))))))
 
 (define-syntax define-gl-procedure
   (syntax-rules (->)
@@ -30,7 +48,12 @@
                            ...)
        docstring)
      (begin
-       (define (name pname ...)
-         docstring
-         '(ptype ... -> type))
+       (define name
+         (letrec ((trampoline
+                   (foreign-trampoline trampoline
+                                       name (pname ptype) ... -> type))
+                  (name (lambda (pname ...)
+                          docstring
+                          (trampoline pname ...))))
+           name))
        ...))))
