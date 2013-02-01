@@ -19,7 +19,8 @@ licensed under the SGI Free Software B License. For details, see
 
 @end copying
 
-@defun gluBeginCurve 
+@deftypefun void gluBeginCurve nurb
+@deftypefunx void gluEndCurve nurb
 Delimit a NURBS curve definition.
 
 @table @asis
@@ -41,9 +42,10 @@ segments. Evaluator state is preserved during rendering with
 the @code{glPushAttrib} reference page for details on exactly what state
 these calls preserve.
 
-@end defun
+@end deftypefun
 
-@defun gluBeginPolygon 
+@deftypefun void gluBeginPolygon tess
+@deftypefunx void gluEndPolygon tess
 Delimit a polygon description.
 
 @table @asis
@@ -64,9 +66,10 @@ Once @code{gluEndPolygon} is called, the polygon is tessellated, and the
 resulting triangles are described through callbacks. See
 @code{gluTessCallback} for descriptions of the callback functions.
 
-@end defun
+@end deftypefun
 
-@defun gluBeginSurface 
+@deftypefun void gluBeginSurface nurb
+@deftypefunx void gluEndSurface nurb
 Delimit a NURBS surface definition.
 
 @table @asis
@@ -92,9 +95,10 @@ Evaluator state is preserved during rendering with
 @code{glPushAttrib} reference page for details on exactly what state
 these calls preserve.
 
-@end defun
+@end deftypefun
 
-@defun gluBeginTrim 
+@deftypefun void gluBeginTrim nurb
+@deftypefunx void gluEndTrim nurb
 Delimit a NURBS trimming loop definition.
 
 @table @asis
@@ -151,9 +155,9 @@ self-intersecting, or intersect one another, an error results.
 If no trimming information is given for a NURBS surface, the entire
 surface is drawn.
 
-@end defun
+@end deftypefun
 
-@defun gluBuild1DMipmapLevels 
+@deftypefun GLint gluBuild1DMipmapLevels target internalFormat width format type level base max data
 Builds a subset of one-dimensional mipmap levels.
 
 @table @asis
@@ -291,9 +295,9 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @code{GLU_UNSIGNED_INT_2_10_10_10_REV} and @var{format} is neither
 @code{GLU_RGBA} nor @code{GLU_BGRA}.
 
-@end defun
+@end deftypefun
 
-@defun gluBuild1DMipmaps 
+@deftypefun GLint gluBuild1DMipmaps target internalFormat width format type data
 Builds a one-dimensional mipmap.
 
 @table @asis
@@ -422,9 +426,9 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @code{GLU_UNSIGNED_INT_2_10_10_10_REV} and @var{format} is neither
 @code{GLU_RGBA} nor @code{GLU_BGRA}.
 
-@end defun
+@end deftypefun
 
-@defun gluBuild2DMipmapLevels 
+@deftypefun GLint gluBuild2DMipmapLevels target internalFormat width height format type level base max data
 Builds a subset of two-dimensional mipmap levels.
 
 @table @asis
@@ -567,9 +571,9 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @code{GLU_UNSIGNED_INT_2_10_10_10_REV} and @var{format} is neither
 @code{GLU_RGBA} nor @code{GLU_BGRA}.
 
-@end defun
+@end deftypefun
 
-@defun gluBuild2DMipmaps 
+@deftypefun GLint gluBuild2DMipmaps target internalFormat width height format type data
 Builds a two-dimensional mipmap.
 
 @table @asis
@@ -708,9 +712,9 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @code{GLU_UNSIGNED_INT_2_10_10_10_REV} and @var{format} is neither
 @code{GLU_RGBA} nor @code{GLU_BGRA}.
 
-@end defun
+@end deftypefun
 
-@defun gluBuild3DMipmapLevels 
+@deftypefun GLint gluBuild3DMipmapLevels target internalFormat width height depth format type level base max data
 Builds a subset of three-dimensional mipmap levels.
 
 @table @asis
@@ -854,9 +858,9 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @code{GLU_UNSIGNED_INT_2_10_10_10_REV} and @var{format} is neither
 @code{GLU_RGBA} nor @code{GLU_BGRA}.
 
-@end defun
+@end deftypefun
 
-@defun gluBuild3DMipmaps 
+@deftypefun GLint gluBuild3DMipmaps target internalFormat width height depth format type data
 Builds a three-dimensional mipmap.
 
 @table @asis
@@ -994,9 +998,9 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @code{GLU_UNSIGNED_INT_2_10_10_10_REV} and @var{format} is neither
 @code{GLU_RGBA} nor @code{GLU_BGRA}.
 
-@end defun
+@end deftypefun
 
-@defun gluCheckExtension 
+@deftypefun GLboolean gluCheckExtension extName extString
 Determines if an extension name is supported.
 
 @table @asis
@@ -1017,9 +1021,9 @@ names by passing the extension strings returned by @code{glGetString},
 @code{glXQueryExtensionsString}, or @code{glXQueryServerString},
 respectively, as @var{extString}.
 
-@end defun
+@end deftypefun
 
-@defun gluCylinder 
+@deftypefun void gluCylinder quad base top height slices stacks
 Draw a cylinder.
 
 @table @asis
@@ -1061,9 +1065,9 @@ coordinates are generated so that @var{t} ranges linearly from 0.0 at
 -@var{y} axis, to 0.75 at the \-@var{x} axis, and back to 1.0 at the
 +@var{y} axis.
 
-@end defun
+@end deftypefun
 
-@defun gluDeleteNurbsRenderer 
+@deftypefun void gluDeleteNurbsRenderer nurb
 Destroy a NURBS object.
 
 @table @asis
@@ -1077,9 +1081,9 @@ created with @code{gluNewNurbsRenderer}) and frees any memory it uses.
 Once @code{gluDeleteNurbsRenderer} has been called, @var{nurb} cannot be
 used again.
 
-@end defun
+@end deftypefun
 
-@defun gluDeleteQuadric 
+@deftypefun void gluDeleteQuadric quad
 Destroy a quadrics object.
 
 @table @asis
@@ -1093,9 +1097,9 @@ Specifies the quadrics object to be destroyed.
 @code{gluDeleteQuadric} has been called, @var{quad} cannot be used
 again.
 
-@end defun
+@end deftypefun
 
-@defun gluDeleteTess 
+@deftypefun void gluDeleteTess tess
 Destroy a tessellation object.
 
 @table @asis
@@ -1107,9 +1111,9 @@ Specifies the tessellation object to destroy.
 @code{gluDeleteTess} destroys the indicated tessellation object (which
 was created with @code{gluNewTess}) and frees any memory that it used.
 
-@end defun
+@end deftypefun
 
-@defun gluDisk 
+@deftypefun void gluDisk quad inner outer slices loops
 Draw a disk.
 
 @table @asis
@@ -1150,9 +1154,9 @@ coordinates are generated linearly such that where
 (0, @var{r}, 0) it is (0.5, 1), at (\-@var{r}, 0, 0) it is (0, 0.5), and
 at (0, \-@var{r}, 0) it is (0.5, 0).
 
-@end defun
+@end deftypefun
 
-@defun gluErrorString 
+@deftypefun * gluErrorString error
 Produce an error string from a GL or GLU error code.
 
 @table @asis
@@ -1174,9 +1178,9 @@ the @code{glGetError} reference page for the list of GL error codes.
 @code{NULL} is returned if @var{error} is not a valid GL or GLU error
 code.
 
-@end defun
+@end deftypefun
 
-@defun gluGetNurbsProperty 
+@deftypefun void gluGetNurbsProperty nurb property data
 Get a NURBS property.
 
 @table @asis
@@ -1201,9 +1205,9 @@ object. These properties affect the way that NURBS curves and surfaces
 are rendered. See the @code{gluNurbsProperty} reference page for
 information about what the properties are and what they do.
 
-@end defun
+@end deftypefun
 
-@defun gluGetString 
+@deftypefun * gluGetString name
 Return a string describing the GLU version or GLU extensions .
 
 @table @asis
@@ -1241,9 +1245,9 @@ NULL is returned if @var{name} is not @code{GLU_VERSION} or
 
 
 
-@end defun
+@end deftypefun
 
-@defun gluGetTessProperty 
+@deftypefun void gluGetTessProperty tess which data
 Get a tessellation object property.
 
 @table @asis
@@ -1266,9 +1270,9 @@ object. These properties affect the way that tessellation objects are
 interpreted and rendered. See the @code{gluTessProperty} reference page
 for information about the properties and what they do.
 
-@end defun
+@end deftypefun
 
-@defun gluLoadSamplingMatrices 
+@deftypefun void gluLoadSamplingMatrices nurb model perspective view
 Load NURBS sampling and culling matrices.
 
 @table @asis
@@ -1302,9 +1306,9 @@ performance penalty for doing so. (A round trip to the GL server is
 needed to fetch the current values of the modelview matrix, projection
 matrix, and viewport.)
 
-@end defun
+@end deftypefun
 
-@defun gluLookAt 
+@deftypefun void gluLookAt eyeX eyeY eyeZ centerX centerY centerZ upX upY upZ
 Define a viewing transformation.
 
 @table @asis
@@ -1369,9 +1373,9 @@ glMultMatrixf(M);
 glTranslated(-eyex, -eyey, -eyez); 
 @end example
 
-@end defun
+@end deftypefun
 
-@defun gluNewNurbsRenderer 
+@deftypefun * gluNewNurbsRenderer 
 Create a NURBS object.
 
 @code{gluNewNurbsRenderer} creates and returns a pointer to a new NURBS
@@ -1379,9 +1383,9 @@ object. This object must be referred to when calling NURBS rendering and
 control functions. A return value of 0 means that there is not enough
 memory to allocate the object.
 
-@end defun
+@end deftypefun
 
-@defun gluNewQuadric 
+@deftypefun * gluNewQuadric 
 Create a quadrics object.
 
 @code{gluNewQuadric} creates and returns a pointer to a new quadrics
@@ -1389,9 +1393,9 @@ object. This object must be referred to when calling quadrics rendering
 and control functions. A return value of 0 means that there is not
 enough memory to allocate the object.
 
-@end defun
+@end deftypefun
 
-@defun gluNewTess 
+@deftypefun * gluNewTess 
 Create a tessellation object.
 
 @code{gluNewTess} creates and returns a pointer to a new tessellation
@@ -1399,9 +1403,9 @@ object. This object must be referred to when calling tessellation
 functions. A return value of 0 means that there is not enough memory to
 allocate the object.
 
-@end defun
+@end deftypefun
 
-@defun gluNextContour 
+@deftypefun void gluNextContour tess type
 Mark the beginning of another contour.
 
 @table @asis
@@ -1464,9 +1468,9 @@ This command is obsolete and is provided for backward compatibility
 only. Calls to @code{gluNextContour} are mapped to
 @code{gluTessEndContour} followed by @code{gluTessBeginContour}.
 
-@end defun
+@end deftypefun
 
-@defun gluNurbsCallbackDataEXT 
+@deftypefun void gluNurbsCallbackDataEXT nurb userData
 Set a user data pointer.
 
 @table @asis
@@ -1483,9 +1487,9 @@ application's data to NURBS tessellator. A copy of this pointer will be
 passed by the tessellator in the NURBS callback functions (set by
 @code{gluNurbsCallback}).
 
-@end defun
+@end deftypefun
 
-@defun gluNurbsCallbackData 
+@deftypefun void gluNurbsCallbackData nurb userData
 Set a user data pointer.
 
 @table @asis
@@ -1502,9 +1506,9 @@ application's data to NURBS tessellator. A copy of this pointer will be
 passed by the tessellator in the NURBS callback functions (set by
 @code{gluNurbsCallback}).
 
-@end defun
+@end deftypefun
 
-@defun gluNurbsCallback 
+@deftypefun void gluNurbsCallback nurb which CallBackFunc
 Define a callback for a NURBS object.
 
 @table @asis
@@ -1740,9 +1744,9 @@ void end( void );
 void endData( void  *userData ); 
 @end example
 
-@end defun
+@end deftypefun
 
-@defun gluNurbsCurve 
+@deftypefun void gluNurbsCurve nurb knotCount knots stride control order type
 Define the shape of a NURBS curve.
 
 @table @asis
@@ -1799,9 +1803,9 @@ then it describes a curve in two-dimensional homogeneous (@var{u},
 @var{v}, and @var{w}) parameter space. See the @code{gluBeginTrim}
 reference page for more discussion about trimming curves.
 
-@end defun
+@end deftypefun
 
-@defun gluNurbsProperty 
+@deftypefun void gluNurbsProperty nurb property value
 Set a NURBS property.
 
 @table @asis
@@ -1947,9 +1951,9 @@ is initially set to @code{GLU_TRUE}. Changing it from @code{GLU_TRUE} to
 
 @end table
 
-@end defun
+@end deftypefun
 
-@defun gluNurbsSurface 
+@deftypefun void gluNurbsSurface nurb sKnotCount sKnots tKnotCount tKnots sStride tStride control sOrder tOrder type
 Define the shape of a NURBS surface.
 
 @table @asis
@@ -2028,9 +2032,9 @@ with orders @var{sOrder} and @var{tOrder} must have (@var{sKnotCount} -
 @var{sOrder}) @r{@var{times}} (@var{tKnotCount} - @var{tOrder}) control
 points.
 
-@end defun
+@end deftypefun
 
-@defun gluOrtho2D 
+@deftypefun void gluOrtho2D left right bottom top
 Define a 2D orthographic projection matrix.
 
 @table @asis
@@ -2049,9 +2053,9 @@ planes.
 This is equivalent to calling @code{glOrtho} with @r{@var{near}=-1} and
 @r{@var{far}=1}.
 
-@end defun
+@end deftypefun
 
-@defun gluPartialDisk 
+@deftypefun void gluPartialDisk quad inner outer slices loops start sweep
 Draw an arc of a disk.
 
 @table @asis
@@ -2104,9 +2108,9 @@ coordinates are generated linearly such that where
 (0, @var{r}, 0) it is (0.5, 1.0), at (\-@var{r}, 0, 0) it is (0.0, 0.5),
 and at (0, \-@var{r}, 0) it is (0.5, 0.0).
 
-@end defun
+@end deftypefun
 
-@defun gluPerspective 
+@deftypefun void gluPerspective fovy aspect zNear zFar
 Set up a perspective projection matrix.
 
 @table @asis
@@ -2149,9 +2153,9 @@ Given @var{f} defined as follows:
 @var{zFar}+@var{zNear},/@var{zNear}-@var{zFar},
 2×@var{zFar}×@var{zNear},/@var{zNear}-@var{zFar},), (0 0 -1 0),)}
 
-@end defun
+@end deftypefun
 
-@defun gluPickMatrix 
+@deftypefun void gluPickMatrix x y delX delY viewport
 Define a picking region.
 
 @table @asis
@@ -2191,9 +2195,9 @@ the NURBS property @code{GLU_AUTO_LOAD_MATRIX}. If
 rendered is subdivided differently with the pick matrix than the way it
 was subdivided without the pick matrix.
 
-@end defun
+@end deftypefun
 
-@defun gluProject 
+@deftypefun GLint gluProject objX objY objZ model proj view winX winY winZ
 Map object coordinates to window coordinates.
 
 @table @asis
@@ -2244,9 +2248,9 @@ The window coordinates are then computed as follows:
 
 
 
-@end defun
+@end deftypefun
 
-@defun gluPwlCurve 
+@deftypefun void gluPwlCurve nurb count data stride type
 Describe a piecewise linear NURBS trimming curve.
 
 @table @asis
@@ -2284,9 +2288,9 @@ homogeneous (@var{u}, @var{v}, and @var{w}) parameter space. See the
 @code{gluBeginTrim} reference page for more information about trimming
 curves.
 
-@end defun
+@end deftypefun
 
-@defun gluQuadricCallback 
+@deftypefun void gluQuadricCallback quad which CallBackFunc
 Define a callback for a quadrics object.
 
 @table @asis
@@ -2318,9 +2322,9 @@ Character strings describing these errors can be retrieved with the
 
 @end table
 
-@end defun
+@end deftypefun
 
-@defun gluQuadricDrawStyle 
+@deftypefun void gluQuadricDrawStyle quad draw
 Specify the draw style desired for quadrics.
 
 @table @asis
@@ -2354,9 +2358,9 @@ Quadrics are rendered as a set of points.
 
 @end table
 
-@end defun
+@end deftypefun
 
-@defun gluQuadricNormals 
+@deftypefun void gluQuadricNormals quad normal
 Specify what kind of normals are desired for quadrics.
 
 @table @asis
@@ -2385,9 +2389,9 @@ initial value.
 
 @end table
 
-@end defun
+@end deftypefun
 
-@defun gluQuadricOrientation 
+@deftypefun void gluQuadricOrientation quad orientation
 Specify inside/outside orientation for quadrics.
 
 @table @asis
@@ -2416,9 +2420,9 @@ Quadrics are drawn with normals pointing inward.
 Note that the interpretation of @var{outward} and @var{inward} depends
 on the quadric being drawn.
 
-@end defun
+@end deftypefun
 
-@defun gluQuadricTexture 
+@deftypefun void gluQuadricTexture quad texture
 Specify if texturing is desired for quadrics.
 
 @table @asis
@@ -2439,9 +2443,9 @@ initial value is @code{GLU_FALSE}.
 The manner in which texture coordinates are generated depends upon the
 specific quadric rendered.
 
-@end defun
+@end deftypefun
 
-@defun gluScaleImage 
+@deftypefun GLint gluScaleImage format wIn hIn typeIn dataIn wOut hOut typeOut dataOut
 Scale an image to an arbitrary size.
 
 @table @asis
@@ -2549,9 +2553,9 @@ parameters.
 @code{GLU_UNSIGNED_INT_2_10_10_10_REV} and @var{format} is neither
 @code{GLU_RGBA} nor @code{GLU_BGRA}.
 
-@end defun
+@end deftypefun
 
-@defun gluSphere 
+@deftypefun void gluSphere quad radius slices stacks
 Draw a sphere.
 
 @table @asis
@@ -2589,9 +2593,10 @@ increases linearly along longitudinal lines), and @var{s} ranges from
 \-@var{y} axis, to 0.75 at the \-@var{x} axis, and back to 1.0 at the
 +@var{y} axis.
 
-@end defun
+@end deftypefun
 
-@defun gluTessBeginContour 
+@deftypefun void gluTessBeginContour tess
+@deftypefunx void gluTessEndContour tess
 Delimit a contour description.
 
 @table @asis
@@ -2609,9 +2614,9 @@ to the first). See the @code{gluTessVertex} reference page for more
 details. @code{gluTessBeginContour} can only be called between
 @code{gluTessBeginPolygon} and @code{gluTessEndPolygon}.
 
-@end defun
+@end deftypefun
 
-@defun gluTessBeginPolygon 
+@deftypefun void gluTessBeginPolygon tess data
 Delimit a polygon description.
 
 @table @asis
@@ -2643,9 +2648,9 @@ Once @code{gluTessEndPolygon} is called, the polygon is tessellated, and
 the resulting triangles are described through callbacks. See
 @code{gluTessCallback} for descriptions of the callback functions.
 
-@end defun
+@end deftypefun
 
-@defun gluTessCallback 
+@deftypefun void gluTessCallback tess which CallBackFunc
 Define a callback for a tessellation object.
 
 @table @asis
@@ -2894,9 +2899,9 @@ void error( GLenum errno );
 void errorData( GLenum errno, void *polygon_data ); 
 @end example
 
-@end defun
+@end deftypefun
 
-@defun gluTessEndPolygon 
+@deftypefun void gluTessEndPolygon tess
 Delimit a polygon description.
 
 @table @asis
@@ -2920,9 +2925,9 @@ Once @code{gluTessEndPolygon} is called, the polygon is tessellated, and
 the resulting triangles are described through callbacks. See
 @code{gluTessCallback} for descriptions of the callback functions.
 
-@end defun
+@end deftypefun
 
-@defun gluTessNormal 
+@deftypefun void gluTessNormal tess valueX valueY valueZ
 Specify a normal for a polygon.
 
 @table @asis
@@ -2961,9 +2966,9 @@ input contours is nonnegative (where a CCW contour has positive area).
 The supplied normal persists until it is changed by another call to
 @code{gluTessNormal}.
 
-@end defun
+@end deftypefun
 
-@defun gluTessProperty 
+@deftypefun void gluTessProperty tess which data
 Set a tessellation object property.
 
 @table @asis
@@ -3041,9 +3046,9 @@ endpoints are identical.
 
 @end table
 
-@end defun
+@end deftypefun
 
-@defun gluTessVertex 
+@deftypefun void gluTessVertex tess location data
 Specify a vertex on a polygon.
 
 @table @asis
@@ -3071,9 +3076,9 @@ normal. This pointer is passed back to the user through the
 @code{GLU_TESS_VERTEX} or @code{GLU_TESS_VERTEX_DATA} callback after
 tessellation (see the @code{gluTessCallback} reference page).
 
-@end defun
+@end deftypefun
 
-@defun gluUnProject4 
+@deftypefun GLint gluUnProject4 winX winY winZ clipW model proj view nearVal farVal objX objY objZ objW
 Map window and clip coordinates to object coordinates.
 
 @table @asis
@@ -3132,9 +3137,9 @@ multiplies the normalized device coordinates by the inverse of
 @code{gluUnProject4} is equivalent to @code{gluUnProject} when
 @var{clipW} is 1, @var{nearVal} is 0, and @var{farVal} is 1.
 
-@end defun
+@end deftypefun
 
-@defun gluUnProject 
+@deftypefun GLint gluUnProject winX winY winZ model proj view objX objY objZ
 Map window coordinates to object coordinates.
 
 @table @asis
@@ -3175,7 +3180,7 @@ inverse of @var{model} * @var{proj} as follows:
 (2⁡(@var{winZ},)-1), (1),)}@r{@var{INV}} denotes matrix inversion. W is
 an unused variable, included for consistent matrix notation.
 
-@end defun
+@end deftypefun
 
 
 @c %end of fragment

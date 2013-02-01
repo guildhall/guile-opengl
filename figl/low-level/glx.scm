@@ -58,7 +58,6 @@
     glXGetSelectedEvent
     glXGetVisualFromFBConfig
     glXImportContextEXT
-    glXIntro
     glXIsDirect
     glXMakeContextCurrent
     glXMakeCurrent
@@ -76,19 +75,13 @@
     glXWaitX))
 
 (define-gl-procedure
-  glXChooseFBConfig
-  "glXChooseFBConfig"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXFBConfig * "
-        (function "glXChooseFBConfig"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int " (parameter "screen"))
-      (paramdef
-        "const int * "
-        (parameter "attrib_list"))
-      (paramdef "int * " (parameter "nelements"))))
+  ((glXChooseFBConfig
+     (dpy *)
+     (screen int)
+     (attrib_list *)
+     (nelements *)
+     ->
+     *))
   "Return a list of GLX frame buffer configurations that match the
 specified attributes.
 
@@ -427,16 +420,12 @@ ATTRIB_LIST, if SCREEN is invalid, or if DPY does not support the GLX
 extension.")
 
 (define-gl-procedure
-  glXChooseVisual
-  "glXChooseVisual"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "XVisualInfo* "
-        (function "glXChooseVisual"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int " (parameter "screen"))
-      (paramdef "int * " (parameter "attribList"))))
+  ((glXChooseVisual
+     (dpy *)
+     (screen int)
+     (attribList *)
+     ->
+     *))
   "Return a visual that matches specified attributes.
 
 DPY
@@ -568,15 +557,13 @@ The interpretations of the various GLX visual attributes are as follows:
 ATTRIBLIST.")
 
 (define-gl-procedure
-  glXCopyContext
-  "glXCopyContext"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXCopyContext"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXContext " (parameter "src"))
-      (paramdef "GLXContext " (parameter "dst"))
-      (paramdef "unsigned long " (parameter "mask"))))
+  ((glXCopyContext
+     (dpy *)
+     (src GLXContext)
+     (dst GLXContext)
+     (mask #{unsigned long}#)
+     ->
+     void))
   "Copy state from one rendering context to another.
 
 DPY
@@ -626,17 +613,13 @@ current drawable is a window that is no longer valid.
 context.")
 
 (define-gl-procedure
-  glXCreateContext
-  "glXCreateContext"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXContext "
-        (function "glXCreateContext"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "XVisualInfo * " (parameter "vis"))
-      (paramdef "GLXContext " (parameter "shareList"))
-      (paramdef "Bool " (parameter "direct"))))
+  ((glXCreateContext
+     (dpy *)
+     (vis *)
+     (shareList GLXContext)
+     (direct Bool)
+     ->
+     GLXContext))
   "Create a new GLX rendering context.
 
 DPY
@@ -701,16 +684,12 @@ not `NULL'.
 allocate the new context.")
 
 (define-gl-procedure
-  glXCreateGLXPixmap
-  "glXCreateGLXPixmap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXPixmap "
-        (function "glXCreateGLXPixmap"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "XVisualInfo * " (parameter "vis"))
-      (paramdef "Pixmap " (parameter "pixmap"))))
+  ((glXCreateGLXPixmap
+     (dpy *)
+     (vis *)
+     (pixmap Pixmap)
+     ->
+     GLXPixmap))
   "Create an off-screen GLX rendering area.
 
 DPY
@@ -753,18 +732,14 @@ visual).
 `BadAlloc' is generated if the server cannot allocate the GLX pixmap.")
 
 (define-gl-procedure
-  glXCreateNewContext
-  "glXCreateNewContext"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXContext "
-        (function "glXCreateNewContext"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXFBConfig " (parameter "config"))
-      (paramdef "int " (parameter "render_type"))
-      (paramdef "GLXContext " (parameter "share_list"))
-      (paramdef "Bool " (parameter "direct"))))
+  ((glXCreateNewContext
+     (dpy *)
+     (config GLXFBConfig)
+     (render_type int)
+     (share_list GLXContext)
+     (direct Bool)
+     ->
+     GLXContext))
   "Create a new GLX rendering context.
 
 DPY
@@ -834,18 +809,12 @@ allocate the new context.
 a particular GLX implementation does not support it).")
 
 (define-gl-procedure
-  glXCreatePbuffer
-  "glXCreatePbuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXPbuffer "
-        (function "glXCreatePbuffer"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXFBConfig " (parameter "config"))
-      (paramdef
-        "const int * "
-        (parameter "attrib_list"))))
+  ((glXCreatePbuffer
+     (dpy *)
+     (config GLXFBConfig)
+     (attrib_list *)
+     ->
+     GLXPbuffer))
   "Create an off-screen rendering area.
 
 DPY
@@ -908,19 +877,13 @@ the requested GLXPbuffer.
 buffers (e.g., `GLX_DRAWABLE_TYPE' does not contain `GLX_PBUFFER_BIT').")
 
 (define-gl-procedure
-  glXCreatePixmap
-  "glXCreatePixmap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXPixmap "
-        (function "glXCreatePixmap"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXFBConfig " (parameter "config"))
-      (paramdef "Pixmap " (parameter "pixmap"))
-      (paramdef
-        "const int * "
-        (parameter "attrib_list"))))
+  ((glXCreatePixmap
+     (dpy *)
+     (config GLXFBConfig)
+     (pixmap Pixmap)
+     (attrib_list *)
+     ->
+     GLXPixmap))
   "Create an off-screen rendering area.
 
 DPY
@@ -957,19 +920,13 @@ window.
 `GLXBadFBConfig' is generated if CONFIG is not a valid GLXFBConfig.")
 
 (define-gl-procedure
-  glXCreateWindow
-  "glXCreateWindow"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXWindow "
-        (function "glXCreateWindow"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXFBConfig " (parameter "config"))
-      (paramdef "Window " (parameter "win"))
-      (paramdef
-        "const int * "
-        (parameter "attrib_list"))))
+  ((glXCreateWindow
+     (dpy *)
+     (config GLXFBConfig)
+     (win Window)
+     (attrib_list *)
+     ->
+     GLXWindow))
   "Create an on-screen rendering area.
 
 DPY
@@ -1010,13 +967,11 @@ window.
 `GLXBadFBConfig' is generated if CONFIG is not a valid GLXFBConfig.")
 
 (define-gl-procedure
-  glXDestroyContext
-  "glXDestroyContext"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXDestroyContext"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXContext " (parameter "ctx"))))
+  ((glXDestroyContext
+     (dpy *)
+     (ctx GLXContext)
+     ->
+     void))
   "Destroy a GLX context.
 
 DPY
@@ -1033,15 +988,11 @@ ID referenced by CTX is freed immediately.
 `GLXBadContext' is generated if CTX is not a valid GLX context.")
 
 (define-gl-procedure
-  glXDestroyGLXPixmap
-  "glXDestroyGLXPixmap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glXDestroyGLXPixmap"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXPixmap " (parameter "pix"))))
+  ((glXDestroyGLXPixmap
+     (dpy *)
+     (pix GLXPixmap)
+     ->
+     void))
   "Destroy a GLX pixmap.
 
 DPY
@@ -1058,13 +1009,11 @@ resource ID is freed immediately.
 `GLXBadPixmap' is generated if PIX is not a valid GLX pixmap.")
 
 (define-gl-procedure
-  glXDestroyPbuffer
-  "glXDestroyPbuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXDestroyPbuffer"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXPbuffer " (parameter "pbuf"))))
+  ((glXDestroyPbuffer
+     (dpy *)
+     (pbuf GLXPbuffer)
+     ->
+     void))
   "Destroy an off-screen rendering area.
 
 DPY
@@ -1078,13 +1027,11 @@ PBUF
 `GLXBadPbuffer' is generated if PBUF is not a valid GLXPbuffer.")
 
 (define-gl-procedure
-  glXDestroyPixmap
-  "glXDestroyPixmap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXDestroyPixmap"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXPixmap " (parameter "pixmap"))))
+  ((glXDestroyPixmap
+     (dpy *)
+     (pixmap GLXPixmap)
+     ->
+     void))
   "Destroy an off-screen rendering area.
 
 DPY
@@ -1098,13 +1045,11 @@ PIXMAP
 `GLXBadPixmap' is generated if PIXMAP is not a valid GLXPixmap.")
 
 (define-gl-procedure
-  glXDestroyWindow
-  "glXDestroyWindow"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXDestroyWindow"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXWindow " (parameter "win"))))
+  ((glXDestroyWindow
+     (dpy *)
+     (win GLXWindow)
+     ->
+     void))
   "Destroy an on-screen rendering area.
 
 DPY
@@ -1118,13 +1063,11 @@ WIN
 `GLXBadWindow' is generated if WIN is not a valid GLXPixmap.")
 
 (define-gl-procedure
-  glXFreeContextEXT
-  "glXFreeContextEXT"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXFreeContextEXT"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXContext " (parameter "ctx"))))
+  ((glXFreeContextEXT
+     (dpy *)
+     (ctx GLXContext)
+     ->
+     void))
   "Free client-side memory for imported context.
 
 DPY
@@ -1147,15 +1090,7 @@ supported.
 `GLXBadContext' is generated if CTX does not refer to a valid context.")
 
 (define-gl-procedure
-  glXGetClientString
-  "glXGetClientString"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "const char * "
-        (function "glXGetClientString"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int " (parameter "name"))))
+  ((glXGetClientString (dpy *) (name int) -> *))
   "Return a string describing the client.
 
 DPY
@@ -1184,15 +1119,13 @@ length. The vendor-specific information is optional. However, if it is
 present, the format and contents are implementation specific.")
 
 (define-gl-procedure
-  glXGetConfig
-  "glXGetConfig"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "int " (function "glXGetConfig"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "XVisualInfo * " (parameter "vis"))
-      (paramdef "int " (parameter "attrib"))
-      (paramdef "int * " (parameter "value"))))
+  ((glXGetConfig
+     (dpy *)
+     (vis *)
+     (attrib int)
+     (value *)
+     ->
+     int))
   "Return information about GLX visuals.
 
 DPY
@@ -1321,14 +1254,10 @@ a screen.
 other than `GLX_USE_GL' is requested.")
 
 (define-gl-procedure
-  glXGetContextIDEXT
-  "glXGetContextIDEXT"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXContextID "
-        (function "glXGetContextIDEXT"))
-      (paramdef "const GLXContext " (parameter "ctx"))))
+  ((glXGetContextIDEXT
+     (ctx GLXContext)
+     ->
+     GLXContextID))
   "Get the XID for a context..
 
 CTX
@@ -1348,13 +1277,7 @@ supported.
 `GLXBadContext' is generated if CTX does not refer to a valid context.")
 
 (define-gl-procedure
-  glXGetCurrentContext
-  "glXGetCurrentContext"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXContext "
-        (function "glXGetCurrentContext"))))
+  ((glXGetCurrentContext -> GLXContext))
   "Return the current context.
 
 `glXGetCurrentContext' returns the current context, as specified by
@@ -1364,13 +1287,7 @@ supported.
 a round trip to the server.")
 
 (define-gl-procedure
-  glXGetCurrentDisplay
-  "glXGetCurrentDisplay"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "Display * "
-        (function "glXGetCurrentDisplay"))))
+  ((glXGetCurrentDisplay -> *))
   "Get display for current context.
 
 `glXGetCurrentDisplay' returns the display for the current context. If
@@ -1381,13 +1298,7 @@ a round-trip to the server, and therefore does not flush any pending
 events.")
 
 (define-gl-procedure
-  glXGetCurrentDrawable
-  "glXGetCurrentDrawable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXDrawable "
-        (function "glXGetCurrentDrawable"))))
+  ((glXGetCurrentDrawable -> GLXDrawable))
   "Return the current drawable.
 
 `glXGetCurrentDrawable' returns the current drawable, as specified by
@@ -1397,13 +1308,7 @@ events.")
 make a round trip to the server.")
 
 (define-gl-procedure
-  glXGetCurrentReadDrawable
-  "glXGetCurrentReadDrawable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXDrawable "
-        (function "glXGetCurrentReadDrawable"))))
+  ((glXGetCurrentReadDrawable -> GLXDrawable))
   "Return the current drawable.
 
 `glXGetCurrentReadDrawable' returns the current read drawable, as
@@ -1414,17 +1319,13 @@ current drawable, `None' is returned.
 make a round-trip to the server.")
 
 (define-gl-procedure
-  glXGetFBConfigAttrib
-  "glXGetFBConfigAttrib"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "int "
-        (function "glXGetFBConfigAttrib"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXFBConfig " (parameter "config"))
-      (paramdef "int " (parameter "attribute"))
-      (paramdef "int * " (parameter "value"))))
+  ((glXGetFBConfigAttrib
+     (dpy *)
+     (config GLXFBConfig)
+     (attribute int)
+     (value *)
+     ->
+     int))
   "Return information about a GLX frame buffer configuration.
 
 DPY
@@ -1667,16 +1568,12 @@ extension. `GLX_BAD_ATTRIBUTE' is returned if ATTRIBUTE is not a valid
 GLX attribute.")
 
 (define-gl-procedure
-  glXGetFBConfigs
-  "glXGetFBConfigs"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXFBConfig * "
-        (function "glXGetFBConfigs"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int " (parameter "screen"))
-      (paramdef "int * " (parameter "nelements"))))
+  ((glXGetFBConfigs
+     (dpy *)
+     (screen int)
+     (nelements *)
+     ->
+     *))
   "List all GLX frame buffer configurations for a given screen.
 
 DPY
@@ -1693,16 +1590,10 @@ screen specified by SCREEN. Use `glXGetFBConfigAttrib' to obtain
 attribute values from a specific GLXFBConfig.")
 
 (define-gl-procedure
-  glXGetProcAddress
-  "glXGetProcAddress"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void(*)() "
-        (function "glXGetProcAddress"))
-      (paramdef
-        "const GLubyte * "
-        (parameter "procName"))))
+  ((glXGetProcAddress
+     (procName *)
+     ->
+     #{void\x28;*\x29;\x28;\x29;}#))
   "Obtain a pointer to an OpenGL or GLX function.
 
 PROCNAME
@@ -1714,18 +1605,12 @@ PROCNAME. This is necessary in environments where the OpenGL link
 library exports a different set of functions than the runtime library.")
 
 (define-gl-procedure
-  glXGetSelectedEvent
-  "glXGetSelectedEvent"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glXGetSelectedEvent"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXDrawable " (parameter "draw"))
-      (paramdef
-        "unsigned long * "
-        (parameter "event_mask"))))
+  ((glXGetSelectedEvent
+     (dpy *)
+     (draw GLXDrawable)
+     (event_mask *)
+     ->
+     void))
   "Returns GLX events that are selected for a window or a GLX pixel buffer.
 
 DPY
@@ -1744,15 +1629,11 @@ DRAW.
 GLX pixel buffer.")
 
 (define-gl-procedure
-  glXGetVisualFromFBConfig
-  "glXGetVisualFromFBConfig"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "XVisualInfo * "
-        (function "glXGetVisualFromFBConfig"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXFBConfig " (parameter "config"))))
+  ((glXGetVisualFromFBConfig
+     (dpy *)
+     (config GLXFBConfig)
+     ->
+     *))
   "Return visual that is associated with the frame buffer configuration.
 
 DPY
@@ -1769,17 +1650,11 @@ returned.
 Returns `NULL' if CONFIG is not a valid GLXFBConfig.")
 
 (define-gl-procedure
-  glXImportContextEXT
-  "glXImportContextEXT"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLXContext "
-        (function "glXImportContextEXT"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef
-        "GLXContextID "
-        (parameter "contextID"))))
+  ((glXImportContextEXT
+     (dpy *)
+     (contextID GLXContextID)
+     ->
+     GLXContext))
   "Import another process's indirect rendering context..
 
 DPY
@@ -1818,19 +1693,7 @@ supported.
 context.")
 
 (define-gl-procedure
-  glXIntro
-  "glXIntro"
-  #f
-  "Introduction to OpenGL in the X window system.")
-
-(define-gl-procedure
-  glXIsDirect
-  "glXIsDirect"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "Bool " (function "glXIsDirect"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXContext " (parameter "ctx"))))
+  ((glXIsDirect (dpy *) (ctx GLXContext) -> Bool))
   "Indicate whether direct rendering is enabled.
 
 DPY
@@ -1848,17 +1711,13 @@ rendering commands to the X server.
 `GLXBadContext' is generated if CTX is not a valid GLX context.")
 
 (define-gl-procedure
-  glXMakeContextCurrent
-  "glXMakeContextCurrent"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "Bool "
-        (function "glXMakeContextCurrent"))
-      (paramdef "Display * " (parameter "display"))
-      (paramdef "GLXDrawable " (parameter "draw"))
-      (paramdef "GLXDrawable " (parameter "read"))
-      (paramdef "GLXContext " (parameter "ctx"))))
+  ((glXMakeContextCurrent
+     (display *)
+     (draw GLXDrawable)
+     (read GLXDrawable)
+     (ctx GLXContext)
+     ->
+     Bool))
   "Attach a GLX context to a GLX drawable.
 
 DISPLAY
@@ -1942,14 +1801,12 @@ DRAW or READ is a GLXWindow or GLXPbuffer and CTX was previously bound
 to a GLXPixmap.")
 
 (define-gl-procedure
-  glXMakeCurrent
-  "glXMakeCurrent"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "Bool " (function "glXMakeCurrent"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXDrawable " (parameter "drawable"))
-      (paramdef "GLXContext " (parameter "ctx"))))
+  ((glXMakeCurrent
+     (dpy *)
+     (drawable GLXDrawable)
+     (ctx GLXContext)
+     ->
+     Bool))
   "Attach a GLX context to a window or a GLX pixmap.
 
 DPY
@@ -2014,17 +1871,13 @@ ancillary buffers until `glXMakeCurrent' is called, only to find that it
 has insufficient resources to complete the allocation.")
 
 (define-gl-procedure
-  glXQueryContextInfoEXT
-  "glXQueryContextInfoEXT"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "int "
-        (function "glXQueryContextInfoEXT"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXContext " (parameter "ctx"))
-      (paramdef "int " (parameter "attribute"))
-      (paramdef "int * " (parameter "value"))))
+  ((glXQueryContextInfoEXT
+     (dpy *)
+     (ctx GLXContext)
+     (attribute int)
+     (value *)
+     ->
+     int))
   "Query context information.
 
 DPY
@@ -2073,15 +1926,13 @@ attribute.
 fred `GLX_BAD_CONTEXT' is returned if ATTRIBUTE is not a valid context.")
 
 (define-gl-procedure
-  glXQueryContext
-  "glXQueryContext"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "int " (function "glXQueryContext"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXContext " (parameter "ctx"))
-      (paramdef "int " (parameter "attribute"))
-      (paramdef "int * " (parameter "value"))))
+  ((glXQueryContext
+     (dpy *)
+     (ctx GLXContext)
+     (attribute int)
+     (value *)
+     ->
+     int))
   "Query context information.
 
 DPY
@@ -2117,15 +1968,13 @@ This call may cause a round-trip to the server.
 `GLXBadContext' is generated if CTX does not refer to a valid context.")
 
 (define-gl-procedure
-  glXQueryDrawable
-  "glXQueryDrawable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "int " (function "glXQueryDrawable"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXDrawable " (parameter "draw"))
-      (paramdef "int " (parameter "attribute"))
-      (paramdef "unsigned int * " (parameter "value"))))
+  ((glXQueryDrawable
+     (dpy *)
+     (draw GLXDrawable)
+     (attribute int)
+     (value *)
+     ->
+     int))
   "Returns an attribute assoicated with a GLX drawable.
 
 DPY
@@ -2177,15 +2026,11 @@ above, the contents of VALUE are unedfined.
 A `GLXBadDrawable' is generated if DRAW is not a valid GLXDrawable.")
 
 (define-gl-procedure
-  glXQueryExtensionsString
-  "glXQueryExtensionsString"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "const char * "
-        (function "glXQueryExtensionsString"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int " (parameter "screen"))))
+  ((glXQueryExtensionsString
+     (dpy *)
+     (screen int)
+     ->
+     *))
   "Return list of supported extensions.
 
 DPY
@@ -2201,14 +2046,12 @@ null-terminated and contains a space-separated list of extension names.
 extensions to GLX, then the empty string is returned.")
 
 (define-gl-procedure
-  glXQueryExtension
-  "glXQueryExtension"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "Bool " (function "glXQueryExtension"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int * " (parameter "errorBase"))
-      (paramdef "int * " (parameter "eventBase"))))
+  ((glXQueryExtension
+     (dpy *)
+     (errorBase *)
+     (eventBase *)
+     ->
+     Bool))
   "Indicate whether the GLX extension is supported.
 
 DPY
@@ -2231,16 +2074,12 @@ ERRORBASE and EVENTBASE do not return values if they are specified as
 `NULL'.")
 
 (define-gl-procedure
-  glXQueryServerString
-  "glXQueryServerString"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "const char * "
-        (function "glXQueryServerString"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int " (parameter "screen"))
-      (paramdef "int " (parameter "name"))))
+  ((glXQueryServerString
+     (dpy *)
+     (screen int)
+     (name int)
+     ->
+     *))
   "Return string describing the server.
 
 DPY
@@ -2260,14 +2099,12 @@ for `glXGetClientString'. If NAME is not set to a recognized value,
 `NULL' is returned.")
 
 (define-gl-procedure
-  glXQueryVersion
-  "glXQueryVersion"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "Bool " (function "glXQueryVersion"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "int * " (parameter "major"))
-      (paramdef "int * " (parameter "minor"))))
+  ((glXQueryVersion
+     (dpy *)
+     (major *)
+     (minor *)
+     ->
+     Bool))
   "Return the version numbers of the GLX extension.
 
 DPY
@@ -2292,16 +2129,12 @@ MAJOR and MINOR do not return values if they are specified as `NULL'.
 MAJOR and MINOR are not updated when `False' is returned.")
 
 (define-gl-procedure
-  glXSelectEvent
-  "glXSelectEvent"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXSelectEvent"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXDrawable " (parameter "draw"))
-      (paramdef
-        "unsigned long "
-        (parameter "event_mask"))))
+  ((glXSelectEvent
+     (dpy *)
+     (draw GLXDrawable)
+     (event_mask #{unsigned long}#)
+     ->
+     void))
   "Select GLX events for a window or a GLX pixel buffer.
 
 DPY
@@ -2428,13 +2261,11 @@ portions of those buffers\\(emwere affected.
 GLX pixel buffer.")
 
 (define-gl-procedure
-  glXSwapBuffers
-  "glXSwapBuffers"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXSwapBuffers"))
-      (paramdef "Display * " (parameter "dpy"))
-      (paramdef "GLXDrawable " (parameter "drawable"))))
+  ((glXSwapBuffers
+     (dpy *)
+     (drawable GLXDrawable)
+     ->
+     void))
   "Exchange front and back buffers.
 
 DPY
@@ -2465,15 +2296,13 @@ calling thread, and DRAWABLE identifies a window that is no longer
 valid.")
 
 (define-gl-procedure
-  glXUseXFont
-  "glXUseXFont"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXUseXFont"))
-      (paramdef "Font " (parameter "font"))
-      (paramdef "int " (parameter "first"))
-      (paramdef "int " (parameter "count"))
-      (paramdef "int " (parameter "listBase"))))
+  ((glXUseXFont
+     (font Font)
+     (first int)
+     (count int)
+     (listBase int)
+     ->
+     void))
   "Create bitmap display lists from an X font.
 
 FONT
@@ -2517,12 +2346,7 @@ current context of the calling thread is a window, and that window is no
 longer valid.")
 
 (define-gl-procedure
-  glXWaitGL
-  "glXWaitGL"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXWaitGL"))
-      (paramdef (parameter "void"))))
+  ((glXWaitGL -> void))
   "Complete GL execution prior to subsequent X calls.
 
 GL rendering calls made prior to `glXWaitGL' are guaranteed to be
@@ -2538,12 +2362,7 @@ current context of the calling thread is a window, and that window is no
 longer valid.")
 
 (define-gl-procedure
-  glXWaitX
-  "glXWaitX"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glXWaitX"))
-      (paramdef (parameter "void"))))
+  ((glXWaitX -> void))
   "Complete X execution prior to subsequent GL calls.
 
 X rendering calls made prior to `glXWaitX' are guaranteed to be executed

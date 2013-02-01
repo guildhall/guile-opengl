@@ -52,7 +52,9 @@
     glArrayElement
     glAttachShader
     glBeginQuery
+    glEndQuery
     glBegin
+    glEnd
     glBindAttribLocation
     glBindBuffer
     glBindTexture
@@ -78,9 +80,13 @@
     glColorMaterial
     glColorPointer
     glColorSubTable
-    glColorTableParameter
     glColorTable
-    glColor
+    glColor3i
+    glColor3d
+    glColor3ui
+    glColor4i
+    glColor4d
+    glColor4ui
     glCompileShader
     glCompressedTexImage1D
     glCompressedTexImage2D
@@ -90,7 +96,8 @@
     glCompressedTexSubImage3D
     glConvolutionFilter1D
     glConvolutionFilter2D
-    glConvolutionParameter
+    glConvolutionParameterf
+    glConvolutionParameteri
     glCopyColorSubTable
     glCopyColorTable
     glCopyConvolutionFilter1D
@@ -123,17 +130,24 @@
     glEdgeFlagPointer
     glEdgeFlag
     glEnableClientState
+    glDisableClientState
     glEnableVertexAttribArray
+    glDisableVertexAttribArray
     glEnable
-    glEvalCoord
-    glEvalMesh
-    glEvalPoint
+    glDisable
+    glEvalCoord1d
+    glEvalCoord2d
+    glEvalMesh1
+    glEvalMesh2
+    glEvalPoint1
+    glEvalPoint2
     glFeedbackBuffer
     glFinish
     glFlush
     glFogCoordPointer
-    glFogCoord
-    glFog
+    glFogCoordd
+    glFogf
+    glFogi
     glFrontFace
     glFrustum
     glGenBuffers
@@ -144,50 +158,29 @@
     glGetActiveUniform
     glGetAttachedShaders
     glGetAttribLocation
-    glGetBufferParameteriv
-    glGetBufferPointerv
     glGetBufferSubData
     glGetClipPlane
-    glGetColorTableParameter
     glGetColorTable
     glGetCompressedTexImage
     glGetConvolutionFilter
-    glGetConvolutionParameter
     glGetError
-    glGetHistogramParameter
     glGetHistogram
-    glGetLight
-    glGetMap
-    glGetMaterial
-    glGetMinmaxParameter
     glGetMinmax
-    glGetPixelMap
-    glGetPointerv
     glGetPolygonStipple
     glGetProgramInfoLog
-    glGetProgramiv
-    glGetQueryiv
-    glGetQueryObject
     glGetSeparableFilter
     glGetShaderInfoLog
     glGetShaderSource
-    glGetShaderiv
     glGetString
-    glGetTexEnv
-    glGetTexGen
     glGetTexImage
-    glGetTexLevelParameter
-    glGetTexParameter
     glGetUniformLocation
-    glGetUniformfv
-    glGetVertexAttribPointerv
-    glGetVertexAttribdv
-    glGet
     glHint
     glHistogram
     glIndexMask
     glIndexPointer
-    glIndex
+    glIndexi
+    glIndexd
+    glIndexub
     glInitNames
     glInterleavedArrays
     glIsBuffer
@@ -197,61 +190,89 @@
     glIsQuery
     glIsShader
     glIsTexture
-    glLightModel
-    glLight
+    glLightModelf
+    glLightModeli
+    glLightf
+    glLighti
     glLineStipple
     glLineWidth
     glLinkProgram
     glListBase
     glLoadIdentity
-    glLoadMatrix
+    glLoadMatrixd
     glLoadName
-    glLoadTransposeMatrix
+    glLoadTransposeMatrixd
     glLogicOp
-    glMap1
-    glMap2
+    glMap1d
+    glMap2d
     glMapBuffer
-    glMapGrid
-    glMaterial
+    glUnmapBuffer
+    glMapGrid1d
+    glMapGrid2d
+    glMaterialf
+    glMateriali
     glMatrixMode
     glMinmax
     glMultiDrawArrays
     glMultiDrawElements
-    glMultiTexCoord
-    glMultMatrix
-    glMultTransposeMatrix
+    glMultiTexCoord1i
+    glMultiTexCoord1d
+    glMultiTexCoord2i
+    glMultiTexCoord2d
+    glMultiTexCoord3i
+    glMultiTexCoord3d
+    glMultiTexCoord4i
+    glMultiTexCoord4d
+    glMultMatrixd
+    glMultTransposeMatrixd
     glNewList
+    glEndList
     glNormalPointer
-    glNormal
+    glNormal3d
+    glNormal3i
     glOrtho
     glPassThrough
-    glPixelMap
-    glPixelStore
-    glPixelTransfer
+    glPixelStoref
+    glPixelStorei
+    glPixelTransferf
+    glPixelTransferi
     glPixelZoom
-    glPointParameter
+    glPointParameterf
+    glPointParameteri
     glPointSize
     glPolygonMode
     glPolygonOffset
     glPolygonStipple
     glPrioritizeTextures
     glPushAttrib
+    glPopAttrib
     glPushClientAttrib
+    glPopClientAttrib
     glPushMatrix
+    glPopMatrix
     glPushName
-    glRasterPos
+    glPopName
+    glRasterPos2i
+    glRasterPos2d
+    glRasterPos3i
+    glRasterPos3d
+    glRasterPos4i
+    glRasterPos4d
     glReadBuffer
     glReadPixels
-    glRect
+    glRectd
+    glRecti
     glRenderMode
     glResetHistogram
     glResetMinmax
-    glRotate
+    glRotated
     glSampleCoverage
-    glScale
+    glScaled
     glScissor
     glSecondaryColorPointer
-    glSecondaryColor
+    glSecondaryColor3i
+    glSecondaryColor3d
+    glSecondaryColor3ui
     glSelectBuffer
     glSeparableFilter2D
     glShadeModel
@@ -263,35 +284,62 @@
     glStencilOpSeparate
     glStencilOp
     glTexCoordPointer
-    glTexCoord
-    glTexEnv
-    glTexGen
+    glTexCoord1i
+    glTexCoord1d
+    glTexCoord2i
+    glTexCoord2d
+    glTexCoord3i
+    glTexCoord3d
+    glTexCoord4i
+    glTexCoord4d
+    glTexEnvf
+    glTexEnvi
+    glTexGeni
+    glTexGend
     glTexImage1D
     glTexImage2D
     glTexImage3D
-    glTexParameter
+    glTexParameterf
+    glTexParameteri
     glTexSubImage1D
     glTexSubImage2D
     glTexSubImage3D
-    glTranslate
+    glTranslated
     glUniform1f
+    glUniform2f
+    glUniform3f
+    glUniform4f
+    glUniform1i
+    glUniform2i
+    glUniform3i
+    glUniform4i
     glUseProgram
     glValidateProgram
     glVertexAttribPointer
-    glVertexAttrib
+    glVertexAttrib1s
+    glVertexAttrib1d
+    glVertexAttrib2s
+    glVertexAttrib2d
+    glVertexAttrib3s
+    glVertexAttrib3d
+    glVertexAttrib4s
+    glVertexAttrib4d
+    glVertexAttrib4Nub
     glVertexPointer
-    glVertex
+    glVertex2i
+    glVertex2d
+    glVertex3i
+    glVertex3d
+    glVertex4i
+    glVertex4d
     glViewport
-    glWindowPos))
+    glWindowPos2i
+    glWindowPos2d
+    glWindowPos3i
+    glWindowPos3d))
 
 (define-gl-procedure
-  glAccum
-  "glAccum"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glAccum"))
-      (paramdef "GLenum " (parameter "op"))
-      (paramdef "GLfloat " (parameter "value"))))
+  ((glAccum (op GLenum) (value GLfloat) -> void))
   "Operate on the accumulation buffer.
 
 OP
@@ -379,12 +427,7 @@ enabled.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glActiveTexture
-  "glActiveTexture"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glActiveTexture"))
-      (paramdef "GLenum " (parameter "texture"))))
+  ((glActiveTexture (texture GLenum) -> void))
   "Select active texture unit.
 
 TEXTURE
@@ -407,13 +450,11 @@ where i ranges from 0 to the larger of (`GL_MAX_TEXTURE_COORDS' - 1) and
 (`GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS' - 1).")
 
 (define-gl-procedure
-  glAlphaFunc
-  "glAlphaFunc"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glAlphaFunc"))
-      (paramdef "GLenum " (parameter "func"))
-      (paramdef "GLclampf " (parameter "ref"))))
+  ((glAlphaFunc
+     (func GLenum)
+     (ref GLclampf)
+     ->
+     void))
   "Specify the alpha test function.
 
 FUNC
@@ -482,20 +523,12 @@ affect screen clear operations.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glAreTexturesResident
-  "glAreTexturesResident"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLboolean "
-        (function "glAreTexturesResident"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef
-        "const GLuint * "
-        (parameter "textures"))
-      (paramdef
-        "GLboolean * "
-        (parameter "residences"))))
+  ((glAreTexturesResident
+     (n GLsizei)
+     (textures *)
+     (residences *)
+     ->
+     GLboolean))
   "Determine if textures are loaded in texture memory.
 
 N
@@ -540,12 +573,7 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glArrayElement
-  "glArrayElement"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glArrayElement"))
-      (paramdef "GLint " (parameter "i"))))
+  ((glArrayElement (i GLint) -> void))
   "Render a vertex using the specified vertex array element.
 
 I
@@ -579,13 +607,11 @@ bound to an enabled array and the buffer object's data store is
 currently mapped.")
 
 (define-gl-procedure
-  glAttachShader
-  "glAttachShader"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glAttachShader"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLuint " (parameter "shader"))))
+  ((glAttachShader
+     (program GLuint)
+     (shader GLuint)
+     ->
+     void))
   "Attaches a shader object to a program object.
 
 PROGRAM
@@ -630,13 +656,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glBeginQuery
-  "glBeginQuery"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBeginQuery"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLuint " (parameter "id"))))
+  ((glBeginQuery
+     (target GLenum)
+     (id GLuint)
+     ->
+     void)
+   (glEndQuery (target GLenum) -> void))
   "Delimit the boundaries of a query object.
 
 TARGET
@@ -681,12 +706,7 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glBegin
-  "glBegin"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBegin"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glBegin (mode GLenum) -> void) (glEnd -> void))
   "Delimit the vertices of a primitive or a group of like primitives.
 
 MODE
@@ -802,16 +822,12 @@ Execution of `glEnableClientState', `glDisableClientState',
 or may not be generated.")
 
 (define-gl-procedure
-  glBindAttribLocation
-  "glBindAttribLocation"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glBindAttribLocation"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "const GLchar *" (parameter "name"))))
+  ((glBindAttribLocation
+     (program GLuint)
+     (index GLuint)
+     (name *)
+     ->
+     void))
   "Associates a generic vertex attribute index with a named attribute
 variable.
 
@@ -880,13 +896,11 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glBindBuffer
-  "glBindBuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBindBuffer"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLuint " (parameter "buffer"))))
+  ((glBindBuffer
+     (target GLenum)
+     (buffer GLuint)
+     ->
+     void))
   "Bind a named buffer object.
 
 TARGET
@@ -985,13 +999,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glBindTexture
-  "glBindTexture"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBindTexture"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLuint " (parameter "texture"))))
+  ((glBindTexture
+     (target GLenum)
+     (texture GLuint)
+     ->
+     void))
   "Bind a named texture to a texturing target.
 
 TARGET
@@ -1061,20 +1073,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glBitmap
-  "glBitmap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBitmap"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLfloat " (parameter "xorig"))
-      (paramdef "GLfloat " (parameter "yorig"))
-      (paramdef "GLfloat " (parameter "xmove"))
-      (paramdef "GLfloat " (parameter "ymove"))
-      (paramdef
-        "const GLubyte * "
-        (parameter "bitmap"))))
+  ((glBitmap
+     (width GLsizei)
+     (height GLsizei)
+     (xorig GLfloat)
+     (yorig GLfloat)
+     (xmove GLfloat)
+     (ymove GLfloat)
+     (bitmap *)
+     ->
+     void))
   "Draw a bitmap.
 
 WIDTH
@@ -1160,15 +1168,13 @@ would exceed the data store size.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glBlendColor
-  "glBlendColor"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBlendColor"))
-      (paramdef "GLclampf " (parameter "red"))
-      (paramdef "GLclampf " (parameter "green"))
-      (paramdef "GLclampf " (parameter "blue"))
-      (paramdef "GLclampf " (parameter "alpha"))))
+  ((glBlendColor
+     (red GLclampf)
+     (green GLclampf)
+     (blue GLclampf)
+     (alpha GLclampf)
+     ->
+     void))
   "Set the blend color.
 
 RED
@@ -1191,15 +1197,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glBlendEquationSeparate
-  "glBlendEquationSeparate"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glBlendEquationSeparate"))
-      (paramdef "GLenum " (parameter "modeRGB"))
-      (paramdef "GLenum " (parameter "modeAlpha"))))
+  ((glBlendEquationSeparate
+     (modeRGB GLenum)
+     (modeAlpha GLenum)
+     ->
+     void))
   "Set the RGB blend equation and the alpha blend equation separately.
 
 MODERGB
@@ -1275,12 +1277,7 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glBlendEquation
-  "glBlendEquation"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBlendEquation"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glBlendEquation (mode GLenum) -> void))
   "Specify the equation used for both the RGB blend equation and the Alpha
 blend equation.
 
@@ -1348,17 +1345,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glBlendFuncSeparate
-  "glBlendFuncSeparate"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glBlendFuncSeparate"))
-      (paramdef "GLenum " (parameter "srcRGB"))
-      (paramdef "GLenum " (parameter "dstRGB"))
-      (paramdef "GLenum " (parameter "srcAlpha"))
-      (paramdef "GLenum " (parameter "dstAlpha"))))
+  ((glBlendFuncSeparate
+     (srcRGB GLenum)
+     (dstRGB GLenum)
+     (srcAlpha GLenum)
+     (dstAlpha GLenum)
+     ->
+     void))
   "Specify pixel arithmetic for RGB and alpha components separately.
 
 SRCRGB
@@ -1500,13 +1493,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glBlendFunc
-  "glBlendFunc"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBlendFunc"))
-      (paramdef "GLenum " (parameter "sfactor"))
-      (paramdef "GLenum " (parameter "dfactor"))))
+  ((glBlendFunc
+     (sfactor GLenum)
+     (dfactor GLenum)
+     ->
+     void))
   "Specify pixel arithmetic.
 
 SFACTOR
@@ -1636,15 +1627,13 @@ accepted value.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glBufferData
-  "glBufferData"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBufferData"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLsizeiptr " (parameter "size"))
-      (paramdef "const GLvoid * " (parameter "data"))
-      (paramdef "GLenum " (parameter "usage"))))
+  ((glBufferData
+     (target GLenum)
+     (size GLsizeiptr)
+     (data *)
+     (usage GLenum)
+     ->
+     void))
   "Creates and initializes a buffer object's data store.
 
 TARGET
@@ -1729,15 +1718,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glBufferSubData
-  "glBufferSubData"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glBufferSubData"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLintptr " (parameter "offset"))
-      (paramdef "GLsizeiptr " (parameter "size"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glBufferSubData
+     (target GLenum)
+     (offset GLintptr)
+     (size GLsizeiptr)
+     (data *)
+     ->
+     void))
   "Updates a subset of a buffer object's data store.
 
 TARGET
@@ -1782,14 +1769,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCallLists
-  "glCallLists"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCallLists"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "lists"))))
+  ((glCallLists
+     (n GLsizei)
+     (type GLenum)
+     (lists *)
+     ->
+     void))
   "Execute a list of display lists.
 
 N
@@ -1889,12 +1874,7 @@ remain after execution is completed. Use `glPushAttrib', `glPopAttrib',
 `GL_UNSIGNED_INT', `GL_FLOAT', `GL_2_BYTES', `GL_3_BYTES', `GL_4_BYTES'.")
 
 (define-gl-procedure
-  glCallList
-  "glCallList"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCallList"))
-      (paramdef "GLuint " (parameter "list"))))
+  ((glCallList (list GLuint) -> void))
   "Execute a display list.
 
 LIST
@@ -1918,15 +1898,13 @@ after execution of the display list is completed. Use `glPushAttrib',
 across `glCallList' calls.")
 
 (define-gl-procedure
-  glClearAccum
-  "glClearAccum"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glClearAccum"))
-      (paramdef "GLfloat " (parameter "red"))
-      (paramdef "GLfloat " (parameter "green"))
-      (paramdef "GLfloat " (parameter "blue"))
-      (paramdef "GLfloat " (parameter "alpha"))))
+  ((glClearAccum
+     (red GLfloat)
+     (green GLfloat)
+     (blue GLfloat)
+     (alpha GLfloat)
+     ->
+     void))
   "Specify clear values for the accumulation buffer.
 
 RED
@@ -1949,15 +1927,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glClearColor
-  "glClearColor"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glClearColor"))
-      (paramdef "GLclampf " (parameter "red"))
-      (paramdef "GLclampf " (parameter "green"))
-      (paramdef "GLclampf " (parameter "blue"))
-      (paramdef "GLclampf " (parameter "alpha"))))
+  ((glClearColor
+     (red GLclampf)
+     (green GLclampf)
+     (blue GLclampf)
+     (alpha GLclampf)
+     ->
+     void))
   "Specify clear values for the color buffers.
 
 RED
@@ -1979,12 +1955,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glClearDepth
-  "glClearDepth"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glClearDepth"))
-      (paramdef "GLclampd " (parameter "depth"))))
+  ((glClearDepth (depth GLclampd) -> void))
   "Specify the clear value for the depth buffer.
 
 DEPTH
@@ -2000,12 +1971,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glClearIndex
-  "glClearIndex"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glClearIndex"))
-      (paramdef "GLfloat " (parameter "c"))))
+  ((glClearIndex (c GLfloat) -> void))
   "Specify the clear value for the color index buffers.
 
 C
@@ -2023,12 +1989,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glClearStencil
-  "glClearStencil"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glClearStencil"))
-      (paramdef "GLint " (parameter "s"))))
+  ((glClearStencil (s GLint) -> void))
   "Specify the clear value for the stencil buffer.
 
 S
@@ -2044,12 +2005,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glClear
-  "glClear"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glClear"))
-      (paramdef "GLbitfield " (parameter "mask"))))
+  ((glClear (mask GLbitfield) -> void))
   "Clear buffers to preset values.
 
 MASK
@@ -2096,14 +2052,7 @@ bits is set in MASK.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glClientActiveTexture
-  "glClientActiveTexture"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glClientActiveTexture"))
-      (paramdef "GLenum " (parameter "texture"))))
+  ((glClientActiveTexture (texture GLenum) -> void))
   "Select active texture unit.
 
 TEXTURE
@@ -2122,15 +2071,7 @@ called with a parameter of `GL_TEXTURE_COORD_ARRAY'.
 where i ranges from 0 to the value of `GL_MAX_TEXTURE_COORDS' - 1.")
 
 (define-gl-procedure
-  glClipPlane
-  "glClipPlane"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glClipPlane"))
-      (paramdef "GLenum " (parameter "plane"))
-      (paramdef
-        "const GLdouble * "
-        (parameter "equation"))))
+  ((glClipPlane (plane GLenum) (equation *) -> void))
   "Specify a plane against which all geometry is clipped.
 
 PLANE
@@ -2173,15 +2114,13 @@ coordinates and are disabled.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glColorMask
-  "glColorMask"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glColorMask"))
-      (paramdef "GLboolean " (parameter "red"))
-      (paramdef "GLboolean " (parameter "green"))
-      (paramdef "GLboolean " (parameter "blue"))
-      (paramdef "GLboolean " (parameter "alpha"))))
+  ((glColorMask
+     (red GLboolean)
+     (green GLboolean)
+     (blue GLboolean)
+     (alpha GLboolean)
+     ->
+     void))
   "Enable and disable writing of frame buffer color components.
 
 RED
@@ -2207,13 +2146,11 @@ changes are either enabled or disabled for entire color components.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glColorMaterial
-  "glColorMaterial"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glColorMaterial"))
-      (paramdef "GLenum " (parameter "face"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glColorMaterial
+     (face GLenum)
+     (mode GLenum)
+     ->
+     void))
   "Cause a material color to track the current color.
 
 FACE
@@ -2244,17 +2181,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glColorPointer
-  "glColorPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glColorPointer"))
-      (paramdef "GLint " (parameter "size"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glColorPointer
+     (size GLint)
+     (type GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of colors.
 
 SIZE
@@ -2307,17 +2240,15 @@ the color array is used when `glDrawArrays', `glMultiDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glColorSubTable
-  "glColorSubTable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glColorSubTable"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLsizei " (parameter "start"))
-      (paramdef "GLsizei " (parameter "count"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glColorSubTable
+     (target GLenum)
+     (start GLsizei)
+     (count GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Respecify a portion of a color table.
 
 TARGET
@@ -2394,69 +2325,15 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glColorTableParameter
-  "glColorTableParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glColorTableParameterfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef
-        "const GLfloat * "
-        (parameter "params"))))
-  "Set color lookup table parameters.
-
-TARGET
-     The target color table. Must be `GL_COLOR_TABLE',
-     `GL_POST_CONVOLUTION_COLOR_TABLE', or
-     `GL_POST_COLOR_MATRIX_COLOR_TABLE'.
-
-PNAME
-     The symbolic name of a texture color lookup table parameter. Must
-     be one of `GL_COLOR_TABLE_SCALE' or `GL_COLOR_TABLE_BIAS'.
-
-PARAMS
-     A pointer to an array where the values of the parameters are
-     stored.
-
-`glColorTableParameter' is used to specify the scale factors and bias
-terms applied to color components when they are loaded into a color
-table. TARGET indicates which color table the scale and bias terms apply
-to; it must be set to `GL_COLOR_TABLE',
-`GL_POST_CONVOLUTION_COLOR_TABLE', or
-`GL_POST_COLOR_MATRIX_COLOR_TABLE'.
-
-PNAME must be `GL_COLOR_TABLE_SCALE' to set the scale factors. In this
-case, PARAMS points to an array of four values, which are the scale
-factors for red, green, blue, and alpha, in that order.
-
-PNAME must be `GL_COLOR_TABLE_BIAS' to set the bias terms. In this case,
-PARAMS points to an array of four values, which are the bias terms for
-red, green, blue, and alpha, in that order.
-
-The color tables themselves are specified by calling `glColorTable'.
-
-`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an acceptable
-value.
-
-`GL_INVALID_OPERATION' is generated if `glColorTableParameter' is
-executed between the execution of `glBegin' and the corresponding
-execution of `glEnd'.")
-
-(define-gl-procedure
-  glColorTable
-  "glColorTable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glColorTable"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glColorTable
+     (target GLenum)
+     (internalformat GLenum)
+     (width GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Define a color lookup table.
 
 TARGET
@@ -2700,14 +2577,45 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glColor
-  "glColor"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glColor3b"))
-      (paramdef "GLbyte " (parameter "red"))
-      (paramdef "GLbyte " (parameter "green"))
-      (paramdef "GLbyte " (parameter "blue"))))
+  ((glColor3i
+     (red GLint)
+     (green GLint)
+     (blue GLint)
+     ->
+     void)
+   (glColor3d
+     (red GLdouble)
+     (green GLdouble)
+     (blue GLdouble)
+     ->
+     void)
+   (glColor3ui
+     (red GLuint)
+     (green GLuint)
+     (blue GLuint)
+     ->
+     void)
+   (glColor4i
+     (red GLint)
+     (green GLint)
+     (blue GLint)
+     (alpha GLint)
+     ->
+     void)
+   (glColor4d
+     (red GLdouble)
+     (green GLdouble)
+     (blue GLdouble)
+     (alpha GLdouble)
+     ->
+     void)
+   (glColor4ui
+     (red GLuint)
+     (green GLuint)
+     (blue GLuint)
+     (alpha GLuint)
+     ->
+     void))
   "Set the current color.
 
 RED
@@ -2749,12 +2657,7 @@ components are clamped to this range before they are interpolated or
 written into a color buffer.")
 
 (define-gl-procedure
-  glCompileShader
-  "glCompileShader"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCompileShader"))
-      (paramdef "GLuint " (parameter "shader"))))
+  ((glCompileShader (shader GLuint) -> void))
   "Compiles a shader object.
 
 SHADER
@@ -2785,20 +2688,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCompressedTexImage1D
-  "glCompressedTexImage1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCompressedTexImage1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLint " (parameter "border"))
-      (paramdef "GLsizei " (parameter "imageSize"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glCompressedTexImage1D
+     (target GLenum)
+     (level GLint)
+     (internalformat GLenum)
+     (width GLsizei)
+     (border GLint)
+     (imageSize GLsizei)
+     (data *)
+     ->
+     void))
   "Specify a one-dimensional texture image in a compressed format.
 
 TARGET
@@ -2890,21 +2789,17 @@ if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
 (define-gl-procedure
-  glCompressedTexImage2D
-  "glCompressedTexImage2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCompressedTexImage2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLint " (parameter "border"))
-      (paramdef "GLsizei " (parameter "imageSize"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glCompressedTexImage2D
+     (target GLenum)
+     (level GLint)
+     (internalformat GLenum)
+     (width GLsizei)
+     (height GLsizei)
+     (border GLint)
+     (imageSize GLsizei)
+     (data *)
+     ->
+     void))
   "Specify a two-dimensional texture image in a compressed format.
 
 TARGET
@@ -3010,22 +2905,18 @@ if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
 (define-gl-procedure
-  glCompressedTexImage3D
-  "glCompressedTexImage3D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCompressedTexImage3D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLsizei " (parameter "depth"))
-      (paramdef "GLint " (parameter "border"))
-      (paramdef "GLsizei " (parameter "imageSize"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glCompressedTexImage3D
+     (target GLenum)
+     (level GLint)
+     (internalformat GLenum)
+     (width GLsizei)
+     (height GLsizei)
+     (depth GLsizei)
+     (border GLint)
+     (imageSize GLsizei)
+     (data *)
+     ->
+     void))
   "Specify a three-dimensional texture image in a compressed format.
 
 TARGET
@@ -3131,20 +3022,16 @@ if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
 (define-gl-procedure
-  glCompressedTexSubImage1D
-  "glCompressedTexSubImage1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCompressedTexSubImage1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLsizei " (parameter "imageSize"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glCompressedTexSubImage1D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (width GLsizei)
+     (format GLenum)
+     (imageSize GLsizei)
+     (data *)
+     ->
+     void))
   "Specify a one-dimensional texture subimage in a compressed format.
 
 TARGET
@@ -3229,22 +3116,18 @@ if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
 (define-gl-procedure
-  glCompressedTexSubImage2D
-  "glCompressedTexSubImage2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCompressedTexSubImage2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLint " (parameter "yoffset"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLsizei " (parameter "imageSize"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glCompressedTexSubImage2D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (yoffset GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (imageSize GLsizei)
+     (data *)
+     ->
+     void))
   "Specify a two-dimensional texture subimage in a compressed format.
 
 TARGET
@@ -3343,24 +3226,20 @@ if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
 (define-gl-procedure
-  glCompressedTexSubImage3D
-  "glCompressedTexSubImage3D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCompressedTexSubImage3D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLint " (parameter "yoffset"))
-      (paramdef "GLint " (parameter "zoffset"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLsizei " (parameter "depth"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLsizei " (parameter "imageSize"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glCompressedTexSubImage3D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (yoffset GLint)
+     (zoffset GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (depth GLsizei)
+     (format GLenum)
+     (imageSize GLsizei)
+     (data *)
+     ->
+     void))
   "Specify a three-dimensional texture subimage in a compressed format.
 
 TARGET
@@ -3456,19 +3335,15 @@ if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
 (define-gl-procedure
-  glConvolutionFilter1D
-  "glConvolutionFilter1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glConvolutionFilter1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glConvolutionFilter1D
+     (target GLenum)
+     (internalformat GLenum)
+     (width GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Define a one-dimensional convolution filter.
 
 TARGET
@@ -3623,20 +3498,16 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glConvolutionFilter2D
-  "glConvolutionFilter2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glConvolutionFilter2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glConvolutionFilter2D
+     (target GLenum)
+     (internalformat GLenum)
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Define a two-dimensional convolution filter.
 
 TARGET
@@ -3801,16 +3672,18 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glConvolutionParameter
-  "glConvolutionParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glConvolutionParameterf"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "params"))))
+  ((glConvolutionParameterf
+     (target GLenum)
+     (pname GLenum)
+     (params GLfloat)
+     ->
+     void)
+   (glConvolutionParameteri
+     (target GLenum)
+     (pname GLenum)
+     (params GLint)
+     ->
+     void))
   "Set convolution parameters.
 
 TARGET
@@ -3880,18 +3753,14 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glCopyColorSubTable
-  "glCopyColorSubTable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCopyColorSubTable"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLsizei " (parameter "start"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))))
+  ((glCopyColorSubTable
+     (target GLenum)
+     (start GLsizei)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     ->
+     void))
   "Respecify a portion of a color table.
 
 TARGET
@@ -3932,16 +3801,14 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCopyColorTable
-  "glCopyColorTable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCopyColorTable"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))))
+  ((glCopyColorTable
+     (target GLenum)
+     (internalformat GLenum)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     ->
+     void))
   "Copy pixels into a color table.
 
 TARGET
@@ -4044,18 +3911,14 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCopyConvolutionFilter1D
-  "glCopyConvolutionFilter1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCopyConvolutionFilter1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))))
+  ((glCopyConvolutionFilter1D
+     (target GLenum)
+     (internalformat GLenum)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     ->
+     void))
   "Copy pixels into a one-dimensional convolution filter.
 
 TARGET
@@ -4163,19 +4026,15 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glCopyConvolutionFilter2D
-  "glCopyConvolutionFilter2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCopyConvolutionFilter2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))))
+  ((glCopyConvolutionFilter2D
+     (target GLenum)
+     (internalformat GLenum)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     ->
+     void))
   "Copy pixels into a two-dimensional convolution filter.
 
 TARGET
@@ -4293,16 +4152,14 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glCopyPixels
-  "glCopyPixels"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCopyPixels"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "type"))))
+  ((glCopyPixels
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (type GLenum)
+     ->
+     void))
   "Copy pixels in the frame buffer.
 
 X
@@ -4455,18 +4312,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCopyTexImage1D
-  "glCopyTexImage1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCopyTexImage1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLint " (parameter "border"))))
+  ((glCopyTexImage1D
+     (target GLenum)
+     (level GLint)
+     (internalformat GLenum)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (border GLint)
+     ->
+     void))
   "Copy pixels into a 1D texture image.
 
 TARGET
@@ -4570,19 +4425,17 @@ between the execution of `glBegin' and the corresponding execution of
 `GL_DEPTH_COMPONENT32' and there is no depth buffer.")
 
 (define-gl-procedure
-  glCopyTexImage2D
-  "glCopyTexImage2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCopyTexImage2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLint " (parameter "border"))))
+  ((glCopyTexImage2D
+     (target GLenum)
+     (level GLint)
+     (internalformat GLenum)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (border GLint)
+     ->
+     void))
   "Copy pixels into a 2D texture image.
 
 TARGET
@@ -4692,19 +4545,15 @@ between the execution of `glBegin' and the corresponding execution of
 `GL_DEPTH_COMPONENT32' and there is no depth buffer.")
 
 (define-gl-procedure
-  glCopyTexSubImage1D
-  "glCopyTexSubImage1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCopyTexSubImage1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))))
+  ((glCopyTexSubImage1D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     ->
+     void))
   "Copy a one-dimensional texture subimage.
 
 TARGET
@@ -4768,21 +4617,17 @@ the returned value of `GL_MAX_TEXTURE_SIZE'.
 includes twice the border width.")
 
 (define-gl-procedure
-  glCopyTexSubImage2D
-  "glCopyTexSubImage2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCopyTexSubImage2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLint " (parameter "yoffset"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))))
+  ((glCopyTexSubImage2D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (yoffset GLint)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     ->
+     void))
   "Copy a two-dimensional texture subimage.
 
 TARGET
@@ -4871,22 +4716,18 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCopyTexSubImage3D
-  "glCopyTexSubImage3D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glCopyTexSubImage3D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLint " (parameter "yoffset"))
-      (paramdef "GLint " (parameter "zoffset"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))))
+  ((glCopyTexSubImage3D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (yoffset GLint)
+     (zoffset GLint)
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     ->
+     void))
   "Copy a three-dimensional texture subimage.
 
 TARGET
@@ -4973,12 +4814,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCreateProgram
-  "glCreateProgram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLuint " (function "glCreateProgram"))
-      (paramdef (parameter "void"))))
+  ((glCreateProgram -> GLuint))
   "Creates a program object.
 
 `glCreateProgram' creates an empty program object and returns a non-zero
@@ -5007,12 +4843,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCreateShader
-  "glCreateShader"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLuint " (function "glCreateShader"))
-      (paramdef "GLenum " (parameter "shaderType"))))
+  ((glCreateShader (shaderType GLenum) -> GLuint))
   "Creates a shader object.
 
 SHADERTYPE
@@ -5042,12 +4873,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glCullFace
-  "glCullFace"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glCullFace"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glCullFace (mode GLenum) -> void))
   "Specify whether front- or back-facing facets can be culled.
 
 MODE
@@ -5070,15 +4896,7 @@ facets are front-facing and back-facing. See `glFrontFace'.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glDeleteBuffers
-  "glDeleteBuffers"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDeleteBuffers"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef
-        "const GLuint * "
-        (parameter "buffers"))))
+  ((glDeleteBuffers (n GLsizei) (buffers *) -> void))
   "Delete named buffer objects.
 
 N
@@ -5103,13 +4921,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDeleteLists
-  "glDeleteLists"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDeleteLists"))
-      (paramdef "GLuint " (parameter "list"))
-      (paramdef "GLsizei " (parameter "range"))))
+  ((glDeleteLists
+     (list GLuint)
+     (range GLsizei)
+     ->
+     void))
   "Delete a contiguous group of display lists.
 
 LIST
@@ -5135,12 +4951,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDeleteProgram
-  "glDeleteProgram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDeleteProgram"))
-      (paramdef "GLuint " (parameter "program"))))
+  ((glDeleteProgram (program GLuint) -> void))
   "Deletes a program object.
 
 PROGRAM
@@ -5169,13 +4980,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDeleteQueries
-  "glDeleteQueries"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDeleteQueries"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef "const GLuint * " (parameter "ids"))))
+  ((glDeleteQueries (n GLsizei) (ids *) -> void))
   "Delete named query objects.
 
 N
@@ -5198,12 +5003,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDeleteShader
-  "glDeleteShader"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDeleteShader"))
-      (paramdef "GLuint " (parameter "shader"))))
+  ((glDeleteShader (shader GLuint) -> void))
   "Deletes a shader object.
 
 SHADER
@@ -5230,15 +5030,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDeleteTextures
-  "glDeleteTextures"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDeleteTextures"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef
-        "const GLuint * "
-        (parameter "textures"))))
+  ((glDeleteTextures
+     (n GLsizei)
+     (textures *)
+     ->
+     void))
   "Delete named textures.
 
 N
@@ -5263,12 +5059,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDepthFunc
-  "glDepthFunc"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDepthFunc"))
-      (paramdef "GLenum " (parameter "func"))))
+  ((glDepthFunc (func GLenum) -> void))
   "Specify the value used for depth buffer comparisons.
 
 FUNC
@@ -5325,12 +5116,7 @@ is as if the depth test always passes.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glDepthMask
-  "glDepthMask"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDepthMask"))
-      (paramdef "GLboolean " (parameter "flag"))))
+  ((glDepthMask (flag GLboolean) -> void))
   "Enable or disable writing into the depth buffer.
 
 FLAG
@@ -5346,13 +5132,11 @@ is enabled. Initially, depth buffer writing is enabled.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glDepthRange
-  "glDepthRange"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDepthRange"))
-      (paramdef "GLclampd " (parameter "nearVal"))
-      (paramdef "GLclampd " (parameter "farVal"))))
+  ((glDepthRange
+     (nearVal GLclampd)
+     (farVal GLclampd)
+     ->
+     void))
   "Specify mapping of depth values from normalized device coordinates to
 window coordinates.
 
@@ -5381,13 +5165,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDetachShader
-  "glDetachShader"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDetachShader"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLuint " (parameter "shader"))))
+  ((glDetachShader
+     (program GLuint)
+     (shader GLuint)
+     ->
+     void))
   "Detaches a shader object from a program object to which it is attached.
 
 PROGRAM
@@ -5420,14 +5202,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDrawArrays
-  "glDrawArrays"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDrawArrays"))
-      (paramdef "GLenum " (parameter "mode"))
-      (paramdef "GLint " (parameter "first"))
-      (paramdef "GLsizei " (parameter "count"))))
+  ((glDrawArrays
+     (mode GLenum)
+     (first GLint)
+     (count GLsizei)
+     ->
+     void))
   "Render primitives from array data.
 
 MODE
@@ -5473,13 +5253,7 @@ currently mapped.
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
 (define-gl-procedure
-  glDrawBuffers
-  "glDrawBuffers"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDrawBuffers"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef "const GLenum *" (parameter "bufs"))))
+  ((glDrawBuffers (n GLsizei) (bufs *) -> void))
   "Specifies a list of color buffers to be drawn into.
 
 N
@@ -5553,12 +5327,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDrawBuffer
-  "glDrawBuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDrawBuffer"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glDrawBuffer (mode GLenum) -> void))
   "Specify which color buffers are to be drawn into.
 
 MODE
@@ -5641,17 +5410,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDrawElements
-  "glDrawElements"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDrawElements"))
-      (paramdef "GLenum " (parameter "mode"))
-      (paramdef "GLsizei " (parameter "count"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "indices"))))
+  ((glDrawElements
+     (mode GLenum)
+     (count GLsizei)
+     (type GLenum)
+     (indices *)
+     ->
+     void))
   "Render primitives from array data.
 
 MODE
@@ -5702,16 +5467,14 @@ data store is currently mapped.
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
 (define-gl-procedure
-  glDrawPixels
-  "glDrawPixels"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glDrawPixels"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glDrawPixels
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Write a block of pixels to the frame buffer.
 
 WIDTH
@@ -6113,21 +5876,15 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glDrawRangeElements
-  "glDrawRangeElements"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glDrawRangeElements"))
-      (paramdef "GLenum " (parameter "mode"))
-      (paramdef "GLuint " (parameter "start"))
-      (paramdef "GLuint " (parameter "end"))
-      (paramdef "GLsizei " (parameter "count"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "indices"))))
+  ((glDrawRangeElements
+     (mode GLenum)
+     (start GLuint)
+     (end GLuint)
+     (count GLsizei)
+     (type GLenum)
+     (indices *)
+     ->
+     void))
   "Render primitives from array data.
 
 MODE
@@ -6198,15 +5955,11 @@ data store is currently mapped.
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
 (define-gl-procedure
-  glEdgeFlagPointer
-  "glEdgeFlagPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glEdgeFlagPointer"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glEdgeFlagPointer
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of edge flags.
 
 STRIDE
@@ -6243,12 +5996,7 @@ enabled, the edge flag array is used when `glDrawArrays',
 `GL_INVALID_ENUM' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glEdgeFlag
-  "glEdgeFlag"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glEdgeFlag"))
-      (paramdef "GLboolean " (parameter "flag"))))
+  ((glEdgeFlag (flag GLboolean) -> void))
   "Flag edges as either boundary or nonboundary.
 
 FLAG
@@ -6271,14 +6019,8 @@ Boundary and nonboundary edge flags on vertices are significant only if
 `glPolygonMode'.")
 
 (define-gl-procedure
-  glEnableClientState
-  "glEnableClientState"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glEnableClientState"))
-      (paramdef "GLenum " (parameter "cap"))))
+  ((glEnableClientState (cap GLenum) -> void)
+   (glDisableClientState (cap GLenum) -> void))
   "Enable or disable client-side capability.
 
 CAP
@@ -6348,19 +6090,14 @@ and the corresponding `glEnd', but an error may or may not be generated.
 If no error is generated, the behavior is undefined.")
 
 (define-gl-procedure
-  glEnableVertexAttribArray
-  "glEnableVertexAttribArray"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glEnableVertexAttribArray"))
-      (paramdef "GLuint " (parameter "index")))
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glDisableVertexAttribArray"))
-      (paramdef "GLuint " (parameter "index"))))
+  ((glEnableVertexAttribArray
+     (index GLuint)
+     ->
+     void)
+   (glDisableVertexAttribArray
+     (index GLuint)
+     ->
+     void))
   "Enable or disable a generic vertex attribute array.
 
 INDEX
@@ -6385,12 +6122,8 @@ array commands such as `glDrawArrays', `glDrawElements',
 `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glEnable
-  "glEnable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glEnable"))
-      (paramdef "GLenum " (parameter "cap"))))
+  ((glEnable (cap GLenum) -> void)
+   (glDisable (cap GLenum) -> void))
   "Enable or disable server-side GL capabilities.
 
 CAP
@@ -6856,12 +6589,8 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glEvalCoord
-  "glEvalCoord"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glEvalCoord1f"))
-      (paramdef "GLfloat " (parameter "u"))))
+  ((glEvalCoord1d (u GLdouble) -> void)
+   (glEvalCoord2d (u GLdouble) (v GLdouble) -> void))
   "Evaluate enabled one- and two-dimensional maps.
 
 U
@@ -6926,14 +6655,20 @@ automatic normal generation nor a normal map is enabled, no normal is
 generated for `glEvalCoord2' commands.")
 
 (define-gl-procedure
-  glEvalMesh
-  "glEvalMesh"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glEvalMesh1"))
-      (paramdef "GLenum " (parameter "mode"))
-      (paramdef "GLint " (parameter "i1"))
-      (paramdef "GLint " (parameter "i2"))))
+  ((glEvalMesh1
+     (mode GLenum)
+     (i1 GLint)
+     (i2 GLint)
+     ->
+     void)
+   (glEvalMesh2
+     (mode GLenum)
+     (i1 GLint)
+     (i2 GLint)
+     (j1 GLint)
+     (j2 GLint)
+     ->
+     void))
   "Compute a one- or two-dimensional grid of points or lines.
 
 MODE
@@ -7047,12 +6782,8 @@ I=N , then the value computed from I·ΔU+U_1 is exactly U_2 , and if J=M
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glEvalPoint
-  "glEvalPoint"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glEvalPoint1"))
-      (paramdef "GLint " (parameter "i"))))
+  ((glEvalPoint1 (i GLint) -> void)
+   (glEvalPoint2 (i GLint) (j GLint) -> void))
   "Generate and evaluate a single point in a mesh.
 
 I
@@ -7093,14 +6824,12 @@ I=N , then the value computed from I·ΔU+U_1 is exactly U_2 , and if J=M
       );")
 
 (define-gl-procedure
-  glFeedbackBuffer
-  "glFeedbackBuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFeedbackBuffer"))
-      (paramdef "GLsizei " (parameter "size"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLfloat * " (parameter "buffer"))))
+  ((glFeedbackBuffer
+     (size GLsizei)
+     (type GLenum)
+     (buffer *)
+     ->
+     void))
   "Controls feedback mode.
 
 SIZE
@@ -7227,12 +6956,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glFinish
-  "glFinish"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFinish"))
-      (paramdef (parameter "void"))))
+  ((glFinish -> void))
   "Block until all GL execution is complete.
 
 `glFinish' does not return until the effects of all previously called GL
@@ -7244,12 +6968,7 @@ contents.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glFlush
-  "glFlush"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFlush"))
-      (paramdef (parameter "void"))))
+  ((glFlush -> void))
   "Force execution of GL commands in finite time.
 
 Different GL implementations buffer commands in several different
@@ -7269,14 +6988,12 @@ that depends on the generated image.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glFogCoordPointer
-  "glFogCoordPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFogCoordPointer"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef "GLvoid * " (parameter "pointer"))))
+  ((glFogCoordPointer
+     (type GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of fog coordinates.
 
 TYPE
@@ -7323,12 +7040,7 @@ called.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glFogCoord
-  "glFogCoord"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFogCoordd"))
-      (paramdef "GLdouble " (parameter "coord"))))
+  ((glFogCoordd (coord GLdouble) -> void))
   "Set the current fog coordinates.
 
 COORD
@@ -7339,13 +7051,8 @@ vertex and the current raster position. The value specified is
 interpolated and used in computing the fog color (see `glFog').")
 
 (define-gl-procedure
-  glFog
-  "glFog"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFogf"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glFogf (pname GLenum) (param GLfloat) -> void)
+   (glFogi (pname GLenum) (param GLint) -> void))
   "Specify fog parameters.
 
 PNAME
@@ -7443,12 +7150,7 @@ is negative.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glFrontFace
-  "glFrontFace"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFrontFace"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glFrontFace (mode GLenum) -> void))
   "Define front- and back-facing polygons.
 
 MODE
@@ -7481,17 +7183,15 @@ taken to be front-facing.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glFrustum
-  "glFrustum"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glFrustum"))
-      (paramdef "GLdouble " (parameter "left"))
-      (paramdef "GLdouble " (parameter "right"))
-      (paramdef "GLdouble " (parameter "bottom"))
-      (paramdef "GLdouble " (parameter "top"))
-      (paramdef "GLdouble " (parameter "nearVal"))
-      (paramdef "GLdouble " (parameter "farVal"))))
+  ((glFrustum
+     (left GLdouble)
+     (right GLdouble)
+     (bottom GLdouble)
+     (top GLdouble)
+     (nearVal GLdouble)
+     (farVal GLdouble)
+     ->
+     void))
   "Multiply the current matrix by a perspective matrix.
 
 LEFT
@@ -7549,13 +7249,7 @@ if LEFT = RIGHT, or BOTTOM = TOP, or NEAR = FAR.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glGenBuffers
-  "glGenBuffers"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGenBuffers"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef "GLuint * " (parameter "buffers"))))
+  ((glGenBuffers (n GLsizei) (buffers *) -> void))
   "Generate buffer object names.
 
 N
@@ -7584,12 +7278,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGenLists
-  "glGenLists"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLuint " (function "glGenLists"))
-      (paramdef "GLsizei " (parameter "range"))))
+  ((glGenLists (range GLsizei) -> GLuint))
   "Generate a contiguous set of empty display lists.
 
 RANGE
@@ -7608,13 +7297,7 @@ generated, and 0 is returned.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glGenQueries
-  "glGenQueries"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGenQueries"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef "GLuint * " (parameter "ids"))))
+  ((glGenQueries (n GLsizei) (ids *) -> void))
   "Generate query object names.
 
 N
@@ -7643,13 +7326,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGenTextures
-  "glGenTextures"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGenTextures"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef "GLuint * " (parameter "textures"))))
+  ((glGenTextures (n GLsizei) (textures *) -> void))
   "Generate texture names.
 
 N
@@ -7677,18 +7354,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetActiveAttrib
-  "glGetActiveAttrib"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetActiveAttrib"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLsizei " (parameter "bufSize"))
-      (paramdef "GLsizei *" (parameter "length"))
-      (paramdef "GLint *" (parameter "size"))
-      (paramdef "GLenum *" (parameter "type"))
-      (paramdef "GLchar *" (parameter "name"))))
+  ((glGetActiveAttrib
+     (program GLuint)
+     (index GLuint)
+     (bufSize GLsizei)
+     (length *)
+     (size *)
+     (type *)
+     (name *)
+     ->
+     void))
   "Returns information about an active attribute variable for the specified
 program object.
 
@@ -7786,18 +7461,16 @@ between the execution of `glBegin' and the corresponding execution of
 `GL_INVALID_VALUE' is generated if BUFSIZE is less than 0.")
 
 (define-gl-procedure
-  glGetActiveUniform
-  "glGetActiveUniform"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetActiveUniform"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLsizei " (parameter "bufSize"))
-      (paramdef "GLsizei *" (parameter "length"))
-      (paramdef "GLint *" (parameter "size"))
-      (paramdef "GLenum *" (parameter "type"))
-      (paramdef "GLchar *" (parameter "name"))))
+  ((glGetActiveUniform
+     (program GLuint)
+     (index GLuint)
+     (bufSize GLsizei)
+     (length *)
+     (size *)
+     (type *)
+     (name *)
+     ->
+     void))
   "Returns information about an active uniform variable for the specified
 program object.
 
@@ -7919,17 +7592,13 @@ between the execution of `glBegin' and the corresponding execution of
 `GL_INVALID_VALUE' is generated if BUFSIZE is less than 0.")
 
 (define-gl-procedure
-  glGetAttachedShaders
-  "glGetAttachedShaders"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetAttachedShaders"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLsizei " (parameter "maxCount"))
-      (paramdef "GLsizei *" (parameter "count"))
-      (paramdef "GLuint *" (parameter "shaders"))))
+  ((glGetAttachedShaders
+     (program GLuint)
+     (maxCount GLsizei)
+     (count *)
+     (shaders *)
+     ->
+     void))
   "Returns the handles of the shader objects attached to a program object.
 
 PROGRAM
@@ -7972,15 +7641,11 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glGetAttribLocation
-  "glGetAttribLocation"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLint "
-        (function "glGetAttribLocation"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "const GLchar *" (parameter "name"))))
+  ((glGetAttribLocation
+     (program GLuint)
+     (name *)
+     ->
+     GLint))
   "Returns the location of an attribute variable.
 
 PROGRAM
@@ -8024,114 +7689,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetBufferParameteriv
-  "glGetBufferParameteriv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetBufferParameteriv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "value"))
-      (paramdef "GLint * " (parameter "data"))))
-  "Return parameters of a buffer object.
-
-TARGET
-     Specifies the target buffer object. The symbolic constant must be
-     `GL_ARRAY_BUFFER', `GL_ELEMENT_ARRAY_BUFFER',
-     `GL_PIXEL_PACK_BUFFER', or `GL_PIXEL_UNPACK_BUFFER'.
-
-VALUE
-     Specifies the symbolic name of a buffer object parameter. Accepted
-     values are `GL_BUFFER_ACCESS', `GL_BUFFER_MAPPED',
-     `GL_BUFFER_SIZE', or `GL_BUFFER_USAGE'.
-
-DATA
-     Returns the requested parameter.
-
-`glGetBufferParameteriv' returns in DATA a selected parameter of the
-buffer object specified by TARGET.
-
-VALUE names a specific buffer object parameter, as follows:
-
-`GL_BUFFER_ACCESS'
-     PARAMS returns the access policy set while mapping the buffer
-     object. The initial value is `GL_READ_WRITE'.
-
-`GL_BUFFER_MAPPED'
-     PARAMS returns a flag indicating whether the buffer object is
-     currently mapped. The initial value is `GL_FALSE'.
-
-`GL_BUFFER_SIZE'
-     PARAMS returns the size of the buffer object, measured in bytes.
-     The initial value is 0.
-
-`GL_BUFFER_USAGE'
-     PARAMS returns the buffer object's usage pattern. The initial value
-     is `GL_STATIC_DRAW'.
-
-`GL_INVALID_ENUM' is generated if TARGET or VALUE is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if the reserved buffer object name 0
-is bound to TARGET.
-
-`GL_INVALID_OPERATION' is generated if `glGetBufferParameteriv' is
-executed between the execution of `glBegin' and the corresponding
-execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetBufferPointerv
-  "glGetBufferPointerv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetBufferPointerv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLvoid ** " (parameter "params"))))
-  "Return the pointer to a mapped buffer object's data store.
-
-TARGET
-     Specifies the target buffer object. The symbolic constant must be
-     `GL_ARRAY_BUFFER', `GL_ELEMENT_ARRAY_BUFFER',
-     `GL_PIXEL_PACK_BUFFER', or `GL_PIXEL_UNPACK_BUFFER'.
-
-PNAME
-     Specifies the pointer to be returned. The symbolic constant must be
-     `GL_BUFFER_MAP_POINTER'.
-
-PARAMS
-     Returns the pointer value specified by PNAME.
-
-`glGetBufferPointerv' returns pointer information. PNAME is a symbolic
-constant indicating the pointer to be returned, which must be
-`GL_BUFFER_MAP_POINTER', the pointer to which the buffer object's data
-store is mapped. If the data store is not currently mapped, `NULL' is
-returned. PARAMS is a pointer to a location in which to place the
-returned pointer value.
-
-`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if the reserved buffer object name 0
-is bound to TARGET.
-
-`GL_INVALID_OPERATION' is generated if `glGetBufferPointerv' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetBufferSubData
-  "glGetBufferSubData"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetBufferSubData"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLintptr " (parameter "offset"))
-      (paramdef "GLsizeiptr " (parameter "size"))
-      (paramdef "GLvoid * " (parameter "data"))))
+  ((glGetBufferSubData
+     (target GLenum)
+     (offset GLintptr)
+     (size GLsizeiptr)
+     (data *)
+     ->
+     void))
   "Returns a subset of a buffer object's data store.
 
 TARGET
@@ -8177,13 +7741,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetClipPlane
-  "glGetClipPlane"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetClipPlane"))
-      (paramdef "GLenum " (parameter "plane"))
-      (paramdef "GLdouble * " (parameter "equation"))))
+  ((glGetClipPlane
+     (plane GLenum)
+     (equation *)
+     ->
+     void))
   "Return the coefficients of the specified clipping plane.
 
 PLANE
@@ -8208,105 +7770,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetColorTableParameter
-  "glGetColorTableParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetColorTableParameterfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Get color lookup table parameters.
-
-TARGET
-     The target color table. Must be `GL_COLOR_TABLE',
-     `GL_POST_CONVOLUTION_COLOR_TABLE',
-     `GL_POST_COLOR_MATRIX_COLOR_TABLE', `GL_PROXY_COLOR_TABLE',
-     `GL_PROXY_POST_CONVOLUTION_COLOR_TABLE', or
-     `GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE'.
-
-PNAME
-     The symbolic name of a color lookup table parameter. Must be one of
-     `GL_COLOR_TABLE_BIAS', `GL_COLOR_TABLE_SCALE',
-     `GL_COLOR_TABLE_FORMAT', `GL_COLOR_TABLE_WIDTH',
-     `GL_COLOR_TABLE_RED_SIZE', `GL_COLOR_TABLE_GREEN_SIZE',
-     `GL_COLOR_TABLE_BLUE_SIZE', `GL_COLOR_TABLE_ALPHA_SIZE',
-     `GL_COLOR_TABLE_LUMINANCE_SIZE', or
-     `GL_COLOR_TABLE_INTENSITY_SIZE'.
-
-PARAMS
-     A pointer to an array where the values of the parameter will be
-     stored.
-
-Returns parameters specific to color table TARGET.
-
-When PNAME is set to `GL_COLOR_TABLE_SCALE' or `GL_COLOR_TABLE_BIAS',
-`glGetColorTableParameter' returns the color table scale or bias
-parameters for the table specified by TARGET. For these queries, TARGET
-must be set to `GL_COLOR_TABLE', `GL_POST_CONVOLUTION_COLOR_TABLE', or
-`GL_POST_COLOR_MATRIX_COLOR_TABLE' and PARAMS points to an array of four
-elements, which receive the scale or bias factors for red, green, blue,
-and alpha, in that order.
-
-`glGetColorTableParameter' can also be used to retrieve the format and
-size parameters for a color table. For these queries, set TARGET to
-either the color table target or the proxy color table target. The
-format and size parameters are set by `glColorTable'.
-
-The following table lists the format and size parameters that may be
-queried. For each symbolic constant listed below for PNAME, PARAMS must
-point to an array of the given length and receive the values indicated.
-
-
-
-*Parameter*
-     *N*, *Meaning*
-
-`GL_COLOR_TABLE_FORMAT'
-     1 , Internal format (e.g., `GL_RGBA')
-
-`GL_COLOR_TABLE_WIDTH'
-     1 , Number of elements in table
-
-`GL_COLOR_TABLE_RED_SIZE'
-     1 , Size of red component, in bits
-
-`GL_COLOR_TABLE_GREEN_SIZE'
-     1 , Size of green component
-
-`GL_COLOR_TABLE_BLUE_SIZE'
-     1 , Size of blue component
-
-`GL_COLOR_TABLE_ALPHA_SIZE'
-     1 , Size of alpha component
-
-`GL_COLOR_TABLE_LUMINANCE_SIZE'
-     1 , Size of luminance component
-
-`GL_COLOR_TABLE_INTENSITY_SIZE'
-     1 , Size of intensity component
-
-
-
-`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an acceptable
-value.
-
-`GL_INVALID_OPERATION' is generated if `glGetColorTableParameter' is
-executed between the execution of `glBegin' and the corresponding
-execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetColorTable
-  "glGetColorTable"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetColorTable"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLvoid * " (parameter "table"))))
+  ((glGetColorTable
+     (target GLenum)
+     (format GLenum)
+     (type GLenum)
+     (table *)
+     ->
+     void))
   "Retrieve contents of a color lookup table.
 
 TARGET
@@ -8410,16 +7880,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetCompressedTexImage
-  "glGetCompressedTexImage"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetCompressedTexImage"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "lod"))
-      (paramdef "GLvoid * " (parameter "img"))))
+  ((glGetCompressedTexImage
+     (target GLenum)
+     (lod GLint)
+     (img *)
+     ->
+     void))
   "Return a compressed texture image.
 
 TARGET
@@ -8482,17 +7948,13 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glGetConvolutionFilter
-  "glGetConvolutionFilter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetConvolutionFilter"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLvoid * " (parameter "image"))))
+  ((glGetConvolutionFilter
+     (target GLenum)
+     (format GLenum)
+     (type GLenum)
+     (image *)
+     ->
+     void))
   "Get current 1D or 2D convolution filter kernel.
 
 TARGET
@@ -8596,111 +8058,7 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glGetConvolutionParameter
-  "glGetConvolutionParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetConvolutionParameterfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Get convolution parameters.
-
-TARGET
-     The filter whose parameters are to be retrieved. Must be one of
-     `GL_CONVOLUTION_1D', `GL_CONVOLUTION_2D', or `GL_SEPARABLE_2D'.
-
-PNAME
-     The parameter to be retrieved. Must be one of
-     `GL_CONVOLUTION_BORDER_MODE', `GL_CONVOLUTION_BORDER_COLOR',
-     `GL_CONVOLUTION_FILTER_SCALE', `GL_CONVOLUTION_FILTER_BIAS',
-     `GL_CONVOLUTION_FORMAT', `GL_CONVOLUTION_WIDTH',
-     `GL_CONVOLUTION_HEIGHT', `GL_MAX_CONVOLUTION_WIDTH', or
-     `GL_MAX_CONVOLUTION_HEIGHT'.
-
-PARAMS
-     Pointer to storage for the parameters to be retrieved.
-
-`glGetConvolutionParameter' retrieves convolution parameters. TARGET
-determines which convolution filter is queried. PNAME determines which
-parameter is returned:
-
-`GL_CONVOLUTION_BORDER_MODE'
-
-
-     The convolution border mode. See `glConvolutionParameter' for a
-     list of border modes.
-
-`GL_CONVOLUTION_BORDER_COLOR'
-
-
-     The current convolution border color. PARAMS must be a pointer to
-     an array of four elements, which will receive the red, green, blue,
-     and alpha border colors.
-
-`GL_CONVOLUTION_FILTER_SCALE'
-
-
-     The current filter scale factors. PARAMS must be a pointer to an
-     array of four elements, which will receive the red, green, blue,
-     and alpha filter scale factors in that order.
-
-`GL_CONVOLUTION_FILTER_BIAS'
-
-
-     The current filter bias factors. PARAMS must be a pointer to an
-     array of four elements, which will receive the red, green, blue,
-     and alpha filter bias terms in that order.
-
-`GL_CONVOLUTION_FORMAT'
-
-
-     The current internal format. See `glConvolutionFilter1D',
-     `glConvolutionFilter2D', and `glSeparableFilter2D' for lists of
-     allowable formats.
-
-`GL_CONVOLUTION_WIDTH'
-
-
-     The current filter image width.
-
-`GL_CONVOLUTION_HEIGHT'
-
-
-     The current filter image height.
-
-`GL_MAX_CONVOLUTION_WIDTH'
-
-
-     The maximum acceptable filter image width.
-
-`GL_MAX_CONVOLUTION_HEIGHT'
-
-
-     The maximum acceptable filter image height.
-
-`GL_INVALID_ENUM' is generated if TARGET is not one of the allowable
-values.
-
-`GL_INVALID_ENUM' is generated if PNAME is not one of the allowable
-values.
-
-`GL_INVALID_ENUM' is generated if TARGET is `GL_CONVOLUTION_1D' and
-PNAME is `GL_CONVOLUTION_HEIGHT' or `GL_MAX_CONVOLUTION_HEIGHT'.
-
-`GL_INVALID_OPERATION' is generated if `glGetConvolutionParameter' is
-executed between the execution of `glBegin' and the corresponding
-execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetError
-  "glGetError"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLenum " (function "glGetError"))
-      (paramdef (parameter "void"))))
+  ((glGetError -> GLenum))
   "Return error information.
 
 `glGetError' returns the value of the error flag. Each detectable error
@@ -8770,90 +8128,14 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.
 In this case, `glGetError' returns 0.")
 
 (define-gl-procedure
-  glGetHistogramParameter
-  "glGetHistogramParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetHistogramParameterfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Get histogram parameters.
-
-TARGET
-     Must be one of `GL_HISTOGRAM' or `GL_PROXY_HISTOGRAM'.
-
-PNAME
-     The name of the parameter to be retrieved. Must be one of
-     `GL_HISTOGRAM_WIDTH', `GL_HISTOGRAM_FORMAT',
-     `GL_HISTOGRAM_RED_SIZE', `GL_HISTOGRAM_GREEN_SIZE',
-     `GL_HISTOGRAM_BLUE_SIZE', `GL_HISTOGRAM_ALPHA_SIZE',
-     `GL_HISTOGRAM_LUMINANCE_SIZE', or `GL_HISTOGRAM_SINK'.
-
-PARAMS
-     Pointer to storage for the returned values.
-
-`glGetHistogramParameter' is used to query parameter values for the
-current histogram or for a proxy. The histogram state information may be
-queried by calling `glGetHistogramParameter' with a TARGET of
-`GL_HISTOGRAM' (to obtain information for the current histogram table)
-or `GL_PROXY_HISTOGRAM' (to obtain information from the most recent
-proxy request) and one of the following values for the PNAME argument:
-
-
-
-*Parameter*
-     *Description*
-
-`GL_HISTOGRAM_WIDTH'
-     Histogram table width
-
-`GL_HISTOGRAM_FORMAT'
-     Internal format
-
-`GL_HISTOGRAM_RED_SIZE'
-     Red component counter size, in bits
-
-`GL_HISTOGRAM_GREEN_SIZE'
-     Green component counter size, in bits
-
-`GL_HISTOGRAM_BLUE_SIZE'
-     Blue component counter size, in bits
-
-`GL_HISTOGRAM_ALPHA_SIZE'
-     Alpha component counter size, in bits
-
-`GL_HISTOGRAM_LUMINANCE_SIZE'
-     Luminance component counter size, in bits
-
-`GL_HISTOGRAM_SINK'
-     Value of the SINK parameter
-
-
-
-`GL_INVALID_ENUM' is generated if TARGET is not one of the allowable
-values.
-
-`GL_INVALID_ENUM' is generated if PNAME is not one of the allowable
-values.
-
-`GL_INVALID_OPERATION' is generated if `glGetHistogramParameter' is
-executed between the execution of `glBegin' and the corresponding
-execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetHistogram
-  "glGetHistogram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetHistogram"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLboolean " (parameter "reset"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLvoid * " (parameter "values"))))
+  ((glGetHistogram
+     (target GLenum)
+     (reset GLboolean)
+     (format GLenum)
+     (type GLenum)
+     (values *)
+     ->
+     void))
   "Get histogram table.
 
 TARGET
@@ -8957,349 +8239,14 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetLight
-  "glGetLight"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetLightfv"))
-      (paramdef "GLenum " (parameter "light"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Return light source parameter values.
-
-LIGHT
-     Specifies a light source. The number of possible lights depends on
-     the implementation, but at least eight lights are supported. They
-     are identified by symbolic names of the form `GL_LIGHT' I where I
-     ranges from 0 to the value of `GL_MAX_LIGHTS' - 1.
-
-PNAME
-     Specifies a light source parameter for LIGHT. Accepted symbolic
-     names are `GL_AMBIENT', `GL_DIFFUSE', `GL_SPECULAR', `GL_POSITION',
-     `GL_SPOT_DIRECTION', `GL_SPOT_EXPONENT', `GL_SPOT_CUTOFF',
-     `GL_CONSTANT_ATTENUATION', `GL_LINEAR_ATTENUATION', and
-     `GL_QUADRATIC_ATTENUATION'.
-
-PARAMS
-     Returns the requested data.
-
-`glGetLight' returns in PARAMS the value or values of a light source
-parameter. LIGHT names the light and is a symbolic name of the form
-`GL_LIGHT'I where i ranges from 0 to the value of `GL_MAX_LIGHTS' - 1.
-`GL_MAX_LIGHTS' is an implementation dependent constant that is greater
-than or equal to eight. PNAME specifies one of ten light source
-parameters, again by symbolic name.
-
-The following parameters are defined:
-
-`GL_AMBIENT'
-     PARAMS returns four integer or floating-point values representing
-     the ambient intensity of the light source. Integer values, when
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 maps to the most positive
-     representable integer value, and -1.0 maps to the most negative
-     representable integer value. If the internal value is outside the
-     range [-1,1] , the corresponding integer return value is undefined.
-     The initial value is (0, 0, 0, 1).
-
-`GL_DIFFUSE'
-     PARAMS returns four integer or floating-point values representing
-     the diffuse intensity of the light source. Integer values, when
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 maps to the most positive
-     representable integer value, and -1.0 maps to the most negative
-     representable integer value. If the internal value is outside the
-     range [-1,1] , the corresponding integer return value is undefined.
-     The initial value for `GL_LIGHT0' is (1, 1, 1, 1); for other
-     lights, the initial value is (0, 0, 0, 0).
-
-`GL_SPECULAR'
-     PARAMS returns four integer or floating-point values representing
-     the specular intensity of the light source. Integer values, when
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 maps to the most positive
-     representable integer value, and -1.0 maps to the most negative
-     representable integer value. If the internal value is outside the
-     range [-1,1] , the corresponding integer return value is undefined.
-     The initial value for `GL_LIGHT0' is (1, 1, 1, 1); for other
-     lights, the initial value is (0, 0, 0, 0).
-
-`GL_POSITION'
-     PARAMS returns four integer or floating-point values representing
-     the position of the light source. Integer values, when requested,
-     are computed by rounding the internal floating-point values to the
-     nearest integer value. The returned values are those maintained in
-     eye coordinates. They will not be equal to the values specified
-     using `glLight', unless the modelview matrix was identity at the
-     time `glLight' was called. The initial value is (0, 0, 1, 0).
-
-`GL_SPOT_DIRECTION'
-     PARAMS returns three integer or floating-point values representing
-     the direction of the light source. Integer values, when requested,
-     are computed by rounding the internal floating-point values to the
-     nearest integer value. The returned values are those maintained in
-     eye coordinates. They will not be equal to the values specified
-     using `glLight', unless the modelview matrix was identity at the
-     time `glLight' was called. Although spot direction is normalized
-     before being used in the lighting equation, the returned values are
-     the transformed versions of the specified values prior to
-     normalization. The initial value is (0,0-1) .
-
-`GL_SPOT_EXPONENT'
-     PARAMS returns a single integer or floating-point value
-     representing the spot exponent of the light. An integer value, when
-     requested, is computed by rounding the internal floating-point
-     representation to the nearest integer. The initial value is 0.
-
-`GL_SPOT_CUTOFF'
-     PARAMS returns a single integer or floating-point value
-     representing the spot cutoff angle of the light. An integer value,
-     when requested, is computed by rounding the internal floating-point
-     representation to the nearest integer. The initial value is 180.
-
-`GL_CONSTANT_ATTENUATION'
-     PARAMS returns a single integer or floating-point value
-     representing the constant (not distance-related) attenuation of the
-     light. An integer value, when requested, is computed by rounding
-     the internal floating-point representation to the nearest integer.
-     The initial value is 1.
-
-`GL_LINEAR_ATTENUATION'
-     PARAMS returns a single integer or floating-point value
-     representing the linear attenuation of the light. An integer value,
-     when requested, is computed by rounding the internal floating-point
-     representation to the nearest integer. The initial value is 0.
-
-`GL_QUADRATIC_ATTENUATION'
-     PARAMS returns a single integer or floating-point value
-     representing the quadratic attenuation of the light. An integer
-     value, when requested, is computed by rounding the internal
-     floating-point representation to the nearest integer. The initial
-     value is 0.
-
-`GL_INVALID_ENUM' is generated if LIGHT or PNAME is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if `glGetLight' is executed between
-the execution of `glBegin' and the corresponding execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetMap
-  "glGetMap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetMapdv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "query"))
-      (paramdef "GLdouble * " (parameter "v"))))
-  "Return evaluator parameters.
-
-TARGET
-     Specifies the symbolic name of a map. Accepted values are
-     `GL_MAP1_COLOR_4', `GL_MAP1_INDEX', `GL_MAP1_NORMAL',
-     `GL_MAP1_TEXTURE_COORD_1', `GL_MAP1_TEXTURE_COORD_2',
-     `GL_MAP1_TEXTURE_COORD_3', `GL_MAP1_TEXTURE_COORD_4',
-     `GL_MAP1_VERTEX_3', `GL_MAP1_VERTEX_4', `GL_MAP2_COLOR_4',
-     `GL_MAP2_INDEX', `GL_MAP2_NORMAL', `GL_MAP2_TEXTURE_COORD_1',
-     `GL_MAP2_TEXTURE_COORD_2', `GL_MAP2_TEXTURE_COORD_3',
-     `GL_MAP2_TEXTURE_COORD_4', `GL_MAP2_VERTEX_3', and
-     `GL_MAP2_VERTEX_4'.
-
-QUERY
-     Specifies which parameter to return. Symbolic names `GL_COEFF',
-     `GL_ORDER', and `GL_DOMAIN' are accepted.
-
-V
-     Returns the requested data.
-
-`glMap1' and `glMap2' define evaluators. `glGetMap' returns evaluator
-parameters. TARGET chooses a map, QUERY selects a specific parameter,
-and V points to storage where the values will be returned.
-
-The acceptable values for the TARGET parameter are described in the
-`glMap1' and `glMap2' reference pages.
-
-QUERY can assume the following values:
-
-`GL_COEFF'
-     V returns the control points for the evaluator function.
-     One-dimensional evaluators return ORDER control points, and
-     two-dimensional evaluators return UORDER×VORDER control points.
-     Each control point consists of one, two, three, or four integer,
-     single-precision floating-point, or double-precision floating-point
-     values, depending on the type of the evaluator. The GL returns
-     two-dimensional control points in row-major order, incrementing the
-     UORDER index quickly and the VORDER index after each row. Integer
-     values, when requested, are computed by rounding the internal
-     floating-point values to the nearest integer values.
-
-`GL_ORDER'
-     V returns the order of the evaluator function. One-dimensional
-     evaluators return a single value, ORDER . The initial value is 1.
-     Two-dimensional evaluators return two values, UORDER and VORDER .
-     The initial value is 1,1.
-
-`GL_DOMAIN'
-     V returns the linear U and V mapping parameters. One-dimensional
-     evaluators return two values, U1 and U2 , as specified by `glMap1'.
-     Two-dimensional evaluators return four values ( U1 , U2 , V1 , and
-     V2 ) as specified by `glMap2'. Integer values, when requested, are
-     computed by rounding the internal floating-point values to the
-     nearest integer values.
-
-`GL_INVALID_ENUM' is generated if either TARGET or QUERY is not an
-accepted value.
-
-`GL_INVALID_OPERATION' is generated if `glGetMap' is executed between
-the execution of `glBegin' and the corresponding execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetMaterial
-  "glGetMaterial"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetMaterialfv"))
-      (paramdef "GLenum " (parameter "face"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Return material parameters.
-
-FACE
-     Specifies which of the two materials is being queried. `GL_FRONT'
-     or `GL_BACK' are accepted, representing the front and back
-     materials, respectively.
-
-PNAME
-     Specifies the material parameter to return. `GL_AMBIENT',
-     `GL_DIFFUSE', `GL_SPECULAR', `GL_EMISSION', `GL_SHININESS', and
-     `GL_COLOR_INDEXES' are accepted.
-
-PARAMS
-     Returns the requested data.
-
-`glGetMaterial' returns in PARAMS the value or values of parameter PNAME
-of material FACE. Six parameters are defined:
-
-`GL_AMBIENT'
-     PARAMS returns four integer or floating-point values representing
-     the ambient reflectance of the material. Integer values, when
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 maps to the most positive
-     representable integer value, and -1.0 maps to the most negative
-     representable integer value. If the internal value is outside the
-     range [-1,1] , the corresponding integer return value is undefined.
-     The initial value is (0.2, 0.2, 0.2, 1.0)
-
-`GL_DIFFUSE'
-     PARAMS returns four integer or floating-point values representing
-     the diffuse reflectance of the material. Integer values, when
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 maps to the most positive
-     representable integer value, and -1.0 maps to the most negative
-     representable integer value. If the internal value is outside the
-     range [-1,1] , the corresponding integer return value is undefined.
-     The initial value is (0.8, 0.8, 0.8, 1.0).
-
-`GL_SPECULAR'
-     PARAMS returns four integer or floating-point values representing
-     the specular reflectance of the material. Integer values, when
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 maps to the most positive
-     representable integer value, and -1.0 maps to the most negative
-     representable integer value. If the internal value is outside the
-     range [-1,1] , the corresponding integer return value is undefined.
-     The initial value is (0, 0, 0, 1).
-
-`GL_EMISSION'
-     PARAMS returns four integer or floating-point values representing
-     the emitted light intensity of the material. Integer values, when
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 maps to the most positive
-     representable integer value, and -1.0 maps to the most negative
-     representable integer value. If the internal value is outside the
-     range [-1,1] , the corresponding integer return value is undefined.
-     The initial value is (0, 0, 0, 1).
-
-`GL_SHININESS'
-     PARAMS returns one integer or floating-point value representing the
-     specular exponent of the material. Integer values, when requested,
-     are computed by rounding the internal floating-point value to the
-     nearest integer value. The initial value is 0.
-
-`GL_COLOR_INDEXES'
-     PARAMS returns three integer or floating-point values representing
-     the ambient, diffuse, and specular indices of the material. These
-     indices are used only for color index lighting. (All the other
-     parameters are used only for RGBA lighting.) Integer values, when
-     requested, are computed by rounding the internal floating-point
-     values to the nearest integer values.
-
-`GL_INVALID_ENUM' is generated if FACE or PNAME is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if `glGetMaterial' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetMinmaxParameter
-  "glGetMinmaxParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetMinmaxParameterfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Get minmax parameters.
-
-TARGET
-     Must be `GL_MINMAX'.
-
-PNAME
-     The parameter to be retrieved. Must be one of `GL_MINMAX_FORMAT' or
-     `GL_MINMAX_SINK'.
-
-PARAMS
-     A pointer to storage for the retrieved parameters.
-
-`glGetMinmaxParameter' retrieves parameters for the current minmax table
-by setting PNAME to one of the following values:
-
-
-
-*Parameter*
-     *Description*
-
-`GL_MINMAX_FORMAT'
-     Internal format of minmax table
-
-`GL_MINMAX_SINK'
-     Value of the SINK parameter
-
-
-
-`GL_INVALID_ENUM' is generated if TARGET is not `GL_MINMAX'.
-
-`GL_INVALID_ENUM' is generated if PNAME is not one of the allowable
-values.
-
-`GL_INVALID_OPERATION' is generated if `glGetMinmaxParameter' is
-executed between the execution of `glBegin' and the corresponding
-execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetMinmax
-  "glGetMinmax"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetMinmax"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLboolean " (parameter "reset"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "types"))
-      (paramdef "GLvoid * " (parameter "values"))))
+  ((glGetMinmax
+     (target GLenum)
+     (reset GLboolean)
+     (format GLenum)
+     (types GLenum)
+     (values *)
+     ->
+     void))
   "Get minimum and maximum pixel values.
 
 TARGET
@@ -9411,123 +8358,7 @@ indicated by TYPE.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glGetPixelMap
-  "glGetPixelMap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetPixelMapfv"))
-      (paramdef "GLenum " (parameter "map"))
-      (paramdef "GLfloat * " (parameter "data"))))
-  "Return the specified pixel map.
-
-MAP
-     Specifies the name of the pixel map to return. Accepted values are
-     `GL_PIXEL_MAP_I_TO_I', `GL_PIXEL_MAP_S_TO_S',
-     `GL_PIXEL_MAP_I_TO_R', `GL_PIXEL_MAP_I_TO_G',
-     `GL_PIXEL_MAP_I_TO_B', `GL_PIXEL_MAP_I_TO_A',
-     `GL_PIXEL_MAP_R_TO_R', `GL_PIXEL_MAP_G_TO_G',
-     `GL_PIXEL_MAP_B_TO_B', and `GL_PIXEL_MAP_A_TO_A'.
-
-DATA
-     Returns the pixel map contents.
-
-See the `glPixelMap' reference page for a description of the acceptable
-values for the MAP parameter. `glGetPixelMap' returns in DATA the
-contents of the pixel map specified in MAP. Pixel maps are used during
-the execution of `glReadPixels', `glDrawPixels', `glCopyPixels',
-`glTexImage1D', `glTexImage2D', `glTexImage3D', `glTexSubImage1D',
-`glTexSubImage2D', `glTexSubImage3D', `glCopyTexImage1D',
-`glCopyTexImage2D', `glCopyTexSubImage1D', `glCopyTexSubImage2D', and
-`glCopyTexSubImage3D'. to map color indices, stencil indices, color
-components, and depth components to other values.
-
-If a non-zero named buffer object is bound to the `GL_PIXEL_PACK_BUFFER'
-target (see `glBindBuffer') while a pixel map is requested, DATA is
-treated as a byte offset into the buffer object's data store.
-
-Unsigned integer values, if requested, are linearly mapped from the
-internal fixed or floating-point representation such that 1.0 maps to
-the largest representable integer value, and 0.0 maps to 0. Return
-unsigned integer values are undefined if the map value was not in the
-range [0,1].
-
-To determine the required size of MAP, call `glGet' with the appropriate
-symbolic constant.
-
-`GL_INVALID_ENUM' is generated if MAP is not an accepted value.
-
-`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
-bound to the `GL_PIXEL_PACK_BUFFER' target and the buffer object's data
-store is currently mapped.
-
-`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
-bound to the `GL_PIXEL_PACK_BUFFER' target and the data would be packed
-to the buffer object such that the memory writes required would exceed
-the data store size.
-
-`GL_INVALID_OPERATION' is generated by `glGetPixelMapfv' if a non-zero
-buffer object name is bound to the `GL_PIXEL_PACK_BUFFER' target and
-DATA is not evenly divisible into the number of bytes needed to store in
-memory a GLfloat datum.
-
-`GL_INVALID_OPERATION' is generated by `glGetPixelMapuiv' if a non-zero
-buffer object name is bound to the `GL_PIXEL_PACK_BUFFER' target and
-DATA is not evenly divisible into the number of bytes needed to store in
-memory a GLuint datum.
-
-`GL_INVALID_OPERATION' is generated by `glGetPixelMapusv' if a non-zero
-buffer object name is bound to the `GL_PIXEL_PACK_BUFFER' target and
-DATA is not evenly divisible into the number of bytes needed to store in
-memory a GLushort datum.
-
-`GL_INVALID_OPERATION' is generated if `glGetPixelMap' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetPointerv
-  "glGetPointerv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetPointerv"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLvoid ** " (parameter "params"))))
-  "Return the address of the specified pointer.
-
-PNAME
-     Specifies the array or buffer pointer to be returned. Symbolic
-     constants `GL_COLOR_ARRAY_POINTER', `GL_EDGE_FLAG_ARRAY_POINTER',
-     `GL_FOG_COORD_ARRAY_POINTER', `GL_FEEDBACK_BUFFER_POINTER',
-     `GL_INDEX_ARRAY_POINTER', `GL_NORMAL_ARRAY_POINTER',
-     `GL_SECONDARY_COLOR_ARRAY_POINTER', `GL_SELECTION_BUFFER_POINTER',
-     `GL_TEXTURE_COORD_ARRAY_POINTER', or `GL_VERTEX_ARRAY_POINTER' are
-     accepted.
-
-PARAMS
-     Returns the pointer value specified by PNAME.
-
-`glGetPointerv' returns pointer information. PNAME is a symbolic
-constant indicating the pointer to be returned, and PARAMS is a pointer
-to a location in which to place the returned data.
-
-For all PNAME arguments except `GL_FEEDBACK_BUFFER_POINTER' and
-`GL_SELECTION_BUFFER_POINTER', if a non-zero named buffer object was
-bound to the `GL_ARRAY_BUFFER' target (see `glBindBuffer') when the
-desired pointer was previously specified, the pointer returned is a byte
-offset into the buffer object's data store. Buffer objects are only
-available in OpenGL versions 1.5 and greater.
-
-`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.")
-
-(define-gl-procedure
-  glGetPolygonStipple
-  "glGetPolygonStipple"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetPolygonStipple"))
-      (paramdef "GLubyte * " (parameter "pattern"))))
+  ((glGetPolygonStipple (pattern *) -> void))
   "Return the polygon stipple pattern.
 
 PATTERN
@@ -9560,17 +8391,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetProgramInfoLog
-  "glGetProgramInfoLog"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetProgramInfoLog"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLsizei " (parameter "maxLength"))
-      (paramdef "GLsizei *" (parameter "length"))
-      (paramdef "GLchar *" (parameter "infoLog"))))
+  ((glGetProgramInfoLog
+     (program GLuint)
+     (maxLength GLsizei)
+     (length *)
+     (infoLog *)
+     ->
+     void))
   "Returns the information log for a program object.
 
 PROGRAM
@@ -9621,211 +8448,15 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetProgramiv
-  "glGetProgramiv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetProgramiv"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLint *" (parameter "params"))))
-  "Returns a parameter from a program object.
-
-PROGRAM
-     Specifies the program object to be queried.
-
-PNAME
-     Specifies the object parameter. Accepted symbolic names are
-     `GL_DELETE_STATUS', `GL_LINK_STATUS', `GL_VALIDATE_STATUS',
-     `GL_INFO_LOG_LENGTH', `GL_ATTACHED_SHADERS',
-     `GL_ACTIVE_ATTRIBUTES', `GL_ACTIVE_ATTRIBUTE_MAX_LENGTH',
-     `GL_ACTIVE_UNIFORMS', `GL_ACTIVE_UNIFORM_MAX_LENGTH'.
-
-PARAMS
-     Returns the requested object parameter.
-
-`glGetProgram' returns in PARAMS the value of a parameter for a specific
-program object. The following parameters are defined:
-
-`GL_DELETE_STATUS'
-
-
-     PARAMS returns `GL_TRUE' if PROGRAM is currently flagged for
-     deletion, and `GL_FALSE' otherwise.
-
-`GL_LINK_STATUS'
-
-
-     PARAMS returns `GL_TRUE' if the last link operation on PROGRAM was
-     successful, and `GL_FALSE' otherwise.
-
-`GL_VALIDATE_STATUS'
-
-
-     PARAMS returns `GL_TRUE' or if the last validation operation on
-     PROGRAM was successful, and `GL_FALSE' otherwise.
-
-`GL_INFO_LOG_LENGTH'
-
-
-     PARAMS returns the number of characters in the information log for
-     PROGRAM including the null termination character (i.e., the size of
-     the character buffer required to store the information log). If
-     PROGRAM has no information log, a value of 0 is returned.
-
-`GL_ATTACHED_SHADERS'
-
-
-     PARAMS returns the number of shader objects attached to PROGRAM.
-
-`GL_ACTIVE_ATTRIBUTES'
-
-
-     PARAMS returns the number of active attribute variables for
-     PROGRAM.
-
-`GL_ACTIVE_ATTRIBUTE_MAX_LENGTH'
-
-
-     PARAMS returns the length of the longest active attribute name for
-     PROGRAM, including the null termination character (i.e., the size
-     of the character buffer required to store the longest attribute
-     name). If no active attributes exist, 0 is returned.
-
-`GL_ACTIVE_UNIFORMS'
-
-
-     PARAMS returns the number of active uniform variables for PROGRAM.
-
-`GL_ACTIVE_UNIFORM_MAX_LENGTH'
-
-
-     PARAMS returns the length of the longest active uniform variable
-     name for PROGRAM, including the null termination character (i.e.,
-     the size of the character buffer required to store the longest
-     uniform variable name). If no active uniform variables exist, 0 is
-     returned.
-
-`GL_INVALID_VALUE' is generated if PROGRAM is not a value generated by
-OpenGL.
-
-`GL_INVALID_OPERATION' is generated if PROGRAM does not refer to a
-program object.
-
-`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
-
-`GL_INVALID_OPERATION' is generated if `glGetProgram' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetQueryiv
-  "glGetQueryiv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetQueryiv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLint * " (parameter "params"))))
-  "Return parameters of a query object target.
-
-TARGET
-     Specifies a query object target. Must be `GL_SAMPLES_PASSED'.
-
-PNAME
-     Specifies the symbolic name of a query object target parameter.
-     Accepted values are `GL_CURRENT_QUERY' or `GL_QUERY_COUNTER_BITS'.
-
-PARAMS
-     Returns the requested data.
-
-`glGetQueryiv' returns in PARAMS a selected parameter of the query
-object target specified by TARGET.
-
-PNAME names a specific query object target parameter. When TARGET is
-`GL_SAMPLES_PASSED', PNAME can be as follows:
-
-`GL_CURRENT_QUERY'
-     PARAMS returns the name of the currently active occlusion query
-     object. If no occlusion query is active, 0 is returned. The initial
-     value is 0.
-
-`GL_QUERY_COUNTER_BITS'
-     PARAMS returns the number of bits in the query counter used to
-     accumulate passing samples. If the number of bits returned is 0,
-     the implementation does not support a query counter, and the
-     results obtained from `glGetQueryObject' are useless.
-
-`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if `glGetQueryiv' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetQueryObject
-  "glGetQueryObject"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetQueryObjectiv"))
-      (paramdef "GLuint " (parameter "id"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLint * " (parameter "params"))))
-  "Return parameters of a query object.
-
-ID
-     Specifies the name of a query object.
-
-PNAME
-     Specifies the symbolic name of a query object parameter. Accepted
-     values are `GL_QUERY_RESULT' or `GL_QUERY_RESULT_AVAILABLE'.
-
-PARAMS
-     Returns the requested data.
-
-`glGetQueryObject' returns in PARAMS a selected parameter of the query
-object specified by ID.
-
-PNAME names a specific query object parameter. PNAME can be as follows:
-
-`GL_QUERY_RESULT'
-     PARAMS returns the value of the query object's passed samples
-     counter. The initial value is 0.
-
-`GL_QUERY_RESULT_AVAILABLE'
-     PARAMS returns whether the passed samples counter is immediately
-     available. If a delay would occur waiting for the query result,
-     `GL_FALSE' is returned. Otherwise, `GL_TRUE' is returned, which
-     also indicates that the results of all previous queries are
-     available as well.
-
-`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
-
-`GL_INVALID_OPERATION' is generated if ID is not the name of a query
-object.
-
-`GL_INVALID_OPERATION' is generated if ID is the name of a currently
-active query object.
-
-`GL_INVALID_OPERATION' is generated if `glGetQueryObject' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetSeparableFilter
-  "glGetSeparableFilter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetSeparableFilter"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLvoid * " (parameter "row"))
-      (paramdef "GLvoid * " (parameter "column"))
-      (paramdef "GLvoid * " (parameter "span"))))
+  ((glGetSeparableFilter
+     (target GLenum)
+     (format GLenum)
+     (type GLenum)
+     (row *)
+     (column *)
+     (span *)
+     ->
+     void))
   "Get separable convolution filter kernel images.
 
 TARGET
@@ -9937,15 +8568,13 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glGetShaderInfoLog
-  "glGetShaderInfoLog"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetShaderInfoLog"))
-      (paramdef "GLuint " (parameter "shader"))
-      (paramdef "GLsizei " (parameter "maxLength"))
-      (paramdef "GLsizei *" (parameter "length"))
-      (paramdef "GLchar *" (parameter "infoLog"))))
+  ((glGetShaderInfoLog
+     (shader GLuint)
+     (maxLength GLsizei)
+     (length *)
+     (infoLog *)
+     ->
+     void))
   "Returns the information log for a shader object.
 
 SHADER
@@ -9993,15 +8622,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetShaderSource
-  "glGetShaderSource"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetShaderSource"))
-      (paramdef "GLuint " (parameter "shader"))
-      (paramdef "GLsizei " (parameter "bufSize"))
-      (paramdef "GLsizei *" (parameter "length"))
-      (paramdef "GLchar *" (parameter "source"))))
+  ((glGetShaderSource
+     (shader GLuint)
+     (bufSize GLsizei)
+     (length *)
+     (source *)
+     ->
+     void))
   "Returns the source code string from a shader object.
 
 SHADER
@@ -10045,76 +8672,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetShaderiv
-  "glGetShaderiv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetShaderiv"))
-      (paramdef "GLuint " (parameter "shader"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLint *" (parameter "params"))))
-  "Returns a parameter from a shader object.
-
-SHADER
-     Specifies the shader object to be queried.
-
-PNAME
-     Specifies the object parameter. Accepted symbolic names are
-     `GL_SHADER_TYPE', `GL_DELETE_STATUS', `GL_COMPILE_STATUS',
-     `GL_INFO_LOG_LENGTH', `GL_SHADER_SOURCE_LENGTH'.
-
-PARAMS
-     Returns the requested object parameter.
-
-`glGetShader' returns in PARAMS the value of a parameter for a specific
-shader object. The following parameters are defined:
-
-`GL_SHADER_TYPE'
-     PARAMS returns `GL_VERTEX_SHADER' if SHADER is a vertex shader
-     object, and `GL_FRAGMENT_SHADER' if SHADER is a fragment shader
-     object.
-
-`GL_DELETE_STATUS'
-     PARAMS returns `GL_TRUE' if SHADER is currently flagged for
-     deletion, and `GL_FALSE' otherwise.
-
-`GL_COMPILE_STATUS'
-     PARAMS returns `GL_TRUE' if the last compile operation on SHADER
-     was successful, and `GL_FALSE' otherwise.
-
-`GL_INFO_LOG_LENGTH'
-     PARAMS returns the number of characters in the information log for
-     SHADER including the null termination character (i.e., the size of
-     the character buffer required to store the information log). If
-     SHADER has no information log, a value of 0 is returned.
-
-`GL_SHADER_SOURCE_LENGTH'
-     PARAMS returns the length of the concatenation of the source
-     strings that make up the shader source for the SHADER, including
-     the null termination character. (i.e., the size of the character
-     buffer required to store the shader source). If no source code
-     exists, 0 is returned.
-
-`GL_INVALID_VALUE' is generated if SHADER is not a value generated by
-OpenGL.
-
-`GL_INVALID_OPERATION' is generated if SHADER does not refer to a shader
-object.
-
-`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
-
-`GL_INVALID_OPERATION' is generated if `glGetShader' is executed between
-the execution of `glBegin' and the corresponding execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetString
-  "glGetString"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "const GLubyte* "
-        (function "glGetString"))
-      (paramdef "GLenum " (parameter "name"))))
+  ((glGetString (name GLenum) -> *))
   "Return a string describing the current GL connection.
 
 NAME
@@ -10183,218 +8741,14 @@ All strings are null-terminated.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glGetTexEnv
-  "glGetTexEnv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetTexEnvfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Return texture environment parameters.
-
-TARGET
-     Specifies a texture environment. May be `GL_TEXTURE_ENV',
-     `GL_TEXTURE_FILTER_CONTROL', or `GL_POINT_SPRITE'.
-
-PNAME
-     Specifies the symbolic name of a texture environment parameter.
-     Accepted values are `GL_TEXTURE_ENV_MODE', `GL_TEXTURE_ENV_COLOR',
-     `GL_TEXTURE_LOD_BIAS', `GL_COMBINE_RGB', `GL_COMBINE_ALPHA',
-     `GL_SRC0_RGB', `GL_SRC1_RGB', `GL_SRC2_RGB', `GL_SRC0_ALPHA',
-     `GL_SRC1_ALPHA', `GL_SRC2_ALPHA', `GL_OPERAND0_RGB',
-     `GL_OPERAND1_RGB', `GL_OPERAND2_RGB', `GL_OPERAND0_ALPHA',
-     `GL_OPERAND1_ALPHA', `GL_OPERAND2_ALPHA', `GL_RGB_SCALE',
-     `GL_ALPHA_SCALE', or `GL_COORD_REPLACE'.
-
-PARAMS
-     Returns the requested data.
-
-`glGetTexEnv' returns in PARAMS selected values of a texture environment
-that was specified with `glTexEnv'. TARGET specifies a texture
-environment.
-
-When TARGET is `GL_TEXTURE_FILTER_CONTROL', PNAME must be
-`GL_TEXTURE_LOD_BIAS'. When TARGET is `GL_POINT_SPRITE', PNAME must be
-`GL_COORD_REPLACE'. When TARGET is `GL_TEXTURE_ENV', PNAME can be
-`GL_TEXTURE_ENV_MODE', `GL_TEXTURE_ENV_COLOR', `GL_COMBINE_RGB',
-`GL_COMBINE_ALPHA', `GL_RGB_SCALE', `GL_ALPHA_SCALE', `GL_SRC0_RGB',
-`GL_SRC1_RGB', `GL_SRC2_RGB', `GL_SRC0_ALPHA', `GL_SRC1_ALPHA', or
-`GL_SRC2_ALPHA'.
-
-PNAME names a specific texture environment parameter, as follows:
-
-`GL_TEXTURE_ENV_MODE'
-     PARAMS returns the single-valued texture environment mode, a
-     symbolic constant. The initial value is `GL_MODULATE'.
-
-`GL_TEXTURE_ENV_COLOR'
-     PARAMS returns four integer or floating-point values that are the
-     texture environment color. Integer values, when requested, are
-     linearly mapped from the internal floating-point representation
-     such that 1.0 maps to the most positive representable integer, and
-     -1.0 maps to the most negative representable integer. The initial
-     value is (0, 0, 0, 0).
-
-`GL_TEXTURE_LOD_BIAS'
-     PARAMS returns a single floating-point value that is the texture
-     level-of-detail bias. The initial value is 0.
-
-`GL_COMBINE_RGB'
-     PARAMS returns a single symbolic constant value representing the
-     current RGB combine mode. The initial value is `GL_MODULATE'.
-
-`GL_COMBINE_ALPHA'
-     PARAMS returns a single symbolic constant value representing the
-     current alpha combine mode. The initial value is `GL_MODULATE'.
-
-`GL_SRC0_RGB'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner zero's RGB source. The initial value is
-     `GL_TEXTURE'.
-
-`GL_SRC1_RGB'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner one's RGB source. The initial value is
-     `GL_PREVIOUS'.
-
-`GL_SRC2_RGB'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner two's RGB source. The initial value is
-     `GL_CONSTANT'.
-
-`GL_SRC0_ALPHA'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner zero's alpha source. The initial value is
-     `GL_TEXTURE'.
-
-`GL_SRC1_ALPHA'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner one's alpha source. The initial value is
-     `GL_PREVIOUS'.
-
-`GL_SRC2_ALPHA'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner two's alpha source. The initial value is
-     `GL_CONSTANT'.
-
-`GL_OPERAND0_RGB'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner zero's RGB operand. The initial value is
-     `GL_SRC_COLOR'.
-
-`GL_OPERAND1_RGB'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner one's RGB operand. The initial value is
-     `GL_SRC_COLOR'.
-
-`GL_OPERAND2_RGB'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner two's RGB operand. The initial value is
-     `GL_SRC_ALPHA'.
-
-`GL_OPERAND0_ALPHA'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner zero's alpha operand. The initial value is
-     `GL_SRC_ALPHA'.
-
-`GL_OPERAND1_ALPHA'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner one's alpha operand. The initial value is
-     `GL_SRC_ALPHA'.
-
-`GL_OPERAND2_ALPHA'
-     PARAMS returns a single symbolic constant value representing the
-     texture combiner two's alpha operand. The initial value is
-     `GL_SRC_ALPHA'.
-
-`GL_RGB_SCALE'
-     PARAMS returns a single floating-point value representing the
-     current RGB texture combiner scaling factor. The initial value is
-     1.0.
-
-`GL_ALPHA_SCALE'
-     PARAMS returns a single floating-point value representing the
-     current alpha texture combiner scaling factor. The initial value is
-     1.0.
-
-`GL_COORD_REPLACE'
-     PARAMS returns a single boolean value representing the current
-     point sprite texture coordinate replacement enable state. The
-     initial value is `GL_FALSE'.
-
-`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if `glGetTexEnv' is executed between
-the execution of `glBegin' and the corresponding execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetTexGen
-  "glGetTexGen"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetTexGendv"))
-      (paramdef "GLenum " (parameter "coord"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLdouble * " (parameter "params"))))
-  "Return texture coordinate generation parameters.
-
-COORD
-     Specifies a texture coordinate. Must be `GL_S', `GL_T', `GL_R', or
-     `GL_Q'.
-
-PNAME
-     Specifies the symbolic name of the value(s) to be returned. Must be
-     either `GL_TEXTURE_GEN_MODE' or the name of one of the texture
-     generation plane equations: `GL_OBJECT_PLANE' or `GL_EYE_PLANE'.
-
-PARAMS
-     Returns the requested data.
-
-`glGetTexGen' returns in PARAMS selected parameters of a texture
-coordinate generation function that was specified using `glTexGen'.
-COORD names one of the (S, T, R, Q) texture coordinates, using the
-symbolic constant `GL_S', `GL_T', `GL_R', or `GL_Q'.
-
-PNAME specifies one of three symbolic names:
-
-`GL_TEXTURE_GEN_MODE'
-     PARAMS returns the single-valued texture generation function, a
-     symbolic constant. The initial value is `GL_EYE_LINEAR'.
-
-`GL_OBJECT_PLANE'
-     PARAMS returns the four plane equation coefficients that specify
-     object linear-coordinate generation. Integer values, when
-     requested, are mapped directly from the internal floating-point
-     representation.
-
-`GL_EYE_PLANE'
-     PARAMS returns the four plane equation coefficients that specify
-     eye linear-coordinate generation. Integer values, when requested,
-     are mapped directly from the internal floating-point
-     representation. The returned values are those maintained in eye
-     coordinates. They are not equal to the values specified using
-     `glTexGen', unless the modelview matrix was identity when
-     `glTexGen' was called.
-
-`GL_INVALID_ENUM' is generated if COORD or PNAME is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if `glGetTexGen' is executed between
-the execution of `glBegin' and the corresponding execution of `glEnd'.")
-
-(define-gl-procedure
-  glGetTexImage
-  "glGetTexImage"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetTexImage"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLvoid * " (parameter "img"))))
+  ((glGetTexImage
+     (target GLenum)
+     (level GLint)
+     (format GLenum)
+     (type GLenum)
+     (img *)
+     ->
+     void))
   "Return a texture image.
 
 TARGET
@@ -10511,277 +8865,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glGetTexLevelParameter
-  "glGetTexLevelParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetTexLevelParameterfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Return texture parameter values for a specific level of detail.
-
-TARGET
-     Specifies the symbolic name of the target texture, either
-     `GL_TEXTURE_1D', `GL_TEXTURE_2D', `GL_TEXTURE_3D',
-     `GL_PROXY_TEXTURE_1D', `GL_PROXY_TEXTURE_2D',
-     `GL_PROXY_TEXTURE_3D', `GL_TEXTURE_CUBE_MAP_POSITIVE_X',
-     `GL_TEXTURE_CUBE_MAP_NEGATIVE_X', `GL_TEXTURE_CUBE_MAP_POSITIVE_Y',
-     `GL_TEXTURE_CUBE_MAP_NEGATIVE_Y', `GL_TEXTURE_CUBE_MAP_POSITIVE_Z',
-     `GL_TEXTURE_CUBE_MAP_NEGATIVE_Z', or `GL_PROXY_TEXTURE_CUBE_MAP'.
-
-LEVEL
-     Specifies the level-of-detail number of the desired image. Level 0
-     is the base image level. Level N is the N th mipmap reduction
-     image.
-
-PNAME
-     Specifies the symbolic name of a texture parameter.
-     `GL_TEXTURE_WIDTH', `GL_TEXTURE_HEIGHT', `GL_TEXTURE_DEPTH',
-     `GL_TEXTURE_INTERNAL_FORMAT', `GL_TEXTURE_BORDER',
-     `GL_TEXTURE_RED_SIZE', `GL_TEXTURE_GREEN_SIZE',
-     `GL_TEXTURE_BLUE_SIZE', `GL_TEXTURE_ALPHA_SIZE',
-     `GL_TEXTURE_LUMINANCE_SIZE', `GL_TEXTURE_INTENSITY_SIZE',
-     `GL_TEXTURE_DEPTH_SIZE', `GL_TEXTURE_COMPRESSED', and
-     `GL_TEXTURE_COMPRESSED_IMAGE_SIZE' are accepted.
-
-PARAMS
-     Returns the requested data.
-
-`glGetTexLevelParameter' returns in PARAMS texture parameter values for
-a specific level-of-detail value, specified as LEVEL. TARGET defines the
-target texture, either `GL_TEXTURE_1D', `GL_TEXTURE_2D',
-`GL_TEXTURE_3D', `GL_PROXY_TEXTURE_1D', `GL_PROXY_TEXTURE_2D',
-`GL_PROXY_TEXTURE_3D', `GL_TEXTURE_CUBE_MAP_POSITIVE_X',
-`GL_TEXTURE_CUBE_MAP_NEGATIVE_X', `GL_TEXTURE_CUBE_MAP_POSITIVE_Y',
-`GL_TEXTURE_CUBE_MAP_NEGATIVE_Y', `GL_TEXTURE_CUBE_MAP_POSITIVE_Z',
-`GL_TEXTURE_CUBE_MAP_NEGATIVE_Z', or `GL_PROXY_TEXTURE_CUBE_MAP'.
-
-`GL_MAX_TEXTURE_SIZE', and `GL_MAX_3D_TEXTURE_SIZE' are not really
-descriptive enough. It has to report the largest square texture image
-that can be accommodated with mipmaps and borders, but a long skinny
-texture, or a texture without mipmaps and borders, may easily fit in
-texture memory. The proxy targets allow the user to more accurately
-query whether the GL can accommodate a texture of a given configuration.
-If the texture cannot be accommodated, the texture state variables,
-which may be queried with `glGetTexLevelParameter', are set to 0. If the
-texture can be accommodated, the texture state values will be set as
-they would be set for a non-proxy target.
-
-PNAME specifies the texture parameter whose value or values will be
-returned.
-
-The accepted parameter names are as follows:
-
-`GL_TEXTURE_WIDTH'
-
-
-     PARAMS returns a single value, the width of the texture image. This
-     value includes the border of the texture image. The initial value
-     is 0.
-
-`GL_TEXTURE_HEIGHT'
-
-
-     PARAMS returns a single value, the height of the texture image.
-     This value includes the border of the texture image. The initial
-     value is 0.
-
-`GL_TEXTURE_DEPTH'
-
-
-     PARAMS returns a single value, the depth of the texture image. This
-     value includes the border of the texture image. The initial value
-     is 0.
-
-`GL_TEXTURE_INTERNAL_FORMAT'
-
-
-     PARAMS returns a single value, the internal format of the texture
-     image.
-
-`GL_TEXTURE_BORDER'
-
-
-     PARAMS returns a single value, the width in pixels of the border of
-     the texture image. The initial value is 0.
-
-`GL_TEXTURE_RED_SIZE',
-`GL_TEXTURE_GREEN_SIZE',
-`GL_TEXTURE_BLUE_SIZE',
-`GL_TEXTURE_ALPHA_SIZE',
-`GL_TEXTURE_LUMINANCE_SIZE',
-`GL_TEXTURE_INTENSITY_SIZE',
-`GL_TEXTURE_DEPTH_SIZE'
-
-
-     The internal storage resolution of an individual component. The
-     resolution chosen by the GL will be a close match for the
-     resolution requested by the user with the component argument of
-     `glTexImage1D', `glTexImage2D', `glTexImage3D', `glCopyTexImage1D',
-     and `glCopyTexImage2D'. The initial value is 0.
-
-`GL_TEXTURE_COMPRESSED'
-
-
-     PARAMS returns a single boolean value indicating if the texture
-     image is stored in a compressed internal format. The initiali value
-     is `GL_FALSE'.
-
-`GL_TEXTURE_COMPRESSED_IMAGE_SIZE'
-
-
-     PARAMS returns a single integer value, the number of unsigned bytes
-     of the compressed texture image that would be returned from
-     `glGetCompressedTexImage'.
-
-`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
-value.
-
-`GL_INVALID_VALUE' is generated if LEVEL is less than 0.
-
-`GL_INVALID_VALUE' may be generated if LEVEL is greater than LOG_2 MAX,
-where MAX is the returned value of `GL_MAX_TEXTURE_SIZE'.
-
-`GL_INVALID_OPERATION' is generated if `glGetTexLevelParameter' is
-executed between the execution of `glBegin' and the corresponding
-execution of `glEnd'.
-
-`GL_INVALID_OPERATION' is generated if
-`GL_TEXTURE_COMPRESSED_IMAGE_SIZE' is queried on texture images with an
-uncompressed internal format or on proxy targets.")
-
-(define-gl-procedure
-  glGetTexParameter
-  "glGetTexParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetTexParameterfv"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat * " (parameter "params"))))
-  "Return texture parameter values.
-
-TARGET
-     Specifies the symbolic name of the target texture. `GL_TEXTURE_1D',
-     `GL_TEXTURE_2D', `GL_TEXTURE_3D', and `GL_TEXTURE_CUBE_MAP' are
-     accepted.
-
-PNAME
-     Specifies the symbolic name of a texture parameter.
-     `GL_TEXTURE_MAG_FILTER', `GL_TEXTURE_MIN_FILTER',
-     `GL_TEXTURE_MIN_LOD', `GL_TEXTURE_MAX_LOD',
-     `GL_TEXTURE_BASE_LEVEL', `GL_TEXTURE_MAX_LEVEL',
-     `GL_TEXTURE_WRAP_S', `GL_TEXTURE_WRAP_T', `GL_TEXTURE_WRAP_R',
-     `GL_TEXTURE_BORDER_COLOR', `GL_TEXTURE_PRIORITY',
-     `GL_TEXTURE_RESIDENT', `GL_TEXTURE_COMPARE_MODE',
-     `GL_TEXTURE_COMPARE_FUNC', `GL_DEPTH_TEXTURE_MODE', and
-     `GL_GENERATE_MIPMAP' are accepted.
-
-PARAMS
-     Returns the texture parameters.
-
-`glGetTexParameter' returns in PARAMS the value or values of the texture
-parameter specified as PNAME. TARGET defines the target texture, either
-`GL_TEXTURE_1D', `GL_TEXTURE_2D', `GL_TEXTURE_3D', or
-`GL_TEXTURE_CUBE_MAP', to specify one-, two-, or three-dimensional or
-cube-mapped texturing. PNAME accepts the same symbols as
-`glTexParameter', with the same interpretations:
-
-`GL_TEXTURE_MAG_FILTER'
-     Returns the single-valued texture magnification filter, a symbolic
-     constant. The initial value is `GL_LINEAR'.
-
-`GL_TEXTURE_MIN_FILTER'
-     Returns the single-valued texture minification filter, a symbolic
-     constant. The initial value is `GL_NEAREST_MIPMAP_LINEAR'.
-
-`GL_TEXTURE_MIN_LOD'
-     Returns the single-valued texture minimum level-of-detail value.
-     The initial value is -1000 .
-
-`GL_TEXTURE_MAX_LOD'
-     Returns the single-valued texture maximum level-of-detail value.
-     The initial value is 1000.
-
-`GL_TEXTURE_BASE_LEVEL'
-     Returns the single-valued base texture mipmap level. The initial
-     value is 0.
-
-`GL_TEXTURE_MAX_LEVEL'
-     Returns the single-valued maximum texture mipmap array level. The
-     initial value is 1000.
-
-`GL_TEXTURE_WRAP_S'
-     Returns the single-valued wrapping function for texture coordinate
-     S , a symbolic constant. The initial value is `GL_REPEAT'.
-
-`GL_TEXTURE_WRAP_T'
-     Returns the single-valued wrapping function for texture coordinate
-     T , a symbolic constant. The initial value is `GL_REPEAT'.
-
-`GL_TEXTURE_WRAP_R'
-     Returns the single-valued wrapping function for texture coordinate
-     R , a symbolic constant. The initial value is `GL_REPEAT'.
-
-`GL_TEXTURE_BORDER_COLOR'
-     Returns four integer or floating-point numbers that comprise the
-     RGBA color of the texture border. Floating-point values are
-     returned in the range [0,1] . Integer values are returned as a
-     linear mapping of the internal floating-point representation such
-     that 1.0 maps to the most positive representable integer and -1.0
-     maps to the most negative representable integer. The initial value
-     is (0, 0, 0, 0).
-
-`GL_TEXTURE_PRIORITY'
-     Returns the residence priority of the target texture (or the named
-     texture bound to it). The initial value is 1. See
-     `glPrioritizeTextures'.
-
-`GL_TEXTURE_RESIDENT'
-     Returns the residence status of the target texture. If the value
-     returned in PARAMS is `GL_TRUE', the texture is resident in texture
-     memory. See `glAreTexturesResident'.
-
-`GL_TEXTURE_COMPARE_MODE'
-     Returns a single-valued texture comparison mode, a symbolic
-     constant. The initial value is `GL_NONE'. See `glTexParameter'.
-
-`GL_TEXTURE_COMPARE_FUNC'
-     Returns a single-valued texture comparison function, a symbolic
-     constant. The initial value is `GL_LEQUAL'. See `glTexParameter'.
-
-`GL_DEPTH_TEXTURE_MODE'
-     Returns a single-valued texture format indicating how the depth
-     values should be converted into color components. The initial value
-     is `GL_LUMINANCE'. See `glTexParameter'.
-
-`GL_GENERATE_MIPMAP'
-     Returns a single boolean value indicating if automatic mipmap level
-     updates are enabled. See `glTexParameter'.
-
-`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
-value.
-
-`GL_INVALID_OPERATION' is generated if `glGetTexParameter' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetUniformLocation
-  "glGetUniformLocation"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLint "
-        (function "glGetUniformLocation"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "const GLchar *" (parameter "name"))))
+  ((glGetUniformLocation
+     (program GLuint)
+     (name *)
+     ->
+     GLint))
   "Returns the location of a uniform variable.
 
 PROGRAM
@@ -10834,2704 +8922,7 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glGetUniformfv
-  "glGetUniformfv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetUniformfv"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLfloat *" (parameter "params")))
-    (funcprototype
-      (funcdef "void " (function "glGetUniformiv"))
-      (paramdef "GLuint " (parameter "program"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLint *" (parameter "params"))))
-  "Returns the value of a uniform variable.
-
-PROGRAM
-     Specifies the program object to be queried.
-
-LOCATION
-     Specifies the location of the uniform variable to be queried.
-
-PARAMS
-     Returns the value of the specified uniform variable.
-
-`glGetUniform' returns in PARAMS the value(s) of the specified uniform
-variable. The type of the uniform variable specified by LOCATION
-determines the number of values returned. If the uniform variable is
-defined in the shader as a boolean, int, or float, a single value will
-be returned. If it is defined as a vec2, ivec2, or bvec2, two values
-will be returned. If it is defined as a vec3, ivec3, or bvec3, three
-values will be returned, and so on. To query values stored in uniform
-variables declared as arrays, call `glGetUniform' for each element of
-the array. To query values stored in uniform variables declared as
-structures, call `glGetUniform' for each field in the structure. The
-values for uniform variables declared as a matrix will be returned in
-column major order.
-
-The locations assigned to uniform variables are not known until the
-program object is linked. After linking has occurred, the command
-`glGetUniformLocation' can be used to obtain the location of a uniform
-variable. This location value can then be passed to `glGetUniform' in
-order to query the current value of the uniform variable. After a
-program object has been linked successfully, the index values for
-uniform variables remain fixed until the next link command occurs. The
-uniform variable values can only be queried after a link if the link was
-successful.
-
-`GL_INVALID_VALUE' is generated if PROGRAM is not a value generated by
-OpenGL.
-
-`GL_INVALID_OPERATION' is generated if PROGRAM is not a program object.
-
-`GL_INVALID_OPERATION' is generated if PROGRAM has not been successfully
-linked.
-
-`GL_INVALID_OPERATION' is generated if LOCATION does not correspond to a
-valid uniform variable location for the specified program object.
-
-`GL_INVALID_OPERATION' is generated if `glGetUniform' is executed
-between the execution of `glBegin' and the corresponding execution of
-`glEnd'.")
-
-(define-gl-procedure
-  glGetVertexAttribPointerv
-  "glGetVertexAttribPointerv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetVertexAttribPointerv"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLvoid **" (parameter "pointer"))))
-  "Return the address of the specified generic vertex attribute pointer.
-
-INDEX
-     Specifies the generic vertex attribute parameter to be returned.
-
-PNAME
-     Specifies the symbolic name of the generic vertex attribute
-     parameter to be returned. Must be `GL_VERTEX_ATTRIB_ARRAY_POINTER'.
-
-POINTER
-     Returns the pointer value.
-
-`glGetVertexAttribPointerv' returns pointer information. INDEX is the
-generic vertex attribute to be queried, PNAME is a symbolic constant
-indicating the pointer to be returned, and PARAMS is a pointer to a
-location in which to place the returned data.
-
-If a non-zero named buffer object was bound to the `GL_ARRAY_BUFFER'
-target (see `glBindBuffer') when the desired pointer was previously
-specified, the POINTER returned is a byte offset into the buffer
-object's data store.
-
-`GL_INVALID_VALUE' is generated if INDEX is greater than or equal to
-`GL_MAX_VERTEX_ATTRIBS'.
-
-`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.")
-
-(define-gl-procedure
-  glGetVertexAttribdv
-  "glGetVertexAttribdv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetVertexAttribdv"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLdouble *" (parameter "params")))
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetVertexAttribfv"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat *" (parameter "params")))
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glGetVertexAttribiv"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLint *" (parameter "params"))))
-  "Return a generic vertex attribute parameter.
-
-INDEX
-     Specifies the generic vertex attribute parameter to be queried.
-
-PNAME
-     Specifies the symbolic name of the vertex attribute parameter to be
-     queried. Accepted values are
-     `GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING',
-     `GL_VERTEX_ATTRIB_ARRAY_ENABLED', `GL_VERTEX_ATTRIB_ARRAY_SIZE',
-     `GL_VERTEX_ATTRIB_ARRAY_STRIDE', `GL_VERTEX_ATTRIB_ARRAY_TYPE',
-     `GL_VERTEX_ATTRIB_ARRAY_NORMALIZED', or `GL_CURRENT_VERTEX_ATTRIB'.
-
-PARAMS
-     Returns the requested data.
-
-`glGetVertexAttrib' returns in PARAMS the value of a generic vertex
-attribute parameter. The generic vertex attribute to be queried is
-specified by INDEX, and the parameter to be queried is specified by
-PNAME.
-
-The accepted parameter names are as follows:
-
-`GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     currently bound to the binding point corresponding to generic
-     vertex attribute array INDEX. If no buffer object is bound, 0 is
-     returned. The initial value is 0.
-
-`GL_VERTEX_ATTRIB_ARRAY_ENABLED'
-
-
-     PARAMS returns a single value that is non-zero (true) if the vertex
-     attribute array for INDEX is enabled and 0 (false) if it is
-     disabled. The initial value is `GL_FALSE'.
-
-`GL_VERTEX_ATTRIB_ARRAY_SIZE'
-
-
-     PARAMS returns a single value, the size of the vertex attribute
-     array for INDEX. The size is the number of values for each element
-     of the vertex attribute array, and it will be 1, 2, 3, or 4. The
-     initial value is 4.
-
-`GL_VERTEX_ATTRIB_ARRAY_STRIDE'
-
-
-     PARAMS returns a single value, the array stride for (number of
-     bytes between successive elements in) the vertex attribute array
-     for INDEX. A value of 0 indicates that the array elements are
-     stored sequentially in memory. The initial value is 0.
-
-`GL_VERTEX_ATTRIB_ARRAY_TYPE'
-
-
-     PARAMS returns a single value, a symbolic constant indicating the
-     array type for the vertex attribute array for INDEX. Possible
-     values are `GL_BYTE', `GL_UNSIGNED_BYTE', `GL_SHORT',
-     `GL_UNSIGNED_SHORT', `GL_INT', `GL_UNSIGNED_INT', `GL_FLOAT', and
-     `GL_DOUBLE'. The initial value is `GL_FLOAT'.
-
-`GL_VERTEX_ATTRIB_ARRAY_NORMALIZED'
-
-
-     PARAMS returns a single value that is non-zero (true) if
-     fixed-point data types for the vertex attribute array indicated by
-     INDEX are normalized when they are converted to floating point, and
-     0 (false) otherwise. The initial value is `GL_FALSE'.
-
-`GL_CURRENT_VERTEX_ATTRIB'
-
-
-     PARAMS returns four values that represent the current value for the
-     generic vertex attribute specified by index. Generic vertex
-     attribute 0 is unique in that it has no current state, so an error
-     will be generated if INDEX is 0. The initial value for all other
-     generic vertex attributes is (0,0,0,1).
-
-All of the parameters except `GL_CURRENT_VERTEX_ATTRIB' represent
-client-side state.
-
-`GL_INVALID_VALUE' is generated if INDEX is greater than or equal to
-`GL_MAX_VERTEX_ATTRIBS'.
-
-`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
-
-`GL_INVALID_OPERATION' is generated if INDEX is 0 and PNAME is
-`GL_CURRENT_VERTEX_ATTRIB'.")
-
-(define-gl-procedure
-  glGet
-  "glGet"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glGetBooleanv"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLboolean * " (parameter "params"))))
-  "Return the value or values of a selected parameter.
-
-PNAME
-     Specifies the parameter value to be returned. The symbolic
-     constants in the list below are accepted.
-
-PARAMS
-     Returns the value or values of the specified parameter.
-
-These four commands return values for simple state variables in GL.
-PNAME is a symbolic constant indicating the state variable to be
-returned, and PARAMS is a pointer to an array of the indicated type in
-which to place the returned data.
-
-Type conversion is performed if PARAMS has a different type than the
-state variable value being requested. If `glGetBooleanv' is called, a
-floating-point (or integer) value is converted to `GL_FALSE' if and only
-if it is 0.0 (or 0). Otherwise, it is converted to `GL_TRUE'. If
-`glGetIntegerv' is called, boolean values are returned as `GL_TRUE' or
-`GL_FALSE', and most floating-point values are rounded to the nearest
-integer value. Floating-point colors and normals, however, are returned
-with a linear mapping that maps 1.0 to the most positive representable
-integer value and -1.0 to the most negative representable integer value.
-If `glGetFloatv' or `glGetDoublev' is called, boolean values are
-returned as `GL_TRUE' or `GL_FALSE', and integer values are converted to
-floating-point values.
-
-The following symbolic constants are accepted by PNAME:
-
-`GL_ACCUM_ALPHA_BITS'
-
-
-     PARAMS returns one value, the number of alpha bitplanes in the
-     accumulation buffer.
-
-`GL_ACCUM_BLUE_BITS'
-
-
-     PARAMS returns one value, the number of blue bitplanes in the
-     accumulation buffer.
-
-`GL_ACCUM_CLEAR_VALUE'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha values
-     used to clear the accumulation buffer. Integer values, if
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 returns the most positive
-     representable integer value, and -1.0 returns the most negative
-     representable integer value. The initial value is (0, 0, 0, 0). See
-     `glClearAccum'.
-
-`GL_ACCUM_GREEN_BITS'
-
-
-     PARAMS returns one value, the number of green bitplanes in the
-     accumulation buffer.
-
-`GL_ACCUM_RED_BITS'
-
-
-     PARAMS returns one value, the number of red bitplanes in the
-     accumulation buffer.
-
-`GL_ACTIVE_TEXTURE'
-
-
-     PARAMS returns a single value indicating the active multitexture
-     unit. The initial value is `GL_TEXTURE0'. See `glActiveTexture'.
-
-`GL_ALIASED_POINT_SIZE_RANGE'
-
-
-     PARAMS returns two values, the smallest and largest supported sizes
-     for aliased points.
-
-`GL_ALIASED_LINE_WIDTH_RANGE'
-
-
-     PARAMS returns two values, the smallest and largest supported
-     widths for aliased lines.
-
-`GL_ALPHA_BIAS'
-
-
-     PARAMS returns one value, the alpha bias factor used during pixel
-     transfers. The initial value is 0. See `glPixelTransfer'.
-
-`GL_ALPHA_BITS'
-
-
-     PARAMS returns one value, the number of alpha bitplanes in each
-     color buffer.
-
-`GL_ALPHA_SCALE'
-
-
-     PARAMS returns one value, the alpha scale factor used during pixel
-     transfers. The initial value is 1. See `glPixelTransfer'.
-
-`GL_ALPHA_TEST'
-
-
-     PARAMS returns a single boolean value indicating whether alpha
-     testing of fragments is enabled. The initial value is `GL_FALSE'.
-     See `glAlphaFunc'.
-
-`GL_ALPHA_TEST_FUNC'PARAMS returns one value,
-
-
-     the symbolic name of the alpha test function. The initial value is
-     `GL_ALWAYS'. See `glAlphaFunc'.
-
-`GL_ALPHA_TEST_REF'
-
-
-     PARAMS returns one value, the reference value for the alpha test.
-     The initial value is 0. See `glAlphaFunc'. An integer value, if
-     requested, is linearly mapped from the internal floating-point
-     representation such that 1.0 returns the most positive
-     representable integer value, and -1.0 returns the most negative
-     representable integer value.
-
-`GL_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     currently bound to the target `GL_ARRAY_BUFFER'. If no buffer
-     object is bound to this target, 0 is returned. The initial value is
-     0. See `glBindBuffer'.
-
-`GL_ATTRIB_STACK_DEPTH'
-
-
-     PARAMS returns one value, the depth of the attribute stack. If the
-     stack is empty, 0 is returned. The initial value is 0. See
-     `glPushAttrib'.
-
-`GL_AUTO_NORMAL'
-
-
-     PARAMS returns a single boolean value indicating whether 2D map
-     evaluation automatically generates surface normals. The initial
-     value is `GL_FALSE'. See `glMap2'.
-
-`GL_AUX_BUFFERS'
-
-
-     PARAMS returns one value, the number of auxiliary color buffers
-     available.
-
-`GL_BLEND'
-
-
-     PARAMS returns a single boolean value indicating whether blending
-     is enabled. The initial value is `GL_FALSE'. See `glBlendFunc'.
-
-`GL_BLEND_COLOR'
-
-
-     PARAMS returns four values, the red, green, blue, and alpha values
-     which are the components of the blend color. See `glBlendColor'.
-
-`GL_BLEND_DST_ALPHA'
-
-
-     PARAMS returns one value, the symbolic constant identifying the
-     alpha destination blend function. The initial value is `GL_ZERO'.
-     See `glBlendFunc' and `glBlendFuncSeparate'.
-
-`GL_BLEND_DST_RGB'
-
-
-     PARAMS returns one value, the symbolic constant identifying the RGB
-     destination blend function. The initial value is `GL_ZERO'. See
-     `glBlendFunc' and `glBlendFuncSeparate'.
-
-`GL_BLEND_EQUATION_RGB'
-
-
-     PARAMS returns one value, a symbolic constant indicating whether
-     the RGB blend equation is `GL_FUNC_ADD', `GL_FUNC_SUBTRACT',
-     `GL_FUNC_REVERSE_SUBTRACT', `GL_MIN' or `GL_MAX'. See
-     `glBlendEquationSeparate'.
-
-`GL_BLEND_EQUATION_ALPHA'
-
-
-     PARAMS returns one value, a symbolic constant indicating whether
-     the Alpha blend equation is `GL_FUNC_ADD', `GL_FUNC_SUBTRACT',
-     `GL_FUNC_REVERSE_SUBTRACT', `GL_MIN' or `GL_MAX'. See
-     `glBlendEquationSeparate'.
-
-`GL_BLEND_SRC_ALPHA'
-
-
-     PARAMS returns one value, the symbolic constant identifying the
-     alpha source blend function. The initial value is `GL_ONE'. See
-     `glBlendFunc' and `glBlendFuncSeparate'.
-
-`GL_BLEND_SRC_RGB'
-
-
-     PARAMS returns one value, the symbolic constant identifying the RGB
-     source blend function. The initial value is `GL_ONE'. See
-     `glBlendFunc' and `glBlendFuncSeparate'.
-
-`GL_BLUE_BIAS'
-
-
-     PARAMS returns one value, the blue bias factor used during pixel
-     transfers. The initial value is 0. See `glPixelTransfer'.
-
-`GL_BLUE_BITS'
-
-
-     PARAMS returns one value, the number of blue bitplanes in each
-     color buffer.
-
-`GL_BLUE_SCALE'
-
-
-     PARAMS returns one value, the blue scale factor used during pixel
-     transfers. The initial value is 1. See `glPixelTransfer'.
-
-`GL_CLIENT_ACTIVE_TEXTURE'
-
-
-     PARAMS returns a single integer value indicating the current client
-     active multitexture unit. The initial value is `GL_TEXTURE0'. See
-     `glClientActiveTexture'.
-
-`GL_CLIENT_ATTRIB_STACK_DEPTH'
-
-
-     PARAMS returns one value indicating the depth of the attribute
-     stack. The initial value is 0. See `glPushClientAttrib'.
-
-`GL_CLIP_PLANE'I
-
-
-     PARAMS returns a single boolean value indicating whether the
-     specified clipping plane is enabled. The initial value is
-     `GL_FALSE'. See `glClipPlane'.
-
-`GL_COLOR_ARRAY'
-
-
-     PARAMS returns a single boolean value indicating whether the color
-     array is enabled. The initial value is `GL_FALSE'. See
-     `glColorPointer'.
-
-`GL_COLOR_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the color array. This buffer object would have been
-     bound to the target `GL_ARRAY_BUFFER' at the time of the most
-     recent call to `glColorPointer'. If no buffer object was bound to
-     this target, 0 is returned. The initial value is 0. See
-     `glBindBuffer'.
-
-`GL_COLOR_ARRAY_SIZE'
-
-
-     PARAMS returns one value, the number of components per color in the
-     color array. The initial value is 4. See `glColorPointer'.
-
-`GL_COLOR_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive
-     colors in the color array. The initial value is 0. See
-     `glColorPointer'.
-
-`GL_COLOR_ARRAY_TYPE'
-
-
-     PARAMS returns one value, the data type of each component in the
-     color array. The initial value is `GL_FLOAT'. See `glColorPointer'.
-
-`GL_COLOR_CLEAR_VALUE'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha values
-     used to clear the color buffers. Integer values, if requested, are
-     linearly mapped from the internal floating-point representation
-     such that 1.0 returns the most positive representable integer
-     value, and -1.0 returns the most negative representable integer
-     value. The initial value is (0, 0, 0, 0). See `glClearColor'.
-
-`GL_COLOR_LOGIC_OP'
-
-
-     PARAMS returns a single boolean value indicating whether a
-     fragment's RGBA color values are merged into the framebuffer using
-     a logical operation. The initial value is `GL_FALSE'. See
-     `glLogicOp'.
-
-`GL_COLOR_MATERIAL'
-
-
-     PARAMS returns a single boolean value indicating whether one or
-     more material parameters are tracking the current color. The
-     initial value is `GL_FALSE'. See `glColorMaterial'.
-
-`GL_COLOR_MATERIAL_FACE'
-
-
-     PARAMS returns one value, a symbolic constant indicating which
-     materials have a parameter that is tracking the current color. The
-     initial value is `GL_FRONT_AND_BACK'. See `glColorMaterial'.
-
-`GL_COLOR_MATERIAL_PARAMETER'
-
-
-     PARAMS returns one value, a symbolic constant indicating which
-     material parameters are tracking the current color. The initial
-     value is `GL_AMBIENT_AND_DIFFUSE'. See `glColorMaterial'.
-
-`GL_COLOR_MATRIX'
-
-
-     PARAMS returns sixteen values: the color matrix on the top of the
-     color matrix stack. Initially this matrix is the identity matrix.
-     See `glPushMatrix'.
-
-`GL_COLOR_MATRIX_STACK_DEPTH'
-
-
-     PARAMS returns one value, the maximum supported depth of the
-     projection matrix stack. The value must be at least 2. See
-     `glPushMatrix'.
-
-`GL_COLOR_SUM'
-
-
-     PARAMS returns a single boolean value indicating whether primary
-     and secondary color sum is enabled. See `glSecondaryColor'.
-
-`GL_COLOR_TABLE'
-
-
-     PARAMS returns a single boolean value indicating whether the color
-     table lookup is enabled. See `glColorTable'.
-
-`GL_COLOR_WRITEMASK'
-
-
-     PARAMS returns four boolean values: the red, green, blue, and alpha
-     write enables for the color buffers. The initial value is
-     (`GL_TRUE', `GL_TRUE', `GL_TRUE', `GL_TRUE'). See `glColorMask'.
-
-`GL_COMPRESSED_TEXTURE_FORMATS'
-
-
-     PARAMS returns a list of symbolic constants of length
-     `GL_NUM_COMPRESSED_TEXTURE_FORMATS' indicating which compressed
-     texture formats are available. See `glCompressedTexImage2D'.
-
-`GL_CONVOLUTION_1D'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     convolution is enabled. The initial value is `GL_FALSE'. See
-     `glConvolutionFilter1D'.
-
-`GL_CONVOLUTION_2D'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     convolution is enabled. The initial value is `GL_FALSE'. See
-     `glConvolutionFilter2D'.
-
-`GL_CULL_FACE'
-
-
-     PARAMS returns a single boolean value indicating whether polygon
-     culling is enabled. The initial value is `GL_FALSE'. See
-     `glCullFace'.
-
-`GL_CULL_FACE_MODE'
-
-
-     PARAMS returns one value, a symbolic constant indicating which
-     polygon faces are to be culled. The initial value is `GL_BACK'. See
-     `glCullFace'.
-
-`GL_CURRENT_COLOR'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha values
-     of the current color. Integer values, if requested, are linearly
-     mapped from the internal floating-point representation such that
-     1.0 returns the most positive representable integer value, and -1.0
-     returns the most negative representable integer value. The initial
-     value is (1, 1, 1, 1). See `glColor'.
-
-`GL_CURRENT_FOG_COORD'
-
-
-     PARAMS returns one value, the current fog coordinate. The initial
-     value is 0. See `glFogCoord'.
-
-`GL_CURRENT_INDEX'
-
-
-     PARAMS returns one value, the current color index. The initial
-     value is 1. See `glIndex'.
-
-`GL_CURRENT_NORMAL'
-
-
-     PARAMS returns three values: the X, Y, and Z values of the current
-     normal. Integer values, if requested, are linearly mapped from the
-     internal floating-point representation such that 1.0 returns the
-     most positive representable integer value, and -1.0 returns the
-     most negative representable integer value. The initial value is (0,
-     0, 1). See `glNormal'.
-
-`GL_CURRENT_PROGRAM'
-
-
-     PARAMS returns one value, the name of the program object that is
-     currently active, or 0 if no program object is active. See
-     `glUseProgram'.
-
-`GL_CURRENT_RASTER_COLOR'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha color
-     values of the current raster position. Integer values, if
-     requested, are linearly mapped from the internal floating-point
-     representation such that 1.0 returns the most positive
-     representable integer value, and -1.0 returns the most negative
-     representable integer value. The initial value is (1, 1, 1, 1). See
-     `glRasterPos'.
-
-`GL_CURRENT_RASTER_DISTANCE'
-
-
-     PARAMS returns one value, the distance from the eye to the current
-     raster position. The initial value is 0. See `glRasterPos'.
-
-`GL_CURRENT_RASTER_INDEX'
-
-
-     PARAMS returns one value, the color index of the current raster
-     position. The initial value is 1. See `glRasterPos'.
-
-`GL_CURRENT_RASTER_POSITION'
-
-
-     PARAMS returns four values: the X, Y, Z, and W components of the
-     current raster position. X, Y, and Z are in window coordinates, and
-     W is in clip coordinates. The initial value is (0, 0, 0, 1). See
-     `glRasterPos'.
-
-`GL_CURRENT_RASTER_POSITION_VALID'
-
-
-     PARAMS returns a single boolean value indicating whether the
-     current raster position is valid. The initial value is `GL_TRUE'.
-     See `glRasterPos'.
-
-`GL_CURRENT_RASTER_SECONDARY_COLOR'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha
-     secondary color values of the current raster position. Integer
-     values, if requested, are linearly mapped from the internal
-     floating-point representation such that 1.0 returns the most
-     positive representable integer value, and -1.0 returns the most
-     negative representable integer value. The initial value is (1, 1,
-     1, 1). See `glRasterPos'.
-
-`GL_CURRENT_RASTER_TEXTURE_COORDS'
-
-
-     PARAMS returns four values: the S, T, R, and Q texture coordinates
-     of the current raster position. The initial value is (0, 0, 0, 1).
-     See `glRasterPos' and `glMultiTexCoord'.
-
-`GL_CURRENT_SECONDARY_COLOR'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha values
-     of the current secondary color. Integer values, if requested, are
-     linearly mapped from the internal floating-point representation
-     such that 1.0 returns the most positive representable integer
-     value, and -1.0 returns the most negative representable integer
-     value. The initial value is (0, 0, 0, 0). See `glSecondaryColor'.
-
-`GL_CURRENT_TEXTURE_COORDS'
-
-
-     PARAMS returns four values: the S, T, R, and Q current texture
-     coordinates. The initial value is (0, 0, 0, 1). See
-     `glMultiTexCoord'.
-
-`GL_DEPTH_BIAS'
-
-
-     PARAMS returns one value, the depth bias factor used during pixel
-     transfers. The initial value is 0. See `glPixelTransfer'.
-
-`GL_DEPTH_BITS'
-
-
-     PARAMS returns one value, the number of bitplanes in the depth
-     buffer.
-
-`GL_DEPTH_CLEAR_VALUE'
-
-
-     PARAMS returns one value, the value that is used to clear the depth
-     buffer. Integer values, if requested, are linearly mapped from the
-     internal floating-point representation such that 1.0 returns the
-     most positive representable integer value, and -1.0 returns the
-     most negative representable integer value. The initial value is 1.
-     See `glClearDepth'.
-
-`GL_DEPTH_FUNC'
-
-
-     PARAMS returns one value, the symbolic constant that indicates the
-     depth comparison function. The initial value is `GL_LESS'. See
-     `glDepthFunc'.
-
-`GL_DEPTH_RANGE'
-
-
-     PARAMS returns two values: the near and far mapping limits for the
-     depth buffer. Integer values, if requested, are linearly mapped
-     from the internal floating-point representation such that 1.0
-     returns the most positive representable integer value, and -1.0
-     returns the most negative representable integer value. The initial
-     value is (0, 1). See `glDepthRange'.
-
-`GL_DEPTH_SCALE'
-
-
-     PARAMS returns one value, the depth scale factor used during pixel
-     transfers. The initial value is 1. See `glPixelTransfer'.
-
-`GL_DEPTH_TEST'
-
-
-     PARAMS returns a single boolean value indicating whether depth
-     testing of fragments is enabled. The initial value is `GL_FALSE'.
-     See `glDepthFunc' and `glDepthRange'.
-
-`GL_DEPTH_WRITEMASK'
-
-
-     PARAMS returns a single boolean value indicating if the depth
-     buffer is enabled for writing. The initial value is `GL_TRUE'. See
-     `glDepthMask'.
-
-`GL_DITHER'
-
-
-     PARAMS returns a single boolean value indicating whether dithering
-     of fragment colors and indices is enabled. The initial value is
-     `GL_TRUE'.
-
-`GL_DOUBLEBUFFER'
-
-
-     PARAMS returns a single boolean value indicating whether double
-     buffering is supported.
-
-`GL_DRAW_BUFFER'
-
-
-     PARAMS returns one value, a symbolic constant indicating which
-     buffers are being drawn to. See `glDrawBuffer'. The initial value
-     is `GL_BACK' if there are back buffers, otherwise it is `GL_FRONT'.
-
-`GL_DRAW_BUFFER'I
-
-
-     PARAMS returns one value, a symbolic constant indicating which
-     buffers are being drawn to by the corresponding output color. See
-     `glDrawBuffers'. The initial value of `GL_DRAW_BUFFER0' is
-     `GL_BACK' if there are back buffers, otherwise it is `GL_FRONT'.
-     The initial values of draw buffers for all other output colors is
-     `GL_NONE'.
-
-`GL_EDGE_FLAG'
-
-
-     PARAMS returns a single boolean value indicating whether the
-     current edge flag is `GL_TRUE' or `GL_FALSE'. The initial value is
-     `GL_TRUE'. See `glEdgeFlag'.
-
-`GL_EDGE_FLAG_ARRAY'
-
-
-     PARAMS returns a single boolean value indicating whether the edge
-     flag array is enabled. The initial value is `GL_FALSE'. See
-     `glEdgeFlagPointer'.
-
-`GL_EDGE_FLAG_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the edge flag array. This buffer object would have
-     been bound to the target `GL_ARRAY_BUFFER' at the time of the most
-     recent call to `glEdgeFlagPointer'. If no buffer object was bound
-     to this target, 0 is returned. The initial value is 0. See
-     `glBindBuffer'.
-
-`GL_EDGE_FLAG_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive edge
-     flags in the edge flag array. The initial value is 0. See
-     `glEdgeFlagPointer'.
-
-`GL_ELEMENT_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     currently bound to the target `GL_ELEMENT_ARRAY_BUFFER'. If no
-     buffer object is bound to this target, 0 is returned. The initial
-     value is 0. See `glBindBuffer'.
-
-`GL_FEEDBACK_BUFFER_SIZE'
-
-
-     PARAMS returns one value, the size of the feedback buffer. See
-     `glFeedbackBuffer'.
-
-`GL_FEEDBACK_BUFFER_TYPE'
-
-
-     PARAMS returns one value, the type of the feedback buffer. See
-     `glFeedbackBuffer'.
-
-`GL_FOG'
-
-
-     PARAMS returns a single boolean value indicating whether fogging is
-     enabled. The initial value is `GL_FALSE'. See `glFog'.
-
-`GL_FOG_COORD_ARRAY'
-
-
-     PARAMS returns a single boolean value indicating whether the fog
-     coordinate array is enabled. The initial value is `GL_FALSE'. See
-     `glFogCoordPointer'.
-
-`GL_FOG_COORD_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the fog coordinate array. This buffer object would
-     have been bound to the target `GL_ARRAY_BUFFER' at the time of the
-     most recent call to `glFogCoordPointer'. If no buffer object was
-     bound to this target, 0 is returned. The initial value is 0. See
-     `glBindBuffer'.
-
-`GL_FOG_COORD_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive fog
-     coordinates in the fog coordinate array. The initial value is 0.
-     See `glFogCoordPointer'.
-
-`GL_FOG_COORD_ARRAY_TYPE'
-
-
-     PARAMS returns one value, the type of the fog coordinate array. The
-     initial value is `GL_FLOAT'. See `glFogCoordPointer'.
-
-`GL_FOG_COORD_SRC'
-
-
-     PARAMS returns one value, a symbolic constant indicating the source
-     of the fog coordinate. The initial value is `GL_FRAGMENT_DEPTH'.
-     See `glFog'.
-
-`GL_FOG_COLOR'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha
-     components of the fog color. Integer values, if requested, are
-     linearly mapped from the internal floating-point representation
-     such that 1.0 returns the most positive representable integer
-     value, and -1.0 returns the most negative representable integer
-     value. The initial value is (0, 0, 0, 0). See `glFog'.
-
-`GL_FOG_DENSITY'
-
-
-     PARAMS returns one value, the fog density parameter. The initial
-     value is 1. See `glFog'.
-
-`GL_FOG_END'
-
-
-     PARAMS returns one value, the end factor for the linear fog
-     equation. The initial value is 1. See `glFog'.
-
-`GL_FOG_HINT'
-
-
-     PARAMS returns one value, a symbolic constant indicating the mode
-     of the fog hint. The initial value is `GL_DONT_CARE'. See `glHint'.
-
-`GL_FOG_INDEX'
-
-
-     PARAMS returns one value, the fog color index. The initial value is
-     0. See `glFog'.
-
-`GL_FOG_MODE'
-
-
-     PARAMS returns one value, a symbolic constant indicating which fog
-     equation is selected. The initial value is `GL_EXP'. See `glFog'.
-
-`GL_FOG_START'
-
-
-     PARAMS returns one value, the start factor for the linear fog
-     equation. The initial value is 0. See `glFog'.
-
-`GL_FRAGMENT_SHADER_DERIVATIVE_HINT'
-
-
-     PARAMS returns one value, a symbolic constant indicating the mode
-     of the derivative accuracy hint for fragment shaders. The initial
-     value is `GL_DONT_CARE'. See `glHint'.
-
-`GL_FRONT_FACE'
-
-
-     PARAMS returns one value, a symbolic constant indicating whether
-     clockwise or counterclockwise polygon winding is treated as
-     front-facing. The initial value is `GL_CCW'. See `glFrontFace'.
-
-`GL_GENERATE_MIPMAP_HINT'
-
-
-     PARAMS returns one value, a symbolic constant indicating the mode
-     of the mipmap generation filtering hint. The initial value is
-     `GL_DONT_CARE'. See `glHint'.
-
-`GL_GREEN_BIAS'
-
-
-     PARAMS returns one value, the green bias factor used during pixel
-     transfers. The initial value is 0.
-
-`GL_GREEN_BITS'
-
-
-     PARAMS returns one value, the number of green bitplanes in each
-     color buffer.
-
-`GL_GREEN_SCALE'
-
-
-     PARAMS returns one value, the green scale factor used during pixel
-     transfers. The initial value is 1. See `glPixelTransfer'.
-
-`GL_HISTOGRAM'
-
-
-     PARAMS returns a single boolean value indicating whether histogram
-     is enabled. The initial value is `GL_FALSE'. See `glHistogram'.
-
-`GL_INDEX_ARRAY'
-
-
-     PARAMS returns a single boolean value indicating whether the color
-     index array is enabled. The initial value is `GL_FALSE'. See
-     `glIndexPointer'.
-
-`GL_INDEX_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the color index array. This buffer object would
-     have been bound to the target `GL_ARRAY_BUFFER' at the time of the
-     most recent call to `glIndexPointer'. If no buffer object was bound
-     to this target, 0 is returned. The initial value is 0. See
-     `glBindBuffer'.
-
-`GL_INDEX_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive color
-     indexes in the color index array. The initial value is 0. See
-     `glIndexPointer'.
-
-`GL_INDEX_ARRAY_TYPE'
-
-
-     PARAMS returns one value, the data type of indexes in the color
-     index array. The initial value is `GL_FLOAT'. See `glIndexPointer'.
-
-`GL_INDEX_BITS'
-
-
-     PARAMS returns one value, the number of bitplanes in each color
-     index buffer.
-
-`GL_INDEX_CLEAR_VALUE'
-
-
-     PARAMS returns one value, the color index used to clear the color
-     index buffers. The initial value is 0. See `glClearIndex'.
-
-`GL_INDEX_LOGIC_OP'
-
-
-     PARAMS returns a single boolean value indicating whether a
-     fragment's index values are merged into the framebuffer using a
-     logical operation. The initial value is `GL_FALSE'. See
-     `glLogicOp'.
-
-`GL_INDEX_MODE'
-
-
-     PARAMS returns a single boolean value indicating whether the GL is
-     in color index mode (`GL_TRUE') or RGBA mode (`GL_FALSE').
-
-`GL_INDEX_OFFSET'
-
-
-     PARAMS returns one value, the offset added to color and stencil
-     indices during pixel transfers. The initial value is 0. See
-     `glPixelTransfer'.
-
-`GL_INDEX_SHIFT'
-
-
-     PARAMS returns one value, the amount that color and stencil indices
-     are shifted during pixel transfers. The initial value is 0. See
-     `glPixelTransfer'.
-
-`GL_INDEX_WRITEMASK'
-
-
-     PARAMS returns one value, a mask indicating which bitplanes of each
-     color index buffer can be written. The initial value is all 1's.
-     See `glIndexMask'.
-
-`GL_LIGHT'I
-
-
-     PARAMS returns a single boolean value indicating whether the
-     specified light is enabled. The initial value is `GL_FALSE'. See
-     `glLight' and `glLightModel'.
-
-`GL_LIGHTING'
-
-
-     PARAMS returns a single boolean value indicating whether lighting
-     is enabled. The initial value is `GL_FALSE'. See `glLightModel'.
-
-`GL_LIGHT_MODEL_AMBIENT'
-
-
-     PARAMS returns four values: the red, green, blue, and alpha
-     components of the ambient intensity of the entire scene. Integer
-     values, if requested, are linearly mapped from the internal
-     floating-point representation such that 1.0 returns the most
-     positive representable integer value, and -1.0 returns the most
-     negative representable integer value. The initial value is (0.2,
-     0.2, 0.2, 1.0). See `glLightModel'.
-
-`GL_LIGHT_MODEL_COLOR_CONTROL'
-
-
-     PARAMS returns single enumerated value indicating whether specular
-     reflection calculations are separated from normal lighting
-     computations. The initial value is `GL_SINGLE_COLOR'.
-
-`GL_LIGHT_MODEL_LOCAL_VIEWER'
-
-
-     PARAMS returns a single boolean value indicating whether specular
-     reflection calculations treat the viewer as being local to the
-     scene. The initial value is `GL_FALSE'. See `glLightModel'.
-
-`GL_LIGHT_MODEL_TWO_SIDE'
-
-
-     PARAMS returns a single boolean value indicating whether separate
-     materials are used to compute lighting for front- and back-facing
-     polygons. The initial value is `GL_FALSE'. See `glLightModel'.
-
-`GL_LINE_SMOOTH'
-
-
-     PARAMS returns a single boolean value indicating whether
-     antialiasing of lines is enabled. The initial value is `GL_FALSE'.
-     See `glLineWidth'.
-
-`GL_LINE_SMOOTH_HINT'
-
-
-     PARAMS returns one value, a symbolic constant indicating the mode
-     of the line antialiasing hint. The initial value is `GL_DONT_CARE'.
-     See `glHint'.
-
-`GL_LINE_STIPPLE'
-
-
-     PARAMS returns a single boolean value indicating whether stippling
-     of lines is enabled. The initial value is `GL_FALSE'. See
-     `glLineStipple'.
-
-`GL_LINE_STIPPLE_PATTERN'
-
-
-     PARAMS returns one value, the 16-bit line stipple pattern. The
-     initial value is all 1's. See `glLineStipple'.
-
-`GL_LINE_STIPPLE_REPEAT'
-
-
-     PARAMS returns one value, the line stipple repeat factor. The
-     initial value is 1. See `glLineStipple'.
-
-`GL_LINE_WIDTH'
-
-
-     PARAMS returns one value, the line width as specified with
-     `glLineWidth'. The initial value is 1.
-
-`GL_LINE_WIDTH_GRANULARITY'
-
-
-     PARAMS returns one value, the width difference between adjacent
-     supported widths for antialiased lines. See `glLineWidth'.
-
-`GL_LINE_WIDTH_RANGE'
-
-
-     PARAMS returns two values: the smallest and largest supported
-     widths for antialiased lines. See `glLineWidth'.
-
-`GL_LIST_BASE'
-
-
-     PARAMS returns one value, the base offset added to all names in
-     arrays presented to `glCallLists'. The initial value is 0. See
-     `glListBase'.
-
-`GL_LIST_INDEX'
-
-
-     PARAMS returns one value, the name of the display list currently
-     under construction. 0 is returned if no display list is currently
-     under construction. The initial value is 0. See `glNewList'.
-
-`GL_LIST_MODE'
-
-
-     PARAMS returns one value, a symbolic constant indicating the
-     construction mode of the display list currently under construction.
-     The initial value is 0. See `glNewList'.
-
-`GL_LOGIC_OP_MODE'
-
-
-     PARAMS returns one value, a symbolic constant indicating the
-     selected logic operation mode. The initial value is `GL_COPY'. See
-     `glLogicOp'.
-
-`GL_MAP1_COLOR_4'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates colors. The initial value is `GL_FALSE'. See
-     `glMap1'.
-
-`GL_MAP1_GRID_DOMAIN'
-
-
-     PARAMS returns two values: the endpoints of the 1D map's grid
-     domain. The initial value is (0, 1). See `glMapGrid'.
-
-`GL_MAP1_GRID_SEGMENTS'
-
-
-     PARAMS returns one value, the number of partitions in the 1D map's
-     grid domain. The initial value is 1. See `glMapGrid'.
-
-`GL_MAP1_INDEX'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates color indices. The initial value is
-     `GL_FALSE'. See `glMap1'.
-
-`GL_MAP1_NORMAL'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates normals. The initial value is `GL_FALSE'. See
-     `glMap1'.
-
-`GL_MAP1_TEXTURE_COORD_1'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates 1D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap1'.
-
-`GL_MAP1_TEXTURE_COORD_2'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates 2D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap1'.
-
-`GL_MAP1_TEXTURE_COORD_3'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates 3D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap1'.
-
-`GL_MAP1_TEXTURE_COORD_4'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates 4D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap1'.
-
-`GL_MAP1_VERTEX_3'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates 3D vertex coordinates. The initial value is
-     `GL_FALSE'. See `glMap1'.
-
-`GL_MAP1_VERTEX_4'
-
-
-     PARAMS returns a single boolean value indicating whether 1D
-     evaluation generates 4D vertex coordinates. The initial value is
-     `GL_FALSE'. See `glMap1'.
-
-`GL_MAP2_COLOR_4'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates colors. The initial value is `GL_FALSE'. See
-     `glMap2'.
-
-`GL_MAP2_GRID_DOMAIN'
-
-
-     PARAMS returns four values: the endpoints of the 2D map's I and J
-     grid domains. The initial value is (0,1; 0,1). See `glMapGrid'.
-
-`GL_MAP2_GRID_SEGMENTS'
-
-
-     PARAMS returns two values: the number of partitions in the 2D map's
-     I and J grid domains. The initial value is (1,1). See `glMapGrid'.
-
-`GL_MAP2_INDEX'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates color indices. The initial value is
-     `GL_FALSE'. See `glMap2'.
-
-`GL_MAP2_NORMAL'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates normals. The initial value is `GL_FALSE'. See
-     `glMap2'.
-
-`GL_MAP2_TEXTURE_COORD_1'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates 1D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap2'.
-
-`GL_MAP2_TEXTURE_COORD_2'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates 2D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap2'.
-
-`GL_MAP2_TEXTURE_COORD_3'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates 3D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap2'.
-
-`GL_MAP2_TEXTURE_COORD_4'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates 4D texture coordinates. The initial value is
-     `GL_FALSE'. See `glMap2'.
-
-`GL_MAP2_VERTEX_3'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates 3D vertex coordinates. The initial value is
-     `GL_FALSE'. See `glMap2'.
-
-`GL_MAP2_VERTEX_4'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     evaluation generates 4D vertex coordinates. The initial value is
-     `GL_FALSE'. See `glMap2'.
-
-`GL_MAP_COLOR'
-
-
-     PARAMS returns a single boolean value indicating if colors and
-     color indices are to be replaced by table lookup during pixel
-     transfers. The initial value is `GL_FALSE'. See `glPixelTransfer'.
-
-`GL_MAP_STENCIL'
-
-
-     PARAMS returns a single boolean value indicating if stencil indices
-     are to be replaced by table lookup during pixel transfers. The
-     initial value is `GL_FALSE'. See `glPixelTransfer'.
-
-`GL_MATRIX_MODE'
-
-
-     PARAMS returns one value, a symbolic constant indicating which
-     matrix stack is currently the target of all matrix operations. The
-     initial value is `GL_MODELVIEW'. See `glMatrixMode'.
-
-`GL_MAX_3D_TEXTURE_SIZE'
-
-
-     PARAMS returns one value, a rough estimate of the largest 3D
-     texture that the GL can handle. The value must be at least 16. If
-     the GL version is 1.2 or greater, use `GL_PROXY_TEXTURE_3D' to
-     determine if a texture is too large. See `glTexImage3D'.
-
-`GL_MAX_CLIENT_ATTRIB_STACK_DEPTH'
-
-
-     PARAMS returns one value indicating the maximum supported depth of
-     the client attribute stack. See `glPushClientAttrib'.
-
-`GL_MAX_ATTRIB_STACK_DEPTH'
-
-
-     PARAMS returns one value, the maximum supported depth of the
-     attribute stack. The value must be at least 16. See `glPushAttrib'.
-
-`GL_MAX_CLIP_PLANES'
-
-
-     PARAMS returns one value, the maximum number of application-defined
-     clipping planes. The value must be at least 6. See `glClipPlane'.
-
-`GL_MAX_COLOR_MATRIX_STACK_DEPTH'
-
-
-     PARAMS returns one value, the maximum supported depth of the color
-     matrix stack. The value must be at least 2. See `glPushMatrix'.
-
-`GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS'
-
-
-     PARAMS returns one value, the maximum supported texture image units
-     that can be used to access texture maps from the vertex shader and
-     the fragment processor combined. If both the vertex shader and the
-     fragment processing stage access the same texture image unit, then
-     that counts as using two texture image units against this limit.
-     The value must be at least 2. See `glActiveTexture'.
-
-`GL_MAX_CUBE_MAP_TEXTURE_SIZE'
-
-
-     PARAMS returns one value. The value gives a rough estimate of the
-     largest cube-map texture that the GL can handle. The value must be
-     at least 16. If the GL version is 1.3 or greater, use
-     `GL_PROXY_TEXTURE_CUBE_MAP' to determine if a texture is too large.
-     See `glTexImage2D'.
-
-`GL_MAX_DRAW_BUFFERS'
-
-
-     PARAMS returns one value, the maximum number of simultaneous output
-     colors allowed from a fragment shader using the `gl_FragData'
-     built-in array. The value must be at least 1. See `glDrawBuffers'.
-
-`GL_MAX_ELEMENTS_INDICES'
-
-
-     PARAMS returns one value, the recommended maximum number of vertex
-     array indices. See `glDrawRangeElements'.
-
-`GL_MAX_ELEMENTS_VERTICES'
-
-
-     PARAMS returns one value, the recommended maximum number of vertex
-     array vertices. See `glDrawRangeElements'.
-
-`GL_MAX_EVAL_ORDER'
-
-
-     PARAMS returns one value, the maximum equation order supported by
-     1D and 2D evaluators. The value must be at least 8. See `glMap1'
-     and `glMap2'.
-
-`GL_MAX_FRAGMENT_UNIFORM_COMPONENTS'
-
-
-     PARAMS returns one value, the maximum number of individual
-     floating-point, integer, or boolean values that can be held in
-     uniform variable storage for a fragment shader. The value must be
-     at least 64. See `glUniform'.
-
-`GL_MAX_LIGHTS'
-
-
-     PARAMS returns one value, the maximum number of lights. The value
-     must be at least 8. See `glLight'.
-
-`GL_MAX_LIST_NESTING'
-
-
-     PARAMS returns one value, the maximum recursion depth allowed
-     during display-list traversal. The value must be at least 64. See
-     `glCallList'.
-
-`GL_MAX_MODELVIEW_STACK_DEPTH'
-
-
-     PARAMS returns one value, the maximum supported depth of the
-     modelview matrix stack. The value must be at least 32. See
-     `glPushMatrix'.
-
-`GL_MAX_NAME_STACK_DEPTH'
-
-
-     PARAMS returns one value, the maximum supported depth of the
-     selection name stack. The value must be at least 64. See
-     `glPushName'.
-
-`GL_MAX_PIXEL_MAP_TABLE'
-
-
-     PARAMS returns one value, the maximum supported size of a
-     `glPixelMap' lookup table. The value must be at least 32. See
-     `glPixelMap'.
-
-`GL_MAX_PROJECTION_STACK_DEPTH'
-
-
-     PARAMS returns one value, the maximum supported depth of the
-     projection matrix stack. The value must be at least 2. See
-     `glPushMatrix'.
-
-`GL_MAX_TEXTURE_COORDS'
-
-
-     PARAMS returns one value, the maximum number of texture coordinate
-     sets available to vertex and fragment shaders. The value must be at
-     least 2. See `glActiveTexture' and `glClientActiveTexture'.
-
-`GL_MAX_TEXTURE_IMAGE_UNITS'
-
-
-     PARAMS returns one value, the maximum supported texture image units
-     that can be used to access texture maps from the fragment shader.
-     The value must be at least 2. See `glActiveTexture'.
-
-`GL_MAX_TEXTURE_LOD_BIAS'
-
-
-     PARAMS returns one value, the maximum, absolute value of the
-     texture level-of-detail bias. The value must be at least 4.
-
-`GL_MAX_TEXTURE_SIZE'
-
-
-     PARAMS returns one value. The value gives a rough estimate of the
-     largest texture that the GL can handle. The value must be at least
-     64. If the GL version is 1.1 or greater, use `GL_PROXY_TEXTURE_1D'
-     or `GL_PROXY_TEXTURE_2D' to determine if a texture is too large.
-     See `glTexImage1D' and `glTexImage2D'.
-
-`GL_MAX_TEXTURE_STACK_DEPTH'
-
-
-     PARAMS returns one value, the maximum supported depth of the
-     texture matrix stack. The value must be at least 2. See
-     `glPushMatrix'.
-
-`GL_MAX_TEXTURE_UNITS'
-
-
-     PARAMS returns a single value indicating the number of conventional
-     texture units supported. Each conventional texture unit includes
-     both a texture coordinate set and a texture image unit.
-     Conventional texture units may be used for fixed-function
-     (non-shader) rendering. The value must be at least 2. Additional
-     texture coordinate sets and texture image units may be accessed
-     from vertex and fragment shaders. See `glActiveTexture' and
-     `glClientActiveTexture'.
-
-`GL_MAX_VARYING_FLOATS'
-
-
-     PARAMS returns one value, the maximum number of interpolators
-     available for processing varying variables used by vertex and
-     fragment shaders. This value represents the number of individual
-     floating-point values that can be interpolated; varying variables
-     declared as vectors, matrices, and arrays will all consume multiple
-     interpolators. The value must be at least 32.
-
-`GL_MAX_VERTEX_ATTRIBS'
-
-
-     PARAMS returns one value, the maximum number of 4-component generic
-     vertex attributes accessible to a vertex shader. The value must be
-     at least 16. See `glVertexAttrib'.
-
-`GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS'
-
-
-     PARAMS returns one value, the maximum supported texture image units
-     that can be used to access texture maps from the vertex shader. The
-     value may be 0. See `glActiveTexture'.
-
-`GL_MAX_VERTEX_UNIFORM_COMPONENTS'
-
-
-     PARAMS returns one value, the maximum number of individual
-     floating-point, integer, or boolean values that can be held in
-     uniform variable storage for a vertex shader. The value must be at
-     least 512. See `glUniform'.
-
-`GL_MAX_VIEWPORT_DIMS'
-
-
-     PARAMS returns two values: the maximum supported width and height
-     of the viewport. These must be at least as large as the visible
-     dimensions of the display being rendered to. See `glViewport'.
-
-`GL_MINMAX'
-
-
-     PARAMS returns a single boolean value indicating whether pixel
-     minmax values are computed. The initial value is `GL_FALSE'. See
-     `glMinmax'.
-
-`GL_MODELVIEW_MATRIX'
-
-
-     PARAMS returns sixteen values: the modelview matrix on the top of
-     the modelview matrix stack. Initially this matrix is the identity
-     matrix. See `glPushMatrix'.
-
-`GL_MODELVIEW_STACK_DEPTH'
-
-
-     PARAMS returns one value, the number of matrices on the modelview
-     matrix stack. The initial value is 1. See `glPushMatrix'.
-
-`GL_NAME_STACK_DEPTH'
-
-
-     PARAMS returns one value, the number of names on the selection name
-     stack. The initial value is 0. See `glPushName'.
-
-`GL_NORMAL_ARRAY'
-
-
-     PARAMS returns a single boolean value, indicating whether the
-     normal array is enabled. The initial value is `GL_FALSE'. See
-     `glNormalPointer'.
-
-`GL_NORMAL_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the normal array. This buffer object would have
-     been bound to the target `GL_ARRAY_BUFFER' at the time of the most
-     recent call to `glNormalPointer'. If no buffer object was bound to
-     this target, 0 is returned. The initial value is 0. See
-     `glBindBuffer'.
-
-`GL_NORMAL_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive
-     normals in the normal array. The initial value is 0. See
-     `glNormalPointer'.
-
-`GL_NORMAL_ARRAY_TYPE'
-
-
-     PARAMS returns one value, the data type of each coordinate in the
-     normal array. The initial value is `GL_FLOAT'. See
-     `glNormalPointer'.
-
-`GL_NORMALIZE'
-
-
-     PARAMS returns a single boolean value indicating whether normals
-     are automatically scaled to unit length after they have been
-     transformed to eye coordinates. The initial value is `GL_FALSE'.
-     See `glNormal'.
-
-`GL_NUM_COMPRESSED_TEXTURE_FORMATS'
-
-
-     PARAMS returns a single integer value indicating the number of
-     available compressed texture formats. The minimum value is 0. See
-     `glCompressedTexImage2D'.
-
-`GL_PACK_ALIGNMENT'
-
-
-     PARAMS returns one value, the byte alignment used for writing pixel
-     data to memory. The initial value is 4. See `glPixelStore'.
-
-`GL_PACK_IMAGE_HEIGHT'
-
-
-     PARAMS returns one value, the image height used for writing pixel
-     data to memory. The initial value is 0. See `glPixelStore'.
-
-`GL_PACK_LSB_FIRST'
-
-
-     PARAMS returns a single boolean value indicating whether single-bit
-     pixels being written to memory are written first to the least
-     significant bit of each unsigned byte. The initial value is
-     `GL_FALSE'. See `glPixelStore'.
-
-`GL_PACK_ROW_LENGTH'
-
-
-     PARAMS returns one value, the row length used for writing pixel
-     data to memory. The initial value is 0. See `glPixelStore'.
-
-`GL_PACK_SKIP_IMAGES'
-
-
-     PARAMS returns one value, the number of pixel images skipped before
-     the first pixel is written into memory. The initial value is 0. See
-     `glPixelStore'.
-
-`GL_PACK_SKIP_PIXELS'
-
-
-     PARAMS returns one value, the number of pixel locations skipped
-     before the first pixel is written into memory. The initial value is
-     0. See `glPixelStore'.
-
-`GL_PACK_SKIP_ROWS'
-
-
-     PARAMS returns one value, the number of rows of pixel locations
-     skipped before the first pixel is written into memory. The initial
-     value is 0. See `glPixelStore'.
-
-`GL_PACK_SWAP_BYTES'
-
-
-     PARAMS returns a single boolean value indicating whether the bytes
-     of two-byte and four-byte pixel indices and components are swapped
-     before being written to memory. The initial value is `GL_FALSE'.
-     See `glPixelStore'.
-
-`GL_PERSPECTIVE_CORRECTION_HINT'
-
-
-     PARAMS returns one value, a symbolic constant indicating the mode
-     of the perspective correction hint. The initial value is
-     `GL_DONT_CARE'. See `glHint'.
-
-`GL_PIXEL_MAP_A_TO_A_SIZE'
-
-
-     PARAMS returns one value, the size of the alpha-to-alpha pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_B_TO_B_SIZE'
-
-
-     PARAMS returns one value, the size of the blue-to-blue pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_G_TO_G_SIZE'
-
-
-     PARAMS returns one value, the size of the green-to-green pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_I_TO_A_SIZE'
-
-
-     PARAMS returns one value, the size of the index-to-alpha pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_I_TO_B_SIZE'
-
-
-     PARAMS returns one value, the size of the index-to-blue pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_I_TO_G_SIZE'
-
-
-     PARAMS returns one value, the size of the index-to-green pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_I_TO_I_SIZE'
-
-
-     PARAMS returns one value, the size of the index-to-index pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_I_TO_R_SIZE'
-
-
-     PARAMS returns one value, the size of the index-to-red pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_R_TO_R_SIZE'
-
-
-     PARAMS returns one value, the size of the red-to-red pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_MAP_S_TO_S_SIZE'
-
-
-     PARAMS returns one value, the size of the stencil-to-stencil pixel
-     translation table. The initial value is 1. See `glPixelMap'.
-
-`GL_PIXEL_PACK_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     currently bound to the target `GL_PIXEL_PACK_BUFFER'. If no buffer
-     object is bound to this target, 0 is returned. The initial value is
-     0. See `glBindBuffer'.
-
-`GL_PIXEL_UNPACK_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     currently bound to the target `GL_PIXEL_UNPACK_BUFFER'. If no
-     buffer object is bound to this target, 0 is returned. The initial
-     value is 0. See `glBindBuffer'.
-
-`GL_POINT_DISTANCE_ATTENUATION'
-
-
-     PARAMS returns three values, the coefficients for computing the
-     attenuation value for points. See `glPointParameter'.
-
-`GL_POINT_FADE_THRESHOLD_SIZE'
-
-
-     PARAMS returns one value, the point size threshold for determining
-     the point size. See `glPointParameter'.
-
-`GL_POINT_SIZE'
-
-
-     PARAMS returns one value, the point size as specified by
-     `glPointSize'. The initial value is 1.
-
-`GL_POINT_SIZE_GRANULARITY'
-
-
-     PARAMS returns one value, the size difference between adjacent
-     supported sizes for antialiased points. See `glPointSize'.
-
-`GL_POINT_SIZE_MAX'
-
-
-     PARAMS returns one value, the upper bound for the attenuated point
-     sizes. The initial value is 0.0. See `glPointParameter'.
-
-`GL_POINT_SIZE_MIN'
-
-
-     PARAMS returns one value, the lower bound for the attenuated point
-     sizes. The initial value is 1.0. See `glPointParameter'.
-
-`GL_POINT_SIZE_RANGE'
-
-
-     PARAMS returns two values: the smallest and largest supported sizes
-     for antialiased points. The smallest size must be at most 1, and
-     the largest size must be at least 1. See `glPointSize'.
-
-`GL_POINT_SMOOTH'
-
-
-     PARAMS returns a single boolean value indicating whether
-     antialiasing of points is enabled. The initial value is `GL_FALSE'.
-     See `glPointSize'.
-
-`GL_POINT_SMOOTH_HINT'
-
-
-     PARAMS returns one value, a symbolic constant indicating the mode
-     of the point antialiasing hint. The initial value is
-     `GL_DONT_CARE'. See `glHint'.
-
-`GL_POINT_SPRITE'
-
-
-     PARAMS returns a single boolean value indicating whether point
-     sprite is enabled. The initial value is `GL_FALSE'.
-
-`GL_POLYGON_MODE'
-
-
-     PARAMS returns two values: symbolic constants indicating whether
-     front-facing and back-facing polygons are rasterized as points,
-     lines, or filled polygons. The initial value is `GL_FILL'. See
-     `glPolygonMode'.
-
-`GL_POLYGON_OFFSET_FACTOR'
-
-
-     PARAMS returns one value, the scaling factor used to determine the
-     variable offset that is added to the depth value of each fragment
-     generated when a polygon is rasterized. The initial value is 0. See
-     `glPolygonOffset'.
-
-`GL_POLYGON_OFFSET_UNITS'
-
-
-     PARAMS returns one value. This value is multiplied by an
-     implementation-specific value and then added to the depth value of
-     each fragment generated when a polygon is rasterized. The initial
-     value is 0. See `glPolygonOffset'.
-
-`GL_POLYGON_OFFSET_FILL'
-
-
-     PARAMS returns a single boolean value indicating whether polygon
-     offset is enabled for polygons in fill mode. The initial value is
-     `GL_FALSE'. See `glPolygonOffset'.
-
-`GL_POLYGON_OFFSET_LINE'
-
-
-     PARAMS returns a single boolean value indicating whether polygon
-     offset is enabled for polygons in line mode. The initial value is
-     `GL_FALSE'. See `glPolygonOffset'.
-
-`GL_POLYGON_OFFSET_POINT'
-
-
-     PARAMS returns a single boolean value indicating whether polygon
-     offset is enabled for polygons in point mode. The initial value is
-     `GL_FALSE'. See `glPolygonOffset'.
-
-`GL_POLYGON_SMOOTH'
-
-
-     PARAMS returns a single boolean value indicating whether
-     antialiasing of polygons is enabled. The initial value is
-     `GL_FALSE'. See `glPolygonMode'.
-
-`GL_POLYGON_SMOOTH_HINT'
-
-
-     PARAMS returns one value, a symbolic constant indicating the mode
-     of the polygon antialiasing hint. The initial value is
-     `GL_DONT_CARE'. See `glHint'.
-
-`GL_POLYGON_STIPPLE'
-
-
-     PARAMS returns a single boolean value indicating whether polygon
-     stippling is enabled. The initial value is `GL_FALSE'. See
-     `glPolygonStipple'.
-
-`GL_POST_COLOR_MATRIX_COLOR_TABLE'
-
-
-     PARAMS returns a single boolean value indicating whether post color
-     matrix transformation lookup is enabled. The initial value is
-     `GL_FALSE'. See `glColorTable'.
-
-`GL_POST_COLOR_MATRIX_RED_BIAS'
-
-
-     PARAMS returns one value, the red bias factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     0. See `glPixelTransfer'.
-
-`GL_POST_COLOR_MATRIX_GREEN_BIAS'
-
-
-     PARAMS returns one value, the green bias factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     0. See `glPixelTransfer'
-
-`GL_POST_COLOR_MATRIX_BLUE_BIAS'
-
-
-     PARAMS returns one value, the blue bias factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     0. See `glPixelTransfer'.
-
-`GL_POST_COLOR_MATRIX_ALPHA_BIAS'
-
-
-     PARAMS returns one value, the alpha bias factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     0. See `glPixelTransfer'.
-
-`GL_POST_COLOR_MATRIX_RED_SCALE'
-
-
-     PARAMS returns one value, the red scale factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     1. See `glPixelTransfer'.
-
-`GL_POST_COLOR_MATRIX_GREEN_SCALE'
-
-
-     PARAMS returns one value, the green scale factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     1. See `glPixelTransfer'.
-
-`GL_POST_COLOR_MATRIX_BLUE_SCALE'
-
-
-     PARAMS returns one value, the blue scale factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     1. See `glPixelTransfer'.
-
-`GL_POST_COLOR_MATRIX_ALPHA_SCALE'
-
-
-     PARAMS returns one value, the alpha scale factor applied to RGBA
-     fragments after color matrix transformations. The initial value is
-     1. See `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_COLOR_TABLE'
-
-
-     PARAMS returns a single boolean value indicating whether post
-     convolution lookup is enabled. The initial value is `GL_FALSE'. See
-     `glColorTable'.
-
-`GL_POST_CONVOLUTION_RED_BIAS'
-
-
-     PARAMS returns one value, the red bias factor applied to RGBA
-     fragments after convolution. The initial value is 0. See
-     `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_GREEN_BIAS'
-
-
-     PARAMS returns one value, the green bias factor applied to RGBA
-     fragments after convolution. The initial value is 0. See
-     `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_BLUE_BIAS'
-
-
-     PARAMS returns one value, the blue bias factor applied to RGBA
-     fragments after convolution. The initial value is 0. See
-     `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_ALPHA_BIAS'
-
-
-     PARAMS returns one value, the alpha bias factor applied to RGBA
-     fragments after convolution. The initial value is 0. See
-     `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_RED_SCALE'
-
-
-     PARAMS returns one value, the red scale factor applied to RGBA
-     fragments after convolution. The initial value is 1. See
-     `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_GREEN_SCALE'
-
-
-     PARAMS returns one value, the green scale factor applied to RGBA
-     fragments after convolution. The initial value is 1. See
-     `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_BLUE_SCALE'
-
-
-     PARAMS returns one value, the blue scale factor applied to RGBA
-     fragments after convolution. The initial value is 1. See
-     `glPixelTransfer'.
-
-`GL_POST_CONVOLUTION_ALPHA_SCALE'
-
-
-     PARAMS returns one value, the alpha scale factor applied to RGBA
-     fragments after convolution. The initial value is 1. See
-     `glPixelTransfer'.
-
-`GL_PROJECTION_MATRIX'
-
-
-     PARAMS returns sixteen values: the projection matrix on the top of
-     the projection matrix stack. Initially this matrix is the identity
-     matrix. See `glPushMatrix'.
-
-`GL_PROJECTION_STACK_DEPTH'
-
-
-     PARAMS returns one value, the number of matrices on the projection
-     matrix stack. The initial value is 1. See `glPushMatrix'.
-
-`GL_READ_BUFFER'
-
-
-     PARAMS returns one value, a symbolic constant indicating which
-     color buffer is selected for reading. The initial value is
-     `GL_BACK' if there is a back buffer, otherwise it is `GL_FRONT'.
-     See `glReadPixels' and `glAccum'.
-
-`GL_RED_BIAS'
-
-
-     PARAMS returns one value, the red bias factor used during pixel
-     transfers. The initial value is 0.
-
-`GL_RED_BITS'
-
-
-     PARAMS returns one value, the number of red bitplanes in each color
-     buffer.
-
-`GL_RED_SCALE'
-
-
-     PARAMS returns one value, the red scale factor used during pixel
-     transfers. The initial value is 1. See `glPixelTransfer'.
-
-`GL_RENDER_MODE'
-
-
-     PARAMS returns one value, a symbolic constant indicating whether
-     the GL is in render, select, or feedback mode. The initial value is
-     `GL_RENDER'. See `glRenderMode'.
-
-`GL_RESCALE_NORMAL'
-
-
-     PARAMS returns single boolean value indicating whether normal
-     rescaling is enabled. See `glEnable'.
-
-`GL_RGBA_MODE'
-
-
-     PARAMS returns a single boolean value indicating whether the GL is
-     in RGBA mode (true) or color index mode (false). See `glColor'.
-
-`GL_SAMPLE_BUFFERS'
-
-
-     PARAMS returns a single integer value indicating the number of
-     sample buffers associated with the framebuffer. See
-     `glSampleCoverage'.
-
-`GL_SAMPLE_COVERAGE_VALUE'
-
-
-     PARAMS returns a single positive floating-point value indicating
-     the current sample coverage value. See `glSampleCoverage'.
-
-`GL_SAMPLE_COVERAGE_INVERT'
-
-
-     PARAMS returns a single boolean value indicating if the temporary
-     coverage value should be inverted. See `glSampleCoverage'.
-
-`GL_SAMPLES'
-
-
-     PARAMS returns a single integer value indicating the coverage mask
-     size. See `glSampleCoverage'.
-
-`GL_SCISSOR_BOX'
-
-
-     PARAMS returns four values: the X and Y window coordinates of the
-     scissor box, followed by its width and height. Initially the X and
-     Y window coordinates are both 0 and the width and height are set to
-     the size of the window. See `glScissor'.
-
-`GL_SCISSOR_TEST'
-
-
-     PARAMS returns a single boolean value indicating whether scissoring
-     is enabled. The initial value is `GL_FALSE'. See `glScissor'.
-
-`GL_SECONDARY_COLOR_ARRAY'
-
-
-     PARAMS returns a single boolean value indicating whether the
-     secondary color array is enabled. The initial value is `GL_FALSE'.
-     See `glSecondaryColorPointer'.
-
-`GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the secondary color array. This buffer object would
-     have been bound to the target `GL_ARRAY_BUFFER' at the time of the
-     most recent call to `glSecondaryColorPointer'. If no buffer object
-     was bound to this target, 0 is returned. The initial value is 0.
-     See `glBindBuffer'.
-
-`GL_SECONDARY_COLOR_ARRAY_SIZE'
-
-
-     PARAMS returns one value, the number of components per color in the
-     secondary color array. The initial value is 3. See
-     `glSecondaryColorPointer'.
-
-`GL_SECONDARY_COLOR_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive
-     colors in the secondary color array. The initial value is 0. See
-     `glSecondaryColorPointer'.
-
-`GL_SECONDARY_COLOR_ARRAY_TYPE'
-
-
-     PARAMS returns one value, the data type of each component in the
-     secondary color array. The initial value is `GL_FLOAT'. See
-     `glSecondaryColorPointer'.
-
-`GL_SELECTION_BUFFER_SIZE'
-
-
-     PARAMS return one value, the size of the selection buffer. See
-     `glSelectBuffer'.
-
-`GL_SEPARABLE_2D'
-
-
-     PARAMS returns a single boolean value indicating whether 2D
-     separable convolution is enabled. The initial value is `GL_FALSE'.
-     See `glSeparableFilter2D'.
-
-`GL_SHADE_MODEL'
-
-
-     PARAMS returns one value, a symbolic constant indicating whether
-     the shading mode is flat or smooth. The initial value is
-     `GL_SMOOTH'. See `glShadeModel'.
-
-`GL_SMOOTH_LINE_WIDTH_RANGE'
-
-
-     PARAMS returns two values, the smallest and largest supported
-     widths for antialiased lines. See `glLineWidth'.
-
-`GL_SMOOTH_LINE_WIDTH_GRANULARITY'
-
-
-     PARAMS returns one value, the granularity of widths for antialiased
-     lines. See `glLineWidth'.
-
-`GL_SMOOTH_POINT_SIZE_RANGE'
-
-
-     PARAMS returns two values, the smallest and largest supported
-     widths for antialiased points. See `glPointSize'.
-
-`GL_SMOOTH_POINT_SIZE_GRANULARITY'
-
-
-     PARAMS returns one value, the granularity of sizes for antialiased
-     points. See `glPointSize'.
-
-`GL_STENCIL_BACK_FAIL'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     action is taken for back-facing polygons when the stencil test
-     fails. The initial value is `GL_KEEP'. See `glStencilOpSeparate'.
-
-`GL_STENCIL_BACK_FUNC'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     function is used for back-facing polygons to compare the stencil
-     reference value with the stencil buffer value. The initial value is
-     `GL_ALWAYS'. See `glStencilFuncSeparate'.
-
-`GL_STENCIL_BACK_PASS_DEPTH_FAIL'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     action is taken for back-facing polygons when the stencil test
-     passes, but the depth test fails. The initial value is `GL_KEEP'.
-     See `glStencilOpSeparate'.
-
-`GL_STENCIL_BACK_PASS_DEPTH_PASS'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     action is taken for back-facing polygons when the stencil test
-     passes and the depth test passes. The initial value is `GL_KEEP'.
-     See `glStencilOpSeparate'.
-
-`GL_STENCIL_BACK_REF'
-
-
-     PARAMS returns one value, the reference value that is compared with
-     the contents of the stencil buffer for back-facing polygons. The
-     initial value is 0. See `glStencilFuncSeparate'.
-
-`GL_STENCIL_BACK_VALUE_MASK'
-
-
-     PARAMS returns one value, the mask that is used for back-facing
-     polygons to mask both the stencil reference value and the stencil
-     buffer value before they are compared. The initial value is all
-     1's. See `glStencilFuncSeparate'.
-
-`GL_STENCIL_BACK_WRITEMASK'
-
-
-     PARAMS returns one value, the mask that controls writing of the
-     stencil bitplanes for back-facing polygons. The initial value is
-     all 1's. See `glStencilMaskSeparate'.
-
-`GL_STENCIL_BITS'
-
-
-     PARAMS returns one value, the number of bitplanes in the stencil
-     buffer.
-
-`GL_STENCIL_CLEAR_VALUE'
-
-
-     PARAMS returns one value, the index to which the stencil bitplanes
-     are cleared. The initial value is 0. See `glClearStencil'.
-
-`GL_STENCIL_FAIL'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     action is taken when the stencil test fails. The initial value is
-     `GL_KEEP'. See `glStencilOp'. If the GL version is 2.0 or greater,
-     this stencil state only affects non-polygons and front-facing
-     polygons. Back-facing polygons use separate stencil state. See
-     `glStencilOpSeparate'.
-
-`GL_STENCIL_FUNC'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     function is used to compare the stencil reference value with the
-     stencil buffer value. The initial value is `GL_ALWAYS'. See
-     `glStencilFunc'. If the GL version is 2.0 or greater, this stencil
-     state only affects non-polygons and front-facing polygons.
-     Back-facing polygons use separate stencil state. See
-     `glStencilFuncSeparate'.
-
-`GL_STENCIL_PASS_DEPTH_FAIL'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     action is taken when the stencil test passes, but the depth test
-     fails. The initial value is `GL_KEEP'. See `glStencilOp'. If the GL
-     version is 2.0 or greater, this stencil state only affects
-     non-polygons and front-facing polygons. Back-facing polygons use
-     separate stencil state. See `glStencilOpSeparate'.
-
-`GL_STENCIL_PASS_DEPTH_PASS'
-
-
-     PARAMS returns one value, a symbolic constant indicating what
-     action is taken when the stencil test passes and the depth test
-     passes. The initial value is `GL_KEEP'. See `glStencilOp'. If the
-     GL version is 2.0 or greater, this stencil state only affects
-     non-polygons and front-facing polygons. Back-facing polygons use
-     separate stencil state. See `glStencilOpSeparate'.
-
-`GL_STENCIL_REF'
-
-
-     PARAMS returns one value, the reference value that is compared with
-     the contents of the stencil buffer. The initial value is 0. See
-     `glStencilFunc'. If the GL version is 2.0 or greater, this stencil
-     state only affects non-polygons and front-facing polygons.
-     Back-facing polygons use separate stencil state. See
-     `glStencilFuncSeparate'.
-
-`GL_STENCIL_TEST'
-
-
-     PARAMS returns a single boolean value indicating whether stencil
-     testing of fragments is enabled. The initial value is `GL_FALSE'.
-     See `glStencilFunc' and `glStencilOp'.
-
-`GL_STENCIL_VALUE_MASK'
-
-
-     PARAMS returns one value, the mask that is used to mask both the
-     stencil reference value and the stencil buffer value before they
-     are compared. The initial value is all 1's. See `glStencilFunc'. If
-     the GL version is 2.0 or greater, this stencil state only affects
-     non-polygons and front-facing polygons. Back-facing polygons use
-     separate stencil state. See `glStencilFuncSeparate'.
-
-`GL_STENCIL_WRITEMASK'
-
-
-     PARAMS returns one value, the mask that controls writing of the
-     stencil bitplanes. The initial value is all 1's. See
-     `glStencilMask'. If the GL version is 2.0 or greater, this stencil
-     state only affects non-polygons and front-facing polygons.
-     Back-facing polygons use separate stencil state. See
-     `glStencilMaskSeparate'.
-
-`GL_STEREO'
-
-
-     PARAMS returns a single boolean value indicating whether stereo
-     buffers (left and right) are supported.
-
-`GL_SUBPIXEL_BITS'
-
-
-     PARAMS returns one value, an estimate of the number of bits of
-     subpixel resolution that are used to position rasterized geometry
-     in window coordinates. The value must be at least 4.
-
-`GL_TEXTURE_1D'
-
-
-     PARAMS returns a single boolean value indicating whether 1D texture
-     mapping is enabled. The initial value is `GL_FALSE'. See
-     `glTexImage1D'.
-
-`GL_TEXTURE_BINDING_1D'
-
-
-     PARAMS returns a single value, the name of the texture currently
-     bound to the target `GL_TEXTURE_1D'. The initial value is 0. See
-     `glBindTexture'.
-
-`GL_TEXTURE_2D'
-
-
-     PARAMS returns a single boolean value indicating whether 2D texture
-     mapping is enabled. The initial value is `GL_FALSE'. See
-     `glTexImage2D'.
-
-`GL_TEXTURE_BINDING_2D'
-
-
-     PARAMS returns a single value, the name of the texture currently
-     bound to the target `GL_TEXTURE_2D'. The initial value is 0. See
-     `glBindTexture'.
-
-`GL_TEXTURE_3D'
-
-
-     PARAMS returns a single boolean value indicating whether 3D texture
-     mapping is enabled. The initial value is `GL_FALSE'. See
-     `glTexImage3D'.
-
-`GL_TEXTURE_BINDING_3D'
-
-
-     PARAMS returns a single value, the name of the texture currently
-     bound to the target `GL_TEXTURE_3D'. The initial value is 0. See
-     `glBindTexture'.
-
-`GL_TEXTURE_BINDING_CUBE_MAP'
-
-
-     PARAMS returns a single value, the name of the texture currently
-     bound to the target `GL_TEXTURE_CUBE_MAP'. The initial value is 0.
-     See `glBindTexture'.
-
-`GL_TEXTURE_COMPRESSION_HINT'
-
-
-     PARAMS returns a single value indicating the mode of the texture
-     compression hint. The initial value is `GL_DONT_CARE'.
-
-`GL_TEXTURE_COORD_ARRAY'
-
-
-     PARAMS returns a single boolean value indicating whether the
-     texture coordinate array is enabled. The initial value is
-     `GL_FALSE'. See `glTexCoordPointer'.
-
-`GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the texture coordinate array. This buffer object
-     would have been bound to the target `GL_ARRAY_BUFFER' at the time
-     of the most recent call to `glTexCoordPointer'. If no buffer object
-     was bound to this target, 0 is returned. The initial value is 0.
-     See `glBindBuffer'.
-
-`GL_TEXTURE_COORD_ARRAY_SIZE'
-
-
-     PARAMS returns one value, the number of coordinates per element in
-     the texture coordinate array. The initial value is 4. See
-     `glTexCoordPointer'.
-
-`GL_TEXTURE_COORD_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive
-     elements in the texture coordinate array. The initial value is 0.
-     See `glTexCoordPointer'.
-
-`GL_TEXTURE_COORD_ARRAY_TYPE'
-
-
-     PARAMS returns one value, the data type of the coordinates in the
-     texture coordinate array. The initial value is `GL_FLOAT'. See
-     `glTexCoordPointer'.
-
-`GL_TEXTURE_CUBE_MAP'
-
-
-     PARAMS returns a single boolean value indicating whether
-     cube-mapped texture mapping is enabled. The initial value is
-     `GL_FALSE'. See `glTexImage2D'.
-
-`GL_TEXTURE_GEN_Q'
-
-
-     PARAMS returns a single boolean value indicating whether automatic
-     generation of the Q texture coordinate is enabled. The initial
-     value is `GL_FALSE'. See `glTexGen'.
-
-`GL_TEXTURE_GEN_R'
-
-
-     PARAMS returns a single boolean value indicating whether automatic
-     generation of the R texture coordinate is enabled. The initial
-     value is `GL_FALSE'. See `glTexGen'.
-
-`GL_TEXTURE_GEN_S'
-
-
-     PARAMS returns a single boolean value indicating whether automatic
-     generation of the S texture coordinate is enabled. The initial
-     value is `GL_FALSE'. See `glTexGen'.
-
-`GL_TEXTURE_GEN_T'
-
-
-     PARAMS returns a single boolean value indicating whether automatic
-     generation of the T texture coordinate is enabled. The initial
-     value is `GL_FALSE'. See `glTexGen'.
-
-`GL_TEXTURE_MATRIX'
-
-
-     PARAMS returns sixteen values: the texture matrix on the top of the
-     texture matrix stack. Initially this matrix is the identity matrix.
-     See `glPushMatrix'.
-
-`GL_TEXTURE_STACK_DEPTH'
-
-
-     PARAMS returns one value, the number of matrices on the texture
-     matrix stack. The initial value is 1. See `glPushMatrix'.
-
-`GL_TRANSPOSE_COLOR_MATRIX'
-
-
-     PARAMS returns 16 values, the elements of the color matrix in
-     row-major order. See `glLoadTransposeMatrix'.
-
-`GL_TRANSPOSE_MODELVIEW_MATRIX'
-
-
-     PARAMS returns 16 values, the elements of the modelview matrix in
-     row-major order. See `glLoadTransposeMatrix'.
-
-`GL_TRANSPOSE_PROJECTION_MATRIX'
-
-
-     PARAMS returns 16 values, the elements of the projection matrix in
-     row-major order. See `glLoadTransposeMatrix'.
-
-`GL_TRANSPOSE_TEXTURE_MATRIX'
-
-
-     PARAMS returns 16 values, the elements of the texture matrix in
-     row-major order. See `glLoadTransposeMatrix'.
-
-`GL_UNPACK_ALIGNMENT'
-
-
-     PARAMS returns one value, the byte alignment used for reading pixel
-     data from memory. The initial value is 4. See `glPixelStore'.
-
-`GL_UNPACK_IMAGE_HEIGHT'
-
-
-     PARAMS returns one value, the image height used for reading pixel
-     data from memory. The initial is 0. See `glPixelStore'.
-
-`GL_UNPACK_LSB_FIRST'
-
-
-     PARAMS returns a single boolean value indicating whether single-bit
-     pixels being read from memory are read first from the least
-     significant bit of each unsigned byte. The initial value is
-     `GL_FALSE'. See `glPixelStore'.
-
-`GL_UNPACK_ROW_LENGTH'
-
-
-     PARAMS returns one value, the row length used for reading pixel
-     data from memory. The initial value is 0. See `glPixelStore'.
-
-`GL_UNPACK_SKIP_IMAGES'
-
-
-     PARAMS returns one value, the number of pixel images skipped before
-     the first pixel is read from memory. The initial value is 0. See
-     `glPixelStore'.
-
-`GL_UNPACK_SKIP_PIXELS'
-
-
-     PARAMS returns one value, the number of pixel locations skipped
-     before the first pixel is read from memory. The initial value is 0.
-     See `glPixelStore'.
-
-`GL_UNPACK_SKIP_ROWS'
-
-
-     PARAMS returns one value, the number of rows of pixel locations
-     skipped before the first pixel is read from memory. The initial
-     value is 0. See `glPixelStore'.
-
-`GL_UNPACK_SWAP_BYTES'
-
-
-     PARAMS returns a single boolean value indicating whether the bytes
-     of two-byte and four-byte pixel indices and components are swapped
-     after being read from memory. The initial value is `GL_FALSE'. See
-     `glPixelStore'.
-
-`GL_VERTEX_ARRAY'
-
-
-     PARAMS returns a single boolean value indicating whether the vertex
-     array is enabled. The initial value is `GL_FALSE'. See
-     `glVertexPointer'.
-
-`GL_VERTEX_ARRAY_BUFFER_BINDING'
-
-
-     PARAMS returns a single value, the name of the buffer object
-     associated with the vertex array. This buffer object would have
-     been bound to the target `GL_ARRAY_BUFFER' at the time of the most
-     recent call to `glVertexPointer'. If no buffer object was bound to
-     this target, 0 is returned. The initial value is 0. See
-     `glBindBuffer'.
-
-`GL_VERTEX_ARRAY_SIZE'
-
-
-     PARAMS returns one value, the number of coordinates per vertex in
-     the vertex array. The initial value is 4. See `glVertexPointer'.
-
-`GL_VERTEX_ARRAY_STRIDE'
-
-
-     PARAMS returns one value, the byte offset between consecutive
-     vertices in the vertex array. The initial value is 0. See
-     `glVertexPointer'.
-
-`GL_VERTEX_ARRAY_TYPE'
-
-
-     PARAMS returns one value, the data type of each coordinate in the
-     vertex array. The initial value is `GL_FLOAT'. See
-     `glVertexPointer'.
-
-`GL_VERTEX_PROGRAM_POINT_SIZE'
-
-
-     PARAMS returns a single boolean value indicating whether vertex
-     program point size mode is enabled. If enabled, and a vertex shader
-     is active, then the point size is taken from the shader built-in
-     `gl_PointSize'. If disabled, and a vertex shader is active, then
-     the point size is taken from the point state as specified by
-     `glPointSize'. The initial value is `GL_FALSE'.
-
-`GL_VERTEX_PROGRAM_TWO_SIDE'
-
-
-     PARAMS returns a single boolean value indicating whether vertex
-     program two-sided color mode is enabled. If enabled, and a vertex
-     shader is active, then the GL chooses the back color output for
-     back-facing polygons, and the front color output for non-polygons
-     and front-facing polygons. If disabled, and a vertex shader is
-     active, then the front color output is always selected. The initial
-     value is `GL_FALSE'.
-
-`GL_VIEWPORT'
-
-
-     PARAMS returns four values: the X and Y window coordinates of the
-     viewport, followed by its width and height. Initially the X and Y
-     window coordinates are both set to 0, and the width and height are
-     set to the width and height of the window into which the GL will do
-     its rendering. See `glViewport'.
-
-`GL_ZOOM_X'
-
-
-     PARAMS returns one value, the X pixel zoom factor. The initial
-     value is 1. See `glPixelZoom'.
-
-`GL_ZOOM_Y'
-
-
-     PARAMS returns one value, the Y pixel zoom factor. The initial
-     value is 1. See `glPixelZoom'.
-
-Many of the boolean parameters can also be queried more easily using
-`glIsEnabled'.
-
-`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
-
-`GL_INVALID_OPERATION' is generated if `glGet' is executed between the
-execution of `glBegin' and the corresponding execution of `glEnd'.")
-
-(define-gl-procedure
-  glHint
-  "glHint"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glHint"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glHint (target GLenum) (mode GLenum) -> void))
   "Specify implementation-specific hints.
 
 TARGET
@@ -13641,15 +9032,13 @@ accepted value.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glHistogram
-  "glHistogram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glHistogram"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLboolean " (parameter "sink"))))
+  ((glHistogram
+     (target GLenum)
+     (width GLsizei)
+     (internalformat GLenum)
+     (sink GLboolean)
+     ->
+     void))
   "Define histogram table.
 
 TARGET
@@ -13724,12 +9113,7 @@ histogram table specified is too large for the implementation.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIndexMask
-  "glIndexMask"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glIndexMask"))
-      (paramdef "GLuint " (parameter "mask"))))
+  ((glIndexMask (mask GLuint) -> void))
   "Control the writing of individual bits in the color index buffers.
 
 MASK
@@ -13752,16 +9136,12 @@ all bits are enabled for writing.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIndexPointer
-  "glIndexPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glIndexPointer"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glIndexPointer
+     (type GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of color indexes.
 
 TYPE
@@ -13806,12 +9186,9 @@ enabled, the color index array is used when `glDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glIndex
-  "glIndex"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glIndexs"))
-      (paramdef "GLshort " (parameter "c"))))
+  ((glIndexi (c GLint) -> void)
+   (glIndexd (c GLdouble) -> void)
+   (glIndexub (c GLubyte) -> void))
   "Set the current color index.
 
 C
@@ -13833,12 +9210,7 @@ bits in the integer portion of the resulting fixed-point value that do
 not correspond to bits in the frame buffer are masked out.")
 
 (define-gl-procedure
-  glInitNames
-  "glInitNames"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glInitNames"))
-      (paramdef (parameter "void"))))
+  ((glInitNames -> void))
   "Initialize the name stack.
 
 The name stack is used during selection mode to allow sets of rendering
@@ -13854,18 +9226,12 @@ ignored.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glInterleavedArrays
-  "glInterleavedArrays"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glInterleavedArrays"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glInterleavedArrays
+     (format GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Simultaneously specify and enable several interleaved arrays.
 
 FORMAT
@@ -13904,12 +9270,7 @@ located at the first possible floating-point aligned address.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glIsBuffer
-  "glIsBuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLboolean " (function "glIsBuffer"))
-      (paramdef "GLuint " (parameter "buffer"))))
+  ((glIsBuffer (buffer GLuint) -> GLboolean))
   "Determine if a name corresponds to a buffer object.
 
 BUFFER
@@ -13927,12 +9288,7 @@ object by calling `glBindBuffer', is not the name of a buffer object.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIsEnabled
-  "glIsEnabled"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLboolean " (function "glIsEnabled"))
-      (paramdef "GLenum " (parameter "cap"))))
+  ((glIsEnabled (cap GLenum) -> GLboolean))
   "Test whether a capability is enabled.
 
 CAP
@@ -14176,12 +9532,7 @@ The following capabilities are accepted for CAP:
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIsList
-  "glIsList"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLboolean " (function "glIsList"))
-      (paramdef "GLuint " (parameter "list"))))
+  ((glIsList (list GLuint) -> GLboolean))
   "Determine if a name corresponds to a display list.
 
 LIST
@@ -14197,12 +9548,7 @@ list by calling `glNewList', is not the name of a display list.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIsProgram
-  "glIsProgram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLboolean " (function "glIsProgram"))
-      (paramdef "GLuint " (parameter "program"))))
+  ((glIsProgram (program GLuint) -> GLboolean))
   "Determines if a name corresponds to a program object.
 
 PROGRAM
@@ -14218,12 +9564,7 @@ returns `GL_FALSE'.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIsQuery
-  "glIsQuery"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLboolean " (function "glIsQuery"))
-      (paramdef "GLuint " (parameter "id"))))
+  ((glIsQuery (id GLuint) -> GLboolean))
   "Determine if a name corresponds to a query object.
 
 ID
@@ -14241,12 +9582,7 @@ object by calling `glBeginQuery', is not the name of a query object.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIsShader
-  "glIsShader"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLboolean " (function "glIsShader"))
-      (paramdef "GLuint " (parameter "shader"))))
+  ((glIsShader (shader GLuint) -> GLboolean))
   "Determines if a name corresponds to a shader object.
 
 SHADER
@@ -14262,12 +9598,7 @@ name of a shader object, or if an error occurs, `glIsShader ' returns
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glIsTexture
-  "glIsTexture"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLboolean " (function "glIsTexture"))
-      (paramdef "GLuint " (parameter "texture"))))
+  ((glIsTexture (texture GLuint) -> GLboolean))
   "Determine if a name corresponds to a texture.
 
 TEXTURE
@@ -14285,13 +9616,16 @@ texture by calling `glBindTexture', is not the name of a texture.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glLightModel
-  "glLightModel"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLightModelf"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glLightModelf
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glLightModeli
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Set the lighting model parameters.
 
 PNAME
@@ -14395,14 +9729,18 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glLight
-  "glLight"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLightf"))
-      (paramdef "GLenum " (parameter "light"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glLightf
+     (light GLenum)
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glLighti
+     (light GLenum)
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Set light source parameters.
 
 LIGHT
@@ -14543,13 +9881,11 @@ attenuation factor is specified.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glLineStipple
-  "glLineStipple"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLineStipple"))
-      (paramdef "GLint " (parameter "factor"))
-      (paramdef "GLushort " (parameter "pattern"))))
+  ((glLineStipple
+     (factor GLint)
+     (pattern GLushort)
+     ->
+     void))
   "Specify the line stipple pattern.
 
 FACTOR
@@ -14595,12 +9931,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glLineWidth
-  "glLineWidth"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLineWidth"))
-      (paramdef "GLfloat " (parameter "width"))))
+  ((glLineWidth (width GLfloat) -> void))
   "Specify the width of rasterized lines.
 
 WIDTH
@@ -14642,12 +9973,7 @@ between supported widths within the range, call `glGet' with arguments
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glLinkProgram
-  "glLinkProgram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLinkProgram"))
-      (paramdef "GLuint " (parameter "program"))))
+  ((glLinkProgram (program GLuint) -> void))
   "Links a program object.
 
 PROGRAM
@@ -14745,12 +10071,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glListBase
-  "glListBase"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glListBase"))
-      (paramdef "GLuint " (parameter "base"))))
+  ((glListBase (base GLuint) -> void))
   "Set the display-list base for .
 
 BASE
@@ -14765,12 +10086,7 @@ display lists are executed; the others are ignored.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glLoadIdentity
-  "glLoadIdentity"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLoadIdentity"))
-      (paramdef (parameter "void"))))
+  ((glLoadIdentity -> void))
   "Replace the current matrix with the identity matrix.
 
 `glLoadIdentity' replaces the current matrix with the identity matrix.
@@ -14790,12 +10106,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glLoadMatrix
-  "glLoadMatrix"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLoadMatrixd"))
-      (paramdef "const GLdouble * " (parameter "m"))))
+  ((glLoadMatrixd (m *) -> void))
   "Replace the current matrix with the specified matrix.
 
 M
@@ -14827,12 +10138,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glLoadName
-  "glLoadName"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLoadName"))
-      (paramdef "GLuint " (parameter "name"))))
+  ((glLoadName (name GLuint) -> void))
   "Load a name onto the name stack.
 
 NAME
@@ -14856,14 +10162,7 @@ name stack is empty.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glLoadTransposeMatrix
-  "glLoadTransposeMatrix"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glLoadTransposeMatrixd"))
-      (paramdef "const GLdouble * " (parameter "m"))))
+  ((glLoadTransposeMatrixd (m *) -> void))
   "Replace the current matrix with the specified row-major ordered matrix.
 
 M
@@ -14898,12 +10197,7 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glLogicOp
-  "glLogicOp"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glLogicOp"))
-      (paramdef "GLenum " (parameter "opcode"))))
+  ((glLogicOp (opcode GLenum) -> void))
   "Specify a logical pixel operation for color index rendering.
 
 OPCODE
@@ -14988,19 +10282,15 @@ source and destination indices or colors.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glMap1
-  "glMap1"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMap1f"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLfloat " (parameter "u1"))
-      (paramdef "GLfloat " (parameter "u2"))
-      (paramdef "GLint " (parameter "stride"))
-      (paramdef "GLint " (parameter "order"))
-      (paramdef
-        "const GLfloat * "
-        (parameter "points"))))
+  ((glMap1d
+     (target GLenum)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     (stride GLint)
+     (order GLint)
+     (points *)
+     ->
+     void))
   "Define a one-dimensional evaluator.
 
 TARGET
@@ -15153,23 +10443,19 @@ execution of `glBegin' and the corresponding execution of `glEnd'.
 of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
 
 (define-gl-procedure
-  glMap2
-  "glMap2"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMap2f"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLfloat " (parameter "u1"))
-      (paramdef "GLfloat " (parameter "u2"))
-      (paramdef "GLint " (parameter "ustride"))
-      (paramdef "GLint " (parameter "uorder"))
-      (paramdef "GLfloat " (parameter "v1"))
-      (paramdef "GLfloat " (parameter "v2"))
-      (paramdef "GLint " (parameter "vstride"))
-      (paramdef "GLint " (parameter "vorder"))
-      (paramdef
-        "const GLfloat * "
-        (parameter "points"))))
+  ((glMap2d
+     (target GLenum)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     (ustride GLint)
+     (uorder GLint)
+     (v1 GLdouble)
+     (v2 GLdouble)
+     (vstride GLint)
+     (vorder GLint)
+     (points *)
+     ->
+     void))
   "Define a two-dimensional evaluator.
 
 TARGET
@@ -15356,13 +10642,12 @@ execution of `glBegin' and the corresponding execution of `glEnd'.
 of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
 
 (define-gl-procedure
-  glMapBuffer
-  "glMapBuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void * " (function "glMapBuffer"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "access"))))
+  ((glMapBuffer
+     (target GLenum)
+     (access GLenum)
+     ->
+     *)
+   (glUnmapBuffer (target GLenum) -> GLboolean))
   "Map a buffer object's data store.
 
 TARGET
@@ -15435,14 +10720,21 @@ is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glMapGrid
-  "glMapGrid"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMapGrid1d"))
-      (paramdef "GLint " (parameter "un"))
-      (paramdef "GLdouble " (parameter "u1"))
-      (paramdef "GLdouble " (parameter "u2"))))
+  ((glMapGrid1d
+     (un GLint)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     ->
+     void)
+   (glMapGrid2d
+     (un GLint)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     (vn GLint)
+     (v1 GLdouble)
+     (v2 GLdouble)
+     ->
+     void))
   "Define a one- or two-dimensional mesh.
 
 UN
@@ -15500,14 +10792,18 @@ The mappings specified by `glMapGrid' are used identically by
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glMaterial
-  "glMaterial"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMaterialf"))
-      (paramdef "GLenum " (parameter "face"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glMaterialf
+     (face GLenum)
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glMateriali
+     (face GLenum)
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Specify material parameters for the lighting model.
 
 FACE
@@ -15604,12 +10900,7 @@ accepted value.
 [0,128] is specified.")
 
 (define-gl-procedure
-  glMatrixMode
-  "glMatrixMode"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMatrixMode"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glMatrixMode (mode GLenum) -> void))
   "Specify which matrix is the current matrix.
 
 MODE
@@ -15646,14 +10937,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glMinmax
-  "glMinmax"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMinmax"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLboolean " (parameter "sink"))))
+  ((glMinmax
+     (target GLenum)
+     (internalformat GLenum)
+     (sink GLboolean)
+     ->
+     void))
   "Define minmax table.
 
 TARGET
@@ -15713,15 +11002,13 @@ allowable values.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glMultiDrawArrays
-  "glMultiDrawArrays"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMultiDrawArrays"))
-      (paramdef "GLenum " (parameter "mode"))
-      (paramdef "GLint * " (parameter "first"))
-      (paramdef "GLsizei * " (parameter "count"))
-      (paramdef "GLsizei " (parameter "primcount"))))
+  ((glMultiDrawArrays
+     (mode GLenum)
+     (first *)
+     (count *)
+     (primcount GLsizei)
+     ->
+     void))
   "Render multiple sets of primitives from array data.
 
 MODE
@@ -15773,20 +11060,14 @@ currently mapped.
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
 (define-gl-procedure
-  glMultiDrawElements
-  "glMultiDrawElements"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glMultiDrawElements"))
-      (paramdef "GLenum " (parameter "mode"))
-      (paramdef "const GLsizei * " (parameter "count"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef
-        "const GLvoid ** "
-        (parameter "indices"))
-      (paramdef "GLsizei " (parameter "primcount"))))
+  ((glMultiDrawElements
+     (mode GLenum)
+     (count *)
+     (type GLenum)
+     (indices *)
+     (primcount GLsizei)
+     ->
+     void))
   "Render multiple sets of primitives by specifying indices of array data
 elements.
 
@@ -15837,13 +11118,58 @@ data store is currently mapped.
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
 (define-gl-procedure
-  glMultiTexCoord
-  "glMultiTexCoord"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMultiTexCoord1s"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLshort " (parameter "s"))))
+  ((glMultiTexCoord1i
+     (target GLenum)
+     (s GLint)
+     ->
+     void)
+   (glMultiTexCoord1d
+     (target GLenum)
+     (s GLdouble)
+     ->
+     void)
+   (glMultiTexCoord2i
+     (target GLenum)
+     (s GLint)
+     (t GLint)
+     ->
+     void)
+   (glMultiTexCoord2d
+     (target GLenum)
+     (s GLdouble)
+     (t GLdouble)
+     ->
+     void)
+   (glMultiTexCoord3i
+     (target GLenum)
+     (s GLint)
+     (t GLint)
+     (r GLint)
+     ->
+     void)
+   (glMultiTexCoord3d
+     (target GLenum)
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     ->
+     void)
+   (glMultiTexCoord4i
+     (target GLenum)
+     (s GLint)
+     (t GLint)
+     (r GLint)
+     (q GLint)
+     ->
+     void)
+   (glMultiTexCoord4d
+     (target GLenum)
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     (q GLdouble)
+     ->
+     void))
   "Set the current texture coordinates.
 
 TARGET
@@ -15875,12 +11201,7 @@ with each vertex and with the current raster position. Initially, the
 values for (S,TRQ) are (0,001) .")
 
 (define-gl-procedure
-  glMultMatrix
-  "glMultMatrix"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glMultMatrixd"))
-      (paramdef "const GLdouble * " (parameter "m"))))
+  ((glMultMatrixd (m *) -> void))
   "Multiply the current matrix with the specified matrix.
 
 M
@@ -15899,14 +11220,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glMultTransposeMatrix
-  "glMultTransposeMatrix"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glMultTransposeMatrixd"))
-      (paramdef "const GLdouble * " (parameter "m"))))
+  ((glMultTransposeMatrixd (m *) -> void))
   "Multiply the current matrix with the specified row-major ordered matrix.
 
 M
@@ -15925,13 +11239,8 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glNewList
-  "glNewList"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glNewList"))
-      (paramdef "GLuint " (parameter "list"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glNewList (list GLuint) (mode GLenum) -> void)
+   (glEndList -> void))
   "Create or replace a display list.
 
 LIST
@@ -16008,16 +11317,12 @@ other change is made to the GL state. (It is as if no attempt had been
 made to create the new display list.)")
 
 (define-gl-procedure
-  glNormalPointer
-  "glNormalPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glNormalPointer"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glNormalPointer
+     (type GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of normals.
 
 TYPE
@@ -16062,14 +11367,18 @@ the normal array is used when `glDrawArrays', `glMultiDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glNormal
-  "glNormal"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glNormal3b"))
-      (paramdef "GLbyte " (parameter "nx"))
-      (paramdef "GLbyte " (parameter "ny"))
-      (paramdef "GLbyte " (parameter "nz"))))
+  ((glNormal3d
+     (nx GLdouble)
+     (ny GLdouble)
+     (nz GLdouble)
+     ->
+     void)
+   (glNormal3i
+     (nx GLint)
+     (ny GLint)
+     (nz GLint)
+     ->
+     void))
   "Set the current normal vector.
 
 NX
@@ -16101,17 +11410,15 @@ normalization, call `glEnable' and `glDisable' with either
 disabled.")
 
 (define-gl-procedure
-  glOrtho
-  "glOrtho"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glOrtho"))
-      (paramdef "GLdouble " (parameter "left"))
-      (paramdef "GLdouble " (parameter "right"))
-      (paramdef "GLdouble " (parameter "bottom"))
-      (paramdef "GLdouble " (parameter "top"))
-      (paramdef "GLdouble " (parameter "nearVal"))
-      (paramdef "GLdouble " (parameter "farVal"))))
+  ((glOrtho
+     (left GLdouble)
+     (right GLdouble)
+     (bottom GLdouble)
+     (top GLdouble)
+     (nearVal GLdouble)
+     (farVal GLdouble)
+     ->
+     void))
   "Multiply the current matrix with an orthographic matrix.
 
 LEFT
@@ -16161,12 +11468,7 @@ NEAR = FAR.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glPassThrough
-  "glPassThrough"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPassThrough"))
-      (paramdef "GLfloat " (parameter "token"))))
+  ((glPassThrough (token GLfloat) -> void))
   "Place a marker in the feedback buffer.
 
 TOKEN
@@ -16193,190 +11495,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glPixelMap
-  "glPixelMap"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPixelMapfv"))
-      (paramdef "GLenum " (parameter "map"))
-      (paramdef "GLsizei " (parameter "mapsize"))
-      (paramdef
-        "const GLfloat * "
-        (parameter "values"))))
-  "Set up pixel transfer maps.
-
-MAP
-     Specifies a symbolic map name. Must be one of the following:
-     `GL_PIXEL_MAP_I_TO_I', `GL_PIXEL_MAP_S_TO_S',
-     `GL_PIXEL_MAP_I_TO_R', `GL_PIXEL_MAP_I_TO_G',
-     `GL_PIXEL_MAP_I_TO_B', `GL_PIXEL_MAP_I_TO_A',
-     `GL_PIXEL_MAP_R_TO_R', `GL_PIXEL_MAP_G_TO_G',
-     `GL_PIXEL_MAP_B_TO_B', or `GL_PIXEL_MAP_A_TO_A'.
-
-MAPSIZE
-     Specifies the size of the map being defined.
-
-VALUES
-     Specifies an array of MAPSIZE values.
-
-`glPixelMap' sets up translation tables, or MAPS, used by
-`glCopyPixels', `glCopyTexImage1D', `glCopyTexImage2D',
-`glCopyTexSubImage1D', `glCopyTexSubImage2D', `glCopyTexSubImage3D',
-`glDrawPixels', `glReadPixels', `glTexImage1D', `glTexImage2D',
-`glTexImage3D', `glTexSubImage1D', `glTexSubImage2D', and
-`glTexSubImage3D'. Additionally, if the `ARB_imaging' subset is
-supported, the routines `glColorTable', `glColorSubTable',
-`glConvolutionFilter1D', `glConvolutionFilter2D', `glHistogram',
-`glMinmax', and `glSeparableFilter2D'. Use of these maps is described
-completely in the `glPixelTransfer' reference page, and partly in the
-reference pages for the pixel and texture image commands. Only the
-specification of the maps is described in this reference page.
-
-MAP is a symbolic map name, indicating one of ten maps to set. MAPSIZE
-specifies the number of entries in the map, and VALUES is a pointer to
-an array of MAPSIZE map values.
-
-If a non-zero named buffer object is bound to the
-`GL_PIXEL_UNPACK_BUFFER' target (see `glBindBuffer') while a pixel
-transfer map is specified, VALUES is treated as a byte offset into the
-buffer object's data store.
-
-The ten maps are as follows:
-
-`GL_PIXEL_MAP_I_TO_I'
-     Maps color indices to color indices.
-
-`GL_PIXEL_MAP_S_TO_S'
-     Maps stencil indices to stencil indices.
-
-`GL_PIXEL_MAP_I_TO_R'
-     Maps color indices to red components.
-
-`GL_PIXEL_MAP_I_TO_G'
-     Maps color indices to green components.
-
-`GL_PIXEL_MAP_I_TO_B'
-     Maps color indices to blue components.
-
-`GL_PIXEL_MAP_I_TO_A'
-     Maps color indices to alpha components.
-
-`GL_PIXEL_MAP_R_TO_R'
-     Maps red components to red components.
-
-`GL_PIXEL_MAP_G_TO_G'
-     Maps green components to green components.
-
-`GL_PIXEL_MAP_B_TO_B'
-     Maps blue components to blue components.
-
-`GL_PIXEL_MAP_A_TO_A'
-     Maps alpha components to alpha components.
-
-The entries in a map can be specified as single-precision floating-point
-numbers, unsigned short integers, or unsigned int integers. Maps that
-store color component values (all but `GL_PIXEL_MAP_I_TO_I' and
-`GL_PIXEL_MAP_S_TO_S') retain their values in floating-point format,
-with unspecified mantissa and exponent sizes. Floating-point values
-specified by `glPixelMapfv' are converted directly to the internal
-floating-point format of these maps, then clamped to the range [0,1].
-Unsigned integer values specified by `glPixelMapusv' and `glPixelMapuiv'
-are converted linearly such that the largest representable integer maps
-to 1.0, and 0 maps to 0.0.
-
-Maps that store indices, `GL_PIXEL_MAP_I_TO_I' and
-`GL_PIXEL_MAP_S_TO_S', retain their values in fixed-point format, with
-an unspecified number of bits to the right of the binary point.
-Floating-point values specified by `glPixelMapfv' are converted directly
-to the internal fixed-point format of these maps. Unsigned integer
-values specified by `glPixelMapusv' and `glPixelMapuiv' specify integer
-values, with all 0's to the right of the binary point.
-
-The following table shows the initial sizes and values for each of the
-maps. Maps that are indexed by either color or stencil indices must have
-MAPSIZE = 2^N for some N or the results are undefined. The maximum
-allowable size for each map depends on the implementation and can be
-determined by calling `glGet' with argument `GL_MAX_PIXEL_MAP_TABLE'.
-The single maximum applies to all maps; it is at least 32.
-
-*MAP*
-     *Lookup Index*, *Lookup Value*, *Initial Size*, *Initial Value*
-
-`GL_PIXEL_MAP_I_TO_I'
-     color index , color index , 1 , 0
-
-`GL_PIXEL_MAP_S_TO_S'
-     stencil index , stencil index , 1 , 0
-
-`GL_PIXEL_MAP_I_TO_R'
-     color index , R , 1 , 0
-
-`GL_PIXEL_MAP_I_TO_G'
-     color index , G , 1 , 0
-
-`GL_PIXEL_MAP_I_TO_B'
-     color index , B , 1 , 0
-
-`GL_PIXEL_MAP_I_TO_A'
-     color index , A , 1 , 0
-
-`GL_PIXEL_MAP_R_TO_R'
-     R , R , 1 , 0
-
-`GL_PIXEL_MAP_G_TO_G'
-     G , G , 1 , 0
-
-`GL_PIXEL_MAP_B_TO_B'
-     B , B , 1 , 0
-
-`GL_PIXEL_MAP_A_TO_A'
-     A , A , 1 , 0
-
-`GL_INVALID_ENUM' is generated if MAP is not an accepted value.
-
-`GL_INVALID_VALUE' is generated if MAPSIZE is less than one or larger
-than `GL_MAX_PIXEL_MAP_TABLE'.
-
-`GL_INVALID_VALUE' is generated if MAP is `GL_PIXEL_MAP_I_TO_I',
-`GL_PIXEL_MAP_S_TO_S', `GL_PIXEL_MAP_I_TO_R', `GL_PIXEL_MAP_I_TO_G',
-`GL_PIXEL_MAP_I_TO_B', or `GL_PIXEL_MAP_I_TO_A', and MAPSIZE is not a
-power of two.
-
-`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
-bound to the `GL_PIXEL_UNPACK_BUFFER' target and the buffer object's
-data store is currently mapped.
-
-`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
-bound to the `GL_PIXEL_UNPACK_BUFFER' target and the data would be
-unpacked from the buffer object such that the memory reads required
-would exceed the data store size.
-
-`GL_INVALID_OPERATION' is generated by `glPixelMapfv' if a non-zero
-buffer object name is bound to the `GL_PIXEL_UNPACK_BUFFER' target and
-VALUES is not evenly divisible into the number of bytes needed to store
-in memory a GLfloat datum.
-
-`GL_INVALID_OPERATION' is generated by `glPixelMapuiv' if a non-zero
-buffer object name is bound to the `GL_PIXEL_UNPACK_BUFFER' target and
-VALUES is not evenly divisible into the number of bytes needed to store
-in memory a GLuint datum.
-
-`GL_INVALID_OPERATION' is generated by `glPixelMapusv' if a non-zero
-buffer object name is bound to the `GL_PIXEL_UNPACK_BUFFER' target and
-VALUES is not evenly divisible into the number of bytes needed to store
-in memory a GLushort datum.
-
-`GL_INVALID_OPERATION' is generated if `glPixelMap' is executed between
-the execution of `glBegin' and the corresponding execution of `glEnd'.")
-
-(define-gl-procedure
-  glPixelStore
-  "glPixelStore"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPixelStoref"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glPixelStoref
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glPixelStorei
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Set pixel storage modes.
 
 PNAME
@@ -16667,13 +11795,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glPixelTransfer
-  "glPixelTransfer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPixelTransferf"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glPixelTransferf
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glPixelTransferi
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Set pixel transfer modes.
 
 PNAME
@@ -16950,13 +12081,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glPixelZoom
-  "glPixelZoom"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPixelZoom"))
-      (paramdef "GLfloat " (parameter "xfactor"))
-      (paramdef "GLfloat " (parameter "yfactor"))))
+  ((glPixelZoom
+     (xfactor GLfloat)
+     (yfactor GLfloat)
+     ->
+     void))
   "Specify the pixel zoom factors.
 
 XFACTOR
@@ -16984,13 +12113,16 @@ factors reflect the resulting image about the current raster position.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glPointParameter
-  "glPointParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPointParameterf"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glPointParameterf
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glPointParameteri
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Specify point parameters.
 
 PNAME
@@ -17049,12 +12181,7 @@ If the value for `GL_POINT_SIZE_MIN' is greater than
 error is generated.")
 
 (define-gl-procedure
-  glPointSize
-  "glPointSize"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPointSize"))
-      (paramdef "GLfloat " (parameter "size"))))
+  ((glPointSize (size GLfloat) -> void))
   "Specify the diameter of rasterized points.
 
 SIZE
@@ -17139,13 +12266,11 @@ supported ranges and granularity with `glGet' with arguments
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glPolygonMode
-  "glPolygonMode"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPolygonMode"))
-      (paramdef "GLenum " (parameter "face"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glPolygonMode
+     (face GLenum)
+     (mode GLenum)
+     ->
+     void))
   "Select a polygon rasterization mode.
 
 FACE
@@ -17197,13 +12322,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glPolygonOffset
-  "glPolygonOffset"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPolygonOffset"))
-      (paramdef "GLfloat " (parameter "factor"))
-      (paramdef "GLfloat " (parameter "units"))))
+  ((glPolygonOffset
+     (factor GLfloat)
+     (units GLfloat)
+     ->
+     void))
   "Set the scale and units used to calculate depth values.
 
 FACTOR
@@ -17233,14 +12356,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glPolygonStipple
-  "glPolygonStipple"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPolygonStipple"))
-      (paramdef
-        "const GLubyte * "
-        (parameter "pattern"))))
+  ((glPolygonStipple (pattern *) -> void))
   "Set the polygon stippling pattern.
 
 PATTERN
@@ -17289,20 +12405,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glPrioritizeTextures
-  "glPrioritizeTextures"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glPrioritizeTextures"))
-      (paramdef "GLsizei " (parameter "n"))
-      (paramdef
-        "const GLuint * "
-        (parameter "textures"))
-      (paramdef
-        "const GLclampf * "
-        (parameter "priorities"))))
+  ((glPrioritizeTextures
+     (n GLsizei)
+     (textures *)
+     (priorities *)
+     ->
+     void))
   "Set texture residence priority.
 
 N
@@ -17348,12 +12456,8 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glPushAttrib
-  "glPushAttrib"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPushAttrib"))
-      (paramdef "GLbitfield " (parameter "mask"))))
+  ((glPushAttrib (mask GLbitfield) -> void)
+   (glPopAttrib -> void))
   "Push and pop the server attribute stack.
 
 MASK
@@ -17857,12 +12961,8 @@ is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glPushClientAttrib
-  "glPushClientAttrib"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPushClientAttrib"))
-      (paramdef "GLbitfield " (parameter "mask"))))
+  ((glPushClientAttrib (mask GLbitfield) -> void)
+   (glPopClientAttrib -> void))
   "Push and pop the client attribute stack.
 
 MASK
@@ -17899,12 +12999,7 @@ the attribute stack is full.
 the attribute stack is empty.")
 
 (define-gl-procedure
-  glPushMatrix
-  "glPushMatrix"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPushMatrix"))
-      (paramdef (parameter "void"))))
+  ((glPushMatrix -> void) (glPopMatrix -> void))
   "Push and pop the current matrix stack.
 
 There is a stack of matrices for each of the matrix modes. In
@@ -17937,12 +13032,8 @@ is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glPushName
-  "glPushName"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glPushName"))
-      (paramdef "GLuint " (parameter "name"))))
+  ((glPushName (name GLuint) -> void)
+   (glPopName -> void))
   "Push and pop the name stack.
 
 NAME
@@ -17978,13 +13069,34 @@ executed between a call to `glBegin' and the corresponding call to
 `glEnd'.")
 
 (define-gl-procedure
-  glRasterPos
-  "glRasterPos"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glRasterPos2s"))
-      (paramdef "GLshort " (parameter "x"))
-      (paramdef "GLshort " (parameter "y"))))
+  ((glRasterPos2i (x GLint) (y GLint) -> void)
+   (glRasterPos2d (x GLdouble) (y GLdouble) -> void)
+   (glRasterPos3i
+     (x GLint)
+     (y GLint)
+     (z GLint)
+     ->
+     void)
+   (glRasterPos3d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glRasterPos4i
+     (x GLint)
+     (y GLint)
+     (z GLint)
+     (w GLint)
+     ->
+     void)
+   (glRasterPos4d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     (w GLdouble)
+     ->
+     void))
   "Specify the raster position for pixel operations.
 
 X
@@ -18047,12 +13159,7 @@ raster RGBA color always maintains its initial value.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glReadBuffer
-  "glReadBuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glReadBuffer"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glReadBuffer (mode GLenum) -> void))
   "Select a color buffer source for pixels.
 
 MODE
@@ -18090,18 +13197,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glReadPixels
-  "glReadPixels"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glReadPixels"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLvoid * " (parameter "data"))))
+  ((glReadPixels
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Read a block of pixels from the frame buffer.
 
 X
@@ -18345,15 +13450,20 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glRect
-  "glRect"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glRectd"))
-      (paramdef "GLdouble " (parameter "x1"))
-      (paramdef "GLdouble " (parameter "y1"))
-      (paramdef "GLdouble " (parameter "x2"))
-      (paramdef "GLdouble " (parameter "y2"))))
+  ((glRectd
+     (x1 GLdouble)
+     (y1 GLdouble)
+     (x2 GLdouble)
+     (y2 GLdouble)
+     ->
+     void)
+   (glRecti
+     (x1 GLint)
+     (y1 GLint)
+     (x2 GLint)
+     (y2 GLint)
+     ->
+     void))
   "Draw a rectangle.
 
 X1
@@ -18389,12 +13499,7 @@ winding.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glRenderMode
-  "glRenderMode"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "glRenderMode"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glRenderMode (mode GLenum) -> GLint))
   "Set rasterization mode.
 
 MODE
@@ -18459,12 +13564,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glResetHistogram
-  "glResetHistogram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glResetHistogram"))
-      (paramdef "GLenum " (parameter "target"))))
+  ((glResetHistogram (target GLenum) -> void))
   "Reset histogram table entries to zero.
 
 TARGET
@@ -18480,12 +13580,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glResetMinmax
-  "glResetMinmax"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glResetMinmax"))
-      (paramdef "GLenum " (parameter "target"))))
+  ((glResetMinmax (target GLenum) -> void))
   "Reset minmax table entries to initial values.
 
 TARGET
@@ -18503,15 +13598,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glRotate
-  "glRotate"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glRotated"))
-      (paramdef "GLdouble " (parameter "angle"))
-      (paramdef "GLdouble " (parameter "x"))
-      (paramdef "GLdouble " (parameter "y"))
-      (paramdef "GLdouble " (parameter "z"))))
+  ((glRotated
+     (angle GLdouble)
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void))
   "Multiply the current matrix by a rotation matrix.
 
 ANGLE
@@ -18550,13 +13643,11 @@ and `glPopMatrix' to save and restore the unrotated coordinate system.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glSampleCoverage
-  "glSampleCoverage"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glSampleCoverage"))
-      (paramdef "GLclampf " (parameter "value"))
-      (paramdef "GLboolean " (parameter "invert"))))
+  ((glSampleCoverage
+     (value GLclampf)
+     (invert GLboolean)
+     ->
+     void))
   "Specify multisample coverage parameters.
 
 VALUE
@@ -18594,14 +13685,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glScale
-  "glScale"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glScaled"))
-      (paramdef "GLdouble " (parameter "x"))
-      (paramdef "GLdouble " (parameter "y"))
-      (paramdef "GLdouble " (parameter "z"))))
+  ((glScaled
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void))
   "Multiply the current matrix by a general scaling matrix.
 
 X
@@ -18631,15 +13720,13 @@ coordinate system.
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glScissor
-  "glScissor"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glScissor"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))))
+  ((glScissor
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     ->
+     void))
   "Define the scissor box.
 
 X
@@ -18677,19 +13764,13 @@ includes the entire window.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glSecondaryColorPointer
-  "glSecondaryColorPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glSecondaryColorPointer"))
-      (paramdef "GLint " (parameter "size"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glSecondaryColorPointer
+     (size GLint)
+     (type GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of secondary colors.
 
 SIZE
@@ -18742,14 +13823,24 @@ called.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glSecondaryColor
-  "glSecondaryColor"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glSecondaryColor3b"))
-      (paramdef "GLbyte " (parameter "red"))
-      (paramdef "GLbyte " (parameter "green"))
-      (paramdef "GLbyte " (parameter "blue"))))
+  ((glSecondaryColor3i
+     (red GLint)
+     (green GLint)
+     (blue GLint)
+     ->
+     void)
+   (glSecondaryColor3d
+     (red GLdouble)
+     (green GLdouble)
+     (blue GLdouble)
+     ->
+     void)
+   (glSecondaryColor3ui
+     (red GLuint)
+     (green GLuint)
+     (blue GLuint)
+     ->
+     void))
   "Set the current secondary color.
 
 RED
@@ -18795,13 +13886,11 @@ components are clamped to this range before they are interpolated or
 written into a color buffer.")
 
 (define-gl-procedure
-  glSelectBuffer
-  "glSelectBuffer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glSelectBuffer"))
-      (paramdef "GLsizei " (parameter "size"))
-      (paramdef "GLuint * " (parameter "buffer"))))
+  ((glSelectBuffer
+     (size GLsizei)
+     (buffer *)
+     ->
+     void))
   "Establish a buffer for selection mode values.
 
 SIZE
@@ -18864,21 +13953,17 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glSeparableFilter2D
-  "glSeparableFilter2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glSeparableFilter2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "internalformat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "row"))
-      (paramdef "const GLvoid * " (parameter "column"))))
+  ((glSeparableFilter2D
+     (target GLenum)
+     (internalformat GLenum)
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (row *)
+     (column *)
+     ->
+     void))
   "Define a separable two-dimensional convolution filter.
 
 TARGET
@@ -19047,12 +14132,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glShadeModel
-  "glShadeModel"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glShadeModel"))
-      (paramdef "GLenum " (parameter "mode"))))
+  ((glShadeModel (mode GLenum) -> void))
   "Select flat or smooth shading.
 
 MODE
@@ -19113,15 +14193,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glShaderSource
-  "glShaderSource"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glShaderSource"))
-      (paramdef "GLuint " (parameter "shader"))
-      (paramdef "GLsizei " (parameter "count"))
-      (paramdef "const GLchar **" (parameter "string"))
-      (paramdef "const GLint *" (parameter "length"))))
+  ((glShaderSource
+     (shader GLuint)
+     (count GLsizei)
+     (string *)
+     (length *)
+     ->
+     void))
   "Replaces the source code in a shader object.
 
 SHADER
@@ -19163,17 +14241,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glStencilFuncSeparate
-  "glStencilFuncSeparate"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glStencilFuncSeparate"))
-      (paramdef "GLenum " (parameter "face"))
-      (paramdef "GLenum " (parameter "func"))
-      (paramdef "GLint " (parameter "ref"))
-      (paramdef "GLuint " (parameter "mask"))))
+  ((glStencilFuncSeparate
+     (face GLenum)
+     (func GLenum)
+     (ref GLint)
+     (mask GLuint)
+     ->
+     void))
   "Set front and/or back function and reference value for stencil testing.
 
 FACE
@@ -19267,14 +14341,12 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glStencilFunc
-  "glStencilFunc"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glStencilFunc"))
-      (paramdef "GLenum " (parameter "func"))
-      (paramdef "GLint " (parameter "ref"))
-      (paramdef "GLuint " (parameter "mask"))))
+  ((glStencilFunc
+     (func GLenum)
+     (ref GLint)
+     (mask GLuint)
+     ->
+     void))
   "Set front and back function and reference value for stencil testing.
 
 FUNC
@@ -19363,15 +14435,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glStencilMaskSeparate
-  "glStencilMaskSeparate"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glStencilMaskSeparate"))
-      (paramdef "GLenum " (parameter "face"))
-      (paramdef "GLuint " (parameter "mask"))))
+  ((glStencilMaskSeparate
+     (face GLenum)
+     (mask GLuint)
+     ->
+     void))
   "Control the front and/or back writing of individual bits in the stencil
 planes.
 
@@ -19402,12 +14470,7 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedure
-  glStencilMask
-  "glStencilMask"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glStencilMask"))
-      (paramdef "GLuint " (parameter "mask"))))
+  ((glStencilMask (mask GLuint) -> void))
   "Control the front and back writing of individual bits in the stencil
 planes.
 
@@ -19433,17 +14496,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glStencilOpSeparate
-  "glStencilOpSeparate"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glStencilOpSeparate"))
-      (paramdef "GLenum " (parameter "face"))
-      (paramdef "GLenum " (parameter "sfail"))
-      (paramdef "GLenum " (parameter "dpfail"))
-      (paramdef "GLenum " (parameter "dppass"))))
+  ((glStencilOpSeparate
+     (face GLenum)
+     (sfail GLenum)
+     (dpfail GLenum)
+     (dppass GLenum)
+     ->
+     void))
   "Set front and/or back stencil test actions.
 
 FACE
@@ -19547,14 +14606,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glStencilOp
-  "glStencilOp"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glStencilOp"))
-      (paramdef "GLenum " (parameter "sfail"))
-      (paramdef "GLenum " (parameter "dpfail"))
-      (paramdef "GLenum " (parameter "dppass"))))
+  ((glStencilOp
+     (sfail GLenum)
+     (dpfail GLenum)
+     (dppass GLenum)
+     ->
+     void))
   "Set front and back stencil test actions.
 
 SFAIL
@@ -19650,17 +14707,13 @@ other than the eight defined constant values.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glTexCoordPointer
-  "glTexCoordPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexCoordPointer"))
-      (paramdef "GLint " (parameter "size"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glTexCoordPointer
+     (size GLint)
+     (type GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of texture coordinates.
 
 SIZE
@@ -19715,12 +14768,36 @@ called.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glTexCoord
-  "glTexCoord"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexCoord1s"))
-      (paramdef "GLshort " (parameter "s"))))
+  ((glTexCoord1i (s GLint) -> void)
+   (glTexCoord1d (s GLdouble) -> void)
+   (glTexCoord2i (s GLint) (t GLint) -> void)
+   (glTexCoord2d (s GLdouble) (t GLdouble) -> void)
+   (glTexCoord3i
+     (s GLint)
+     (t GLint)
+     (r GLint)
+     ->
+     void)
+   (glTexCoord3d
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     ->
+     void)
+   (glTexCoord4i
+     (s GLint)
+     (t GLint)
+     (r GLint)
+     (q GLint)
+     ->
+     void)
+   (glTexCoord4d
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     (q GLdouble)
+     ->
+     void))
   "Set the current texture coordinates.
 
 S
@@ -19744,14 +14821,18 @@ with each vertex and with the current raster position. Initially, the
 values for S, T, R, and Q are (0, 0, 0, 1).")
 
 (define-gl-procedure
-  glTexEnv
-  "glTexEnv"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexEnvf"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glTexEnvf
+     (target GLenum)
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glTexEnvi
+     (target GLenum)
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Set texture environment parameters.
 
 TARGET
@@ -20094,14 +15175,18 @@ or `GL_ALPHA_SCALE' are not one of 1.0, 2.0, or 4.0.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glTexGen
-  "glTexGen"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexGeni"))
-      (paramdef "GLenum " (parameter "coord"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLint " (parameter "param"))))
+  ((glTexGeni
+     (coord GLenum)
+     (pname GLenum)
+     (param GLint)
+     ->
+     void)
+   (glTexGend
+     (coord GLenum)
+     (pname GLenum)
+     (param GLdouble)
+     ->
+     void))
   "Control the generation of texture coordinates.
 
 COORD
@@ -20206,19 +15291,17 @@ PARAMS is `GL_SPHERE_MAP', and COORD is either `GL_R' or `GL_Q'.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glTexImage1D
-  "glTexImage1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexImage1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLint " (parameter "border"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glTexImage1D
+     (target GLenum)
+     (level GLint)
+     (internalFormat GLint)
+     (width GLsizei)
+     (border GLint)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Specify a one-dimensional texture image.
 
 TARGET
@@ -20530,20 +15613,18 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glTexImage2D
-  "glTexImage2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexImage2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLint " (parameter "border"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glTexImage2D
+     (target GLenum)
+     (level GLint)
+     (internalFormat GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (border GLint)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Specify a two-dimensional texture image.
 
 TARGET
@@ -20881,21 +15962,19 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glTexImage3D
-  "glTexImage3D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexImage3D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLsizei " (parameter "depth"))
-      (paramdef "GLint " (parameter "border"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glTexImage3D
+     (target GLenum)
+     (level GLint)
+     (internalFormat GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (depth GLsizei)
+     (border GLint)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Specify a three-dimensional texture image.
 
 TARGET
@@ -21205,14 +16284,18 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glTexParameter
-  "glTexParameter"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexParameterf"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLenum " (parameter "pname"))
-      (paramdef "GLfloat " (parameter "param"))))
+  ((glTexParameterf
+     (target GLenum)
+     (pname GLenum)
+     (param GLfloat)
+     ->
+     void)
+   (glTexParameteri
+     (target GLenum)
+     (pname GLenum)
+     (param GLint)
+     ->
+     void))
   "Set texture parameters.
 
 TARGET
@@ -21485,18 +16568,16 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glTexSubImage1D
-  "glTexSubImage1D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexSubImage1D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glTexSubImage1D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (width GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Specify a one-dimensional texture subimage.
 
 TARGET
@@ -21608,20 +16689,18 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glTexSubImage2D
-  "glTexSubImage2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexSubImage2D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLint " (parameter "yoffset"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glTexSubImage2D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (yoffset GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Specify a two-dimensional texture subimage.
 
 TARGET
@@ -21748,22 +16827,20 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glTexSubImage3D
-  "glTexSubImage3D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTexSubImage3D"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "xoffset"))
-      (paramdef "GLint " (parameter "yoffset"))
-      (paramdef "GLint " (parameter "zoffset"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLsizei " (parameter "depth"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const GLvoid * " (parameter "data"))))
+  ((glTexSubImage3D
+     (target GLenum)
+     (level GLint)
+     (xoffset GLint)
+     (yoffset GLint)
+     (zoffset GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (depth GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     void))
   "Specify a three-dimensional texture subimage.
 
 TARGET
@@ -21893,14 +16970,12 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glTranslate
-  "glTranslate"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glTranslated"))
-      (paramdef "GLdouble " (parameter "x"))
-      (paramdef "GLdouble " (parameter "y"))
-      (paramdef "GLdouble " (parameter "z"))))
+  ((glTranslated
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void))
   "Multiply the current matrix by a translation matrix.
 
 X
@@ -21929,53 +17004,54 @@ untranslated coordinate system.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glUniform1f
-  "glUniform1f"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glUniform1f"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLfloat " (parameter "v0")))
-    (funcprototype
-      (funcdef "void " (function "glUniform2f"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLfloat " (parameter "v0"))
-      (paramdef "GLfloat " (parameter "v1")))
-    (funcprototype
-      (funcdef "void " (function "glUniform3f"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLfloat " (parameter "v0"))
-      (paramdef "GLfloat " (parameter "v1"))
-      (paramdef "GLfloat " (parameter "v2")))
-    (funcprototype
-      (funcdef "void " (function "glUniform4f"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLfloat " (parameter "v0"))
-      (paramdef "GLfloat " (parameter "v1"))
-      (paramdef "GLfloat " (parameter "v2"))
-      (paramdef "GLfloat " (parameter "v3")))
-    (funcprototype
-      (funcdef "void " (function "glUniform1i"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLint " (parameter "v0")))
-    (funcprototype
-      (funcdef "void " (function "glUniform2i"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLint " (parameter "v0"))
-      (paramdef "GLint " (parameter "v1")))
-    (funcprototype
-      (funcdef "void " (function "glUniform3i"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLint " (parameter "v0"))
-      (paramdef "GLint " (parameter "v1"))
-      (paramdef "GLint " (parameter "v2")))
-    (funcprototype
-      (funcdef "void " (function "glUniform4i"))
-      (paramdef "GLint " (parameter "location"))
-      (paramdef "GLint " (parameter "v0"))
-      (paramdef "GLint " (parameter "v1"))
-      (paramdef "GLint " (parameter "v2"))
-      (paramdef "GLint " (parameter "v3"))))
+  ((glUniform1f
+     (location GLint)
+     (v0 GLfloat)
+     ->
+     void)
+   (glUniform2f
+     (location GLint)
+     (v0 GLfloat)
+     (v1 GLfloat)
+     ->
+     void)
+   (glUniform3f
+     (location GLint)
+     (v0 GLfloat)
+     (v1 GLfloat)
+     (v2 GLfloat)
+     ->
+     void)
+   (glUniform4f
+     (location GLint)
+     (v0 GLfloat)
+     (v1 GLfloat)
+     (v2 GLfloat)
+     (v3 GLfloat)
+     ->
+     void)
+   (glUniform1i (location GLint) (v0 GLint) -> void)
+   (glUniform2i
+     (location GLint)
+     (v0 GLint)
+     (v1 GLint)
+     ->
+     void)
+   (glUniform3i
+     (location GLint)
+     (v0 GLint)
+     (v1 GLint)
+     (v2 GLint)
+     ->
+     void)
+   (glUniform4i
+     (location GLint)
+     (v0 GLint)
+     (v1 GLint)
+     (v2 GLint)
+     (v3 GLint)
+     ->
+     void))
   "Specify the value of a uniform variable for the current program object.
 
 LOCATION
@@ -22082,12 +17158,7 @@ command other than `glUniform1i' and `glUniform1iv'.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glUseProgram
-  "glUseProgram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glUseProgram"))
-      (paramdef "GLuint " (parameter "program"))))
+  ((glUseProgram (program GLuint) -> void))
   "Installs a program object as part of current rendering state.
 
 PROGRAM
@@ -22186,12 +17257,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glValidateProgram
-  "glValidateProgram"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glValidateProgram"))
-      (paramdef "GLuint " (parameter "program"))))
+  ((glValidateProgram (program GLuint) -> void))
   "Validates a program object.
 
 PROGRAM
@@ -22230,21 +17296,15 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedure
-  glVertexAttribPointer
-  "glVertexAttribPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "glVertexAttribPointer"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLint " (parameter "size"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLboolean " (parameter "normalized"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glVertexAttribPointer
+     (index GLuint)
+     (size GLint)
+     (type GLenum)
+     (normalized GLboolean)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of generic vertex attribute data.
 
 INDEX
@@ -22314,82 +17374,66 @@ If enabled, the generic vertex attribute array is used when
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glVertexAttrib
-  "glVertexAttrib"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib1f"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLfloat " (parameter "v0")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib1s"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLshort " (parameter "v0")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib1d"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLdouble " (parameter "v0")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib2f"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLfloat " (parameter "v0"))
-      (paramdef "GLfloat " (parameter "v1")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib2s"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLshort " (parameter "v0"))
-      (paramdef "GLshort " (parameter "v1")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib2d"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLdouble " (parameter "v0"))
-      (paramdef "GLdouble " (parameter "v1")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib3f"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLfloat " (parameter "v0"))
-      (paramdef "GLfloat " (parameter "v1"))
-      (paramdef "GLfloat " (parameter "v2")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib3s"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLshort " (parameter "v0"))
-      (paramdef "GLshort " (parameter "v1"))
-      (paramdef "GLshort " (parameter "v2")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib3d"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLdouble " (parameter "v0"))
-      (paramdef "GLdouble " (parameter "v1"))
-      (paramdef "GLdouble " (parameter "v2")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib4f"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLfloat " (parameter "v0"))
-      (paramdef "GLfloat " (parameter "v1"))
-      (paramdef "GLfloat " (parameter "v2"))
-      (paramdef "GLfloat " (parameter "v3")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib4s"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLshort " (parameter "v0"))
-      (paramdef "GLshort " (parameter "v1"))
-      (paramdef "GLshort " (parameter "v2"))
-      (paramdef "GLshort " (parameter "v3")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib4d"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLdouble " (parameter "v0"))
-      (paramdef "GLdouble " (parameter "v1"))
-      (paramdef "GLdouble " (parameter "v2"))
-      (paramdef "GLdouble " (parameter "v3")))
-    (funcprototype
-      (funcdef "void " (function "glVertexAttrib4Nub"))
-      (paramdef "GLuint " (parameter "index"))
-      (paramdef "GLubyte " (parameter "v0"))
-      (paramdef "GLubyte " (parameter "v1"))
-      (paramdef "GLubyte " (parameter "v2"))
-      (paramdef "GLubyte " (parameter "v3"))))
+  ((glVertexAttrib1s
+     (index GLuint)
+     (v0 GLshort)
+     ->
+     void)
+   (glVertexAttrib1d
+     (index GLuint)
+     (v0 GLdouble)
+     ->
+     void)
+   (glVertexAttrib2s
+     (index GLuint)
+     (v0 GLshort)
+     (v1 GLshort)
+     ->
+     void)
+   (glVertexAttrib2d
+     (index GLuint)
+     (v0 GLdouble)
+     (v1 GLdouble)
+     ->
+     void)
+   (glVertexAttrib3s
+     (index GLuint)
+     (v0 GLshort)
+     (v1 GLshort)
+     (v2 GLshort)
+     ->
+     void)
+   (glVertexAttrib3d
+     (index GLuint)
+     (v0 GLdouble)
+     (v1 GLdouble)
+     (v2 GLdouble)
+     ->
+     void)
+   (glVertexAttrib4s
+     (index GLuint)
+     (v0 GLshort)
+     (v1 GLshort)
+     (v2 GLshort)
+     (v3 GLshort)
+     ->
+     void)
+   (glVertexAttrib4d
+     (index GLuint)
+     (v0 GLdouble)
+     (v1 GLdouble)
+     (v2 GLdouble)
+     (v3 GLdouble)
+     ->
+     void)
+   (glVertexAttrib4Nub
+     (index GLuint)
+     (v0 GLubyte)
+     (v1 GLubyte)
+     (v2 GLubyte)
+     (v3 GLubyte)
+     ->
+     void))
   "Specifies the value of a generic vertex attribute.
 
 INDEX
@@ -22478,17 +17522,13 @@ attributes.
 `GL_MAX_VERTEX_ATTRIBS'.")
 
 (define-gl-procedure
-  glVertexPointer
-  "glVertexPointer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glVertexPointer"))
-      (paramdef "GLint " (parameter "size"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLsizei " (parameter "stride"))
-      (paramdef
-        "const GLvoid * "
-        (parameter "pointer"))))
+  ((glVertexPointer
+     (size GLint)
+     (type GLenum)
+     (stride GLsizei)
+     (pointer *)
+     ->
+     void))
   "Define an array of vertex data.
 
 SIZE
@@ -22540,13 +17580,34 @@ the vertex array is used when `glArrayElement', `glDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedure
-  glVertex
-  "glVertex"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glVertex2s"))
-      (paramdef "GLshort " (parameter "x"))
-      (paramdef "GLshort " (parameter "y"))))
+  ((glVertex2i (x GLint) (y GLint) -> void)
+   (glVertex2d (x GLdouble) (y GLdouble) -> void)
+   (glVertex3i
+     (x GLint)
+     (y GLint)
+     (z GLint)
+     ->
+     void)
+   (glVertex3d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glVertex4i
+     (x GLint)
+     (y GLint)
+     (z GLint)
+     (w GLint)
+     ->
+     void)
+   (glVertex4d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     (w GLdouble)
+     ->
+     void))
   "Specify a vertex.
 
 X
@@ -22568,15 +17629,13 @@ When only X and Y are specified, Z defaults to 0 and W defaults to 1.
 When X , Y , and Z are specified, W defaults to 1.")
 
 (define-gl-procedure
-  glViewport
-  "glViewport"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glViewport"))
-      (paramdef "GLint " (parameter "x"))
-      (paramdef "GLint " (parameter "y"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))))
+  ((glViewport
+     (x GLint)
+     (y GLint)
+     (width GLsizei)
+     (height GLsizei)
+     ->
+     void))
   "Set the viewport.
 
 X
@@ -22611,13 +17670,20 @@ on the implementation. To query this range, call `glGet' with argument
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedure
-  glWindowPos
-  "glWindowPos"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "glWindowPos2s"))
-      (paramdef "GLshort " (parameter "x"))
-      (paramdef "GLshort " (parameter "y"))))
+  ((glWindowPos2i (x GLint) (y GLint) -> void)
+   (glWindowPos2d (x GLdouble) (y GLdouble) -> void)
+   (glWindowPos3i
+     (x GLint)
+     (y GLint)
+     (z GLint)
+     ->
+     void)
+   (glWindowPos3d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void))
   "Specify the raster position in window coordinates for pixel operations.
 
 X

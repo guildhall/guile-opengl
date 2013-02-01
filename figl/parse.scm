@@ -27,7 +27,7 @@
   #:use-module ((sxml xpath) #:hide (filter))
   #:use-module (sxml transform)
   #:use-module (sxml fold)
-  #:use-module ((srfi srfi-1) #:select (filter fold append-map))
+  #:use-module ((srfi srfi-1) #:select (filter fold append-map filter-map))
   #:use-module (srfi srfi-9)
   #:use-module (texinfo docbook)
   #:use-module (ice-9 ftw)
@@ -35,16 +35,16 @@
   #:export (gl-definition?
             make-gl-definition
             gl-definition-name
-            gl-definition-prototype
+            gl-definition-prototypes
             gl-definition-documentation
             gl-definition-copyright
             parse-gl-definitions))
 
 (define-record-type gl-definition
-  (make-gl-definition name prototype documentation copyright)
+  (make-gl-definition name prototypes documentation copyright)
   gl-definition?
   (name gl-definition-name)
-  (prototype gl-definition-prototype)
+  (prototypes gl-definition-prototypes)
   (documentation gl-definition-documentation)
   (copyright gl-definition-copyright))
 
@@ -159,8 +159,8 @@
 (define xml-purpose
   (take-first (sxpath '(refentry refnamediv refpurpose *text*))))
 
-(define xml-prototype
-  (take-first (sxpath '(refentry refsynopsisdiv funcsynopsis))))
+(define xml-funcprototypes
+  (sxpath '(refentry refsynopsisdiv funcsynopsis funcprototype)))
 
 (define xml-parameters
   (take-first (sxpath '(refentry (refsect1 (@ id (equal? "parameters")))))))
@@ -175,35 +175,62 @@
   (take-first (sxpath '(refentry (refsect1 (@ id (equal? "Copyright")))))))
 
 (define (string->gl-type str)
-  (cond
-   ((string=? (string-take-right str 1) "*") ''*) ; yes, double quote
-   ((string-prefix? "const " str)
-    (string->gl-type (string-drop str (string-length "const "))))
-   (else
-    (string->symbol str))))
+  (let ((str (string-trim-both str)))
+    (cond
+     ((string=? (string-take-right str 1) "*") '*)
+     ((string-prefix? "const " str)
+      (string->gl-type (string-drop str (string-length "const "))))
+     (else
+      (string->symbol str)))))
 
-(define (parse-prototype sxml)
-  (define (handle-def tag type name)
-    (list (string->symbol (cadr name))
-          (string->gl-type type)))
+(define (parse-prototypes sxml)
+  (define all-names
+    (match sxml
+      ((('funcprototype ('funcdef return-type ('function names))
+                        . _)
+        ...)
+       names)))
 
-  (pre-post-order sxml
-                  `((*default* . ,(lambda (tag . body)
-                                    (cons tag body)))
-                    (*text* . ,(lambda (tag text)
-                                 (if (string? text)
-                                     (string-trim-both text)
-                                     text)))
-                    (funcdef . ,handle-def)
-                    (paramdef . ,handle-def)
-                    (funcprototype
-                     . ,(lambda (tag func . params)
-                          (let ((return-type (cadr func))
-                                (name (car func)))
-                            (append `(,name) params `(-> ,return-type)))))
-                    (funcsynopsis
-                     . ,(lambda (tag . body)
-                          (car body))))))
+  (define (skip? s)
+    (or
+     ;; Skip float variants if we have a double variant.
+     (and (string-suffix? "f" s)
+          (member (string-append (substring s 0 (1- (string-length s))) "d")
+                  all-names))
+     ;; Skip packed accessors like glVertex3fv.
+     (string-suffix? "v" s)
+     ;; Skip byte variants if there is a short variant.
+     (and (string-suffix? "b" s)
+          (member (string-append (substring s 0 (1- (string-length s))) "s")
+                  all-names))
+     ;; Skip short variants if there is an int variant.
+     (and (or (string-suffix? "s" s)
+              (string-suffix? "s" s)
+              (string-suffix? "s" s)
+              (string-suffix? "s" s))
+          (member (string-append (substring s 0 (1- (string-length s))) "i")
+                  all-names))))
+
+  (filter-map
+   (lambda (sxml)
+     (match sxml
+       (('funcprototype ('funcdef return-type ('function (? skip?)))
+                        . _)
+        #f)
+       (('funcprototype ('funcdef return-type ('function name))
+                        ('paramdef ('parameter "void")))
+        `(,(string->symbol name)
+          -> ,(string->gl-type return-type)))
+       (('funcprototype ('funcdef return-type ('function name))
+                        ('paramdef ptype ('parameter pname))
+                        ...)
+        `(,(string->symbol name)
+          ,@(map (lambda (pname ptype)
+                   (list (string->symbol pname)
+                         (string->gl-type ptype)))
+                 pname ptype)
+          -> ,(string->gl-type return-type)))))
+   sxml))
 
 (define (collapse-fragments nodeset)
   (match nodeset
@@ -451,17 +478,19 @@
     ,@(if errors (sdocbook->stexi errors) '())))
 
 (define (xml->definition xml)
-  (make-gl-definition (xml-name xml)
-                      (parse-prototype (xml-prototype xml))
-                      (generate-documentation (xml-purpose xml)
-                                              (xml-parameters xml)
-                                              (xml-description xml)
-                                              (xml-errors xml))
-                      (and=> (xml-copyright xml)
-                             (lambda (c)
-                               `(*fragment* ,@(sdocbook->stexi c))))))
+  (let ((prototypes (parse-prototypes (xml-funcprototypes xml))))
+    (and (pair? prototypes)
+         (make-gl-definition (xml-name xml)
+                             prototypes
+                             (generate-documentation (xml-purpose xml)
+                                                     (xml-parameters xml)
+                                                     (xml-description xml)
+                                                     (xml-errors xml))
+                             (and=> (xml-copyright xml)
+                                    (lambda (c)
+                                      `(*fragment* ,@(sdocbook->stexi c))))))))
 
 (define (parse-gl-definitions version)
-  (map (lambda (file)
-         (xml->definition (parse-man-xml version file)))
-       (xml-files version)))
+  (filter-map (lambda (file)
+                (xml->definition (parse-man-xml version file)))
+              (xml-files version)))

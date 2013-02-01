@@ -31,9 +31,13 @@
   (figl low-level support)
   #:export
   (gluBeginCurve
+    gluEndCurve
     gluBeginPolygon
+    gluEndPolygon
     gluBeginSurface
+    gluEndSurface
     gluBeginTrim
+    gluEndTrim
     gluBuild1DMipmapLevels
     gluBuild1DMipmaps
     gluBuild2DMipmapLevels
@@ -76,6 +80,7 @@
     gluScaleImage
     gluSphere
     gluTessBeginContour
+    gluTessEndContour
     gluTessBeginPolygon
     gluTessCallback
     gluTessEndPolygon
@@ -86,12 +91,8 @@
     gluUnProject))
 
 (define-gl-procedure
-  gluBeginCurve
-  "gluBeginCurve"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluBeginCurve"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))))
+  ((gluBeginCurve (nurb *) -> void)
+   (gluEndCurve (nurb *) -> void))
   "Delimit a NURBS curve definition.
 
 NURB
@@ -111,12 +112,8 @@ segments. Evaluator state is preserved during rendering with
 calls preserve.")
 
 (define-gl-procedure
-  gluBeginPolygon
-  "gluBeginPolygon"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluBeginPolygon"))
-      (paramdef "GLUtesselator* " (parameter "tess"))))
+  ((gluBeginPolygon (tess *) -> void)
+   (gluEndPolygon (tess *) -> void))
   "Delimit a polygon description.
 
 TESS
@@ -135,12 +132,8 @@ resulting triangles are described through callbacks. See
 `gluTessCallback' for descriptions of the callback functions.")
 
 (define-gl-procedure
-  gluBeginSurface
-  "gluBeginSurface"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluBeginSurface"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))))
+  ((gluBeginSurface (nurb *) -> void)
+   (gluEndSurface (nurb *) -> void))
   "Delimit a NURBS surface definition.
 
 NURB
@@ -163,12 +156,8 @@ Evaluator state is preserved during rendering with
 reference page for details on exactly what state these calls preserve.")
 
 (define-gl-procedure
-  gluBeginTrim
-  "gluBeginTrim"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluBeginTrim"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))))
+  ((gluBeginTrim (nurb *) -> void)
+   (gluEndTrim (nurb *) -> void))
   "Delimit a NURBS trimming loop definition.
 
 NURB
@@ -222,22 +211,18 @@ If no trimming information is given for a NURBS surface, the entire
 surface is drawn.")
 
 (define-gl-procedure
-  gluBuild1DMipmapLevels
-  "gluBuild1DMipmapLevels"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLint "
-        (function "gluBuild1DMipmapLevels"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "base"))
-      (paramdef "GLint " (parameter "max"))
-      (paramdef "const void * " (parameter "data"))))
+  ((gluBuild1DMipmapLevels
+     (target GLenum)
+     (internalFormat GLint)
+     (width GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (level GLint)
+     (base GLint)
+     (max GLint)
+     (data *)
+     ->
+     GLint))
   "Builds a subset of one-dimensional mipmap levels.
 
 TARGET
@@ -361,17 +346,15 @@ is neither `GLU_RGBA' nor `GLU_BGRA'.
 FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-gl-procedure
-  gluBuild1DMipmaps
-  "gluBuild1DMipmaps"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "gluBuild1DMipmaps"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const void * " (parameter "data"))))
+  ((gluBuild1DMipmaps
+     (target GLenum)
+     (internalFormat GLint)
+     (width GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     GLint))
   "Builds a one-dimensional mipmap.
 
 TARGET
@@ -486,23 +469,19 @@ is neither `GLU_RGBA' nor `GLU_BGRA'.
 FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-gl-procedure
-  gluBuild2DMipmapLevels
-  "gluBuild2DMipmapLevels"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLint "
-        (function "gluBuild2DMipmapLevels"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "base"))
-      (paramdef "GLint " (parameter "max"))
-      (paramdef "const void * " (parameter "data"))))
+  ((gluBuild2DMipmapLevels
+     (target GLenum)
+     (internalFormat GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (level GLint)
+     (base GLint)
+     (max GLint)
+     (data *)
+     ->
+     GLint))
   "Builds a subset of two-dimensional mipmap levels.
 
 TARGET
@@ -631,18 +610,16 @@ is neither `GLU_RGBA' nor `GLU_BGRA'.
 FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-gl-procedure
-  gluBuild2DMipmaps
-  "gluBuild2DMipmaps"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "gluBuild2DMipmaps"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const void * " (parameter "data"))))
+  ((gluBuild2DMipmaps
+     (target GLenum)
+     (internalFormat GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     GLint))
   "Builds a two-dimensional mipmap.
 
 TARGET
@@ -766,24 +743,20 @@ is neither `GLU_RGBA' nor `GLU_BGRA'.
 FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-gl-procedure
-  gluBuild3DMipmapLevels
-  "gluBuild3DMipmapLevels"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLint "
-        (function "gluBuild3DMipmapLevels"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLsizei " (parameter "depth"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "GLint " (parameter "level"))
-      (paramdef "GLint " (parameter "base"))
-      (paramdef "GLint " (parameter "max"))
-      (paramdef "const void * " (parameter "data"))))
+  ((gluBuild3DMipmapLevels
+     (target GLenum)
+     (internalFormat GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (depth GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (level GLint)
+     (base GLint)
+     (max GLint)
+     (data *)
+     ->
+     GLint))
   "Builds a subset of three-dimensional mipmap levels.
 
 TARGET
@@ -914,19 +887,17 @@ is neither `GLU_RGBA' nor `GLU_BGRA'.
 FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-gl-procedure
-  gluBuild3DMipmaps
-  "gluBuild3DMipmaps"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "gluBuild3DMipmaps"))
-      (paramdef "GLenum " (parameter "target"))
-      (paramdef "GLint " (parameter "internalFormat"))
-      (paramdef "GLsizei " (parameter "width"))
-      (paramdef "GLsizei " (parameter "height"))
-      (paramdef "GLsizei " (parameter "depth"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLenum " (parameter "type"))
-      (paramdef "const void * " (parameter "data"))))
+  ((gluBuild3DMipmaps
+     (target GLenum)
+     (internalFormat GLint)
+     (width GLsizei)
+     (height GLsizei)
+     (depth GLsizei)
+     (format GLenum)
+     (type GLenum)
+     (data *)
+     ->
+     GLint))
   "Builds a three-dimensional mipmap.
 
 TARGET
@@ -1051,19 +1022,11 @@ is neither `GLU_RGBA' nor `GLU_BGRA'.
 FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-gl-procedure
-  gluCheckExtension
-  "gluCheckExtension"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLboolean "
-        (function "gluCheckExtension"))
-      (paramdef
-        "const GLubyte * "
-        (parameter "extName"))
-      (paramdef
-        "const GLubyte * "
-        (parameter "extString"))))
+  ((gluCheckExtension
+     (extName *)
+     (extString *)
+     ->
+     GLboolean))
   "Determines if an extension name is supported.
 
 EXTNAME
@@ -1081,17 +1044,15 @@ names by passing the extension strings returned by `glGetString',
 `glXQueryServerString', respectively, as EXTSTRING.")
 
 (define-gl-procedure
-  gluCylinder
-  "gluCylinder"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluCylinder"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLdouble " (parameter "base"))
-      (paramdef "GLdouble " (parameter "top"))
-      (paramdef "GLdouble " (parameter "height"))
-      (paramdef "GLint " (parameter "slices"))
-      (paramdef "GLint " (parameter "stacks"))))
+  ((gluCylinder
+     (quad *)
+     (base GLdouble)
+     (top GLdouble)
+     (height GLdouble)
+     (slices GLint)
+     (stacks GLint)
+     ->
+     void))
   "Draw a cylinder.
 
 QUAD
@@ -1130,14 +1091,7 @@ coordinates are generated so that T ranges linearly from 0.0 at Z = 0 to
 at the +Y axis.")
 
 (define-gl-procedure
-  gluDeleteNurbsRenderer
-  "gluDeleteNurbsRenderer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluDeleteNurbsRenderer"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))))
+  ((gluDeleteNurbsRenderer (nurb *) -> void))
   "Destroy a NURBS object.
 
 NURB
@@ -1148,12 +1102,7 @@ with `gluNewNurbsRenderer') and frees any memory it uses. Once
 `gluDeleteNurbsRenderer' has been called, NURB cannot be used again.")
 
 (define-gl-procedure
-  gluDeleteQuadric
-  "gluDeleteQuadric"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluDeleteQuadric"))
-      (paramdef "GLUquadric* " (parameter "quad"))))
+  ((gluDeleteQuadric (quad *) -> void))
   "Destroy a quadrics object.
 
 QUAD
@@ -1164,12 +1113,7 @@ QUAD
 has been called, QUAD cannot be used again.")
 
 (define-gl-procedure
-  gluDeleteTess
-  "gluDeleteTess"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluDeleteTess"))
-      (paramdef "GLUtesselator* " (parameter "tess"))))
+  ((gluDeleteTess (tess *) -> void))
   "Destroy a tessellation object.
 
 TESS
@@ -1179,16 +1123,14 @@ TESS
 created with `gluNewTess') and frees any memory that it used.")
 
 (define-gl-procedure
-  gluDisk
-  "gluDisk"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluDisk"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLdouble " (parameter "inner"))
-      (paramdef "GLdouble " (parameter "outer"))
-      (paramdef "GLint " (parameter "slices"))
-      (paramdef "GLint " (parameter "loops"))))
+  ((gluDisk
+     (quad *)
+     (inner GLdouble)
+     (outer GLdouble)
+     (slices GLint)
+     (loops GLint)
+     ->
+     void))
   "Draw a disk.
 
 QUAD
@@ -1224,14 +1166,7 @@ at (R, 0, 0) is (1, 0.5), at (0, R, 0) it is (0.5, 1), at (\\-R, 0, 0) it
 is (0, 0.5), and at (0, \\-R, 0) it is (0.5, 0).")
 
 (define-gl-procedure
-  gluErrorString
-  "gluErrorString"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "const GLubyte * "
-        (function "gluErrorString"))
-      (paramdef "GLenum " (parameter "error"))))
+  ((gluErrorString (error GLenum) -> *))
   "Produce an error string from a GL or GLU error code.
 
 ERROR
@@ -1249,16 +1184,12 @@ functions can return specialized error codes through callbacks. See the
 `NULL' is returned if ERROR is not a valid GL or GLU error code.")
 
 (define-gl-procedure
-  gluGetNurbsProperty
-  "gluGetNurbsProperty"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluGetNurbsProperty"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLenum " (parameter "property"))
-      (paramdef "GLfloat* " (parameter "data"))))
+  ((gluGetNurbsProperty
+     (nurb *)
+     (property GLenum)
+     (data *)
+     ->
+     void))
   "Get a NURBS property.
 
 NURB
@@ -1281,14 +1212,7 @@ rendered. See the `gluNurbsProperty' reference page for information
 about what the properties are and what they do.")
 
 (define-gl-procedure
-  gluGetString
-  "gluGetString"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "const GLubyte * "
-        (function "gluGetString"))
-      (paramdef "GLenum " (parameter "name"))))
+  ((gluGetString (name GLenum) -> *))
   "Return a string describing the GLU version or GLU extensions .
 
 NAME
@@ -1320,14 +1244,12 @@ All strings are null-terminated.
 NULL is returned if NAME is not `GLU_VERSION' or `GLU_EXTENSIONS'.")
 
 (define-gl-procedure
-  gluGetTessProperty
-  "gluGetTessProperty"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluGetTessProperty"))
-      (paramdef "GLUtesselator* " (parameter "tess"))
-      (paramdef "GLenum " (parameter "which"))
-      (paramdef "GLdouble* " (parameter "data"))))
+  ((gluGetTessProperty
+     (tess *)
+     (which GLenum)
+     (data *)
+     ->
+     void))
   "Get a tessellation object property.
 
 TESS
@@ -1348,19 +1270,13 @@ interpreted and rendered. See the `gluTessProperty' reference page for
 information about the properties and what they do.")
 
 (define-gl-procedure
-  gluLoadSamplingMatrices
-  "gluLoadSamplingMatrices"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluLoadSamplingMatrices"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "const GLfloat * " (parameter "model"))
-      (paramdef
-        "const GLfloat * "
-        (parameter "perspective"))
-      (paramdef "const GLint * " (parameter "view"))))
+  ((gluLoadSamplingMatrices
+     (nurb *)
+     (model *)
+     (perspective *)
+     (view *)
+     ->
+     void))
   "Load NURBS sampling and culling matrices.
 
 NURB
@@ -1391,20 +1307,18 @@ round trip to the GL server is needed to fetch the current values of the
 modelview matrix, projection matrix, and viewport.)")
 
 (define-gl-procedure
-  gluLookAt
-  "gluLookAt"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluLookAt"))
-      (paramdef "GLdouble " (parameter "eyeX"))
-      (paramdef "GLdouble " (parameter "eyeY"))
-      (paramdef "GLdouble " (parameter "eyeZ"))
-      (paramdef "GLdouble " (parameter "centerX"))
-      (paramdef "GLdouble " (parameter "centerY"))
-      (paramdef "GLdouble " (parameter "centerZ"))
-      (paramdef "GLdouble " (parameter "upX"))
-      (paramdef "GLdouble " (parameter "upY"))
-      (paramdef "GLdouble " (parameter "upZ"))))
+  ((gluLookAt
+     (eyeX GLdouble)
+     (eyeY GLdouble)
+     (eyeZ GLdouble)
+     (centerX GLdouble)
+     (centerY GLdouble)
+     (centerZ GLdouble)
+     (upX GLdouble)
+     (upY GLdouble)
+     (upZ GLdouble)
+     ->
+     void))
   "Define a viewing transformation.
 
 EYEX
@@ -1467,13 +1381,7 @@ and `gluLookAt' is equivalent to
      glTranslated(-eyex, -eyey, -eyez);")
 
 (define-gl-procedure
-  gluNewNurbsRenderer
-  "gluNewNurbsRenderer"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLUnurbs* "
-        (function "gluNewNurbsRenderer"))))
+  ((gluNewNurbsRenderer -> *))
   "Create a NURBS object.
 
 `gluNewNurbsRenderer' creates and returns a pointer to a new NURBS
@@ -1482,13 +1390,7 @@ control functions. A return value of 0 means that there is not enough
 memory to allocate the object.")
 
 (define-gl-procedure
-  gluNewQuadric
-  "gluNewQuadric"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLUquadric* "
-        (function "gluNewQuadric"))))
+  ((gluNewQuadric -> *))
   "Create a quadrics object.
 
 `gluNewQuadric' creates and returns a pointer to a new quadrics object.
@@ -1497,13 +1399,7 @@ control functions. A return value of 0 means that there is not enough
 memory to allocate the object.")
 
 (define-gl-procedure
-  gluNewTess
-  "gluNewTess"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "GLUtesselator* "
-        (function "gluNewTess"))))
+  ((gluNewTess -> *))
   "Create a tessellation object.
 
 `gluNewTess' creates and returns a pointer to a new tessellation object.
@@ -1512,13 +1408,7 @@ return value of 0 means that there is not enough memory to allocate the
 object.")
 
 (define-gl-procedure
-  gluNextContour
-  "gluNextContour"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluNextContour"))
-      (paramdef "GLUtesselator* " (parameter "tess"))
-      (paramdef "GLenum " (parameter "type"))))
+  ((gluNextContour (tess *) (type GLenum) -> void))
   "Mark the beginning of another contour.
 
 TESS
@@ -1575,15 +1465,11 @@ only. Calls to `gluNextContour' are mapped to `gluTessEndContour'
 followed by `gluTessBeginContour'.")
 
 (define-gl-procedure
-  gluNurbsCallbackDataEXT
-  "gluNurbsCallbackDataEXT"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluNurbsCallbackDataEXT"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLvoid* " (parameter "userData"))))
+  ((gluNurbsCallbackDataEXT
+     (nurb *)
+     (userData *)
+     ->
+     void))
   "Set a user data pointer.
 
 NURB
@@ -1597,15 +1483,11 @@ data to NURBS tessellator. A copy of this pointer will be passed by the
 tessellator in the NURBS callback functions (set by `gluNurbsCallback').")
 
 (define-gl-procedure
-  gluNurbsCallbackData
-  "gluNurbsCallbackData"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluNurbsCallbackData"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLvoid* " (parameter "userData"))))
+  ((gluNurbsCallbackData
+     (nurb *)
+     (userData *)
+     ->
+     void))
   "Set a user data pointer.
 
 NURB
@@ -1619,16 +1501,12 @@ data to NURBS tessellator. A copy of this pointer will be passed by the
 tessellator in the NURBS callback functions (set by `gluNurbsCallback').")
 
 (define-gl-procedure
-  gluNurbsCallback
-  "gluNurbsCallback"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluNurbsCallback"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLenum " (parameter "which"))
-      (paramdef
-        "_GLUfuncptr "
-        (parameter "CallBackFunc"))))
+  ((gluNurbsCallback
+     (nurb *)
+     (which GLenum)
+     (CallBackFunc _GLUfuncptr)
+     ->
+     void))
   "Define a callback for a NURBS object.
 
 NURB
@@ -1834,18 +1712,16 @@ The legal callbacks are as follows:
      void endData( void  *userData );")
 
 (define-gl-procedure
-  gluNurbsCurve
-  "gluNurbsCurve"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluNurbsCurve"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLint " (parameter "knotCount"))
-      (paramdef "GLfloat * " (parameter "knots"))
-      (paramdef "GLint " (parameter "stride"))
-      (paramdef "GLfloat * " (parameter "control"))
-      (paramdef "GLint " (parameter "order"))
-      (paramdef "GLenum " (parameter "type"))))
+  ((gluNurbsCurve
+     (nurb *)
+     (knotCount GLint)
+     (knots *)
+     (stride GLint)
+     (control *)
+     (order GLint)
+     (type GLenum)
+     ->
+     void))
   "Define the shape of a NURBS curve.
 
 NURB
@@ -1898,14 +1774,12 @@ the `gluBeginTrim' reference page for more discussion about trimming
 curves.")
 
 (define-gl-procedure
-  gluNurbsProperty
-  "gluNurbsProperty"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluNurbsProperty"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLenum " (parameter "property"))
-      (paramdef "GLfloat " (parameter "value"))))
+  ((gluNurbsProperty
+     (nurb *)
+     (property GLenum)
+     (value GLfloat)
+     ->
+     void))
   "Set a NURBS property.
 
 NURB
@@ -2042,22 +1916,20 @@ The accepted values for PROPERTY are as follows:
      culling matrices until `gluLoadSamplingMatrices' is called.")
 
 (define-gl-procedure
-  gluNurbsSurface
-  "gluNurbsSurface"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluNurbsSurface"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLint " (parameter "sKnotCount"))
-      (paramdef "GLfloat* " (parameter "sKnots"))
-      (paramdef "GLint " (parameter "tKnotCount"))
-      (paramdef "GLfloat* " (parameter "tKnots"))
-      (paramdef "GLint " (parameter "sStride"))
-      (paramdef "GLint " (parameter "tStride"))
-      (paramdef "GLfloat* " (parameter "control"))
-      (paramdef "GLint " (parameter "sOrder"))
-      (paramdef "GLint " (parameter "tOrder"))
-      (paramdef "GLenum " (parameter "type"))))
+  ((gluNurbsSurface
+     (nurb *)
+     (sKnotCount GLint)
+     (sKnots *)
+     (tKnotCount GLint)
+     (tKnots *)
+     (sStride GLint)
+     (tStride GLint)
+     (control *)
+     (sOrder GLint)
+     (tOrder GLint)
+     (type GLenum)
+     ->
+     void))
   "Define the shape of a NURBS surface.
 
 NURB
@@ -2131,15 +2003,13 @@ must have (SKNOTCOUNT - SORDER) TIMES (TKNOTCOUNT - TORDER) control
 points.")
 
 (define-gl-procedure
-  gluOrtho2D
-  "gluOrtho2D"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluOrtho2D"))
-      (paramdef "GLdouble " (parameter "left"))
-      (paramdef "GLdouble " (parameter "right"))
-      (paramdef "GLdouble " (parameter "bottom"))
-      (paramdef "GLdouble " (parameter "top"))))
+  ((gluOrtho2D
+     (left GLdouble)
+     (right GLdouble)
+     (bottom GLdouble)
+     (top GLdouble)
+     ->
+     void))
   "Define a 2D orthographic projection matrix.
 
 LEFT
@@ -2158,18 +2028,16 @@ BOTTOM
 is equivalent to calling `glOrtho' with NEAR=-1 and FAR=1 .")
 
 (define-gl-procedure
-  gluPartialDisk
-  "gluPartialDisk"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluPartialDisk"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLdouble " (parameter "inner"))
-      (paramdef "GLdouble " (parameter "outer"))
-      (paramdef "GLint " (parameter "slices"))
-      (paramdef "GLint " (parameter "loops"))
-      (paramdef "GLdouble " (parameter "start"))
-      (paramdef "GLdouble " (parameter "sweep"))))
+  ((gluPartialDisk
+     (quad *)
+     (inner GLdouble)
+     (outer GLdouble)
+     (slices GLint)
+     (loops GLint)
+     (start GLdouble)
+     (sweep GLdouble)
+     ->
+     void))
   "Draw an arc of a disk.
 
 QUAD
@@ -2217,15 +2085,13 @@ at (R, 0, 0) is (1.0, 0.5), at (0, R, 0) it is (0.5, 1.0), at (\\-R, 0,
 0) it is (0.0, 0.5), and at (0, \\-R, 0) it is (0.5, 0.0).")
 
 (define-gl-procedure
-  gluPerspective
-  "gluPerspective"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluPerspective"))
-      (paramdef "GLdouble " (parameter "fovy"))
-      (paramdef "GLdouble " (parameter "aspect"))
-      (paramdef "GLdouble " (parameter "zNear"))
-      (paramdef "GLdouble " (parameter "zFar"))))
+  ((gluPerspective
+     (fovy GLdouble)
+     (aspect GLdouble)
+     (zNear GLdouble)
+     (zFar GLdouble)
+     ->
+     void))
   "Set up a perspective projection matrix.
 
 FOVY
@@ -2264,16 +2130,14 @@ F=COTANGENT\u2061(FOVY/2,) The generated matrix is
 2×ZFAR×ZNEAR,/ZNEAR-ZFAR,), (0 0 -1 0),)")
 
 (define-gl-procedure
-  gluPickMatrix
-  "gluPickMatrix"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluPickMatrix"))
-      (paramdef "GLdouble " (parameter "x"))
-      (paramdef "GLdouble " (parameter "y"))
-      (paramdef "GLdouble " (parameter "delX"))
-      (paramdef "GLdouble " (parameter "delY"))
-      (paramdef "GLint * " (parameter "viewport"))))
+  ((gluPickMatrix
+     (x GLdouble)
+     (y GLdouble)
+     (delX GLdouble)
+     (delY GLdouble)
+     (viewport *)
+     ->
+     void))
   "Define a picking region.
 
 X
@@ -2312,22 +2176,18 @@ with the pick matrix than the way it was subdivided without the pick
 matrix.")
 
 (define-gl-procedure
-  gluProject
-  "gluProject"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "gluProject"))
-      (paramdef "GLdouble " (parameter "objX"))
-      (paramdef "GLdouble " (parameter "objY"))
-      (paramdef "GLdouble " (parameter "objZ"))
-      (paramdef
-        "const GLdouble * "
-        (parameter "model"))
-      (paramdef "const GLdouble * " (parameter "proj"))
-      (paramdef "const GLint * " (parameter "view"))
-      (paramdef "GLdouble* " (parameter "winX"))
-      (paramdef "GLdouble* " (parameter "winY"))
-      (paramdef "GLdouble* " (parameter "winZ"))))
+  ((gluProject
+     (objX GLdouble)
+     (objY GLdouble)
+     (objZ GLdouble)
+     (model *)
+     (proj *)
+     (view *)
+     (winX *)
+     (winY *)
+     (winZ *)
+     ->
+     GLint))
   "Map object coordinates to window coordinates.
 
 OBJX
@@ -2376,16 +2236,14 @@ WINX=VIEW\u2061(0,)+VIEW\u2061(2,)×(V^″\u2061(0,)+1,)/2
 WINY=VIEW\u2061(1,)+VIEW\u2061(3,)×(V^″\u2061(1,)+1,)/2 WINZ=(V^″\u2061(2,)+1,)/2")
 
 (define-gl-procedure
-  gluPwlCurve
-  "gluPwlCurve"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluPwlCurve"))
-      (paramdef "GLUnurbs* " (parameter "nurb"))
-      (paramdef "GLint " (parameter "count"))
-      (paramdef "GLfloat* " (parameter "data"))
-      (paramdef "GLint " (parameter "stride"))
-      (paramdef "GLenum " (parameter "type"))))
+  ((gluPwlCurve
+     (nurb *)
+     (count GLint)
+     (data *)
+     (stride GLint)
+     (type GLenum)
+     ->
+     void))
   "Describe a piecewise linear NURBS trimming curve.
 
 NURB
@@ -2420,16 +2278,12 @@ parameter space. See the `gluBeginTrim' reference page for more
 information about trimming curves.")
 
 (define-gl-procedure
-  gluQuadricCallback
-  "gluQuadricCallback"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluQuadricCallback"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLenum " (parameter "which"))
-      (paramdef
-        "_GLUfuncptr "
-        (parameter "CallBackFunc"))))
+  ((gluQuadricCallback
+     (quad *)
+     (which GLenum)
+     (CallBackFunc _GLUfuncptr)
+     ->
+     void))
   "Define a callback for a quadrics object.
 
 QUAD
@@ -2456,15 +2310,11 @@ The one legal callback is `GLU_ERROR':
      retrieved with the `gluErrorString' call.")
 
 (define-gl-procedure
-  gluQuadricDrawStyle
-  "gluQuadricDrawStyle"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluQuadricDrawStyle"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLenum " (parameter "draw"))))
+  ((gluQuadricDrawStyle
+     (quad *)
+     (draw GLenum)
+     ->
+     void))
   "Specify the draw style desired for quadrics.
 
 QUAD
@@ -2493,13 +2343,11 @@ with QUAD. The legal values are as follows:
      Quadrics are rendered as a set of points.")
 
 (define-gl-procedure
-  gluQuadricNormals
-  "gluQuadricNormals"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluQuadricNormals"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLenum " (parameter "normal"))))
+  ((gluQuadricNormals
+     (quad *)
+     (normal GLenum)
+     ->
+     void))
   "Specify what kind of normals are desired for quadrics.
 
 QUAD
@@ -2523,15 +2371,11 @@ quadrics rendered with QUAD. The legal values are as follows:
      initial value.")
 
 (define-gl-procedure
-  gluQuadricOrientation
-  "gluQuadricOrientation"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluQuadricOrientation"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLenum " (parameter "orientation"))))
+  ((gluQuadricOrientation
+     (quad *)
+     (orientation GLenum)
+     ->
+     void))
   "Specify inside/outside orientation for quadrics.
 
 QUAD
@@ -2555,13 +2399,11 @@ Note that the interpretation of OUTWARD and INWARD depends on the
 quadric being drawn.")
 
 (define-gl-procedure
-  gluQuadricTexture
-  "gluQuadricTexture"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluQuadricTexture"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLboolean " (parameter "texture"))))
+  ((gluQuadricTexture
+     (quad *)
+     (texture GLboolean)
+     ->
+     void))
   "Specify if texturing is desired for quadrics.
 
 QUAD
@@ -2580,20 +2422,18 @@ The manner in which texture coordinates are generated depends upon the
 specific quadric rendered.")
 
 (define-gl-procedure
-  gluScaleImage
-  "gluScaleImage"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "gluScaleImage"))
-      (paramdef "GLenum " (parameter "format"))
-      (paramdef "GLsizei " (parameter "wIn"))
-      (paramdef "GLsizei " (parameter "hIn"))
-      (paramdef "GLenum " (parameter "typeIn"))
-      (paramdef "const void * " (parameter "dataIn"))
-      (paramdef "GLsizei " (parameter "wOut"))
-      (paramdef "GLsizei " (parameter "hOut"))
-      (paramdef "GLenum " (parameter "typeOut"))
-      (paramdef "GLvoid* " (parameter "dataOut"))))
+  ((gluScaleImage
+     (format GLenum)
+     (wIn GLsizei)
+     (hIn GLsizei)
+     (typeIn GLenum)
+     (dataIn *)
+     (wOut GLsizei)
+     (hOut GLsizei)
+     (typeOut GLenum)
+     (dataOut *)
+     ->
+     GLint))
   "Scale an image to an arbitrary size.
 
 FORMAT
@@ -2690,15 +2530,13 @@ is neither `GLU_RGBA' nor `GLU_BGRA'.
 FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-gl-procedure
-  gluSphere
-  "gluSphere"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluSphere"))
-      (paramdef "GLUquadric* " (parameter "quad"))
-      (paramdef "GLdouble " (parameter "radius"))
-      (paramdef "GLint " (parameter "slices"))
-      (paramdef "GLint " (parameter "stacks"))))
+  ((gluSphere
+     (quad *)
+     (radius GLdouble)
+     (slices GLint)
+     (stacks GLint)
+     ->
+     void))
   "Draw a sphere.
 
 QUAD
@@ -2731,14 +2569,8 @@ ranges from 0.0 at the +Y axis, to 0.25 at the +X axis, to 0.5 at the
 \\-Y axis, to 0.75 at the \\-X axis, and back to 1.0 at the +Y axis.")
 
 (define-gl-procedure
-  gluTessBeginContour
-  "gluTessBeginContour"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluTessBeginContour"))
-      (paramdef "GLUtesselator* " (parameter "tess"))))
+  ((gluTessBeginContour (tess *) -> void)
+   (gluTessEndContour (tess *) -> void))
   "Delimit a contour description.
 
 TESS
@@ -2753,15 +2585,7 @@ page for more details. `gluTessBeginContour' can only be called between
 `gluTessBeginPolygon' and `gluTessEndPolygon'.")
 
 (define-gl-procedure
-  gluTessBeginPolygon
-  "gluTessBeginPolygon"
-  (funcsynopsis
-    (funcprototype
-      (funcdef
-        "void "
-        (function "gluTessBeginPolygon"))
-      (paramdef "GLUtesselator* " (parameter "tess"))
-      (paramdef "GLvoid* " (parameter "data"))))
+  ((gluTessBeginPolygon (tess *) (data *) -> void))
   "Delimit a polygon description.
 
 TESS
@@ -2790,16 +2614,12 @@ resulting triangles are described through callbacks. See
 `gluTessCallback' for descriptions of the callback functions.")
 
 (define-gl-procedure
-  gluTessCallback
-  "gluTessCallback"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluTessCallback"))
-      (paramdef "GLUtesselator* " (parameter "tess"))
-      (paramdef "GLenum " (parameter "which"))
-      (paramdef
-        "_GLUfuncptr "
-        (parameter "CallBackFunc"))))
+  ((gluTessCallback
+     (tess *)
+     (which GLenum)
+     (CallBackFunc _GLUfuncptr)
+     ->
+     void))
   "Define a callback for a tessellation object.
 
 TESS
@@ -3015,12 +2835,7 @@ was called. The legal callbacks are as follows:
      void errorData( GLenum errno, void *polygon_data );")
 
 (define-gl-procedure
-  gluTessEndPolygon
-  "gluTessEndPolygon"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluTessEndPolygon"))
-      (paramdef "GLUtesselator* " (parameter "tess"))))
+  ((gluTessEndPolygon (tess *) -> void))
   "Delimit a polygon description.
 
 TESS
@@ -3041,15 +2856,13 @@ resulting triangles are described through callbacks. See
 `gluTessCallback' for descriptions of the callback functions.")
 
 (define-gl-procedure
-  gluTessNormal
-  "gluTessNormal"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluTessNormal"))
-      (paramdef "GLUtesselator* " (parameter "tess"))
-      (paramdef "GLdouble " (parameter "valueX"))
-      (paramdef "GLdouble " (parameter "valueY"))
-      (paramdef "GLdouble " (parameter "valueZ"))))
+  ((gluTessNormal
+     (tess *)
+     (valueX GLdouble)
+     (valueY GLdouble)
+     (valueZ GLdouble)
+     ->
+     void))
   "Specify a normal for a polygon.
 
 TESS
@@ -3086,14 +2899,12 @@ The supplied normal persists until it is changed by another call to
 `gluTessNormal'.")
 
 (define-gl-procedure
-  gluTessProperty
-  "gluTessProperty"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluTessProperty"))
-      (paramdef "GLUtesselator* " (parameter "tess"))
-      (paramdef "GLenum " (parameter "which"))
-      (paramdef "GLdouble " (parameter "data"))))
+  ((gluTessProperty
+     (tess *)
+     (which GLenum)
+     (data GLdouble)
+     ->
+     void))
   "Set a tessellation object property.
 
 TESS
@@ -3167,14 +2978,12 @@ interpreted and rendered. The legal values for WHICH are as follows:
      are merged only when both endpoints are identical.")
 
 (define-gl-procedure
-  gluTessVertex
-  "gluTessVertex"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "void " (function "gluTessVertex"))
-      (paramdef "GLUtesselator* " (parameter "tess"))
-      (paramdef "GLdouble * " (parameter "location"))
-      (paramdef "GLvoid* " (parameter "data"))))
+  ((gluTessVertex
+     (tess *)
+     (location *)
+     (data *)
+     ->
+     void))
   "Specify a vertex on a polygon.
 
 TESS
@@ -3200,26 +3009,22 @@ pointer is passed back to the user through the `GLU_TESS_VERTEX' or
 `gluTessCallback' reference page).")
 
 (define-gl-procedure
-  gluUnProject4
-  "gluUnProject4"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "gluUnProject4"))
-      (paramdef "GLdouble " (parameter "winX"))
-      (paramdef "GLdouble " (parameter "winY"))
-      (paramdef "GLdouble " (parameter "winZ"))
-      (paramdef "GLdouble " (parameter "clipW"))
-      (paramdef
-        "const GLdouble * "
-        (parameter "model"))
-      (paramdef "const GLdouble * " (parameter "proj"))
-      (paramdef "const GLint * " (parameter "view"))
-      (paramdef "GLdouble " (parameter "nearVal"))
-      (paramdef "GLdouble " (parameter "farVal"))
-      (paramdef "GLdouble* " (parameter "objX"))
-      (paramdef "GLdouble* " (parameter "objY"))
-      (paramdef "GLdouble* " (parameter "objZ"))
-      (paramdef "GLdouble* " (parameter "objW"))))
+  ((gluUnProject4
+     (winX GLdouble)
+     (winY GLdouble)
+     (winZ GLdouble)
+     (clipW GLdouble)
+     (model *)
+     (proj *)
+     (view *)
+     (nearVal GLdouble)
+     (farVal GLdouble)
+     (objX *)
+     (objY *)
+     (objZ *)
+     (objW *)
+     ->
+     GLint))
   "Map window and clip coordinates to object coordinates.
 
 WINX
@@ -3279,22 +3084,18 @@ INV denotes matrix inversion.
 is 0, and FARVAL is 1.")
 
 (define-gl-procedure
-  gluUnProject
-  "gluUnProject"
-  (funcsynopsis
-    (funcprototype
-      (funcdef "GLint " (function "gluUnProject"))
-      (paramdef "GLdouble " (parameter "winX"))
-      (paramdef "GLdouble " (parameter "winY"))
-      (paramdef "GLdouble " (parameter "winZ"))
-      (paramdef
-        "const GLdouble * "
-        (parameter "model"))
-      (paramdef "const GLdouble * " (parameter "proj"))
-      (paramdef "const GLint * " (parameter "view"))
-      (paramdef "GLdouble* " (parameter "objX"))
-      (paramdef "GLdouble* " (parameter "objY"))
-      (paramdef "GLdouble* " (parameter "objZ"))))
+  ((gluUnProject
+     (winX GLdouble)
+     (winY GLdouble)
+     (winZ GLdouble)
+     (model *)
+     (proj *)
+     (view *)
+     (objX *)
+     (objY *)
+     (objZ *)
+     ->
+     GLint))
   "Map window coordinates to object coordinates.
 
 WINX

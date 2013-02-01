@@ -19,7 +19,7 @@ licensed under the SGI Free Software B License. For details, see
 
 @end copying
 
-@defun glXChooseFBConfig 
+@deftypefun * glXChooseFBConfig dpy screen attrib_list nelements
 Return a list of GLX frame buffer configurations that match the
 specified attributes.
 
@@ -367,9 +367,9 @@ By @code{GLX_X_VISUAL_TYPE} where the precedence order is
 @var{attrib_list}, if @var{screen} is invalid, or if @var{dpy} does not
 support the GLX extension.
 
-@end defun
+@end deftypefun
 
-@defun glXChooseVisual 
+@deftypefun * glXChooseVisual dpy screen attribList
 Return a visual that matches specified attributes.
 
 @table @asis
@@ -505,9 +505,9 @@ the minimum size is preferred.
 @code{NULL} is returned if an undefined GLX attribute is encountered in
 @var{attribList}.
 
-@end defun
+@end deftypefun
 
-@defun glXCopyContext 
+@deftypefun void glXCopyContext dpy src dst mask
 Copy state from one rendering context to another.
 
 @table @asis
@@ -564,9 +564,9 @@ context and the current drawable is a window that is no longer valid.
 @code{GLXBadContext} is generated if either @var{src} or @var{dst} is
 not a valid GLX context.
 
-@end defun
+@end deftypefun
 
-@defun glXCreateContext 
+@deftypefun GLXContext glXCreateContext dpy vis shareList direct
 Create a new GLX rendering context.
 
 @table @asis
@@ -634,9 +634,9 @@ context and is not @code{NULL}.
 @code{BadAlloc} is generated if the server does not have enough
 resources to allocate the new context.
 
-@end defun
+@end deftypefun
 
-@defun glXCreateGLXPixmap 
+@deftypefun GLXPixmap glXCreateGLXPixmap dpy vis pixmap
 Create an off-screen GLX rendering area.
 
 @table @asis
@@ -683,9 +683,9 @@ support this visual).
 @code{BadAlloc} is generated if the server cannot allocate the GLX
 pixmap.
 
-@end defun
+@end deftypefun
 
-@defun glXCreateNewContext 
+@deftypefun GLXContext glXCreateNewContext dpy config render_type share_list direct
 Create a new GLX rendering context.
 
 @table @asis
@@ -761,9 +761,9 @@ resources to allocate the new context.
 @code{BadValue} is generated if @var{config} is not a valid visual (for
 example, if a particular GLX implementation does not support it).
 
-@end defun
+@end deftypefun
 
-@defun glXCreatePbuffer 
+@deftypefun GLXPbuffer glXCreatePbuffer dpy config attrib_list
 Create an off-screen rendering area.
 
 @table @asis
@@ -834,9 +834,9 @@ GLXFBConfig.
 to pixel buffers (e.g., @code{GLX_DRAWABLE_TYPE} does not contain
 @code{GLX_PBUFFER_BIT}).
 
-@end defun
+@end deftypefun
 
-@defun glXCreatePixmap 
+@deftypefun GLXPixmap glXCreatePixmap dpy config pixmap attrib_list
 Create an off-screen rendering area.
 
 @table @asis
@@ -881,9 +881,9 @@ GLXFBConfig.
 
 
 
-@end defun
+@end deftypefun
 
-@defun glXCreateWindow 
+@deftypefun GLXWindow glXCreateWindow dpy config win attrib_list
 Create an on-screen rendering area.
 
 @table @asis
@@ -930,9 +930,9 @@ GLXFBConfig.
 
 
 
-@end defun
+@end deftypefun
 
-@defun glXDestroyContext 
+@deftypefun void glXDestroyContext dpy ctx
 Destroy a GLX context.
 
 @table @asis
@@ -952,9 +952,9 @@ the resource ID referenced by @var{ctx} is freed immediately.
 @code{GLXBadContext} is generated if @var{ctx} is not a valid GLX
 context.
 
-@end defun
+@end deftypefun
 
-@defun glXDestroyGLXPixmap 
+@deftypefun void glXDestroyGLXPixmap dpy pix
 Destroy a GLX pixmap.
 
 @table @asis
@@ -973,9 +973,9 @@ the resource ID is freed immediately.
 
 @code{GLXBadPixmap} is generated if @var{pix} is not a valid GLX pixmap.
 
-@end defun
+@end deftypefun
 
-@defun glXDestroyPbuffer 
+@deftypefun void glXDestroyPbuffer dpy pbuf
 Destroy an off-screen rendering area.
 
 @table @asis
@@ -993,9 +993,9 @@ Specifies the GLXPbuffer to be destroyed.
 @code{GLXBadPbuffer} is generated if @var{pbuf} is not a valid
 GLXPbuffer.
 
-@end defun
+@end deftypefun
 
-@defun glXDestroyPixmap 
+@deftypefun void glXDestroyPixmap dpy pixmap
 Destroy an off-screen rendering area.
 
 @table @asis
@@ -1013,9 +1013,9 @@ Specifies the GLXPixmap to be destroyed.
 @code{GLXBadPixmap} is generated if @var{pixmap} is not a valid
 GLXPixmap.
 
-@end defun
+@end deftypefun
 
-@defun glXDestroyWindow 
+@deftypefun void glXDestroyWindow dpy win
 Destroy an on-screen rendering area.
 
 @table @asis
@@ -1032,9 +1032,9 @@ Specifies the GLXWindow to be destroyed.
 
 @code{GLXBadWindow} is generated if @var{win} is not a valid GLXPixmap.
 
-@end defun
+@end deftypefun
 
-@defun glXFreeContextEXT 
+@deftypefun void glXFreeContextEXT dpy ctx
 Free client-side memory for imported context.
 
 @table @asis
@@ -1060,9 +1060,9 @@ _glxextstring(EXT_import_context) is included in the string returned by
 @code{GLXBadContext} is generated if @var{ctx} does not refer to a valid
 context.
 
-@end defun
+@end deftypefun
 
-@defun glXGetClientString 
+@deftypefun * glXGetClientString dpy name
 Return a string describing the client.
 
 @table @asis
@@ -1095,9 +1095,9 @@ Both the major and minor portions of the version number are of arbitrary
 length. The vendor-specific information is optional. However, if it is
 present, the format and contents are implementation specific.
 
-@end defun
+@end deftypefun
 
-@defun glXGetConfig 
+@deftypefun int glXGetConfig dpy vis attrib value
 Return information about GLX visuals.
 
 @table @asis
@@ -1235,9 +1235,9 @@ attribute.
 @code{GLX_BAD_VISUAL} is returned if @var{vis} doesn't support GLX and
 an attribute other than @code{GLX_USE_GL} is requested.
 
-@end defun
+@end deftypefun
 
-@defun glXGetContextIDEXT 
+@deftypefun GLXContextID glXGetContextIDEXT ctx
 Get the XID for a context..
 
 @table @asis
@@ -1260,9 +1260,9 @@ _glxextstring(EXT_import_context) is included in the string returned by
 @code{GLXBadContext} is generated if @var{ctx} does not refer to a valid
 context.
 
-@end defun
+@end deftypefun
 
-@defun glXGetCurrentContext 
+@deftypefun GLXContext glXGetCurrentContext 
 Return the current context.
 
 @code{glXGetCurrentContext} returns the current context, as specified by
@@ -1274,9 +1274,9 @@ make a round trip to the server.
 
 
 
-@end defun
+@end deftypefun
 
-@defun glXGetCurrentDisplay 
+@deftypefun * glXGetCurrentDisplay 
 Get display for current context.
 
 @code{glXGetCurrentDisplay} returns the display for the current context.
@@ -1286,9 +1286,9 @@ If no context is current, @code{NULL} is returned.
 make a round-trip to the server, and therefore does not flush any
 pending events.
 
-@end defun
+@end deftypefun
 
-@defun glXGetCurrentDrawable 
+@deftypefun GLXDrawable glXGetCurrentDrawable 
 Return the current drawable.
 
 @code{glXGetCurrentDrawable} returns the current drawable, as specified
@@ -1298,9 +1298,9 @@ is returned.
 @code{glXGetCurrentDrawable} returns client-side information. It does
 not make a round trip to the server.
 
-@end defun
+@end deftypefun
 
-@defun glXGetCurrentReadDrawable 
+@deftypefun GLXDrawable glXGetCurrentReadDrawable 
 Return the current drawable.
 
 @code{glXGetCurrentReadDrawable} returns the current read drawable, as
@@ -1310,9 +1310,9 @@ there is no current drawable, @code{None} is returned.
 @code{glXGetCurrentReadDrawable} returns client-side information. It
 does not make a round-trip to the server.
 
-@end defun
+@end deftypefun
 
-@defun glXGetFBConfigAttrib 
+@deftypefun int glXGetFBConfigAttrib dpy config attribute value
 Return information about a GLX frame buffer configuration.
 
 @table @asis
@@ -1561,9 +1561,9 @@ performance as well as poor resource allocation.
 GLX extension. @code{GLX_BAD_ATTRIBUTE} is returned if @var{attribute}
 is not a valid GLX attribute.
 
-@end defun
+@end deftypefun
 
-@defun glXGetFBConfigs 
+@deftypefun * glXGetFBConfigs dpy screen nelements
 List all GLX frame buffer configurations for a given screen.
 
 @table @asis
@@ -1582,9 +1582,9 @@ Returns the number of GLXFBConfigs returned.
 the screen specified by @var{screen}. Use @code{glXGetFBConfigAttrib} to
 obtain attribute values from a specific GLXFBConfig.
 
-@end defun
+@end deftypefun
 
-@defun glXGetProcAddress 
+@deftypefun void(*)() glXGetProcAddress procName
 Obtain a pointer to an OpenGL or GLX function.
 
 @table @asis
@@ -1599,9 +1599,9 @@ in @var{procName}. This is necessary in environments where the OpenGL
 link library exports a different set of functions than the runtime
 library.
 
-@end defun
+@end deftypefun
 
-@defun glXGetSelectedEvent 
+@deftypefun void glXGetSelectedEvent dpy draw event_mask
 Returns GLX events that are selected for a window or a GLX pixel buffer.
 
 @table @asis
@@ -1622,9 +1622,9 @@ selected for @var{draw}.
 @code{GLXBadDrawable} is generated if @var{draw} is not a valid window
 or a valid GLX pixel buffer.
 
-@end defun
+@end deftypefun
 
-@defun glXGetVisualFromFBConfig 
+@deftypefun * glXGetVisualFromFBConfig dpy config
 Return visual that is associated with the frame buffer configuration.
 
 @table @asis
@@ -1643,9 +1643,9 @@ the data returned.
 
 Returns @code{NULL} if @var{config} is not a valid GLXFBConfig.
 
-@end defun
+@end deftypefun
 
-@defun glXImportContextEXT 
+@deftypefun GLXContext glXImportContextEXT dpy contextID
 Import another process's indirect rendering context..
 
 @table @asis
@@ -1686,14 +1686,9 @@ _glxextstring(EXT_import_context) is included in the string returned by
 @code{GLXBadContext} is generated if @var{contextID} does not refer to a
 valid context.
 
-@end defun
+@end deftypefun
 
-@defun glXIntro 
-Introduction to OpenGL in the X window system.
-
-@end defun
-
-@defun glXIsDirect 
+@deftypefun Bool glXIsDirect dpy ctx
 Indicate whether direct rendering is enabled.
 
 @table @asis
@@ -1714,9 +1709,9 @@ rendering contexts pass all rendering commands to the X server.
 @code{GLXBadContext} is generated if @var{ctx} is not a valid GLX
 context.
 
-@end defun
+@end deftypefun
 
-@defun glXMakeContextCurrent 
+@deftypefun Bool glXMakeContextCurrent display draw read ctx
 Attach a GLX context to a GLX drawable.
 
 @table @asis
@@ -1811,9 +1806,9 @@ bound to a GLXWindow or GLXPbuffer.
 @var{draw} or @var{read} is a GLXWindow or GLXPbuffer and @var{ctx} was
 previously bound to a GLXPixmap.
 
-@end defun
+@end deftypefun
 
-@defun glXMakeCurrent 
+@deftypefun Bool glXMakeCurrent dpy drawable ctx
 Attach a GLX context to a window or a GLX pixmap.
 
 @table @asis
@@ -1883,9 +1878,9 @@ longer valid.
 ancillary buffers until @code{glXMakeCurrent} is called, only to find
 that it has insufficient resources to complete the allocation.
 
-@end defun
+@end deftypefun
 
-@defun glXQueryContextInfoEXT 
+@deftypefun int glXQueryContextInfoEXT dpy ctx attribute value
 Query context information.
 
 @table @asis
@@ -1942,9 +1937,9 @@ GLX context attribute.
 fred @code{GLX_BAD_CONTEXT} is returned if @var{attribute} is not a
 valid context.
 
-@end defun
+@end deftypefun
 
-@defun glXQueryContext 
+@deftypefun int glXQueryContext dpy ctx attribute value
 Query context information.
 
 @table @asis
@@ -1986,9 +1981,9 @@ This call may cause a round-trip to the server.
 @code{GLXBadContext} is generated if @var{ctx} does not refer to a valid
 context.
 
-@end defun
+@end deftypefun
 
-@defun glXQueryDrawable 
+@deftypefun int glXQueryDrawable dpy draw attribute value
 Returns an attribute assoicated with a GLX drawable.
 
 @table @asis
@@ -2045,9 +2040,9 @@ the attributes listed above, the contents of @var{value} are unedfined.
 A @code{GLXBadDrawable} is generated if @var{draw} is not a valid
 GLXDrawable.
 
-@end defun
+@end deftypefun
 
-@defun glXQueryExtensionsString 
+@deftypefun * glXQueryExtensionsString dpy screen
 Return list of supported extensions.
 
 @table @asis
@@ -2065,9 +2060,9 @@ null-terminated and contains a space-separated list of extension names.
 (The extension names themselves never contain spaces.) If there are no
 extensions to GLX, then the empty string is returned.
 
-@end defun
+@end deftypefun
 
-@defun glXQueryExtension 
+@deftypefun Bool glXQueryExtension dpy errorBase eventBase
 Indicate whether the GLX extension is supported.
 
 @table @asis
@@ -2093,9 +2088,9 @@ actual event or error values. Otherwise, @var{errorBase} and
 @var{errorBase} and @var{eventBase} do not return values if they are
 specified as @code{NULL}.
 
-@end defun
+@end deftypefun
 
-@defun glXQueryServerString 
+@deftypefun * glXQueryServerString dpy screen name
 Return string describing the server.
 
 @table @asis
@@ -2117,9 +2112,9 @@ extension. The possible values for @var{name} and the format of the
 strings is the same as for @code{glXGetClientString}. If @var{name} is
 not set to a recognized value, @code{NULL} is returned.
 
-@end defun
+@end deftypefun
 
-@defun glXQueryVersion 
+@deftypefun Bool glXQueryVersion dpy major minor
 Return the version numbers of the GLX extension.
 
 @table @asis
@@ -2149,9 +2144,9 @@ otherwise.
 @var{major} and @var{minor} are not updated when @code{False} is
 returned.
 
-@end defun
+@end deftypefun
 
-@defun glXSelectEvent 
+@deftypefun void glXSelectEvent dpy draw event_mask
 Select GLX events for a window or a GLX pixel buffer.
 
 @table @asis
@@ -2299,9 +2294,9 @@ portions of those buffers\(emwere affected.
 @code{GLXBadDrawable} is generated if @var{draw} is not a valid window
 or a valid GLX pixel buffer.
 
-@end defun
+@end deftypefun
 
-@defun glXSwapBuffers 
+@deftypefun void glXSwapBuffers dpy drawable
 Exchange front and back buffers.
 
 @table @asis
@@ -2335,9 +2330,9 @@ are respectively the display and drawable associated with the current
 context of the calling thread, and @var{drawable} identifies a window
 that is no longer valid.
 
-@end defun
+@end deftypefun
 
-@defun glXUseXFont 
+@deftypefun void glXUseXFont font first count listBase
 Create bitmap display lists from an X font.
 
 @table @asis
@@ -2386,9 +2381,9 @@ display-list construction mode.
 the current context of the calling thread is a window, and that window
 is no longer valid.
 
-@end defun
+@end deftypefun
 
-@defun glXWaitGL 
+@deftypefun void glXWaitGL 
 Complete GL execution prior to subsequent X calls.
 
 GL rendering calls made prior to @code{glXWaitGL} are guaranteed to be
@@ -2403,9 +2398,9 @@ efficient in cases where client and server are on separate machines.
 the current context of the calling thread is a window, and that window
 is no longer valid.
 
-@end defun
+@end deftypefun
 
-@defun glXWaitX 
+@deftypefun void glXWaitX 
 Complete X execution prior to subsequent GL calls.
 
 X rendering calls made prior to @code{glXWaitX} are guaranteed to be
@@ -2420,7 +2415,7 @@ efficient in cases where client and server are on separate machines.
 the current context of the calling thread is a window, and that window
 is no longer valid.
 
-@end defun
+@end deftypefun
 
 
 @c %end of fragment

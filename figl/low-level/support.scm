@@ -24,10 +24,13 @@
 (define-module (figl low-level support)
   #:export (define-gl-procedure))
 
-(define-syntax-rule (define-gl-procedure scheme-name c-name prototype
-                      docstring)
-  (begin
-    (define (scheme-name)
-      docstring
-      (cons c-name 'prototype))
-    (export scheme-name)))
+(define-syntax define-gl-procedure
+  (syntax-rules (->)
+    ((define-gl-procedure ((name (pname ptype) ... -> type)
+                           ...)
+       docstring)
+     (begin
+       (define (name pname ...)
+         docstring
+         '(ptype ... -> type))
+       ...))))
