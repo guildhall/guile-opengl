@@ -1,6 +1,12 @@
 
 @c %start of fragment
 
+The functions from this section may be had by loading the module:
+
+@example 
+(use-modules (figl low-level glu))
+@end example
+
 @copying 
 This section of the manual was derived from the upstream OpenGL
 documentation. Each function's documentation has its own copyright
@@ -13,22 +19,15 @@ licensed under the SGI Free Software B License. For details, see
 
 @end copying
 
-The functions from this section may be had by loading the module:
-
-@example 
-(use-modules (figl low-level glu))
-@end example
-
 @defun gluBeginCurve 
-@heading delimit a NURBS curve definition
-@heading Parameters
+Delimit a NURBS curve definition.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
 
 @end table
 
-@heading Description
 Use @code{gluBeginCurve} to mark the beginning of a NURBS curve
 definition. After calling @code{gluBeginCurve}, make one or more calls
 to @code{gluNurbsCurve} to define the attributes of the curve. Exactly
@@ -45,15 +44,14 @@ these calls preserve.
 @end defun
 
 @defun gluBeginPolygon 
-@heading delimit a polygon description
-@heading Parameters
+Delimit a polygon description.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
 
 @end table
 
-@heading Description
 @code{gluBeginPolygon} and @code{gluEndPolygon} delimit the definition
 of a nonconvex polygon. To define such a polygon, first call
 @code{gluBeginPolygon}. Then define the contours of the polygon by
@@ -69,15 +67,14 @@ resulting triangles are described through callbacks. See
 @end defun
 
 @defun gluBeginSurface 
-@heading delimit a NURBS surface definition
-@heading Parameters
+Delimit a NURBS surface definition.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
 
 @end table
 
-@heading Description
 Use @code{gluBeginSurface} to mark the beginning of a NURBS surface
 definition. After calling @code{gluBeginSurface}, make one or more calls
 to @code{gluNurbsSurface} to define the attributes of the surface.
@@ -98,15 +95,14 @@ these calls preserve.
 @end defun
 
 @defun gluBeginTrim 
-@heading delimit a NURBS trimming loop definition
-@heading Parameters
+Delimit a NURBS trimming loop definition.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
 
 @end table
 
-@heading Description
 Use @code{gluBeginTrim} to mark the beginning of a trimming loop and
 @code{gluEndTrim} to mark the end of a trimming loop. A trimming loop is
 a set of oriented curve segments (forming a closed curve) that define
@@ -158,8 +154,8 @@ surface is drawn.
 @end defun
 
 @defun gluBuild1DMipmapLevels 
-@heading builds a subset of one-dimensional mipmap levels
-@heading Parameters
+Builds a subset of one-dimensional mipmap levels.
+
 @table @asis
 @item @var{target}
 Specifies the target texture. Must be @code{GLU_TEXTURE_1D}.
@@ -227,7 +223,6 @@ Specifies a pointer to the image data in memory.
 
 @end table
 
-@heading Description
 @code{gluBuild1DMipmapLevels} builds a subset of prefiltered
 one-dimensional texture maps of decreasing resolutions called a mipmap.
 This is used for the antialiasing of texture mapped primitives.
@@ -236,7 +231,7 @@ A return value of zero indicates success, otherwise a GLU error code is
 returned (see @code{gluErrorString}).
 
 A series of mipmap levels from @var{base} to @var{max} is built by
-decimating @var{data} in half until size @math{1×1} is reached. At each
+decimating @var{data} in half until size @r{1×1} is reached. At each
 level, each texel in the halved mipmap level is an average of the
 corresponding two texels in the larger mipmap level. @code{glTexImage1D}
 is called to load these mipmap levels from @var{base} to @var{max}. If
@@ -245,22 +240,21 @@ specified size, then a GLU error code is returned (see
 @code{gluErrorString}) and nothing is loaded.
 
 For example, if @var{level} is 2 and @var{width} is 16, the following
-levels are possible: @math{16×1}, @math{8×1}, @math{4×1}, @math{2×1},
-@math{1×1}. These correspond to levels 2 through 6 respectively. If
-@var{base} is 3 and @var{max} is 5, then only mipmap levels @math{8×1},
-@math{4×1} and @math{2×1} are loaded. However, if @var{max} is 7, then
-an error is returned and nothing is loaded since @var{max} is larger
-than the highest mipmap level which is, in this case, 6.
+levels are possible: @r{16×1}, @r{8×1}, @r{4×1}, @r{2×1}, @r{1×1}. These
+correspond to levels 2 through 6 respectively. If @var{base} is 3 and
+@var{max} is 5, then only mipmap levels @r{8×1}, @r{4×1} and @r{2×1} are
+loaded. However, if @var{max} is 7, then an error is returned and
+nothing is loaded since @var{max} is larger than the highest mipmap
+level which is, in this case, 6.
 
 The highest mipmap level can be derived from the formula
-@math{@var{log}_2⁡(@var{width}×2^@var{level},)}.
+@r{@var{log}_2⁡(@var{width}×2^@var{level},)}.
 
 See the @code{glTexImage1D} reference page for a description of the
 acceptable values for @var{type} parameter. See the @code{glDrawPixels}
 reference page for a description of the acceptable values for
 @var{level} parameter.
 
-@heading Errors
 @code{GLU_INVALID_VALUE} is returned if @var{level} > @var{base},
 @var{base} < 0, @var{max} < @var{base} or @var{max} is > the highest
 mipmap level for @var{data}.
@@ -300,8 +294,8 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @end defun
 
 @defun gluBuild1DMipmaps 
-@heading builds a one-dimensional mipmap
-@heading Parameters
+Builds a one-dimensional mipmap.
+
 @table @asis
 @item @var{target}
 Specifies the target texture. Must be @code{GLU_TEXTURE_1D}.
@@ -359,7 +353,6 @@ Specifies a pointer to the image data in memory.
 
 @end table
 
-@heading Description
 @code{gluBuild1DMipmaps} builds a series of prefiltered one-dimensional
 texture maps of decreasing resolutions called a mipmap. This is used for
 the antialiasing of texture mapped primitives.
@@ -380,24 +373,23 @@ the implementation can fit the requested texture. If not, @var{width} is
 continually halved until it fits.
 
 Next, a series of mipmap levels is built by decimating a copy of
-@var{data} in half until size @math{1×1} is reached. At each level, each
+@var{data} in half until size @r{1×1} is reached. At each level, each
 texel in the halved mipmap level is an average of the corresponding two
 texels in the larger mipmap level.
 
 @code{glTexImage1D} is called to load each of these mipmap levels. Level
 0 is a copy of @var{data}. The highest level is
-@math{@var{log}_2,⁡(@var{width},)}. For example, if @var{width} is 64
-and the implementation can store a texture of this size, the following
-mipmap levels are built: @math{64×1}, @math{32×1}, @math{16×1},
-@math{8×1}, @math{4×1}, @math{2×1}, and @math{1×1}. These correspond to
-levels 0 through 6, respectively.
+@r{@var{log}_2,⁡(@var{width},)}. For example, if @var{width} is 64 and
+the implementation can store a texture of this size, the following
+mipmap levels are built: @r{64×1}, @r{32×1}, @r{16×1}, @r{8×1}, @r{4×1},
+@r{2×1}, and @r{1×1}. These correspond to levels 0 through 6,
+respectively.
 
 See the @code{glTexImage1D} reference page for a description of the
 acceptable values for the @var{type} parameter. See the
 @code{glDrawPixels} reference page for a description of the acceptable
 values for the @var{data} parameter.
 
-@heading Errors
 @code{GLU_INVALID_VALUE} is returned if @var{width} is < 1.
 
 @code{GLU_INVALID_ENUM} is returned if @var{format} or @var{type} are
@@ -433,8 +425,8 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @end defun
 
 @defun gluBuild2DMipmapLevels 
-@heading builds a subset of two-dimensional mipmap levels
-@heading Parameters
+Builds a subset of two-dimensional mipmap levels.
+
 @table @asis
 @item @var{target}
 Specifies the target texture. Must be @code{GLU_TEXTURE_2D}.
@@ -503,7 +495,6 @@ Specifies a pointer to the image data in memory.
 
 @end table
 
-@heading Description
 @code{gluBuild2DMipmapLevels} builds a subset of prefiltered
 two-dimensional texture maps of decreasing resolutions called a mipmap.
 This is used for the antialiasing of texture mapped primitives.
@@ -512,35 +503,33 @@ A return value of zero indicates success, otherwise a GLU error code is
 returned (see @code{gluErrorString}).
 
 A series of mipmap levels from @var{base} to @var{max} is built by
-decimating @var{data} in half along both dimensions until size
-@math{1×1} is reached. At each level, each texel in the halved mipmap
-level is an average of the corresponding four texels in the larger
-mipmap level. (In the case of rectangular images, the decimation will
-ultimately reach an @math{@var{N}×1} or @math{1×@var{N}} configuration.
-Here, two texels are averaged instead.) @code{glTexImage2D} is called to
-load these mipmap levels from @var{base} to @var{max}. If @var{max} is
-larger than the highest mipmap level for the texture of the specified
-size, then a GLU error code is returned (see @code{gluErrorString}) and
-nothing is loaded.
+decimating @var{data} in half along both dimensions until size @r{1×1}
+is reached. At each level, each texel in the halved mipmap level is an
+average of the corresponding four texels in the larger mipmap level. (In
+the case of rectangular images, the decimation will ultimately reach an
+@r{@var{N}×1} or @r{1×@var{N}} configuration. Here, two texels are
+averaged instead.) @code{glTexImage2D} is called to load these mipmap
+levels from @var{base} to @var{max}. If @var{max} is larger than the
+highest mipmap level for the texture of the specified size, then a GLU
+error code is returned (see @code{gluErrorString}) and nothing is
+loaded.
 
 For example, if @var{level} is 2 and @var{width} is 16 and @var{height}
-is 8, the following levels are possible: @math{16×8}, @math{8×4},
-@math{4×2}, @math{2×1}, @math{1×1}. These correspond to levels 2 through
-6 respectively. If @var{base} is 3 and @var{max} is 5, then only mipmap
-levels @math{8×4}, @math{4×2}, and @math{2×1} are loaded. However, if
-@var{max} is 7, then an error is returned and nothing is loaded since
-@var{max} is larger than the highest mipmap level which is, in this
-case, 6.
+is 8, the following levels are possible: @r{16×8}, @r{8×4}, @r{4×2},
+@r{2×1}, @r{1×1}. These correspond to levels 2 through 6 respectively.
+If @var{base} is 3 and @var{max} is 5, then only mipmap levels @r{8×4},
+@r{4×2}, and @r{2×1} are loaded. However, if @var{max} is 7, then an
+error is returned and nothing is loaded since @var{max} is larger than
+the highest mipmap level which is, in this case, 6.
 
 The highest mipmap level can be derived from the formula
-@math{@var{log}_2⁡(@var{max}⁡(@var{width},@var{height})×2^@var{level},)}.
+@r{@var{log}_2⁡(@var{max}⁡(@var{width},@var{height})×2^@var{level},)}.
 
 See the @code{glTexImage1D} reference page for a description of the
 acceptable values for @var{format} parameter. See the
 @code{glDrawPixels} reference page for a description of the acceptable
 values for @var{type} parameter.
 
-@heading Errors
 @code{GLU_INVALID_VALUE} is returned if @var{level} > @var{base},
 @var{base} < 0, @var{max} < @var{base}, or @var{max} is > the highest
 mipmap level for @var{data}.
@@ -581,8 +570,8 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @end defun
 
 @defun gluBuild2DMipmaps 
-@heading builds a two-dimensional mipmap
-@heading Parameters
+Builds a two-dimensional mipmap.
+
 @table @asis
 @item @var{target}
 Specifies the target texture. Must be @code{GLU_TEXTURE_2D}.
@@ -642,7 +631,6 @@ Specifies a pointer to the image data in memory.
 
 @end table
 
-@heading Description
 @code{gluBuild2DMipmaps} builds a series of prefiltered two-dimensional
 texture maps of decreasing resolutions called a mipmap. This is used for
 the antialiasing of texture-mapped primitives.
@@ -667,28 +655,26 @@ returned by @code{glGetIntegerv} with the argument
 @code{GLU_MAX_TEXTURE_SIZE}.)
 
 Next, a series of mipmap levels is built by decimating a copy of
-@var{data} in half along both dimensions until size @math{1×1} is
-reached. At each level, each texel in the halved mipmap level is an
-average of the corresponding four texels in the larger mipmap level. (In
-the case of rectangular images, the decimation will ultimately reach an
-@math{@var{N}×1} or @math{1×@var{N}} configuration. Here, two texels are
+@var{data} in half along both dimensions until size @r{1×1} is reached.
+At each level, each texel in the halved mipmap level is an average of
+the corresponding four texels in the larger mipmap level. (In the case
+of rectangular images, the decimation will ultimately reach an
+@r{@var{N}×1} or @r{1×@var{N}} configuration. Here, two texels are
 averaged instead.)
 
 @code{glTexImage2D} is called to load each of these mipmap levels. Level
 0 is a copy of @var{data}. The highest level is
-@math{@var{log}_2,⁡(@var{max}⁡(@var{width},@var{height}),)}. For
-example, if @var{width} is 64 and @var{height} is 16 and the
-implementation can store a texture of this size, the following mipmap
-levels are built: @math{64×16}, @math{32×8}, @math{16×4}, @math{8×2},
-@math{4×1}, @math{2×1}, and @math{1×1} These correspond to levels 0
-through 6, respectively.
+@r{@var{log}_2,⁡(@var{max}⁡(@var{width},@var{height}),)}. For example,
+if @var{width} is 64 and @var{height} is 16 and the implementation can
+store a texture of this size, the following mipmap levels are built:
+@r{64×16}, @r{32×8}, @r{16×4}, @r{8×2}, @r{4×1}, @r{2×1}, and @r{1×1}
+These correspond to levels 0 through 6, respectively.
 
 See the @code{glTexImage1D} reference page for a description of the
 acceptable values for @var{format} parameter. See the
 @code{glDrawPixels} reference page for a description of the acceptable
 values for @var{type} parameter.
 
-@heading Errors
 @code{GLU_INVALID_VALUE} is returned if @var{width} or @var{height} is <
 1.
 
@@ -725,8 +711,8 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @end defun
 
 @defun gluBuild3DMipmapLevels 
-@heading builds a subset of three-dimensional mipmap levels
-@heading Parameters
+Builds a subset of three-dimensional mipmap levels.
+
 @table @asis
 @item @var{target}
 Specifies the target texture. Must be @code{GLU_TEXTURE_3D}.
@@ -796,7 +782,6 @@ Specifies a pointer to the image data in memory.
 
 @end table
 
-@heading Description
 @code{gluBuild3DMipmapLevels} builds a subset of prefiltered
 three-dimensional texture maps of decreasing resolutions called a
 mipmap. This is used for the antialiasing of texture mapped primitives.
@@ -805,34 +790,33 @@ A return value of zero indicates success, otherwise a GLU error code is
 returned (see @code{gluErrorString}).
 
 A series of mipmap levels from @var{base} to @var{max} is built by
-decimating @var{data} in half along both dimensions until size
-@math{1×1×1} is reached. At each level, each texel in the halved mipmap
-level is an average of the corresponding eight texels in the larger
-mipmap level. (If exactly one of the dimensions is 1, four texels are
-averaged. If exactly two of the dimensions are 1, two texels are
-averaged.) @code{glTexImage3D} is called to load these mipmap levels
-from @var{base} to @var{max}. If @var{max} is larger than the highest
-mipmap level for the texture of the specified size, then a GLU error
-code is returned (see @code{gluErrorString}) and nothing is loaded.
+decimating @var{data} in half along both dimensions until size @r{1×1×1}
+is reached. At each level, each texel in the halved mipmap level is an
+average of the corresponding eight texels in the larger mipmap level.
+(If exactly one of the dimensions is 1, four texels are averaged. If
+exactly two of the dimensions are 1, two texels are averaged.)
+@code{glTexImage3D} is called to load these mipmap levels from
+@var{base} to @var{max}. If @var{max} is larger than the highest mipmap
+level for the texture of the specified size, then a GLU error code is
+returned (see @code{gluErrorString}) and nothing is loaded.
 
 For example, if @var{level} is 2 and @var{width} is 16, @var{height} is
-8 and @var{depth} is 4, the following levels are possible:
-@math{16×8×4}, @math{8×4×2}, @math{4×2×1}, @math{2×1×1}, @math{1×1×1}.
-These correspond to levels 2 through 6 respectively. If @var{base} is 3
-and @var{max} is 5, then only mipmap levels @math{8×4×2}, @math{4×2×1},
-and @math{2×1×1} are loaded. However, if @var{max} is 7, then an error
-is returned and nothing is loaded, since @var{max} is larger than the
-highest mipmap level which is, in this case, 6.
+8 and @var{depth} is 4, the following levels are possible: @r{16×8×4},
+@r{8×4×2}, @r{4×2×1}, @r{2×1×1}, @r{1×1×1}. These correspond to levels 2
+through 6 respectively. If @var{base} is 3 and @var{max} is 5, then only
+mipmap levels @r{8×4×2}, @r{4×2×1}, and @r{2×1×1} are loaded. However,
+if @var{max} is 7, then an error is returned and nothing is loaded,
+since @var{max} is larger than the highest mipmap level which is, in
+this case, 6.
 
 The highest mipmap level can be derived from the formula
-@math{@var{log}_2⁡(@var{max}⁡(@var{width},@var{height}@var{depth})×2^@var{level},)}.
+@r{@var{log}_2⁡(@var{max}⁡(@var{width},@var{height}@var{depth})×2^@var{level},)}.
 
 See the @code{glTexImage1D} reference page for a description of the
 acceptable values for @var{format} parameter. See the
 @code{glDrawPixels} reference page for a description of the acceptable
 values for @var{type} parameter.
 
-@heading Errors
 @code{GLU_INVALID_VALUE} is returned if @var{level} > @var{base},
 @var{base} < 0, @var{max} < @var{base}, or @var{max} is > the highest
 mipmap level for @var{data}.
@@ -873,8 +857,8 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @end defun
 
 @defun gluBuild3DMipmaps 
-@heading builds a three-dimensional mipmap
-@heading Parameters
+Builds a three-dimensional mipmap.
+
 @table @asis
 @item @var{target}
 Specifies the target texture. Must be @code{GLU_TEXTURE_3D}.
@@ -935,7 +919,6 @@ Specifies a pointer to the image data in memory.
 
 @end table
 
-@heading Description
 @code{gluBuild3DMipmaps} builds a series of prefiltered
 three-dimensional texture maps of decreasing resolutions called a
 mipmap. This is used for the antialiasing of texture-mapped primitives.
@@ -958,7 +941,7 @@ the implementation can fit the requested texture. If not, all three
 dimensions are continually halved until it fits.
 
 Next, a series of mipmap levels is built by decimating a copy of
-@var{data} in half along all three dimensions until size @math{1×1×1} is
+@var{data} in half along all three dimensions until size @r{1×1×1} is
 reached. At each level, each texel in the halved mipmap level is an
 average of the corresponding eight texels in the larger mipmap level.
 (If exactly one of the dimensions is 1, four texels are averaged. If
@@ -966,19 +949,18 @@ exactly two of the dimensions are 1, two texels are averaged.)
 
 @code{glTexImage3D} is called to load each of these mipmap levels. Level
 0 is a copy of @var{data}. The highest level is
-@math{@var{log}_2,⁡(@var{max}⁡(@var{width},@var{height}@var{depth}),)}.
-For example, if @var{width} is 64, @var{height} is 16, and @var{depth}
-is 32, and the implementation can store a texture of this size, the
-following mipmap levels are built: @math{64×16×32}, @math{32×8×16},
-@math{16×4×8}, @math{8×2×4}, @math{4×1×2}, @math{2×1×1}, and
-@math{1×1×1}. These correspond to levels 0 through 6, respectively.
+@r{@var{log}_2,⁡(@var{max}⁡(@var{width},@var{height}@var{depth}),)}. For
+example, if @var{width} is 64, @var{height} is 16, and @var{depth} is
+32, and the implementation can store a texture of this size, the
+following mipmap levels are built: @r{64×16×32}, @r{32×8×16},
+@r{16×4×8}, @r{8×2×4}, @r{4×1×2}, @r{2×1×1}, and @r{1×1×1}. These
+correspond to levels 0 through 6, respectively.
 
 See the @code{glTexImage1D} reference page for a description of the
 acceptable values for @var{format} parameter. See the
 @code{glDrawPixels} reference page for a description of the acceptable
 values for @var{type} parameter.
 
-@heading Errors
 @code{GLU_INVALID_VALUE} is returned if @var{width}, @var{height}, or
 @var{depth} is < 1.
 
@@ -1015,8 +997,8 @@ and @var{format} is neither @code{GLU_RGBA} nor @code{GLU_BGRA}.
 @end defun
 
 @defun gluCheckExtension 
-@heading determines if an extension name is supported
-@heading Parameters
+Determines if an extension name is supported.
+
 @table @asis
 @item @var{extName}
 Specifies an extension name.
@@ -1026,7 +1008,6 @@ Specifies a space-separated list of extension names supported.
 
 @end table
 
-@heading Description
 @code{gluCheckExtension} returns @code{GLU_TRUE} if @var{extName} is
 supported otherwise @code{GLU_FALSE} is returned.
 
@@ -1039,8 +1020,8 @@ respectively, as @var{extString}.
 @end defun
 
 @defun gluCylinder 
-@heading draw a cylinder
-@heading Parameters
+Draw a cylinder.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -1062,12 +1043,10 @@ Specifies the number of subdivisions along the @var{z} axis.
 
 @end table
 
-@heading Description
 @code{gluCylinder} draws a cylinder oriented along the @var{z} axis. The
 base of the cylinder is placed at @var{z} = 0 and the top at
-@math{@var{z}=@var{height}}. Like a sphere, a cylinder is subdivided
-around the @var{z} axis into slices and along the @var{z} axis into
-stacks.
+@r{@var{z}=@var{height}}. Like a sphere, a cylinder is subdivided around
+the @var{z} axis into slices and along the @var{z} axis into stacks.
 
 Note that if @var{top} is set to 0.0, this routine generates a cone.
 
@@ -1085,15 +1064,14 @@ coordinates are generated so that @var{t} ranges linearly from 0.0 at
 @end defun
 
 @defun gluDeleteNurbsRenderer 
-@heading destroy a NURBS object
-@heading Parameters
+Destroy a NURBS object.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object to be destroyed.
 
 @end table
 
-@heading Description
 @code{gluDeleteNurbsRenderer} destroys the NURBS object (which was
 created with @code{gluNewNurbsRenderer}) and frees any memory it uses.
 Once @code{gluDeleteNurbsRenderer} has been called, @var{nurb} cannot be
@@ -1102,15 +1080,14 @@ used again.
 @end defun
 
 @defun gluDeleteQuadric 
-@heading destroy a quadrics object
-@heading Parameters
+Destroy a quadrics object.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object to be destroyed.
 
 @end table
 
-@heading Description
 @code{gluDeleteQuadric} destroys the quadrics object (created with
 @code{gluNewQuadric}) and frees any memory it uses. Once
 @code{gluDeleteQuadric} has been called, @var{quad} cannot be used
@@ -1119,23 +1096,22 @@ again.
 @end defun
 
 @defun gluDeleteTess 
-@heading destroy a tessellation object
-@heading Parameters
+Destroy a tessellation object.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object to destroy.
 
 @end table
 
-@heading Description
 @code{gluDeleteTess} destroys the indicated tessellation object (which
 was created with @code{gluNewTess}) and frees any memory that it used.
 
 @end defun
 
 @defun gluDisk 
-@heading draw a disk
-@heading Parameters
+Draw a disk.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -1155,7 +1131,6 @@ disk is subdivided.
 
 @end table
 
-@heading Description
 @code{gluDisk} renders a disk on the @var{z} = 0 plane. The disk has a
 radius of @var{outer} and contains a concentric circular hole with a
 radius of @var{inner}. If @var{inner} is 0, then no hole is generated.
@@ -1171,22 +1146,21 @@ axis.
 
 If texturing has been turned on (with @code{gluQuadricTexture}), texture
 coordinates are generated linearly such that where
-@math{@var{r}=@var{outer}}, the value at (@var{r}, 0, 0) is (1, 0.5), at
+@r{@var{r}=@var{outer}}, the value at (@var{r}, 0, 0) is (1, 0.5), at
 (0, @var{r}, 0) it is (0.5, 1), at (\-@var{r}, 0, 0) it is (0, 0.5), and
 at (0, \-@var{r}, 0) it is (0.5, 0).
 
 @end defun
 
 @defun gluErrorString 
-@heading produce an error string from a GL or GLU error code
-@heading Parameters
+Produce an error string from a GL or GLU error code.
+
 @table @asis
 @item @var{error}
 Specifies a GL or GLU error code.
 
 @end table
 
-@heading Description
 @code{gluErrorString} produces an error string from a GL or GLU error
 code. The string is in ISO Latin 1 format. For example,
 @code{gluErrorString}(@code{GLU_OUT_OF_MEMORY}) returns the string
@@ -1197,15 +1171,14 @@ The standard GLU error codes are @code{GLU_INVALID_ENUM},
 GLU functions can return specialized error codes through callbacks. See
 the @code{glGetError} reference page for the list of GL error codes.
 
-@heading Errors
 @code{NULL} is returned if @var{error} is not a valid GL or GLU error
 code.
 
 @end defun
 
 @defun gluGetNurbsProperty 
-@heading get a NURBS property
-@heading Parameters
+Get a NURBS property.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -1223,7 +1196,6 @@ property is written.
 
 @end table
 
-@heading Description
 @code{gluGetNurbsProperty} retrieves properties stored in a NURBS
 object. These properties affect the way that NURBS curves and surfaces
 are rendered. See the @code{gluNurbsProperty} reference page for
@@ -1232,8 +1204,8 @@ information about what the properties are and what they do.
 @end defun
 
 @defun gluGetString 
-@heading return a string describing the GLU version or GLU extensions 
-@heading Parameters
+Return a string describing the GLU version or GLU extensions .
+
 @table @asis
 @item @var{name}
 Specifies a symbolic constant, one of @code{GLU_VERSION}, or
@@ -1241,7 +1213,6 @@ Specifies a symbolic constant, one of @code{GLU_VERSION}, or
 
 @end table
 
-@heading Description
 @code{gluGetString} returns a pointer to a static string describing the
 GLU version or the GLU extensions that are supported.
 
@@ -1265,7 +1236,6 @@ names never contain spaces.)
 
 All strings are null-terminated.
 
-@heading Errors
 NULL is returned if @var{name} is not @code{GLU_VERSION} or
 @code{GLU_EXTENSIONS}.
 
@@ -1274,8 +1244,8 @@ NULL is returned if @var{name} is not @code{GLU_VERSION} or
 @end defun
 
 @defun gluGetTessProperty 
-@heading get a tessellation object property
-@heading Parameters
+Get a tessellation object property.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
@@ -1291,7 +1261,6 @@ property is written.
 
 @end table
 
-@heading Description
 @code{gluGetTessProperty} retrieves properties stored in a tessellation
 object. These properties affect the way that tessellation objects are
 interpreted and rendered. See the @code{gluTessProperty} reference page
@@ -1300,8 +1269,8 @@ for information about the properties and what they do.
 @end defun
 
 @defun gluLoadSamplingMatrices 
-@heading load NURBS sampling and culling matrices
-@heading Parameters
+Load NURBS sampling and culling matrices.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -1317,7 +1286,6 @@ Specifies a viewport (as from a @code{glGetIntegerv} call).
 
 @end table
 
-@heading Description
 @code{gluLoadSamplingMatrices} uses @var{model}, @var{perspective}, and
 @var{view} to recompute the sampling and culling matrices stored in
 @var{nurb}. The sampling matrix determines how finely a NURBS curve or
@@ -1337,8 +1305,8 @@ matrix, and viewport.)
 @end defun
 
 @defun gluLookAt 
-@heading define a viewing transformation
-@heading Parameters
+Define a viewing transformation.
+
 @table @asis
 @item @var{eyeX}
 @itemx @var{eyeY}
@@ -1357,7 +1325,6 @@ Specifies the direction of the @var{up} vector.
 
 @end table
 
-@heading Description
 @code{gluLookAt} creates a viewing matrix derived from an eye point, a
 reference point indicating the center of the scene, and an @var{UP}
 vector.
@@ -1372,27 +1339,27 @@ to the line of sight from the eye point to the reference point.
 
 Let
 
-@math{@var{F}=((@var{centerX}-@var{eyeX}), (@var{centerY}-@var{eyeY}),
+@r{@var{F}=((@var{centerX}-@var{eyeX}), (@var{centerY}-@var{eyeY}),
 (@var{centerZ}-@var{eyeZ}),)}
 
 
 
-Let @var{UP} be the vector @math{(@var{upX},@var{upY}@var{upZ})}.
+Let @var{UP} be the vector @r{(@var{upX},@var{upY}@var{upZ})}.
 
-Then normalize as follows: @math{@var{f}=@var{F}/∥@var{F},∥,}
+Then normalize as follows: @r{@var{f}=@var{F}/∥@var{F},∥,}
 
-@math{@var{UP}^″=@var{UP}/∥@var{UP},∥,}
-
-
-
-Finally, let @math{@var{s}=@var{f}×@var{UP}^″}, and
-@math{@var{u}=@var{s}×@var{f}}.
+@r{@var{UP}^″=@var{UP}/∥@var{UP},∥,}
 
 
 
-M is then constructed as follows: @math{@var{M}=((@var{s}⁡[0,]
-@var{s}⁡[1,] @var{s}⁡[2,] 0), (@var{u}⁡[0,] @var{u}⁡[1,] @var{u}⁡[2,]
-0), (-@var{f}⁡[0,] -@var{f}⁡[1,] -@var{f}⁡[2,] 0), (0 0 0 1),)}
+Finally, let @r{@var{s}=@var{f}×@var{UP}^″}, and
+@r{@var{u}=@var{s}×@var{f}}.
+
+
+
+M is then constructed as follows: @r{@var{M}=((@var{s}⁡[0,] @var{s}⁡[1,]
+@var{s}⁡[2,] 0), (@var{u}⁡[0,] @var{u}⁡[1,] @var{u}⁡[2,] 0),
+(-@var{f}⁡[0,] -@var{f}⁡[1,] -@var{f}⁡[2,] 0), (0 0 0 1),)}
 
 and @code{gluLookAt} is equivalent to
 
@@ -1405,8 +1372,8 @@ glTranslated(-eyex, -eyey, -eyez);
 @end defun
 
 @defun gluNewNurbsRenderer 
-@heading create a NURBS object
-@heading Description
+Create a NURBS object.
+
 @code{gluNewNurbsRenderer} creates and returns a pointer to a new NURBS
 object. This object must be referred to when calling NURBS rendering and
 control functions. A return value of 0 means that there is not enough
@@ -1415,8 +1382,8 @@ memory to allocate the object.
 @end defun
 
 @defun gluNewQuadric 
-@heading create a quadrics object
-@heading Description
+Create a quadrics object.
+
 @code{gluNewQuadric} creates and returns a pointer to a new quadrics
 object. This object must be referred to when calling quadrics rendering
 and control functions. A return value of 0 means that there is not
@@ -1425,8 +1392,8 @@ enough memory to allocate the object.
 @end defun
 
 @defun gluNewTess 
-@heading create a tessellation object
-@heading Description
+Create a tessellation object.
+
 @code{gluNewTess} creates and returns a pointer to a new tessellation
 object. This object must be referred to when calling tessellation
 functions. A return value of 0 means that there is not enough memory to
@@ -1435,8 +1402,8 @@ allocate the object.
 @end defun
 
 @defun gluNextContour 
-@heading mark the beginning of another contour
-@heading Parameters
+Mark the beginning of another contour.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
@@ -1448,7 +1415,6 @@ Specifies the type of the contour being defined. Valid values are
 
 @end table
 
-@heading Description
 @code{gluNextContour} is used in describing polygons with multiple
 contours. After the first contour has been described through a series of
 @code{gluTessVertex} calls, a @code{gluNextContour} call indicates that
@@ -1501,8 +1467,8 @@ only. Calls to @code{gluNextContour} are mapped to
 @end defun
 
 @defun gluNurbsCallbackDataEXT 
-@heading set a user data pointer
-@heading Parameters
+Set a user data pointer.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -1512,7 +1478,6 @@ Specifies a pointer to the user's data.
 
 @end table
 
-@heading Description
 @code{gluNurbsCallbackDataEXT} is used to pass a pointer to the
 application's data to NURBS tessellator. A copy of this pointer will be
 passed by the tessellator in the NURBS callback functions (set by
@@ -1521,8 +1486,8 @@ passed by the tessellator in the NURBS callback functions (set by
 @end defun
 
 @defun gluNurbsCallbackData 
-@heading set a user data pointer
-@heading Parameters
+Set a user data pointer.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -1532,7 +1497,6 @@ Specifies a pointer to the user's data.
 
 @end table
 
-@heading Description
 @code{gluNurbsCallbackData} is used to pass a pointer to the
 application's data to NURBS tessellator. A copy of this pointer will be
 passed by the tessellator in the NURBS callback functions (set by
@@ -1541,8 +1505,8 @@ passed by the tessellator in the NURBS callback functions (set by
 @end defun
 
 @defun gluNurbsCallback 
-@heading define a callback for a NURBS object
-@heading Parameters
+Define a callback for a NURBS object.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -1562,7 +1526,6 @@ Specifies the function that the callback calls.
 
 @end table
 
-@heading Description
 @code{gluNurbsCallback} is used to define a callback to be used by a
 NURBS object. If the specified callback is already defined, then it is
 replaced. If @var{CallBackFunc} is NULL, then this callback will not get
@@ -1780,8 +1743,8 @@ void endData( void  *userData );
 @end defun
 
 @defun gluNurbsCurve 
-@heading define the shape of a NURBS curve
-@heading Parameters
+Define the shape of a NURBS curve.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -1815,7 +1778,6 @@ of the valid one-dimensional evaluator types (such as
 
 @end table
 
-@heading Description
 Use @code{gluNurbsCurve} to describe a NURBS curve.
 
 When @code{gluNurbsCurve} appears between a
@@ -1840,8 +1802,8 @@ reference page for more discussion about trimming curves.
 @end defun
 
 @defun gluNurbsProperty 
-@heading set a NURBS property
-@heading Parameters
+Set a NURBS property.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -1863,7 +1825,6 @@ or one of @code{GLU_OUTLINE_POLYGON}, @code{GLU_FILL},
 
 @end table
 
-@heading Description
 @code{gluNurbsProperty} is used to control properties stored in a NURBS
 object. These properties affect the way that a NURBS curve is rendered.
 The accepted values for @var{property} are as follows:
@@ -1989,8 +1950,8 @@ is initially set to @code{GLU_TRUE}. Changing it from @code{GLU_TRUE} to
 @end defun
 
 @defun gluNurbsSurface 
-@heading define the shape of a NURBS surface
-@heading Parameters
+Define the shape of a NURBS surface.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -2041,7 +2002,6 @@ two-dimensional evaluator types (such as @code{GLU_MAP2_VERTEX_3} or
 
 @end table
 
-@heading Description
 Use @code{gluNurbsSurface} within a NURBS (Non-Uniform Rational
 B-Spline) surface definition to describe the shape of a NURBS surface
 (before any trimming). To mark the beginning of a NURBS surface
@@ -2065,14 +2025,14 @@ A NURBS surface can be trimmed by using the commands
 Note that a @code{gluNurbsSurface} with @var{sKnotCount} knots in the
 @var{u} direction and @var{tKnotCount} knots in the @var{v} direction
 with orders @var{sOrder} and @var{tOrder} must have (@var{sKnotCount} -
-@var{sOrder}) @math{@var{times}} (@var{tKnotCount} - @var{tOrder})
-control points.
+@var{sOrder}) @r{@var{times}} (@var{tKnotCount} - @var{tOrder}) control
+points.
 
 @end defun
 
 @defun gluOrtho2D 
-@heading define a 2D orthographic projection matrix
-@heading Parameters
+Define a 2D orthographic projection matrix.
+
 @table @asis
 @item @var{left}
 @itemx @var{right}
@@ -2085,16 +2045,15 @@ planes.
 
 @end table
 
-@heading Description
 @code{gluOrtho2D} sets up a two-dimensional orthographic viewing region.
-This is equivalent to calling @code{glOrtho} with @math{@var{near}=-1}
-and @math{@var{far}=1}.
+This is equivalent to calling @code{glOrtho} with @r{@var{near}=-1} and
+@r{@var{far}=1}.
 
 @end defun
 
 @defun gluPartialDisk 
-@heading draw an arc of a disk
-@heading Parameters
+Draw an arc of a disk.
+
 @table @asis
 @item @var{quad}
 Specifies a quadrics object (created with @code{gluNewQuadric}).
@@ -2120,12 +2079,11 @@ Specifies the sweep angle, in degrees, of the disk portion.
 
 @end table
 
-@heading Description
-@code{gluPartialDisk} renders a partial disk on the @math{@var{z}=0}
-plane. A partial disk is similar to a full disk, except that only the
-subset of the disk from @var{start} through @var{start} + @var{sweep} is
-included (where 0 degrees is along the +\f2y\f axis, 90 degrees along
-the +@var{x} axis, 180 degrees along the \-@var{y} axis, and 270 degrees
+@code{gluPartialDisk} renders a partial disk on the @r{@var{z}=0} plane.
+A partial disk is similar to a full disk, except that only the subset of
+the disk from @var{start} through @var{start} + @var{sweep} is included
+(where 0 degrees is along the +\f2y\f axis, 90 degrees along the
++@var{x} axis, 180 degrees along the \-@var{y} axis, and 270 degrees
 along the \-@var{x} axis).
 
 The partial disk has a radius of @var{outer} and contains a concentric
@@ -2142,15 +2100,15 @@ generated point along the +@var{z} axis. Otherwise, they point along the
 
 If texturing is turned on (with @code{gluQuadricTexture}), texture
 coordinates are generated linearly such that where
-@math{@var{r}=@var{outer}}, the value at (@var{r}, 0, 0) is (1.0, 0.5),
-at (0, @var{r}, 0) it is (0.5, 1.0), at (\-@var{r}, 0, 0) it is (0.0,
-0.5), and at (0, \-@var{r}, 0) it is (0.5, 0.0).
+@r{@var{r}=@var{outer}}, the value at (@var{r}, 0, 0) is (1.0, 0.5), at
+(0, @var{r}, 0) it is (0.5, 1.0), at (\-@var{r}, 0, 0) it is (0.0, 0.5),
+and at (0, \-@var{r}, 0) it is (0.5, 0.0).
 
 @end defun
 
 @defun gluPerspective 
-@heading set up a perspective projection matrix
-@heading Parameters
+Set up a perspective projection matrix.
+
 @table @asis
 @item @var{fovy}
 Specifies the field of view angle, in degrees, in the @var{y} direction.
@@ -2170,13 +2128,12 @@ positive).
 
 @end table
 
-@heading Description
 @code{gluPerspective} specifies a viewing frustum into the world
 coordinate system. In general, the aspect ratio in @code{gluPerspective}
 should match the aspect ratio of the associated viewport. For example,
-@math{@var{aspect}=2.0} means the viewer's angle of view is twice as
-wide in @var{x} as it is in @var{y}. If the viewport is twice as wide as
-it is tall, it displays the image without distortion.
+@r{@var{aspect}=2.0} means the viewer's angle of view is twice as wide
+in @var{x} as it is in @var{y}. If the viewport is twice as wide as it
+is tall, it displays the image without distortion.
 
 The matrix generated by @code{gluPerspective} is multipled by the
 current matrix, just as if @code{glMultMatrix} were called with the
@@ -2186,17 +2143,17 @@ stack instead, precede the call to @code{gluPerspective} with a call to
 
 Given @var{f} defined as follows:
 
-@math{@var{f}=@var{cotangent}⁡(@var{fovy}/2,)} The generated matrix is
+@r{@var{f}=@var{cotangent}⁡(@var{fovy}/2,)} The generated matrix is
 
-@math{((@var{f}/@var{aspect} 0 0 0), (0 @var{f} 0 0), (0 0
+@r{((@var{f}/@var{aspect} 0 0 0), (0 @var{f} 0 0), (0 0
 @var{zFar}+@var{zNear},/@var{zNear}-@var{zFar},
 2×@var{zFar}×@var{zNear},/@var{zNear}-@var{zFar},), (0 0 -1 0),)}
 
 @end defun
 
 @defun gluPickMatrix 
-@heading define a picking region
-@heading Parameters
+Define a picking region.
+
 @table @asis
 @item @var{x}
 @itemx @var{y}
@@ -2212,7 +2169,6 @@ Specifies the current viewport (as from a @code{glGetIntegerv} call).
 
 @end table
 
-@heading Description
 @code{gluPickMatrix} creates a projection matrix that can be used to
 restrict drawing to a small region of the viewport. This is typically
 useful to determine what objects are being drawn near the cursor. Use
@@ -2238,8 +2194,8 @@ was subdivided without the pick matrix.
 @end defun
 
 @defun gluProject 
-@heading map object coordinates to window coordinates
-@heading Parameters
+Map object coordinates to window coordinates.
+
 @table @asis
 @item @var{objX}
 @itemx @var{objY}
@@ -2264,7 +2220,6 @@ Return the computed window coordinates.
 
 @end table
 
-@heading Description
 @code{gluProject} transforms the specified object coordinates into
 window coordinates using @var{model}, @var{proj}, and @var{view}. The
 result is stored in @var{winX}, @var{winY}, and @var{winZ}. A return
@@ -2272,28 +2227,28 @@ value of @code{GLU_TRUE} indicates success, a return value of
 @code{GLU_FALSE} indicates failure.
 
 To compute the coordinates, let
-@math{@var{v}=(@var{objX},@var{objY}@var{objZ}1.0)} represented as a
-matrix with 4 rows and 1 column. Then @code{gluProject} computes
-@math{@var{v}^″} as follows:
+@r{@var{v}=(@var{objX},@var{objY}@var{objZ}1.0)} represented as a matrix
+with 4 rows and 1 column. Then @code{gluProject} computes @r{@var{v}^″}
+as follows:
 
-@math{@var{v}^″=@var{P}×@var{M}×@var{v}}
+@r{@var{v}^″=@var{P}×@var{M}×@var{v}}
 
-where @math{@var{P}} is the current projection matrix @var{proj} and
-@math{@var{M}} is the current modelview matrix @var{model} (both
-represented as @math{4×4} matrices in column-major order).
+where @r{@var{P}} is the current projection matrix @var{proj} and
+@r{@var{M}} is the current modelview matrix @var{model} (both
+represented as @r{4×4} matrices in column-major order).
 
 The window coordinates are then computed as follows:
 
-@math{@var{winX}=@var{view}⁡(0,)+@var{view}⁡(2,)×(@var{v}^″⁡(0,)+1,)/2}@math{@var{winY}=@var{view}⁡(1,)+@var{view}⁡(3,)×(@var{v}^″⁡(1,)+1,)/2}
-@math{@var{winZ}=(@var{v}^″⁡(2,)+1,)/2}
+@r{@var{winX}=@var{view}⁡(0,)+@var{view}⁡(2,)×(@var{v}^″⁡(0,)+1,)/2}@r{@var{winY}=@var{view}⁡(1,)+@var{view}⁡(3,)×(@var{v}^″⁡(1,)+1,)/2}
+@r{@var{winZ}=(@var{v}^″⁡(2,)+1,)/2}
 
 
 
 @end defun
 
 @defun gluPwlCurve 
-@heading describe a piecewise linear NURBS trimming curve
-@heading Parameters
+Describe a piecewise linear NURBS trimming curve.
+
 @table @asis
 @item @var{nurb}
 Specifies the NURBS object (created with @code{gluNewNurbsRenderer}).
@@ -2314,7 +2269,6 @@ Specifies the type of curve. Must be either @code{GLU_MAP1_TRIM_2} or
 
 @end table
 
-@heading Description
 @code{gluPwlCurve} describes a piecewise linear trimming curve for a
 NURBS surface. A piecewise linear curve consists of a list of
 coordinates of points in the parameter space for the NURBS surface to be
@@ -2333,8 +2287,8 @@ curves.
 @end defun
 
 @defun gluQuadricCallback 
-@heading define a callback for a quadrics object
-@heading Parameters
+Define a callback for a quadrics object.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -2348,7 +2302,6 @@ Specifies the function to be called.
 
 @end table
 
-@heading Description
 @code{gluQuadricCallback} is used to define a new callback to be used by
 a quadrics object. If the specified callback is already defined, then it
 is replaced. If @var{CallBackFunc} is NULL, then any existing callback
@@ -2368,8 +2321,8 @@ Character strings describing these errors can be retrieved with the
 @end defun
 
 @defun gluQuadricDrawStyle 
-@heading specify the draw style desired for quadrics
-@heading Parameters
+Specify the draw style desired for quadrics.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -2380,7 +2333,6 @@ Specifies the desired draw style. Valid values are @code{GLU_FILL},
 
 @end table
 
-@heading Description
 @code{gluQuadricDrawStyle} specifies the draw style for quadrics
 rendered with @var{quad}. The legal values are as follows:
 
@@ -2405,8 +2357,8 @@ Quadrics are rendered as a set of points.
 @end defun
 
 @defun gluQuadricNormals 
-@heading specify what kind of normals are desired for quadrics
-@heading Parameters
+Specify what kind of normals are desired for quadrics.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -2417,7 +2369,6 @@ Specifies the desired type of normals. Valid values are @code{GLU_NONE},
 
 @end table
 
-@heading Description
 @code{gluQuadricNormals} specifies what kind of normals are desired for
 quadrics rendered with @var{quad}. The legal values are as follows:
 
@@ -2437,8 +2388,8 @@ initial value.
 @end defun
 
 @defun gluQuadricOrientation 
-@heading specify inside/outside orientation for quadrics
-@heading Parameters
+Specify inside/outside orientation for quadrics.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -2449,7 +2400,6 @@ and @code{GLU_INSIDE}.
 
 @end table
 
-@heading Description
 @code{gluQuadricOrientation} specifies what kind of orientation is
 desired for quadrics rendered with @var{quad}. The @var{orientation}
 values are as follows:
@@ -2469,8 +2419,8 @@ on the quadric being drawn.
 @end defun
 
 @defun gluQuadricTexture 
-@heading specify if texturing is desired for quadrics
-@heading Parameters
+Specify if texturing is desired for quadrics.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -2480,7 +2430,6 @@ Specifies a flag indicating if texture coordinates should be generated.
 
 @end table
 
-@heading Description
 @code{gluQuadricTexture} specifies if texture coordinates should be
 generated for quadrics rendered with @var{quad}. If the value of
 @var{texture} is @code{GLU_TRUE}, then texture coordinates are
@@ -2493,8 +2442,8 @@ specific quadric rendered.
 @end defun
 
 @defun gluScaleImage 
-@heading scale an image to an arbitrary size
-@heading Parameters
+Scale an image to an arbitrary size.
+
 @table @asis
 @item @var{format}
 Specifies the format of the pixel data. The following symbolic values
@@ -2548,7 +2497,6 @@ Specifies a pointer to the destination image.
 
 @end table
 
-@heading Description
 @code{gluScaleImage} scales a pixel image using the appropriate pixel
 store modes to unpack data from the source image and pack data into the
 destination image.
@@ -2565,7 +2513,6 @@ See the @code{glReadPixels} reference page for a description of the
 acceptable values for the @var{format}, @var{typeIn}, and @var{typeOut}
 parameters.
 
-@heading Errors
 @code{GLU_INVALID_VALUE} is returned if @var{wIn}, @var{hIn},
 @var{wOut}, or @var{hOut} is negative.
 
@@ -2605,8 +2552,8 @@ parameters.
 @end defun
 
 @defun gluSphere 
-@heading draw a sphere
-@heading Parameters
+Draw a sphere.
+
 @table @asis
 @item @var{quad}
 Specifies the quadrics object (created with @code{gluNewQuadric}).
@@ -2624,7 +2571,6 @@ lines of latitude).
 
 @end table
 
-@heading Description
 @code{gluSphere} draws a sphere of the given radius centered around the
 origin. The sphere is subdivided around the @var{z} axis into slices and
 along the @var{z} axis into stacks (similar to lines of longitude and
@@ -2637,24 +2583,23 @@ of the sphere.
 
 If texturing is turned on (with @code{gluQuadricTexture}), then texture
 coordinates are generated so that @var{t} ranges from 0.0 at
-@math{@var{z}=-@var{radius}} to 1.0 at @math{@var{z}=@var{radius}}
-(@var{t} increases linearly along longitudinal lines), and @var{s}
-ranges from 0.0 at the +@var{y} axis, to 0.25 at the +@var{x} axis, to
-0.5 at the \-@var{y} axis, to 0.75 at the \-@var{x} axis, and back to
-1.0 at the +@var{y} axis.
+@r{@var{z}=-@var{radius}} to 1.0 at @r{@var{z}=@var{radius}} (@var{t}
+increases linearly along longitudinal lines), and @var{s} ranges from
+0.0 at the +@var{y} axis, to 0.25 at the +@var{x} axis, to 0.5 at the
+\-@var{y} axis, to 0.75 at the \-@var{x} axis, and back to 1.0 at the
++@var{y} axis.
 
 @end defun
 
 @defun gluTessBeginContour 
-@heading delimit a contour description
-@heading Parameters
+Delimit a contour description.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
 
 @end table
 
-@heading Description
 @code{gluTessBeginContour} and @code{gluTessEndContour} delimit the
 definition of a polygon contour. Within each
 @code{gluTessBeginContour}/@code{gluTessEndContour} pair, there can be
@@ -2667,8 +2612,8 @@ details. @code{gluTessBeginContour} can only be called between
 @end defun
 
 @defun gluTessBeginPolygon 
-@heading delimit a polygon description
-@heading Parameters
+Delimit a polygon description.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
@@ -2678,7 +2623,6 @@ Specifies a pointer to user polygon data.
 
 @end table
 
-@heading Description
 @code{gluTessBeginPolygon} and @code{gluTessEndPolygon} delimit the
 definition of a convex, concave or self-intersecting polygon. Within
 each @code{gluTessBeginPolygon}/@code{gluTessEndPolygon} pair, there
@@ -2702,8 +2646,8 @@ the resulting triangles are described through callbacks. See
 @end defun
 
 @defun gluTessCallback 
-@heading define a callback for a tessellation object
-@heading Parameters
+Define a callback for a tessellation object.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
@@ -2722,7 +2666,6 @@ Specifies the function to be called.
 
 @end table
 
-@heading Description
 @code{gluTessCallback} is used to indicate a callback to be used by a
 tessellation object. If the specified callback is already defined, then
 it is replaced. If @var{CallBackFunc} is NULL, then the existing
@@ -2954,15 +2897,14 @@ void errorData( GLenum errno, void *polygon_data );
 @end defun
 
 @defun gluTessEndPolygon 
-@heading delimit a polygon description
-@heading Parameters
+Delimit a polygon description.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
 
 @end table
 
-@heading Description
 @code{gluTessBeginPolygon} and @code{gluTessEndPolygon} delimit the
 definition of a convex, concave, or self-intersecting polygon. Within
 each @code{gluTessBeginPolygon}/@code{gluTessEndPolygon} pair, there
@@ -2981,8 +2923,8 @@ the resulting triangles are described through callbacks. See
 @end defun
 
 @defun gluTessNormal 
-@heading specify a normal for a polygon
-@heading Parameters
+Specify a normal for a polygon.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
@@ -2998,7 +2940,6 @@ Specifies the third component of the normal.
 
 @end table
 
-@heading Description
 @code{gluTessNormal} describes a normal for a polygon that the program
 is defining. All input data will be projected onto a plane perpendicular
 to one of the three coordinate axes before tessellation and all output
@@ -3023,8 +2964,8 @@ The supplied normal persists until it is changed by another call to
 @end defun
 
 @defun gluTessProperty 
-@heading set a tessellation object property
-@heading Parameters
+Set a tessellation object property.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
@@ -3039,7 +2980,6 @@ Specifies the value of the indicated property.
 
 @end table
 
-@heading Description
 @code{gluTessProperty} is used to control properties stored in a
 tessellation object. These properties affect the way that the polygons
 are interpreted and rendered. The legal values for @var{which} are as
@@ -3104,8 +3044,8 @@ endpoints are identical.
 @end defun
 
 @defun gluTessVertex 
-@heading specify a vertex on a polygon
-@heading Parameters
+Specify a vertex on a polygon.
+
 @table @asis
 @item @var{tess}
 Specifies the tessellation object (created with @code{gluNewTess}).
@@ -3119,7 +3059,6 @@ callback (as specified by @code{gluTessCallback}).
 
 @end table
 
-@heading Description
 @code{gluTessVertex} describes a vertex on a polygon that the program
 defines. Successive @code{gluTessVertex} calls describe a closed
 contour. For example, to describe a quadrilateral, @code{gluTessVertex}
@@ -3135,8 +3074,8 @@ tessellation (see the @code{gluTessCallback} reference page).
 @end defun
 
 @defun gluUnProject4 
-@heading map window and clip coordinates to object coordinates
-@heading Parameters
+Map window and clip coordinates to object coordinates.
+
 @table @asis
 @item @var{winX}
 @itemx @var{winY}
@@ -3167,29 +3106,28 @@ Returns the computed object coordinates.
 
 @end table
 
-@heading Description
 @code{gluUnProject4} maps the specified window coordinatesi: @var{winX},
 @var{winY}, and @var{winZ} and its clip w coordinate @var{clipW} into
-object coordinates @math{(@var{objX},@var{objY}@var{objZ}@var{objW})}
-using @var{model}, @var{proj}, and @var{view}. @var{clipW} can be other
-than 1 as for vertices in @code{glFeedbackBuffer} when data type
+object coordinates @r{(@var{objX},@var{objY}@var{objZ}@var{objW})} using
+@var{model}, @var{proj}, and @var{view}. @var{clipW} can be other than 1
+as for vertices in @code{glFeedbackBuffer} when data type
 @code{GLU_4D_COLOR_TEXTURE} is returned. This also handles the case
 where the @var{nearVal} and @var{farVal} planes are different from the
 default, 0 and 1, respectively. A return value of @code{GLU_TRUE}
 indicates success; a return value of @code{GLU_FALSE} indicates failure.
 
 To compute the coordinates
-@math{(@var{objX},@var{objY}@var{objZ}@var{objW})}, @code{gluUnProject4}
+@r{(@var{objX},@var{objY}@var{objZ}@var{objW})}, @code{gluUnProject4}
 multiplies the normalized device coordinates by the inverse of
 @var{model} * @var{proj} as follows:
 
-@math{((@var{objX}), (@var{objY}), (@var{objZ}),
+@r{((@var{objX}), (@var{objY}), (@var{objZ}),
 (@var{objW}),)=@var{INV}⁡(@var{P}⁢@var{M},)⁢((2⁡(@var{winX}-@var{view}⁡[0,],),/@var{view}⁡[2,],-1),
 (2⁡(@var{winY}-@var{view}⁡[1,],),/@var{view}⁡[3,],-1),
 (2⁡(@var{winZ}-@var{nearVal},),/(@var{farVal}-@var{nearVal},),-1),
 (@var{clipW}),)}
 
-@math{@var{INV}} denotes matrix inversion.
+@r{@var{INV}} denotes matrix inversion.
 
 @code{gluUnProject4} is equivalent to @code{gluUnProject} when
 @var{clipW} is 1, @var{nearVal} is 0, and @var{farVal} is 1.
@@ -3197,8 +3135,8 @@ multiplies the normalized device coordinates by the inverse of
 @end defun
 
 @defun gluUnProject 
-@heading map window coordinates to object coordinates
-@heading Parameters
+Map window coordinates to object coordinates.
+
 @table @asis
 @item @var{winX}
 @itemx @var{winY}
@@ -3221,22 +3159,21 @@ Returns the computed object coordinates.
 
 @end table
 
-@heading Description
 @code{gluUnProject} maps the specified window coordinates into object
 coordinates using @var{model}, @var{proj}, and @var{view}. The result is
 stored in @var{objX}, @var{objY}, and @var{objZ}. A return value of
 @code{GLU_TRUE} indicates success; a return value of @code{GLU_FALSE}
 indicates failure.
 
-To compute the coordinates @math{(@var{objX},@var{objY}@var{objZ})},
+To compute the coordinates @r{(@var{objX},@var{objY}@var{objZ})},
 @code{gluUnProject} multiplies the normalized device coordinates by the
 inverse of @var{model} * @var{proj} as follows:
 
-@math{((@var{objX}), (@var{objY}), (@var{objZ}),
+@r{((@var{objX}), (@var{objY}), (@var{objZ}),
 (@var{W}),)=@var{INV}⁡(@var{P}⁢@var{M},)⁢((2⁡(@var{winX}-@var{view}⁡[0,],),/@var{view}⁡[2,],-1),
 (2⁡(@var{winY}-@var{view}⁡[1,],),/@var{view}⁡[3,],-1),
-(2⁡(@var{winZ},)-1), (1),)}@math{@var{INV}} denotes matrix inversion. W
-is an unused variable, included for consistent matrix notation.
+(2⁡(@var{winZ},)-1), (1),)}@r{@var{INV}} denotes matrix inversion. W is
+an unused variable, included for consistent matrix notation.
 
 @end defun
 

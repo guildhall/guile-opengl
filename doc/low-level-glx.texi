@@ -1,6 +1,12 @@
 
 @c %start of fragment
 
+The functions from this section may be had by loading the module:
+
+@example 
+(use-modules (figl low-level glx))
+@end example
+
 @copying 
 This section of the manual was derived from the upstream OpenGL
 documentation. Each function's documentation has its own copyright
@@ -13,15 +19,10 @@ licensed under the SGI Free Software B License. For details, see
 
 @end copying
 
-The functions from this section may be had by loading the module:
-
-@example 
-(use-modules (figl low-level glx))
-@end example
-
 @defun glXChooseFBConfig 
-@heading return a list of GLX frame buffer configurations that match the specified attributes
-@heading Parameters
+Return a list of GLX frame buffer configurations that match the
+specified attributes.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -39,7 +40,6 @@ Returns the number of elements in the list returned by
 
 @end table
 
-@heading Description
 @code{glXChooseFBConfig} returns GLX frame buffer configurations that
 match the attributes specified in @var{attrib_list}, or @code{NULL} if
 no matches are found. If @var{attrib_list} is @code{NULL}, then
@@ -363,7 +363,6 @@ By @code{GLX_X_VISUAL_TYPE} where the precedence order is
 
 @end table
 
-@heading Errors
 @code{NULL} is returned if an undefined GLX attribute is encountered in
 @var{attrib_list}, if @var{screen} is invalid, or if @var{dpy} does not
 support the GLX extension.
@@ -371,8 +370,8 @@ support the GLX extension.
 @end defun
 
 @defun glXChooseVisual 
-@heading return a visual that matches specified attributes
-@heading Parameters
+Return a visual that matches specified attributes.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -386,7 +385,6 @@ pairs. The last attribute must be @code{None}.
 
 @end table
 
-@heading Description
 @code{glXChooseVisual} returns a pointer to an XVisualInfo structure
 describing the visual that best meets a minimum specification. The
 boolean GLX attributes of the visual that is returned will match the
@@ -504,15 +502,14 @@ the minimum size is preferred.
 
 @end table
 
-@heading Errors
 @code{NULL} is returned if an undefined GLX attribute is encountered in
 @var{attribList}.
 
 @end defun
 
 @defun glXCopyContext 
-@heading copy state from one rendering context to another
-@heading Parameters
+Copy state from one rendering context to another.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -529,7 +526,6 @@ Specifies which portions of @var{src} state are to be copied to
 
 @end table
 
-@heading Description
 @code{glXCopyContext} copies selected groups of state variables from
 @var{src} to @var{dst}. @var{mask} indicates which groups of state
 variables are to be copied. @var{mask} contains the bitwise OR of the
@@ -554,7 +550,6 @@ manipulated by the GL command @code{glPushAttrib}.
 An implicit @code{glFlush} is done by @code{glXCopyContext} if @var{src}
 is the current context for the calling thread.
 
-@heading Errors
 @code{BadMatch} is generated if rendering contexts @var{src} and
 @var{dst} do not share an address space or were not created with respect
 to the same screen.
@@ -572,8 +567,8 @@ not a valid GLX context.
 @end defun
 
 @defun glXCreateContext 
-@heading create a new GLX rendering context
-@heading Parameters
+Create a new GLX rendering context.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -594,7 +589,6 @@ the graphics system if possible (@code{True}) or through the X server
 
 @end table
 
-@heading Description
 @code{glXCreateContext} creates a GLX rendering context and returns its
 handle. This context can be used to render into both windows and GLX
 pixmaps. If @code{glXCreateContext} fails to create a rendering context,
@@ -625,7 +619,6 @@ contexts to share an address space.
 If the GL version is 1.1 or greater, then all texture objects except
 object 0 are shared by any contexts that share display lists.
 
-@heading Errors
 @code{NULL} is returned if execution fails on the client side.
 
 @code{BadMatch} is generated if the context to be created would not
@@ -644,8 +637,8 @@ resources to allocate the new context.
 @end defun
 
 @defun glXCreateGLXPixmap 
-@heading create an off-screen GLX rendering area
-@heading Parameters
+Create an off-screen GLX rendering area.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -661,7 +654,6 @@ of the off-screen rendering area.
 
 @end table
 
-@heading Description
 @code{glXCreateGLXPixmap} creates an off-screen rendering area and
 returns its XID. Any GLX rendering context that was created with respect
 to @var{vis} can be used to render into this off-screen area. Use
@@ -678,7 +670,6 @@ ignored by these pixmaps.
 Some implementations may not support GLX pixmaps with direct rendering
 contexts.
 
-@heading Errors
 @code{BadMatch} is generated if the depth of @var{pixmap} does not match
 the depth value reported by core X11 for @var{vis}, or if @var{pixmap}
 was not created with respect to the same screen as @var{vis}.
@@ -695,8 +686,8 @@ pixmap.
 @end defun
 
 @defun glXCreateNewContext 
-@heading create a new GLX rendering context
-@heading Parameters
+Create a new GLX rendering context.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -720,7 +711,6 @@ the graphics system if possible (@code{True}) or through the X server
 
 @end table
 
-@heading Description
 @code{glXCreateNewContext} creates a GLX rendering context and returns
 its handle. This context can be used to render into GLX windows,
 pixmaps, or pixel buffers. If @code{glXCreateNewContext} fails to create
@@ -753,7 +743,6 @@ some implementations. However, direct-rendering contexts cannot be
 shared outside a single process, and they may be unable to render to GLX
 pixmaps.
 
-@heading Errors
 @code{NULL} is returned if execution fails on the client side.
 
 @code{GLXBadContext} is generated if @var{render_type} is not a GLX
@@ -775,8 +764,8 @@ example, if a particular GLX implementation does not support it).
 @end defun
 
 @defun glXCreatePbuffer 
-@heading create an off-screen rendering area
-@heading Parameters
+Create an off-screen rendering area.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -793,7 +782,6 @@ Specifies a list of attribute value pairs, which must be terminated with
 
 @end table
 
-@heading Description
 @code{glXCreatePbuffer} creates an off-screen rendering area and returns
 its XID. Any GLX rendering context that was created with respect to
 @var{config} can be used to render into this window. Use
@@ -836,7 +824,6 @@ GLXPbuffers contain the color and ancillary buffers specified by
 @var{config}. It is possible to create a pixel buffer with back buffers
 and to swap those buffers using @code{glXSwapBuffers}.
 
-@heading Errors
 @code{BadAlloc} is generated if there are insufficient resources to
 allocate the requested GLXPbuffer.
 
@@ -850,8 +837,8 @@ to pixel buffers (e.g., @code{GLX_DRAWABLE_TYPE} does not contain
 @end defun
 
 @defun glXCreatePixmap 
-@heading create an off-screen rendering area
-@heading Parameters
+Create an off-screen rendering area.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -869,14 +856,12 @@ Currently unused. This must be set to @code{NULL} or be an empty list
 
 @end table
 
-@heading Description
 @code{glXCreatePixmap} creates an off-screen rendering area and returns
 its XID. Any GLX rendering context that was created with respect to
 @var{config} can be used to render into this window. Use
 @code{glXMakeCurrent} to associate the rendering area with a GLX
 rendering context.
 
-@heading Errors
 @code{BadMatch} is generated if @var{pixmap} was not created with a
 visual that corresponds to @var{config}.
 
@@ -899,8 +884,8 @@ GLXFBConfig.
 @end defun
 
 @defun glXCreateWindow 
-@heading create an on-screen rendering area
-@heading Parameters
+Create an on-screen rendering area.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -918,7 +903,6 @@ Currently unused. This must be set to @code{NULL} or be an empty list
 
 @end table
 
-@heading Description
 @code{glXCreateWindow} creates an on-screen rendering area from an
 existing X window that was created with a visual matching @var{config}.
 The XID of the GLXWindow is returned. Any GLX rendering context that was
@@ -926,7 +910,6 @@ created with respect to @var{config} can be used to render into this
 window. Use @code{glXMakeContextCurrent} to associate the rendering area
 with a GLX rendering context.
 
-@heading Errors
 @code{BadMatch} is generated if @var{win} was not created with a visual
 that corresponds to @var{config}.
 
@@ -950,8 +933,8 @@ GLXFBConfig.
 @end defun
 
 @defun glXDestroyContext 
-@heading destroy a GLX context
-@heading Parameters
+Destroy a GLX context.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -961,21 +944,19 @@ Specifies the GLX context to be destroyed.
 
 @end table
 
-@heading Description
 If the GLX rendering context @var{ctx} is not current to any thread,
 @code{glXDestroyContext} destroys it immediately. Otherwise, @var{ctx}
 is destroyed when it becomes not current to any thread. In either case,
 the resource ID referenced by @var{ctx} is freed immediately.
 
-@heading Errors
 @code{GLXBadContext} is generated if @var{ctx} is not a valid GLX
 context.
 
 @end defun
 
 @defun glXDestroyGLXPixmap 
-@heading destroy a GLX pixmap
-@heading Parameters
+Destroy a GLX pixmap.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -985,20 +966,18 @@ Specifies the GLX pixmap to be destroyed.
 
 @end table
 
-@heading Description
 If the GLX pixmap @var{pix} is not current to any client,
 @code{glXDestroyGLXPixmap} destroys it immediately. Otherwise, @var{pix}
 is destroyed when it becomes not current to any client. In either case,
 the resource ID is freed immediately.
 
-@heading Errors
 @code{GLXBadPixmap} is generated if @var{pix} is not a valid GLX pixmap.
 
 @end defun
 
 @defun glXDestroyPbuffer 
-@heading destroy an off-screen rendering area
-@heading Parameters
+Destroy an off-screen rendering area.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1008,19 +987,17 @@ Specifies the GLXPbuffer to be destroyed.
 
 @end table
 
-@heading Description
 @code{glXDestroyPbuffer} destroys a GLXPbuffer created by
 @code{glXCreatePbuffer}.
 
-@heading Errors
 @code{GLXBadPbuffer} is generated if @var{pbuf} is not a valid
 GLXPbuffer.
 
 @end defun
 
 @defun glXDestroyPixmap 
-@heading destroy an off-screen rendering area
-@heading Parameters
+Destroy an off-screen rendering area.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1030,19 +1007,17 @@ Specifies the GLXPixmap to be destroyed.
 
 @end table
 
-@heading Description
 @code{glXDestroyPixmap} destroys a GLXPixmap created by
 @code{glXCreatePixmap}.
 
-@heading Errors
 @code{GLXBadPixmap} is generated if @var{pixmap} is not a valid
 GLXPixmap.
 
 @end defun
 
 @defun glXDestroyWindow 
-@heading destroy an on-screen rendering area
-@heading Parameters
+Destroy an on-screen rendering area.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1052,18 +1027,16 @@ Specifies the GLXWindow to be destroyed.
 
 @end table
 
-@heading Description
 @code{glXDestroyWindow} destroys a GLXWindow created by
 @code{glXCreateWindow}.
 
-@heading Errors
 @code{GLXBadWindow} is generated if @var{win} is not a valid GLXPixmap.
 
 @end defun
 
 @defun glXFreeContextEXT 
-@heading free client-side memory for imported context
-@heading Parameters
+Free client-side memory for imported context.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1073,7 +1046,6 @@ Specifies a GLX rendering context.
 
 @end table
 
-@heading Description
 @code{glXFreeContextEXT} frees the client-side part of a GLXContext that
 was created with @code{glXImportContextEXT}. @code{glXFreeContextEXT}
 does not free the server-side context information or the XID associated
@@ -1085,15 +1057,14 @@ _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_vertex_array} is supported.
 
-@heading Errors
 @code{GLXBadContext} is generated if @var{ctx} does not refer to a valid
 context.
 
 @end defun
 
 @defun glXGetClientString 
-@heading return a string describing the client
-@heading Parameters
+Return a string describing the client.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1105,7 +1076,6 @@ accepted.
 
 @end table
 
-@heading Description
 @code{glXGetClientString} returns a string describing some aspect of the
 client library. The possible values for @var{name} are
 @code{GLX_VENDOR}, @code{GLX_VERSION}, and @code{GLX_EXTENSIONS}. If
@@ -1128,8 +1098,8 @@ present, the format and contents are implementation specific.
 @end defun
 
 @defun glXGetConfig 
-@heading return information about GLX visuals
-@heading Parameters
+Return information about GLX visuals.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1147,7 +1117,6 @@ Returns the requested value.
 
 @end table
 
-@heading Description
 @code{glXGetConfig} sets @var{value} to the @var{attrib} value of
 windows or GLX pixmaps created with respect to @var{vis}.
 @code{glXGetConfig} returns an error code if it fails for any reason.
@@ -1254,7 +1223,6 @@ meets their requirements. Creating windows or GLX pixmaps with
 unnecessary buffers can result in reduced rendering performance as well
 as poor resource allocation.
 
-@heading Errors
 @code{GLX_NO_EXTENSION} is returned if @var{dpy} does not support the
 GLX extension.
 
@@ -1270,15 +1238,14 @@ an attribute other than @code{GLX_USE_GL} is requested.
 @end defun
 
 @defun glXGetContextIDEXT 
-@heading get the XID for a context.
-@heading Parameters
+Get the XID for a context..
+
 @table @asis
 @item @var{ctx}
 Specifies a GLX rendering context.
 
 @end table
 
-@heading Description
 @code{glXGetContextIDEXT} returns the XID associated with a GLXContext.
 
 No round trip is forced to the server; unlike most X calls that return a
@@ -1290,15 +1257,14 @@ _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_import_context} is supported.
 
-@heading Errors
 @code{GLXBadContext} is generated if @var{ctx} does not refer to a valid
 context.
 
 @end defun
 
 @defun glXGetCurrentContext 
-@heading return the current context
-@heading Description
+Return the current context.
+
 @code{glXGetCurrentContext} returns the current context, as specified by
 @code{glXMakeCurrent}. If there is no current context, @code{NULL} is
 returned.
@@ -1311,8 +1277,8 @@ make a round trip to the server.
 @end defun
 
 @defun glXGetCurrentDisplay 
-@heading get display for current context
-@heading Description
+Get display for current context.
+
 @code{glXGetCurrentDisplay} returns the display for the current context.
 If no context is current, @code{NULL} is returned.
 
@@ -1323,8 +1289,8 @@ pending events.
 @end defun
 
 @defun glXGetCurrentDrawable 
-@heading return the current drawable
-@heading Description
+Return the current drawable.
+
 @code{glXGetCurrentDrawable} returns the current drawable, as specified
 by @code{glXMakeCurrent}. If there is no current drawable, @code{None}
 is returned.
@@ -1335,8 +1301,8 @@ not make a round trip to the server.
 @end defun
 
 @defun glXGetCurrentReadDrawable 
-@heading return the current drawable
-@heading Description
+Return the current drawable.
+
 @code{glXGetCurrentReadDrawable} returns the current read drawable, as
 specified by @code{read} parameter of @code{glXMakeContextCurrent}. If
 there is no current drawable, @code{None} is returned.
@@ -1347,8 +1313,8 @@ does not make a round-trip to the server.
 @end defun
 
 @defun glXGetFBConfigAttrib 
-@heading return information about a GLX frame buffer configuration
-@heading Parameters
+Return information about a GLX frame buffer configuration.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1364,7 +1330,6 @@ Returns the requested value.
 
 @end table
 
-@heading Description
 @code{glXGetFBConfigAttrib} sets @var{value} to the @var{attribute}
 value of GLX drawables created with respect to @var{config}.
 @code{glXGetFBConfigAttrib} returns an error code if it fails for any
@@ -1592,7 +1557,6 @@ closely meets their requirements. Creating windows, GLX pixmaps, or GLX
 pixel buffers with unnecessary buffers can result in reduced rendering
 performance as well as poor resource allocation.
 
-@heading Errors
 @code{GLX_NO_EXTENSION} is returned if @var{dpy} does not support the
 GLX extension. @code{GLX_BAD_ATTRIBUTE} is returned if @var{attribute}
 is not a valid GLX attribute.
@@ -1600,8 +1564,8 @@ is not a valid GLX attribute.
 @end defun
 
 @defun glXGetFBConfigs 
-@heading list all GLX frame buffer configurations for a given screen
-@heading Parameters
+List all GLX frame buffer configurations for a given screen.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1614,7 +1578,6 @@ Returns the number of GLXFBConfigs returned.
 
 @end table
 
-@heading Description
 @code{glXGetFBConfigs} returns a list of all GLXFBConfigs available on
 the screen specified by @var{screen}. Use @code{glXGetFBConfigAttrib} to
 obtain attribute values from a specific GLXFBConfig.
@@ -1622,8 +1585,8 @@ obtain attribute values from a specific GLXFBConfig.
 @end defun
 
 @defun glXGetProcAddress 
-@heading obtain a pointer to an OpenGL or GLX function
-@heading Parameters
+Obtain a pointer to an OpenGL or GLX function.
+
 @table @asis
 @item @var{procName}
 Specifies the name of the OpenGL or GLX function whose address is to be
@@ -1631,7 +1594,6 @@ returned.
 
 @end table
 
-@heading Description
 @code{glXGetProcAddress} returns the address of the function specified
 in @var{procName}. This is necessary in environments where the OpenGL
 link library exports a different set of functions than the runtime
@@ -1640,8 +1602,8 @@ library.
 @end defun
 
 @defun glXGetSelectedEvent 
-@heading returns GLX events that are selected for a window or a GLX pixel buffer
-@heading Parameters
+Returns GLX events that are selected for a window or a GLX pixel buffer.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1654,19 +1616,17 @@ Returns the events that are selected for @var{draw}.
 
 @end table
 
-@heading Description
 @code{glXGetSelectedEvent} returns in @var{event_mask} the events
 selected for @var{draw}.
 
-@heading Errors
 @code{GLXBadDrawable} is generated if @var{draw} is not a valid window
 or a valid GLX pixel buffer.
 
 @end defun
 
 @defun glXGetVisualFromFBConfig 
-@heading return visual that is associated with the frame buffer configuration
-@heading Parameters
+Return visual that is associated with the frame buffer configuration.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1676,20 +1636,18 @@ Specifies the GLX frame buffer configuration.
 
 @end table
 
-@heading Description
 If @var{config} is a valid GLX frame buffer configuration and it has an
 associated X Visual, then information describing that visual is
 returned; otherwise @code{NULL} is returned. Use @code{XFree} to free
 the data returned.
 
-@heading Errors
 Returns @code{NULL} if @var{config} is not a valid GLXFBConfig.
 
 @end defun
 
 @defun glXImportContextEXT 
-@heading import another process's indirect rendering context.
-@heading Parameters
+Import another process's indirect rendering context..
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1699,7 +1657,6 @@ Specifies a GLX rendering context.
 
 @end table
 
-@heading Description
 @code{glXImportContextEXT} creates a GLXContext given the XID of an
 existing GLXContext. It may be used in place of @code{glXCreateContext},
 to share another process's indirect rendering context.
@@ -1726,19 +1683,19 @@ _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_import_context} is supported.
 
-@heading Errors
 @code{GLXBadContext} is generated if @var{contextID} does not refer to a
 valid context.
 
 @end defun
 
 @defun glXIntro 
-@heading Introduction to OpenGL in the X window system
+Introduction to OpenGL in the X window system.
+
 @end defun
 
 @defun glXIsDirect 
-@heading indicate whether direct rendering is enabled
-@heading Parameters
+Indicate whether direct rendering is enabled.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1748,22 +1705,20 @@ Specifies the GLX context that is being queried.
 
 @end table
 
-@heading Description
 @code{glXIsDirect} returns @code{True} if @var{ctx} is a direct
 rendering context, @code{False} otherwise. Direct rendering contexts
 pass rendering commands directly from the calling process's address
 space to the rendering system, bypassing the X server. Nondirect
 rendering contexts pass all rendering commands to the X server.
 
-@heading Errors
 @code{GLXBadContext} is generated if @var{ctx} is not a valid GLX
 context.
 
 @end defun
 
 @defun glXMakeContextCurrent 
-@heading attach a GLX context to a GLX drawable
-@heading Parameters
+Attach a GLX context to a GLX drawable.
+
 @table @asis
 @item @var{display}
 Specifies the connection to the X server.
@@ -1781,7 +1736,6 @@ Specifies the GLX context to be bound to @var{read} and @var{ctx}.
 
 @end table
 
-@heading Description
 @code{glXMakeContextCurrent} binds @var{ctx} to the current rendering
 thread and to the @var{draw} and @var{read} GLX drawables. @var{draw}
 and @var{read} may be the same.
@@ -1817,7 +1771,6 @@ To release the current context without assigning a new one, call
 @code{False} otherwise. If @code{False} is returned, the previously
 current rendering context and drawable (if any) remain unchanged.
 
-@heading Errors
 @code{BadMatch} is generated if @var{draw} and @var{read} are not
 compatible.
 
@@ -1861,8 +1814,8 @@ previously bound to a GLXPixmap.
 @end defun
 
 @defun glXMakeCurrent 
-@heading attach a GLX context to a window or a GLX pixmap
-@heading Parameters
+Attach a GLX context to a window or a GLX pixmap.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1877,7 +1830,6 @@ Specifies a GLX rendering context that is to be attached to
 
 @end table
 
-@heading Description
 @code{glXMakeCurrent} does two things: It makes @var{ctx} the current
 GLX rendering context of the calling thread, replacing the previously
 current context if there was one, and it attaches @var{ctx} to a GLX
@@ -1902,7 +1854,6 @@ To release the current context without assigning a new one, call
 @code{False} otherwise. If @code{False} is returned, the previously
 current rendering context and drawable (if any) remain unchanged.
 
-@heading Errors
 @code{BadMatch} is generated if @var{drawable} was not created with the
 same X screen and visual as @var{ctx}. It is also generated if
 @var{drawable} is @code{None} and @var{ctx} is not @code{NULL}.
@@ -1935,8 +1886,8 @@ that it has insufficient resources to complete the allocation.
 @end defun
 
 @defun glXQueryContextInfoEXT 
-@heading query context information
-@heading Parameters
+Query context information.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -1954,7 +1905,6 @@ Contains the return value for @var{attribute}.
 
 @end table
 
-@heading Description
 @code{glXQueryContextInfoEXT} sets @var{value} to the value of
 @var{attribute} with respect to @var{ctx}. @code{glXQueryContextInfoEXT}
 returns an error code if it fails for any reason. Otherwise,
@@ -1983,7 +1933,6 @@ _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_import_context} is supported.
 
-@heading Errors
 @code{GLXBadContext} is generated if @var{ctx} does not refer to a valid
 context.
 
@@ -1996,8 +1945,8 @@ valid context.
 @end defun
 
 @defun glXQueryContext 
-@heading query context information
-@heading Parameters
+Query context information.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2014,7 +1963,6 @@ Contains the return value for @var{attribute}.
 
 @end table
 
-@heading Description
 @code{glXQueryContext} sets @var{value} to the value of @var{attribute}
 with respect to @var{ctx}. @var{attribute} may be one of the following:
 
@@ -2035,15 +1983,14 @@ context attribute, in which case @code{GLX_BAD_ATTRIBUTE} is returned.
 
 This call may cause a round-trip to the server.
 
-@heading Errors
 @code{GLXBadContext} is generated if @var{ctx} does not refer to a valid
 context.
 
 @end defun
 
 @defun glXQueryDrawable 
-@heading returns an attribute assoicated with a GLX drawable
-@heading Parameters
+Returns an attribute assoicated with a GLX drawable.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2061,7 +2008,6 @@ Contains the return value for @var{attribute}.
 
 @end table
 
-@heading Description
 @code{glXQueryDrawable} sets @var{value} to the value of @var{attribute}
 with respect to the GLXDrawable @var{draw}.
 
@@ -2096,15 +2042,14 @@ If @var{draw} is a GLXWindow or GLXPixmap and @var{attribute} is set to
 contents of @var{value} are undefined. If @var{attribute} is not one of
 the attributes listed above, the contents of @var{value} are unedfined.
 
-@heading Errors
 A @code{GLXBadDrawable} is generated if @var{draw} is not a valid
 GLXDrawable.
 
 @end defun
 
 @defun glXQueryExtensionsString 
-@heading return list of supported extensions
-@heading Parameters
+Return list of supported extensions.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2114,7 +2059,6 @@ Specifies the screen number.
 
 @end table
 
-@heading Description
 @code{glXQueryExtensionsString} returns a pointer to a string describing
 which GLX extensions are supported on the connection. The string is
 null-terminated and contains a space-separated list of extension names.
@@ -2124,8 +2068,8 @@ extensions to GLX, then the empty string is returned.
 @end defun
 
 @defun glXQueryExtension 
-@heading indicate whether the GLX extension is supported
-@heading Parameters
+Indicate whether the GLX extension is supported.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2138,7 +2082,6 @@ Returns the base event code of the GLX server extension.
 
 @end table
 
-@heading Description
 @code{glXQueryExtension} returns @code{True} if the X server of
 connection @var{dpy} supports the GLX extension, @code{False} otherwise.
 If @code{True} is returned, then @var{errorBase} and @var{eventBase}
@@ -2153,8 +2096,8 @@ specified as @code{NULL}.
 @end defun
 
 @defun glXQueryServerString 
-@heading return string describing the server
-@heading Parameters
+Return string describing the server.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2168,7 +2111,6 @@ Specifies which string is returned: one of @code{GLX_VENDOR},
 
 @end table
 
-@heading Description
 @code{glXQueryServerString} returns a pointer to a static,
 null-terminated string describing some aspect of the server's GLX
 extension. The possible values for @var{name} and the format of the
@@ -2178,8 +2120,8 @@ not set to a recognized value, @code{NULL} is returned.
 @end defun
 
 @defun glXQueryVersion 
-@heading return the version numbers of the GLX extension
-@heading Parameters
+Return the version numbers of the GLX extension.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2192,7 +2134,6 @@ Returns the minor version number of the GLX server extension.
 
 @end table
 
-@heading Description
 @code{glXQueryVersion} returns the major and minor version numbers of
 the GLX extension implemented by the server associated with connection
 @var{dpy}. Implementations with the same major version number are upward
@@ -2202,7 +2143,6 @@ is a superset of the version with the lower minor number.
 @var{major} and @var{minor} do not return values if they are specified
 as @code{NULL}.
 
-@heading Errors
 @code{glXQueryVersion} returns @code{False} if it fails, @code{True}
 otherwise.
 
@@ -2212,8 +2152,8 @@ returned.
 @end defun
 
 @defun glXSelectEvent 
-@heading select GLX events for a window or a GLX pixel buffer
-@heading Parameters
+Select GLX events for a window or a GLX pixel buffer.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2226,7 +2166,6 @@ Specifies the events to be returned for @var{draw}.
 
 @end table
 
-@heading Description
 @code{glXSelectEvent} sets the GLX event mask for a GLX pixel buffer or
 a window. Calling @code{glXSelectEvent} overrides any previous event
 mask that was set by the client for @var{draw}. Note that it does not
@@ -2357,15 +2296,14 @@ or moved out of off-screen memory. The event contains information
 indicating which color buffers and ancillary buffers\(emand which
 portions of those buffers\(emwere affected.
 
-@heading Errors
 @code{GLXBadDrawable} is generated if @var{draw} is not a valid window
 or a valid GLX pixel buffer.
 
 @end defun
 
 @defun glXSwapBuffers 
-@heading exchange front and back buffers
-@heading Parameters
+Exchange front and back buffers.
+
 @table @asis
 @item @var{dpy}
 Specifies the connection to the X server.
@@ -2375,7 +2313,6 @@ Specifies the drawable whose buffers are to be swapped.
 
 @end table
 
-@heading Description
 @code{glXSwapBuffers} promotes the contents of the back buffer of
 @var{drawable} to become the contents of the front buffer of
 @var{drawable}. The contents of the back buffer then become undefined.
@@ -2390,7 +2327,6 @@ exchange is completed.
 If @var{drawable} was not created with respect to a double-buffered
 visual, @code{glXSwapBuffers} has no effect, and no error is generated.
 
-@heading Errors
 @code{GLXBadDrawable} is generated if @var{drawable} is not a valid GLX
 drawable.
 
@@ -2402,8 +2338,8 @@ that is no longer valid.
 @end defun
 
 @defun glXUseXFont 
-@heading create bitmap display lists from an X font
-@heading Parameters
+Create bitmap display lists from an X font.
+
 @table @asis
 @item @var{font}
 Specifies the font from which character glyphs are to be taken.
@@ -2419,20 +2355,17 @@ Specifies the index of the first display list to be generated.
 
 @end table
 
-@heading Description
 @code{glXUseXFont} generates @var{count} display lists, named
-@var{listBase} through @math{@var{listBase}+@var{count}-1}, each
-containing a single @code{glBitmap} command. The parameters of the
-@code{glBitmap} command of display list @math{@var{listBase}+@var{i}}
-are derived from glyph @math{@var{first}+@var{i}}. Bitmap parameters
-@math{@var{xorig}}, @math{@var{yorig}}, @math{@var{width}}, and
-@math{@var{height}} are computed from font metrics as
-@math{@var{descent}-1}, @math{-@var{lbearing}},
-@math{@var{rbearing}-@var{lbearing}}, and
-@math{@var{ascent}+@var{descent}}, respectively. @math{@var{xmove}} is
-taken from the glyph's @math{@var{width}} metric, and @math{@var{ymove}}
-is set to zero. Finally, the glyph's image is converted to the
-appropriate format for @code{glBitmap}.
+@var{listBase} through @r{@var{listBase}+@var{count}-1}, each containing
+a single @code{glBitmap} command. The parameters of the @code{glBitmap}
+command of display list @r{@var{listBase}+@var{i}} are derived from
+glyph @r{@var{first}+@var{i}}. Bitmap parameters @r{@var{xorig}},
+@r{@var{yorig}}, @r{@var{width}}, and @r{@var{height}} are computed from
+font metrics as @r{@var{descent}-1}, @r{-@var{lbearing}},
+@r{@var{rbearing}-@var{lbearing}}, and @r{@var{ascent}+@var{descent}},
+respectively. @r{@var{xmove}} is taken from the glyph's @r{@var{width}}
+metric, and @r{@var{ymove}} is set to zero. Finally, the glyph's image
+is converted to the appropriate format for @code{glBitmap}.
 
 Using @code{glXUseXFont} may be more efficient than accessing the X font
 and generating the display lists explicitly, both because the display
@@ -2444,7 +2377,6 @@ Empty display lists are created for all glyphs that are requested and
 are not defined in @var{font}. @code{glXUseXFont} is ignored if there is
 no current GLX context.
 
-@heading Errors
 @code{BadFont} is generated if @var{font} is not a valid font.
 
 @code{GLXBadContextState} is generated if the current GLX context is in
@@ -2457,8 +2389,8 @@ is no longer valid.
 @end defun
 
 @defun glXWaitGL 
-@heading complete GL execution prior to subsequent X calls
-@heading Description
+Complete GL execution prior to subsequent X calls.
+
 GL rendering calls made prior to @code{glXWaitGL} are guaranteed to be
 executed before X rendering calls made after @code{glXWaitGL}. Although
 this same result can be achieved using @code{glFinish}, @code{glXWaitGL}
@@ -2467,7 +2399,6 @@ efficient in cases where client and server are on separate machines.
 
 @code{glXWaitGL} is ignored if there is no current GLX context.
 
-@heading Errors
 @code{GLXBadCurrentWindow} is generated if the drawable associated with
 the current context of the calling thread is a window, and that window
 is no longer valid.
@@ -2475,8 +2406,8 @@ is no longer valid.
 @end defun
 
 @defun glXWaitX 
-@heading complete X execution prior to subsequent GL calls
-@heading Description
+Complete X execution prior to subsequent GL calls.
+
 X rendering calls made prior to @code{glXWaitX} are guaranteed to be
 executed before GL rendering calls made after @code{glXWaitX}. Although
 the same result can be achieved using @code{XSync}, @code{glXWaitX} does
@@ -2485,7 +2416,6 @@ efficient in cases where client and server are on separate machines.
 
 @code{glXWaitX} is ignored if there is no current GLX context.
 
-@heading Errors
 @code{GLXBadCurrentWindow} is generated if the drawable associated with
 the current context of the calling thread is a window, and that window
 is no longer valid.

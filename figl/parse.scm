@@ -243,10 +243,10 @@
                          (lambda (x)
                            (pre-post-order x *rules*))
                          nodeset))
-                      (map lift-tables body))))
-    (title
-     . ,(lambda (tag body)
-          `(heading ,body)))
+                      (map lift-tables
+                           (match body
+                             ((('title _) body ...) body)
+                             (_ body))))))
     (variablelist
      ((varlistentry
        . ,(lambda (tag term . body)
@@ -333,7 +333,7 @@
     ;; Poor man's mathml.
     (mml:math
      . ,(lambda (tag . contents)
-          `(math . ,(collapse-fragments contents))))
+          `(r . ,(collapse-fragments contents))))
     (mml:mn
      . ,(lambda (tag n . rest)
           (if (pair? rest)
@@ -415,7 +415,9 @@
 ;; Produces an stexinfo fragment.
 (define (generate-documentation purpose parameters description errors)
   `(*fragment*
-    (heading ,purpose)
+    (para ,(string-append (string (char-upcase (string-ref purpose 0)))
+                          (substring purpose 1)
+                          "."))
     ,@(if parameters (sdocbook->stexi parameters) '())
     ,@(if description (sdocbook->stexi description) '())
     ,@(if errors (sdocbook->stexi errors) '())))
@@ -427,7 +429,9 @@
                                               (xml-parameters xml)
                                               (xml-description xml)
                                               (xml-errors xml))
-                      (and=> (xml-copyright xml) sdocbook->stexi)))
+                      (and=> (xml-copyright xml)
+                             (lambda (c)
+                               `(*fragment* ,@(sdocbook->stexi c))))))
 
 (define (parse-gl-definitions version)
   (map (lambda (file)

@@ -31,7 +31,7 @@
         (reverse out)
         (let ((copyright (gl-definition-copyright (car in))))
           (lp (cdr in)
-              (if (member copyright out)
+              (if (or (not copyright) (member copyright out))
                   out
                   (cons copyright out)))))))
 
@@ -89,11 +89,9 @@
       `(define-gl-procedure ,(string->symbol (gl-definition-name def))
          ,(gl-definition-name def)
          ,(gl-definition-prototype def)
-         #;
          ,(string-trim-both
            (stexi->plain-text
-            (gl-definition-documentation def)))
-         ',(gl-definition-documentation def))
+            (gl-definition-documentation def))))
       port)
      (newline port))
    defs))

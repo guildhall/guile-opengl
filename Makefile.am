@@ -26,4 +26,4 @@ figl_TEXINFOS = \
 TESTS = \
 	tests/basic.test
 TESTS_ENVIRONMENT = $(top_builddir)/env $(GUILE) --no-auto-compile
-EXTRA_DIST += $(TESTS)
+EXTRA_DIST += $(TESTS) $(figl_TEXINFOS)
