@@ -24,7 +24,13 @@
 (define-module (figl low-level support)
   #:use-module (system foreign)
   #:export (current-gl-resolver
-            define-gl-procedure))
+            define-gl-procedure
+            void))
+
+(define void #f)
+
+(module-use! (module-public-interface (current-module))
+             (resolve-interface '(figl low-level types)))
 
 (define (default-foreign-resolver name)
   (dynamic-pointer name (dynamic-link)))
