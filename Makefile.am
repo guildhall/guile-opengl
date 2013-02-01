@@ -7,6 +7,7 @@ SOURCES = \
 	figl.scm \
 	figl/config.scm \
 	figl/parse.scm \
+	figl/low-level/types.scm \
 	figl/low-level/support.scm \
 	figl/low-level/gl.scm \
 	figl/low-level/glu.scm \
