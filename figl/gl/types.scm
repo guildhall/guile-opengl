@@ -21,8 +21,9 @@
 ;;
 ;;; Code:
 
-(define-module (figl low-level types)
+(define-module (figl gl types)
   #:use-module (system foreign)
+  #:re-export (void)
   #:export (GLboolean
             GLbyte
             GLubyte

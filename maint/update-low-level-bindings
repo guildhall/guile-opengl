@@ -21,16 +21,16 @@
             (loop (cdr l) (cons (car l) (cons elem dest)))))))
 
 (define (module-name->scm-name mod-name)
-  (in-vicinity
-   (abs-top-srcdir)
-   (string-append (string-join (map symbol->string mod-name) "/")
-                  ".scm")))
+  (string-join (list (abs-top-srcdir)
+                     "figl"
+                     (symbol->string mod-name)
+                     "low-level.scm")
+               "/"))
 
 (define (module-name->texi-name mod-name)
   (in-vicinity
    (in-vicinity (abs-top-srcdir) "doc")
-   (string-append (string-join (map symbol->string (cdr mod-name)) "-")
-                  ".texi")))
+   (string-append "low-level-" (symbol->string mod-name) ".texi")))
 
 (define (unique-copyrights defs)
   (let lp ((in defs) (out '()))
@@ -83,8 +83,9 @@
 " port)
   (newline port)
   (pretty-print
-   `(define-module ,mod-name
-      #:use-module (figl low-level support)
+   `(define-module (figl ,mod-name low-level)
+      #:use-module (figl runtime)
+      #:use-module (figl ,mod-name types)
       #:export ,(append-map (lambda (def)
                               (map car (gl-definition-prototypes def)))
                             defs))
@@ -93,7 +94,7 @@
   (for-each
    (lambda (def)
      (pretty-print
-      `(define-gl-procedure ,(gl-definition-prototypes def)
+      `(define-foreign-procedure ,(gl-definition-prototypes def)
          ,(string-trim-both
            (stexi->plain-text
             (gl-definition-documentation def))))
@@ -107,7 +108,7 @@
     `(*fragment*
       (para "The functions from this section may be had by loading "
             "the module:")
-      (example "(use-modules " ,(object->string mod-name) ")")
+      (example "(use-modules (figl " ,(object->string mod-name) " low-level)")
       (copying
        (para
         "This section of the manual was derived from the upstream "
@@ -166,9 +167,9 @@
   (call-with-values
       (lambda () (partition-definitions version))
     (lambda (gl glu glx)
-      (write-bindings '(figl low-level gl) (reverse gl))
-      (write-bindings '(figl low-level glu) (reverse glu))
-      (write-bindings '(figl low-level glx) (reverse glx)))))
+      (write-bindings 'gl (reverse gl))
+      (write-bindings 'glu (reverse glu))
+      (write-bindings 'glx (reverse glx)))))
 
 (when (batch-mode?)
   (apply main (command-line)))

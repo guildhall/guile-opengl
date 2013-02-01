@@ -4,7 +4,7 @@
 The functions from this section may be had by loading the module:
 
 @example 
-(use-modules (figl low-level gl))
+(use-modules (figl gl low-level)
 @end example
 
 @copying 

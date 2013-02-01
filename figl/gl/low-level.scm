@@ -41,9 +41,11 @@
 ;;;
 
 (define-module
-  (figl low-level gl)
+  (figl gl low-level)
   #:use-module
-  (figl low-level support)
+  (figl runtime)
+  #:use-module
+  (figl gl types)
   #:export
   (glAccum
     glActiveTexture
@@ -338,7 +340,7 @@
     glWindowPos3i
     glWindowPos3d))
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glAccum (op GLenum) (value GLfloat) -> void))
   "Operate on the accumulation buffer.
 
@@ -426,7 +428,7 @@ enabled.
 `GL_INVALID_OPERATION' is generated if `glAccum' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glActiveTexture (texture GLenum) -> void))
   "Select active texture unit.
 
@@ -449,7 +451,7 @@ Vertex arrays are client-side GL resources, which are selected by the
 where i ranges from 0 to the larger of (`GL_MAX_TEXTURE_COORDS' - 1) and
 (`GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS' - 1).")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glAlphaFunc
      (func GLenum)
      (ref GLclampf)
@@ -522,7 +524,7 @@ affect screen clear operations.
 `GL_INVALID_OPERATION' is generated if `glAlphaFunc' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glAreTexturesResident
      (n GLsizei)
      (textures *)
@@ -572,7 +574,7 @@ the contents of RESIDENCES is indeterminate.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glArrayElement (i GLint) -> void))
   "Render a vertex using the specified vertex array element.
 
@@ -606,7 +608,7 @@ to array data may access original data.
 bound to an enabled array and the buffer object's data store is
 currently mapped.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glAttachShader
      (program GLuint)
      (shader GLuint)
@@ -655,7 +657,7 @@ PROGRAM.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBeginQuery
      (target GLenum)
      (id GLuint)
@@ -705,7 +707,7 @@ active query object.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBegin (mode GLenum) -> void) (glEnd -> void))
   "Delimit the vertices of a primitive or a group of like primitives.
 
@@ -821,7 +823,7 @@ Execution of `glEnableClientState', `glDisableClientState',
 `glBegin' and before the corresponding call to `glEnd', but an error may
 or may not be generated.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBindAttribLocation
      (program GLuint)
      (index GLuint)
@@ -895,7 +897,7 @@ OpenGL.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBindBuffer
      (target GLenum)
      (buffer GLuint)
@@ -998,7 +1000,7 @@ values.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBindTexture
      (target GLenum)
      (texture GLuint)
@@ -1072,7 +1074,7 @@ with a target that doesn't match that of TARGET.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBitmap
      (width GLsizei)
      (height GLsizei)
@@ -1167,7 +1169,7 @@ would exceed the data store size.
 `GL_INVALID_OPERATION' is generated if `glBitmap' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBlendColor
      (red GLclampf)
      (green GLclampf)
@@ -1196,7 +1198,7 @@ blending operations. Initially the `GL_BLEND_COLOR' is set to (0, 0, 0,
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBlendEquationSeparate
      (modeRGB GLenum)
      (modeAlpha GLenum)
@@ -1276,7 +1278,7 @@ of `GL_FUNC_ADD', `GL_FUNC_SUBTRACT', `GL_FUNC_REVERSE_SUBTRACT',
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBlendEquation (mode GLenum) -> void))
   "Specify the equation used for both the RGB blend equation and the Alpha
 blend equation.
@@ -1344,7 +1346,7 @@ set to `GL_FUNC_ADD'.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBlendFuncSeparate
      (srcRGB GLenum)
      (dstRGB GLenum)
@@ -1492,7 +1494,7 @@ accepted value.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBlendFunc
      (sfactor GLenum)
      (dfactor GLenum)
@@ -1626,7 +1628,7 @@ accepted value.
 `GL_INVALID_OPERATION' is generated if `glBlendFunc' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBufferData
      (target GLenum)
      (size GLsizeiptr)
@@ -1717,7 +1719,7 @@ store with the specified SIZE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glBufferSubData
      (target GLenum)
      (offset GLintptr)
@@ -1768,7 +1770,7 @@ is mapped.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCallLists
      (n GLsizei)
      (type GLenum)
@@ -1873,7 +1875,7 @@ remain after execution is completed. Use `glPushAttrib', `glPopAttrib',
 `GL_UNSIGNED_BYTE', `GL_SHORT', `GL_UNSIGNED_SHORT', `GL_INT',
 `GL_UNSIGNED_INT', `GL_FLOAT', `GL_2_BYTES', `GL_3_BYTES', `GL_4_BYTES'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCallList (list GLuint) -> void))
   "Execute a display list.
 
@@ -1897,7 +1899,7 @@ after execution of the display list is completed. Use `glPushAttrib',
 `glPopAttrib', `glPushMatrix', and `glPopMatrix' to preserve GL state
 across `glCallList' calls.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClearAccum
      (red GLfloat)
      (green GLfloat)
@@ -1926,7 +1928,7 @@ Values specified by `glClearAccum' are clamped to the range [-1,1] .
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClearColor
      (red GLclampf)
      (green GLclampf)
@@ -1954,7 +1956,7 @@ are clamped to the range [0,1] .
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClearDepth (depth GLclampd) -> void))
   "Specify the clear value for the depth buffer.
 
@@ -1970,7 +1972,7 @@ range [0,1] .
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClearIndex (c GLfloat) -> void))
   "Specify the clear value for the color index buffers.
 
@@ -1988,7 +1990,7 @@ number of bits in a color index stored in the frame buffer.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClearStencil (s GLint) -> void))
   "Specify the clear value for the stencil buffer.
 
@@ -2004,7 +2006,7 @@ in the stencil buffer.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClear (mask GLbitfield) -> void))
   "Clear buffers to preset values.
 
@@ -2051,7 +2053,7 @@ bits is set in MASK.
 `GL_INVALID_OPERATION' is generated if `glClear' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClientActiveTexture (texture GLenum) -> void))
   "Select active texture unit.
 
@@ -2070,7 +2072,7 @@ called with a parameter of `GL_TEXTURE_COORD_ARRAY'.
 `GL_INVALID_ENUM' is generated if TEXTURE is not one of `GL_TEXTURE'I ,
 where i ranges from 0 to the value of `GL_MAX_TEXTURE_COORDS' - 1.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glClipPlane (plane GLenum) (equation *) -> void))
   "Specify a plane against which all geometry is clipped.
 
@@ -2113,7 +2115,7 @@ coordinates and are disabled.
 `GL_INVALID_OPERATION' is generated if `glClipPlane' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glColorMask
      (red GLboolean)
      (green GLboolean)
@@ -2145,7 +2147,7 @@ changes are either enabled or disabled for entire color components.
 `GL_INVALID_OPERATION' is generated if `glColorMask' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glColorMaterial
      (face GLenum)
      (mode GLenum)
@@ -2180,7 +2182,7 @@ initially disabled.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glColorPointer
      (size GLint)
      (type GLenum)
@@ -2239,7 +2241,7 @@ the color array is used when `glDrawArrays', `glMultiDrawArrays',
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glColorSubTable
      (target GLenum)
      (start GLsizei)
@@ -2324,7 +2326,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glColorTable
      (target GLenum)
      (internalformat GLenum)
@@ -2576,7 +2578,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glColor3i
      (red GLint)
      (green GLint)
@@ -2656,7 +2658,7 @@ range [0,1] before the current color is updated. However, color
 components are clamped to this range before they are interpolated or
 written into a color buffer.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCompileShader (shader GLuint) -> void))
   "Compiles a shader object.
 
@@ -2687,7 +2689,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCompressedTexImage1D
      (target GLenum)
      (level GLint)
@@ -2788,7 +2790,7 @@ Undefined results, including abnormal program termination, are generated
 if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCompressedTexImage2D
      (target GLenum)
      (level GLint)
@@ -2904,7 +2906,7 @@ Undefined results, including abnormal program termination, are generated
 if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCompressedTexImage3D
      (target GLenum)
      (level GLint)
@@ -3021,7 +3023,7 @@ Undefined results, including abnormal program termination, are generated
 if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCompressedTexSubImage1D
      (target GLenum)
      (level GLint)
@@ -3115,7 +3117,7 @@ Undefined results, including abnormal program termination, are generated
 if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCompressedTexSubImage2D
      (target GLenum)
      (level GLint)
@@ -3225,7 +3227,7 @@ Undefined results, including abnormal program termination, are generated
 if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCompressedTexSubImage3D
      (target GLenum)
      (level GLint)
@@ -3334,7 +3336,7 @@ Undefined results, including abnormal program termination, are generated
 if DATA is not encoded in a manner consistent with the extension
 specification defining the internal compression format.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glConvolutionFilter1D
      (target GLenum)
      (internalformat GLenum)
@@ -3497,7 +3499,7 @@ indicated by TYPE.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glConvolutionFilter2D
      (target GLenum)
      (internalformat GLenum)
@@ -3671,7 +3673,7 @@ indicated by TYPE.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glConvolutionParameterf
      (target GLenum)
      (pname GLenum)
@@ -3752,7 +3754,7 @@ and PARAMS is not one of `GL_REDUCE', `GL_CONSTANT_BORDER', or
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyColorSubTable
      (target GLenum)
      (start GLsizei)
@@ -3800,7 +3802,7 @@ values.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyColorTable
      (target GLenum)
      (internalformat GLenum)
@@ -3910,7 +3912,7 @@ large to be supported by the implementation.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyConvolutionFilter1D
      (target GLenum)
      (internalformat GLenum)
@@ -4025,7 +4027,7 @@ than the maximum supported value. This value may be queried with
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyConvolutionFilter2D
      (target GLenum)
      (internalformat GLenum)
@@ -4151,7 +4153,7 @@ than the maximum supported value. This value may be queried with
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyPixels
      (x GLint)
      (y GLint)
@@ -4311,7 +4313,7 @@ no stencil buffer.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyTexImage1D
      (target GLenum)
      (level GLint)
@@ -4424,7 +4426,7 @@ between the execution of `glBegin' and the corresponding execution of
 `GL_DEPTH_COMPONENT', `GL_DEPTH_COMPONENT16', `GL_DEPTH_COMPONENT24', or
 `GL_DEPTH_COMPONENT32' and there is no depth buffer.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyTexImage2D
      (target GLenum)
      (level GLint)
@@ -4544,7 +4546,7 @@ between the execution of `glBegin' and the corresponding execution of
 `GL_DEPTH_COMPONENT', `GL_DEPTH_COMPONENT16', `GL_DEPTH_COMPONENT24', or
 `GL_DEPTH_COMPONENT32' and there is no depth buffer.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyTexSubImage1D
      (target GLenum)
      (level GLint)
@@ -4616,7 +4618,7 @@ the returned value of `GL_MAX_TEXTURE_SIZE'.
 `GL_TEXTURE_BORDER' of the texture image being modified. Note that W
 includes twice the border width.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyTexSubImage2D
      (target GLenum)
      (level GLint)
@@ -4715,7 +4717,7 @@ H include twice the border width.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCopyTexSubImage3D
      (target GLenum)
      (level GLint)
@@ -4813,7 +4815,7 @@ the returned value of `GL_MAX_3D_TEXTURE_SIZE'.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCreateProgram -> GLuint))
   "Creates a program object.
 
@@ -4842,7 +4844,7 @@ This function returns 0 if an error occurs creating the program object.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCreateShader (shaderType GLenum) -> GLuint))
   "Creates a shader object.
 
@@ -4872,7 +4874,7 @@ This function returns 0 if an error occurs creating the shader object.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glCullFace (mode GLenum) -> void))
   "Specify whether front- or back-facing facets can be culled.
 
@@ -4895,7 +4897,7 @@ facets are front-facing and back-facing. See `glFrontFace'.
 `GL_INVALID_OPERATION' is generated if `glCullFace' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDeleteBuffers (n GLsizei) (buffers *) -> void))
   "Delete named buffer objects.
 
@@ -4920,7 +4922,7 @@ to existing buffer objects.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDeleteLists
      (list GLuint)
      (range GLsizei)
@@ -4950,7 +4952,7 @@ ignored. If RANGE is 0, nothing happens.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDeleteProgram (program GLuint) -> void))
   "Deletes a program object.
 
@@ -4979,7 +4981,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDeleteQueries (n GLsizei) (ids *) -> void))
   "Delete named query objects.
 
@@ -5002,7 +5004,7 @@ to existing query objects.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDeleteShader (shader GLuint) -> void))
   "Deletes a shader object.
 
@@ -5029,7 +5031,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDeleteTextures
      (n GLsizei)
      (textures *)
@@ -5058,7 +5060,7 @@ to existing textures.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDepthFunc (func GLenum) -> void))
   "Specify the value used for depth buffer comparisons.
 
@@ -5115,7 +5117,7 @@ is as if the depth test always passes.
 `GL_INVALID_OPERATION' is generated if `glDepthFunc' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDepthMask (flag GLboolean) -> void))
   "Enable or disable writing into the depth buffer.
 
@@ -5131,7 +5133,7 @@ is enabled. Initially, depth buffer writing is enabled.
 `GL_INVALID_OPERATION' is generated if `glDepthMask' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDepthRange
      (nearVal GLclampd)
      (farVal GLclampd)
@@ -5164,7 +5166,7 @@ With this mapping, the depth buffer range is fully utilized.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDetachShader
      (program GLuint)
      (shader GLuint)
@@ -5201,7 +5203,7 @@ PROGRAM.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDrawArrays
      (mode GLenum)
      (first GLint)
@@ -5252,7 +5254,7 @@ currently mapped.
 `GL_INVALID_OPERATION' is generated if `glDrawArrays' is executed
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDrawBuffers (n GLsizei) (bufs *) -> void))
   "Specifies a list of color buffers to be drawn into.
 
@@ -5326,7 +5328,7 @@ current GL context.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDrawBuffer (mode GLenum) -> void))
   "Specify which color buffers are to be drawn into.
 
@@ -5409,7 +5411,7 @@ MODE exists.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDrawElements
      (mode GLenum)
      (count GLsizei)
@@ -5466,7 +5468,7 @@ data store is currently mapped.
 `GL_INVALID_OPERATION' is generated if `glDrawElements' is executed
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDrawPixels
      (width GLsizei)
      (height GLsizei)
@@ -5875,7 +5877,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glDrawRangeElements
      (mode GLenum)
      (start GLuint)
@@ -5954,7 +5956,7 @@ data store is currently mapped.
 `GL_INVALID_OPERATION' is generated if `glDrawRangeElements' is executed
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEdgeFlagPointer
      (stride GLsizei)
      (pointer *)
@@ -5995,7 +5997,7 @@ enabled, the edge flag array is used when `glDrawArrays',
 
 `GL_INVALID_ENUM' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEdgeFlag (flag GLboolean) -> void))
   "Flag edges as either boundary or nonboundary.
 
@@ -6018,7 +6020,7 @@ Boundary and nonboundary edge flags on vertices are significant only if
 `GL_POLYGON_MODE' is set to `GL_POINT' or `GL_LINE'. See
 `glPolygonMode'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEnableClientState (cap GLenum) -> void)
    (glDisableClientState (cap GLenum) -> void))
   "Enable or disable client-side capability.
@@ -6089,7 +6091,7 @@ of the following values:
 and the corresponding `glEnd', but an error may or may not be generated.
 If no error is generated, the behavior is undefined.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEnableVertexAttribArray
      (index GLuint)
      ->
@@ -6121,7 +6123,7 @@ array commands such as `glDrawArrays', `glDrawElements',
 ' or `glDisableVertexAttribArray ' is executed between the execution of
 `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEnable (cap GLenum) -> void)
    (glDisable (cap GLenum) -> void))
   "Enable or disable server-side GL capabilities.
@@ -6588,7 +6590,7 @@ previously.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEvalCoord1d (u GLdouble) -> void)
    (glEvalCoord2d (u GLdouble) (v GLdouble) -> void))
   "Evaluate enabled one- and two-dimensional maps.
@@ -6654,7 +6656,7 @@ If automatic normal generation is disabled, the corresponding normal map
 automatic normal generation nor a normal map is enabled, no normal is
 generated for `glEvalCoord2' commands.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEvalMesh1
      (mode GLenum)
      (i1 GLint)
@@ -6781,7 +6783,7 @@ I=N , then the value computed from I·ΔU+U_1 is exactly U_2 , and if J=M
 `GL_INVALID_OPERATION' is generated if `glEvalMesh' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glEvalPoint1 (i GLint) -> void)
    (glEvalPoint2 (i GLint) (j GLint) -> void))
   "Generate and evaluate a single point in a mesh.
@@ -6823,7 +6825,7 @@ I=N , then the value computed from I·ΔU+U_1 is exactly U_2 , and if J=M
      
       );")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFeedbackBuffer
      (size GLsizei)
      (type GLenum)
@@ -6955,7 +6957,7 @@ once.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFinish -> void))
   "Block until all GL execution is complete.
 
@@ -6967,7 +6969,7 @@ contents.
 `GL_INVALID_OPERATION' is generated if `glFinish' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFlush -> void))
   "Force execution of GL commands in finite time.
 
@@ -6987,7 +6989,7 @@ that depends on the generated image.
 `GL_INVALID_OPERATION' is generated if `glFlush' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFogCoordPointer
      (type GLenum)
      (stride GLsizei)
@@ -7039,7 +7041,7 @@ called.
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFogCoordd (coord GLdouble) -> void))
   "Set the current fog coordinates.
 
@@ -7050,7 +7052,7 @@ COORD
 vertex and the current raster position. The value specified is
 interpolated and used in computing the fog color (see `glFog').")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFogf (pname GLenum) (param GLfloat) -> void)
    (glFogi (pname GLenum) (param GLint) -> void))
   "Specify fog parameters.
@@ -7149,7 +7151,7 @@ is negative.
 `GL_INVALID_OPERATION' is generated if `glFog' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFrontFace (mode GLenum) -> void))
   "Define front- and back-facing polygons.
 
@@ -7182,7 +7184,7 @@ taken to be front-facing.
 `GL_INVALID_OPERATION' is generated if `glFrontFace' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glFrustum
      (left GLdouble)
      (right GLdouble)
@@ -7248,7 +7250,7 @@ if LEFT = RIGHT, or BOTTOM = TOP, or NEAR = FAR.
 `GL_INVALID_OPERATION' is generated if `glFrustum' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGenBuffers (n GLsizei) (buffers *) -> void))
   "Generate buffer object names.
 
@@ -7277,7 +7279,7 @@ until they are first bound by calling `glBindBuffer'.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGenLists (range GLsizei) -> GLuint))
   "Generate a contiguous set of empty display lists.
 
@@ -7296,7 +7298,7 @@ generated, and 0 is returned.
 `GL_INVALID_OPERATION' is generated if `glGenLists' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGenQueries (n GLsizei) (ids *) -> void))
   "Generate query object names.
 
@@ -7325,7 +7327,7 @@ until they are first used by calling `glBeginQuery'.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGenTextures (n GLsizei) (textures *) -> void))
   "Generate texture names.
 
@@ -7353,7 +7355,7 @@ subsequent calls, unless they are first deleted with `glDeleteTextures'.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetActiveAttrib
      (program GLuint)
      (index GLuint)
@@ -7460,7 +7462,7 @@ between the execution of `glBegin' and the corresponding execution of
 
 `GL_INVALID_VALUE' is generated if BUFSIZE is less than 0.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetActiveUniform
      (program GLuint)
      (index GLuint)
@@ -7591,7 +7593,7 @@ between the execution of `glBegin' and the corresponding execution of
 
 `GL_INVALID_VALUE' is generated if BUFSIZE is less than 0.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetAttachedShaders
      (program GLuint)
      (maxCount GLsizei)
@@ -7640,7 +7642,7 @@ OpenGL.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetAttribLocation
      (program GLuint)
      (name *)
@@ -7688,7 +7690,7 @@ linked.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetBufferSubData
      (target GLenum)
      (offset GLintptr)
@@ -7740,7 +7742,7 @@ is mapped.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetClipPlane
      (plane GLenum)
      (equation *)
@@ -7769,7 +7771,7 @@ equation for PLANE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetColorTable
      (target GLenum)
      (format GLenum)
@@ -7879,7 +7881,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetCompressedTexImage
      (target GLenum)
      (lod GLint)
@@ -7947,7 +7949,7 @@ the data store size.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetConvolutionFilter
      (target GLenum)
      (format GLenum)
@@ -8057,7 +8059,7 @@ indicated by TYPE.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetError -> GLenum))
   "Return error information.
 
@@ -8127,7 +8129,7 @@ returns 0. If `glGetError' itself generates an error, it returns 0.
 the execution of `glBegin' and the corresponding execution of `glEnd'.
 In this case, `glGetError' returns 0.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetHistogram
      (target GLenum)
      (reset GLboolean)
@@ -8238,7 +8240,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetMinmax
      (target GLenum)
      (reset GLboolean)
@@ -8357,7 +8359,7 @@ indicated by TYPE.
 `GL_INVALID_OPERATION' is generated if `glGetMinmax' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetPolygonStipple (pattern *) -> void))
   "Return the polygon stipple pattern.
 
@@ -8390,7 +8392,7 @@ the data store size.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetProgramInfoLog
      (program GLuint)
      (maxLength GLsizei)
@@ -8447,7 +8449,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetSeparableFilter
      (target GLenum)
      (format GLenum)
@@ -8567,7 +8569,7 @@ datum indicated by TYPE.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetShaderInfoLog
      (shader GLuint)
      (maxLength GLsizei)
@@ -8621,7 +8623,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetShaderSource
      (shader GLuint)
      (bufSize GLsizei)
@@ -8671,7 +8673,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetString (name GLenum) -> *))
   "Return a string describing the current GL connection.
 
@@ -8740,7 +8742,7 @@ All strings are null-terminated.
 `GL_INVALID_OPERATION' is generated if `glGetString' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetTexImage
      (target GLenum)
      (level GLint)
@@ -8864,7 +8866,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glGetUniformLocation
      (program GLuint)
      (name *)
@@ -8921,7 +8923,7 @@ linked.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glHint (target GLenum) (mode GLenum) -> void))
   "Specify implementation-specific hints.
 
@@ -9031,7 +9033,7 @@ accepted value.
 `GL_INVALID_OPERATION' is generated if `glHint' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glHistogram
      (target GLenum)
      (width GLsizei)
@@ -9112,7 +9114,7 @@ histogram table specified is too large for the implementation.
 `GL_INVALID_OPERATION' is generated if `glHistogram' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIndexMask (mask GLuint) -> void))
   "Control the writing of individual bits in the color index buffers.
 
@@ -9135,7 +9137,7 @@ all bits are enabled for writing.
 `GL_INVALID_OPERATION' is generated if `glIndexMask' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIndexPointer
      (type GLenum)
      (stride GLsizei)
@@ -9185,7 +9187,7 @@ enabled, the color index array is used when `glDrawArrays',
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIndexi (c GLint) -> void)
    (glIndexd (c GLdouble) -> void)
    (glIndexub (c GLubyte) -> void))
@@ -9209,7 +9211,7 @@ written to the frame buffer, it is converted to fixed-point format. Any
 bits in the integer portion of the resulting fixed-point value that do
 not correspond to bits in the frame buffer are masked out.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glInitNames -> void))
   "Initialize the name stack.
 
@@ -9225,7 +9227,7 @@ ignored.
 `GL_INVALID_OPERATION' is generated if `glInitNames' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glInterleavedArrays
      (format GLenum)
      (stride GLsizei)
@@ -9269,7 +9271,7 @@ located at the first possible floating-point aligned address.
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIsBuffer (buffer GLuint) -> GLboolean))
   "Determine if a name corresponds to a buffer object.
 
@@ -9287,7 +9289,7 @@ object by calling `glBindBuffer', is not the name of a buffer object.
 `GL_INVALID_OPERATION' is generated if `glIsBuffer' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIsEnabled (cap GLenum) -> GLboolean))
   "Test whether a capability is enabled.
 
@@ -9531,7 +9533,7 @@ The following capabilities are accepted for CAP:
 `GL_INVALID_OPERATION' is generated if `glIsEnabled' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIsList (list GLuint) -> GLboolean))
   "Determine if a name corresponds to a display list.
 
@@ -9547,7 +9549,7 @@ list by calling `glNewList', is not the name of a display list.
 `GL_INVALID_OPERATION' is generated if `glIsList' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIsProgram (program GLuint) -> GLboolean))
   "Determines if a name corresponds to a program object.
 
@@ -9563,7 +9565,7 @@ returns `GL_FALSE'.
 `GL_INVALID_OPERATION' is generated if `glIsProgram' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIsQuery (id GLuint) -> GLboolean))
   "Determine if a name corresponds to a query object.
 
@@ -9581,7 +9583,7 @@ object by calling `glBeginQuery', is not the name of a query object.
 `GL_INVALID_OPERATION' is generated if `glIsQuery' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIsShader (shader GLuint) -> GLboolean))
   "Determines if a name corresponds to a shader object.
 
@@ -9597,7 +9599,7 @@ name of a shader object, or if an error occurs, `glIsShader ' returns
 `GL_INVALID_OPERATION' is generated if `glIsShader' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glIsTexture (texture GLuint) -> GLboolean))
   "Determine if a name corresponds to a texture.
 
@@ -9615,7 +9617,7 @@ texture by calling `glBindTexture', is not the name of a texture.
 `GL_INVALID_OPERATION' is generated if `glIsTexture' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLightModelf
      (pname GLenum)
      (param GLfloat)
@@ -9728,7 +9730,7 @@ RGBA case, determine how much above ambient the resulting index is.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLightf
      (light GLenum)
      (pname GLenum)
@@ -9880,7 +9882,7 @@ attenuation factor is specified.
 `GL_INVALID_OPERATION' is generated if `glLight' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLineStipple
      (factor GLint)
      (pattern GLushort)
@@ -9930,7 +9932,7 @@ were all 1's. Initially, line stippling is disabled.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLineWidth (width GLfloat) -> void))
   "Specify the width of rasterized lines.
 
@@ -9972,7 +9974,7 @@ between supported widths within the range, call `glGet' with arguments
 `GL_INVALID_OPERATION' is generated if `glLineWidth' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLinkProgram (program GLuint) -> void))
   "Links a program object.
 
@@ -10070,7 +10072,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glListBase (base GLuint) -> void))
   "Set the display-list base for .
 
@@ -10085,7 +10087,7 @@ display lists are executed; the others are ignored.
 `GL_INVALID_OPERATION' is generated if `glListBase' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLoadIdentity -> void))
   "Replace the current matrix with the identity matrix.
 
@@ -10105,7 +10107,7 @@ but in some cases it is more efficient.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLoadMatrixd (m *) -> void))
   "Replace the current matrix with the specified matrix.
 
@@ -10137,7 +10139,7 @@ Projection and texture transformations are similarly defined.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLoadName (name GLuint) -> void))
   "Load a name onto the name stack.
 
@@ -10161,7 +10163,7 @@ name stack is empty.
 `GL_INVALID_OPERATION' is generated if `glLoadName' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLoadTransposeMatrixd (m *) -> void))
   "Replace the current matrix with the specified row-major ordered matrix.
 
@@ -10196,7 +10198,7 @@ to `glLoadMatrix' with M^T , where T represents the transpose.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glLogicOp (opcode GLenum) -> void))
   "Specify a logical pixel operation for color index rendering.
 
@@ -10281,7 +10283,7 @@ source and destination indices or colors.
 `GL_INVALID_OPERATION' is generated if `glLogicOp' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMap1d
      (target GLenum)
      (u1 GLdouble)
@@ -10442,7 +10444,7 @@ execution of `glBegin' and the corresponding execution of `glEnd'.
 `GL_INVALID_OPERATION' is generated if `glMap1' is called and the value
 of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMap2d
      (target GLenum)
      (u1 GLdouble)
@@ -10641,7 +10643,7 @@ execution of `glBegin' and the corresponding execution of `glEnd'.
 `GL_INVALID_OPERATION' is generated if `glMap2' is called and the value
 of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMapBuffer
      (target GLenum)
      (access GLenum)
@@ -10719,7 +10721,7 @@ buffer object whose data store is not currently mapped.
 is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMapGrid1d
      (un GLint)
      (u1 GLdouble)
@@ -10791,7 +10793,7 @@ The mappings specified by `glMapGrid' are used identically by
 `GL_INVALID_OPERATION' is generated if `glMapGrid' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMaterialf
      (face GLenum)
      (pname GLenum)
@@ -10899,7 +10901,7 @@ accepted value.
 `GL_INVALID_VALUE' is generated if a specular exponent outside the range
 [0,128] is specified.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMatrixMode (mode GLenum) -> void))
   "Specify which matrix is the current matrix.
 
@@ -10936,7 +10938,7 @@ value is `GL_MODELVIEW'.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMinmax
      (target GLenum)
      (internalformat GLenum)
@@ -11001,7 +11003,7 @@ allowable values.
 `GL_INVALID_OPERATION' is generated if `glMinmax' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMultiDrawArrays
      (mode GLenum)
      (first *)
@@ -11059,7 +11061,7 @@ currently mapped.
 `GL_INVALID_OPERATION' is generated if `glMultiDrawArrays' is executed
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMultiDrawElements
      (mode GLenum)
      (count *)
@@ -11117,7 +11119,7 @@ data store is currently mapped.
 `GL_INVALID_OPERATION' is generated if `glMultiDrawElements' is executed
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMultiTexCoord1i
      (target GLenum)
      (s GLint)
@@ -11200,7 +11202,7 @@ The current texture coordinates are part of the data that is associated
 with each vertex and with the current raster position. Initially, the
 values for (S,TRQ) are (0,001) .")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMultMatrixd (m *) -> void))
   "Multiply the current matrix with the specified matrix.
 
@@ -11219,7 +11221,7 @@ or the texture matrix.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glMultTransposeMatrixd (m *) -> void))
   "Multiply the current matrix with the specified row-major ordered matrix.
 
@@ -11238,7 +11240,7 @@ or the texture matrix.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glNewList (list GLuint) (mode GLenum) -> void)
    (glEndList -> void))
   "Create or replace a display list.
@@ -11316,7 +11318,7 @@ is made to the previous contents of the display list, if any, and no
 other change is made to the GL state. (It is as if no attempt had been
 made to create the new display list.)")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glNormalPointer
      (type GLenum)
      (stride GLsizei)
@@ -11366,7 +11368,7 @@ the normal array is used when `glDrawArrays', `glMultiDrawArrays',
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glNormal3d
      (nx GLdouble)
      (ny GLdouble)
@@ -11409,7 +11411,7 @@ normalization, call `glEnable' and `glDisable' with either
 `GL_NORMALIZE' or `GL_RESCALE_NORMAL'. Normalization is initially
 disabled.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glOrtho
      (left GLdouble)
      (right GLdouble)
@@ -11467,7 +11469,7 @@ NEAR = FAR.
 `GL_INVALID_OPERATION' is generated if `glOrtho' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPassThrough (token GLfloat) -> void))
   "Place a marker in the feedback buffer.
 
@@ -11494,7 +11496,7 @@ respect to the specification of graphics primitives is maintained.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPixelStoref
      (pname GLenum)
      (param GLfloat)
@@ -11794,7 +11796,7 @@ row skip value is specified, or if alignment is specified as other than
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPixelTransferf
      (pname GLenum)
      (param GLfloat)
@@ -12080,7 +12082,7 @@ assigned to real-valued parameters.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPixelZoom
      (xfactor GLfloat)
      (yfactor GLfloat)
@@ -12112,7 +12114,7 @@ factors reflect the resulting image about the current raster position.
 `GL_INVALID_OPERATION' is generated if `glPixelZoom' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPointParameterf
      (pname GLenum)
      (param GLfloat)
@@ -12180,7 +12182,7 @@ If the value for `GL_POINT_SIZE_MIN' is greater than
 `GL_POINT_SIZE_MAX', the point size after clamping is undefined, but no
 error is generated.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPointSize (size GLfloat) -> void))
   "Specify the diameter of rasterized points.
 
@@ -12265,7 +12267,7 @@ supported ranges and granularity with `glGet' with arguments
 `GL_INVALID_OPERATION' is generated if `glPointSize' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPolygonMode
      (face GLenum)
      (mode GLenum)
@@ -12321,7 +12323,7 @@ value.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPolygonOffset
      (factor GLfloat)
      (units GLfloat)
@@ -12355,7 +12357,7 @@ edges.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPolygonStipple (pattern *) -> void))
   "Set the polygon stippling pattern.
 
@@ -12404,7 +12406,7 @@ would exceed the data store size.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPrioritizeTextures
      (n GLsizei)
      (textures *)
@@ -12455,7 +12457,7 @@ bound. This is the only way to set the priority of a default texture.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPushAttrib (mask GLbitfield) -> void)
    (glPopAttrib -> void))
   "Push and pop the server attribute stack.
@@ -12960,7 +12962,7 @@ attribute stack is empty.
 is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPushClientAttrib (mask GLbitfield) -> void)
    (glPopClientAttrib -> void))
   "Push and pop the client attribute stack.
@@ -12998,7 +13000,7 @@ the attribute stack is full.
 `GL_STACK_UNDERFLOW' is generated if `glPopClientAttrib' is called while
 the attribute stack is empty.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPushMatrix -> void) (glPopMatrix -> void))
   "Push and pop the current matrix stack.
 
@@ -13031,7 +13033,7 @@ current matrix stack contains only a single matrix.
 is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glPushName (name GLuint) -> void)
    (glPopName -> void))
   "Push and pop the name stack.
@@ -13068,7 +13070,7 @@ name stack is empty.
 executed between a call to `glBegin' and the corresponding call to
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glRasterPos2i (x GLint) (y GLint) -> void)
    (glRasterPos2d (x GLdouble) (y GLdouble) -> void)
    (glRasterPos3i
@@ -13158,7 +13160,7 @@ raster RGBA color always maintains its initial value.
 `GL_INVALID_OPERATION' is generated if `glRasterPos' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glReadBuffer (mode GLenum) -> void))
   "Select a color buffer source for pixels.
 
@@ -13196,7 +13198,7 @@ not exist.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glReadPixels
      (x GLint)
      (y GLint)
@@ -13449,7 +13451,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glRectd
      (x1 GLdouble)
      (y1 GLdouble)
@@ -13498,7 +13500,7 @@ winding.
 `GL_INVALID_OPERATION' is generated if `glRect' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glRenderMode (mode GLenum) -> GLint))
   "Set rasterization mode.
 
@@ -13563,7 +13565,7 @@ once.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glResetHistogram (target GLenum) -> void))
   "Reset histogram table entries to zero.
 
@@ -13579,7 +13581,7 @@ table to zero.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glResetMinmax (target GLenum) -> void))
   "Reset minmax table entries to initial values.
 
@@ -13597,7 +13599,7 @@ possible component values.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glRotated
      (angle GLdouble)
      (x GLdouble)
@@ -13642,7 +13644,7 @@ and `glPopMatrix' to save and restore the unrotated coordinate system.
 `GL_INVALID_OPERATION' is generated if `glRotate' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glSampleCoverage
      (value GLclampf)
      (invert GLboolean)
@@ -13684,7 +13686,7 @@ each sample.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glScaled
      (x GLdouble)
      (y GLdouble)
@@ -13719,7 +13721,7 @@ coordinate system.
 `GL_INVALID_OPERATION' is generated if `glScale' is executed between the
 execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glScissor
      (x GLint)
      (y GLint)
@@ -13763,7 +13765,7 @@ includes the entire window.
 `GL_INVALID_OPERATION' is generated if `glScissor' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glSecondaryColorPointer
      (size GLint)
      (type GLenum)
@@ -13822,7 +13824,7 @@ called.
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glSecondaryColor3i
      (red GLint)
      (green GLint)
@@ -13885,7 +13887,7 @@ range [0,1] before the current color is updated. However, color
 components are clamped to this range before they are interpolated or
 written into a color buffer.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glSelectBuffer
      (size GLsizei)
      (buffer *)
@@ -13952,7 +13954,7 @@ argument `GL_SELECT' before `glSelectBuffer' is called at least once.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glSeparableFilter2D
      (target GLenum)
      (internalformat GLenum)
@@ -14131,7 +14133,7 @@ datum indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glShadeModel (mode GLenum) -> void))
   "Select flat or smooth shading.
 
@@ -14192,7 +14194,7 @@ or `GL_SMOOTH'.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glShaderSource
      (shader GLuint)
      (count GLsizei)
@@ -14240,7 +14242,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glStencilFuncSeparate
      (face GLenum)
      (func GLenum)
@@ -14340,7 +14342,7 @@ values.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glStencilFunc
      (func GLenum)
      (ref GLint)
@@ -14434,7 +14436,7 @@ values.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glStencilMaskSeparate
      (face GLenum)
      (mask GLuint)
@@ -14469,7 +14471,7 @@ with FACE set to `GL_FRONT_AND_BACK'.
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glStencilMask (mask GLuint) -> void))
   "Control the front and back writing of individual bits in the stencil
 planes.
@@ -14495,7 +14497,7 @@ and back stencil writemasks to different values.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glStencilOpSeparate
      (face GLenum)
      (sfail GLenum)
@@ -14605,7 +14607,7 @@ other than the eight defined constant values.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glStencilOp
      (sfail GLenum)
      (dpfail GLenum)
@@ -14706,7 +14708,7 @@ other than the eight defined constant values.
 `GL_INVALID_OPERATION' is generated if `glStencilOp' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexCoordPointer
      (size GLint)
      (type GLenum)
@@ -14767,7 +14769,7 @@ called.
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexCoord1i (s GLint) -> void)
    (glTexCoord1d (s GLdouble) -> void)
    (glTexCoord2i (s GLint) (t GLint) -> void)
@@ -14820,7 +14822,7 @@ The current texture coordinates are part of the data that is associated
 with each vertex and with the current raster position. Initially, the
 values for S, T, R, and Q are (0, 0, 0, 1).")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexEnvf
      (target GLenum)
      (pname GLenum)
@@ -15174,7 +15176,7 @@ or `GL_ALPHA_SCALE' are not one of 1.0, 2.0, or 4.0.
 `GL_INVALID_OPERATION' is generated if `glTexEnv' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexGeni
      (coord GLenum)
      (pname GLenum)
@@ -15290,7 +15292,7 @@ PARAMS is `GL_SPHERE_MAP', and COORD is either `GL_R' or `GL_Q'.
 `GL_INVALID_OPERATION' is generated if `glTexGen' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexImage1D
      (target GLenum)
      (level GLint)
@@ -15612,7 +15614,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexImage2D
      (target GLenum)
      (level GLint)
@@ -15961,7 +15963,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexImage3D
      (target GLenum)
      (level GLint)
@@ -16283,7 +16285,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexParameterf
      (target GLenum)
      (pname GLenum)
@@ -16567,7 +16569,7 @@ value (based on the value of PNAME) and does not.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexSubImage1D
      (target GLenum)
      (level GLint)
@@ -16688,7 +16690,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexSubImage2D
      (target GLenum)
      (level GLint)
@@ -16826,7 +16828,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTexSubImage3D
      (target GLenum)
      (level GLint)
@@ -16969,7 +16971,7 @@ indicated by TYPE.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glTranslated
      (x GLdouble)
      (y GLdouble)
@@ -17003,7 +17005,7 @@ untranslated coordinate system.
 `GL_INVALID_OPERATION' is generated if `glTranslate' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glUniform1f
      (location GLint)
      (v0 GLfloat)
@@ -17157,7 +17159,7 @@ command other than `glUniform1i' and `glUniform1iv'.
 `GL_INVALID_OPERATION' is generated if `glUniform' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glUseProgram (program GLuint) -> void))
   "Installs a program object as part of current rendering state.
 
@@ -17256,7 +17258,7 @@ current state.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glValidateProgram (program GLuint) -> void))
   "Validates a program object.
 
@@ -17295,7 +17297,7 @@ OpenGL.
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glVertexAttribPointer
      (index GLuint)
      (size GLint)
@@ -17373,7 +17375,7 @@ If enabled, the generic vertex attribute array is used when
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glVertexAttrib1s
      (index GLuint)
      (v0 GLshort)
@@ -17521,7 +17523,7 @@ attributes.
 `GL_INVALID_VALUE' is generated if INDEX is greater than or equal to
 `GL_MAX_VERTEX_ATTRIBS'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glVertexPointer
      (size GLint)
      (type GLenum)
@@ -17579,7 +17581,7 @@ the vertex array is used when `glArrayElement', `glDrawArrays',
 
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glVertex2i (x GLint) (y GLint) -> void)
    (glVertex2d (x GLdouble) (y GLdouble) -> void)
    (glVertex3i
@@ -17628,7 +17630,7 @@ coordinates, and fog coordinate are associated with the vertex when
 When only X and Y are specified, Z defaults to 0 and W defaults to 1.
 When X , Y , and Z are specified, W defaults to 1.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glViewport
      (x GLint)
      (y GLint)
@@ -17669,7 +17671,7 @@ on the implementation. To query this range, call `glGet' with argument
 `GL_INVALID_OPERATION' is generated if `glViewport' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
-(define-gl-procedure
+(define-foreign-procedure
   ((glWindowPos2i (x GLint) (y GLint) -> void)
    (glWindowPos2d (x GLdouble) (y GLdouble) -> void)
    (glWindowPos3i

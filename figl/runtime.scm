@@ -21,25 +21,19 @@
 ;;
 ;;; Code:
 
-(define-module (figl low-level support)
+(define-module (figl runtime)
   #:use-module (system foreign)
-  #:export (current-gl-resolver
-            define-gl-procedure
-            void))
+  #:export (current-resolver
+            define-foreign-procedure))
 
-(define void #f)
-
-(module-use! (module-public-interface (current-module))
-             (resolve-interface '(figl low-level types)))
-
-(define (default-foreign-resolver name)
+(define (default-resolver name)
   (dynamic-pointer name (dynamic-link)))
 
-(define current-gl-resolver
-  (make-parameter default-foreign-resolver))
+(define current-resolver
+  (make-parameter default-resolver))
 
-(define (resolve-foreign name)
-  ((current-gl-resolver) name))
+(define (resolve name)
+  ((current-resolver) name))
 
 (define-syntax foreign-trampoline
   (lambda (stx)
@@ -48,14 +42,14 @@
           name (pname ptype) ... -> type)
        (with-syntax ((sname (symbol->string (syntax->datum #'name))))
          #'(lambda (pname ...)
-             (let ((ptr (resolve-foreign sname)))
+             (let ((ptr (resolve sname)))
                (set! trampoline
                      (pointer->procedure type
                                          ptr
                                          (list ptype ...)))
                (trampoline pname ...))))))))
 
-(define-syntax define-gl-procedure
+(define-syntax define-foreign-procedure
   (syntax-rules (->)
     ((define-gl-procedure ((name (pname ptype) ... -> type)
                            ...)
