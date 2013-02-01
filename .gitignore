@@ -9,3 +9,9 @@
 /config.status
 /Makefile
 /figl/config.scm
+/build-aux/texinfo.tex
+/doc/figl.info
+/doc/figl.info-1
+/doc/figl.info-2
+/doc/figl.info-3
+/env

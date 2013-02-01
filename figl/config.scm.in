@@ -22,7 +22,11 @@
 ;;; Code:
 
 (define-module (figl config)
-  #:export (upstream-man-pages))
+  #:export (abs-top-srcdir
+            upstream-man-pages))
+
+(define (abs-top-srcdir)
+  "@abs_top_srcdir@")
 
 (define (upstream-man-pages)
   "@abs_top_srcdir@/upstream-man-pages")

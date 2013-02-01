@@ -26,12 +26,27 @@
   #:use-module (sxml simple)
   #:use-module ((sxml xpath) #:hide (filter))
   #:use-module (sxml transform)
-  #:use-module ((srfi srfi-1) #:select (filter fold))
+  #:use-module (sxml fold)
+  #:use-module ((srfi srfi-1) #:select (filter fold append-map))
+  #:use-module (srfi srfi-9)
   #:use-module (texinfo docbook)
-  #:use-module (texinfo plain-text)
   #:use-module (ice-9 ftw)
   #:use-module (ice-9 match)
-  #:export (fold-gl-definitions))
+  #:export (gl-definition?
+            make-gl-definition
+            gl-definition-name
+            gl-definition-prototype
+            gl-definition-documentation
+            gl-definition-copyright
+            parse-gl-definitions))
+
+(define-record-type gl-definition
+  (make-gl-definition name prototype documentation copyright)
+  gl-definition?
+  (name gl-definition-name)
+  (prototype gl-definition-prototype)
+  (documentation gl-definition-documentation)
+  (copyright gl-definition-copyright))
 
 (define *namespaces*
   '((mml . "http://www.w3.org/1998/Math/MathML")))
@@ -156,6 +171,9 @@
 (define xml-errors
   (take-first (sxpath '(refentry (refsect1 (@ id (equal? "errors")))))))
 
+(define xml-copyright
+  (take-first (sxpath '(refentry (refsect1 (@ id (equal? "Copyright")))))))
+
 (define (parse-prototype xml)
   xml)
 
@@ -176,10 +194,56 @@
         (if (null? l) (reverse dest)
             (loop (cdr l) (cons (car l) (cons elem dest)))))))
 
+(define (lift-tables sdocbook)
+  ;; Like sdocbook-flatten, but tweaked to lift tables from inside
+  ;; paras, but not paras from inside tables.  Pretty hacky stuff.
+  (define *sdocbook-block-commands*
+    '(informaltable programlisting variablelist))
+
+  (define (inline-command? command)
+    (not (memq command *sdocbook-block-commands*)))
+
+  (define (fhere str accum block cont)
+    (values (cons str accum)
+            block
+            cont))
+  (define (fdown node accum block cont)
+    (match node
+      ((command (and attrs ('% . _)) body ...)
+       (values body '() '()
+               (lambda (accum block)
+                 (values
+                  `(,command ,attrs ,@(reverse accum))
+                  block))))
+      ((command body ...)
+       (values body '() '()
+               (lambda (accum block)
+                 (values
+                  `(,command ,@(reverse accum))
+                  block))))))
+  (define (fup node paccum pblock pcont kaccum kblock kcont)
+    (call-with-values (lambda () (kcont kaccum kblock))
+      (lambda (ret block)
+        (if (inline-command? (car ret))
+            (values (cons ret paccum) (append kblock pblock) pcont)
+            (values paccum (append kblock (cons ret pblock)) pcont)))))
+  (call-with-values
+      (lambda () (foldts*-values fdown fup fhere sdocbook '() '() #f))
+    (lambda (accum block cont)
+      (append (reverse accum)
+              (reverse block)
+              ))))
+
 (define *rules*
   `((refsect1
+     *preorder*
      . ,(lambda (tag id . body)
-          body))
+          (append-map (lambda (nodeset)
+                        (map
+                         (lambda (x)
+                           (pre-post-order x *rules*))
+                         nodeset))
+                      (map lift-tables body))))
     (title
      . ,(lambda (tag body)
           `(heading ,body)))
@@ -199,6 +263,9 @@
             `((itemx ,@rest)))))
      . ,(lambda (tag . body)
           `(table (% (formatter (asis))) ,@body)))
+    (trademark
+     . ,(match-lambda*
+         ((_ ('@ ('class "copyright"))) '(copyright))))
     (parameter
      . ,(lambda (tag body)
           `(var ,body)))
@@ -218,6 +285,8 @@
     (emphasis
      . ,(match-lambda*
          ((_) "")
+         ((_ ('@ ('role "bold")) (and body (? string?)))
+          `(strong ,(string-trim-both body)))
          ((_ ('@ ('role "bold")) . body) `(strong ,@body))
          ((_ body) `(var ,body))))
     (citerefentry
@@ -247,16 +316,16 @@
             rows))
       (row
        . ,(lambda (tag first . rest)
-            `(entry (% (heading ,first))
-                    ,@(list-intersperse rest ", "))))
+            `(entry (% (heading ,@first))
+                    (para ,@(apply
+                             append
+                             (list-intersperse rest '(", ")))))))
       (entry
        . ,(match-lambda*
-           ((_) "")
-           ((_ ('@ . _)) "")
-           ((_ ('@ . _) x) x)
-           ((_ ('@ . _) x ...) `(*fragment* ,@x))
-           ((_ x) x)
-           ((_ x ...) `(*fragment* ,@x)))))
+           ((_) '())
+           ((_ ('@ . _)) '())
+           ((_ ('@ . _) x ...) x)
+           ((_ x ...) x))))
      . ,(lambda (tag attrs . contents)
           `(table (% (formatter (asis)))
                   ,@(apply append (filter identity contents)))))
@@ -345,37 +414,22 @@
 
 ;; Produces an stexinfo fragment.
 (define (generate-documentation purpose parameters description errors)
-  (string-trim-both
-   (stexi->plain-text
-    `(*fragment*
-      (heading ,purpose)
-      ,@(if parameters (sdocbook->stexi parameters) '())
-      ,@(if description (sdocbook->stexi description) '())
-      ,@(if errors (sdocbook->stexi errors) '())))))
+  `(*fragment*
+    (heading ,purpose)
+    ,@(if parameters (sdocbook->stexi parameters) '())
+    ,@(if description (sdocbook->stexi description) '())
+    ,@(if errors (sdocbook->stexi errors) '())))
 
 (define (xml->definition xml)
-  `((name . ,(xml-name xml))
-    (prototype . ,(parse-prototype (xml-prototype xml)))
-    (documentation . ,(generate-documentation (xml-purpose xml)
+  (make-gl-definition (xml-name xml)
+                      (parse-prototype (xml-prototype xml))
+                      (generate-documentation (xml-purpose xml)
                                               (xml-parameters xml)
                                               (xml-description xml)
-                                              (xml-errors xml)))))
+                                              (xml-errors xml))
+                      (and=> (xml-copyright xml) sdocbook->stexi)))
 
-(define (fold-gl-definitions proc version . seeds)
-  (apply
-   values
-   (fold (lambda (file seeds)
-           (let ((xml (parse-man-xml version file)))
-             (call-with-values
-                 (lambda ()
-                   (apply proc
-                          (xml-name xml)
-                          (parse-prototype (xml-prototype xml))
-                          (generate-documentation (xml-purpose xml)
-                                                  (xml-parameters xml)
-                                                  (xml-description xml)
-                                                  (xml-errors xml))
-                          seeds))
-               list)))
-         seeds
-         (xml-files version))))
+(define (parse-gl-definitions version)
+  (map (lambda (file)
+         (xml->definition (parse-man-xml version file)))
+       (xml-files version)))

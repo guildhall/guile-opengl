@@ -7,18 +7,21 @@ SOURCES = \
 	figl.scm \
 	figl/config.scm \
 	figl/parse.scm \
-	figl/low-level.scm
+	figl/low-level/support.scm \
+	figl/low-level/gl.scm \
+	figl/low-level/glu.scm \
+	figl/low-level/glx.scm
 
-BUILT_SOURCES = \
-	figl/low-level.inc.scm
-
-NOCOMP_SOURCES = \
-	figl/low-level.inc.scm
-
-figl/low-level.inc.scm: figl/parse.go
-	$(top_builddir)/env $(GUILE) $(top_srcdir)/generate-low-level-bindings > $@
+update: figl/parse.go
+	$(top_builddir)/env $(GUILE) $(top_srcdir)/maint/update-low-level-bindings
 
 EXTRA_DIST += env.in COPYING COPYING.LESSER
+
+info_TEXINFOS = doc/figl.texi
+figl_TEXINFOS = \
+	doc/low-level-gl.texi \
+	doc/low-level-glu.texi \
+	doc/low-level-glx.texi
 
 TESTS = \
 	tests/basic.test

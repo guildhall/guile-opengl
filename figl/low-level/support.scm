@@ -21,5 +21,13 @@
 ;;
 ;;; Code:
 
-(define-module (figl low-level))
+(define-module (figl low-level support)
+  #:export (define-gl-procedure))
 
+(define-syntax-rule (define-gl-procedure scheme-name c-name prototype
+                      docstring)
+  (begin
+    (define (scheme-name)
+      docstring
+      (cons c-name 'prototype))
+    (export scheme-name)))

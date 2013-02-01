@@ -1,0 +1,158 @@
+#!/usr/bin/env guile
+!#
+
+(use-modules (figl parse)
+             (figl config)
+             (sxml fold)
+             ((srfi srfi-1) #:select (append-map))
+             (texinfo serialize)
+             (texinfo plain-text)
+             (ice-9 pretty-print))
+
+(setlocale LC_ALL "")
+
+(print-disable 'escape-newlines)
+
+(define (module-name->scm-name mod-name)
+  (in-vicinity
+   (abs-top-srcdir)
+   (string-append (string-join (map symbol->string mod-name) "/")
+                  ".scm")))
+
+(define (module-name->texi-name mod-name)
+  (in-vicinity
+   (in-vicinity (abs-top-srcdir) "doc")
+   (string-append (string-join (map symbol->string (cdr mod-name)) "-")
+                  ".texi")))
+
+(define (unique-copyrights defs)
+  (let lp ((in defs) (out '()))
+    (if (null? in)
+        (reverse out)
+        (let ((copyright (gl-definition-copyright (car in))))
+          (lp (cdr in)
+              (if (member copyright out)
+                  out
+                  (cons copyright out)))))))
+
+(define (write-scm mod-name defs port)
+  (display "\
+;;; figl                           -*- mode: scheme; coding: utf-8 -*-
+;;; Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
+;;;
+;;; Figl is free software: you can redistribute it and/or modify it
+;;; under the terms of the GNU Lesser General Public License as
+;;; published by the Free Software Foundation, either version 3 of the
+;;; License, or (at your option) any later version.
+;;; 
+;;; Figl is distributed in the hope that it will be useful, but WITHOUT
+;;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+;;; or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General
+;;; Public License for more details.
+;;; 
+;;; You should have received a copy of the GNU Lesser General Public
+;;; License along with this program.  If not, see
+;;; <http://www.gnu.org/licenses/>.
+;;;
+;;; Derived from upstream OpenGL documentation.
+" port)
+  (for-each
+   (lambda (copyright)
+     (display ";;; " port)
+     (newline port)
+     (for-each (lambda (line)
+                 (display ";;; " port)
+                 (display line port)
+                 (newline port))
+               (string-split
+                (string-trim-both (stexi->plain-text copyright))
+                #\newline)))
+   (unique-copyrights defs))
+  (display "\
+;;;
+;;; Automatically generated; you probably don't want to edit this.  To
+;;; update, run \"make update\" in the top-level build tree.
+;;;
+" port)
+  (newline port)
+  (pretty-print
+   `(define-module ,mod-name
+      #:use-module (figl low-level support)
+      #:export ,(map (lambda (def)
+                       (string->symbol (gl-definition-name def)))
+                     defs))
+   port)
+  (newline port)
+  (for-each
+   (lambda (def)
+     (pretty-print
+      `(define-gl-procedure ,(string->symbol (gl-definition-name def))
+         ,(gl-definition-name def)
+         ,(gl-definition-prototype def)
+         #;
+         ,(string-trim-both
+           (stexi->plain-text
+            (gl-definition-documentation def)))
+         ',(gl-definition-documentation def))
+      port)
+     (newline port))
+   defs))
+
+(define (write-texi mod-name defs port)
+  (display
+   (stexi->texi
+    `(*fragment*
+      (para "The functions from this section may be had by loading "
+            "the module:")
+      (example "(use-modules " ,(object->string mod-name) ")")
+      (copying
+       (para
+        "This section of the manual was derived from the upstream "
+        "OpenGL documentation.  Each function's documentation has "
+        "its own copyright statement; for full details, see the "
+        "upstream documentation.  The copyright notices and licenses "
+        "present in this section are as follows.")
+       ,@(append-map cdr (unique-copyrights defs)))
+      ,@(map
+         (lambda (def)
+           `(defun (% (name ,(gl-definition-name def))
+                      ;; FIXME: proper prototype.
+                      ;; (gl-definition-prototype def)
+                      (arguments))
+              ,@(cdr (gl-definition-documentation def))))
+         defs)))
+   port))
+
+(define (write-bindings mod-name defs)
+  (call-with-output-file (module-name->scm-name mod-name)
+    (lambda (port)
+      (write-scm mod-name defs port)))
+  (call-with-output-file (module-name->texi-name mod-name)
+    (lambda (port)
+      (write-texi mod-name defs port))))
+
+(define (partition-definitions version)
+  (fold-values
+   (lambda (def gl glu glx)
+     (cond
+      ((string-prefix? "glu" (gl-definition-name def))
+       (values gl (cons def glu) glx))
+      ((string-prefix? "glX" (gl-definition-name def))
+       (values gl glu (cons def glx)))
+      (else
+       (values (cons def gl) glu glx))))
+   (parse-gl-definitions version)
+   '()
+   '()
+   '()))
+
+(define* (main arg0 #:optional (version "2"))
+  (call-with-values
+      (lambda () (partition-definitions version))
+    (lambda (gl glu glx)
+      (write-bindings '(figl low-level gl) (reverse gl))
+      (write-bindings '(figl low-level glu) (reverse glu))
+      (write-bindings '(figl low-level glx) (reverse glx)))))
+
+(when (batch-mode?)
+  (apply main (command-line)))
