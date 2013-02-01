@@ -8772,7 +8772,7 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun * glGetString name
+@deftypefun const-GLubyte* glGetString name
 Return a string describing the current GL connection.
 
 @table @asis
@@ -10914,7 +10914,7 @@ the value of @code{GL_ACTIVE_TEXTURE} is not @code{GL_TEXTURE0}.
 
 @end deftypefun
 
-@deftypefun * glMapBuffer target access
+@deftypefun void-* glMapBuffer target access
 @deftypefunx GLboolean glUnmapBuffer target
 Map a buffer object's data store.
 

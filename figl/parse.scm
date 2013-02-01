@@ -177,11 +177,14 @@
 (define (string->gl-type str)
   (let ((str (string-trim-both str)))
     (cond
-     ((string=? (string-take-right str 1) "*") '*)
+     ((string-index str #\*)
+      (string->symbol
+       (string-join (string-split str #\space) "-")))
      ((string-prefix? "const " str)
       (string->gl-type (string-drop str (string-length "const "))))
      (else
-      (string->symbol str)))))
+      (string->symbol
+       (string-join (string-split str #\space) "-"))))))
 
 (define (parse-prototypes sxml)
   (define all-names

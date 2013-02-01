@@ -527,8 +527,8 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
 (define-foreign-procedure
   ((glAreTexturesResident
      (n GLsizei)
-     (textures *)
-     (residences *)
+     (textures const-GLuint-*)
+     (residences GLboolean-*)
      ->
      GLboolean))
   "Determine if textures are loaded in texture memory.
@@ -827,7 +827,7 @@ or may not be generated.")
   ((glBindAttribLocation
      (program GLuint)
      (index GLuint)
-     (name *)
+     (name const-GLchar-*)
      ->
      void))
   "Associates a generic vertex attribute index with a named attribute
@@ -1082,7 +1082,7 @@ between the execution of `glBegin' and the corresponding execution of
      (yorig GLfloat)
      (xmove GLfloat)
      (ymove GLfloat)
-     (bitmap *)
+     (bitmap const-GLubyte-*)
      ->
      void))
   "Draw a bitmap.
@@ -1632,7 +1632,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
   ((glBufferData
      (target GLenum)
      (size GLsizeiptr)
-     (data *)
+     (data const-GLvoid-*)
      (usage GLenum)
      ->
      void))
@@ -1724,7 +1724,7 @@ between the execution of `glBegin' and the corresponding execution of
      (target GLenum)
      (offset GLintptr)
      (size GLsizeiptr)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Updates a subset of a buffer object's data store.
@@ -1774,7 +1774,7 @@ between the execution of `glBegin' and the corresponding execution of
   ((glCallLists
      (n GLsizei)
      (type GLenum)
-     (lists *)
+     (lists const-GLvoid-*)
      ->
      void))
   "Execute a list of display lists.
@@ -2073,7 +2073,11 @@ called with a parameter of `GL_TEXTURE_COORD_ARRAY'.
 where i ranges from 0 to the value of `GL_MAX_TEXTURE_COORDS' - 1.")
 
 (define-foreign-procedure
-  ((glClipPlane (plane GLenum) (equation *) -> void))
+  ((glClipPlane
+     (plane GLenum)
+     (equation const-GLdouble-*)
+     ->
+     void))
   "Specify a plane against which all geometry is clipped.
 
 PLANE
@@ -2187,7 +2191,7 @@ between the execution of `glBegin' and the corresponding execution of
      (size GLint)
      (type GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of colors.
@@ -2248,7 +2252,7 @@ the color array is used when `glDrawArrays', `glMultiDrawArrays',
      (count GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Respecify a portion of a color table.
@@ -2333,7 +2337,7 @@ between the execution of `glBegin' and the corresponding execution of
      (width GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Define a color lookup table.
@@ -2697,7 +2701,7 @@ between the execution of `glBegin' and the corresponding execution of
      (width GLsizei)
      (border GLint)
      (imageSize GLsizei)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a one-dimensional texture image in a compressed format.
@@ -2799,7 +2803,7 @@ specification defining the internal compression format.")
      (height GLsizei)
      (border GLint)
      (imageSize GLsizei)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a two-dimensional texture image in a compressed format.
@@ -2916,7 +2920,7 @@ specification defining the internal compression format.")
      (depth GLsizei)
      (border GLint)
      (imageSize GLsizei)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a three-dimensional texture image in a compressed format.
@@ -3031,7 +3035,7 @@ specification defining the internal compression format.")
      (width GLsizei)
      (format GLenum)
      (imageSize GLsizei)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a one-dimensional texture subimage in a compressed format.
@@ -3127,7 +3131,7 @@ specification defining the internal compression format.")
      (height GLsizei)
      (format GLenum)
      (imageSize GLsizei)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a two-dimensional texture subimage in a compressed format.
@@ -3239,7 +3243,7 @@ specification defining the internal compression format.")
      (depth GLsizei)
      (format GLenum)
      (imageSize GLsizei)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a three-dimensional texture subimage in a compressed format.
@@ -3343,7 +3347,7 @@ specification defining the internal compression format.")
      (width GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Define a one-dimensional convolution filter.
@@ -3507,7 +3511,7 @@ execution of `glEnd'.")
      (height GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Define a two-dimensional convolution filter.
@@ -4898,7 +4902,11 @@ facets are front-facing and back-facing. See `glFrontFace'.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glDeleteBuffers (n GLsizei) (buffers *) -> void))
+  ((glDeleteBuffers
+     (n GLsizei)
+     (buffers const-GLuint-*)
+     ->
+     void))
   "Delete named buffer objects.
 
 N
@@ -4982,7 +4990,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glDeleteQueries (n GLsizei) (ids *) -> void))
+  ((glDeleteQueries
+     (n GLsizei)
+     (ids const-GLuint-*)
+     ->
+     void))
   "Delete named query objects.
 
 N
@@ -5034,7 +5046,7 @@ between the execution of `glBegin' and the corresponding execution of
 (define-foreign-procedure
   ((glDeleteTextures
      (n GLsizei)
-     (textures *)
+     (textures const-GLuint-*)
      ->
      void))
   "Delete named textures.
@@ -5255,7 +5267,11 @@ currently mapped.
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
 (define-foreign-procedure
-  ((glDrawBuffers (n GLsizei) (bufs *) -> void))
+  ((glDrawBuffers
+     (n GLsizei)
+     (bufs const-GLenum-*)
+     ->
+     void))
   "Specifies a list of color buffers to be drawn into.
 
 N
@@ -5416,7 +5432,7 @@ between the execution of `glBegin' and the corresponding execution of
      (mode GLenum)
      (count GLsizei)
      (type GLenum)
-     (indices *)
+     (indices const-GLvoid-*)
      ->
      void))
   "Render primitives from array data.
@@ -5474,7 +5490,7 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (height GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Write a block of pixels to the frame buffer.
@@ -5884,7 +5900,7 @@ between the execution of `glBegin' and the corresponding execution of
      (end GLuint)
      (count GLsizei)
      (type GLenum)
-     (indices *)
+     (indices const-GLvoid-*)
      ->
      void))
   "Render primitives from array data.
@@ -5959,7 +5975,7 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
 (define-foreign-procedure
   ((glEdgeFlagPointer
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of edge flags.
@@ -6829,7 +6845,7 @@ I=N , then the value computed from I·ΔU+U_1 is exactly U_2 , and if J=M
   ((glFeedbackBuffer
      (size GLsizei)
      (type GLenum)
-     (buffer *)
+     (buffer GLfloat-*)
      ->
      void))
   "Controls feedback mode.
@@ -6993,7 +7009,7 @@ execution of `glBegin' and the corresponding execution of `glEnd'.")
   ((glFogCoordPointer
      (type GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer GLvoid-*)
      ->
      void))
   "Define an array of fog coordinates.
@@ -7251,7 +7267,11 @@ if LEFT = RIGHT, or BOTTOM = TOP, or NEAR = FAR.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glGenBuffers (n GLsizei) (buffers *) -> void))
+  ((glGenBuffers
+     (n GLsizei)
+     (buffers GLuint-*)
+     ->
+     void))
   "Generate buffer object names.
 
 N
@@ -7299,7 +7319,7 @@ generated, and 0 is returned.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glGenQueries (n GLsizei) (ids *) -> void))
+  ((glGenQueries (n GLsizei) (ids GLuint-*) -> void))
   "Generate query object names.
 
 N
@@ -7328,7 +7348,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glGenTextures (n GLsizei) (textures *) -> void))
+  ((glGenTextures
+     (n GLsizei)
+     (textures GLuint-*)
+     ->
+     void))
   "Generate texture names.
 
 N
@@ -7360,10 +7384,10 @@ between the execution of `glBegin' and the corresponding execution of
      (program GLuint)
      (index GLuint)
      (bufSize GLsizei)
-     (length *)
-     (size *)
-     (type *)
-     (name *)
+     (length GLsizei-*)
+     (size GLint-*)
+     (type GLenum-*)
+     (name GLchar-*)
      ->
      void))
   "Returns information about an active attribute variable for the specified
@@ -7467,10 +7491,10 @@ between the execution of `glBegin' and the corresponding execution of
      (program GLuint)
      (index GLuint)
      (bufSize GLsizei)
-     (length *)
-     (size *)
-     (type *)
-     (name *)
+     (length GLsizei-*)
+     (size GLint-*)
+     (type GLenum-*)
+     (name GLchar-*)
      ->
      void))
   "Returns information about an active uniform variable for the specified
@@ -7597,8 +7621,8 @@ between the execution of `glBegin' and the corresponding execution of
   ((glGetAttachedShaders
      (program GLuint)
      (maxCount GLsizei)
-     (count *)
-     (shaders *)
+     (count GLsizei-*)
+     (shaders GLuint-*)
      ->
      void))
   "Returns the handles of the shader objects attached to a program object.
@@ -7645,7 +7669,7 @@ execution of `glEnd'.")
 (define-foreign-procedure
   ((glGetAttribLocation
      (program GLuint)
-     (name *)
+     (name const-GLchar-*)
      ->
      GLint))
   "Returns the location of an attribute variable.
@@ -7695,7 +7719,7 @@ between the execution of `glBegin' and the corresponding execution of
      (target GLenum)
      (offset GLintptr)
      (size GLsizeiptr)
-     (data *)
+     (data GLvoid-*)
      ->
      void))
   "Returns a subset of a buffer object's data store.
@@ -7745,7 +7769,7 @@ between the execution of `glBegin' and the corresponding execution of
 (define-foreign-procedure
   ((glGetClipPlane
      (plane GLenum)
-     (equation *)
+     (equation GLdouble-*)
      ->
      void))
   "Return the coefficients of the specified clipping plane.
@@ -7776,7 +7800,7 @@ between the execution of `glBegin' and the corresponding execution of
      (target GLenum)
      (format GLenum)
      (type GLenum)
-     (table *)
+     (table GLvoid-*)
      ->
      void))
   "Retrieve contents of a color lookup table.
@@ -7885,7 +7909,7 @@ between the execution of `glBegin' and the corresponding execution of
   ((glGetCompressedTexImage
      (target GLenum)
      (lod GLint)
-     (img *)
+     (img GLvoid-*)
      ->
      void))
   "Return a compressed texture image.
@@ -7954,7 +7978,7 @@ execution of `glEnd'.")
      (target GLenum)
      (format GLenum)
      (type GLenum)
-     (image *)
+     (image GLvoid-*)
      ->
      void))
   "Get current 1D or 2D convolution filter kernel.
@@ -8135,7 +8159,7 @@ In this case, `glGetError' returns 0.")
      (reset GLboolean)
      (format GLenum)
      (type GLenum)
-     (values *)
+     (values GLvoid-*)
      ->
      void))
   "Get histogram table.
@@ -8246,7 +8270,7 @@ between the execution of `glBegin' and the corresponding execution of
      (reset GLboolean)
      (format GLenum)
      (types GLenum)
-     (values *)
+     (values GLvoid-*)
      ->
      void))
   "Get minimum and maximum pixel values.
@@ -8360,7 +8384,7 @@ indicated by TYPE.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glGetPolygonStipple (pattern *) -> void))
+  ((glGetPolygonStipple (pattern GLubyte-*) -> void))
   "Return the polygon stipple pattern.
 
 PATTERN
@@ -8396,8 +8420,8 @@ between the execution of `glBegin' and the corresponding execution of
   ((glGetProgramInfoLog
      (program GLuint)
      (maxLength GLsizei)
-     (length *)
-     (infoLog *)
+     (length GLsizei-*)
+     (infoLog GLchar-*)
      ->
      void))
   "Returns the information log for a program object.
@@ -8454,9 +8478,9 @@ between the execution of `glBegin' and the corresponding execution of
      (target GLenum)
      (format GLenum)
      (type GLenum)
-     (row *)
-     (column *)
-     (span *)
+     (row GLvoid-*)
+     (column GLvoid-*)
+     (span GLvoid-*)
      ->
      void))
   "Get separable convolution filter kernel images.
@@ -8573,8 +8597,8 @@ execution of `glEnd'.")
   ((glGetShaderInfoLog
      (shader GLuint)
      (maxLength GLsizei)
-     (length *)
-     (infoLog *)
+     (length GLsizei-*)
+     (infoLog GLchar-*)
      ->
      void))
   "Returns the information log for a shader object.
@@ -8627,8 +8651,8 @@ between the execution of `glBegin' and the corresponding execution of
   ((glGetShaderSource
      (shader GLuint)
      (bufSize GLsizei)
-     (length *)
-     (source *)
+     (length GLsizei-*)
+     (source GLchar-*)
      ->
      void))
   "Returns the source code string from a shader object.
@@ -8674,7 +8698,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glGetString (name GLenum) -> *))
+  ((glGetString (name GLenum) -> const-GLubyte*))
   "Return a string describing the current GL connection.
 
 NAME
@@ -8748,7 +8772,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (level GLint)
      (format GLenum)
      (type GLenum)
-     (img *)
+     (img GLvoid-*)
      ->
      void))
   "Return a texture image.
@@ -8869,7 +8893,7 @@ between the execution of `glBegin' and the corresponding execution of
 (define-foreign-procedure
   ((glGetUniformLocation
      (program GLuint)
-     (name *)
+     (name const-GLchar-*)
      ->
      GLint))
   "Returns the location of a uniform variable.
@@ -9141,7 +9165,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
   ((glIndexPointer
      (type GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of color indexes.
@@ -9231,7 +9255,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
   ((glInterleavedArrays
      (format GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Simultaneously specify and enable several interleaved arrays.
@@ -10108,7 +10132,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glLoadMatrixf (m *) -> void))
+  ((glLoadMatrixf (m const-GLfloat-*) -> void))
   "Replace the current matrix with the specified matrix.
 
 M
@@ -10164,7 +10188,10 @@ name stack is empty.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glLoadTransposeMatrixf (m *) -> void))
+  ((glLoadTransposeMatrixf
+     (m const-GLfloat-*)
+     ->
+     void))
   "Replace the current matrix with the specified row-major ordered matrix.
 
 M
@@ -10290,7 +10317,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (u2 GLfloat)
      (stride GLint)
      (order GLint)
-     (points *)
+     (points const-GLfloat-*)
      ->
      void))
   "Define a one-dimensional evaluator.
@@ -10455,7 +10482,7 @@ of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
      (v2 GLfloat)
      (vstride GLint)
      (vorder GLint)
-     (points *)
+     (points const-GLfloat-*)
      ->
      void))
   "Define a two-dimensional evaluator.
@@ -10648,7 +10675,7 @@ of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
      (target GLenum)
      (access GLenum)
      ->
-     *)
+     void-*)
    (glUnmapBuffer (target GLenum) -> GLboolean))
   "Map a buffer object's data store.
 
@@ -11006,8 +11033,8 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
 (define-foreign-procedure
   ((glMultiDrawArrays
      (mode GLenum)
-     (first *)
-     (count *)
+     (first GLint-*)
+     (count GLsizei-*)
      (primcount GLsizei)
      ->
      void))
@@ -11064,9 +11091,9 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
 (define-foreign-procedure
   ((glMultiDrawElements
      (mode GLenum)
-     (count *)
+     (count const-GLsizei-*)
      (type GLenum)
-     (indices *)
+     (indices const-GLvoid-**)
      (primcount GLsizei)
      ->
      void))
@@ -11203,7 +11230,7 @@ with each vertex and with the current raster position. Initially, the
 values for (S,TRQ) are (0,001) .")
 
 (define-foreign-procedure
-  ((glMultMatrixf (m *) -> void))
+  ((glMultMatrixf (m const-GLfloat-*) -> void))
   "Multiply the current matrix with the specified matrix.
 
 M
@@ -11222,7 +11249,10 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glMultTransposeMatrixf (m *) -> void))
+  ((glMultTransposeMatrixf
+     (m const-GLfloat-*)
+     ->
+     void))
   "Multiply the current matrix with the specified row-major ordered matrix.
 
 M
@@ -11322,7 +11352,7 @@ made to create the new display list.)")
   ((glNormalPointer
      (type GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of normals.
@@ -12358,7 +12388,10 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glPolygonStipple (pattern *) -> void))
+  ((glPolygonStipple
+     (pattern const-GLubyte-*)
+     ->
+     void))
   "Set the polygon stippling pattern.
 
 PATTERN
@@ -12409,8 +12442,8 @@ between the execution of `glBegin' and the corresponding execution of
 (define-foreign-procedure
   ((glPrioritizeTextures
      (n GLsizei)
-     (textures *)
-     (priorities *)
+     (textures const-GLuint-*)
+     (priorities const-GLclampf-*)
      ->
      void))
   "Set texture residence priority.
@@ -13206,7 +13239,7 @@ between the execution of `glBegin' and the corresponding execution of
      (height GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data GLvoid-*)
      ->
      void))
   "Read a block of pixels from the frame buffer.
@@ -13770,7 +13803,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (size GLint)
      (type GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of secondary colors.
@@ -13890,7 +13923,7 @@ written into a color buffer.")
 (define-foreign-procedure
   ((glSelectBuffer
      (size GLsizei)
-     (buffer *)
+     (buffer GLuint-*)
      ->
      void))
   "Establish a buffer for selection mode values.
@@ -13962,8 +13995,8 @@ between the execution of `glBegin' and the corresponding execution of
      (height GLsizei)
      (format GLenum)
      (type GLenum)
-     (row *)
-     (column *)
+     (row const-GLvoid-*)
+     (column const-GLvoid-*)
      ->
      void))
   "Define a separable two-dimensional convolution filter.
@@ -14198,8 +14231,8 @@ between the execution of `glBegin' and the corresponding execution of
   ((glShaderSource
      (shader GLuint)
      (count GLsizei)
-     (string *)
-     (length *)
+     (string const-GLchar-**)
+     (length const-GLint-*)
      ->
      void))
   "Replaces the source code in a shader object.
@@ -14713,7 +14746,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (size GLint)
      (type GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of texture coordinates.
@@ -15301,7 +15334,7 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (border GLint)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a one-dimensional texture image.
@@ -15624,7 +15657,7 @@ between the execution of `glBegin' and the corresponding execution of
      (border GLint)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a two-dimensional texture image.
@@ -15974,7 +16007,7 @@ between the execution of `glBegin' and the corresponding execution of
      (border GLint)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a three-dimensional texture image.
@@ -16577,7 +16610,7 @@ between the execution of `glBegin' and the corresponding execution of
      (width GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a one-dimensional texture subimage.
@@ -16700,7 +16733,7 @@ between the execution of `glBegin' and the corresponding execution of
      (height GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a two-dimensional texture subimage.
@@ -16840,7 +16873,7 @@ between the execution of `glBegin' and the corresponding execution of
      (depth GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-GLvoid-*)
      ->
      void))
   "Specify a three-dimensional texture subimage.
@@ -17304,7 +17337,7 @@ between the execution of `glBegin' and the corresponding execution of
      (type GLenum)
      (normalized GLboolean)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of generic vertex attribute data.
@@ -17528,7 +17561,7 @@ attributes.
      (size GLint)
      (type GLenum)
      (stride GLsizei)
-     (pointer *)
+     (pointer const-GLvoid-*)
      ->
      void))
   "Define an array of vertex data.

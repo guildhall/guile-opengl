@@ -93,8 +93,8 @@
     gluUnProject))
 
 (define-foreign-procedure
-  ((gluBeginCurve (nurb *) -> void)
-   (gluEndCurve (nurb *) -> void))
+  ((gluBeginCurve (nurb GLUnurbs*) -> void)
+   (gluEndCurve (nurb GLUnurbs*) -> void))
   "Delimit a NURBS curve definition.
 
 NURB
@@ -114,8 +114,8 @@ segments. Evaluator state is preserved during rendering with
 calls preserve.")
 
 (define-foreign-procedure
-  ((gluBeginPolygon (tess *) -> void)
-   (gluEndPolygon (tess *) -> void))
+  ((gluBeginPolygon (tess GLUtesselator*) -> void)
+   (gluEndPolygon (tess GLUtesselator*) -> void))
   "Delimit a polygon description.
 
 TESS
@@ -134,8 +134,8 @@ resulting triangles are described through callbacks. See
 `gluTessCallback' for descriptions of the callback functions.")
 
 (define-foreign-procedure
-  ((gluBeginSurface (nurb *) -> void)
-   (gluEndSurface (nurb *) -> void))
+  ((gluBeginSurface (nurb GLUnurbs*) -> void)
+   (gluEndSurface (nurb GLUnurbs*) -> void))
   "Delimit a NURBS surface definition.
 
 NURB
@@ -158,8 +158,8 @@ Evaluator state is preserved during rendering with
 reference page for details on exactly what state these calls preserve.")
 
 (define-foreign-procedure
-  ((gluBeginTrim (nurb *) -> void)
-   (gluEndTrim (nurb *) -> void))
+  ((gluBeginTrim (nurb GLUnurbs*) -> void)
+   (gluEndTrim (nurb GLUnurbs*) -> void))
   "Delimit a NURBS trimming loop definition.
 
 NURB
@@ -222,7 +222,7 @@ surface is drawn.")
      (level GLint)
      (base GLint)
      (max GLint)
-     (data *)
+     (data const-void-*)
      ->
      GLint))
   "Builds a subset of one-dimensional mipmap levels.
@@ -354,7 +354,7 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
      (width GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-void-*)
      ->
      GLint))
   "Builds a one-dimensional mipmap.
@@ -481,7 +481,7 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
      (level GLint)
      (base GLint)
      (max GLint)
-     (data *)
+     (data const-void-*)
      ->
      GLint))
   "Builds a subset of two-dimensional mipmap levels.
@@ -619,7 +619,7 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
      (height GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-void-*)
      ->
      GLint))
   "Builds a two-dimensional mipmap.
@@ -756,7 +756,7 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
      (level GLint)
      (base GLint)
      (max GLint)
-     (data *)
+     (data const-void-*)
      ->
      GLint))
   "Builds a subset of three-dimensional mipmap levels.
@@ -897,7 +897,7 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
      (depth GLsizei)
      (format GLenum)
      (type GLenum)
-     (data *)
+     (data const-void-*)
      ->
      GLint))
   "Builds a three-dimensional mipmap.
@@ -1025,8 +1025,8 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-foreign-procedure
   ((gluCheckExtension
-     (extName *)
-     (extString *)
+     (extName const-GLubyte-*)
+     (extString const-GLubyte-*)
      ->
      GLboolean))
   "Determines if an extension name is supported.
@@ -1047,7 +1047,7 @@ names by passing the extension strings returned by `glGetString',
 
 (define-foreign-procedure
   ((gluCylinder
-     (quad *)
+     (quad GLUquadric*)
      (base GLdouble)
      (top GLdouble)
      (height GLdouble)
@@ -1093,7 +1093,7 @@ coordinates are generated so that T ranges linearly from 0.0 at Z = 0 to
 at the +Y axis.")
 
 (define-foreign-procedure
-  ((gluDeleteNurbsRenderer (nurb *) -> void))
+  ((gluDeleteNurbsRenderer (nurb GLUnurbs*) -> void))
   "Destroy a NURBS object.
 
 NURB
@@ -1104,7 +1104,7 @@ with `gluNewNurbsRenderer') and frees any memory it uses. Once
 `gluDeleteNurbsRenderer' has been called, NURB cannot be used again.")
 
 (define-foreign-procedure
-  ((gluDeleteQuadric (quad *) -> void))
+  ((gluDeleteQuadric (quad GLUquadric*) -> void))
   "Destroy a quadrics object.
 
 QUAD
@@ -1115,7 +1115,7 @@ QUAD
 has been called, QUAD cannot be used again.")
 
 (define-foreign-procedure
-  ((gluDeleteTess (tess *) -> void))
+  ((gluDeleteTess (tess GLUtesselator*) -> void))
   "Destroy a tessellation object.
 
 TESS
@@ -1126,7 +1126,7 @@ created with `gluNewTess') and frees any memory that it used.")
 
 (define-foreign-procedure
   ((gluDisk
-     (quad *)
+     (quad GLUquadric*)
      (inner GLdouble)
      (outer GLdouble)
      (slices GLint)
@@ -1168,7 +1168,10 @@ at (R, 0, 0) is (1, 0.5), at (0, R, 0) it is (0.5, 1), at (\\-R, 0, 0) it
 is (0, 0.5), and at (0, \\-R, 0) it is (0.5, 0).")
 
 (define-foreign-procedure
-  ((gluErrorString (error GLenum) -> *))
+  ((gluErrorString
+     (error GLenum)
+     ->
+     const-GLubyte-*))
   "Produce an error string from a GL or GLU error code.
 
 ERROR
@@ -1187,9 +1190,9 @@ functions can return specialized error codes through callbacks. See the
 
 (define-foreign-procedure
   ((gluGetNurbsProperty
-     (nurb *)
+     (nurb GLUnurbs*)
      (property GLenum)
-     (data *)
+     (data GLfloat*)
      ->
      void))
   "Get a NURBS property.
@@ -1214,7 +1217,7 @@ rendered. See the `gluNurbsProperty' reference page for information
 about what the properties are and what they do.")
 
 (define-foreign-procedure
-  ((gluGetString (name GLenum) -> *))
+  ((gluGetString (name GLenum) -> const-GLubyte-*))
   "Return a string describing the GLU version or GLU extensions .
 
 NAME
@@ -1247,9 +1250,9 @@ NULL is returned if NAME is not `GLU_VERSION' or `GLU_EXTENSIONS'.")
 
 (define-foreign-procedure
   ((gluGetTessProperty
-     (tess *)
+     (tess GLUtesselator*)
      (which GLenum)
-     (data *)
+     (data GLdouble*)
      ->
      void))
   "Get a tessellation object property.
@@ -1273,10 +1276,10 @@ information about the properties and what they do.")
 
 (define-foreign-procedure
   ((gluLoadSamplingMatrices
-     (nurb *)
-     (model *)
-     (perspective *)
-     (view *)
+     (nurb GLUnurbs*)
+     (model const-GLfloat-*)
+     (perspective const-GLfloat-*)
+     (view const-GLint-*)
      ->
      void))
   "Load NURBS sampling and culling matrices.
@@ -1383,7 +1386,7 @@ and `gluLookAt' is equivalent to
      glTranslated(-eyex, -eyey, -eyez);")
 
 (define-foreign-procedure
-  ((gluNewNurbsRenderer -> *))
+  ((gluNewNurbsRenderer -> GLUnurbs*))
   "Create a NURBS object.
 
 `gluNewNurbsRenderer' creates and returns a pointer to a new NURBS
@@ -1392,7 +1395,7 @@ control functions. A return value of 0 means that there is not enough
 memory to allocate the object.")
 
 (define-foreign-procedure
-  ((gluNewQuadric -> *))
+  ((gluNewQuadric -> GLUquadric*))
   "Create a quadrics object.
 
 `gluNewQuadric' creates and returns a pointer to a new quadrics object.
@@ -1401,7 +1404,7 @@ control functions. A return value of 0 means that there is not enough
 memory to allocate the object.")
 
 (define-foreign-procedure
-  ((gluNewTess -> *))
+  ((gluNewTess -> GLUtesselator*))
   "Create a tessellation object.
 
 `gluNewTess' creates and returns a pointer to a new tessellation object.
@@ -1410,7 +1413,11 @@ return value of 0 means that there is not enough memory to allocate the
 object.")
 
 (define-foreign-procedure
-  ((gluNextContour (tess *) (type GLenum) -> void))
+  ((gluNextContour
+     (tess GLUtesselator*)
+     (type GLenum)
+     ->
+     void))
   "Mark the beginning of another contour.
 
 TESS
@@ -1468,8 +1475,8 @@ followed by `gluTessBeginContour'.")
 
 (define-foreign-procedure
   ((gluNurbsCallbackDataEXT
-     (nurb *)
-     (userData *)
+     (nurb GLUnurbs*)
+     (userData GLvoid*)
      ->
      void))
   "Set a user data pointer.
@@ -1486,8 +1493,8 @@ tessellator in the NURBS callback functions (set by `gluNurbsCallback').")
 
 (define-foreign-procedure
   ((gluNurbsCallbackData
-     (nurb *)
-     (userData *)
+     (nurb GLUnurbs*)
+     (userData GLvoid*)
      ->
      void))
   "Set a user data pointer.
@@ -1504,7 +1511,7 @@ tessellator in the NURBS callback functions (set by `gluNurbsCallback').")
 
 (define-foreign-procedure
   ((gluNurbsCallback
-     (nurb *)
+     (nurb GLUnurbs*)
      (which GLenum)
      (CallBackFunc _GLUfuncptr)
      ->
@@ -1715,11 +1722,11 @@ The legal callbacks are as follows:
 
 (define-foreign-procedure
   ((gluNurbsCurve
-     (nurb *)
+     (nurb GLUnurbs*)
      (knotCount GLint)
-     (knots *)
+     (knots GLfloat-*)
      (stride GLint)
-     (control *)
+     (control GLfloat-*)
      (order GLint)
      (type GLenum)
      ->
@@ -1777,7 +1784,7 @@ curves.")
 
 (define-foreign-procedure
   ((gluNurbsProperty
-     (nurb *)
+     (nurb GLUnurbs*)
      (property GLenum)
      (value GLfloat)
      ->
@@ -1919,14 +1926,14 @@ The accepted values for PROPERTY are as follows:
 
 (define-foreign-procedure
   ((gluNurbsSurface
-     (nurb *)
+     (nurb GLUnurbs*)
      (sKnotCount GLint)
-     (sKnots *)
+     (sKnots GLfloat*)
      (tKnotCount GLint)
-     (tKnots *)
+     (tKnots GLfloat*)
      (sStride GLint)
      (tStride GLint)
-     (control *)
+     (control GLfloat*)
      (sOrder GLint)
      (tOrder GLint)
      (type GLenum)
@@ -2031,7 +2038,7 @@ is equivalent to calling `glOrtho' with NEAR=-1 and FAR=1 .")
 
 (define-foreign-procedure
   ((gluPartialDisk
-     (quad *)
+     (quad GLUquadric*)
      (inner GLdouble)
      (outer GLdouble)
      (slices GLint)
@@ -2137,7 +2144,7 @@ F=COTANGENT\u2061(FOVY/2,) The generated matrix is
      (y GLdouble)
      (delX GLdouble)
      (delY GLdouble)
-     (viewport *)
+     (viewport GLint-*)
      ->
      void))
   "Define a picking region.
@@ -2182,12 +2189,12 @@ matrix.")
      (objX GLdouble)
      (objY GLdouble)
      (objZ GLdouble)
-     (model *)
-     (proj *)
-     (view *)
-     (winX *)
-     (winY *)
-     (winZ *)
+     (model const-GLdouble-*)
+     (proj const-GLdouble-*)
+     (view const-GLint-*)
+     (winX GLdouble*)
+     (winY GLdouble*)
+     (winZ GLdouble*)
      ->
      GLint))
   "Map object coordinates to window coordinates.
@@ -2239,9 +2246,9 @@ WINY=VIEW\u2061(1,)+VIEW\u2061(3,)×(V^″\u2061(1,)+1,)/2 WINZ=(V^″\u2061(2,)
 
 (define-foreign-procedure
   ((gluPwlCurve
-     (nurb *)
+     (nurb GLUnurbs*)
      (count GLint)
-     (data *)
+     (data GLfloat*)
      (stride GLint)
      (type GLenum)
      ->
@@ -2281,7 +2288,7 @@ information about trimming curves.")
 
 (define-foreign-procedure
   ((gluQuadricCallback
-     (quad *)
+     (quad GLUquadric*)
      (which GLenum)
      (CallBackFunc _GLUfuncptr)
      ->
@@ -2313,7 +2320,7 @@ The one legal callback is `GLU_ERROR':
 
 (define-foreign-procedure
   ((gluQuadricDrawStyle
-     (quad *)
+     (quad GLUquadric*)
      (draw GLenum)
      ->
      void))
@@ -2346,7 +2353,7 @@ with QUAD. The legal values are as follows:
 
 (define-foreign-procedure
   ((gluQuadricNormals
-     (quad *)
+     (quad GLUquadric*)
      (normal GLenum)
      ->
      void))
@@ -2374,7 +2381,7 @@ quadrics rendered with QUAD. The legal values are as follows:
 
 (define-foreign-procedure
   ((gluQuadricOrientation
-     (quad *)
+     (quad GLUquadric*)
      (orientation GLenum)
      ->
      void))
@@ -2402,7 +2409,7 @@ quadric being drawn.")
 
 (define-foreign-procedure
   ((gluQuadricTexture
-     (quad *)
+     (quad GLUquadric*)
      (texture GLboolean)
      ->
      void))
@@ -2429,11 +2436,11 @@ specific quadric rendered.")
      (wIn GLsizei)
      (hIn GLsizei)
      (typeIn GLenum)
-     (dataIn *)
+     (dataIn const-void-*)
      (wOut GLsizei)
      (hOut GLsizei)
      (typeOut GLenum)
-     (dataOut *)
+     (dataOut GLvoid*)
      ->
      GLint))
   "Scale an image to an arbitrary size.
@@ -2533,7 +2540,7 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
 
 (define-foreign-procedure
   ((gluSphere
-     (quad *)
+     (quad GLUquadric*)
      (radius GLdouble)
      (slices GLint)
      (stacks GLint)
@@ -2571,8 +2578,11 @@ ranges from 0.0 at the +Y axis, to 0.25 at the +X axis, to 0.5 at the
 \\-Y axis, to 0.75 at the \\-X axis, and back to 1.0 at the +Y axis.")
 
 (define-foreign-procedure
-  ((gluTessBeginContour (tess *) -> void)
-   (gluTessEndContour (tess *) -> void))
+  ((gluTessBeginContour
+     (tess GLUtesselator*)
+     ->
+     void)
+   (gluTessEndContour (tess GLUtesselator*) -> void))
   "Delimit a contour description.
 
 TESS
@@ -2587,7 +2597,11 @@ page for more details. `gluTessBeginContour' can only be called between
 `gluTessBeginPolygon' and `gluTessEndPolygon'.")
 
 (define-foreign-procedure
-  ((gluTessBeginPolygon (tess *) (data *) -> void))
+  ((gluTessBeginPolygon
+     (tess GLUtesselator*)
+     (data GLvoid*)
+     ->
+     void))
   "Delimit a polygon description.
 
 TESS
@@ -2617,7 +2631,7 @@ resulting triangles are described through callbacks. See
 
 (define-foreign-procedure
   ((gluTessCallback
-     (tess *)
+     (tess GLUtesselator*)
      (which GLenum)
      (CallBackFunc _GLUfuncptr)
      ->
@@ -2837,7 +2851,7 @@ was called. The legal callbacks are as follows:
      void errorData( GLenum errno, void *polygon_data );")
 
 (define-foreign-procedure
-  ((gluTessEndPolygon (tess *) -> void))
+  ((gluTessEndPolygon (tess GLUtesselator*) -> void))
   "Delimit a polygon description.
 
 TESS
@@ -2859,7 +2873,7 @@ resulting triangles are described through callbacks. See
 
 (define-foreign-procedure
   ((gluTessNormal
-     (tess *)
+     (tess GLUtesselator*)
      (valueX GLdouble)
      (valueY GLdouble)
      (valueZ GLdouble)
@@ -2902,7 +2916,7 @@ The supplied normal persists until it is changed by another call to
 
 (define-foreign-procedure
   ((gluTessProperty
-     (tess *)
+     (tess GLUtesselator*)
      (which GLenum)
      (data GLdouble)
      ->
@@ -2981,9 +2995,9 @@ interpreted and rendered. The legal values for WHICH are as follows:
 
 (define-foreign-procedure
   ((gluTessVertex
-     (tess *)
-     (location *)
-     (data *)
+     (tess GLUtesselator*)
+     (location GLdouble-*)
+     (data GLvoid*)
      ->
      void))
   "Specify a vertex on a polygon.
@@ -3016,15 +3030,15 @@ pointer is passed back to the user through the `GLU_TESS_VERTEX' or
      (winY GLdouble)
      (winZ GLdouble)
      (clipW GLdouble)
-     (model *)
-     (proj *)
-     (view *)
+     (model const-GLdouble-*)
+     (proj const-GLdouble-*)
+     (view const-GLint-*)
      (nearVal GLdouble)
      (farVal GLdouble)
-     (objX *)
-     (objY *)
-     (objZ *)
-     (objW *)
+     (objX GLdouble*)
+     (objY GLdouble*)
+     (objZ GLdouble*)
+     (objW GLdouble*)
      ->
      GLint))
   "Map window and clip coordinates to object coordinates.
@@ -3090,12 +3104,12 @@ is 0, and FARVAL is 1.")
      (winX GLdouble)
      (winY GLdouble)
      (winZ GLdouble)
-     (model *)
-     (proj *)
-     (view *)
-     (objX *)
-     (objY *)
-     (objZ *)
+     (model const-GLdouble-*)
+     (proj const-GLdouble-*)
+     (view const-GLint-*)
+     (objX GLdouble*)
+     (objY GLdouble*)
+     (objZ GLdouble*)
      ->
      GLint))
   "Map window coordinates to object coordinates.

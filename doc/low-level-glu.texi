@@ -1156,7 +1156,7 @@ at (0, \-@var{r}, 0) it is (0.5, 0).
 
 @end deftypefun
 
-@deftypefun * gluErrorString error
+@deftypefun const-GLubyte-* gluErrorString error
 Produce an error string from a GL or GLU error code.
 
 @table @asis
@@ -1207,7 +1207,7 @@ information about what the properties are and what they do.
 
 @end deftypefun
 
-@deftypefun * gluGetString name
+@deftypefun const-GLubyte-* gluGetString name
 Return a string describing the GLU version or GLU extensions .
 
 @table @asis
@@ -1375,7 +1375,7 @@ glTranslated(-eyex, -eyey, -eyez);
 
 @end deftypefun
 
-@deftypefun * gluNewNurbsRenderer 
+@deftypefun GLUnurbs* gluNewNurbsRenderer 
 Create a NURBS object.
 
 @code{gluNewNurbsRenderer} creates and returns a pointer to a new NURBS
@@ -1385,7 +1385,7 @@ memory to allocate the object.
 
 @end deftypefun
 
-@deftypefun * gluNewQuadric 
+@deftypefun GLUquadric* gluNewQuadric 
 Create a quadrics object.
 
 @code{gluNewQuadric} creates and returns a pointer to a new quadrics
@@ -1395,7 +1395,7 @@ enough memory to allocate the object.
 
 @end deftypefun
 
-@deftypefun * gluNewTess 
+@deftypefun GLUtesselator* gluNewTess 
 Create a tessellation object.
 
 @code{gluNewTess} creates and returns a pointer to a new tessellation

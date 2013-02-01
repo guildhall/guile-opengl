@@ -19,7 +19,7 @@ licensed under the SGI Free Software B License. For details, see
 
 @end copying
 
-@deftypefun * glXChooseFBConfig dpy screen attrib_list nelements
+@deftypefun GLXFBConfig-* glXChooseFBConfig dpy screen attrib_list nelements
 Return a list of GLX frame buffer configurations that match the
 specified attributes.
 
@@ -369,7 +369,7 @@ support the GLX extension.
 
 @end deftypefun
 
-@deftypefun * glXChooseVisual dpy screen attribList
+@deftypefun XVisualInfo* glXChooseVisual dpy screen attribList
 Return a visual that matches specified attributes.
 
 @table @asis
@@ -1062,7 +1062,7 @@ context.
 
 @end deftypefun
 
-@deftypefun * glXGetClientString dpy name
+@deftypefun const-char-* glXGetClientString dpy name
 Return a string describing the client.
 
 @table @asis
@@ -1276,7 +1276,7 @@ make a round trip to the server.
 
 @end deftypefun
 
-@deftypefun * glXGetCurrentDisplay 
+@deftypefun Display-* glXGetCurrentDisplay 
 Get display for current context.
 
 @code{glXGetCurrentDisplay} returns the display for the current context.
@@ -1563,7 +1563,7 @@ is not a valid GLX attribute.
 
 @end deftypefun
 
-@deftypefun * glXGetFBConfigs dpy screen nelements
+@deftypefun GLXFBConfig-* glXGetFBConfigs dpy screen nelements
 List all GLX frame buffer configurations for a given screen.
 
 @table @asis
@@ -1624,7 +1624,7 @@ or a valid GLX pixel buffer.
 
 @end deftypefun
 
-@deftypefun * glXGetVisualFromFBConfig dpy config
+@deftypefun XVisualInfo-* glXGetVisualFromFBConfig dpy config
 Return visual that is associated with the frame buffer configuration.
 
 @table @asis
@@ -2042,7 +2042,7 @@ GLXDrawable.
 
 @end deftypefun
 
-@deftypefun * glXQueryExtensionsString dpy screen
+@deftypefun const-char-* glXQueryExtensionsString dpy screen
 Return list of supported extensions.
 
 @table @asis
@@ -2090,7 +2090,7 @@ specified as @code{NULL}.
 
 @end deftypefun
 
-@deftypefun * glXQueryServerString dpy screen name
+@deftypefun const-char-* glXQueryServerString dpy screen name
 Return string describing the server.
 
 @table @asis

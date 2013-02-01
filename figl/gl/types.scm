@@ -40,7 +40,33 @@
             GLfloat
             GLclampf
             GLdouble
-            GLclampd))
+            GLclampd
+
+            GLboolean-*
+            GLchar-*
+            GLdouble-*
+            GLenum-*
+            GLfloat-*
+            GLint-*
+            GLsizei-*
+            GLubyte-*
+            GLuint-*
+            GLvoid-*
+            const-GLchar-*
+            const-GLchar-**
+            const-GLclampf-*
+            const-GLdouble-*
+            const-GLenum-*
+            const-GLfloat-*
+            const-GLint-*
+            const-GLsizei-*
+            const-GLubyte*
+            const-GLubyte-*
+            const-GLubyte-*
+            const-GLuint-*
+            const-GLvoid-*
+            const-GLvoid-**
+            void-*))
 
 (define %ptr
   (case (sizeof '*)
@@ -65,3 +91,32 @@
 (define GLclampf float)
 (define GLdouble double)
 (define GLclampd double)
+
+;; All of these have different meanings and we should be able to do a
+;; basic job at teasing them out, but for now, just use the limited
+;; annotation from (system foreign).
+(define GLboolean-* '*)
+(define GLchar-* '*)
+(define GLdouble-* '*)
+(define GLenum-* '*)
+(define GLfloat-* '*)
+(define GLint-* '*)
+(define GLsizei-* '*)
+(define GLubyte-* '*)
+(define GLuint-* '*)
+(define GLvoid-* '*)
+(define const-GLchar-* '*)
+(define const-GLchar-** '*)
+(define const-GLclampf-* '*)
+(define const-GLdouble-* '*)
+(define const-GLenum-* '*)
+(define const-GLfloat-* '*)
+(define const-GLint-* '*)
+(define const-GLsizei-* '*)
+(define const-GLubyte* '*)
+(define const-GLubyte-* '*)
+(define const-GLubyte-* '*)
+(define const-GLuint-* '*)
+(define const-GLvoid-* '*)
+(define const-GLvoid-** '*)
+(define void-* '*)

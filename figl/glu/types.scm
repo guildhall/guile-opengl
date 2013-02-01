@@ -21,7 +21,24 @@
 ;;
 ;;; Code:
 
-(define-module (figl glu types))
+(define-module (figl glu types)
+  #:export (GLUnurbs*
+            GLUquadric*
+            GLUtesselator*
+            GLdouble*
+            GLfloat*
+            GLvoid*
+            _GLUfuncptr
+            const-void-*))
 
 (module-use! (module-public-interface (current-module))
              (resolve-interface '(figl gl types)))
+
+(define GLUnurbs* '*)
+(define GLUquadric* '*)
+(define GLUtesselator* '*)
+(define GLdouble* '*)
+(define GLfloat* '*)
+(define GLvoid* '*)
+(define _GLUfuncptr '*)
+(define const-void-* '*)

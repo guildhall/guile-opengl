@@ -78,12 +78,12 @@
 
 (define-foreign-procedure
   ((glXChooseFBConfig
-     (dpy *)
+     (dpy Display-*)
      (screen int)
-     (attrib_list *)
-     (nelements *)
+     (attrib_list const-int-*)
+     (nelements int-*)
      ->
-     *))
+     GLXFBConfig-*))
   "Return a list of GLX frame buffer configurations that match the
 specified attributes.
 
@@ -423,11 +423,11 @@ extension.")
 
 (define-foreign-procedure
   ((glXChooseVisual
-     (dpy *)
+     (dpy Display-*)
      (screen int)
-     (attribList *)
+     (attribList int-*)
      ->
-     *))
+     XVisualInfo*))
   "Return a visual that matches specified attributes.
 
 DPY
@@ -560,10 +560,10 @@ ATTRIBLIST.")
 
 (define-foreign-procedure
   ((glXCopyContext
-     (dpy *)
+     (dpy Display-*)
      (src GLXContext)
      (dst GLXContext)
-     (mask #{unsigned long}#)
+     (mask unsigned-long)
      ->
      void))
   "Copy state from one rendering context to another.
@@ -616,8 +616,8 @@ context.")
 
 (define-foreign-procedure
   ((glXCreateContext
-     (dpy *)
-     (vis *)
+     (dpy Display-*)
+     (vis XVisualInfo-*)
      (shareList GLXContext)
      (direct Bool)
      ->
@@ -687,8 +687,8 @@ allocate the new context.")
 
 (define-foreign-procedure
   ((glXCreateGLXPixmap
-     (dpy *)
-     (vis *)
+     (dpy Display-*)
+     (vis XVisualInfo-*)
      (pixmap Pixmap)
      ->
      GLXPixmap))
@@ -735,7 +735,7 @@ visual).
 
 (define-foreign-procedure
   ((glXCreateNewContext
-     (dpy *)
+     (dpy Display-*)
      (config GLXFBConfig)
      (render_type int)
      (share_list GLXContext)
@@ -812,9 +812,9 @@ a particular GLX implementation does not support it).")
 
 (define-foreign-procedure
   ((glXCreatePbuffer
-     (dpy *)
+     (dpy Display-*)
      (config GLXFBConfig)
-     (attrib_list *)
+     (attrib_list const-int-*)
      ->
      GLXPbuffer))
   "Create an off-screen rendering area.
@@ -880,10 +880,10 @@ buffers (e.g., `GLX_DRAWABLE_TYPE' does not contain `GLX_PBUFFER_BIT').")
 
 (define-foreign-procedure
   ((glXCreatePixmap
-     (dpy *)
+     (dpy Display-*)
      (config GLXFBConfig)
      (pixmap Pixmap)
-     (attrib_list *)
+     (attrib_list const-int-*)
      ->
      GLXPixmap))
   "Create an off-screen rendering area.
@@ -923,10 +923,10 @@ window.
 
 (define-foreign-procedure
   ((glXCreateWindow
-     (dpy *)
+     (dpy Display-*)
      (config GLXFBConfig)
      (win Window)
-     (attrib_list *)
+     (attrib_list const-int-*)
      ->
      GLXWindow))
   "Create an on-screen rendering area.
@@ -970,7 +970,7 @@ window.
 
 (define-foreign-procedure
   ((glXDestroyContext
-     (dpy *)
+     (dpy Display-*)
      (ctx GLXContext)
      ->
      void))
@@ -991,7 +991,7 @@ ID referenced by CTX is freed immediately.
 
 (define-foreign-procedure
   ((glXDestroyGLXPixmap
-     (dpy *)
+     (dpy Display-*)
      (pix GLXPixmap)
      ->
      void))
@@ -1012,7 +1012,7 @@ resource ID is freed immediately.
 
 (define-foreign-procedure
   ((glXDestroyPbuffer
-     (dpy *)
+     (dpy Display-*)
      (pbuf GLXPbuffer)
      ->
      void))
@@ -1030,7 +1030,7 @@ PBUF
 
 (define-foreign-procedure
   ((glXDestroyPixmap
-     (dpy *)
+     (dpy Display-*)
      (pixmap GLXPixmap)
      ->
      void))
@@ -1048,7 +1048,7 @@ PIXMAP
 
 (define-foreign-procedure
   ((glXDestroyWindow
-     (dpy *)
+     (dpy Display-*)
      (win GLXWindow)
      ->
      void))
@@ -1066,7 +1066,7 @@ WIN
 
 (define-foreign-procedure
   ((glXFreeContextEXT
-     (dpy *)
+     (dpy Display-*)
      (ctx GLXContext)
      ->
      void))
@@ -1092,7 +1092,11 @@ supported.
 `GLXBadContext' is generated if CTX does not refer to a valid context.")
 
 (define-foreign-procedure
-  ((glXGetClientString (dpy *) (name int) -> *))
+  ((glXGetClientString
+     (dpy Display-*)
+     (name int)
+     ->
+     const-char-*))
   "Return a string describing the client.
 
 DPY
@@ -1122,10 +1126,10 @@ present, the format and contents are implementation specific.")
 
 (define-foreign-procedure
   ((glXGetConfig
-     (dpy *)
-     (vis *)
+     (dpy Display-*)
+     (vis XVisualInfo-*)
      (attrib int)
-     (value *)
+     (value int-*)
      ->
      int))
   "Return information about GLX visuals.
@@ -1289,7 +1293,7 @@ supported.
 a round trip to the server.")
 
 (define-foreign-procedure
-  ((glXGetCurrentDisplay -> *))
+  ((glXGetCurrentDisplay -> Display-*))
   "Get display for current context.
 
 `glXGetCurrentDisplay' returns the display for the current context. If
@@ -1322,10 +1326,10 @@ make a round-trip to the server.")
 
 (define-foreign-procedure
   ((glXGetFBConfigAttrib
-     (dpy *)
+     (dpy Display-*)
      (config GLXFBConfig)
      (attribute int)
-     (value *)
+     (value int-*)
      ->
      int))
   "Return information about a GLX frame buffer configuration.
@@ -1571,11 +1575,11 @@ GLX attribute.")
 
 (define-foreign-procedure
   ((glXGetFBConfigs
-     (dpy *)
+     (dpy Display-*)
      (screen int)
-     (nelements *)
+     (nelements int-*)
      ->
-     *))
+     GLXFBConfig-*))
   "List all GLX frame buffer configurations for a given screen.
 
 DPY
@@ -1593,7 +1597,7 @@ attribute values from a specific GLXFBConfig.")
 
 (define-foreign-procedure
   ((glXGetProcAddress
-     (procName *)
+     (procName const-GLubyte-*)
      ->
      #{void\x28;*\x29;\x28;\x29;}#))
   "Obtain a pointer to an OpenGL or GLX function.
@@ -1608,9 +1612,9 @@ library exports a different set of functions than the runtime library.")
 
 (define-foreign-procedure
   ((glXGetSelectedEvent
-     (dpy *)
+     (dpy Display-*)
      (draw GLXDrawable)
-     (event_mask *)
+     (event_mask unsigned-long-*)
      ->
      void))
   "Returns GLX events that are selected for a window or a GLX pixel buffer.
@@ -1632,10 +1636,10 @@ GLX pixel buffer.")
 
 (define-foreign-procedure
   ((glXGetVisualFromFBConfig
-     (dpy *)
+     (dpy Display-*)
      (config GLXFBConfig)
      ->
-     *))
+     XVisualInfo-*))
   "Return visual that is associated with the frame buffer configuration.
 
 DPY
@@ -1653,7 +1657,7 @@ Returns `NULL' if CONFIG is not a valid GLXFBConfig.")
 
 (define-foreign-procedure
   ((glXImportContextEXT
-     (dpy *)
+     (dpy Display-*)
      (contextID GLXContextID)
      ->
      GLXContext))
@@ -1695,7 +1699,11 @@ supported.
 context.")
 
 (define-foreign-procedure
-  ((glXIsDirect (dpy *) (ctx GLXContext) -> Bool))
+  ((glXIsDirect
+     (dpy Display-*)
+     (ctx GLXContext)
+     ->
+     Bool))
   "Indicate whether direct rendering is enabled.
 
 DPY
@@ -1714,7 +1722,7 @@ rendering commands to the X server.
 
 (define-foreign-procedure
   ((glXMakeContextCurrent
-     (display *)
+     (display Display-*)
      (draw GLXDrawable)
      (read GLXDrawable)
      (ctx GLXContext)
@@ -1804,7 +1812,7 @@ to a GLXPixmap.")
 
 (define-foreign-procedure
   ((glXMakeCurrent
-     (dpy *)
+     (dpy Display-*)
      (drawable GLXDrawable)
      (ctx GLXContext)
      ->
@@ -1874,10 +1882,10 @@ has insufficient resources to complete the allocation.")
 
 (define-foreign-procedure
   ((glXQueryContextInfoEXT
-     (dpy *)
+     (dpy Display-*)
      (ctx GLXContext)
      (attribute int)
-     (value *)
+     (value int-*)
      ->
      int))
   "Query context information.
@@ -1929,10 +1937,10 @@ fred `GLX_BAD_CONTEXT' is returned if ATTRIBUTE is not a valid context.")
 
 (define-foreign-procedure
   ((glXQueryContext
-     (dpy *)
+     (dpy Display-*)
      (ctx GLXContext)
      (attribute int)
-     (value *)
+     (value int-*)
      ->
      int))
   "Query context information.
@@ -1971,10 +1979,10 @@ This call may cause a round-trip to the server.
 
 (define-foreign-procedure
   ((glXQueryDrawable
-     (dpy *)
+     (dpy Display-*)
      (draw GLXDrawable)
      (attribute int)
-     (value *)
+     (value unsigned-int-*)
      ->
      int))
   "Returns an attribute assoicated with a GLX drawable.
@@ -2029,10 +2037,10 @@ A `GLXBadDrawable' is generated if DRAW is not a valid GLXDrawable.")
 
 (define-foreign-procedure
   ((glXQueryExtensionsString
-     (dpy *)
+     (dpy Display-*)
      (screen int)
      ->
-     *))
+     const-char-*))
   "Return list of supported extensions.
 
 DPY
@@ -2049,9 +2057,9 @@ extensions to GLX, then the empty string is returned.")
 
 (define-foreign-procedure
   ((glXQueryExtension
-     (dpy *)
-     (errorBase *)
-     (eventBase *)
+     (dpy Display-*)
+     (errorBase int-*)
+     (eventBase int-*)
      ->
      Bool))
   "Indicate whether the GLX extension is supported.
@@ -2077,11 +2085,11 @@ ERRORBASE and EVENTBASE do not return values if they are specified as
 
 (define-foreign-procedure
   ((glXQueryServerString
-     (dpy *)
+     (dpy Display-*)
      (screen int)
      (name int)
      ->
-     *))
+     const-char-*))
   "Return string describing the server.
 
 DPY
@@ -2102,9 +2110,9 @@ for `glXGetClientString'. If NAME is not set to a recognized value,
 
 (define-foreign-procedure
   ((glXQueryVersion
-     (dpy *)
-     (major *)
-     (minor *)
+     (dpy Display-*)
+     (major int-*)
+     (minor int-*)
      ->
      Bool))
   "Return the version numbers of the GLX extension.
@@ -2132,9 +2140,9 @@ MAJOR and MINOR are not updated when `False' is returned.")
 
 (define-foreign-procedure
   ((glXSelectEvent
-     (dpy *)
+     (dpy Display-*)
      (draw GLXDrawable)
-     (event_mask #{unsigned long}#)
+     (event_mask unsigned-long)
      ->
      void))
   "Select GLX events for a window or a GLX pixel buffer.
@@ -2264,7 +2272,7 @@ GLX pixel buffer.")
 
 (define-foreign-procedure
   ((glXSwapBuffers
-     (dpy *)
+     (dpy Display-*)
      (drawable GLXDrawable)
      ->
      void))
