@@ -84,10 +84,10 @@
     glColorSubTable
     glColorTable
     glColor3i
-    glColor3d
+    glColor3f
     glColor3ui
     glColor4i
-    glColor4d
+    glColor4f
     glColor4ui
     glCompileShader
     glCompressedTexImage1D
@@ -137,8 +137,8 @@
     glDisableVertexAttribArray
     glEnable
     glDisable
-    glEvalCoord1d
-    glEvalCoord2d
+    glEvalCoord1f
+    glEvalCoord2f
     glEvalMesh1
     glEvalMesh2
     glEvalPoint1
@@ -147,7 +147,7 @@
     glFinish
     glFlush
     glFogCoordPointer
-    glFogCoordd
+    glFogCoordf
     glFogf
     glFogi
     glFrontFace
@@ -181,7 +181,7 @@
     glIndexMask
     glIndexPointer
     glIndexi
-    glIndexd
+    glIndexf
     glIndexub
     glInitNames
     glInterleavedArrays
@@ -201,16 +201,16 @@
     glLinkProgram
     glListBase
     glLoadIdentity
-    glLoadMatrixd
+    glLoadMatrixf
     glLoadName
-    glLoadTransposeMatrixd
+    glLoadTransposeMatrixf
     glLogicOp
-    glMap1d
-    glMap2d
+    glMap1f
+    glMap2f
     glMapBuffer
     glUnmapBuffer
-    glMapGrid1d
-    glMapGrid2d
+    glMapGrid1f
+    glMapGrid2f
     glMaterialf
     glMateriali
     glMatrixMode
@@ -218,19 +218,19 @@
     glMultiDrawArrays
     glMultiDrawElements
     glMultiTexCoord1i
-    glMultiTexCoord1d
+    glMultiTexCoord1f
     glMultiTexCoord2i
-    glMultiTexCoord2d
+    glMultiTexCoord2f
     glMultiTexCoord3i
-    glMultiTexCoord3d
+    glMultiTexCoord3f
     glMultiTexCoord4i
-    glMultiTexCoord4d
-    glMultMatrixd
-    glMultTransposeMatrixd
+    glMultiTexCoord4f
+    glMultMatrixf
+    glMultTransposeMatrixf
     glNewList
     glEndList
     glNormalPointer
-    glNormal3d
+    glNormal3f
     glNormal3i
     glOrtho
     glPassThrough
@@ -255,25 +255,25 @@
     glPushName
     glPopName
     glRasterPos2i
-    glRasterPos2d
+    glRasterPos2f
     glRasterPos3i
-    glRasterPos3d
+    glRasterPos3f
     glRasterPos4i
-    glRasterPos4d
+    glRasterPos4f
     glReadBuffer
     glReadPixels
-    glRectd
+    glRectf
     glRecti
     glRenderMode
     glResetHistogram
     glResetMinmax
-    glRotated
+    glRotatef
     glSampleCoverage
-    glScaled
+    glScalef
     glScissor
     glSecondaryColorPointer
     glSecondaryColor3i
-    glSecondaryColor3d
+    glSecondaryColor3f
     glSecondaryColor3ui
     glSelectBuffer
     glSeparableFilter2D
@@ -287,17 +287,17 @@
     glStencilOp
     glTexCoordPointer
     glTexCoord1i
-    glTexCoord1d
+    glTexCoord1f
     glTexCoord2i
-    glTexCoord2d
+    glTexCoord2f
     glTexCoord3i
-    glTexCoord3d
+    glTexCoord3f
     glTexCoord4i
-    glTexCoord4d
+    glTexCoord4f
     glTexEnvf
     glTexEnvi
     glTexGeni
-    glTexGend
+    glTexGenf
     glTexImage1D
     glTexImage2D
     glTexImage3D
@@ -306,7 +306,7 @@
     glTexSubImage1D
     glTexSubImage2D
     glTexSubImage3D
-    glTranslated
+    glTranslatef
     glUniform1f
     glUniform2f
     glUniform3f
@@ -318,27 +318,27 @@
     glUseProgram
     glValidateProgram
     glVertexAttribPointer
+    glVertexAttrib1f
     glVertexAttrib1s
-    glVertexAttrib1d
+    glVertexAttrib2f
     glVertexAttrib2s
-    glVertexAttrib2d
+    glVertexAttrib3f
     glVertexAttrib3s
-    glVertexAttrib3d
+    glVertexAttrib4f
     glVertexAttrib4s
-    glVertexAttrib4d
     glVertexAttrib4Nub
     glVertexPointer
     glVertex2i
-    glVertex2d
+    glVertex2f
     glVertex3i
-    glVertex3d
+    glVertex3f
     glVertex4i
-    glVertex4d
+    glVertex4f
     glViewport
     glWindowPos2i
-    glWindowPos2d
+    glWindowPos2f
     glWindowPos3i
-    glWindowPos3d))
+    glWindowPos3f))
 
 (define-foreign-procedure
   ((glAccum (op GLenum) (value GLfloat) -> void))
@@ -2585,10 +2585,10 @@ between the execution of `glBegin' and the corresponding execution of
      (blue GLint)
      ->
      void)
-   (glColor3d
-     (red GLdouble)
-     (green GLdouble)
-     (blue GLdouble)
+   (glColor3f
+     (red GLfloat)
+     (green GLfloat)
+     (blue GLfloat)
      ->
      void)
    (glColor3ui
@@ -2604,11 +2604,11 @@ between the execution of `glBegin' and the corresponding execution of
      (alpha GLint)
      ->
      void)
-   (glColor4d
-     (red GLdouble)
-     (green GLdouble)
-     (blue GLdouble)
-     (alpha GLdouble)
+   (glColor4f
+     (red GLfloat)
+     (green GLfloat)
+     (blue GLfloat)
+     (alpha GLfloat)
      ->
      void)
    (glColor4ui
@@ -6591,8 +6591,8 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glEvalCoord1d (u GLdouble) -> void)
-   (glEvalCoord2d (u GLdouble) (v GLdouble) -> void))
+  ((glEvalCoord1f (u GLfloat) -> void)
+   (glEvalCoord2f (u GLfloat) (v GLfloat) -> void))
   "Evaluate enabled one- and two-dimensional maps.
 
 U
@@ -7042,7 +7042,7 @@ called.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-foreign-procedure
-  ((glFogCoordd (coord GLdouble) -> void))
+  ((glFogCoordf (coord GLfloat) -> void))
   "Set the current fog coordinates.
 
 COORD
@@ -9189,7 +9189,7 @@ enabled, the color index array is used when `glDrawArrays',
 
 (define-foreign-procedure
   ((glIndexi (c GLint) -> void)
-   (glIndexd (c GLdouble) -> void)
+   (glIndexf (c GLfloat) -> void)
    (glIndexub (c GLubyte) -> void))
   "Set the current color index.
 
@@ -10108,7 +10108,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glLoadMatrixd (m *) -> void))
+  ((glLoadMatrixf (m *) -> void))
   "Replace the current matrix with the specified matrix.
 
 M
@@ -10164,7 +10164,7 @@ name stack is empty.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glLoadTransposeMatrixd (m *) -> void))
+  ((glLoadTransposeMatrixf (m *) -> void))
   "Replace the current matrix with the specified row-major ordered matrix.
 
 M
@@ -10284,10 +10284,10 @@ source and destination indices or colors.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glMap1d
+  ((glMap1f
      (target GLenum)
-     (u1 GLdouble)
-     (u2 GLdouble)
+     (u1 GLfloat)
+     (u2 GLfloat)
      (stride GLint)
      (order GLint)
      (points *)
@@ -10445,14 +10445,14 @@ execution of `glBegin' and the corresponding execution of `glEnd'.
 of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
 
 (define-foreign-procedure
-  ((glMap2d
+  ((glMap2f
      (target GLenum)
-     (u1 GLdouble)
-     (u2 GLdouble)
+     (u1 GLfloat)
+     (u2 GLfloat)
      (ustride GLint)
      (uorder GLint)
-     (v1 GLdouble)
-     (v2 GLdouble)
+     (v1 GLfloat)
+     (v2 GLfloat)
      (vstride GLint)
      (vorder GLint)
      (points *)
@@ -10722,19 +10722,19 @@ is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-foreign-procedure
-  ((glMapGrid1d
+  ((glMapGrid1f
      (un GLint)
-     (u1 GLdouble)
-     (u2 GLdouble)
+     (u1 GLfloat)
+     (u2 GLfloat)
      ->
      void)
-   (glMapGrid2d
+   (glMapGrid2f
      (un GLint)
-     (u1 GLdouble)
-     (u2 GLdouble)
+     (u1 GLfloat)
+     (u2 GLfloat)
      (vn GLint)
-     (v1 GLdouble)
-     (v2 GLdouble)
+     (v1 GLfloat)
+     (v2 GLfloat)
      ->
      void))
   "Define a one- or two-dimensional mesh.
@@ -11125,9 +11125,9 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (s GLint)
      ->
      void)
-   (glMultiTexCoord1d
+   (glMultiTexCoord1f
      (target GLenum)
-     (s GLdouble)
+     (s GLfloat)
      ->
      void)
    (glMultiTexCoord2i
@@ -11136,10 +11136,10 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (t GLint)
      ->
      void)
-   (glMultiTexCoord2d
+   (glMultiTexCoord2f
      (target GLenum)
-     (s GLdouble)
-     (t GLdouble)
+     (s GLfloat)
+     (t GLfloat)
      ->
      void)
    (glMultiTexCoord3i
@@ -11149,11 +11149,11 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (r GLint)
      ->
      void)
-   (glMultiTexCoord3d
+   (glMultiTexCoord3f
      (target GLenum)
-     (s GLdouble)
-     (t GLdouble)
-     (r GLdouble)
+     (s GLfloat)
+     (t GLfloat)
+     (r GLfloat)
      ->
      void)
    (glMultiTexCoord4i
@@ -11164,12 +11164,12 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (q GLint)
      ->
      void)
-   (glMultiTexCoord4d
+   (glMultiTexCoord4f
      (target GLenum)
-     (s GLdouble)
-     (t GLdouble)
-     (r GLdouble)
-     (q GLdouble)
+     (s GLfloat)
+     (t GLfloat)
+     (r GLfloat)
+     (q GLfloat)
      ->
      void))
   "Set the current texture coordinates.
@@ -11203,7 +11203,7 @@ with each vertex and with the current raster position. Initially, the
 values for (S,TRQ) are (0,001) .")
 
 (define-foreign-procedure
-  ((glMultMatrixd (m *) -> void))
+  ((glMultMatrixf (m *) -> void))
   "Multiply the current matrix with the specified matrix.
 
 M
@@ -11222,7 +11222,7 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glMultTransposeMatrixd (m *) -> void))
+  ((glMultTransposeMatrixf (m *) -> void))
   "Multiply the current matrix with the specified row-major ordered matrix.
 
 M
@@ -11369,10 +11369,10 @@ the normal array is used when `glDrawArrays', `glMultiDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-foreign-procedure
-  ((glNormal3d
-     (nx GLdouble)
-     (ny GLdouble)
-     (nz GLdouble)
+  ((glNormal3f
+     (nx GLfloat)
+     (ny GLfloat)
+     (nz GLfloat)
      ->
      void)
    (glNormal3i
@@ -13072,17 +13072,17 @@ executed between a call to `glBegin' and the corresponding call to
 
 (define-foreign-procedure
   ((glRasterPos2i (x GLint) (y GLint) -> void)
-   (glRasterPos2d (x GLdouble) (y GLdouble) -> void)
+   (glRasterPos2f (x GLfloat) (y GLfloat) -> void)
    (glRasterPos3i
      (x GLint)
      (y GLint)
      (z GLint)
      ->
      void)
-   (glRasterPos3d
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
+   (glRasterPos3f
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
      ->
      void)
    (glRasterPos4i
@@ -13092,11 +13092,11 @@ executed between a call to `glBegin' and the corresponding call to
      (w GLint)
      ->
      void)
-   (glRasterPos4d
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
-     (w GLdouble)
+   (glRasterPos4f
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
+     (w GLfloat)
      ->
      void))
   "Specify the raster position for pixel operations.
@@ -13452,11 +13452,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glRectd
-     (x1 GLdouble)
-     (y1 GLdouble)
-     (x2 GLdouble)
-     (y2 GLdouble)
+  ((glRectf
+     (x1 GLfloat)
+     (y1 GLfloat)
+     (x2 GLfloat)
+     (y2 GLfloat)
      ->
      void)
    (glRecti
@@ -13600,11 +13600,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glRotated
-     (angle GLdouble)
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
+  ((glRotatef
+     (angle GLfloat)
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
      ->
      void))
   "Multiply the current matrix by a rotation matrix.
@@ -13687,10 +13687,10 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glScaled
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
+  ((glScalef
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
      ->
      void))
   "Multiply the current matrix by a general scaling matrix.
@@ -13831,10 +13831,10 @@ called.
      (blue GLint)
      ->
      void)
-   (glSecondaryColor3d
-     (red GLdouble)
-     (green GLdouble)
-     (blue GLdouble)
+   (glSecondaryColor3f
+     (red GLfloat)
+     (green GLfloat)
+     (blue GLfloat)
      ->
      void)
    (glSecondaryColor3ui
@@ -14771,19 +14771,19 @@ called.
 
 (define-foreign-procedure
   ((glTexCoord1i (s GLint) -> void)
-   (glTexCoord1d (s GLdouble) -> void)
+   (glTexCoord1f (s GLfloat) -> void)
    (glTexCoord2i (s GLint) (t GLint) -> void)
-   (glTexCoord2d (s GLdouble) (t GLdouble) -> void)
+   (glTexCoord2f (s GLfloat) (t GLfloat) -> void)
    (glTexCoord3i
      (s GLint)
      (t GLint)
      (r GLint)
      ->
      void)
-   (glTexCoord3d
-     (s GLdouble)
-     (t GLdouble)
-     (r GLdouble)
+   (glTexCoord3f
+     (s GLfloat)
+     (t GLfloat)
+     (r GLfloat)
      ->
      void)
    (glTexCoord4i
@@ -14793,11 +14793,11 @@ called.
      (q GLint)
      ->
      void)
-   (glTexCoord4d
-     (s GLdouble)
-     (t GLdouble)
-     (r GLdouble)
-     (q GLdouble)
+   (glTexCoord4f
+     (s GLfloat)
+     (t GLfloat)
+     (r GLfloat)
+     (q GLfloat)
      ->
      void))
   "Set the current texture coordinates.
@@ -15183,10 +15183,10 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (param GLint)
      ->
      void)
-   (glTexGend
+   (glTexGenf
      (coord GLenum)
      (pname GLenum)
-     (param GLdouble)
+     (param GLfloat)
      ->
      void))
   "Control the generation of texture coordinates.
@@ -16972,10 +16972,10 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-foreign-procedure
-  ((glTranslated
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
+  ((glTranslatef
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
      ->
      void))
   "Multiply the current matrix by a translation matrix.
@@ -17376,14 +17376,20 @@ If enabled, the generic vertex attribute array is used when
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-foreign-procedure
-  ((glVertexAttrib1s
+  ((glVertexAttrib1f
+     (index GLuint)
+     (v0 GLfloat)
+     ->
+     void)
+   (glVertexAttrib1s
      (index GLuint)
      (v0 GLshort)
      ->
      void)
-   (glVertexAttrib1d
+   (glVertexAttrib2f
      (index GLuint)
-     (v0 GLdouble)
+     (v0 GLfloat)
+     (v1 GLfloat)
      ->
      void)
    (glVertexAttrib2s
@@ -17392,10 +17398,11 @@ If enabled, the generic vertex attribute array is used when
      (v1 GLshort)
      ->
      void)
-   (glVertexAttrib2d
+   (glVertexAttrib3f
      (index GLuint)
-     (v0 GLdouble)
-     (v1 GLdouble)
+     (v0 GLfloat)
+     (v1 GLfloat)
+     (v2 GLfloat)
      ->
      void)
    (glVertexAttrib3s
@@ -17405,11 +17412,12 @@ If enabled, the generic vertex attribute array is used when
      (v2 GLshort)
      ->
      void)
-   (glVertexAttrib3d
+   (glVertexAttrib4f
      (index GLuint)
-     (v0 GLdouble)
-     (v1 GLdouble)
-     (v2 GLdouble)
+     (v0 GLfloat)
+     (v1 GLfloat)
+     (v2 GLfloat)
+     (v3 GLfloat)
      ->
      void)
    (glVertexAttrib4s
@@ -17418,14 +17426,6 @@ If enabled, the generic vertex attribute array is used when
      (v1 GLshort)
      (v2 GLshort)
      (v3 GLshort)
-     ->
-     void)
-   (glVertexAttrib4d
-     (index GLuint)
-     (v0 GLdouble)
-     (v1 GLdouble)
-     (v2 GLdouble)
-     (v3 GLdouble)
      ->
      void)
    (glVertexAttrib4Nub
@@ -17583,17 +17583,17 @@ the vertex array is used when `glArrayElement', `glDrawArrays',
 
 (define-foreign-procedure
   ((glVertex2i (x GLint) (y GLint) -> void)
-   (glVertex2d (x GLdouble) (y GLdouble) -> void)
+   (glVertex2f (x GLfloat) (y GLfloat) -> void)
    (glVertex3i
      (x GLint)
      (y GLint)
      (z GLint)
      ->
      void)
-   (glVertex3d
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
+   (glVertex3f
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
      ->
      void)
    (glVertex4i
@@ -17603,11 +17603,11 @@ the vertex array is used when `glArrayElement', `glDrawArrays',
      (w GLint)
      ->
      void)
-   (glVertex4d
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
-     (w GLdouble)
+   (glVertex4f
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
+     (w GLfloat)
      ->
      void))
   "Specify a vertex.
@@ -17673,17 +17673,17 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-foreign-procedure
   ((glWindowPos2i (x GLint) (y GLint) -> void)
-   (glWindowPos2d (x GLdouble) (y GLdouble) -> void)
+   (glWindowPos2f (x GLfloat) (y GLfloat) -> void)
    (glWindowPos3i
      (x GLint)
      (y GLint)
      (z GLint)
      ->
      void)
-   (glWindowPos3d
-     (x GLdouble)
-     (y GLdouble)
-     (z GLdouble)
+   (glWindowPos3f
+     (x GLfloat)
+     (y GLfloat)
+     (z GLfloat)
      ->
      void))
   "Specify the raster position in window coordinates for pixel operations.

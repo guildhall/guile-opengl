@@ -193,9 +193,10 @@
 
   (define (skip? s)
     (or
-     ;; Skip float variants if we have a double variant.
-     (and (string-suffix? "f" s)
-          (member (string-append (substring s 0 (1- (string-length s))) "d")
+     ;; Skip double variants if we have a float variant.
+     ;; (http://www.opengl.org/wiki/Common_Mistakes#GL_DOUBLE).
+     (and (string-suffix? "d" s)
+          (member (string-append (substring s 0 (1- (string-length s))) "f")
                   all-names))
      ;; Skip packed accessors like glVertex3fv.
      (string-suffix? "v" s)
