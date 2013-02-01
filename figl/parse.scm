@@ -174,8 +174,36 @@
 (define xml-copyright
   (take-first (sxpath '(refentry (refsect1 (@ id (equal? "Copyright")))))))
 
-(define (parse-prototype xml)
-  xml)
+(define (string->gl-type str)
+  (cond
+   ((string=? (string-take-right str 1) "*") ''*) ; yes, double quote
+   ((string-prefix? "const " str)
+    (string->gl-type (string-drop str (string-length "const "))))
+   (else
+    (string->symbol str))))
+
+(define (parse-prototype sxml)
+  (define (handle-def tag type name)
+    (list (string->symbol (cadr name))
+          (string->gl-type type)))
+
+  (pre-post-order sxml
+                  `((*default* . ,(lambda (tag . body)
+                                    (cons tag body)))
+                    (*text* . ,(lambda (tag text)
+                                 (if (string? text)
+                                     (string-trim-both text)
+                                     text)))
+                    (funcdef . ,handle-def)
+                    (paramdef . ,handle-def)
+                    (funcprototype
+                     . ,(lambda (tag func . params)
+                          (let ((return-type (cadr func))
+                                (name (car func)))
+                            (append `(,name) params `(-> ,return-type)))))
+                    (funcsynopsis
+                     . ,(lambda (tag . body)
+                          (car body))))))
 
 (define (collapse-fragments nodeset)
   (match nodeset
