@@ -175,16 +175,8 @@
   (take-first (sxpath '(refentry (refsect1 (@ id (equal? "Copyright")))))))
 
 (define (string->gl-type str)
-  (let ((str (string-trim-both str)))
-    (cond
-     ((string-index str #\*)
-      (string->symbol
-       (string-join (string-split str #\space) "-")))
-     ((string-prefix? "const " str)
-      (string->gl-type (string-drop str (string-length "const "))))
-     (else
-      (string->symbol
-       (string-join (string-split str #\space) "-"))))))
+  (string->symbol
+   (string-join (string-split (string-trim-both str) #\space) "-")))
 
 (define (parse-prototypes sxml)
   (define all-names

@@ -1261,7 +1261,7 @@ other than `GLX_USE_GL' is requested.")
 
 (define-foreign-procedure
   ((glXGetContextIDEXT
-     (ctx GLXContext)
+     (ctx const-GLXContext)
      ->
      GLXContextID))
   "Get the XID for a context..

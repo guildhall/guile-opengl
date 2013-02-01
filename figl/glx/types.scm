@@ -28,6 +28,7 @@
             Display-*
             Font
             GLXContext
+            const-GLXContext
             GLXContextID
             GLXDrawable
             GLXFBConfig
@@ -55,6 +56,7 @@
 (define Display-* '*)
 (define Font unsigned-long)
 (define GLXContext '*)
+(define const-GLXContext '*)
 (define GLXContextID '*)
 (define GLXDrawable unsigned-long)
 (define GLXFBConfig '*)
