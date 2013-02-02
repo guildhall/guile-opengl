@@ -23,6 +23,7 @@
 
 (define-module (figl gl types)
   #:use-module (figl runtime)
+  #:use-module (rnrs bytevectors)
   #:use-module ((system foreign) #:renamer (symbol-prefix-proc 'ffi:))
   #:export (void
             GLboolean
@@ -93,32 +94,42 @@
 (define-simple-foreign-type GLclampf ffi:float)
 (define-simple-foreign-type GLdouble ffi:double)
 (define-simple-foreign-type GLclampd ffi:double)
-
-;; All of these have different meanings and we should be able to do a
-;; basic job at teasing them out, but for now, just use the limited
-;; annotation from (system foreign).
-(define-simple-foreign-type GLboolean-* '*)
-(define-simple-foreign-type GLchar-* '*)
-(define-simple-foreign-type GLdouble-* '*)
-(define-simple-foreign-type GLenum-* '*)
-(define-simple-foreign-type GLfloat-* '*)
-(define-simple-foreign-type GLint-* '*)
-(define-simple-foreign-type GLsizei-* '*)
-(define-simple-foreign-type GLubyte-* '*)
-(define-simple-foreign-type GLuint-* '*)
 (define-simple-foreign-type GLvoid-* '*)
-(define-simple-foreign-type const-GLchar-* '*)
-(define-simple-foreign-type const-GLchar-** '*)
-(define-simple-foreign-type const-GLclampf-* '*)
-(define-simple-foreign-type const-GLdouble-* '*)
-(define-simple-foreign-type const-GLenum-* '*)
-(define-simple-foreign-type const-GLfloat-* '*)
-(define-simple-foreign-type const-GLint-* '*)
-(define-simple-foreign-type const-GLsizei-* '*)
-(define-simple-foreign-type const-GLubyte* '*)
-(define-simple-foreign-type const-GLubyte-* '*)
-(define-simple-foreign-type const-GLubyte-* '*)
-(define-simple-foreign-type const-GLuint-* '*)
-(define-simple-foreign-type const-GLvoid-* '*)
-(define-simple-foreign-type const-GLvoid-** '*)
 (define-simple-foreign-type void-* '*)
+(define-simple-foreign-type const-GLvoid-* '*)
+
+(define-syntax define-array-foreign-type
+  (syntax-rules ()
+    ((_ name element-type)
+     (define-foreign-type name '*
+       ffi:bytevector->pointer
+       (lambda (x) x)))))
+
+(define-array-foreign-type GLboolean-* GLboolean)
+(define-array-foreign-type GLchar-* GLchar)
+(define-array-foreign-type GLdouble-* GLdouble)
+(define-array-foreign-type GLenum-* GLenum)
+(define-array-foreign-type GLfloat-* GLfloat)
+(define-array-foreign-type GLint-* GLint)
+(define-array-foreign-type GLsizei-* GLsizei)
+(define-array-foreign-type GLubyte-* GLubyte)
+(define-array-foreign-type GLuint-* GLuint)
+
+(define-array-foreign-type const-GLclampf-* GLclampf)
+(define-array-foreign-type const-GLdouble-* GLdouble)
+(define-array-foreign-type const-GLenum-* GLenum)
+(define-array-foreign-type const-GLfloat-* GLfloat)
+(define-array-foreign-type const-GLint-* GLint)
+(define-array-foreign-type const-GLsizei-* GLsizei)
+(define-array-foreign-type const-GLubyte* GLubyte)
+(define-array-foreign-type const-GLubyte-* GLubyte)
+(define-array-foreign-type const-GLuint-* GLuint)
+(define-array-foreign-type const-GLvoid-* GLvoid)
+
+(define-foreign-type const-GLchar-* '*
+  ffi:string->pointer
+  ffi:pointer->string)
+
+;; Functions with these types will need special help.
+(define-simple-foreign-type const-GLchar-** '*)
+(define-simple-foreign-type const-GLvoid-** '*)
