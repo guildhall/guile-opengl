@@ -24,7 +24,8 @@
 (define-module (figl runtime)
   #:use-module (system foreign)
   #:export (current-resolver
-            define-foreign-procedure))
+            define-foreign-procedure
+            define-foreign-procedures))
 
 (define (default-resolver name)
   (dynamic-pointer name (dynamic-link)))
@@ -51,16 +52,22 @@
 
 (define-syntax define-foreign-procedure
   (syntax-rules (->)
-    ((define-gl-procedure ((name (pname ptype) ... -> type)
-                           ...)
+    ((define-foreign-procedure (name (pname ptype) ... -> type)
+       docstring)
+     (define name
+       (letrec ((trampoline
+                 (foreign-trampoline trampoline
+                                     name (pname ptype) ... -> type))
+                (name (lambda (pname ...)
+                        docstring
+                        (trampoline pname ...))))
+         name)))))
+
+(define-syntax define-foreign-procedures
+  (syntax-rules ()
+    ((define-foreign-procedures ((name prototype ...) ...)
        docstring)
      (begin
-       (define name
-         (letrec ((trampoline
-                   (foreign-trampoline trampoline
-                                       name (pname ptype) ... -> type))
-                  (name (lambda (pname ...)
-                          docstring
-                          (trampoline pname ...))))
-           name))
+       (define-foreign-procedure (name prototype ...)
+         docstring)
        ...))))

@@ -76,7 +76,7 @@
     glXWaitGL
     glXWaitX))
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXChooseFBConfig
      (dpy Display-*)
      (screen int)
@@ -421,7 +421,7 @@ lower numbered rule are sorted by the higher numbered rule):
 ATTRIB_LIST, if SCREEN is invalid, or if DPY does not support the GLX
 extension.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXChooseVisual
      (dpy Display-*)
      (screen int)
@@ -558,7 +558,7 @@ The interpretations of the various GLX visual attributes are as follows:
 `NULL' is returned if an undefined GLX attribute is encountered in
 ATTRIBLIST.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXCopyContext
      (dpy Display-*)
      (src GLXContext)
@@ -614,7 +614,7 @@ current drawable is a window that is no longer valid.
 `GLXBadContext' is generated if either SRC or DST is not a valid GLX
 context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXCreateContext
      (dpy Display-*)
      (vis XVisualInfo-*)
@@ -685,7 +685,7 @@ not `NULL'.
 `BadAlloc' is generated if the server does not have enough resources to
 allocate the new context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXCreateGLXPixmap
      (dpy Display-*)
      (vis XVisualInfo-*)
@@ -733,7 +733,7 @@ visual).
 
 `BadAlloc' is generated if the server cannot allocate the GLX pixmap.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXCreateNewContext
      (dpy Display-*)
      (config GLXFBConfig)
@@ -810,7 +810,7 @@ allocate the new context.
 `BadValue' is generated if CONFIG is not a valid visual (for example, if
 a particular GLX implementation does not support it).")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXCreatePbuffer
      (dpy Display-*)
      (config GLXFBConfig)
@@ -878,7 +878,7 @@ the requested GLXPbuffer.
 `BadMatch' is generated if CONFIG does not support rendering to pixel
 buffers (e.g., `GLX_DRAWABLE_TYPE' does not contain `GLX_PBUFFER_BIT').")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXCreatePixmap
      (dpy Display-*)
      (config GLXFBConfig)
@@ -921,7 +921,7 @@ window.
 
 `GLXBadFBConfig' is generated if CONFIG is not a valid GLXFBConfig.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXCreateWindow
      (dpy Display-*)
      (config GLXFBConfig)
@@ -968,7 +968,7 @@ window.
 
 `GLXBadFBConfig' is generated if CONFIG is not a valid GLXFBConfig.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXDestroyContext
      (dpy Display-*)
      (ctx GLXContext)
@@ -989,7 +989,7 @@ ID referenced by CTX is freed immediately.
 
 `GLXBadContext' is generated if CTX is not a valid GLX context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXDestroyGLXPixmap
      (dpy Display-*)
      (pix GLXPixmap)
@@ -1010,7 +1010,7 @@ resource ID is freed immediately.
 
 `GLXBadPixmap' is generated if PIX is not a valid GLX pixmap.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXDestroyPbuffer
      (dpy Display-*)
      (pbuf GLXPbuffer)
@@ -1028,7 +1028,7 @@ PBUF
 
 `GLXBadPbuffer' is generated if PBUF is not a valid GLXPbuffer.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXDestroyPixmap
      (dpy Display-*)
      (pixmap GLXPixmap)
@@ -1046,7 +1046,7 @@ PIXMAP
 
 `GLXBadPixmap' is generated if PIXMAP is not a valid GLXPixmap.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXDestroyWindow
      (dpy Display-*)
      (win GLXWindow)
@@ -1064,7 +1064,7 @@ WIN
 
 `GLXBadWindow' is generated if WIN is not a valid GLXPixmap.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXFreeContextEXT
      (dpy Display-*)
      (ctx GLXContext)
@@ -1091,7 +1091,7 @@ supported.
 
 `GLXBadContext' is generated if CTX does not refer to a valid context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetClientString
      (dpy Display-*)
      (name int)
@@ -1124,7 +1124,7 @@ Both the major and minor portions of the version number are of arbitrary
 length. The vendor-specific information is optional. However, if it is
 present, the format and contents are implementation specific.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetConfig
      (dpy Display-*)
      (vis XVisualInfo-*)
@@ -1259,7 +1259,7 @@ a screen.
 `GLX_BAD_VISUAL' is returned if VIS doesn't support GLX and an attribute
 other than `GLX_USE_GL' is requested.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetContextIDEXT
      (ctx const-GLXContext)
      ->
@@ -1282,7 +1282,7 @@ supported.
 
 `GLXBadContext' is generated if CTX does not refer to a valid context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetCurrentContext -> GLXContext))
   "Return the current context.
 
@@ -1292,7 +1292,7 @@ supported.
 `glXGetCurrentContext' returns client-side information. It does not make
 a round trip to the server.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetCurrentDisplay -> Display-*))
   "Get display for current context.
 
@@ -1303,7 +1303,7 @@ no context is current, `NULL' is returned.
 a round-trip to the server, and therefore does not flush any pending
 events.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetCurrentDrawable -> GLXDrawable))
   "Return the current drawable.
 
@@ -1313,7 +1313,7 @@ events.")
 `glXGetCurrentDrawable' returns client-side information. It does not
 make a round trip to the server.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetCurrentReadDrawable -> GLXDrawable))
   "Return the current drawable.
 
@@ -1324,7 +1324,7 @@ current drawable, `None' is returned.
 `glXGetCurrentReadDrawable' returns client-side information. It does not
 make a round-trip to the server.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetFBConfigAttrib
      (dpy Display-*)
      (config GLXFBConfig)
@@ -1573,7 +1573,7 @@ performance as well as poor resource allocation.
 extension. `GLX_BAD_ATTRIBUTE' is returned if ATTRIBUTE is not a valid
 GLX attribute.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetFBConfigs
      (dpy Display-*)
      (screen int)
@@ -1595,7 +1595,7 @@ NELEMENTS
 screen specified by SCREEN. Use `glXGetFBConfigAttrib' to obtain
 attribute values from a specific GLXFBConfig.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetProcAddress
      (procName const-GLubyte-*)
      ->
@@ -1610,7 +1610,7 @@ PROCNAME
 PROCNAME. This is necessary in environments where the OpenGL link
 library exports a different set of functions than the runtime library.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetSelectedEvent
      (dpy Display-*)
      (draw GLXDrawable)
@@ -1634,7 +1634,7 @@ DRAW.
 `GLXBadDrawable' is generated if DRAW is not a valid window or a valid
 GLX pixel buffer.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXGetVisualFromFBConfig
      (dpy Display-*)
      (config GLXFBConfig)
@@ -1655,7 +1655,7 @@ returned.
 
 Returns `NULL' if CONFIG is not a valid GLXFBConfig.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXImportContextEXT
      (dpy Display-*)
      (contextID GLXContextID)
@@ -1698,7 +1698,7 @@ supported.
 `GLXBadContext' is generated if CONTEXTID does not refer to a valid
 context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXIsDirect
      (dpy Display-*)
      (ctx GLXContext)
@@ -1720,7 +1720,7 @@ rendering commands to the X server.
 
 `GLXBadContext' is generated if CTX is not a valid GLX context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXMakeContextCurrent
      (display Display-*)
      (draw GLXDrawable)
@@ -1810,7 +1810,7 @@ or GLXPbuffer.
 DRAW or READ is a GLXWindow or GLXPbuffer and CTX was previously bound
 to a GLXPixmap.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXMakeCurrent
      (dpy Display-*)
      (drawable GLXDrawable)
@@ -1880,7 +1880,7 @@ longer valid.
 ancillary buffers until `glXMakeCurrent' is called, only to find that it
 has insufficient resources to complete the allocation.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXQueryContextInfoEXT
      (dpy Display-*)
      (ctx GLXContext)
@@ -1935,7 +1935,7 @@ attribute.
 
 fred `GLX_BAD_CONTEXT' is returned if ATTRIBUTE is not a valid context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXQueryContext
      (dpy Display-*)
      (ctx GLXContext)
@@ -1977,7 +1977,7 @@ This call may cause a round-trip to the server.
 
 `GLXBadContext' is generated if CTX does not refer to a valid context.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXQueryDrawable
      (dpy Display-*)
      (draw GLXDrawable)
@@ -2035,7 +2035,7 @@ above, the contents of VALUE are unedfined.
 
 A `GLXBadDrawable' is generated if DRAW is not a valid GLXDrawable.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXQueryExtensionsString
      (dpy Display-*)
      (screen int)
@@ -2055,7 +2055,7 @@ null-terminated and contains a space-separated list of extension names.
 (The extension names themselves never contain spaces.) If there are no
 extensions to GLX, then the empty string is returned.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXQueryExtension
      (dpy Display-*)
      (errorBase int-*)
@@ -2083,7 +2083,7 @@ ERRORBASE and EVENTBASE are unchanged.
 ERRORBASE and EVENTBASE do not return values if they are specified as
 `NULL'.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXQueryServerString
      (dpy Display-*)
      (screen int)
@@ -2108,7 +2108,7 @@ possible values for NAME and the format of the strings is the same as
 for `glXGetClientString'. If NAME is not set to a recognized value,
 `NULL' is returned.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXQueryVersion
      (dpy Display-*)
      (major int-*)
@@ -2138,7 +2138,7 @@ MAJOR and MINOR do not return values if they are specified as `NULL'.
 
 MAJOR and MINOR are not updated when `False' is returned.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXSelectEvent
      (dpy Display-*)
      (draw GLXDrawable)
@@ -2270,7 +2270,7 @@ portions of those buffers\\(emwere affected.
 `GLXBadDrawable' is generated if DRAW is not a valid window or a valid
 GLX pixel buffer.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXSwapBuffers
      (dpy Display-*)
      (drawable GLXDrawable)
@@ -2305,7 +2305,7 @@ the display and drawable associated with the current context of the
 calling thread, and DRAWABLE identifies a window that is no longer
 valid.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXUseXFont
      (font Font)
      (first int)
@@ -2355,7 +2355,7 @@ display-list construction mode.
 current context of the calling thread is a window, and that window is no
 longer valid.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXWaitGL -> void))
   "Complete GL execution prior to subsequent X calls.
 
@@ -2371,7 +2371,7 @@ in cases where client and server are on separate machines.
 current context of the calling thread is a window, and that window is no
 longer valid.")
 
-(define-foreign-procedure
+(define-foreign-procedures
   ((glXWaitX -> void))
   "Complete X execution prior to subsequent GL calls.
 

@@ -94,7 +94,7 @@
   (for-each
    (lambda (def)
      (pretty-print
-      `(define-foreign-procedure ,(gl-definition-prototypes def)
+      `(define-foreign-procedures ,(gl-definition-prototypes def)
          ,(string-trim-both
            (stexi->plain-text
             (gl-definition-documentation def))))
