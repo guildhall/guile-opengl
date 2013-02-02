@@ -25,7 +25,9 @@
   #:use-module (system foreign)
   #:export (current-resolver
             define-foreign-procedure
-            define-foreign-procedures))
+            define-foreign-procedures
+            define-foreign-type
+            define-simple-foreign-type))
 
 (define (default-resolver name)
   (dynamic-pointer name (dynamic-link)))
@@ -45,9 +47,9 @@
          #'(lambda (pname ...)
              (let ((ptr (resolve sname)))
                (set! trampoline
-                     (pointer->procedure type
+                     (pointer->procedure (type)
                                          ptr
-                                         (list ptype ...)))
+                                         (list (ptype) ...)))
                (trampoline pname ...))))))))
 
 (define-syntax define-foreign-procedure
@@ -60,7 +62,9 @@
                                      name (pname ptype) ... -> type))
                 (name (lambda (pname ...)
                         docstring
-                        (trampoline pname ...))))
+                        (let ((pname (ptype #:unwrap pname))
+                              ...)
+                          (type #:wrap (trampoline pname ...))))))
          name)))))
 
 (define-syntax define-foreign-procedures
@@ -71,3 +75,36 @@
        (define-foreign-procedure (name prototype ...)
          docstring)
        ...))))
+
+(define-syntax define-foreign-type
+  (syntax-rules ()
+    ((_ name ffi-type unwrap wrap)
+     (define-syntax name
+       (syntax-rules ()
+         ((_) ffi-type)
+         ((_ #:wrap x) (wrap x))
+         ((_ #:unwrap x) (unwrap x)))))))
+
+(define-syntax define-simple-foreign-type
+  (syntax-rules ()
+    ((_ name ffi-type)
+     ;; We could dispatch through to define-foreign-type via:
+     ;;
+     ;;   (define-foreign-type name
+     ;;     ffi-type
+     ;;     (lambda (x) x)
+     ;;     (lambda (x) x))
+     ;;
+     ;; However the resulting wrap expression:
+     ;;
+     ;;   ((lambda (x) x) (trampoline arg ...))
+     ;;
+     ;; would not be in tail position, as the optimizer doesn't know
+     ;; that the foreign function just returns one value.  This hack
+     ;; just passes the wrapped expression through, allowing it to be in
+     ;; tail position.
+     (define-syntax name
+       (syntax-rules ()
+         ((_) ffi-type)
+         ((_ #:wrap x) x)
+         ((_ #:unwrap x) x))))))
