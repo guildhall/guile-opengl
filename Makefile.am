@@ -10,10 +10,12 @@ SOURCES = \
 	figl/runtime.scm \
 	figl/gl/types.scm \
 	figl/gl/low-level.scm \
+	figl/gl.scm \
 	figl/glu/types.scm \
 	figl/glu/low-level.scm \
 	figl/glx/types.scm \
-	figl/glx/low-level.scm
+	figl/glx/low-level.scm \
+	figl/glx.scm
 
 update: figl/parse.go
 	$(top_builddir)/env $(GUILE) $(top_srcdir)/maint/update-low-level-bindings
