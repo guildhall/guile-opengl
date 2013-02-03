@@ -54,11 +54,18 @@ prefixed with a specific copyright header.
 @node Top
 @top Figl
 
-
 @insertcopying 
+
 @menu
+* Introduction::                The what, why, and how of Figl.
+
+* GL::                          A Scheme interface to OpenGL.
 * Low-Level GL::                Primitive interface to OpenGL.
+
+* GLU::                         The GL Utility library.
 * Low-Level GLU::               Primitive interface to ``glu'' functionality.
+
+* GLX::                         Using OpenGL with the X Window System.
 * Low-Level GLX::               Primitive interface to ``glX'' functionality.
 
 * Function Index::
@@ -70,17 +77,168 @@ prefixed with a specific copyright header.
 @shortcontents 
 @end iftex
 
+
+@node Introduction
+@chapter Introduction
+
+Figl is the Foreign Interface to GL: an OpenGL binding for Guile.
+It's a ``foreign'' interface because it uses the dynamic foreign
+function interface provided by Guile 2.0, providing access to OpenGL
+without any C code at all.  In fact, much of the binding (and its
+documentation) is automatically generated from upstream API
+specifications and documentation.
+
+In this section, we give a brief introduction to OpenGL and some
+details about the binding as a whole.  The following chapters cover
+the specifics of the interfaces provided by Figl.
+
+@menu
+* About OpenGL::                A brief introduction to OpenGL.
+* GL Contexts::                 Finding a square of pixels to paint.
+* GL Extensions::               Beyond OpenGL.
+* FAQ::                         Figl answers questions.
+@end menu
+
+@node About OpenGL
+@section About OpenGL
+
+OpenGL is a standard API for drawing three-dimensional graphics.  From
+its origin in Silicon Graphics's workstations in the mid-1990s, today
+it has become ubiquitous, with implementations on mobile phones,
+televisions, tablets, desktops, and even web browsers.
+
+OpenGL has been able to achieve such widespread adoption not just
+because it co-evolved with powerful graphics hardware, but also
+because it was conceived of as an interface specification and not a
+piece of source code.  In fact, these days it is a family of APIs,
+available in several flavors and versions:
+
+@table @asis
+@item OpenGL 1.x
+This series of specifications started with the original releases in
+1992, and ended with OpenGL 1.5 in 2003.  This era corresponds to a
+time when graphics cards were less powerful and more special-purpose,
+with dedicated hardware to handle such details as fog and lighting.
+As such the OpenGL 1.x API reflects the capabilities of these special
+units.
+
+@item OpenGL 2.x
+By the early 2000s, graphics hardware evolved to that was much more
+general-purpose.  The so-called @dfn{fixed-function rendering
+pipeline} of the earlier years was replaced with a @dfn{programmable
+rendering pipeline}, in which effects that would have required special
+hardware were instead performed by custom programs running on the
+graphics card's processors.  OpenGL added support for allocating
+@dfn{buffer objects} on the graphics card, and for @dfn{shader
+programs}, which did the actual rendering.  In time, this
+buffer-focused API came to be the preferred form of talking to the GL.
+
+@item OpenGL ES
+OpenGL ES was a ``cut-down'' version of OpenGL 2.x, designed to be
+small enough to appeal to embedded device vendors.  OpenGL ES 1.x
+removed some of the legacy functionality from OpenGL, while adding
+interfaces to use fixed-point math, for devices without floating-point
+units.  OpenGL ES 2.x went farther still, removing the fixed-function
+pipeline entirely.
+
+@item OpenGL 3.x and above
+The OpenGL 3.x series followed the lead of OpenGL ES, first
+deprecating (in 3.0) and then removing (in 3.1) the fixed-function
+pipeline.  OpenGL 3.0 was released in 2008, but the free Mesa
+impementation only began supporting it in 2012, so it is currently
+(@value{UPDATED}) less common.
+@end table
+
+Figl wraps the OpenGL 2.1 API.  It's a ubiquitous subset of the OpenGL
+implementations that are actually deployed in the wild; its legacy API
+looks back to OpenGL 1.x, while the buffer-oriented API is compatible
+with OpenGL ES.
+
+
+@node GL Contexts
+@section GL Contexts
+
+All this talk about drawing is very well and good, but how do you
+actually get a canvas?  Interestingly enough, this is outside the
+purview of the OpenGL specification.  There are specific ways to get
+an @dfn{OpenGL context} for each different windowing system that is
+out there.  OpenGL is all crayons and no paper.
+
+For the X window system, there is a standard API for creating a GL
+context given a window (or a drawable), @dfn{GLX}.  @xref{GLX}, for
+more information on its binding in Guile.
+
+TODO: Write about GLUT, EGL, the current context, and threads.
+
+
+@node GL Extensions
+@section GL Extensions
+
+TODO: Write about extensions, and how to get access to them.
+
+
+@node FAQ
+@section FAQ
+
+TODO: Write about things readers will want to know (instead of
+commenting them in the source :)
+
+
+@node GL
+@chapter GL
+
+To draw with OpenGL, you obtain a drawing context (@pxref{GL
+Contexts}) and send @dfn{the GL} some geometry.  (You can think of the
+GL as a layer over your graphics card.)  You can give the GL points,
+lines, and triangles in three-dimensional space.  You configure your
+GL to render a certain part of space, and it takes your geometry,
+rasterizes it, and writes it to the screen (when you tell it to).
+
+That's the basic idea.  You can customize most parts of this
+@dfn{rendering pipeline}, by specifying attributes of your geometry
+with the OpenGL API, and by programmatically operating on the geometry
+and the pixels with programs called @dfn{shaders}.
+
+GL is an @dfn{immediate-mode} graphics API, which is to say that it
+doesn't keep around a scene graph of objects.  Instead, at every frame
+you as the OpenGL user have to tell the GL what is in the world, and
+how to paint it.  It's a fairly low-level interface, but a powerful
+one.  @uref{http://www.opengl.org/wiki/Rendering_Pipeline_Overview}
+
+In the old days of OpenGL 1.0, it was common to call a function to
+paint each individual vertex.  You'll still see this style in some old
+tutorials.  This quickly gets expensive if you have a lot of vertexes,
+though.  This style, known as @dfn{Legacy OpenGL}, was deprecated and
+even removed from some versions of OpenGL.
+@uref{http://www.opengl.org/wiki/Legacy_OpenGL}, for more on the older
+APIs.
+
+Instead, the newer thing to do is to send the geometry to the GL in a
+big array, and...
+
+
 @node Low-Level GL
 @chapter Low-Level GL
 @include low-level-gl.texi
+
+
+@node GLU
+@chapter GLU
+
 
 @node Low-Level GLU
 @chapter Low-Level GLU
 @include low-level-glu.texi
 
+
+@node GLX
+@chapter GLX
+
+
 @node Low-Level GLX
 @chapter Low-Level GLX
 @include low-level-glx.texi
+
 
 @node Function Index
 @unnumbered Function Index
