@@ -23,10 +23,10 @@
 
 (define-module (figl config)
   #:export (abs-top-srcdir
-            upstream-man-pages))
+            upstream-doc))
 
 (define (abs-top-srcdir)
   "@abs_top_srcdir@")
 
-(define (upstream-man-pages)
-  "@abs_top_srcdir@/upstream-man-pages")
+(define (upstream-doc)
+  "@abs_top_srcdir@/upstream-doc")

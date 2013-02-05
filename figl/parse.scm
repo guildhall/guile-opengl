@@ -135,7 +135,7 @@
 
 (define (parse-man-xml version filename)
   (define subdir (format #f "man~A" version))
-  (call-with-input-file (in-vicinity (upstream-man-pages)
+  (call-with-input-file (in-vicinity (upstream-doc)
                                      (in-vicinity subdir filename))
     (lambda (port)
       (zap-whitespace
@@ -145,7 +145,7 @@
 
 (define (xml-files version)
   (define subdir (format #f "man~A" version))
-  (scandir (in-vicinity (upstream-man-pages) subdir)
+  (scandir (in-vicinity (upstream-doc) subdir)
            (lambda (x) (string-suffix? ".xml" x))))
 
 (define (take-first proc)
