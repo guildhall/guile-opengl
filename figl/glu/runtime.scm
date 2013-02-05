@@ -17,12 +17,34 @@
 
 ;;; Commentary:
 ;;
-;; OpenGL binding.
+;; figl is the Foreign Interface to GL.
 ;;
 ;;; Code:
 
-(define-module (figl glx)
+(define-module (figl glu runtime)
   #:use-module (system foreign)
   #:use-module (figl runtime)
-  #:use-module (figl glx low-level))
+  #:export (define-glu-procedure define-glu-procedures))
 
+(define libGLU
+  (delay (dynamic-link "libGLU")))
+
+(define (resolve name)
+  (dynamic-pointer (symbol->string name) (force libGLU)))
+
+(define-syntax define-glu-procedure
+  (syntax-rules (->)
+    ((define-glu-procedure (name (pname ptype) ... -> type)
+       docstring)
+     (define-foreign-procedure (name (pname ptype) ... -> type)
+       (resolve 'name)
+       docstring))))
+
+(define-syntax define-glu-procedures
+  (syntax-rules ()
+    ((define-glu-procedures ((name prototype ...) ...)
+       docstring)
+     (begin
+       (define-glu-procedure (name prototype ...)
+         docstring)
+       ...))))

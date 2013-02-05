@@ -27,6 +27,7 @@
 
 (define-module (figl glut low-level)
   #:use-module (figl runtime)
+  #:use-module (figl glut runtime)
   #:use-module (figl gl types)
   #:use-module ((system foreign) #:renamer (symbol-prefix-proc 'ffi:))
   #:use-module (srfi srfi-26) ; cut
@@ -142,13 +143,6 @@
             glutWireTeapot
             ))
 
-(define libglut (dynamic-link "libglut"))
-
-(define (glut-resolver name)
-  (dynamic-pointer name libglut))
-
-(current-resolver glut-resolver)
-
 (define-simple-foreign-type int ffi:int)
 (define-simple-foreign-type unsigned-int ffi:unsigned-int)
 
@@ -164,19 +158,19 @@
 ;;; 2 Initialization
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutInit (argcp int-*) (argv char-**) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutInitWindowPosition (x int) (y int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutInitWindowSize (width int) (height int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutInitDisplayMode (mode unsigned-int) -> void)
   #f)
 
@@ -184,7 +178,7 @@
 ;;; 3 Begin Event Processing
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutMainLoop -> void)
   #f)
 
@@ -192,11 +186,11 @@
 ;;; 4 Window Management
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutCreateWindow (name char-*) -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutCreateSubWindow (win int)
                        (x int)
                        (y int)
@@ -206,67 +200,67 @@
                        int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSetWindow (win int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutGetWindow -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutDestroyWindow (win int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutPostRedisplay -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSwapBuffers -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutPositionWindow (x int) (y int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutReshapeWindow (width int) (height int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutFullScreen -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutPopWindow -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutPushWindow -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutShowWindow -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutHideWindow -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutIconifyWindow -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSetWindowTitle (name char-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSetIconTitle (name char-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSetCursor (cursor int) -> void)
   #f)
 
@@ -275,27 +269,27 @@
 ;;; 5 Overlay Management
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutEstablishOverlay -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutUseLayer (layer GLenum) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutRemoveOverlay -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutPostOverlayRedisplay -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutShowOverlay -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutHideOverlay -> void)
   #f)
 
@@ -304,31 +298,31 @@
 ;;; 6 Menu Management
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutCreateMenu (func void-*) -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSetMenu (menu int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutGetMenu -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutDestroyMenu (menu int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutAddMenuEntry (name char-*) (value int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutAddSubMenu (name char-*) (menu int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutChangeToMenuEntry (entry int)
                          (name char-*)
                          (value int)
@@ -336,7 +330,7 @@
                          void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutChangeToSubMenu (entry int)
                        (name char-*)
                        (menu int)
@@ -344,15 +338,15 @@
                        void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutRemoveMenuItem (entry int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutAttachMenu (button int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutDetachMenu (button int) -> void)
   #f)
 
@@ -361,87 +355,87 @@
 ;;; 7 Callback Registration
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutDisplayFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutOverlayDisplayFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutReshapeFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutKeyboardFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutMouseFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutMotionFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutPassiveMotionFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutVisibilityFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutEntryFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSpecialFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSpaceballMotionFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSpaceballRotateFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSpaceballButtonFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutButtonBoxFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutDialsFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutTabletMotionFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutTabletButtonFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutMenuStatusFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutMenuStateFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutIdleFunc (func void-*) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutTimerFunc (msecs unsigned-int)
                  (func void-*)
                  (value int)
@@ -454,7 +448,7 @@
 ;;; 8 Color Index Colormap Management
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSetColor (cell int)
                 (red GLfloat)
                 (green GLfloat)
@@ -463,11 +457,11 @@
                 void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutGetColor (cell int) (component int) -> GLfloat)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutCopyColormap (win int) -> void)
   #f)
 
@@ -475,23 +469,23 @@
 ;;; 9 State Retrieval
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutGet (state GLenum) -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutLayerGet (info GLenum) -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutDeviceGet (info GLenum) -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutGetModifiers -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutExtensionSupported (extension char-*) -> int)
   #f)
 
@@ -499,19 +493,19 @@
 ;;; 10 Font Rendering
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutBitmapCharacter (font void-*) (character int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutBitmapWidth (font void-*) (character int) -> int)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutStrokeCharacter (font void-*) (character int) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutStrokeWidth (font void-*) (character int) -> void)
   #f)
 
@@ -520,7 +514,7 @@
 ;;; 11 Geometric Object Rendering
 ;;;
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidSphere (radius GLdouble)
                    (slices GLint)
                    (stacks GLint)
@@ -528,7 +522,7 @@
                    void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireSphere (radius GLdouble)
                   (slices GLint)
                   (stacks GLint)
@@ -536,15 +530,15 @@
                   void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidCube (size GLdouble) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireCube (size GLdouble) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidCone (base GLdouble)
                  (height GLdouble)
                  (slices GLint)
@@ -553,7 +547,7 @@
                  void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireCone (base GLdouble)
                 (height GLdouble)
                 (slices GLint)
@@ -562,7 +556,7 @@
                 void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidTorus (inner-radius GLdouble)
                   (outer-radius GLdouble)
                   (sides GLint)
@@ -571,7 +565,7 @@
                   void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireTorus (inner-radius GLdouble)
                  (outer-radius GLdouble)
                  (sides GLint)
@@ -580,42 +574,42 @@
                  void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidDodecahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireDodecahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidOctahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireOctahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidTetrahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireTetrahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidIcosahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireIcosahedron -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutSolidTeapot (size GLdouble) -> void)
   #f)
 
-(define-foreign-procedure
+(define-glut-procedure
   (glutWireTeapot (size GLdouble) -> void)
   #f)
