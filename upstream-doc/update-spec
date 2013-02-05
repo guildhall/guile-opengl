@@ -1,0 +1,17 @@
+#!/bin/sh
+
+base_url=http://www.opengl.org/registry/api
+
+cd `dirname $0`/spec
+
+rm *.spec *.tm
+
+for i in enum.spec enumext.spec gl.spec gl.tm; do
+  wget $base_url/$i
+done
+
+for section in glx wgl; do
+  for i in enum.spec enumext.spec .spec .tm; do
+    wget $base_url/$section$i
+  done
+done
