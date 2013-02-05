@@ -60,13 +60,11 @@ prefixed with a specific copyright header.
 * Introduction::                The what, why, and how of Figl.
 
 * GL::                          A Scheme interface to OpenGL.
-* Low-Level GL::                Primitive interface to OpenGL.
-
 * GLU::                         The GL Utility library.
-* Low-Level GLU::               Primitive interface to ``glu'' functionality.
-
 * GLX::                         Using OpenGL with the X Window System.
-* Low-Level GLX::               Primitive interface to ``glX'' functionality.
+* GLUT::                        The GL Utility Toolkit.
+
+* FAQ::                         Figl answers questions.
 
 * Function Index::
 @end menu
@@ -82,28 +80,78 @@ prefixed with a specific copyright header.
 @chapter Introduction
 
 Figl is the Foreign Interface to GL: an OpenGL binding for Guile.
-It's a ``foreign'' interface because it uses the dynamic foreign
-function interface provided by Guile 2.0, providing access to OpenGL
-without any C code at all.  In fact, much of the binding (and its
-documentation) is automatically generated from upstream API
-specifications and documentation.
 
-In this section, we give a brief introduction to OpenGL and some
-details about the binding as a whole.  The following chapters cover
-the specifics of the interfaces provided by Figl.
+OpenGL is a family of APIs and layers.  The following chapters discuss
+the parts of OpenGL and how they are bound by Figl.
+
+But before that, some notes on the Figl binding as a whole.
 
 @menu
-* About OpenGL::                A brief introduction to OpenGL.
-* GL Contexts::                 Finding a square of pixels to paint.
-* GL Extensions::               Beyond OpenGL.
-* FAQ::                         Figl answers questions.
+* About Figl::                  The structure of the binding.
 @end menu
+
+
+@node About Figl
+@section About Figl
+
+Figl is a @dfn{foreign} interface to OpenGL because it uses the
+dynamic @dfn{foreign function interface} provided by Guile 2.0,
+providing access to OpenGL without any C code at all.  In fact, much
+of Figl (and this manual) is automatically generated from upstream API
+specifications and documentation.
+
+We have tried to do a very complete job at wrapping OpenGL, and
+additionally have tried to provide a nice Scheme interface as well.
+Our strategy has been to separate the binding into low-level and
+high-level pieces.
+
+The low-level bindings correspond exactly with the GL specification,
+and are well-documented.  However, these interfaces are not so nice to
+use from Scheme; output arguments have to be allocated by the caller,
+and there is only the most basic level of type checking, and no sanity
+checking at all.  For example, you can pass a bytevector of image data
+to the low-level @code{glTexImage2D} procedure, but no check is made
+that the dimensions you specify actually correspond to the size of the
+bytevector.  This function could end up reading past the end of the
+bytevector.  Worse things can happen with procedures that write to
+arrays, like @code{glGetTexImage}.
+
+The high-level bindings are currently a work in progress, and are
+being manually written.  They intend to be a complete interface to the
+GL, without the need to use the low-level bindings.  However, the
+low-level bindings will always be available for you to use if needed,
+and have the advantage that their behavior is better documented and
+specified by OpenGL itself.
+
+Low-level bindings are accessed by loading the @code{(figl
+@var{module} low-level)}, for example via:
+
+@example
+(use-modules (figl gl low-level))
+@end example
+
+The high-level modules are named like @code{(figl @var{module})}, for
+example @code{(figl gl)}.
+
+
+@node GL
+@chapter GL
+
+
+@menu
+* About OpenGL::                Know the past to understand the present.
+* GL Contexts::                 Finding a square of pixels.
+* Rendering::                   How to paint.
+* Low-Level GL::                Primitive interface to OpenGL.
+* GL Extensions::               Beyond core OpenGL.
+@end menu
+
 
 @node About OpenGL
 @section About OpenGL
 
 OpenGL is a standard API for drawing three-dimensional graphics.  From
-its origin in Silicon Graphics's workstations in the mid-1990s, today
+its origin in Silicon Graphics's workstations the early 1990s, today
 it has become ubiquitous, with implementations on mobile phones,
 televisions, tablets, desktops, and even web browsers.
 
@@ -123,15 +171,16 @@ As such the OpenGL 1.x API reflects the capabilities of these special
 units.
 
 @item OpenGL 2.x
-By the early 2000s, graphics hardware evolved to that was much more
-general-purpose.  The so-called @dfn{fixed-function rendering
-pipeline} of the earlier years was replaced with a @dfn{programmable
-rendering pipeline}, in which effects that would have required special
-hardware were instead performed by custom programs running on the
-graphics card's processors.  OpenGL added support for allocating
-@dfn{buffer objects} on the graphics card, and for @dfn{shader
-programs}, which did the actual rendering.  In time, this
-buffer-focused API came to be the preferred form of talking to the GL.
+By the early 2000s, graphics hardware had become much more
+general-purpose and needed a more general-purpose API.  The so-called
+@dfn{fixed-function rendering pipeline} of the earlier years was
+replaced with a @dfn{programmable rendering pipeline}, in which
+effects that would have required special hardware were instead
+performed by custom programs running on the graphics card.  OpenGL
+added support for allocating @dfn{buffer objects} on the graphics
+card, and for @dfn{shader programs}, which did the actual rendering.
+In time, this buffer-focused API came to be the preferred form of
+talking to the GL.
 
 @item OpenGL ES
 OpenGL ES was a ``cut-down'' version of OpenGL 2.x, designed to be
@@ -139,7 +188,8 @@ small enough to appeal to embedded device vendors.  OpenGL ES 1.x
 removed some of the legacy functionality from OpenGL, while adding
 interfaces to use fixed-point math, for devices without floating-point
 units.  OpenGL ES 2.x went farther still, removing the fixed-function
-pipeline entirely.
+pipeline entirely.  OpenGL ES 2.x is common on current smart phone
+platforms.
 
 @item OpenGL 3.x and above
 The OpenGL 3.x series followed the lead of OpenGL ES, first
@@ -168,24 +218,35 @@ For the X window system, there is a standard API for creating a GL
 context given a window (or a drawable), @dfn{GLX}.  @xref{GLX}, for
 more information on its binding in Guile.
 
-TODO: Write about GLUT, EGL, the current context, and threads.
+Bseides creating contexts from native windows or drawables, each
+backend also supports functions to make a context @dfn{current}.  The
+OpenGL API is stateful; you can think of each call as taking an
+implicit @dfn{current context} parameter, which holds the current
+state of the GL and is operated on by the function in question.
+Contexts are thread-specific, and one context should not be active on
+more than one thread at a time.
+
+All calls to OpenGL functions must be made while a context is active;
+otherwise the result is undefined.  Hopefully while you are getting
+used to this rule, your driver is nice enough not to crash on you if
+you call a function outside a GL context, but it's not even required
+to do that.  Backend-specific functions may or may not require a
+context to be current; for example, Windows requires a context to be
+current, wheras GLX does not.
+
+There have been a few attempts at abstracting away the need for
+calling API specific to a given windowing system, notably GLUT and
+EGL.  GLUT is the older of the two, and though it is practically
+unchanged since the mid-1990s, it is still widely used on desktops.
+@xref{GLUT}, for more on GLUT.
+
+EGL is technically part of OpenGL ES, and was designed with the modern
+OpenGL API and mobile hardware in mind, though it also works on the
+desktop.  Figl does not yet have an EGL binding.
 
 
-@node GL Extensions
-@section GL Extensions
-
-TODO: Write about extensions, and how to get access to them.
-
-
-@node FAQ
-@section FAQ
-
-TODO: Write about things readers will want to know (instead of
-commenting them in the source :)
-
-
-@node GL
-@chapter GL
+@node Rendering
+@section Rendering
 
 To draw with OpenGL, you obtain a drawing context (@pxref{GL
 Contexts}) and send @dfn{the GL} some geometry.  (You can think of the
@@ -203,41 +264,125 @@ GL is an @dfn{immediate-mode} graphics API, which is to say that it
 doesn't keep around a scene graph of objects.  Instead, at every frame
 you as the OpenGL user have to tell the GL what is in the world, and
 how to paint it.  It's a fairly low-level interface, but a powerful
-one.  @uref{http://www.opengl.org/wiki/Rendering_Pipeline_Overview}
+one. See
+@uref{http://www.opengl.org/wiki/Rendering_Pipeline_Overview}, for
+more details.
 
 In the old days of OpenGL 1.0, it was common to call a function to
 paint each individual vertex.  You'll still see this style in some old
 tutorials.  This quickly gets expensive if you have a lot of vertexes,
 though.  This style, known as @dfn{Legacy OpenGL}, was deprecated and
-even removed from some versions of OpenGL.
+even removed from some versions of OpenGL.  See
 @uref{http://www.opengl.org/wiki/Legacy_OpenGL}, for more on the older
 APIs.
 
 Instead, the newer thing to do is to send the geometry to the GL in a
-big array, and...
+big array buffer, and have the GL draw geometry from the buffer.  The
+newer functions like @code{glGenBuffers} allocate buffers, returning
+an integer that @dfn{names} a buffer managed by the GL.  You as a user
+can update the contents of the buffer, but when drawing you reference
+the buffer by name.  This has the advantage of reducing the chatter
+and data transfer between you and the GL, though it can be less
+convenient to use.
+
+So which API should you use?  Use what you feel like using, if you
+have a choice.  Legacy OpenGL isn't going away any time soon on the
+desktop.  Sometimes you don't have a choice, though; for example, when
+targeting a device that only supports OpenGL ES 2.x, legacy OpenGL is
+unavailable.
+
+But if you want some advice, we suggest that you use the newer APIs.
+Not only will your code be future-proof and more efficient on the GL
+level, reducing the number of API calls improves performance, and it
+can reduce the amount of heap allocation in your program.  All
+floating-point numbers are currently allocated on the heap in Guile,
+and doing less floating-point math in tight loops can only be a good
+thing.
 
 
 @node Low-Level GL
-@chapter Low-Level GL
+@section Low-Level GL
 @include low-level-gl.texi
+
+
+@node GL Extensions
+@section GL Extensions
+
+@quotation
+The future is already here -- it's just not very evenly distributed.
+
+-- William Gibson
+@end quotation
+
+Before interfaces end up in core OpenGL, the are usually present as
+vendor-specific or candidate extensions.  Indeed, the making of an
+OpenGL standard these days seems to be a matter of simply collecting a
+set of mature extensions and making them coherent.
+
+Figl doesn't currently provide specific interfaces for extensions.
+Perhaps it should, but that's a lot of work that we haven't had time
+to do.  Contributions are welcome.
+
+In the meantime, if you know enough about GL to know that you need an
+extension, you can define one yourself -- after all, Figl is all a
+bunch of Scheme code anyway.
+
+For example, let's say you decide that you need to render to a
+framebuffer object.  You go to @uref{http://www.opengl.org/registry/}
+and pick out an extension, say
+@uref{http://www.opengl.org/registry/specs/ARB/framebuffer_object.txt}.
+
+This extension defines a procedure, @code{GLboolean
+glIsRenderBuffer(GLuint)}.  So you define it:
+
+@example
+(use-modules (figl gl runtime) (figl gl types))
+(define-gl-procedure (glIsRenderBuffer (buf GLuint) -> GLboolean)
+  "Render buffer predicate.  Other docs here.")
+@end example
+
+And that's that.  It's a low-level binding, but what did you expect?
+
+Note that you'll still need to check for the availability of this
+extension at runtime with @code{(glGetString GL_EXTENSIONS)}.
 
 
 @node GLU
 @chapter GLU
 
+@menu
+* Low-Level GLU::               Primitive interface to ``glu'' functionality.
+@end menu
 
 @node Low-Level GLU
-@chapter Low-Level GLU
+@section Low-Level GLU
 @include low-level-glu.texi
 
 
 @node GLX
 @chapter GLX
 
+@menu
+* Low-Level GLX::               Primitive interface to ``glX'' functionality.
+@end menu
+
 
 @node Low-Level GLX
-@chapter Low-Level GLX
+@section Low-Level GLX
 @include low-level-glx.texi
+
+
+@node GLUT
+@chapter GLUT
+
+TODO: Write GLUT documentation.
+
+
+@node FAQ
+@chapter FAQ
+
+TODO: Write about things readers will want to know (instead of
+commenting them in the source :)
 
 
 @node Function Index
