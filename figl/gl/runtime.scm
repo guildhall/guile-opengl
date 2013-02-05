@@ -74,21 +74,13 @@
 ;; software, where dynamic linking is entirely sufficient to deal with
 ;; this issue, but it is how things have evolved.
 ;;
-;; In light of all of this, we need to make some simplifications.
-;;
-;; One is that each low-level function will have just one foreign
-;; function wrapper.  This means that a minority of Windows
-;; configurations won't work.  Oh well.
-;;
-;; Another is that if dynamic-link returns a result, that it is assumed
-;; that glXGetProcAddress (or the equivalent) would return the same
-;; value.  So we can try dynamic-link first, and only dispatch to e.g
-;; glXGetProcAddress if that fails.
-;;
-;; Finally, we assume that all GL symbols may be resolved by
-;; dynamic-pointer by looking in one library, regardless of whether they
-;; come from the lower GL level or from the window-system-specific
-;; level.
+;; Our solution is to provide extension points to allow a user to
+;; specify a glXGetProcAddress-like procedure, and to specify the
+;; dynamic object used to lookup symbols in the fallback case.
+;; Functions will end up lazily caching a foreign function wrapper, one
+;; per function.  This means that a minority of Windows configurations
+;; (using multiple different output gpu/driver combinations at once)
+;; won't work.  Oh well.
 ;;
 
 ;; Parameterize this with glXGetProcAddress, eglGetProcAddress, etc.
