@@ -98,11 +98,17 @@
 (define-simple-foreign-type void-* '*)
 (define-simple-foreign-type const-GLvoid-* '*)
 
+(define (array->pointer x)
+  (lambda (x)
+    (if x
+        (ffi:bytevector->pointer x)
+        ffi:%null-pointer)))
+
 (define-syntax define-array-foreign-type
   (syntax-rules ()
     ((_ name element-type)
      (define-foreign-type name '*
-       ffi:bytevector->pointer
+       array->pointer
        (lambda (x) x)))))
 
 (define-array-foreign-type GLboolean-* GLboolean)
