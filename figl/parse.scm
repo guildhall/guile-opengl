@@ -186,26 +186,30 @@
         ...)
        names)))
 
+  (define (redundant-variant? s shun-suffix prefer-suffix)
+    (and (string-suffix? shun-suffix s)
+         (member (string-append (substring s 0 (- (string-length s)
+                                                  (string-length shun-suffix)))
+                                prefer-suffix)
+                 all-names)))
+
   (define (skip? s)
     (or
      ;; Skip double variants if we have a float variant.
      ;; (http://www.opengl.org/wiki/Common_Mistakes#GL_DOUBLE).
-     (and (string-suffix? "d" s)
-          (member (string-append (substring s 0 (1- (string-length s))) "f")
-                  all-names))
-     ;; Skip packed accessors like glVertex3fv.
-     (string-suffix? "v" s)
+     (redundant-variant? s "d" "f")
+
      ;; Skip byte variants if there is a short variant.
-     (and (string-suffix? "b" s)
-          (member (string-append (substring s 0 (1- (string-length s))) "s")
-                  all-names))
+     (redundant-variant? s "b" "s")
+
      ;; Skip short variants if there is an int variant.
-     (and (or (string-suffix? "s" s)
-              (string-suffix? "s" s)
-              (string-suffix? "s" s)
-              (string-suffix? "s" s))
-          (member (string-append (substring s 0 (1- (string-length s))) "i")
-                  all-names))))
+     (redundant-variant? s "s" "i")
+
+     ;; Skip packed setters like glVertex3fv if e.g. glVertex3f exists.
+     (redundant-variant? s "v" "")
+     (redundant-variant? s "dv" "fv")
+     (redundant-variant? s "bv" "sv")
+     (redundant-variant? s "sv" "iv")))
 
   (filter-map
    (lambda (sxml)

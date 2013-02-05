@@ -54,6 +54,7 @@
             GLubyte-*
             GLuint-*
             GLvoid-*
+            GLvoid-**
             const-GLchar-*
             const-GLchar-**
             const-GLclampf-*
@@ -137,5 +138,6 @@
   ffi:pointer->string)
 
 ;; Functions with these types will need special help.
+(define-simple-foreign-type GLvoid-** '*)
 (define-simple-foreign-type const-GLchar-** '*)
 (define-simple-foreign-type const-GLvoid-** '*)

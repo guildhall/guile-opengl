@@ -82,6 +82,8 @@
     glColorMaterial
     glColorPointer
     glColorSubTable
+    glColorTableParameterfv
+    glColorTableParameteriv
     glColorTable
     glColor3i
     glColor3f
@@ -160,22 +162,63 @@
     glGetActiveUniform
     glGetAttachedShaders
     glGetAttribLocation
+    glGetBufferParameteriv
+    glGetBufferPointerv
     glGetBufferSubData
     glGetClipPlane
+    glGetColorTableParameterfv
+    glGetColorTableParameteriv
     glGetColorTable
     glGetCompressedTexImage
     glGetConvolutionFilter
+    glGetConvolutionParameterfv
+    glGetConvolutionParameteriv
     glGetError
+    glGetHistogramParameterfv
+    glGetHistogramParameteriv
     glGetHistogram
+    glGetLightfv
+    glGetLightiv
+    glGetMapfv
+    glGetMapiv
+    glGetMaterialfv
+    glGetMaterialiv
+    glGetMinmaxParameterfv
+    glGetMinmaxParameteriv
     glGetMinmax
+    glGetPixelMapfv
+    glGetPixelMapuiv
+    glGetPointerv
     glGetPolygonStipple
     glGetProgramInfoLog
+    glGetProgramiv
+    glGetQueryiv
+    glGetQueryObjectiv
+    glGetQueryObjectuiv
     glGetSeparableFilter
     glGetShaderInfoLog
     glGetShaderSource
+    glGetShaderiv
     glGetString
+    glGetTexEnvfv
+    glGetTexEnviv
+    glGetTexGenfv
+    glGetTexGeniv
     glGetTexImage
+    glGetTexLevelParameterfv
+    glGetTexLevelParameteriv
+    glGetTexParameterfv
+    glGetTexParameteriv
     glGetUniformLocation
+    glGetUniformfv
+    glGetUniformiv
+    glGetVertexAttribPointerv
+    glGetVertexAttribfv
+    glGetVertexAttribiv
+    glGetBooleanv
+    glGetDoublev
+    glGetFloatv
+    glGetIntegerv
     glHint
     glHistogram
     glIndexMask
@@ -234,6 +277,8 @@
     glNormal3i
     glOrtho
     glPassThrough
+    glPixelMapfv
+    glPixelMapuiv
     glPixelStoref
     glPixelStorei
     glPixelTransferf
@@ -315,6 +360,15 @@
     glUniform2i
     glUniform3i
     glUniform4i
+    glUniformMatrix2fv
+    glUniformMatrix3fv
+    glUniformMatrix4fv
+    glUniformMatrix2x3fv
+    glUniformMatrix3x2fv
+    glUniformMatrix2x4fv
+    glUniformMatrix4x2fv
+    glUniformMatrix3x4fv
+    glUniformMatrix4x3fv
     glUseProgram
     glValidateProgram
     glVertexAttribPointer
@@ -327,6 +381,10 @@
     glVertexAttrib4f
     glVertexAttrib4s
     glVertexAttrib4Nub
+    glVertexAttrib4iv
+    glVertexAttrib4uiv
+    glVertexAttrib4Niv
+    glVertexAttrib4Nuiv
     glVertexPointer
     glVertex2i
     glVertex2f
@@ -2329,6 +2387,58 @@ indicated by TYPE.
 `GL_INVALID_OPERATION' is generated if `glColorSubTable' is executed
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
+
+(define-gl-procedures
+  ((glColorTableParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glColorTableParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLint-*)
+     ->
+     void))
+  "Set color lookup table parameters.
+
+TARGET
+     The target color table. Must be `GL_COLOR_TABLE',
+     `GL_POST_CONVOLUTION_COLOR_TABLE', or
+     `GL_POST_COLOR_MATRIX_COLOR_TABLE'.
+
+PNAME
+     The symbolic name of a texture color lookup table parameter. Must
+     be one of `GL_COLOR_TABLE_SCALE' or `GL_COLOR_TABLE_BIAS'.
+
+PARAMS
+     A pointer to an array where the values of the parameters are
+     stored.
+
+`glColorTableParameter' is used to specify the scale factors and bias
+terms applied to color components when they are loaded into a color
+table. TARGET indicates which color table the scale and bias terms apply
+to; it must be set to `GL_COLOR_TABLE',
+`GL_POST_CONVOLUTION_COLOR_TABLE', or
+`GL_POST_COLOR_MATRIX_COLOR_TABLE'.
+
+PNAME must be `GL_COLOR_TABLE_SCALE' to set the scale factors. In this
+case, PARAMS points to an array of four values, which are the scale
+factors for red, green, blue, and alpha, in that order.
+
+PNAME must be `GL_COLOR_TABLE_BIAS' to set the bias terms. In this case,
+PARAMS points to an array of four values, which are the bias terms for
+red, green, blue, and alpha, in that order.
+
+The color tables themselves are specified by calling `glColorTable'.
+
+`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an acceptable
+value.
+
+`GL_INVALID_OPERATION' is generated if `glColorTableParameter' is
+executed between the execution of `glBegin' and the corresponding
+execution of `glEnd'.")
 
 (define-gl-procedures
   ((glColorTable
@@ -7715,6 +7825,97 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
+  ((glGetBufferParameteriv
+     (target GLenum)
+     (value GLenum)
+     (data GLint-*)
+     ->
+     void))
+  "Return parameters of a buffer object.
+
+TARGET
+     Specifies the target buffer object. The symbolic constant must be
+     `GL_ARRAY_BUFFER', `GL_ELEMENT_ARRAY_BUFFER',
+     `GL_PIXEL_PACK_BUFFER', or `GL_PIXEL_UNPACK_BUFFER'.
+
+VALUE
+     Specifies the symbolic name of a buffer object parameter. Accepted
+     values are `GL_BUFFER_ACCESS', `GL_BUFFER_MAPPED',
+     `GL_BUFFER_SIZE', or `GL_BUFFER_USAGE'.
+
+DATA
+     Returns the requested parameter.
+
+`glGetBufferParameteriv' returns in DATA a selected parameter of the
+buffer object specified by TARGET.
+
+VALUE names a specific buffer object parameter, as follows:
+
+`GL_BUFFER_ACCESS'
+     PARAMS returns the access policy set while mapping the buffer
+     object. The initial value is `GL_READ_WRITE'.
+
+`GL_BUFFER_MAPPED'
+     PARAMS returns a flag indicating whether the buffer object is
+     currently mapped. The initial value is `GL_FALSE'.
+
+`GL_BUFFER_SIZE'
+     PARAMS returns the size of the buffer object, measured in bytes.
+     The initial value is 0.
+
+`GL_BUFFER_USAGE'
+     PARAMS returns the buffer object's usage pattern. The initial value
+     is `GL_STATIC_DRAW'.
+
+`GL_INVALID_ENUM' is generated if TARGET or VALUE is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if the reserved buffer object name 0
+is bound to TARGET.
+
+`GL_INVALID_OPERATION' is generated if `glGetBufferParameteriv' is
+executed between the execution of `glBegin' and the corresponding
+execution of `glEnd'.")
+
+(define-gl-procedures
+  ((glGetBufferPointerv
+     (target GLenum)
+     (pname GLenum)
+     (params GLvoid-**)
+     ->
+     void))
+  "Return the pointer to a mapped buffer object's data store.
+
+TARGET
+     Specifies the target buffer object. The symbolic constant must be
+     `GL_ARRAY_BUFFER', `GL_ELEMENT_ARRAY_BUFFER',
+     `GL_PIXEL_PACK_BUFFER', or `GL_PIXEL_UNPACK_BUFFER'.
+
+PNAME
+     Specifies the pointer to be returned. The symbolic constant must be
+     `GL_BUFFER_MAP_POINTER'.
+
+PARAMS
+     Returns the pointer value specified by PNAME.
+
+`glGetBufferPointerv' returns pointer information. PNAME is a symbolic
+constant indicating the pointer to be returned, which must be
+`GL_BUFFER_MAP_POINTER', the pointer to which the buffer object's data
+store is mapped. If the data store is not currently mapped, `NULL' is
+returned. PARAMS is a pointer to a location in which to place the
+returned pointer value.
+
+`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if the reserved buffer object name 0
+is bound to TARGET.
+
+`GL_INVALID_OPERATION' is generated if `glGetBufferPointerv' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
   ((glGetBufferSubData
      (target GLenum)
      (offset GLintptr)
@@ -7794,6 +7995,98 @@ equation for PLANE.
 `GL_INVALID_OPERATION' is generated if `glGetClipPlane' is executed
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
+
+(define-gl-procedures
+  ((glGetColorTableParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetColorTableParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Get color lookup table parameters.
+
+TARGET
+     The target color table. Must be `GL_COLOR_TABLE',
+     `GL_POST_CONVOLUTION_COLOR_TABLE',
+     `GL_POST_COLOR_MATRIX_COLOR_TABLE', `GL_PROXY_COLOR_TABLE',
+     `GL_PROXY_POST_CONVOLUTION_COLOR_TABLE', or
+     `GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE'.
+
+PNAME
+     The symbolic name of a color lookup table parameter. Must be one of
+     `GL_COLOR_TABLE_BIAS', `GL_COLOR_TABLE_SCALE',
+     `GL_COLOR_TABLE_FORMAT', `GL_COLOR_TABLE_WIDTH',
+     `GL_COLOR_TABLE_RED_SIZE', `GL_COLOR_TABLE_GREEN_SIZE',
+     `GL_COLOR_TABLE_BLUE_SIZE', `GL_COLOR_TABLE_ALPHA_SIZE',
+     `GL_COLOR_TABLE_LUMINANCE_SIZE', or
+     `GL_COLOR_TABLE_INTENSITY_SIZE'.
+
+PARAMS
+     A pointer to an array where the values of the parameter will be
+     stored.
+
+Returns parameters specific to color table TARGET.
+
+When PNAME is set to `GL_COLOR_TABLE_SCALE' or `GL_COLOR_TABLE_BIAS',
+`glGetColorTableParameter' returns the color table scale or bias
+parameters for the table specified by TARGET. For these queries, TARGET
+must be set to `GL_COLOR_TABLE', `GL_POST_CONVOLUTION_COLOR_TABLE', or
+`GL_POST_COLOR_MATRIX_COLOR_TABLE' and PARAMS points to an array of four
+elements, which receive the scale or bias factors for red, green, blue,
+and alpha, in that order.
+
+`glGetColorTableParameter' can also be used to retrieve the format and
+size parameters for a color table. For these queries, set TARGET to
+either the color table target or the proxy color table target. The
+format and size parameters are set by `glColorTable'.
+
+The following table lists the format and size parameters that may be
+queried. For each symbolic constant listed below for PNAME, PARAMS must
+point to an array of the given length and receive the values indicated.
+
+
+
+*Parameter*
+     *N*, *Meaning*
+
+`GL_COLOR_TABLE_FORMAT'
+     1 , Internal format (e.g., `GL_RGBA')
+
+`GL_COLOR_TABLE_WIDTH'
+     1 , Number of elements in table
+
+`GL_COLOR_TABLE_RED_SIZE'
+     1 , Size of red component, in bits
+
+`GL_COLOR_TABLE_GREEN_SIZE'
+     1 , Size of green component
+
+`GL_COLOR_TABLE_BLUE_SIZE'
+     1 , Size of blue component
+
+`GL_COLOR_TABLE_ALPHA_SIZE'
+     1 , Size of alpha component
+
+`GL_COLOR_TABLE_LUMINANCE_SIZE'
+     1 , Size of luminance component
+
+`GL_COLOR_TABLE_INTENSITY_SIZE'
+     1 , Size of intensity component
+
+
+
+`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an acceptable
+value.
+
+`GL_INVALID_OPERATION' is generated if `glGetColorTableParameter' is
+executed between the execution of `glBegin' and the corresponding
+execution of `glEnd'.")
 
 (define-gl-procedures
   ((glGetColorTable
@@ -8084,6 +8377,107 @@ executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedures
+  ((glGetConvolutionParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetConvolutionParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Get convolution parameters.
+
+TARGET
+     The filter whose parameters are to be retrieved. Must be one of
+     `GL_CONVOLUTION_1D', `GL_CONVOLUTION_2D', or `GL_SEPARABLE_2D'.
+
+PNAME
+     The parameter to be retrieved. Must be one of
+     `GL_CONVOLUTION_BORDER_MODE', `GL_CONVOLUTION_BORDER_COLOR',
+     `GL_CONVOLUTION_FILTER_SCALE', `GL_CONVOLUTION_FILTER_BIAS',
+     `GL_CONVOLUTION_FORMAT', `GL_CONVOLUTION_WIDTH',
+     `GL_CONVOLUTION_HEIGHT', `GL_MAX_CONVOLUTION_WIDTH', or
+     `GL_MAX_CONVOLUTION_HEIGHT'.
+
+PARAMS
+     Pointer to storage for the parameters to be retrieved.
+
+`glGetConvolutionParameter' retrieves convolution parameters. TARGET
+determines which convolution filter is queried. PNAME determines which
+parameter is returned:
+
+`GL_CONVOLUTION_BORDER_MODE'
+
+
+     The convolution border mode. See `glConvolutionParameter' for a
+     list of border modes.
+
+`GL_CONVOLUTION_BORDER_COLOR'
+
+
+     The current convolution border color. PARAMS must be a pointer to
+     an array of four elements, which will receive the red, green, blue,
+     and alpha border colors.
+
+`GL_CONVOLUTION_FILTER_SCALE'
+
+
+     The current filter scale factors. PARAMS must be a pointer to an
+     array of four elements, which will receive the red, green, blue,
+     and alpha filter scale factors in that order.
+
+`GL_CONVOLUTION_FILTER_BIAS'
+
+
+     The current filter bias factors. PARAMS must be a pointer to an
+     array of four elements, which will receive the red, green, blue,
+     and alpha filter bias terms in that order.
+
+`GL_CONVOLUTION_FORMAT'
+
+
+     The current internal format. See `glConvolutionFilter1D',
+     `glConvolutionFilter2D', and `glSeparableFilter2D' for lists of
+     allowable formats.
+
+`GL_CONVOLUTION_WIDTH'
+
+
+     The current filter image width.
+
+`GL_CONVOLUTION_HEIGHT'
+
+
+     The current filter image height.
+
+`GL_MAX_CONVOLUTION_WIDTH'
+
+
+     The maximum acceptable filter image width.
+
+`GL_MAX_CONVOLUTION_HEIGHT'
+
+
+     The maximum acceptable filter image height.
+
+`GL_INVALID_ENUM' is generated if TARGET is not one of the allowable
+values.
+
+`GL_INVALID_ENUM' is generated if PNAME is not one of the allowable
+values.
+
+`GL_INVALID_ENUM' is generated if TARGET is `GL_CONVOLUTION_1D' and
+PNAME is `GL_CONVOLUTION_HEIGHT' or `GL_MAX_CONVOLUTION_HEIGHT'.
+
+`GL_INVALID_OPERATION' is generated if `glGetConvolutionParameter' is
+executed between the execution of `glBegin' and the corresponding
+execution of `glEnd'.")
+
+(define-gl-procedures
   ((glGetError -> GLenum))
   "Return error information.
 
@@ -8152,6 +8546,82 @@ returns 0. If `glGetError' itself generates an error, it returns 0.
 `GL_INVALID_OPERATION' is generated if `glGetError' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.
 In this case, `glGetError' returns 0.")
+
+(define-gl-procedures
+  ((glGetHistogramParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetHistogramParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Get histogram parameters.
+
+TARGET
+     Must be one of `GL_HISTOGRAM' or `GL_PROXY_HISTOGRAM'.
+
+PNAME
+     The name of the parameter to be retrieved. Must be one of
+     `GL_HISTOGRAM_WIDTH', `GL_HISTOGRAM_FORMAT',
+     `GL_HISTOGRAM_RED_SIZE', `GL_HISTOGRAM_GREEN_SIZE',
+     `GL_HISTOGRAM_BLUE_SIZE', `GL_HISTOGRAM_ALPHA_SIZE',
+     `GL_HISTOGRAM_LUMINANCE_SIZE', or `GL_HISTOGRAM_SINK'.
+
+PARAMS
+     Pointer to storage for the returned values.
+
+`glGetHistogramParameter' is used to query parameter values for the
+current histogram or for a proxy. The histogram state information may be
+queried by calling `glGetHistogramParameter' with a TARGET of
+`GL_HISTOGRAM' (to obtain information for the current histogram table)
+or `GL_PROXY_HISTOGRAM' (to obtain information from the most recent
+proxy request) and one of the following values for the PNAME argument:
+
+
+
+*Parameter*
+     *Description*
+
+`GL_HISTOGRAM_WIDTH'
+     Histogram table width
+
+`GL_HISTOGRAM_FORMAT'
+     Internal format
+
+`GL_HISTOGRAM_RED_SIZE'
+     Red component counter size, in bits
+
+`GL_HISTOGRAM_GREEN_SIZE'
+     Green component counter size, in bits
+
+`GL_HISTOGRAM_BLUE_SIZE'
+     Blue component counter size, in bits
+
+`GL_HISTOGRAM_ALPHA_SIZE'
+     Alpha component counter size, in bits
+
+`GL_HISTOGRAM_LUMINANCE_SIZE'
+     Luminance component counter size, in bits
+
+`GL_HISTOGRAM_SINK'
+     Value of the SINK parameter
+
+
+
+`GL_INVALID_ENUM' is generated if TARGET is not one of the allowable
+values.
+
+`GL_INVALID_ENUM' is generated if PNAME is not one of the allowable
+values.
+
+`GL_INVALID_OPERATION' is generated if `glGetHistogramParameter' is
+executed between the execution of `glBegin' and the corresponding
+execution of `glEnd'.")
 
 (define-gl-procedures
   ((glGetHistogram
@@ -8263,6 +8733,353 @@ indicated by TYPE.
 `GL_INVALID_OPERATION' is generated if `glGetHistogram' is executed
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
+
+(define-gl-procedures
+  ((glGetLightfv
+     (light GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetLightiv
+     (light GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return light source parameter values.
+
+LIGHT
+     Specifies a light source. The number of possible lights depends on
+     the implementation, but at least eight lights are supported. They
+     are identified by symbolic names of the form `GL_LIGHT' I where I
+     ranges from 0 to the value of `GL_MAX_LIGHTS' - 1.
+
+PNAME
+     Specifies a light source parameter for LIGHT. Accepted symbolic
+     names are `GL_AMBIENT', `GL_DIFFUSE', `GL_SPECULAR', `GL_POSITION',
+     `GL_SPOT_DIRECTION', `GL_SPOT_EXPONENT', `GL_SPOT_CUTOFF',
+     `GL_CONSTANT_ATTENUATION', `GL_LINEAR_ATTENUATION', and
+     `GL_QUADRATIC_ATTENUATION'.
+
+PARAMS
+     Returns the requested data.
+
+`glGetLight' returns in PARAMS the value or values of a light source
+parameter. LIGHT names the light and is a symbolic name of the form
+`GL_LIGHT'I where i ranges from 0 to the value of `GL_MAX_LIGHTS' - 1.
+`GL_MAX_LIGHTS' is an implementation dependent constant that is greater
+than or equal to eight. PNAME specifies one of ten light source
+parameters, again by symbolic name.
+
+The following parameters are defined:
+
+`GL_AMBIENT'
+     PARAMS returns four integer or floating-point values representing
+     the ambient intensity of the light source. Integer values, when
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 maps to the most positive
+     representable integer value, and -1.0 maps to the most negative
+     representable integer value. If the internal value is outside the
+     range [-1,1] , the corresponding integer return value is undefined.
+     The initial value is (0, 0, 0, 1).
+
+`GL_DIFFUSE'
+     PARAMS returns four integer or floating-point values representing
+     the diffuse intensity of the light source. Integer values, when
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 maps to the most positive
+     representable integer value, and -1.0 maps to the most negative
+     representable integer value. If the internal value is outside the
+     range [-1,1] , the corresponding integer return value is undefined.
+     The initial value for `GL_LIGHT0' is (1, 1, 1, 1); for other
+     lights, the initial value is (0, 0, 0, 0).
+
+`GL_SPECULAR'
+     PARAMS returns four integer or floating-point values representing
+     the specular intensity of the light source. Integer values, when
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 maps to the most positive
+     representable integer value, and -1.0 maps to the most negative
+     representable integer value. If the internal value is outside the
+     range [-1,1] , the corresponding integer return value is undefined.
+     The initial value for `GL_LIGHT0' is (1, 1, 1, 1); for other
+     lights, the initial value is (0, 0, 0, 0).
+
+`GL_POSITION'
+     PARAMS returns four integer or floating-point values representing
+     the position of the light source. Integer values, when requested,
+     are computed by rounding the internal floating-point values to the
+     nearest integer value. The returned values are those maintained in
+     eye coordinates. They will not be equal to the values specified
+     using `glLight', unless the modelview matrix was identity at the
+     time `glLight' was called. The initial value is (0, 0, 1, 0).
+
+`GL_SPOT_DIRECTION'
+     PARAMS returns three integer or floating-point values representing
+     the direction of the light source. Integer values, when requested,
+     are computed by rounding the internal floating-point values to the
+     nearest integer value. The returned values are those maintained in
+     eye coordinates. They will not be equal to the values specified
+     using `glLight', unless the modelview matrix was identity at the
+     time `glLight' was called. Although spot direction is normalized
+     before being used in the lighting equation, the returned values are
+     the transformed versions of the specified values prior to
+     normalization. The initial value is (0,0-1) .
+
+`GL_SPOT_EXPONENT'
+     PARAMS returns a single integer or floating-point value
+     representing the spot exponent of the light. An integer value, when
+     requested, is computed by rounding the internal floating-point
+     representation to the nearest integer. The initial value is 0.
+
+`GL_SPOT_CUTOFF'
+     PARAMS returns a single integer or floating-point value
+     representing the spot cutoff angle of the light. An integer value,
+     when requested, is computed by rounding the internal floating-point
+     representation to the nearest integer. The initial value is 180.
+
+`GL_CONSTANT_ATTENUATION'
+     PARAMS returns a single integer or floating-point value
+     representing the constant (not distance-related) attenuation of the
+     light. An integer value, when requested, is computed by rounding
+     the internal floating-point representation to the nearest integer.
+     The initial value is 1.
+
+`GL_LINEAR_ATTENUATION'
+     PARAMS returns a single integer or floating-point value
+     representing the linear attenuation of the light. An integer value,
+     when requested, is computed by rounding the internal floating-point
+     representation to the nearest integer. The initial value is 0.
+
+`GL_QUADRATIC_ATTENUATION'
+     PARAMS returns a single integer or floating-point value
+     representing the quadratic attenuation of the light. An integer
+     value, when requested, is computed by rounding the internal
+     floating-point representation to the nearest integer. The initial
+     value is 0.
+
+`GL_INVALID_ENUM' is generated if LIGHT or PNAME is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if `glGetLight' is executed between
+the execution of `glBegin' and the corresponding execution of `glEnd'.")
+
+(define-gl-procedures
+  ((glGetMapfv
+     (target GLenum)
+     (query GLenum)
+     (v GLfloat-*)
+     ->
+     void)
+   (glGetMapiv
+     (target GLenum)
+     (query GLenum)
+     (v GLint-*)
+     ->
+     void))
+  "Return evaluator parameters.
+
+TARGET
+     Specifies the symbolic name of a map. Accepted values are
+     `GL_MAP1_COLOR_4', `GL_MAP1_INDEX', `GL_MAP1_NORMAL',
+     `GL_MAP1_TEXTURE_COORD_1', `GL_MAP1_TEXTURE_COORD_2',
+     `GL_MAP1_TEXTURE_COORD_3', `GL_MAP1_TEXTURE_COORD_4',
+     `GL_MAP1_VERTEX_3', `GL_MAP1_VERTEX_4', `GL_MAP2_COLOR_4',
+     `GL_MAP2_INDEX', `GL_MAP2_NORMAL', `GL_MAP2_TEXTURE_COORD_1',
+     `GL_MAP2_TEXTURE_COORD_2', `GL_MAP2_TEXTURE_COORD_3',
+     `GL_MAP2_TEXTURE_COORD_4', `GL_MAP2_VERTEX_3', and
+     `GL_MAP2_VERTEX_4'.
+
+QUERY
+     Specifies which parameter to return. Symbolic names `GL_COEFF',
+     `GL_ORDER', and `GL_DOMAIN' are accepted.
+
+V
+     Returns the requested data.
+
+`glMap1' and `glMap2' define evaluators. `glGetMap' returns evaluator
+parameters. TARGET chooses a map, QUERY selects a specific parameter,
+and V points to storage where the values will be returned.
+
+The acceptable values for the TARGET parameter are described in the
+`glMap1' and `glMap2' reference pages.
+
+QUERY can assume the following values:
+
+`GL_COEFF'
+     V returns the control points for the evaluator function.
+     One-dimensional evaluators return ORDER control points, and
+     two-dimensional evaluators return UORDER×VORDER control points.
+     Each control point consists of one, two, three, or four integer,
+     single-precision floating-point, or double-precision floating-point
+     values, depending on the type of the evaluator. The GL returns
+     two-dimensional control points in row-major order, incrementing the
+     UORDER index quickly and the VORDER index after each row. Integer
+     values, when requested, are computed by rounding the internal
+     floating-point values to the nearest integer values.
+
+`GL_ORDER'
+     V returns the order of the evaluator function. One-dimensional
+     evaluators return a single value, ORDER . The initial value is 1.
+     Two-dimensional evaluators return two values, UORDER and VORDER .
+     The initial value is 1,1.
+
+`GL_DOMAIN'
+     V returns the linear U and V mapping parameters. One-dimensional
+     evaluators return two values, U1 and U2 , as specified by `glMap1'.
+     Two-dimensional evaluators return four values ( U1 , U2 , V1 , and
+     V2 ) as specified by `glMap2'. Integer values, when requested, are
+     computed by rounding the internal floating-point values to the
+     nearest integer values.
+
+`GL_INVALID_ENUM' is generated if either TARGET or QUERY is not an
+accepted value.
+
+`GL_INVALID_OPERATION' is generated if `glGetMap' is executed between
+the execution of `glBegin' and the corresponding execution of `glEnd'.")
+
+(define-gl-procedures
+  ((glGetMaterialfv
+     (face GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetMaterialiv
+     (face GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return material parameters.
+
+FACE
+     Specifies which of the two materials is being queried. `GL_FRONT'
+     or `GL_BACK' are accepted, representing the front and back
+     materials, respectively.
+
+PNAME
+     Specifies the material parameter to return. `GL_AMBIENT',
+     `GL_DIFFUSE', `GL_SPECULAR', `GL_EMISSION', `GL_SHININESS', and
+     `GL_COLOR_INDEXES' are accepted.
+
+PARAMS
+     Returns the requested data.
+
+`glGetMaterial' returns in PARAMS the value or values of parameter PNAME
+of material FACE. Six parameters are defined:
+
+`GL_AMBIENT'
+     PARAMS returns four integer or floating-point values representing
+     the ambient reflectance of the material. Integer values, when
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 maps to the most positive
+     representable integer value, and -1.0 maps to the most negative
+     representable integer value. If the internal value is outside the
+     range [-1,1] , the corresponding integer return value is undefined.
+     The initial value is (0.2, 0.2, 0.2, 1.0)
+
+`GL_DIFFUSE'
+     PARAMS returns four integer or floating-point values representing
+     the diffuse reflectance of the material. Integer values, when
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 maps to the most positive
+     representable integer value, and -1.0 maps to the most negative
+     representable integer value. If the internal value is outside the
+     range [-1,1] , the corresponding integer return value is undefined.
+     The initial value is (0.8, 0.8, 0.8, 1.0).
+
+`GL_SPECULAR'
+     PARAMS returns four integer or floating-point values representing
+     the specular reflectance of the material. Integer values, when
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 maps to the most positive
+     representable integer value, and -1.0 maps to the most negative
+     representable integer value. If the internal value is outside the
+     range [-1,1] , the corresponding integer return value is undefined.
+     The initial value is (0, 0, 0, 1).
+
+`GL_EMISSION'
+     PARAMS returns four integer or floating-point values representing
+     the emitted light intensity of the material. Integer values, when
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 maps to the most positive
+     representable integer value, and -1.0 maps to the most negative
+     representable integer value. If the internal value is outside the
+     range [-1,1] , the corresponding integer return value is undefined.
+     The initial value is (0, 0, 0, 1).
+
+`GL_SHININESS'
+     PARAMS returns one integer or floating-point value representing the
+     specular exponent of the material. Integer values, when requested,
+     are computed by rounding the internal floating-point value to the
+     nearest integer value. The initial value is 0.
+
+`GL_COLOR_INDEXES'
+     PARAMS returns three integer or floating-point values representing
+     the ambient, diffuse, and specular indices of the material. These
+     indices are used only for color index lighting. (All the other
+     parameters are used only for RGBA lighting.) Integer values, when
+     requested, are computed by rounding the internal floating-point
+     values to the nearest integer values.
+
+`GL_INVALID_ENUM' is generated if FACE or PNAME is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if `glGetMaterial' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
+  ((glGetMinmaxParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetMinmaxParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Get minmax parameters.
+
+TARGET
+     Must be `GL_MINMAX'.
+
+PNAME
+     The parameter to be retrieved. Must be one of `GL_MINMAX_FORMAT' or
+     `GL_MINMAX_SINK'.
+
+PARAMS
+     A pointer to storage for the retrieved parameters.
+
+`glGetMinmaxParameter' retrieves parameters for the current minmax table
+by setting PNAME to one of the following values:
+
+
+
+*Parameter*
+     *Description*
+
+`GL_MINMAX_FORMAT'
+     Internal format of minmax table
+
+`GL_MINMAX_SINK'
+     Value of the SINK parameter
+
+
+
+`GL_INVALID_ENUM' is generated if TARGET is not `GL_MINMAX'.
+
+`GL_INVALID_ENUM' is generated if PNAME is not one of the allowable
+values.
+
+`GL_INVALID_OPERATION' is generated if `glGetMinmaxParameter' is
+executed between the execution of `glBegin' and the corresponding
+execution of `glEnd'.")
 
 (define-gl-procedures
   ((glGetMinmax
@@ -8384,6 +9201,116 @@ indicated by TYPE.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
+  ((glGetPixelMapfv
+     (map GLenum)
+     (data GLfloat-*)
+     ->
+     void)
+   (glGetPixelMapuiv
+     (map GLenum)
+     (data GLuint-*)
+     ->
+     void))
+  "Return the specified pixel map.
+
+MAP
+     Specifies the name of the pixel map to return. Accepted values are
+     `GL_PIXEL_MAP_I_TO_I', `GL_PIXEL_MAP_S_TO_S',
+     `GL_PIXEL_MAP_I_TO_R', `GL_PIXEL_MAP_I_TO_G',
+     `GL_PIXEL_MAP_I_TO_B', `GL_PIXEL_MAP_I_TO_A',
+     `GL_PIXEL_MAP_R_TO_R', `GL_PIXEL_MAP_G_TO_G',
+     `GL_PIXEL_MAP_B_TO_B', and `GL_PIXEL_MAP_A_TO_A'.
+
+DATA
+     Returns the pixel map contents.
+
+See the `glPixelMap' reference page for a description of the acceptable
+values for the MAP parameter. `glGetPixelMap' returns in DATA the
+contents of the pixel map specified in MAP. Pixel maps are used during
+the execution of `glReadPixels', `glDrawPixels', `glCopyPixels',
+`glTexImage1D', `glTexImage2D', `glTexImage3D', `glTexSubImage1D',
+`glTexSubImage2D', `glTexSubImage3D', `glCopyTexImage1D',
+`glCopyTexImage2D', `glCopyTexSubImage1D', `glCopyTexSubImage2D', and
+`glCopyTexSubImage3D'. to map color indices, stencil indices, color
+components, and depth components to other values.
+
+If a non-zero named buffer object is bound to the `GL_PIXEL_PACK_BUFFER'
+target (see `glBindBuffer') while a pixel map is requested, DATA is
+treated as a byte offset into the buffer object's data store.
+
+Unsigned integer values, if requested, are linearly mapped from the
+internal fixed or floating-point representation such that 1.0 maps to
+the largest representable integer value, and 0.0 maps to 0. Return
+unsigned integer values are undefined if the map value was not in the
+range [0,1].
+
+To determine the required size of MAP, call `glGet' with the appropriate
+symbolic constant.
+
+`GL_INVALID_ENUM' is generated if MAP is not an accepted value.
+
+`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
+bound to the `GL_PIXEL_PACK_BUFFER' target and the buffer object's data
+store is currently mapped.
+
+`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
+bound to the `GL_PIXEL_PACK_BUFFER' target and the data would be packed
+to the buffer object such that the memory writes required would exceed
+the data store size.
+
+`GL_INVALID_OPERATION' is generated by `glGetPixelMapfv' if a non-zero
+buffer object name is bound to the `GL_PIXEL_PACK_BUFFER' target and
+DATA is not evenly divisible into the number of bytes needed to store in
+memory a GLfloat datum.
+
+`GL_INVALID_OPERATION' is generated by `glGetPixelMapuiv' if a non-zero
+buffer object name is bound to the `GL_PIXEL_PACK_BUFFER' target and
+DATA is not evenly divisible into the number of bytes needed to store in
+memory a GLuint datum.
+
+`GL_INVALID_OPERATION' is generated by `glGetPixelMapusv' if a non-zero
+buffer object name is bound to the `GL_PIXEL_PACK_BUFFER' target and
+DATA is not evenly divisible into the number of bytes needed to store in
+memory a GLushort datum.
+
+`GL_INVALID_OPERATION' is generated if `glGetPixelMap' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
+  ((glGetPointerv
+     (pname GLenum)
+     (params GLvoid-**)
+     ->
+     void))
+  "Return the address of the specified pointer.
+
+PNAME
+     Specifies the array or buffer pointer to be returned. Symbolic
+     constants `GL_COLOR_ARRAY_POINTER', `GL_EDGE_FLAG_ARRAY_POINTER',
+     `GL_FOG_COORD_ARRAY_POINTER', `GL_FEEDBACK_BUFFER_POINTER',
+     `GL_INDEX_ARRAY_POINTER', `GL_NORMAL_ARRAY_POINTER',
+     `GL_SECONDARY_COLOR_ARRAY_POINTER', `GL_SELECTION_BUFFER_POINTER',
+     `GL_TEXTURE_COORD_ARRAY_POINTER', or `GL_VERTEX_ARRAY_POINTER' are
+     accepted.
+
+PARAMS
+     Returns the pointer value specified by PNAME.
+
+`glGetPointerv' returns pointer information. PNAME is a symbolic
+constant indicating the pointer to be returned, and PARAMS is a pointer
+to a location in which to place the returned data.
+
+For all PNAME arguments except `GL_FEEDBACK_BUFFER_POINTER' and
+`GL_SELECTION_BUFFER_POINTER', if a non-zero named buffer object was
+bound to the `GL_ARRAY_BUFFER' target (see `glBindBuffer') when the
+desired pointer was previously specified, the pointer returned is a byte
+offset into the buffer object's data store. Buffer objects are only
+available in OpenGL versions 1.5 and greater.
+
+`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.")
+
+(define-gl-procedures
   ((glGetPolygonStipple (pattern GLubyte-*) -> void))
   "Return the polygon stipple pattern.
 
@@ -8470,6 +9397,198 @@ OpenGL.
 `GL_INVALID_VALUE' is generated if MAXLENGTH is less than 0.
 
 `GL_INVALID_OPERATION' is generated if `glGetProgramInfoLog' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
+  ((glGetProgramiv
+     (program GLuint)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Returns a parameter from a program object.
+
+PROGRAM
+     Specifies the program object to be queried.
+
+PNAME
+     Specifies the object parameter. Accepted symbolic names are
+     `GL_DELETE_STATUS', `GL_LINK_STATUS', `GL_VALIDATE_STATUS',
+     `GL_INFO_LOG_LENGTH', `GL_ATTACHED_SHADERS',
+     `GL_ACTIVE_ATTRIBUTES', `GL_ACTIVE_ATTRIBUTE_MAX_LENGTH',
+     `GL_ACTIVE_UNIFORMS', `GL_ACTIVE_UNIFORM_MAX_LENGTH'.
+
+PARAMS
+     Returns the requested object parameter.
+
+`glGetProgram' returns in PARAMS the value of a parameter for a specific
+program object. The following parameters are defined:
+
+`GL_DELETE_STATUS'
+
+
+     PARAMS returns `GL_TRUE' if PROGRAM is currently flagged for
+     deletion, and `GL_FALSE' otherwise.
+
+`GL_LINK_STATUS'
+
+
+     PARAMS returns `GL_TRUE' if the last link operation on PROGRAM was
+     successful, and `GL_FALSE' otherwise.
+
+`GL_VALIDATE_STATUS'
+
+
+     PARAMS returns `GL_TRUE' or if the last validation operation on
+     PROGRAM was successful, and `GL_FALSE' otherwise.
+
+`GL_INFO_LOG_LENGTH'
+
+
+     PARAMS returns the number of characters in the information log for
+     PROGRAM including the null termination character (i.e., the size of
+     the character buffer required to store the information log). If
+     PROGRAM has no information log, a value of 0 is returned.
+
+`GL_ATTACHED_SHADERS'
+
+
+     PARAMS returns the number of shader objects attached to PROGRAM.
+
+`GL_ACTIVE_ATTRIBUTES'
+
+
+     PARAMS returns the number of active attribute variables for
+     PROGRAM.
+
+`GL_ACTIVE_ATTRIBUTE_MAX_LENGTH'
+
+
+     PARAMS returns the length of the longest active attribute name for
+     PROGRAM, including the null termination character (i.e., the size
+     of the character buffer required to store the longest attribute
+     name). If no active attributes exist, 0 is returned.
+
+`GL_ACTIVE_UNIFORMS'
+
+
+     PARAMS returns the number of active uniform variables for PROGRAM.
+
+`GL_ACTIVE_UNIFORM_MAX_LENGTH'
+
+
+     PARAMS returns the length of the longest active uniform variable
+     name for PROGRAM, including the null termination character (i.e.,
+     the size of the character buffer required to store the longest
+     uniform variable name). If no active uniform variables exist, 0 is
+     returned.
+
+`GL_INVALID_VALUE' is generated if PROGRAM is not a value generated by
+OpenGL.
+
+`GL_INVALID_OPERATION' is generated if PROGRAM does not refer to a
+program object.
+
+`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
+
+`GL_INVALID_OPERATION' is generated if `glGetProgram' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
+  ((glGetQueryiv
+     (target GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return parameters of a query object target.
+
+TARGET
+     Specifies a query object target. Must be `GL_SAMPLES_PASSED'.
+
+PNAME
+     Specifies the symbolic name of a query object target parameter.
+     Accepted values are `GL_CURRENT_QUERY' or `GL_QUERY_COUNTER_BITS'.
+
+PARAMS
+     Returns the requested data.
+
+`glGetQueryiv' returns in PARAMS a selected parameter of the query
+object target specified by TARGET.
+
+PNAME names a specific query object target parameter. When TARGET is
+`GL_SAMPLES_PASSED', PNAME can be as follows:
+
+`GL_CURRENT_QUERY'
+     PARAMS returns the name of the currently active occlusion query
+     object. If no occlusion query is active, 0 is returned. The initial
+     value is 0.
+
+`GL_QUERY_COUNTER_BITS'
+     PARAMS returns the number of bits in the query counter used to
+     accumulate passing samples. If the number of bits returned is 0,
+     the implementation does not support a query counter, and the
+     results obtained from `glGetQueryObject' are useless.
+
+`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if `glGetQueryiv' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
+  ((glGetQueryObjectiv
+     (id GLuint)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void)
+   (glGetQueryObjectuiv
+     (id GLuint)
+     (pname GLenum)
+     (params GLuint-*)
+     ->
+     void))
+  "Return parameters of a query object.
+
+ID
+     Specifies the name of a query object.
+
+PNAME
+     Specifies the symbolic name of a query object parameter. Accepted
+     values are `GL_QUERY_RESULT' or `GL_QUERY_RESULT_AVAILABLE'.
+
+PARAMS
+     Returns the requested data.
+
+`glGetQueryObject' returns in PARAMS a selected parameter of the query
+object specified by ID.
+
+PNAME names a specific query object parameter. PNAME can be as follows:
+
+`GL_QUERY_RESULT'
+     PARAMS returns the value of the query object's passed samples
+     counter. The initial value is 0.
+
+`GL_QUERY_RESULT_AVAILABLE'
+     PARAMS returns whether the passed samples counter is immediately
+     available. If a delay would occur waiting for the query result,
+     `GL_FALSE' is returned. Otherwise, `GL_TRUE' is returned, which
+     also indicates that the results of all previous queries are
+     available as well.
+
+`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
+
+`GL_INVALID_OPERATION' is generated if ID is not the name of a query
+object.
+
+`GL_INVALID_OPERATION' is generated if ID is the name of a currently
+active query object.
+
+`GL_INVALID_OPERATION' is generated if `glGetQueryObject' is executed
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
@@ -8698,6 +9817,66 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
+  ((glGetShaderiv
+     (shader GLuint)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Returns a parameter from a shader object.
+
+SHADER
+     Specifies the shader object to be queried.
+
+PNAME
+     Specifies the object parameter. Accepted symbolic names are
+     `GL_SHADER_TYPE', `GL_DELETE_STATUS', `GL_COMPILE_STATUS',
+     `GL_INFO_LOG_LENGTH', `GL_SHADER_SOURCE_LENGTH'.
+
+PARAMS
+     Returns the requested object parameter.
+
+`glGetShader' returns in PARAMS the value of a parameter for a specific
+shader object. The following parameters are defined:
+
+`GL_SHADER_TYPE'
+     PARAMS returns `GL_VERTEX_SHADER' if SHADER is a vertex shader
+     object, and `GL_FRAGMENT_SHADER' if SHADER is a fragment shader
+     object.
+
+`GL_DELETE_STATUS'
+     PARAMS returns `GL_TRUE' if SHADER is currently flagged for
+     deletion, and `GL_FALSE' otherwise.
+
+`GL_COMPILE_STATUS'
+     PARAMS returns `GL_TRUE' if the last compile operation on SHADER
+     was successful, and `GL_FALSE' otherwise.
+
+`GL_INFO_LOG_LENGTH'
+     PARAMS returns the number of characters in the information log for
+     SHADER including the null termination character (i.e., the size of
+     the character buffer required to store the information log). If
+     SHADER has no information log, a value of 0 is returned.
+
+`GL_SHADER_SOURCE_LENGTH'
+     PARAMS returns the length of the concatenation of the source
+     strings that make up the shader source for the SHADER, including
+     the null termination character. (i.e., the size of the character
+     buffer required to store the shader source). If no source code
+     exists, 0 is returned.
+
+`GL_INVALID_VALUE' is generated if SHADER is not a value generated by
+OpenGL.
+
+`GL_INVALID_OPERATION' is generated if SHADER does not refer to a shader
+object.
+
+`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
+
+`GL_INVALID_OPERATION' is generated if `glGetShader' is executed between
+the execution of `glBegin' and the corresponding execution of `glEnd'.")
+
+(define-gl-procedures
   ((glGetString (name GLenum) -> const-GLubyte*))
   "Return a string describing the current GL connection.
 
@@ -8764,6 +9943,216 @@ All strings are null-terminated.
 `GL_INVALID_ENUM' is generated if NAME is not an accepted value.
 
 `GL_INVALID_OPERATION' is generated if `glGetString' is executed between
+the execution of `glBegin' and the corresponding execution of `glEnd'.")
+
+(define-gl-procedures
+  ((glGetTexEnvfv
+     (target GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetTexEnviv
+     (target GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return texture environment parameters.
+
+TARGET
+     Specifies a texture environment. May be `GL_TEXTURE_ENV',
+     `GL_TEXTURE_FILTER_CONTROL', or `GL_POINT_SPRITE'.
+
+PNAME
+     Specifies the symbolic name of a texture environment parameter.
+     Accepted values are `GL_TEXTURE_ENV_MODE', `GL_TEXTURE_ENV_COLOR',
+     `GL_TEXTURE_LOD_BIAS', `GL_COMBINE_RGB', `GL_COMBINE_ALPHA',
+     `GL_SRC0_RGB', `GL_SRC1_RGB', `GL_SRC2_RGB', `GL_SRC0_ALPHA',
+     `GL_SRC1_ALPHA', `GL_SRC2_ALPHA', `GL_OPERAND0_RGB',
+     `GL_OPERAND1_RGB', `GL_OPERAND2_RGB', `GL_OPERAND0_ALPHA',
+     `GL_OPERAND1_ALPHA', `GL_OPERAND2_ALPHA', `GL_RGB_SCALE',
+     `GL_ALPHA_SCALE', or `GL_COORD_REPLACE'.
+
+PARAMS
+     Returns the requested data.
+
+`glGetTexEnv' returns in PARAMS selected values of a texture environment
+that was specified with `glTexEnv'. TARGET specifies a texture
+environment.
+
+When TARGET is `GL_TEXTURE_FILTER_CONTROL', PNAME must be
+`GL_TEXTURE_LOD_BIAS'. When TARGET is `GL_POINT_SPRITE', PNAME must be
+`GL_COORD_REPLACE'. When TARGET is `GL_TEXTURE_ENV', PNAME can be
+`GL_TEXTURE_ENV_MODE', `GL_TEXTURE_ENV_COLOR', `GL_COMBINE_RGB',
+`GL_COMBINE_ALPHA', `GL_RGB_SCALE', `GL_ALPHA_SCALE', `GL_SRC0_RGB',
+`GL_SRC1_RGB', `GL_SRC2_RGB', `GL_SRC0_ALPHA', `GL_SRC1_ALPHA', or
+`GL_SRC2_ALPHA'.
+
+PNAME names a specific texture environment parameter, as follows:
+
+`GL_TEXTURE_ENV_MODE'
+     PARAMS returns the single-valued texture environment mode, a
+     symbolic constant. The initial value is `GL_MODULATE'.
+
+`GL_TEXTURE_ENV_COLOR'
+     PARAMS returns four integer or floating-point values that are the
+     texture environment color. Integer values, when requested, are
+     linearly mapped from the internal floating-point representation
+     such that 1.0 maps to the most positive representable integer, and
+     -1.0 maps to the most negative representable integer. The initial
+     value is (0, 0, 0, 0).
+
+`GL_TEXTURE_LOD_BIAS'
+     PARAMS returns a single floating-point value that is the texture
+     level-of-detail bias. The initial value is 0.
+
+`GL_COMBINE_RGB'
+     PARAMS returns a single symbolic constant value representing the
+     current RGB combine mode. The initial value is `GL_MODULATE'.
+
+`GL_COMBINE_ALPHA'
+     PARAMS returns a single symbolic constant value representing the
+     current alpha combine mode. The initial value is `GL_MODULATE'.
+
+`GL_SRC0_RGB'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner zero's RGB source. The initial value is
+     `GL_TEXTURE'.
+
+`GL_SRC1_RGB'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner one's RGB source. The initial value is
+     `GL_PREVIOUS'.
+
+`GL_SRC2_RGB'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner two's RGB source. The initial value is
+     `GL_CONSTANT'.
+
+`GL_SRC0_ALPHA'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner zero's alpha source. The initial value is
+     `GL_TEXTURE'.
+
+`GL_SRC1_ALPHA'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner one's alpha source. The initial value is
+     `GL_PREVIOUS'.
+
+`GL_SRC2_ALPHA'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner two's alpha source. The initial value is
+     `GL_CONSTANT'.
+
+`GL_OPERAND0_RGB'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner zero's RGB operand. The initial value is
+     `GL_SRC_COLOR'.
+
+`GL_OPERAND1_RGB'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner one's RGB operand. The initial value is
+     `GL_SRC_COLOR'.
+
+`GL_OPERAND2_RGB'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner two's RGB operand. The initial value is
+     `GL_SRC_ALPHA'.
+
+`GL_OPERAND0_ALPHA'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner zero's alpha operand. The initial value is
+     `GL_SRC_ALPHA'.
+
+`GL_OPERAND1_ALPHA'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner one's alpha operand. The initial value is
+     `GL_SRC_ALPHA'.
+
+`GL_OPERAND2_ALPHA'
+     PARAMS returns a single symbolic constant value representing the
+     texture combiner two's alpha operand. The initial value is
+     `GL_SRC_ALPHA'.
+
+`GL_RGB_SCALE'
+     PARAMS returns a single floating-point value representing the
+     current RGB texture combiner scaling factor. The initial value is
+     1.0.
+
+`GL_ALPHA_SCALE'
+     PARAMS returns a single floating-point value representing the
+     current alpha texture combiner scaling factor. The initial value is
+     1.0.
+
+`GL_COORD_REPLACE'
+     PARAMS returns a single boolean value representing the current
+     point sprite texture coordinate replacement enable state. The
+     initial value is `GL_FALSE'.
+
+`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if `glGetTexEnv' is executed between
+the execution of `glBegin' and the corresponding execution of `glEnd'.")
+
+(define-gl-procedures
+  ((glGetTexGenfv
+     (coord GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetTexGeniv
+     (coord GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return texture coordinate generation parameters.
+
+COORD
+     Specifies a texture coordinate. Must be `GL_S', `GL_T', `GL_R', or
+     `GL_Q'.
+
+PNAME
+     Specifies the symbolic name of the value(s) to be returned. Must be
+     either `GL_TEXTURE_GEN_MODE' or the name of one of the texture
+     generation plane equations: `GL_OBJECT_PLANE' or `GL_EYE_PLANE'.
+
+PARAMS
+     Returns the requested data.
+
+`glGetTexGen' returns in PARAMS selected parameters of a texture
+coordinate generation function that was specified using `glTexGen'.
+COORD names one of the (S, T, R, Q) texture coordinates, using the
+symbolic constant `GL_S', `GL_T', `GL_R', or `GL_Q'.
+
+PNAME specifies one of three symbolic names:
+
+`GL_TEXTURE_GEN_MODE'
+     PARAMS returns the single-valued texture generation function, a
+     symbolic constant. The initial value is `GL_EYE_LINEAR'.
+
+`GL_OBJECT_PLANE'
+     PARAMS returns the four plane equation coefficients that specify
+     object linear-coordinate generation. Integer values, when
+     requested, are mapped directly from the internal floating-point
+     representation.
+
+`GL_EYE_PLANE'
+     PARAMS returns the four plane equation coefficients that specify
+     eye linear-coordinate generation. Integer values, when requested,
+     are mapped directly from the internal floating-point
+     representation. The returned values are those maintained in eye
+     coordinates. They are not equal to the values specified using
+     `glTexGen', unless the modelview matrix was identity when
+     `glTexGen' was called.
+
+`GL_INVALID_ENUM' is generated if COORD or PNAME is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if `glGetTexGen' is executed between
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
@@ -8891,6 +10280,273 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
+  ((glGetTexLevelParameterfv
+     (target GLenum)
+     (level GLint)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetTexLevelParameteriv
+     (target GLenum)
+     (level GLint)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return texture parameter values for a specific level of detail.
+
+TARGET
+     Specifies the symbolic name of the target texture, either
+     `GL_TEXTURE_1D', `GL_TEXTURE_2D', `GL_TEXTURE_3D',
+     `GL_PROXY_TEXTURE_1D', `GL_PROXY_TEXTURE_2D',
+     `GL_PROXY_TEXTURE_3D', `GL_TEXTURE_CUBE_MAP_POSITIVE_X',
+     `GL_TEXTURE_CUBE_MAP_NEGATIVE_X', `GL_TEXTURE_CUBE_MAP_POSITIVE_Y',
+     `GL_TEXTURE_CUBE_MAP_NEGATIVE_Y', `GL_TEXTURE_CUBE_MAP_POSITIVE_Z',
+     `GL_TEXTURE_CUBE_MAP_NEGATIVE_Z', or `GL_PROXY_TEXTURE_CUBE_MAP'.
+
+LEVEL
+     Specifies the level-of-detail number of the desired image. Level 0
+     is the base image level. Level N is the N th mipmap reduction
+     image.
+
+PNAME
+     Specifies the symbolic name of a texture parameter.
+     `GL_TEXTURE_WIDTH', `GL_TEXTURE_HEIGHT', `GL_TEXTURE_DEPTH',
+     `GL_TEXTURE_INTERNAL_FORMAT', `GL_TEXTURE_BORDER',
+     `GL_TEXTURE_RED_SIZE', `GL_TEXTURE_GREEN_SIZE',
+     `GL_TEXTURE_BLUE_SIZE', `GL_TEXTURE_ALPHA_SIZE',
+     `GL_TEXTURE_LUMINANCE_SIZE', `GL_TEXTURE_INTENSITY_SIZE',
+     `GL_TEXTURE_DEPTH_SIZE', `GL_TEXTURE_COMPRESSED', and
+     `GL_TEXTURE_COMPRESSED_IMAGE_SIZE' are accepted.
+
+PARAMS
+     Returns the requested data.
+
+`glGetTexLevelParameter' returns in PARAMS texture parameter values for
+a specific level-of-detail value, specified as LEVEL. TARGET defines the
+target texture, either `GL_TEXTURE_1D', `GL_TEXTURE_2D',
+`GL_TEXTURE_3D', `GL_PROXY_TEXTURE_1D', `GL_PROXY_TEXTURE_2D',
+`GL_PROXY_TEXTURE_3D', `GL_TEXTURE_CUBE_MAP_POSITIVE_X',
+`GL_TEXTURE_CUBE_MAP_NEGATIVE_X', `GL_TEXTURE_CUBE_MAP_POSITIVE_Y',
+`GL_TEXTURE_CUBE_MAP_NEGATIVE_Y', `GL_TEXTURE_CUBE_MAP_POSITIVE_Z',
+`GL_TEXTURE_CUBE_MAP_NEGATIVE_Z', or `GL_PROXY_TEXTURE_CUBE_MAP'.
+
+`GL_MAX_TEXTURE_SIZE', and `GL_MAX_3D_TEXTURE_SIZE' are not really
+descriptive enough. It has to report the largest square texture image
+that can be accommodated with mipmaps and borders, but a long skinny
+texture, or a texture without mipmaps and borders, may easily fit in
+texture memory. The proxy targets allow the user to more accurately
+query whether the GL can accommodate a texture of a given configuration.
+If the texture cannot be accommodated, the texture state variables,
+which may be queried with `glGetTexLevelParameter', are set to 0. If the
+texture can be accommodated, the texture state values will be set as
+they would be set for a non-proxy target.
+
+PNAME specifies the texture parameter whose value or values will be
+returned.
+
+The accepted parameter names are as follows:
+
+`GL_TEXTURE_WIDTH'
+
+
+     PARAMS returns a single value, the width of the texture image. This
+     value includes the border of the texture image. The initial value
+     is 0.
+
+`GL_TEXTURE_HEIGHT'
+
+
+     PARAMS returns a single value, the height of the texture image.
+     This value includes the border of the texture image. The initial
+     value is 0.
+
+`GL_TEXTURE_DEPTH'
+
+
+     PARAMS returns a single value, the depth of the texture image. This
+     value includes the border of the texture image. The initial value
+     is 0.
+
+`GL_TEXTURE_INTERNAL_FORMAT'
+
+
+     PARAMS returns a single value, the internal format of the texture
+     image.
+
+`GL_TEXTURE_BORDER'
+
+
+     PARAMS returns a single value, the width in pixels of the border of
+     the texture image. The initial value is 0.
+
+`GL_TEXTURE_RED_SIZE',
+`GL_TEXTURE_GREEN_SIZE',
+`GL_TEXTURE_BLUE_SIZE',
+`GL_TEXTURE_ALPHA_SIZE',
+`GL_TEXTURE_LUMINANCE_SIZE',
+`GL_TEXTURE_INTENSITY_SIZE',
+`GL_TEXTURE_DEPTH_SIZE'
+
+
+     The internal storage resolution of an individual component. The
+     resolution chosen by the GL will be a close match for the
+     resolution requested by the user with the component argument of
+     `glTexImage1D', `glTexImage2D', `glTexImage3D', `glCopyTexImage1D',
+     and `glCopyTexImage2D'. The initial value is 0.
+
+`GL_TEXTURE_COMPRESSED'
+
+
+     PARAMS returns a single boolean value indicating if the texture
+     image is stored in a compressed internal format. The initiali value
+     is `GL_FALSE'.
+
+`GL_TEXTURE_COMPRESSED_IMAGE_SIZE'
+
+
+     PARAMS returns a single integer value, the number of unsigned bytes
+     of the compressed texture image that would be returned from
+     `glGetCompressedTexImage'.
+
+`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
+value.
+
+`GL_INVALID_VALUE' is generated if LEVEL is less than 0.
+
+`GL_INVALID_VALUE' may be generated if LEVEL is greater than LOG_2 MAX,
+where MAX is the returned value of `GL_MAX_TEXTURE_SIZE'.
+
+`GL_INVALID_OPERATION' is generated if `glGetTexLevelParameter' is
+executed between the execution of `glBegin' and the corresponding
+execution of `glEnd'.
+
+`GL_INVALID_OPERATION' is generated if
+`GL_TEXTURE_COMPRESSED_IMAGE_SIZE' is queried on texture images with an
+uncompressed internal format or on proxy targets.")
+
+(define-gl-procedures
+  ((glGetTexParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetTexParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return texture parameter values.
+
+TARGET
+     Specifies the symbolic name of the target texture. `GL_TEXTURE_1D',
+     `GL_TEXTURE_2D', `GL_TEXTURE_3D', and `GL_TEXTURE_CUBE_MAP' are
+     accepted.
+
+PNAME
+     Specifies the symbolic name of a texture parameter.
+     `GL_TEXTURE_MAG_FILTER', `GL_TEXTURE_MIN_FILTER',
+     `GL_TEXTURE_MIN_LOD', `GL_TEXTURE_MAX_LOD',
+     `GL_TEXTURE_BASE_LEVEL', `GL_TEXTURE_MAX_LEVEL',
+     `GL_TEXTURE_WRAP_S', `GL_TEXTURE_WRAP_T', `GL_TEXTURE_WRAP_R',
+     `GL_TEXTURE_BORDER_COLOR', `GL_TEXTURE_PRIORITY',
+     `GL_TEXTURE_RESIDENT', `GL_TEXTURE_COMPARE_MODE',
+     `GL_TEXTURE_COMPARE_FUNC', `GL_DEPTH_TEXTURE_MODE', and
+     `GL_GENERATE_MIPMAP' are accepted.
+
+PARAMS
+     Returns the texture parameters.
+
+`glGetTexParameter' returns in PARAMS the value or values of the texture
+parameter specified as PNAME. TARGET defines the target texture, either
+`GL_TEXTURE_1D', `GL_TEXTURE_2D', `GL_TEXTURE_3D', or
+`GL_TEXTURE_CUBE_MAP', to specify one-, two-, or three-dimensional or
+cube-mapped texturing. PNAME accepts the same symbols as
+`glTexParameter', with the same interpretations:
+
+`GL_TEXTURE_MAG_FILTER'
+     Returns the single-valued texture magnification filter, a symbolic
+     constant. The initial value is `GL_LINEAR'.
+
+`GL_TEXTURE_MIN_FILTER'
+     Returns the single-valued texture minification filter, a symbolic
+     constant. The initial value is `GL_NEAREST_MIPMAP_LINEAR'.
+
+`GL_TEXTURE_MIN_LOD'
+     Returns the single-valued texture minimum level-of-detail value.
+     The initial value is -1000 .
+
+`GL_TEXTURE_MAX_LOD'
+     Returns the single-valued texture maximum level-of-detail value.
+     The initial value is 1000.
+
+`GL_TEXTURE_BASE_LEVEL'
+     Returns the single-valued base texture mipmap level. The initial
+     value is 0.
+
+`GL_TEXTURE_MAX_LEVEL'
+     Returns the single-valued maximum texture mipmap array level. The
+     initial value is 1000.
+
+`GL_TEXTURE_WRAP_S'
+     Returns the single-valued wrapping function for texture coordinate
+     S , a symbolic constant. The initial value is `GL_REPEAT'.
+
+`GL_TEXTURE_WRAP_T'
+     Returns the single-valued wrapping function for texture coordinate
+     T , a symbolic constant. The initial value is `GL_REPEAT'.
+
+`GL_TEXTURE_WRAP_R'
+     Returns the single-valued wrapping function for texture coordinate
+     R , a symbolic constant. The initial value is `GL_REPEAT'.
+
+`GL_TEXTURE_BORDER_COLOR'
+     Returns four integer or floating-point numbers that comprise the
+     RGBA color of the texture border. Floating-point values are
+     returned in the range [0,1] . Integer values are returned as a
+     linear mapping of the internal floating-point representation such
+     that 1.0 maps to the most positive representable integer and -1.0
+     maps to the most negative representable integer. The initial value
+     is (0, 0, 0, 0).
+
+`GL_TEXTURE_PRIORITY'
+     Returns the residence priority of the target texture (or the named
+     texture bound to it). The initial value is 1. See
+     `glPrioritizeTextures'.
+
+`GL_TEXTURE_RESIDENT'
+     Returns the residence status of the target texture. If the value
+     returned in PARAMS is `GL_TRUE', the texture is resident in texture
+     memory. See `glAreTexturesResident'.
+
+`GL_TEXTURE_COMPARE_MODE'
+     Returns a single-valued texture comparison mode, a symbolic
+     constant. The initial value is `GL_NONE'. See `glTexParameter'.
+
+`GL_TEXTURE_COMPARE_FUNC'
+     Returns a single-valued texture comparison function, a symbolic
+     constant. The initial value is `GL_LEQUAL'. See `glTexParameter'.
+
+`GL_DEPTH_TEXTURE_MODE'
+     Returns a single-valued texture format indicating how the depth
+     values should be converted into color components. The initial value
+     is `GL_LUMINANCE'. See `glTexParameter'.
+
+`GL_GENERATE_MIPMAP'
+     Returns a single boolean value indicating if automatic mipmap level
+     updates are enabled. See `glTexParameter'.
+
+`GL_INVALID_ENUM' is generated if TARGET or PNAME is not an accepted
+value.
+
+`GL_INVALID_OPERATION' is generated if `glGetTexParameter' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
   ((glGetUniformLocation
      (program GLuint)
      (name const-GLchar-*)
@@ -8946,6 +10602,2693 @@ linked.
 `GL_INVALID_OPERATION' is generated if `glGetUniformLocation' is
 executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
+
+(define-gl-procedures
+  ((glGetUniformfv
+     (program GLuint)
+     (location GLint)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetUniformiv
+     (program GLuint)
+     (location GLint)
+     (params GLint-*)
+     ->
+     void))
+  "Returns the value of a uniform variable.
+
+PROGRAM
+     Specifies the program object to be queried.
+
+LOCATION
+     Specifies the location of the uniform variable to be queried.
+
+PARAMS
+     Returns the value of the specified uniform variable.
+
+`glGetUniform' returns in PARAMS the value(s) of the specified uniform
+variable. The type of the uniform variable specified by LOCATION
+determines the number of values returned. If the uniform variable is
+defined in the shader as a boolean, int, or float, a single value will
+be returned. If it is defined as a vec2, ivec2, or bvec2, two values
+will be returned. If it is defined as a vec3, ivec3, or bvec3, three
+values will be returned, and so on. To query values stored in uniform
+variables declared as arrays, call `glGetUniform' for each element of
+the array. To query values stored in uniform variables declared as
+structures, call `glGetUniform' for each field in the structure. The
+values for uniform variables declared as a matrix will be returned in
+column major order.
+
+The locations assigned to uniform variables are not known until the
+program object is linked. After linking has occurred, the command
+`glGetUniformLocation' can be used to obtain the location of a uniform
+variable. This location value can then be passed to `glGetUniform' in
+order to query the current value of the uniform variable. After a
+program object has been linked successfully, the index values for
+uniform variables remain fixed until the next link command occurs. The
+uniform variable values can only be queried after a link if the link was
+successful.
+
+`GL_INVALID_VALUE' is generated if PROGRAM is not a value generated by
+OpenGL.
+
+`GL_INVALID_OPERATION' is generated if PROGRAM is not a program object.
+
+`GL_INVALID_OPERATION' is generated if PROGRAM has not been successfully
+linked.
+
+`GL_INVALID_OPERATION' is generated if LOCATION does not correspond to a
+valid uniform variable location for the specified program object.
+
+`GL_INVALID_OPERATION' is generated if `glGetUniform' is executed
+between the execution of `glBegin' and the corresponding execution of
+`glEnd'.")
+
+(define-gl-procedures
+  ((glGetVertexAttribPointerv
+     (index GLuint)
+     (pname GLenum)
+     (pointer GLvoid-**)
+     ->
+     void))
+  "Return the address of the specified generic vertex attribute pointer.
+
+INDEX
+     Specifies the generic vertex attribute parameter to be returned.
+
+PNAME
+     Specifies the symbolic name of the generic vertex attribute
+     parameter to be returned. Must be `GL_VERTEX_ATTRIB_ARRAY_POINTER'.
+
+POINTER
+     Returns the pointer value.
+
+`glGetVertexAttribPointerv' returns pointer information. INDEX is the
+generic vertex attribute to be queried, PNAME is a symbolic constant
+indicating the pointer to be returned, and PARAMS is a pointer to a
+location in which to place the returned data.
+
+If a non-zero named buffer object was bound to the `GL_ARRAY_BUFFER'
+target (see `glBindBuffer') when the desired pointer was previously
+specified, the POINTER returned is a byte offset into the buffer
+object's data store.
+
+`GL_INVALID_VALUE' is generated if INDEX is greater than or equal to
+`GL_MAX_VERTEX_ATTRIBS'.
+
+`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.")
+
+(define-gl-procedures
+  ((glGetVertexAttribfv
+     (index GLuint)
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetVertexAttribiv
+     (index GLuint)
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return a generic vertex attribute parameter.
+
+INDEX
+     Specifies the generic vertex attribute parameter to be queried.
+
+PNAME
+     Specifies the symbolic name of the vertex attribute parameter to be
+     queried. Accepted values are
+     `GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING',
+     `GL_VERTEX_ATTRIB_ARRAY_ENABLED', `GL_VERTEX_ATTRIB_ARRAY_SIZE',
+     `GL_VERTEX_ATTRIB_ARRAY_STRIDE', `GL_VERTEX_ATTRIB_ARRAY_TYPE',
+     `GL_VERTEX_ATTRIB_ARRAY_NORMALIZED', or `GL_CURRENT_VERTEX_ATTRIB'.
+
+PARAMS
+     Returns the requested data.
+
+`glGetVertexAttrib' returns in PARAMS the value of a generic vertex
+attribute parameter. The generic vertex attribute to be queried is
+specified by INDEX, and the parameter to be queried is specified by
+PNAME.
+
+The accepted parameter names are as follows:
+
+`GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     currently bound to the binding point corresponding to generic
+     vertex attribute array INDEX. If no buffer object is bound, 0 is
+     returned. The initial value is 0.
+
+`GL_VERTEX_ATTRIB_ARRAY_ENABLED'
+
+
+     PARAMS returns a single value that is non-zero (true) if the vertex
+     attribute array for INDEX is enabled and 0 (false) if it is
+     disabled. The initial value is `GL_FALSE'.
+
+`GL_VERTEX_ATTRIB_ARRAY_SIZE'
+
+
+     PARAMS returns a single value, the size of the vertex attribute
+     array for INDEX. The size is the number of values for each element
+     of the vertex attribute array, and it will be 1, 2, 3, or 4. The
+     initial value is 4.
+
+`GL_VERTEX_ATTRIB_ARRAY_STRIDE'
+
+
+     PARAMS returns a single value, the array stride for (number of
+     bytes between successive elements in) the vertex attribute array
+     for INDEX. A value of 0 indicates that the array elements are
+     stored sequentially in memory. The initial value is 0.
+
+`GL_VERTEX_ATTRIB_ARRAY_TYPE'
+
+
+     PARAMS returns a single value, a symbolic constant indicating the
+     array type for the vertex attribute array for INDEX. Possible
+     values are `GL_BYTE', `GL_UNSIGNED_BYTE', `GL_SHORT',
+     `GL_UNSIGNED_SHORT', `GL_INT', `GL_UNSIGNED_INT', `GL_FLOAT', and
+     `GL_DOUBLE'. The initial value is `GL_FLOAT'.
+
+`GL_VERTEX_ATTRIB_ARRAY_NORMALIZED'
+
+
+     PARAMS returns a single value that is non-zero (true) if
+     fixed-point data types for the vertex attribute array indicated by
+     INDEX are normalized when they are converted to floating point, and
+     0 (false) otherwise. The initial value is `GL_FALSE'.
+
+`GL_CURRENT_VERTEX_ATTRIB'
+
+
+     PARAMS returns four values that represent the current value for the
+     generic vertex attribute specified by index. Generic vertex
+     attribute 0 is unique in that it has no current state, so an error
+     will be generated if INDEX is 0. The initial value for all other
+     generic vertex attributes is (0,0,0,1).
+
+All of the parameters except `GL_CURRENT_VERTEX_ATTRIB' represent
+client-side state.
+
+`GL_INVALID_VALUE' is generated if INDEX is greater than or equal to
+`GL_MAX_VERTEX_ATTRIBS'.
+
+`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
+
+`GL_INVALID_OPERATION' is generated if INDEX is 0 and PNAME is
+`GL_CURRENT_VERTEX_ATTRIB'.")
+
+(define-gl-procedures
+  ((glGetBooleanv
+     (pname GLenum)
+     (params GLboolean-*)
+     ->
+     void)
+   (glGetDoublev
+     (pname GLenum)
+     (params GLdouble-*)
+     ->
+     void)
+   (glGetFloatv
+     (pname GLenum)
+     (params GLfloat-*)
+     ->
+     void)
+   (glGetIntegerv
+     (pname GLenum)
+     (params GLint-*)
+     ->
+     void))
+  "Return the value or values of a selected parameter.
+
+PNAME
+     Specifies the parameter value to be returned. The symbolic
+     constants in the list below are accepted.
+
+PARAMS
+     Returns the value or values of the specified parameter.
+
+These four commands return values for simple state variables in GL.
+PNAME is a symbolic constant indicating the state variable to be
+returned, and PARAMS is a pointer to an array of the indicated type in
+which to place the returned data.
+
+Type conversion is performed if PARAMS has a different type than the
+state variable value being requested. If `glGetBooleanv' is called, a
+floating-point (or integer) value is converted to `GL_FALSE' if and only
+if it is 0.0 (or 0). Otherwise, it is converted to `GL_TRUE'. If
+`glGetIntegerv' is called, boolean values are returned as `GL_TRUE' or
+`GL_FALSE', and most floating-point values are rounded to the nearest
+integer value. Floating-point colors and normals, however, are returned
+with a linear mapping that maps 1.0 to the most positive representable
+integer value and -1.0 to the most negative representable integer value.
+If `glGetFloatv' or `glGetDoublev' is called, boolean values are
+returned as `GL_TRUE' or `GL_FALSE', and integer values are converted to
+floating-point values.
+
+The following symbolic constants are accepted by PNAME:
+
+`GL_ACCUM_ALPHA_BITS'
+
+
+     PARAMS returns one value, the number of alpha bitplanes in the
+     accumulation buffer.
+
+`GL_ACCUM_BLUE_BITS'
+
+
+     PARAMS returns one value, the number of blue bitplanes in the
+     accumulation buffer.
+
+`GL_ACCUM_CLEAR_VALUE'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha values
+     used to clear the accumulation buffer. Integer values, if
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 returns the most positive
+     representable integer value, and -1.0 returns the most negative
+     representable integer value. The initial value is (0, 0, 0, 0). See
+     `glClearAccum'.
+
+`GL_ACCUM_GREEN_BITS'
+
+
+     PARAMS returns one value, the number of green bitplanes in the
+     accumulation buffer.
+
+`GL_ACCUM_RED_BITS'
+
+
+     PARAMS returns one value, the number of red bitplanes in the
+     accumulation buffer.
+
+`GL_ACTIVE_TEXTURE'
+
+
+     PARAMS returns a single value indicating the active multitexture
+     unit. The initial value is `GL_TEXTURE0'. See `glActiveTexture'.
+
+`GL_ALIASED_POINT_SIZE_RANGE'
+
+
+     PARAMS returns two values, the smallest and largest supported sizes
+     for aliased points.
+
+`GL_ALIASED_LINE_WIDTH_RANGE'
+
+
+     PARAMS returns two values, the smallest and largest supported
+     widths for aliased lines.
+
+`GL_ALPHA_BIAS'
+
+
+     PARAMS returns one value, the alpha bias factor used during pixel
+     transfers. The initial value is 0. See `glPixelTransfer'.
+
+`GL_ALPHA_BITS'
+
+
+     PARAMS returns one value, the number of alpha bitplanes in each
+     color buffer.
+
+`GL_ALPHA_SCALE'
+
+
+     PARAMS returns one value, the alpha scale factor used during pixel
+     transfers. The initial value is 1. See `glPixelTransfer'.
+
+`GL_ALPHA_TEST'
+
+
+     PARAMS returns a single boolean value indicating whether alpha
+     testing of fragments is enabled. The initial value is `GL_FALSE'.
+     See `glAlphaFunc'.
+
+`GL_ALPHA_TEST_FUNC'PARAMS returns one value,
+
+
+     the symbolic name of the alpha test function. The initial value is
+     `GL_ALWAYS'. See `glAlphaFunc'.
+
+`GL_ALPHA_TEST_REF'
+
+
+     PARAMS returns one value, the reference value for the alpha test.
+     The initial value is 0. See `glAlphaFunc'. An integer value, if
+     requested, is linearly mapped from the internal floating-point
+     representation such that 1.0 returns the most positive
+     representable integer value, and -1.0 returns the most negative
+     representable integer value.
+
+`GL_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     currently bound to the target `GL_ARRAY_BUFFER'. If no buffer
+     object is bound to this target, 0 is returned. The initial value is
+     0. See `glBindBuffer'.
+
+`GL_ATTRIB_STACK_DEPTH'
+
+
+     PARAMS returns one value, the depth of the attribute stack. If the
+     stack is empty, 0 is returned. The initial value is 0. See
+     `glPushAttrib'.
+
+`GL_AUTO_NORMAL'
+
+
+     PARAMS returns a single boolean value indicating whether 2D map
+     evaluation automatically generates surface normals. The initial
+     value is `GL_FALSE'. See `glMap2'.
+
+`GL_AUX_BUFFERS'
+
+
+     PARAMS returns one value, the number of auxiliary color buffers
+     available.
+
+`GL_BLEND'
+
+
+     PARAMS returns a single boolean value indicating whether blending
+     is enabled. The initial value is `GL_FALSE'. See `glBlendFunc'.
+
+`GL_BLEND_COLOR'
+
+
+     PARAMS returns four values, the red, green, blue, and alpha values
+     which are the components of the blend color. See `glBlendColor'.
+
+`GL_BLEND_DST_ALPHA'
+
+
+     PARAMS returns one value, the symbolic constant identifying the
+     alpha destination blend function. The initial value is `GL_ZERO'.
+     See `glBlendFunc' and `glBlendFuncSeparate'.
+
+`GL_BLEND_DST_RGB'
+
+
+     PARAMS returns one value, the symbolic constant identifying the RGB
+     destination blend function. The initial value is `GL_ZERO'. See
+     `glBlendFunc' and `glBlendFuncSeparate'.
+
+`GL_BLEND_EQUATION_RGB'
+
+
+     PARAMS returns one value, a symbolic constant indicating whether
+     the RGB blend equation is `GL_FUNC_ADD', `GL_FUNC_SUBTRACT',
+     `GL_FUNC_REVERSE_SUBTRACT', `GL_MIN' or `GL_MAX'. See
+     `glBlendEquationSeparate'.
+
+`GL_BLEND_EQUATION_ALPHA'
+
+
+     PARAMS returns one value, a symbolic constant indicating whether
+     the Alpha blend equation is `GL_FUNC_ADD', `GL_FUNC_SUBTRACT',
+     `GL_FUNC_REVERSE_SUBTRACT', `GL_MIN' or `GL_MAX'. See
+     `glBlendEquationSeparate'.
+
+`GL_BLEND_SRC_ALPHA'
+
+
+     PARAMS returns one value, the symbolic constant identifying the
+     alpha source blend function. The initial value is `GL_ONE'. See
+     `glBlendFunc' and `glBlendFuncSeparate'.
+
+`GL_BLEND_SRC_RGB'
+
+
+     PARAMS returns one value, the symbolic constant identifying the RGB
+     source blend function. The initial value is `GL_ONE'. See
+     `glBlendFunc' and `glBlendFuncSeparate'.
+
+`GL_BLUE_BIAS'
+
+
+     PARAMS returns one value, the blue bias factor used during pixel
+     transfers. The initial value is 0. See `glPixelTransfer'.
+
+`GL_BLUE_BITS'
+
+
+     PARAMS returns one value, the number of blue bitplanes in each
+     color buffer.
+
+`GL_BLUE_SCALE'
+
+
+     PARAMS returns one value, the blue scale factor used during pixel
+     transfers. The initial value is 1. See `glPixelTransfer'.
+
+`GL_CLIENT_ACTIVE_TEXTURE'
+
+
+     PARAMS returns a single integer value indicating the current client
+     active multitexture unit. The initial value is `GL_TEXTURE0'. See
+     `glClientActiveTexture'.
+
+`GL_CLIENT_ATTRIB_STACK_DEPTH'
+
+
+     PARAMS returns one value indicating the depth of the attribute
+     stack. The initial value is 0. See `glPushClientAttrib'.
+
+`GL_CLIP_PLANE'I
+
+
+     PARAMS returns a single boolean value indicating whether the
+     specified clipping plane is enabled. The initial value is
+     `GL_FALSE'. See `glClipPlane'.
+
+`GL_COLOR_ARRAY'
+
+
+     PARAMS returns a single boolean value indicating whether the color
+     array is enabled. The initial value is `GL_FALSE'. See
+     `glColorPointer'.
+
+`GL_COLOR_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the color array. This buffer object would have been
+     bound to the target `GL_ARRAY_BUFFER' at the time of the most
+     recent call to `glColorPointer'. If no buffer object was bound to
+     this target, 0 is returned. The initial value is 0. See
+     `glBindBuffer'.
+
+`GL_COLOR_ARRAY_SIZE'
+
+
+     PARAMS returns one value, the number of components per color in the
+     color array. The initial value is 4. See `glColorPointer'.
+
+`GL_COLOR_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive
+     colors in the color array. The initial value is 0. See
+     `glColorPointer'.
+
+`GL_COLOR_ARRAY_TYPE'
+
+
+     PARAMS returns one value, the data type of each component in the
+     color array. The initial value is `GL_FLOAT'. See `glColorPointer'.
+
+`GL_COLOR_CLEAR_VALUE'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha values
+     used to clear the color buffers. Integer values, if requested, are
+     linearly mapped from the internal floating-point representation
+     such that 1.0 returns the most positive representable integer
+     value, and -1.0 returns the most negative representable integer
+     value. The initial value is (0, 0, 0, 0). See `glClearColor'.
+
+`GL_COLOR_LOGIC_OP'
+
+
+     PARAMS returns a single boolean value indicating whether a
+     fragment's RGBA color values are merged into the framebuffer using
+     a logical operation. The initial value is `GL_FALSE'. See
+     `glLogicOp'.
+
+`GL_COLOR_MATERIAL'
+
+
+     PARAMS returns a single boolean value indicating whether one or
+     more material parameters are tracking the current color. The
+     initial value is `GL_FALSE'. See `glColorMaterial'.
+
+`GL_COLOR_MATERIAL_FACE'
+
+
+     PARAMS returns one value, a symbolic constant indicating which
+     materials have a parameter that is tracking the current color. The
+     initial value is `GL_FRONT_AND_BACK'. See `glColorMaterial'.
+
+`GL_COLOR_MATERIAL_PARAMETER'
+
+
+     PARAMS returns one value, a symbolic constant indicating which
+     material parameters are tracking the current color. The initial
+     value is `GL_AMBIENT_AND_DIFFUSE'. See `glColorMaterial'.
+
+`GL_COLOR_MATRIX'
+
+
+     PARAMS returns sixteen values: the color matrix on the top of the
+     color matrix stack. Initially this matrix is the identity matrix.
+     See `glPushMatrix'.
+
+`GL_COLOR_MATRIX_STACK_DEPTH'
+
+
+     PARAMS returns one value, the maximum supported depth of the
+     projection matrix stack. The value must be at least 2. See
+     `glPushMatrix'.
+
+`GL_COLOR_SUM'
+
+
+     PARAMS returns a single boolean value indicating whether primary
+     and secondary color sum is enabled. See `glSecondaryColor'.
+
+`GL_COLOR_TABLE'
+
+
+     PARAMS returns a single boolean value indicating whether the color
+     table lookup is enabled. See `glColorTable'.
+
+`GL_COLOR_WRITEMASK'
+
+
+     PARAMS returns four boolean values: the red, green, blue, and alpha
+     write enables for the color buffers. The initial value is
+     (`GL_TRUE', `GL_TRUE', `GL_TRUE', `GL_TRUE'). See `glColorMask'.
+
+`GL_COMPRESSED_TEXTURE_FORMATS'
+
+
+     PARAMS returns a list of symbolic constants of length
+     `GL_NUM_COMPRESSED_TEXTURE_FORMATS' indicating which compressed
+     texture formats are available. See `glCompressedTexImage2D'.
+
+`GL_CONVOLUTION_1D'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     convolution is enabled. The initial value is `GL_FALSE'. See
+     `glConvolutionFilter1D'.
+
+`GL_CONVOLUTION_2D'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     convolution is enabled. The initial value is `GL_FALSE'. See
+     `glConvolutionFilter2D'.
+
+`GL_CULL_FACE'
+
+
+     PARAMS returns a single boolean value indicating whether polygon
+     culling is enabled. The initial value is `GL_FALSE'. See
+     `glCullFace'.
+
+`GL_CULL_FACE_MODE'
+
+
+     PARAMS returns one value, a symbolic constant indicating which
+     polygon faces are to be culled. The initial value is `GL_BACK'. See
+     `glCullFace'.
+
+`GL_CURRENT_COLOR'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha values
+     of the current color. Integer values, if requested, are linearly
+     mapped from the internal floating-point representation such that
+     1.0 returns the most positive representable integer value, and -1.0
+     returns the most negative representable integer value. The initial
+     value is (1, 1, 1, 1). See `glColor'.
+
+`GL_CURRENT_FOG_COORD'
+
+
+     PARAMS returns one value, the current fog coordinate. The initial
+     value is 0. See `glFogCoord'.
+
+`GL_CURRENT_INDEX'
+
+
+     PARAMS returns one value, the current color index. The initial
+     value is 1. See `glIndex'.
+
+`GL_CURRENT_NORMAL'
+
+
+     PARAMS returns three values: the X, Y, and Z values of the current
+     normal. Integer values, if requested, are linearly mapped from the
+     internal floating-point representation such that 1.0 returns the
+     most positive representable integer value, and -1.0 returns the
+     most negative representable integer value. The initial value is (0,
+     0, 1). See `glNormal'.
+
+`GL_CURRENT_PROGRAM'
+
+
+     PARAMS returns one value, the name of the program object that is
+     currently active, or 0 if no program object is active. See
+     `glUseProgram'.
+
+`GL_CURRENT_RASTER_COLOR'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha color
+     values of the current raster position. Integer values, if
+     requested, are linearly mapped from the internal floating-point
+     representation such that 1.0 returns the most positive
+     representable integer value, and -1.0 returns the most negative
+     representable integer value. The initial value is (1, 1, 1, 1). See
+     `glRasterPos'.
+
+`GL_CURRENT_RASTER_DISTANCE'
+
+
+     PARAMS returns one value, the distance from the eye to the current
+     raster position. The initial value is 0. See `glRasterPos'.
+
+`GL_CURRENT_RASTER_INDEX'
+
+
+     PARAMS returns one value, the color index of the current raster
+     position. The initial value is 1. See `glRasterPos'.
+
+`GL_CURRENT_RASTER_POSITION'
+
+
+     PARAMS returns four values: the X, Y, Z, and W components of the
+     current raster position. X, Y, and Z are in window coordinates, and
+     W is in clip coordinates. The initial value is (0, 0, 0, 1). See
+     `glRasterPos'.
+
+`GL_CURRENT_RASTER_POSITION_VALID'
+
+
+     PARAMS returns a single boolean value indicating whether the
+     current raster position is valid. The initial value is `GL_TRUE'.
+     See `glRasterPos'.
+
+`GL_CURRENT_RASTER_SECONDARY_COLOR'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha
+     secondary color values of the current raster position. Integer
+     values, if requested, are linearly mapped from the internal
+     floating-point representation such that 1.0 returns the most
+     positive representable integer value, and -1.0 returns the most
+     negative representable integer value. The initial value is (1, 1,
+     1, 1). See `glRasterPos'.
+
+`GL_CURRENT_RASTER_TEXTURE_COORDS'
+
+
+     PARAMS returns four values: the S, T, R, and Q texture coordinates
+     of the current raster position. The initial value is (0, 0, 0, 1).
+     See `glRasterPos' and `glMultiTexCoord'.
+
+`GL_CURRENT_SECONDARY_COLOR'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha values
+     of the current secondary color. Integer values, if requested, are
+     linearly mapped from the internal floating-point representation
+     such that 1.0 returns the most positive representable integer
+     value, and -1.0 returns the most negative representable integer
+     value. The initial value is (0, 0, 0, 0). See `glSecondaryColor'.
+
+`GL_CURRENT_TEXTURE_COORDS'
+
+
+     PARAMS returns four values: the S, T, R, and Q current texture
+     coordinates. The initial value is (0, 0, 0, 1). See
+     `glMultiTexCoord'.
+
+`GL_DEPTH_BIAS'
+
+
+     PARAMS returns one value, the depth bias factor used during pixel
+     transfers. The initial value is 0. See `glPixelTransfer'.
+
+`GL_DEPTH_BITS'
+
+
+     PARAMS returns one value, the number of bitplanes in the depth
+     buffer.
+
+`GL_DEPTH_CLEAR_VALUE'
+
+
+     PARAMS returns one value, the value that is used to clear the depth
+     buffer. Integer values, if requested, are linearly mapped from the
+     internal floating-point representation such that 1.0 returns the
+     most positive representable integer value, and -1.0 returns the
+     most negative representable integer value. The initial value is 1.
+     See `glClearDepth'.
+
+`GL_DEPTH_FUNC'
+
+
+     PARAMS returns one value, the symbolic constant that indicates the
+     depth comparison function. The initial value is `GL_LESS'. See
+     `glDepthFunc'.
+
+`GL_DEPTH_RANGE'
+
+
+     PARAMS returns two values: the near and far mapping limits for the
+     depth buffer. Integer values, if requested, are linearly mapped
+     from the internal floating-point representation such that 1.0
+     returns the most positive representable integer value, and -1.0
+     returns the most negative representable integer value. The initial
+     value is (0, 1). See `glDepthRange'.
+
+`GL_DEPTH_SCALE'
+
+
+     PARAMS returns one value, the depth scale factor used during pixel
+     transfers. The initial value is 1. See `glPixelTransfer'.
+
+`GL_DEPTH_TEST'
+
+
+     PARAMS returns a single boolean value indicating whether depth
+     testing of fragments is enabled. The initial value is `GL_FALSE'.
+     See `glDepthFunc' and `glDepthRange'.
+
+`GL_DEPTH_WRITEMASK'
+
+
+     PARAMS returns a single boolean value indicating if the depth
+     buffer is enabled for writing. The initial value is `GL_TRUE'. See
+     `glDepthMask'.
+
+`GL_DITHER'
+
+
+     PARAMS returns a single boolean value indicating whether dithering
+     of fragment colors and indices is enabled. The initial value is
+     `GL_TRUE'.
+
+`GL_DOUBLEBUFFER'
+
+
+     PARAMS returns a single boolean value indicating whether double
+     buffering is supported.
+
+`GL_DRAW_BUFFER'
+
+
+     PARAMS returns one value, a symbolic constant indicating which
+     buffers are being drawn to. See `glDrawBuffer'. The initial value
+     is `GL_BACK' if there are back buffers, otherwise it is `GL_FRONT'.
+
+`GL_DRAW_BUFFER'I
+
+
+     PARAMS returns one value, a symbolic constant indicating which
+     buffers are being drawn to by the corresponding output color. See
+     `glDrawBuffers'. The initial value of `GL_DRAW_BUFFER0' is
+     `GL_BACK' if there are back buffers, otherwise it is `GL_FRONT'.
+     The initial values of draw buffers for all other output colors is
+     `GL_NONE'.
+
+`GL_EDGE_FLAG'
+
+
+     PARAMS returns a single boolean value indicating whether the
+     current edge flag is `GL_TRUE' or `GL_FALSE'. The initial value is
+     `GL_TRUE'. See `glEdgeFlag'.
+
+`GL_EDGE_FLAG_ARRAY'
+
+
+     PARAMS returns a single boolean value indicating whether the edge
+     flag array is enabled. The initial value is `GL_FALSE'. See
+     `glEdgeFlagPointer'.
+
+`GL_EDGE_FLAG_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the edge flag array. This buffer object would have
+     been bound to the target `GL_ARRAY_BUFFER' at the time of the most
+     recent call to `glEdgeFlagPointer'. If no buffer object was bound
+     to this target, 0 is returned. The initial value is 0. See
+     `glBindBuffer'.
+
+`GL_EDGE_FLAG_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive edge
+     flags in the edge flag array. The initial value is 0. See
+     `glEdgeFlagPointer'.
+
+`GL_ELEMENT_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     currently bound to the target `GL_ELEMENT_ARRAY_BUFFER'. If no
+     buffer object is bound to this target, 0 is returned. The initial
+     value is 0. See `glBindBuffer'.
+
+`GL_FEEDBACK_BUFFER_SIZE'
+
+
+     PARAMS returns one value, the size of the feedback buffer. See
+     `glFeedbackBuffer'.
+
+`GL_FEEDBACK_BUFFER_TYPE'
+
+
+     PARAMS returns one value, the type of the feedback buffer. See
+     `glFeedbackBuffer'.
+
+`GL_FOG'
+
+
+     PARAMS returns a single boolean value indicating whether fogging is
+     enabled. The initial value is `GL_FALSE'. See `glFog'.
+
+`GL_FOG_COORD_ARRAY'
+
+
+     PARAMS returns a single boolean value indicating whether the fog
+     coordinate array is enabled. The initial value is `GL_FALSE'. See
+     `glFogCoordPointer'.
+
+`GL_FOG_COORD_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the fog coordinate array. This buffer object would
+     have been bound to the target `GL_ARRAY_BUFFER' at the time of the
+     most recent call to `glFogCoordPointer'. If no buffer object was
+     bound to this target, 0 is returned. The initial value is 0. See
+     `glBindBuffer'.
+
+`GL_FOG_COORD_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive fog
+     coordinates in the fog coordinate array. The initial value is 0.
+     See `glFogCoordPointer'.
+
+`GL_FOG_COORD_ARRAY_TYPE'
+
+
+     PARAMS returns one value, the type of the fog coordinate array. The
+     initial value is `GL_FLOAT'. See `glFogCoordPointer'.
+
+`GL_FOG_COORD_SRC'
+
+
+     PARAMS returns one value, a symbolic constant indicating the source
+     of the fog coordinate. The initial value is `GL_FRAGMENT_DEPTH'.
+     See `glFog'.
+
+`GL_FOG_COLOR'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha
+     components of the fog color. Integer values, if requested, are
+     linearly mapped from the internal floating-point representation
+     such that 1.0 returns the most positive representable integer
+     value, and -1.0 returns the most negative representable integer
+     value. The initial value is (0, 0, 0, 0). See `glFog'.
+
+`GL_FOG_DENSITY'
+
+
+     PARAMS returns one value, the fog density parameter. The initial
+     value is 1. See `glFog'.
+
+`GL_FOG_END'
+
+
+     PARAMS returns one value, the end factor for the linear fog
+     equation. The initial value is 1. See `glFog'.
+
+`GL_FOG_HINT'
+
+
+     PARAMS returns one value, a symbolic constant indicating the mode
+     of the fog hint. The initial value is `GL_DONT_CARE'. See `glHint'.
+
+`GL_FOG_INDEX'
+
+
+     PARAMS returns one value, the fog color index. The initial value is
+     0. See `glFog'.
+
+`GL_FOG_MODE'
+
+
+     PARAMS returns one value, a symbolic constant indicating which fog
+     equation is selected. The initial value is `GL_EXP'. See `glFog'.
+
+`GL_FOG_START'
+
+
+     PARAMS returns one value, the start factor for the linear fog
+     equation. The initial value is 0. See `glFog'.
+
+`GL_FRAGMENT_SHADER_DERIVATIVE_HINT'
+
+
+     PARAMS returns one value, a symbolic constant indicating the mode
+     of the derivative accuracy hint for fragment shaders. The initial
+     value is `GL_DONT_CARE'. See `glHint'.
+
+`GL_FRONT_FACE'
+
+
+     PARAMS returns one value, a symbolic constant indicating whether
+     clockwise or counterclockwise polygon winding is treated as
+     front-facing. The initial value is `GL_CCW'. See `glFrontFace'.
+
+`GL_GENERATE_MIPMAP_HINT'
+
+
+     PARAMS returns one value, a symbolic constant indicating the mode
+     of the mipmap generation filtering hint. The initial value is
+     `GL_DONT_CARE'. See `glHint'.
+
+`GL_GREEN_BIAS'
+
+
+     PARAMS returns one value, the green bias factor used during pixel
+     transfers. The initial value is 0.
+
+`GL_GREEN_BITS'
+
+
+     PARAMS returns one value, the number of green bitplanes in each
+     color buffer.
+
+`GL_GREEN_SCALE'
+
+
+     PARAMS returns one value, the green scale factor used during pixel
+     transfers. The initial value is 1. See `glPixelTransfer'.
+
+`GL_HISTOGRAM'
+
+
+     PARAMS returns a single boolean value indicating whether histogram
+     is enabled. The initial value is `GL_FALSE'. See `glHistogram'.
+
+`GL_INDEX_ARRAY'
+
+
+     PARAMS returns a single boolean value indicating whether the color
+     index array is enabled. The initial value is `GL_FALSE'. See
+     `glIndexPointer'.
+
+`GL_INDEX_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the color index array. This buffer object would
+     have been bound to the target `GL_ARRAY_BUFFER' at the time of the
+     most recent call to `glIndexPointer'. If no buffer object was bound
+     to this target, 0 is returned. The initial value is 0. See
+     `glBindBuffer'.
+
+`GL_INDEX_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive color
+     indexes in the color index array. The initial value is 0. See
+     `glIndexPointer'.
+
+`GL_INDEX_ARRAY_TYPE'
+
+
+     PARAMS returns one value, the data type of indexes in the color
+     index array. The initial value is `GL_FLOAT'. See `glIndexPointer'.
+
+`GL_INDEX_BITS'
+
+
+     PARAMS returns one value, the number of bitplanes in each color
+     index buffer.
+
+`GL_INDEX_CLEAR_VALUE'
+
+
+     PARAMS returns one value, the color index used to clear the color
+     index buffers. The initial value is 0. See `glClearIndex'.
+
+`GL_INDEX_LOGIC_OP'
+
+
+     PARAMS returns a single boolean value indicating whether a
+     fragment's index values are merged into the framebuffer using a
+     logical operation. The initial value is `GL_FALSE'. See
+     `glLogicOp'.
+
+`GL_INDEX_MODE'
+
+
+     PARAMS returns a single boolean value indicating whether the GL is
+     in color index mode (`GL_TRUE') or RGBA mode (`GL_FALSE').
+
+`GL_INDEX_OFFSET'
+
+
+     PARAMS returns one value, the offset added to color and stencil
+     indices during pixel transfers. The initial value is 0. See
+     `glPixelTransfer'.
+
+`GL_INDEX_SHIFT'
+
+
+     PARAMS returns one value, the amount that color and stencil indices
+     are shifted during pixel transfers. The initial value is 0. See
+     `glPixelTransfer'.
+
+`GL_INDEX_WRITEMASK'
+
+
+     PARAMS returns one value, a mask indicating which bitplanes of each
+     color index buffer can be written. The initial value is all 1's.
+     See `glIndexMask'.
+
+`GL_LIGHT'I
+
+
+     PARAMS returns a single boolean value indicating whether the
+     specified light is enabled. The initial value is `GL_FALSE'. See
+     `glLight' and `glLightModel'.
+
+`GL_LIGHTING'
+
+
+     PARAMS returns a single boolean value indicating whether lighting
+     is enabled. The initial value is `GL_FALSE'. See `glLightModel'.
+
+`GL_LIGHT_MODEL_AMBIENT'
+
+
+     PARAMS returns four values: the red, green, blue, and alpha
+     components of the ambient intensity of the entire scene. Integer
+     values, if requested, are linearly mapped from the internal
+     floating-point representation such that 1.0 returns the most
+     positive representable integer value, and -1.0 returns the most
+     negative representable integer value. The initial value is (0.2,
+     0.2, 0.2, 1.0). See `glLightModel'.
+
+`GL_LIGHT_MODEL_COLOR_CONTROL'
+
+
+     PARAMS returns single enumerated value indicating whether specular
+     reflection calculations are separated from normal lighting
+     computations. The initial value is `GL_SINGLE_COLOR'.
+
+`GL_LIGHT_MODEL_LOCAL_VIEWER'
+
+
+     PARAMS returns a single boolean value indicating whether specular
+     reflection calculations treat the viewer as being local to the
+     scene. The initial value is `GL_FALSE'. See `glLightModel'.
+
+`GL_LIGHT_MODEL_TWO_SIDE'
+
+
+     PARAMS returns a single boolean value indicating whether separate
+     materials are used to compute lighting for front- and back-facing
+     polygons. The initial value is `GL_FALSE'. See `glLightModel'.
+
+`GL_LINE_SMOOTH'
+
+
+     PARAMS returns a single boolean value indicating whether
+     antialiasing of lines is enabled. The initial value is `GL_FALSE'.
+     See `glLineWidth'.
+
+`GL_LINE_SMOOTH_HINT'
+
+
+     PARAMS returns one value, a symbolic constant indicating the mode
+     of the line antialiasing hint. The initial value is `GL_DONT_CARE'.
+     See `glHint'.
+
+`GL_LINE_STIPPLE'
+
+
+     PARAMS returns a single boolean value indicating whether stippling
+     of lines is enabled. The initial value is `GL_FALSE'. See
+     `glLineStipple'.
+
+`GL_LINE_STIPPLE_PATTERN'
+
+
+     PARAMS returns one value, the 16-bit line stipple pattern. The
+     initial value is all 1's. See `glLineStipple'.
+
+`GL_LINE_STIPPLE_REPEAT'
+
+
+     PARAMS returns one value, the line stipple repeat factor. The
+     initial value is 1. See `glLineStipple'.
+
+`GL_LINE_WIDTH'
+
+
+     PARAMS returns one value, the line width as specified with
+     `glLineWidth'. The initial value is 1.
+
+`GL_LINE_WIDTH_GRANULARITY'
+
+
+     PARAMS returns one value, the width difference between adjacent
+     supported widths for antialiased lines. See `glLineWidth'.
+
+`GL_LINE_WIDTH_RANGE'
+
+
+     PARAMS returns two values: the smallest and largest supported
+     widths for antialiased lines. See `glLineWidth'.
+
+`GL_LIST_BASE'
+
+
+     PARAMS returns one value, the base offset added to all names in
+     arrays presented to `glCallLists'. The initial value is 0. See
+     `glListBase'.
+
+`GL_LIST_INDEX'
+
+
+     PARAMS returns one value, the name of the display list currently
+     under construction. 0 is returned if no display list is currently
+     under construction. The initial value is 0. See `glNewList'.
+
+`GL_LIST_MODE'
+
+
+     PARAMS returns one value, a symbolic constant indicating the
+     construction mode of the display list currently under construction.
+     The initial value is 0. See `glNewList'.
+
+`GL_LOGIC_OP_MODE'
+
+
+     PARAMS returns one value, a symbolic constant indicating the
+     selected logic operation mode. The initial value is `GL_COPY'. See
+     `glLogicOp'.
+
+`GL_MAP1_COLOR_4'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates colors. The initial value is `GL_FALSE'. See
+     `glMap1'.
+
+`GL_MAP1_GRID_DOMAIN'
+
+
+     PARAMS returns two values: the endpoints of the 1D map's grid
+     domain. The initial value is (0, 1). See `glMapGrid'.
+
+`GL_MAP1_GRID_SEGMENTS'
+
+
+     PARAMS returns one value, the number of partitions in the 1D map's
+     grid domain. The initial value is 1. See `glMapGrid'.
+
+`GL_MAP1_INDEX'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates color indices. The initial value is
+     `GL_FALSE'. See `glMap1'.
+
+`GL_MAP1_NORMAL'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates normals. The initial value is `GL_FALSE'. See
+     `glMap1'.
+
+`GL_MAP1_TEXTURE_COORD_1'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates 1D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap1'.
+
+`GL_MAP1_TEXTURE_COORD_2'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates 2D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap1'.
+
+`GL_MAP1_TEXTURE_COORD_3'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates 3D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap1'.
+
+`GL_MAP1_TEXTURE_COORD_4'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates 4D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap1'.
+
+`GL_MAP1_VERTEX_3'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates 3D vertex coordinates. The initial value is
+     `GL_FALSE'. See `glMap1'.
+
+`GL_MAP1_VERTEX_4'
+
+
+     PARAMS returns a single boolean value indicating whether 1D
+     evaluation generates 4D vertex coordinates. The initial value is
+     `GL_FALSE'. See `glMap1'.
+
+`GL_MAP2_COLOR_4'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates colors. The initial value is `GL_FALSE'. See
+     `glMap2'.
+
+`GL_MAP2_GRID_DOMAIN'
+
+
+     PARAMS returns four values: the endpoints of the 2D map's I and J
+     grid domains. The initial value is (0,1; 0,1). See `glMapGrid'.
+
+`GL_MAP2_GRID_SEGMENTS'
+
+
+     PARAMS returns two values: the number of partitions in the 2D map's
+     I and J grid domains. The initial value is (1,1). See `glMapGrid'.
+
+`GL_MAP2_INDEX'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates color indices. The initial value is
+     `GL_FALSE'. See `glMap2'.
+
+`GL_MAP2_NORMAL'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates normals. The initial value is `GL_FALSE'. See
+     `glMap2'.
+
+`GL_MAP2_TEXTURE_COORD_1'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates 1D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap2'.
+
+`GL_MAP2_TEXTURE_COORD_2'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates 2D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap2'.
+
+`GL_MAP2_TEXTURE_COORD_3'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates 3D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap2'.
+
+`GL_MAP2_TEXTURE_COORD_4'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates 4D texture coordinates. The initial value is
+     `GL_FALSE'. See `glMap2'.
+
+`GL_MAP2_VERTEX_3'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates 3D vertex coordinates. The initial value is
+     `GL_FALSE'. See `glMap2'.
+
+`GL_MAP2_VERTEX_4'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     evaluation generates 4D vertex coordinates. The initial value is
+     `GL_FALSE'. See `glMap2'.
+
+`GL_MAP_COLOR'
+
+
+     PARAMS returns a single boolean value indicating if colors and
+     color indices are to be replaced by table lookup during pixel
+     transfers. The initial value is `GL_FALSE'. See `glPixelTransfer'.
+
+`GL_MAP_STENCIL'
+
+
+     PARAMS returns a single boolean value indicating if stencil indices
+     are to be replaced by table lookup during pixel transfers. The
+     initial value is `GL_FALSE'. See `glPixelTransfer'.
+
+`GL_MATRIX_MODE'
+
+
+     PARAMS returns one value, a symbolic constant indicating which
+     matrix stack is currently the target of all matrix operations. The
+     initial value is `GL_MODELVIEW'. See `glMatrixMode'.
+
+`GL_MAX_3D_TEXTURE_SIZE'
+
+
+     PARAMS returns one value, a rough estimate of the largest 3D
+     texture that the GL can handle. The value must be at least 16. If
+     the GL version is 1.2 or greater, use `GL_PROXY_TEXTURE_3D' to
+     determine if a texture is too large. See `glTexImage3D'.
+
+`GL_MAX_CLIENT_ATTRIB_STACK_DEPTH'
+
+
+     PARAMS returns one value indicating the maximum supported depth of
+     the client attribute stack. See `glPushClientAttrib'.
+
+`GL_MAX_ATTRIB_STACK_DEPTH'
+
+
+     PARAMS returns one value, the maximum supported depth of the
+     attribute stack. The value must be at least 16. See `glPushAttrib'.
+
+`GL_MAX_CLIP_PLANES'
+
+
+     PARAMS returns one value, the maximum number of application-defined
+     clipping planes. The value must be at least 6. See `glClipPlane'.
+
+`GL_MAX_COLOR_MATRIX_STACK_DEPTH'
+
+
+     PARAMS returns one value, the maximum supported depth of the color
+     matrix stack. The value must be at least 2. See `glPushMatrix'.
+
+`GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS'
+
+
+     PARAMS returns one value, the maximum supported texture image units
+     that can be used to access texture maps from the vertex shader and
+     the fragment processor combined. If both the vertex shader and the
+     fragment processing stage access the same texture image unit, then
+     that counts as using two texture image units against this limit.
+     The value must be at least 2. See `glActiveTexture'.
+
+`GL_MAX_CUBE_MAP_TEXTURE_SIZE'
+
+
+     PARAMS returns one value. The value gives a rough estimate of the
+     largest cube-map texture that the GL can handle. The value must be
+     at least 16. If the GL version is 1.3 or greater, use
+     `GL_PROXY_TEXTURE_CUBE_MAP' to determine if a texture is too large.
+     See `glTexImage2D'.
+
+`GL_MAX_DRAW_BUFFERS'
+
+
+     PARAMS returns one value, the maximum number of simultaneous output
+     colors allowed from a fragment shader using the `gl_FragData'
+     built-in array. The value must be at least 1. See `glDrawBuffers'.
+
+`GL_MAX_ELEMENTS_INDICES'
+
+
+     PARAMS returns one value, the recommended maximum number of vertex
+     array indices. See `glDrawRangeElements'.
+
+`GL_MAX_ELEMENTS_VERTICES'
+
+
+     PARAMS returns one value, the recommended maximum number of vertex
+     array vertices. See `glDrawRangeElements'.
+
+`GL_MAX_EVAL_ORDER'
+
+
+     PARAMS returns one value, the maximum equation order supported by
+     1D and 2D evaluators. The value must be at least 8. See `glMap1'
+     and `glMap2'.
+
+`GL_MAX_FRAGMENT_UNIFORM_COMPONENTS'
+
+
+     PARAMS returns one value, the maximum number of individual
+     floating-point, integer, or boolean values that can be held in
+     uniform variable storage for a fragment shader. The value must be
+     at least 64. See `glUniform'.
+
+`GL_MAX_LIGHTS'
+
+
+     PARAMS returns one value, the maximum number of lights. The value
+     must be at least 8. See `glLight'.
+
+`GL_MAX_LIST_NESTING'
+
+
+     PARAMS returns one value, the maximum recursion depth allowed
+     during display-list traversal. The value must be at least 64. See
+     `glCallList'.
+
+`GL_MAX_MODELVIEW_STACK_DEPTH'
+
+
+     PARAMS returns one value, the maximum supported depth of the
+     modelview matrix stack. The value must be at least 32. See
+     `glPushMatrix'.
+
+`GL_MAX_NAME_STACK_DEPTH'
+
+
+     PARAMS returns one value, the maximum supported depth of the
+     selection name stack. The value must be at least 64. See
+     `glPushName'.
+
+`GL_MAX_PIXEL_MAP_TABLE'
+
+
+     PARAMS returns one value, the maximum supported size of a
+     `glPixelMap' lookup table. The value must be at least 32. See
+     `glPixelMap'.
+
+`GL_MAX_PROJECTION_STACK_DEPTH'
+
+
+     PARAMS returns one value, the maximum supported depth of the
+     projection matrix stack. The value must be at least 2. See
+     `glPushMatrix'.
+
+`GL_MAX_TEXTURE_COORDS'
+
+
+     PARAMS returns one value, the maximum number of texture coordinate
+     sets available to vertex and fragment shaders. The value must be at
+     least 2. See `glActiveTexture' and `glClientActiveTexture'.
+
+`GL_MAX_TEXTURE_IMAGE_UNITS'
+
+
+     PARAMS returns one value, the maximum supported texture image units
+     that can be used to access texture maps from the fragment shader.
+     The value must be at least 2. See `glActiveTexture'.
+
+`GL_MAX_TEXTURE_LOD_BIAS'
+
+
+     PARAMS returns one value, the maximum, absolute value of the
+     texture level-of-detail bias. The value must be at least 4.
+
+`GL_MAX_TEXTURE_SIZE'
+
+
+     PARAMS returns one value. The value gives a rough estimate of the
+     largest texture that the GL can handle. The value must be at least
+     64. If the GL version is 1.1 or greater, use `GL_PROXY_TEXTURE_1D'
+     or `GL_PROXY_TEXTURE_2D' to determine if a texture is too large.
+     See `glTexImage1D' and `glTexImage2D'.
+
+`GL_MAX_TEXTURE_STACK_DEPTH'
+
+
+     PARAMS returns one value, the maximum supported depth of the
+     texture matrix stack. The value must be at least 2. See
+     `glPushMatrix'.
+
+`GL_MAX_TEXTURE_UNITS'
+
+
+     PARAMS returns a single value indicating the number of conventional
+     texture units supported. Each conventional texture unit includes
+     both a texture coordinate set and a texture image unit.
+     Conventional texture units may be used for fixed-function
+     (non-shader) rendering. The value must be at least 2. Additional
+     texture coordinate sets and texture image units may be accessed
+     from vertex and fragment shaders. See `glActiveTexture' and
+     `glClientActiveTexture'.
+
+`GL_MAX_VARYING_FLOATS'
+
+
+     PARAMS returns one value, the maximum number of interpolators
+     available for processing varying variables used by vertex and
+     fragment shaders. This value represents the number of individual
+     floating-point values that can be interpolated; varying variables
+     declared as vectors, matrices, and arrays will all consume multiple
+     interpolators. The value must be at least 32.
+
+`GL_MAX_VERTEX_ATTRIBS'
+
+
+     PARAMS returns one value, the maximum number of 4-component generic
+     vertex attributes accessible to a vertex shader. The value must be
+     at least 16. See `glVertexAttrib'.
+
+`GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS'
+
+
+     PARAMS returns one value, the maximum supported texture image units
+     that can be used to access texture maps from the vertex shader. The
+     value may be 0. See `glActiveTexture'.
+
+`GL_MAX_VERTEX_UNIFORM_COMPONENTS'
+
+
+     PARAMS returns one value, the maximum number of individual
+     floating-point, integer, or boolean values that can be held in
+     uniform variable storage for a vertex shader. The value must be at
+     least 512. See `glUniform'.
+
+`GL_MAX_VIEWPORT_DIMS'
+
+
+     PARAMS returns two values: the maximum supported width and height
+     of the viewport. These must be at least as large as the visible
+     dimensions of the display being rendered to. See `glViewport'.
+
+`GL_MINMAX'
+
+
+     PARAMS returns a single boolean value indicating whether pixel
+     minmax values are computed. The initial value is `GL_FALSE'. See
+     `glMinmax'.
+
+`GL_MODELVIEW_MATRIX'
+
+
+     PARAMS returns sixteen values: the modelview matrix on the top of
+     the modelview matrix stack. Initially this matrix is the identity
+     matrix. See `glPushMatrix'.
+
+`GL_MODELVIEW_STACK_DEPTH'
+
+
+     PARAMS returns one value, the number of matrices on the modelview
+     matrix stack. The initial value is 1. See `glPushMatrix'.
+
+`GL_NAME_STACK_DEPTH'
+
+
+     PARAMS returns one value, the number of names on the selection name
+     stack. The initial value is 0. See `glPushName'.
+
+`GL_NORMAL_ARRAY'
+
+
+     PARAMS returns a single boolean value, indicating whether the
+     normal array is enabled. The initial value is `GL_FALSE'. See
+     `glNormalPointer'.
+
+`GL_NORMAL_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the normal array. This buffer object would have
+     been bound to the target `GL_ARRAY_BUFFER' at the time of the most
+     recent call to `glNormalPointer'. If no buffer object was bound to
+     this target, 0 is returned. The initial value is 0. See
+     `glBindBuffer'.
+
+`GL_NORMAL_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive
+     normals in the normal array. The initial value is 0. See
+     `glNormalPointer'.
+
+`GL_NORMAL_ARRAY_TYPE'
+
+
+     PARAMS returns one value, the data type of each coordinate in the
+     normal array. The initial value is `GL_FLOAT'. See
+     `glNormalPointer'.
+
+`GL_NORMALIZE'
+
+
+     PARAMS returns a single boolean value indicating whether normals
+     are automatically scaled to unit length after they have been
+     transformed to eye coordinates. The initial value is `GL_FALSE'.
+     See `glNormal'.
+
+`GL_NUM_COMPRESSED_TEXTURE_FORMATS'
+
+
+     PARAMS returns a single integer value indicating the number of
+     available compressed texture formats. The minimum value is 0. See
+     `glCompressedTexImage2D'.
+
+`GL_PACK_ALIGNMENT'
+
+
+     PARAMS returns one value, the byte alignment used for writing pixel
+     data to memory. The initial value is 4. See `glPixelStore'.
+
+`GL_PACK_IMAGE_HEIGHT'
+
+
+     PARAMS returns one value, the image height used for writing pixel
+     data to memory. The initial value is 0. See `glPixelStore'.
+
+`GL_PACK_LSB_FIRST'
+
+
+     PARAMS returns a single boolean value indicating whether single-bit
+     pixels being written to memory are written first to the least
+     significant bit of each unsigned byte. The initial value is
+     `GL_FALSE'. See `glPixelStore'.
+
+`GL_PACK_ROW_LENGTH'
+
+
+     PARAMS returns one value, the row length used for writing pixel
+     data to memory. The initial value is 0. See `glPixelStore'.
+
+`GL_PACK_SKIP_IMAGES'
+
+
+     PARAMS returns one value, the number of pixel images skipped before
+     the first pixel is written into memory. The initial value is 0. See
+     `glPixelStore'.
+
+`GL_PACK_SKIP_PIXELS'
+
+
+     PARAMS returns one value, the number of pixel locations skipped
+     before the first pixel is written into memory. The initial value is
+     0. See `glPixelStore'.
+
+`GL_PACK_SKIP_ROWS'
+
+
+     PARAMS returns one value, the number of rows of pixel locations
+     skipped before the first pixel is written into memory. The initial
+     value is 0. See `glPixelStore'.
+
+`GL_PACK_SWAP_BYTES'
+
+
+     PARAMS returns a single boolean value indicating whether the bytes
+     of two-byte and four-byte pixel indices and components are swapped
+     before being written to memory. The initial value is `GL_FALSE'.
+     See `glPixelStore'.
+
+`GL_PERSPECTIVE_CORRECTION_HINT'
+
+
+     PARAMS returns one value, a symbolic constant indicating the mode
+     of the perspective correction hint. The initial value is
+     `GL_DONT_CARE'. See `glHint'.
+
+`GL_PIXEL_MAP_A_TO_A_SIZE'
+
+
+     PARAMS returns one value, the size of the alpha-to-alpha pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_B_TO_B_SIZE'
+
+
+     PARAMS returns one value, the size of the blue-to-blue pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_G_TO_G_SIZE'
+
+
+     PARAMS returns one value, the size of the green-to-green pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_I_TO_A_SIZE'
+
+
+     PARAMS returns one value, the size of the index-to-alpha pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_I_TO_B_SIZE'
+
+
+     PARAMS returns one value, the size of the index-to-blue pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_I_TO_G_SIZE'
+
+
+     PARAMS returns one value, the size of the index-to-green pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_I_TO_I_SIZE'
+
+
+     PARAMS returns one value, the size of the index-to-index pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_I_TO_R_SIZE'
+
+
+     PARAMS returns one value, the size of the index-to-red pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_R_TO_R_SIZE'
+
+
+     PARAMS returns one value, the size of the red-to-red pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_MAP_S_TO_S_SIZE'
+
+
+     PARAMS returns one value, the size of the stencil-to-stencil pixel
+     translation table. The initial value is 1. See `glPixelMap'.
+
+`GL_PIXEL_PACK_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     currently bound to the target `GL_PIXEL_PACK_BUFFER'. If no buffer
+     object is bound to this target, 0 is returned. The initial value is
+     0. See `glBindBuffer'.
+
+`GL_PIXEL_UNPACK_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     currently bound to the target `GL_PIXEL_UNPACK_BUFFER'. If no
+     buffer object is bound to this target, 0 is returned. The initial
+     value is 0. See `glBindBuffer'.
+
+`GL_POINT_DISTANCE_ATTENUATION'
+
+
+     PARAMS returns three values, the coefficients for computing the
+     attenuation value for points. See `glPointParameter'.
+
+`GL_POINT_FADE_THRESHOLD_SIZE'
+
+
+     PARAMS returns one value, the point size threshold for determining
+     the point size. See `glPointParameter'.
+
+`GL_POINT_SIZE'
+
+
+     PARAMS returns one value, the point size as specified by
+     `glPointSize'. The initial value is 1.
+
+`GL_POINT_SIZE_GRANULARITY'
+
+
+     PARAMS returns one value, the size difference between adjacent
+     supported sizes for antialiased points. See `glPointSize'.
+
+`GL_POINT_SIZE_MAX'
+
+
+     PARAMS returns one value, the upper bound for the attenuated point
+     sizes. The initial value is 0.0. See `glPointParameter'.
+
+`GL_POINT_SIZE_MIN'
+
+
+     PARAMS returns one value, the lower bound for the attenuated point
+     sizes. The initial value is 1.0. See `glPointParameter'.
+
+`GL_POINT_SIZE_RANGE'
+
+
+     PARAMS returns two values: the smallest and largest supported sizes
+     for antialiased points. The smallest size must be at most 1, and
+     the largest size must be at least 1. See `glPointSize'.
+
+`GL_POINT_SMOOTH'
+
+
+     PARAMS returns a single boolean value indicating whether
+     antialiasing of points is enabled. The initial value is `GL_FALSE'.
+     See `glPointSize'.
+
+`GL_POINT_SMOOTH_HINT'
+
+
+     PARAMS returns one value, a symbolic constant indicating the mode
+     of the point antialiasing hint. The initial value is
+     `GL_DONT_CARE'. See `glHint'.
+
+`GL_POINT_SPRITE'
+
+
+     PARAMS returns a single boolean value indicating whether point
+     sprite is enabled. The initial value is `GL_FALSE'.
+
+`GL_POLYGON_MODE'
+
+
+     PARAMS returns two values: symbolic constants indicating whether
+     front-facing and back-facing polygons are rasterized as points,
+     lines, or filled polygons. The initial value is `GL_FILL'. See
+     `glPolygonMode'.
+
+`GL_POLYGON_OFFSET_FACTOR'
+
+
+     PARAMS returns one value, the scaling factor used to determine the
+     variable offset that is added to the depth value of each fragment
+     generated when a polygon is rasterized. The initial value is 0. See
+     `glPolygonOffset'.
+
+`GL_POLYGON_OFFSET_UNITS'
+
+
+     PARAMS returns one value. This value is multiplied by an
+     implementation-specific value and then added to the depth value of
+     each fragment generated when a polygon is rasterized. The initial
+     value is 0. See `glPolygonOffset'.
+
+`GL_POLYGON_OFFSET_FILL'
+
+
+     PARAMS returns a single boolean value indicating whether polygon
+     offset is enabled for polygons in fill mode. The initial value is
+     `GL_FALSE'. See `glPolygonOffset'.
+
+`GL_POLYGON_OFFSET_LINE'
+
+
+     PARAMS returns a single boolean value indicating whether polygon
+     offset is enabled for polygons in line mode. The initial value is
+     `GL_FALSE'. See `glPolygonOffset'.
+
+`GL_POLYGON_OFFSET_POINT'
+
+
+     PARAMS returns a single boolean value indicating whether polygon
+     offset is enabled for polygons in point mode. The initial value is
+     `GL_FALSE'. See `glPolygonOffset'.
+
+`GL_POLYGON_SMOOTH'
+
+
+     PARAMS returns a single boolean value indicating whether
+     antialiasing of polygons is enabled. The initial value is
+     `GL_FALSE'. See `glPolygonMode'.
+
+`GL_POLYGON_SMOOTH_HINT'
+
+
+     PARAMS returns one value, a symbolic constant indicating the mode
+     of the polygon antialiasing hint. The initial value is
+     `GL_DONT_CARE'. See `glHint'.
+
+`GL_POLYGON_STIPPLE'
+
+
+     PARAMS returns a single boolean value indicating whether polygon
+     stippling is enabled. The initial value is `GL_FALSE'. See
+     `glPolygonStipple'.
+
+`GL_POST_COLOR_MATRIX_COLOR_TABLE'
+
+
+     PARAMS returns a single boolean value indicating whether post color
+     matrix transformation lookup is enabled. The initial value is
+     `GL_FALSE'. See `glColorTable'.
+
+`GL_POST_COLOR_MATRIX_RED_BIAS'
+
+
+     PARAMS returns one value, the red bias factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     0. See `glPixelTransfer'.
+
+`GL_POST_COLOR_MATRIX_GREEN_BIAS'
+
+
+     PARAMS returns one value, the green bias factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     0. See `glPixelTransfer'
+
+`GL_POST_COLOR_MATRIX_BLUE_BIAS'
+
+
+     PARAMS returns one value, the blue bias factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     0. See `glPixelTransfer'.
+
+`GL_POST_COLOR_MATRIX_ALPHA_BIAS'
+
+
+     PARAMS returns one value, the alpha bias factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     0. See `glPixelTransfer'.
+
+`GL_POST_COLOR_MATRIX_RED_SCALE'
+
+
+     PARAMS returns one value, the red scale factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     1. See `glPixelTransfer'.
+
+`GL_POST_COLOR_MATRIX_GREEN_SCALE'
+
+
+     PARAMS returns one value, the green scale factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     1. See `glPixelTransfer'.
+
+`GL_POST_COLOR_MATRIX_BLUE_SCALE'
+
+
+     PARAMS returns one value, the blue scale factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     1. See `glPixelTransfer'.
+
+`GL_POST_COLOR_MATRIX_ALPHA_SCALE'
+
+
+     PARAMS returns one value, the alpha scale factor applied to RGBA
+     fragments after color matrix transformations. The initial value is
+     1. See `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_COLOR_TABLE'
+
+
+     PARAMS returns a single boolean value indicating whether post
+     convolution lookup is enabled. The initial value is `GL_FALSE'. See
+     `glColorTable'.
+
+`GL_POST_CONVOLUTION_RED_BIAS'
+
+
+     PARAMS returns one value, the red bias factor applied to RGBA
+     fragments after convolution. The initial value is 0. See
+     `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_GREEN_BIAS'
+
+
+     PARAMS returns one value, the green bias factor applied to RGBA
+     fragments after convolution. The initial value is 0. See
+     `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_BLUE_BIAS'
+
+
+     PARAMS returns one value, the blue bias factor applied to RGBA
+     fragments after convolution. The initial value is 0. See
+     `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_ALPHA_BIAS'
+
+
+     PARAMS returns one value, the alpha bias factor applied to RGBA
+     fragments after convolution. The initial value is 0. See
+     `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_RED_SCALE'
+
+
+     PARAMS returns one value, the red scale factor applied to RGBA
+     fragments after convolution. The initial value is 1. See
+     `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_GREEN_SCALE'
+
+
+     PARAMS returns one value, the green scale factor applied to RGBA
+     fragments after convolution. The initial value is 1. See
+     `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_BLUE_SCALE'
+
+
+     PARAMS returns one value, the blue scale factor applied to RGBA
+     fragments after convolution. The initial value is 1. See
+     `glPixelTransfer'.
+
+`GL_POST_CONVOLUTION_ALPHA_SCALE'
+
+
+     PARAMS returns one value, the alpha scale factor applied to RGBA
+     fragments after convolution. The initial value is 1. See
+     `glPixelTransfer'.
+
+`GL_PROJECTION_MATRIX'
+
+
+     PARAMS returns sixteen values: the projection matrix on the top of
+     the projection matrix stack. Initially this matrix is the identity
+     matrix. See `glPushMatrix'.
+
+`GL_PROJECTION_STACK_DEPTH'
+
+
+     PARAMS returns one value, the number of matrices on the projection
+     matrix stack. The initial value is 1. See `glPushMatrix'.
+
+`GL_READ_BUFFER'
+
+
+     PARAMS returns one value, a symbolic constant indicating which
+     color buffer is selected for reading. The initial value is
+     `GL_BACK' if there is a back buffer, otherwise it is `GL_FRONT'.
+     See `glReadPixels' and `glAccum'.
+
+`GL_RED_BIAS'
+
+
+     PARAMS returns one value, the red bias factor used during pixel
+     transfers. The initial value is 0.
+
+`GL_RED_BITS'
+
+
+     PARAMS returns one value, the number of red bitplanes in each color
+     buffer.
+
+`GL_RED_SCALE'
+
+
+     PARAMS returns one value, the red scale factor used during pixel
+     transfers. The initial value is 1. See `glPixelTransfer'.
+
+`GL_RENDER_MODE'
+
+
+     PARAMS returns one value, a symbolic constant indicating whether
+     the GL is in render, select, or feedback mode. The initial value is
+     `GL_RENDER'. See `glRenderMode'.
+
+`GL_RESCALE_NORMAL'
+
+
+     PARAMS returns single boolean value indicating whether normal
+     rescaling is enabled. See `glEnable'.
+
+`GL_RGBA_MODE'
+
+
+     PARAMS returns a single boolean value indicating whether the GL is
+     in RGBA mode (true) or color index mode (false). See `glColor'.
+
+`GL_SAMPLE_BUFFERS'
+
+
+     PARAMS returns a single integer value indicating the number of
+     sample buffers associated with the framebuffer. See
+     `glSampleCoverage'.
+
+`GL_SAMPLE_COVERAGE_VALUE'
+
+
+     PARAMS returns a single positive floating-point value indicating
+     the current sample coverage value. See `glSampleCoverage'.
+
+`GL_SAMPLE_COVERAGE_INVERT'
+
+
+     PARAMS returns a single boolean value indicating if the temporary
+     coverage value should be inverted. See `glSampleCoverage'.
+
+`GL_SAMPLES'
+
+
+     PARAMS returns a single integer value indicating the coverage mask
+     size. See `glSampleCoverage'.
+
+`GL_SCISSOR_BOX'
+
+
+     PARAMS returns four values: the X and Y window coordinates of the
+     scissor box, followed by its width and height. Initially the X and
+     Y window coordinates are both 0 and the width and height are set to
+     the size of the window. See `glScissor'.
+
+`GL_SCISSOR_TEST'
+
+
+     PARAMS returns a single boolean value indicating whether scissoring
+     is enabled. The initial value is `GL_FALSE'. See `glScissor'.
+
+`GL_SECONDARY_COLOR_ARRAY'
+
+
+     PARAMS returns a single boolean value indicating whether the
+     secondary color array is enabled. The initial value is `GL_FALSE'.
+     See `glSecondaryColorPointer'.
+
+`GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the secondary color array. This buffer object would
+     have been bound to the target `GL_ARRAY_BUFFER' at the time of the
+     most recent call to `glSecondaryColorPointer'. If no buffer object
+     was bound to this target, 0 is returned. The initial value is 0.
+     See `glBindBuffer'.
+
+`GL_SECONDARY_COLOR_ARRAY_SIZE'
+
+
+     PARAMS returns one value, the number of components per color in the
+     secondary color array. The initial value is 3. See
+     `glSecondaryColorPointer'.
+
+`GL_SECONDARY_COLOR_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive
+     colors in the secondary color array. The initial value is 0. See
+     `glSecondaryColorPointer'.
+
+`GL_SECONDARY_COLOR_ARRAY_TYPE'
+
+
+     PARAMS returns one value, the data type of each component in the
+     secondary color array. The initial value is `GL_FLOAT'. See
+     `glSecondaryColorPointer'.
+
+`GL_SELECTION_BUFFER_SIZE'
+
+
+     PARAMS return one value, the size of the selection buffer. See
+     `glSelectBuffer'.
+
+`GL_SEPARABLE_2D'
+
+
+     PARAMS returns a single boolean value indicating whether 2D
+     separable convolution is enabled. The initial value is `GL_FALSE'.
+     See `glSeparableFilter2D'.
+
+`GL_SHADE_MODEL'
+
+
+     PARAMS returns one value, a symbolic constant indicating whether
+     the shading mode is flat or smooth. The initial value is
+     `GL_SMOOTH'. See `glShadeModel'.
+
+`GL_SMOOTH_LINE_WIDTH_RANGE'
+
+
+     PARAMS returns two values, the smallest and largest supported
+     widths for antialiased lines. See `glLineWidth'.
+
+`GL_SMOOTH_LINE_WIDTH_GRANULARITY'
+
+
+     PARAMS returns one value, the granularity of widths for antialiased
+     lines. See `glLineWidth'.
+
+`GL_SMOOTH_POINT_SIZE_RANGE'
+
+
+     PARAMS returns two values, the smallest and largest supported
+     widths for antialiased points. See `glPointSize'.
+
+`GL_SMOOTH_POINT_SIZE_GRANULARITY'
+
+
+     PARAMS returns one value, the granularity of sizes for antialiased
+     points. See `glPointSize'.
+
+`GL_STENCIL_BACK_FAIL'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     action is taken for back-facing polygons when the stencil test
+     fails. The initial value is `GL_KEEP'. See `glStencilOpSeparate'.
+
+`GL_STENCIL_BACK_FUNC'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     function is used for back-facing polygons to compare the stencil
+     reference value with the stencil buffer value. The initial value is
+     `GL_ALWAYS'. See `glStencilFuncSeparate'.
+
+`GL_STENCIL_BACK_PASS_DEPTH_FAIL'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     action is taken for back-facing polygons when the stencil test
+     passes, but the depth test fails. The initial value is `GL_KEEP'.
+     See `glStencilOpSeparate'.
+
+`GL_STENCIL_BACK_PASS_DEPTH_PASS'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     action is taken for back-facing polygons when the stencil test
+     passes and the depth test passes. The initial value is `GL_KEEP'.
+     See `glStencilOpSeparate'.
+
+`GL_STENCIL_BACK_REF'
+
+
+     PARAMS returns one value, the reference value that is compared with
+     the contents of the stencil buffer for back-facing polygons. The
+     initial value is 0. See `glStencilFuncSeparate'.
+
+`GL_STENCIL_BACK_VALUE_MASK'
+
+
+     PARAMS returns one value, the mask that is used for back-facing
+     polygons to mask both the stencil reference value and the stencil
+     buffer value before they are compared. The initial value is all
+     1's. See `glStencilFuncSeparate'.
+
+`GL_STENCIL_BACK_WRITEMASK'
+
+
+     PARAMS returns one value, the mask that controls writing of the
+     stencil bitplanes for back-facing polygons. The initial value is
+     all 1's. See `glStencilMaskSeparate'.
+
+`GL_STENCIL_BITS'
+
+
+     PARAMS returns one value, the number of bitplanes in the stencil
+     buffer.
+
+`GL_STENCIL_CLEAR_VALUE'
+
+
+     PARAMS returns one value, the index to which the stencil bitplanes
+     are cleared. The initial value is 0. See `glClearStencil'.
+
+`GL_STENCIL_FAIL'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     action is taken when the stencil test fails. The initial value is
+     `GL_KEEP'. See `glStencilOp'. If the GL version is 2.0 or greater,
+     this stencil state only affects non-polygons and front-facing
+     polygons. Back-facing polygons use separate stencil state. See
+     `glStencilOpSeparate'.
+
+`GL_STENCIL_FUNC'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     function is used to compare the stencil reference value with the
+     stencil buffer value. The initial value is `GL_ALWAYS'. See
+     `glStencilFunc'. If the GL version is 2.0 or greater, this stencil
+     state only affects non-polygons and front-facing polygons.
+     Back-facing polygons use separate stencil state. See
+     `glStencilFuncSeparate'.
+
+`GL_STENCIL_PASS_DEPTH_FAIL'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     action is taken when the stencil test passes, but the depth test
+     fails. The initial value is `GL_KEEP'. See `glStencilOp'. If the GL
+     version is 2.0 or greater, this stencil state only affects
+     non-polygons and front-facing polygons. Back-facing polygons use
+     separate stencil state. See `glStencilOpSeparate'.
+
+`GL_STENCIL_PASS_DEPTH_PASS'
+
+
+     PARAMS returns one value, a symbolic constant indicating what
+     action is taken when the stencil test passes and the depth test
+     passes. The initial value is `GL_KEEP'. See `glStencilOp'. If the
+     GL version is 2.0 or greater, this stencil state only affects
+     non-polygons and front-facing polygons. Back-facing polygons use
+     separate stencil state. See `glStencilOpSeparate'.
+
+`GL_STENCIL_REF'
+
+
+     PARAMS returns one value, the reference value that is compared with
+     the contents of the stencil buffer. The initial value is 0. See
+     `glStencilFunc'. If the GL version is 2.0 or greater, this stencil
+     state only affects non-polygons and front-facing polygons.
+     Back-facing polygons use separate stencil state. See
+     `glStencilFuncSeparate'.
+
+`GL_STENCIL_TEST'
+
+
+     PARAMS returns a single boolean value indicating whether stencil
+     testing of fragments is enabled. The initial value is `GL_FALSE'.
+     See `glStencilFunc' and `glStencilOp'.
+
+`GL_STENCIL_VALUE_MASK'
+
+
+     PARAMS returns one value, the mask that is used to mask both the
+     stencil reference value and the stencil buffer value before they
+     are compared. The initial value is all 1's. See `glStencilFunc'. If
+     the GL version is 2.0 or greater, this stencil state only affects
+     non-polygons and front-facing polygons. Back-facing polygons use
+     separate stencil state. See `glStencilFuncSeparate'.
+
+`GL_STENCIL_WRITEMASK'
+
+
+     PARAMS returns one value, the mask that controls writing of the
+     stencil bitplanes. The initial value is all 1's. See
+     `glStencilMask'. If the GL version is 2.0 or greater, this stencil
+     state only affects non-polygons and front-facing polygons.
+     Back-facing polygons use separate stencil state. See
+     `glStencilMaskSeparate'.
+
+`GL_STEREO'
+
+
+     PARAMS returns a single boolean value indicating whether stereo
+     buffers (left and right) are supported.
+
+`GL_SUBPIXEL_BITS'
+
+
+     PARAMS returns one value, an estimate of the number of bits of
+     subpixel resolution that are used to position rasterized geometry
+     in window coordinates. The value must be at least 4.
+
+`GL_TEXTURE_1D'
+
+
+     PARAMS returns a single boolean value indicating whether 1D texture
+     mapping is enabled. The initial value is `GL_FALSE'. See
+     `glTexImage1D'.
+
+`GL_TEXTURE_BINDING_1D'
+
+
+     PARAMS returns a single value, the name of the texture currently
+     bound to the target `GL_TEXTURE_1D'. The initial value is 0. See
+     `glBindTexture'.
+
+`GL_TEXTURE_2D'
+
+
+     PARAMS returns a single boolean value indicating whether 2D texture
+     mapping is enabled. The initial value is `GL_FALSE'. See
+     `glTexImage2D'.
+
+`GL_TEXTURE_BINDING_2D'
+
+
+     PARAMS returns a single value, the name of the texture currently
+     bound to the target `GL_TEXTURE_2D'. The initial value is 0. See
+     `glBindTexture'.
+
+`GL_TEXTURE_3D'
+
+
+     PARAMS returns a single boolean value indicating whether 3D texture
+     mapping is enabled. The initial value is `GL_FALSE'. See
+     `glTexImage3D'.
+
+`GL_TEXTURE_BINDING_3D'
+
+
+     PARAMS returns a single value, the name of the texture currently
+     bound to the target `GL_TEXTURE_3D'. The initial value is 0. See
+     `glBindTexture'.
+
+`GL_TEXTURE_BINDING_CUBE_MAP'
+
+
+     PARAMS returns a single value, the name of the texture currently
+     bound to the target `GL_TEXTURE_CUBE_MAP'. The initial value is 0.
+     See `glBindTexture'.
+
+`GL_TEXTURE_COMPRESSION_HINT'
+
+
+     PARAMS returns a single value indicating the mode of the texture
+     compression hint. The initial value is `GL_DONT_CARE'.
+
+`GL_TEXTURE_COORD_ARRAY'
+
+
+     PARAMS returns a single boolean value indicating whether the
+     texture coordinate array is enabled. The initial value is
+     `GL_FALSE'. See `glTexCoordPointer'.
+
+`GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the texture coordinate array. This buffer object
+     would have been bound to the target `GL_ARRAY_BUFFER' at the time
+     of the most recent call to `glTexCoordPointer'. If no buffer object
+     was bound to this target, 0 is returned. The initial value is 0.
+     See `glBindBuffer'.
+
+`GL_TEXTURE_COORD_ARRAY_SIZE'
+
+
+     PARAMS returns one value, the number of coordinates per element in
+     the texture coordinate array. The initial value is 4. See
+     `glTexCoordPointer'.
+
+`GL_TEXTURE_COORD_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive
+     elements in the texture coordinate array. The initial value is 0.
+     See `glTexCoordPointer'.
+
+`GL_TEXTURE_COORD_ARRAY_TYPE'
+
+
+     PARAMS returns one value, the data type of the coordinates in the
+     texture coordinate array. The initial value is `GL_FLOAT'. See
+     `glTexCoordPointer'.
+
+`GL_TEXTURE_CUBE_MAP'
+
+
+     PARAMS returns a single boolean value indicating whether
+     cube-mapped texture mapping is enabled. The initial value is
+     `GL_FALSE'. See `glTexImage2D'.
+
+`GL_TEXTURE_GEN_Q'
+
+
+     PARAMS returns a single boolean value indicating whether automatic
+     generation of the Q texture coordinate is enabled. The initial
+     value is `GL_FALSE'. See `glTexGen'.
+
+`GL_TEXTURE_GEN_R'
+
+
+     PARAMS returns a single boolean value indicating whether automatic
+     generation of the R texture coordinate is enabled. The initial
+     value is `GL_FALSE'. See `glTexGen'.
+
+`GL_TEXTURE_GEN_S'
+
+
+     PARAMS returns a single boolean value indicating whether automatic
+     generation of the S texture coordinate is enabled. The initial
+     value is `GL_FALSE'. See `glTexGen'.
+
+`GL_TEXTURE_GEN_T'
+
+
+     PARAMS returns a single boolean value indicating whether automatic
+     generation of the T texture coordinate is enabled. The initial
+     value is `GL_FALSE'. See `glTexGen'.
+
+`GL_TEXTURE_MATRIX'
+
+
+     PARAMS returns sixteen values: the texture matrix on the top of the
+     texture matrix stack. Initially this matrix is the identity matrix.
+     See `glPushMatrix'.
+
+`GL_TEXTURE_STACK_DEPTH'
+
+
+     PARAMS returns one value, the number of matrices on the texture
+     matrix stack. The initial value is 1. See `glPushMatrix'.
+
+`GL_TRANSPOSE_COLOR_MATRIX'
+
+
+     PARAMS returns 16 values, the elements of the color matrix in
+     row-major order. See `glLoadTransposeMatrix'.
+
+`GL_TRANSPOSE_MODELVIEW_MATRIX'
+
+
+     PARAMS returns 16 values, the elements of the modelview matrix in
+     row-major order. See `glLoadTransposeMatrix'.
+
+`GL_TRANSPOSE_PROJECTION_MATRIX'
+
+
+     PARAMS returns 16 values, the elements of the projection matrix in
+     row-major order. See `glLoadTransposeMatrix'.
+
+`GL_TRANSPOSE_TEXTURE_MATRIX'
+
+
+     PARAMS returns 16 values, the elements of the texture matrix in
+     row-major order. See `glLoadTransposeMatrix'.
+
+`GL_UNPACK_ALIGNMENT'
+
+
+     PARAMS returns one value, the byte alignment used for reading pixel
+     data from memory. The initial value is 4. See `glPixelStore'.
+
+`GL_UNPACK_IMAGE_HEIGHT'
+
+
+     PARAMS returns one value, the image height used for reading pixel
+     data from memory. The initial is 0. See `glPixelStore'.
+
+`GL_UNPACK_LSB_FIRST'
+
+
+     PARAMS returns a single boolean value indicating whether single-bit
+     pixels being read from memory are read first from the least
+     significant bit of each unsigned byte. The initial value is
+     `GL_FALSE'. See `glPixelStore'.
+
+`GL_UNPACK_ROW_LENGTH'
+
+
+     PARAMS returns one value, the row length used for reading pixel
+     data from memory. The initial value is 0. See `glPixelStore'.
+
+`GL_UNPACK_SKIP_IMAGES'
+
+
+     PARAMS returns one value, the number of pixel images skipped before
+     the first pixel is read from memory. The initial value is 0. See
+     `glPixelStore'.
+
+`GL_UNPACK_SKIP_PIXELS'
+
+
+     PARAMS returns one value, the number of pixel locations skipped
+     before the first pixel is read from memory. The initial value is 0.
+     See `glPixelStore'.
+
+`GL_UNPACK_SKIP_ROWS'
+
+
+     PARAMS returns one value, the number of rows of pixel locations
+     skipped before the first pixel is read from memory. The initial
+     value is 0. See `glPixelStore'.
+
+`GL_UNPACK_SWAP_BYTES'
+
+
+     PARAMS returns a single boolean value indicating whether the bytes
+     of two-byte and four-byte pixel indices and components are swapped
+     after being read from memory. The initial value is `GL_FALSE'. See
+     `glPixelStore'.
+
+`GL_VERTEX_ARRAY'
+
+
+     PARAMS returns a single boolean value indicating whether the vertex
+     array is enabled. The initial value is `GL_FALSE'. See
+     `glVertexPointer'.
+
+`GL_VERTEX_ARRAY_BUFFER_BINDING'
+
+
+     PARAMS returns a single value, the name of the buffer object
+     associated with the vertex array. This buffer object would have
+     been bound to the target `GL_ARRAY_BUFFER' at the time of the most
+     recent call to `glVertexPointer'. If no buffer object was bound to
+     this target, 0 is returned. The initial value is 0. See
+     `glBindBuffer'.
+
+`GL_VERTEX_ARRAY_SIZE'
+
+
+     PARAMS returns one value, the number of coordinates per vertex in
+     the vertex array. The initial value is 4. See `glVertexPointer'.
+
+`GL_VERTEX_ARRAY_STRIDE'
+
+
+     PARAMS returns one value, the byte offset between consecutive
+     vertices in the vertex array. The initial value is 0. See
+     `glVertexPointer'.
+
+`GL_VERTEX_ARRAY_TYPE'
+
+
+     PARAMS returns one value, the data type of each coordinate in the
+     vertex array. The initial value is `GL_FLOAT'. See
+     `glVertexPointer'.
+
+`GL_VERTEX_PROGRAM_POINT_SIZE'
+
+
+     PARAMS returns a single boolean value indicating whether vertex
+     program point size mode is enabled. If enabled, and a vertex shader
+     is active, then the point size is taken from the shader built-in
+     `gl_PointSize'. If disabled, and a vertex shader is active, then
+     the point size is taken from the point state as specified by
+     `glPointSize'. The initial value is `GL_FALSE'.
+
+`GL_VERTEX_PROGRAM_TWO_SIDE'
+
+
+     PARAMS returns a single boolean value indicating whether vertex
+     program two-sided color mode is enabled. If enabled, and a vertex
+     shader is active, then the GL chooses the back color output for
+     back-facing polygons, and the front color output for non-polygons
+     and front-facing polygons. If disabled, and a vertex shader is
+     active, then the front color output is always selected. The initial
+     value is `GL_FALSE'.
+
+`GL_VIEWPORT'
+
+
+     PARAMS returns four values: the X and Y window coordinates of the
+     viewport, followed by its width and height. Initially the X and Y
+     window coordinates are both set to 0, and the width and height are
+     set to the width and height of the window into which the GL will do
+     its rendering. See `glViewport'.
+
+`GL_ZOOM_X'
+
+
+     PARAMS returns one value, the X pixel zoom factor. The initial
+     value is 1. See `glPixelZoom'.
+
+`GL_ZOOM_Y'
+
+
+     PARAMS returns one value, the Y pixel zoom factor. The initial
+     value is 1. See `glPixelZoom'.
+
+Many of the boolean parameters can also be queried more easily using
+`glIsEnabled'.
+
+`GL_INVALID_ENUM' is generated if PNAME is not an accepted value.
+
+`GL_INVALID_OPERATION' is generated if `glGet' is executed between the
+execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
   ((glHint (target GLenum) (mode GLenum) -> void))
@@ -11525,6 +15868,185 @@ respect to the specification of graphics primitives is maintained.
 `GL_INVALID_OPERATION' is generated if `glPassThrough' is executed
 between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
+
+(define-gl-procedures
+  ((glPixelMapfv
+     (map GLenum)
+     (mapsize GLsizei)
+     (values const-GLfloat-*)
+     ->
+     void)
+   (glPixelMapuiv
+     (map GLenum)
+     (mapsize GLsizei)
+     (values const-GLuint-*)
+     ->
+     void))
+  "Set up pixel transfer maps.
+
+MAP
+     Specifies a symbolic map name. Must be one of the following:
+     `GL_PIXEL_MAP_I_TO_I', `GL_PIXEL_MAP_S_TO_S',
+     `GL_PIXEL_MAP_I_TO_R', `GL_PIXEL_MAP_I_TO_G',
+     `GL_PIXEL_MAP_I_TO_B', `GL_PIXEL_MAP_I_TO_A',
+     `GL_PIXEL_MAP_R_TO_R', `GL_PIXEL_MAP_G_TO_G',
+     `GL_PIXEL_MAP_B_TO_B', or `GL_PIXEL_MAP_A_TO_A'.
+
+MAPSIZE
+     Specifies the size of the map being defined.
+
+VALUES
+     Specifies an array of MAPSIZE values.
+
+`glPixelMap' sets up translation tables, or MAPS, used by
+`glCopyPixels', `glCopyTexImage1D', `glCopyTexImage2D',
+`glCopyTexSubImage1D', `glCopyTexSubImage2D', `glCopyTexSubImage3D',
+`glDrawPixels', `glReadPixels', `glTexImage1D', `glTexImage2D',
+`glTexImage3D', `glTexSubImage1D', `glTexSubImage2D', and
+`glTexSubImage3D'. Additionally, if the `ARB_imaging' subset is
+supported, the routines `glColorTable', `glColorSubTable',
+`glConvolutionFilter1D', `glConvolutionFilter2D', `glHistogram',
+`glMinmax', and `glSeparableFilter2D'. Use of these maps is described
+completely in the `glPixelTransfer' reference page, and partly in the
+reference pages for the pixel and texture image commands. Only the
+specification of the maps is described in this reference page.
+
+MAP is a symbolic map name, indicating one of ten maps to set. MAPSIZE
+specifies the number of entries in the map, and VALUES is a pointer to
+an array of MAPSIZE map values.
+
+If a non-zero named buffer object is bound to the
+`GL_PIXEL_UNPACK_BUFFER' target (see `glBindBuffer') while a pixel
+transfer map is specified, VALUES is treated as a byte offset into the
+buffer object's data store.
+
+The ten maps are as follows:
+
+`GL_PIXEL_MAP_I_TO_I'
+     Maps color indices to color indices.
+
+`GL_PIXEL_MAP_S_TO_S'
+     Maps stencil indices to stencil indices.
+
+`GL_PIXEL_MAP_I_TO_R'
+     Maps color indices to red components.
+
+`GL_PIXEL_MAP_I_TO_G'
+     Maps color indices to green components.
+
+`GL_PIXEL_MAP_I_TO_B'
+     Maps color indices to blue components.
+
+`GL_PIXEL_MAP_I_TO_A'
+     Maps color indices to alpha components.
+
+`GL_PIXEL_MAP_R_TO_R'
+     Maps red components to red components.
+
+`GL_PIXEL_MAP_G_TO_G'
+     Maps green components to green components.
+
+`GL_PIXEL_MAP_B_TO_B'
+     Maps blue components to blue components.
+
+`GL_PIXEL_MAP_A_TO_A'
+     Maps alpha components to alpha components.
+
+The entries in a map can be specified as single-precision floating-point
+numbers, unsigned short integers, or unsigned int integers. Maps that
+store color component values (all but `GL_PIXEL_MAP_I_TO_I' and
+`GL_PIXEL_MAP_S_TO_S') retain their values in floating-point format,
+with unspecified mantissa and exponent sizes. Floating-point values
+specified by `glPixelMapfv' are converted directly to the internal
+floating-point format of these maps, then clamped to the range [0,1].
+Unsigned integer values specified by `glPixelMapusv' and `glPixelMapuiv'
+are converted linearly such that the largest representable integer maps
+to 1.0, and 0 maps to 0.0.
+
+Maps that store indices, `GL_PIXEL_MAP_I_TO_I' and
+`GL_PIXEL_MAP_S_TO_S', retain their values in fixed-point format, with
+an unspecified number of bits to the right of the binary point.
+Floating-point values specified by `glPixelMapfv' are converted directly
+to the internal fixed-point format of these maps. Unsigned integer
+values specified by `glPixelMapusv' and `glPixelMapuiv' specify integer
+values, with all 0's to the right of the binary point.
+
+The following table shows the initial sizes and values for each of the
+maps. Maps that are indexed by either color or stencil indices must have
+MAPSIZE = 2^N for some N or the results are undefined. The maximum
+allowable size for each map depends on the implementation and can be
+determined by calling `glGet' with argument `GL_MAX_PIXEL_MAP_TABLE'.
+The single maximum applies to all maps; it is at least 32.
+
+*MAP*
+     *Lookup Index*, *Lookup Value*, *Initial Size*, *Initial Value*
+
+`GL_PIXEL_MAP_I_TO_I'
+     color index , color index , 1 , 0
+
+`GL_PIXEL_MAP_S_TO_S'
+     stencil index , stencil index , 1 , 0
+
+`GL_PIXEL_MAP_I_TO_R'
+     color index , R , 1 , 0
+
+`GL_PIXEL_MAP_I_TO_G'
+     color index , G , 1 , 0
+
+`GL_PIXEL_MAP_I_TO_B'
+     color index , B , 1 , 0
+
+`GL_PIXEL_MAP_I_TO_A'
+     color index , A , 1 , 0
+
+`GL_PIXEL_MAP_R_TO_R'
+     R , R , 1 , 0
+
+`GL_PIXEL_MAP_G_TO_G'
+     G , G , 1 , 0
+
+`GL_PIXEL_MAP_B_TO_B'
+     B , B , 1 , 0
+
+`GL_PIXEL_MAP_A_TO_A'
+     A , A , 1 , 0
+
+`GL_INVALID_ENUM' is generated if MAP is not an accepted value.
+
+`GL_INVALID_VALUE' is generated if MAPSIZE is less than one or larger
+than `GL_MAX_PIXEL_MAP_TABLE'.
+
+`GL_INVALID_VALUE' is generated if MAP is `GL_PIXEL_MAP_I_TO_I',
+`GL_PIXEL_MAP_S_TO_S', `GL_PIXEL_MAP_I_TO_R', `GL_PIXEL_MAP_I_TO_G',
+`GL_PIXEL_MAP_I_TO_B', or `GL_PIXEL_MAP_I_TO_A', and MAPSIZE is not a
+power of two.
+
+`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
+bound to the `GL_PIXEL_UNPACK_BUFFER' target and the buffer object's
+data store is currently mapped.
+
+`GL_INVALID_OPERATION' is generated if a non-zero buffer object name is
+bound to the `GL_PIXEL_UNPACK_BUFFER' target and the data would be
+unpacked from the buffer object such that the memory reads required
+would exceed the data store size.
+
+`GL_INVALID_OPERATION' is generated by `glPixelMapfv' if a non-zero
+buffer object name is bound to the `GL_PIXEL_UNPACK_BUFFER' target and
+VALUES is not evenly divisible into the number of bytes needed to store
+in memory a GLfloat datum.
+
+`GL_INVALID_OPERATION' is generated by `glPixelMapuiv' if a non-zero
+buffer object name is bound to the `GL_PIXEL_UNPACK_BUFFER' target and
+VALUES is not evenly divisible into the number of bytes needed to store
+in memory a GLuint datum.
+
+`GL_INVALID_OPERATION' is generated by `glPixelMapusv' if a non-zero
+buffer object name is bound to the `GL_PIXEL_UNPACK_BUFFER' target and
+VALUES is not evenly divisible into the number of bytes needed to store
+in memory a GLushort datum.
+
+`GL_INVALID_OPERATION' is generated if `glPixelMap' is executed between
+the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
   ((glPixelStoref
@@ -17086,6 +21608,69 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (v2 GLint)
      (v3 GLint)
      ->
+     void)
+   (glUniformMatrix2fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix3fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix4fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix2x3fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix3x2fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix2x4fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix4x2fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix3x4fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniformMatrix4x3fv
+     (location GLint)
+     (count GLsizei)
+     (transpose GLboolean)
+     (value const-GLfloat-*)
+     ->
      void))
   "Specify the value of a uniform variable for the current program object.
 
@@ -17467,6 +22052,26 @@ If enabled, the generic vertex attribute array is used when
      (v1 GLubyte)
      (v2 GLubyte)
      (v3 GLubyte)
+     ->
+     void)
+   (glVertexAttrib4iv
+     (index GLuint)
+     (v const-GLint-*)
+     ->
+     void)
+   (glVertexAttrib4uiv
+     (index GLuint)
+     (v const-GLuint-*)
+     ->
+     void)
+   (glVertexAttrib4Niv
+     (index GLuint)
+     (v const-GLint-*)
+     ->
+     void)
+   (glVertexAttrib4Nuiv
+     (index GLuint)
+     (v const-GLuint-*)
      ->
      void))
   "Specifies the value of a generic vertex attribute.
