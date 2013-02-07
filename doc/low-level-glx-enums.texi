@@ -1,0 +1,298 @@
+
+@c %start of fragment
+
+The functions from this section may be had by loading the module:
+
+@example 
+(use-modules (figl glx enums)
+@end example
+
+@defmac glx-string-name enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{vendor}, @code{version}, @code{extensions}.
+
+@end defmac
+
+@defmac glx-error-code enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{bad-screen}, @code{bad-attribute}, @code{no-extension},
+@code{bad-visual}, @code{bad-context}, @code{bad-value},
+@code{bad-enum}, @code{bad-hyperpipe-config-sgix},
+@code{bad-hyperpipe-sgix}.
+
+@end defmac
+
+@defmac glx-drawable-type-mask enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{window-bit}, @code{pixmap-bit}, @code{pbuffer-bit},
+@code{window-bit-sgix}, @code{pixmap-bit-sgix}, @code{pbuffer-bit-sgix}.
+
+@end defmac
+
+@defmac glx-render-type-mask enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{rgba-bit}, @code{color-index-bit}, @code{rgba-bit-sgix},
+@code{color-index-bit-sgix}, @code{rgba-float-bit-arb},
+@code{rgba-unsigned-float-bit-ext}.
+
+@end defmac
+
+@defmac glx-sync-type enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{sync-frame-sgix}, @code{sync-swap-sgix}.
+
+@end defmac
+
+@defmac glx-event-mask enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{pbuffer-clobber-mask}, @code{buffer-clobber-mask-sgix},
+@code{buffer-swap-complete-intel-mask}.
+
+@end defmac
+
+@defmac glx-pbuffer-clobber-mask enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{front-left-buffer-bit}, @code{front-right-buffer-bit},
+@code{back-left-buffer-bit}, @code{back-right-buffer-bit},
+@code{aux-buffers-bit}, @code{depth-buffer-bit},
+@code{stencil-buffer-bit}, @code{accum-buffer-bit},
+@code{front-left-buffer-bit-sgix}, @code{front-right-buffer-bit-sgix},
+@code{back-left-buffer-bit-sgix}, @code{back-right-buffer-bit-sgix},
+@code{aux-buffers-bit-sgix}, @code{depth-buffer-bit-sgix},
+@code{stencil-buffer-bit-sgix}, @code{accum-buffer-bit-sgix},
+@code{sample-buffers-bit-sgix}.
+
+@end defmac
+
+@defmac glx-hyperpipe-type-mask enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{hyperpipe-display-pipe-sgix}, @code{hyperpipe-render-pipe-sgix}.
+
+@end defmac
+
+@defmac glx-hyperpipe-attrib enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{pipe-rect-sgix}, @code{pipe-rect-limits-sgix},
+@code{hyperpipe-stereo-sgix}, @code{hyperpipe-pixel-average-sgix}.
+
+@end defmac
+
+@defmac glx-hyperpipe-misc enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{hyperpipe-pipe-name-length-sgix}.
+
+@end defmac
+
+@defmac glx-bind-to-texture-target-mask enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{texture-1d-bit-ext}, @code{texture-2d-bit-ext},
+@code{texture-rectangle-bit-ext}.
+
+@end defmac
+
+@defmac glx-context-flags enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{context-debug-bit-arb}, @code{context-forward-compatible-bit-arb},
+@code{context-robust-access-bit-arb},
+@code{context-reset-isolation-bit-arb}.
+
+@end defmac
+
+@defmac glx-context-profile-mask enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{context-core-profile-bit-arb},
+@code{context-compatibility-profile-bit-arb},
+@code{context-es-profile-bit-ext}, @code{context-es2-profile-bit-ext}.
+
+@end defmac
+
+@defmac glx-attribute enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{use-gl}, @code{buffer-size}, @code{level}, @code{rgba},
+@code{doublebuffer}, @code{stereo}, @code{aux-buffers}, @code{red-size},
+@code{green-size}, @code{blue-size}, @code{alpha-size},
+@code{depth-size}, @code{stencil-size}, @code{accum-red-size},
+@code{accum-green-size}, @code{accum-blue-size},
+@code{accum-alpha-size}, @code{config-caveat}, @code{x-visual-type},
+@code{transparent-type}, @code{transparent-index-value},
+@code{transparent-red-value}, @code{transparent-green-value},
+@code{transparent-blue-value}, @code{transparent-alpha-value},
+@code{dont-care}, @code{none}, @code{slow-config}, @code{true-color},
+@code{direct-color}, @code{pseudo-color}, @code{static-color},
+@code{gray-scale}, @code{static-gray}, @code{transparent-rgb},
+@code{transparent-index}, @code{visual-id}, @code{screen},
+@code{non-conformant-config}, @code{drawable-type}, @code{render-type},
+@code{x-renderable}, @code{fbconfig-id}, @code{rgba-type},
+@code{color-index-type}, @code{max-pbuffer-width},
+@code{max-pbuffer-height}, @code{max-pbuffer-pixels},
+@code{preserved-contents}, @code{largest-pbuffer}, @code{width},
+@code{height}, @code{event-mask}, @code{damaged}, @code{saved},
+@code{window}, @code{pbuffer}, @code{pbuffer-height},
+@code{pbuffer-width}, @code{visual-caveat-ext},
+@code{x-visual-type-ext}, @code{transparent-type-ext},
+@code{transparent-index-value-ext}, @code{transparent-red-value-ext},
+@code{transparent-green-value-ext}, @code{transparent-blue-value-ext},
+@code{transparent-alpha-value-ext}, @code{none-ext},
+@code{slow-visual-ext}, @code{true-color-ext}, @code{direct-color-ext},
+@code{pseudo-color-ext}, @code{static-color-ext}, @code{gray-scale-ext},
+@code{static-gray-ext}, @code{transparent-rgb-ext},
+@code{transparent-index-ext}, @code{share-context-ext},
+@code{visual-id-ext}, @code{screen-ext},
+@code{non-conformant-visual-ext}, @code{drawable-type-sgix},
+@code{render-type-sgix}, @code{x-renderable-sgix},
+@code{fbconfig-id-sgix}, @code{rgba-type-sgix},
+@code{color-index-type-sgix}, @code{max-pbuffer-width-sgix},
+@code{max-pbuffer-height-sgix}, @code{max-pbuffer-pixels-sgix},
+@code{optimal-pbuffer-width-sgix}, @code{optimal-pbuffer-height-sgix},
+@code{preserved-contents-sgix}, @code{largest-pbuffer-sgix},
+@code{width-sgix}, @code{height-sgix}, @code{event-mask-sgix},
+@code{damaged-sgix}, @code{saved-sgix}, @code{window-sgix},
+@code{pbuffer-sgix}, @code{digital-media-pbuffer-sgix},
+@code{blended-rgba-sgis}, @code{multisample-sub-rect-width-sgis},
+@code{multisample-sub-rect-height-sgis},
+@code{visual-select-group-sgix}, @code{hyperpipe-id-sgix},
+@code{sample-buffers-sgis}, @code{samples-sgis},
+@code{sample-buffers-arb}, @code{samples-arb}, @code{sample-buffers},
+@code{samples}, @code{coverage-samples-nv},
+@code{context-major-version-arb}, @code{context-minor-version-arb},
+@code{context-flags-arb},
+@code{context-allow-buffer-byte-order-mismatch-arb},
+@code{float-components-nv}, @code{rgba-unsigned-float-type-ext},
+@code{framebuffer-srgb-capable-arb},
+@code{framebuffer-srgb-capable-ext}, @code{color-samples-nv},
+@code{rgba-float-type-arb}, @code{video-out-color-nv},
+@code{video-out-alpha-nv}, @code{video-out-depth-nv},
+@code{video-out-color-and-alpha-nv},
+@code{video-out-color-and-depth-nv}, @code{video-out-frame-nv},
+@code{video-out-field-1-nv}, @code{video-out-field-2-nv},
+@code{video-out-stacked-fields-1-2-nv},
+@code{video-out-stacked-fields-2-1-nv}, @code{device-id-nv},
+@code{unique-id-nv}, @code{num-video-capture-slots-nv},
+@code{bind-to-texture-rgb-ext}, @code{bind-to-texture-rgba-ext},
+@code{bind-to-mipmap-texture-ext}, @code{bind-to-texture-targets-ext},
+@code{y-inverted-ext}, @code{texture-format-ext},
+@code{texture-target-ext}, @code{mipmap-texture-ext},
+@code{texture-format-none-ext}, @code{texture-format-rgb-ext},
+@code{texture-format-rgba-ext}, @code{texture-1d-ext},
+@code{texture-2d-ext}, @code{texture-rectangle-ext},
+@code{front-left-ext}, @code{front-right-ext}, @code{back-left-ext},
+@code{back-right-ext}, @code{front-ext}, @code{back-ext},
+@code{aux0-ext}, @code{aux1-ext}, @code{aux2-ext}, @code{aux3-ext},
+@code{aux4-ext}, @code{aux5-ext}, @code{aux6-ext}, @code{aux7-ext},
+@code{aux8-ext}, @code{aux9-ext}.
+
+@end defmac
+
+@defmac nv-present-video enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{num-video-slots-nv}.
+
+@end defmac
+
+@defmac ext-swap-control enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{swap-interval-ext}, @code{max-swap-interval-ext}.
+
+@end defmac
+
+@defmac ext-swap-control-tear enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{late-swaps-tear-ext}.
+
+@end defmac
+
+@defmac ext-buffer-age enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{back-buffer-age-ext}.
+
+@end defmac
+
+@defmac glx-amd-gpu-association enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{gpu-vendor-amd}, @code{gpu-renderer-string-amd},
+@code{gpu-opengl-version-string-amd},
+@code{gpu-fastest-target-gpus-amd}, @code{gpu-ram-amd},
+@code{gpu-clock-amd}, @code{gpu-num-pipes-amd}, @code{gpu-num-simd-amd},
+@code{gpu-num-rb-amd}, @code{gpu-num-spi-amd}.
+
+@end defmac
+
+@defmac glx-arb-create-context-robustness enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{lose-context-on-reset-arb},
+@code{context-reset-notification-strategy-arb},
+@code{no-reset-notification-arb}.
+
+@end defmac
+
+@defmac arb-create-context-profile enum
+Enumerated value. The symbolic @var{enum}argument is replaced with its
+corresponding numeric value at compile-time. The symbolic arguments
+known to this enumerated value form are:
+
+@code{context-profile-mask-arb}.
+
+@end defmac
+
+
+@c %end of fragment

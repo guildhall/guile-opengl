@@ -557,6 +557,9 @@
     (string->number (substring num 2) 16))
    ((string-prefix? "GL_" num)
     (cons #f (mangle-name (substring num 3))))
+   ;; Hackety hack...
+   ((string-prefix? "GLX_" num)
+    (cons #f (mangle-name (substring num 4))))
    (else
     (string->number num))))
 
@@ -633,11 +636,14 @@
        ((string-index line #\:)
         => (lambda (pos)
              (let* ((ws (or (string-index-right line char-whitespace? 0 pos) 0))
-                    (headers (map string-trim-both
-                                  (string-split (substring line 0 ws) #\,)))
+                    (headers (filter
+                              (compose not string-null?)
+                              (map string-trim-both
+                                   (string-split (substring line 0 ws) #\,))))
                     (def (substring line (1+ ws) pos)))
                (match (cons def headers)
-                 (("define" headers ...)
+                 ((or ("define" _ ...)
+                      ((? (lambda (x) (string-suffix? "_future_use" x)))))
                   (lp '()
                       '()
                       (finish-block current-headers current-enums accum)))

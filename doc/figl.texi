@@ -370,12 +370,18 @@ extension at runtime with @code{(glGetString GL_EXTENSIONS)}.
 
 @menu
 * Low-Level GLX::               Primitive interface to ``glX'' functionality.
+* GLX Enumerations::            GLX enumerated values.
 @end menu
 
 
 @node Low-Level GLX
 @section Low-Level GLX
 @include low-level-glx.texi
+
+
+@node GLX Enumerations
+@section GLX Enumerations
+@include low-level-glx-enums.texi
 
 
 @node GLUT
