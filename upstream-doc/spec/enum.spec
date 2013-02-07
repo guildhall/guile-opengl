@@ -8443,7 +8443,8 @@ NV_path_rendering enum: (additional; see above)
 
 # NV_future_use: 0x90C0-0x90C6
 
-ARB_shader_image_load_store
+# http://www.khronos.org/bugzilla/show_bug.cgi?id=786
+ARB_shader_image_load_store enum:
 	IMAGE_FORMAT_COMPATIBILITY_TYPE			= 0x90C7
 	IMAGE_FORMAT_COMPATIBILITY_BY_SIZE		= 0x90C8
 	IMAGE_FORMAT_COMPATIBILITY_BY_CLASS		= 0x90C9
