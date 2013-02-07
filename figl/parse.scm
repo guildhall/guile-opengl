@@ -31,6 +31,7 @@
   #:use-module (srfi srfi-9)
   #:use-module (texinfo docbook)
   #:use-module (ice-9 ftw)
+  #:use-module (ice-9 rdelim)
   #:use-module (ice-9 match)
   #:export (gl-definition?
             make-gl-definition
@@ -38,7 +39,13 @@
             gl-definition-prototypes
             gl-definition-documentation
             gl-definition-copyright
-            parse-gl-definitions))
+            parse-gl-definitions
+
+            gl-enumeration?
+            make-gl-enumeration
+            gl-enumeration-category
+            gl-enumeration-values
+            parse-gl-enumerations))
 
 (define-record-type gl-definition
   (make-gl-definition name prototypes documentation copyright)
@@ -47,6 +54,13 @@
   (prototypes gl-definition-prototypes)
   (documentation gl-definition-documentation)
   (copyright gl-definition-copyright))
+
+;; values := (name . number) ...
+(define-record-type gl-enumeration
+  (make-gl-enumeration category values)
+  gl-enumeration?
+  (category gl-enumeration-category)
+  (values gl-enumeration-values))
 
 (define *namespaces*
   '((mml . "http://www.w3.org/1998/Math/MathML")))
@@ -494,3 +508,169 @@
   (filter-map (lambda (file)
                 (xml->definition (parse-man-xml version file)))
               (xml-files version)))
+
+(define (trim-comment line)
+  (cond
+   ((string-index line #\#)
+    => (lambda (idx) (substring line 0 idx)))
+   (else line)))
+
+(define (expand-camel-case s)
+  (define (add-humps humps out more?)
+    (match humps
+      (() out)
+      ((head)
+       (if (null? out)
+           humps
+           (cons* head #\- out)))
+      ((head tail ...)
+       (let ((out (if (null? out)
+                      tail
+                      (append tail (cons #\- out)))))
+         (if more?
+             (cons* head #\- out)
+             (cons head out))))))
+  (let lp ((in (string->list s)) (humps '()) (out '()))
+    (match in
+      (()
+       (list->string (reverse (add-humps humps out #f))))
+      ((c in ...)
+       (if (and (char-lower-case? c)
+                ;; Try to keep subtokens like 12x3 in one piece.
+                (or (null? humps)
+                    (not (and-map char-numeric? humps))))
+           (lp in '() (cons c (add-humps humps out #t)))
+           (lp in (cons (char-downcase c) humps) out))))))
+
+(define (mangle-name name)
+  (string->symbol
+   (string-join (map expand-camel-case (string-split name #\_))
+                "-")))
+
+(define (parse-number num)
+  (cond
+   ((equal? "0xFFFFFFFFu" num)
+    #xFFFFFFFF)
+   ((equal? "0xFFFFFFFFFFFFFFFFull" num)
+    #xFFFFFFFFFFFFFFFF)
+   ((string-prefix? "0x" num)
+    (string->number (substring num 2) 16))
+   ((string-prefix? "GL_" num)
+    (cons #f (mangle-name (substring num 3))))
+   (else
+    (string->number num))))
+
+(define (read-line-and-trim-comment port)
+  (let ((line (read-line port)))
+    (if (eof-object? line)
+        line
+        (string-trim-both (trim-comment line)))))
+
+(define (resolve-enumerations enums)
+  ;; We shouldn't fail to resolve anything, but there are a couple bugs
+  ;; in enum.spec currently:
+  ;; http://www.khronos.org/bugzilla/show_bug.cgi?id=787.  Until they
+  ;; are fixed, allow resolution to fail.
+  (define (resolve-value category name value)
+    (match value
+      (#f #f)
+      ((? number?)
+       value)
+      ((#f . (and name (? symbol?)))
+       (resolve-value category name category))
+      ((? symbol?)
+       (resolve-value value name (assq-ref (assq-ref enums value) name)))))
+  (let lp ((in enums) (out '()))
+    (match in
+      (()
+       (reverse out))
+      (((category (name . value) ...) . in)
+       (lp in
+           (cons (make-gl-enumeration
+                  category
+                  (filter-map
+                   (lambda (name value)
+                     (and=> (resolve-value category name value)
+                            (lambda (value)
+                              (cons name value))))
+                   name value))
+                 out))))))
+
+(define (merge-alists in)
+  ;; O(n^2), whee
+  (define (collect-values key values in)
+    (let lp ((in in) (values values))
+      (if (null? in)
+          values
+          (lp (cdr in)
+              (if (eq? (caar in) key)
+                  (append values (cdar in))
+                  values)))))
+  (let lp ((in in) (out '()))
+    (cond
+     ((null? in) (reverse out))
+     ((assq (caar in) out) (lp (cdr in) out))
+     (else (lp (cdr in)
+               (acons (caar in)
+                      (collect-values (caar in) (cdar in) (cdr in))
+                      out))))))
+
+(define (parse-enumerations-from-port port)
+  (define (finish-block headers enums accum)
+    (if (null? enums)
+        accum
+        (fold (lambda (header accum)
+                (acons header (reverse enums) accum))
+              accum
+              headers)))
+  (let lp ((current-headers '()) (current-enums '()) (accum '()))
+    (let ((line (read-line-and-trim-comment port)))
+      (cond
+       ((eof-object? line)
+        (resolve-enumerations
+         (merge-alists
+          (reverse (finish-block current-headers current-enums accum)))))
+       ((string-index line #\:)
+        => (lambda (pos)
+             (let* ((ws (or (string-index-right line char-whitespace? 0 pos) 0))
+                    (headers (map string-trim-both
+                                  (string-split (substring line 0 ws) #\,)))
+                    (def (substring line (1+ ws) pos)))
+               (match (cons def headers)
+                 (("define" headers ...)
+                  (lp '()
+                      '()
+                      (finish-block current-headers current-enums accum)))
+                 (("enum" headers ...)
+                  (if (null? current-enums)
+                      (lp (append current-headers (map mangle-name headers))
+                          current-enums
+                          accum)
+                      (lp (map mangle-name headers)
+                          '()
+                          (finish-block current-headers current-enums accum))))
+                 (x (error "qux." x))))))
+       ((string-null? line)
+        (lp current-headers current-enums accum))
+       (else
+        (match (filter (compose not string-null?)
+                       (string-split (trim-comment line) char-whitespace?))
+          ((enum "=" value)
+           (lp current-headers
+               (acons (mangle-name enum)
+                      (or (parse-number value)
+                          (error "failed to parse" value))
+                      current-enums)
+               accum))
+          (("use" header enum)
+           (lp current-headers
+               (acons (mangle-name enum)
+                      (mangle-name header)
+                      current-enums)
+               accum))
+          (x (error x))))))))
+
+(define (parse-gl-enumerations spec)
+  (call-with-input-file (in-vicinity (upstream-doc)
+                                     (in-vicinity "spec" spec))
+    parse-enumerations-from-port))

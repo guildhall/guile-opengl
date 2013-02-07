@@ -12,6 +12,7 @@ SOURCES = \
 	figl/gl/types.scm \
 	figl/gl/runtime.scm \
 	figl/gl/low-level.scm \
+	figl/gl/enums.scm \
 	figl/gl.scm \
 	\
 	figl/glu/types.scm \

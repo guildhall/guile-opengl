@@ -26,7 +26,9 @@
   #:export (define-foreign-procedure
             define-foreign-procedures
             define-foreign-type
-            define-simple-foreign-type))
+            define-simple-foreign-type
+            define-enumeration
+            define-bitfield))
 
 (define-syntax foreign-trampoline
   (syntax-rules (->)
@@ -97,3 +99,35 @@
          ((_) ffi-type)
          ((_ #:wrap x) x)
          ((_ #:unwrap x) x))))))
+
+(define-syntax-rule (define-enumeration enumerator (name value) ...)
+  (define-syntax enumerator
+    (lambda (x)
+      (syntax-case x ()
+        ((_)
+         #''(name ...))
+        ((_ enum) (number? (syntax->datum #'enum))
+         #'enum)
+        ((_ enum)
+         (or (assq-ref '((name . value) ...)
+                       (syntax->datum #'enum))
+             (syntax-violation 'enumerator "invalid enumerated value"
+                               #'enum)))))))
+
+(define-syntax-rule (define-bitfield bitfield (name value) ...)
+  (define-syntax bitfield
+    (lambda (x)
+      (syntax-case x ()
+        ((_)
+         #''(name ...))
+        ((_ bit (... ...))
+         #`(logior
+            #,@(map
+                (lambda (bit)
+                  (let ((datum (syntax->datum bit)))
+                    (if (number? datum)
+                        datum
+                        (or (assq-ref '((name . value) ...) datum)
+                            (syntax-violation 'bitfield "invalid bitfield value"
+                                              bit)))))
+                #'(bit (... ...)))))))))

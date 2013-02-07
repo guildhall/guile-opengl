@@ -1,0 +1,147 @@
+#!/usr/bin/env guile
+!#
+
+(use-modules (figl parse)
+             (figl config)
+             (ice-9 match)
+             (sxml fold)
+             ((srfi srfi-1) #:select (append-map))
+             (texinfo serialize)
+             (texinfo plain-text)
+             (ice-9 pretty-print))
+
+(setlocale LC_ALL "")
+
+(print-disable 'escape-newlines)
+
+(define (list-intersperse src-l elem)
+  (if (null? src-l) src-l
+      (let loop ((l (cdr src-l)) (dest (cons (car src-l) '())))
+        (if (null? l) (reverse dest)
+            (loop (cdr l) (cons (car l) (cons elem dest)))))))
+
+(define (module-name->scm-name mod-name)
+  (string-join (list (abs-top-srcdir)
+                     "figl"
+                     (symbol->string mod-name)
+                     "enums.scm")
+               "/"))
+
+#;
+(define (module-name->texi-name mod-name)
+  (in-vicinity
+   (in-vicinity (abs-top-srcdir) "doc")
+   (string-append "low-level-" (symbol->string mod-name) ".texi")))
+
+(define (write-scm mod-name enums port)
+  (display "\
+;;; figl                           -*- mode: scheme; coding: utf-8 -*-
+;;; Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
+;;;
+;;; Figl is free software: you can redistribute it and/or modify it
+;;; under the terms of the GNU Lesser General Public License as
+;;; published by the Free Software Foundation, either version 3 of the
+;;; License, or (at your option) any later version.
+;;; 
+;;; Figl is distributed in the hope that it will be useful, but WITHOUT
+;;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+;;; or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General
+;;; Public License for more details.
+;;; 
+;;; You should have received a copy of the GNU Lesser General Public
+;;; License along with this program.  If not, see
+;;; <http://www.gnu.org/licenses/>.
+;;;
+;;; Derived from the API specifications at www.opengl.org/registry/api/.
+;;;
+;;; Automatically generated; you probably don't want to edit this.  To
+;;; update, run \"make update-enums\" in the top-level build tree.
+;;;
+
+" port)
+  (pretty-print
+   `(define-module (figl ,mod-name enums)
+      #:use-module (figl runtime)
+      #:export ,(map gl-enumeration-category enums))
+   port)
+  (newline port)
+  (for-each
+   (lambda (enum)
+     (define (strip-bit name)
+       (let ((str (symbol->string name)))
+         (cond
+          ((string-suffix? "-bit" str)
+           (string->symbol (substring str 0 (- (string-length str) 4))))
+          ((string-suffix? "-bits" str)
+           (string->symbol (substring str 0 (- (string-length str) 5))))
+          (else #f))))
+     (define (bitfield? enum)
+       (and-map (match-lambda ((name . value) (strip-bit name)))
+                (gl-enumeration-values enum)))
+     (pretty-print
+      (if (bitfield? enum)
+          `(define-bitfield ,(gl-enumeration-category enum)
+             ,@(map (match-lambda
+                     ((name . value) (list (strip-bit name) value)))
+                    (gl-enumeration-values enum)))
+          `(define-enumeration ,(gl-enumeration-category enum)
+             ,@(map (match-lambda
+                     ((name . value) (list name value)))
+                    (gl-enumeration-values enum))))
+      port)
+     (newline port))
+   enums))
+
+#;
+(define (write-texi mod-name defs port)
+  (display
+   (stexi->texi
+    `(*fragment*
+      (para "The functions from this section may be had by loading "
+            "the module:")
+      (example "(use-modules (figl " ,(object->string mod-name) " low-level)")
+      (copying
+       (para
+        "This section of the manual was derived from the upstream "
+        "OpenGL documentation.  Each function's documentation has "
+        "its own copyright statement; for full details, see the "
+        "upstream documentation.  The copyright notices and licenses "
+        "present in this section are as follows.")
+       ,@(append-map cdr (unique-copyrights defs)))
+      ,@(map
+         (lambda (def)
+           (match (gl-definition-prototypes def)
+             (((name (pname ptype) ... '-> return-type)
+               (name* (pname* ptype*) ... '-> return-type*)
+               ...)
+              `(deftypefun (% (name ,(symbol->string name))
+                              (data-type ,(symbol->string return-type))
+                              (arguments ,@(list-intersperse
+                                            (map symbol->string pname)
+                                            " ")))
+                 ,@(map (lambda (name pname ptype return-type)
+                          `(deftypefunx
+                             (% (name ,(symbol->string name))
+                                (data-type ,(symbol->string return-type))
+                                (arguments ,@(list-intersperse
+                                              (map symbol->string pname)
+                                              " ")))))
+                        name* pname* ptype* return-type*)
+                 ,@(cdr (gl-definition-documentation def))))))
+         defs)))
+   port))
+
+(define (write-enumerations mod-name enums)
+  (call-with-output-file (module-name->scm-name mod-name)
+    (lambda (port)
+      (write-scm mod-name enums port)))
+  #;
+  (call-with-output-file (module-name->texi-name mod-name)
+    (lambda (port)
+      (write-texi mod-name enums port))))
+
+(define* (main arg0)
+  (write-enumerations 'gl (parse-gl-enumerations "enum.spec")))
+
+(when (batch-mode?)
+  (apply main (command-line)))
