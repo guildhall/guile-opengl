@@ -143,6 +143,7 @@ example @code{(figl gl)}.
 * GL Contexts::                 Finding a square of pixels.
 * Rendering::                   How to paint.
 * Low-Level GL::                Primitive interface to OpenGL.
+* GL Enumerations::             Enumerated values.
 * GL Extensions::               Beyond core OpenGL.
 @end menu
 
@@ -303,6 +304,11 @@ thing.
 @node Low-Level GL
 @section Low-Level GL
 @include low-level-gl.texi
+
+
+@node GL Enumerations
+@section GL Enumerations
+@include low-level-gl-enums.texi
 
 
 @node GL Extensions

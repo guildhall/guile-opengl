@@ -27,11 +27,23 @@
                      "enums.scm")
                "/"))
 
-#;
 (define (module-name->texi-name mod-name)
   (in-vicinity
    (in-vicinity (abs-top-srcdir) "doc")
-   (string-append "low-level-" (symbol->string mod-name) ".texi")))
+   (string-append "low-level-" (symbol->string mod-name) "-enums.texi")))
+
+(define (strip-bit name)
+  (let ((str (symbol->string name)))
+    (cond
+     ((string-suffix? "-bit" str)
+      (string->symbol (substring str 0 (- (string-length str) 4))))
+     ((string-suffix? "-bits" str)
+      (string->symbol (substring str 0 (- (string-length str) 5))))
+     (else #f))))
+
+(define (bitfield? enum)
+  (and-map (match-lambda ((name . value) (strip-bit name)))
+           (gl-enumeration-values enum)))
 
 (define (write-scm mod-name enums port)
   (display "\
@@ -67,17 +79,6 @@
   (newline port)
   (for-each
    (lambda (enum)
-     (define (strip-bit name)
-       (let ((str (symbol->string name)))
-         (cond
-          ((string-suffix? "-bit" str)
-           (string->symbol (substring str 0 (- (string-length str) 4))))
-          ((string-suffix? "-bits" str)
-           (string->symbol (substring str 0 (- (string-length str) 5))))
-          (else #f))))
-     (define (bitfield? enum)
-       (and-map (match-lambda ((name . value) (strip-bit name)))
-                (gl-enumeration-values enum)))
      (pretty-print
       (if (bitfield? enum)
           `(define-bitfield ,(gl-enumeration-category enum)
@@ -92,50 +93,51 @@
      (newline port))
    enums))
 
-#;
-(define (write-texi mod-name defs port)
+(define (write-texi mod-name enums port)
   (display
    (stexi->texi
     `(*fragment*
       (para "The functions from this section may be had by loading "
             "the module:")
-      (example "(use-modules (figl " ,(object->string mod-name) " low-level)")
-      (copying
-       (para
-        "This section of the manual was derived from the upstream "
-        "OpenGL documentation.  Each function's documentation has "
-        "its own copyright statement; for full details, see the "
-        "upstream documentation.  The copyright notices and licenses "
-        "present in this section are as follows.")
-       ,@(append-map cdr (unique-copyrights defs)))
+      (example "(use-modules (figl " ,(object->string mod-name) " enums)")
       ,@(map
-         (lambda (def)
-           (match (gl-definition-prototypes def)
-             (((name (pname ptype) ... '-> return-type)
-               (name* (pname* ptype*) ... '-> return-type*)
-               ...)
-              `(deftypefun (% (name ,(symbol->string name))
-                              (data-type ,(symbol->string return-type))
-                              (arguments ,@(list-intersperse
-                                            (map symbol->string pname)
-                                            " ")))
-                 ,@(map (lambda (name pname ptype return-type)
-                          `(deftypefunx
-                             (% (name ,(symbol->string name))
-                                (data-type ,(symbol->string return-type))
-                                (arguments ,@(list-intersperse
-                                              (map symbol->string pname)
-                                              " ")))))
-                        name* pname* ptype* return-type*)
-                 ,@(cdr (gl-definition-documentation def))))))
-         defs)))
+         (lambda (enum)
+           (if (bitfield? enum)
+               `(defmac (% (name ,(symbol->string (gl-enumeration-category enum)))
+                           (arguments "bit..."))
+                  (para
+                   "Bitfield constructor.  The symbolic " (var "bit")
+                   " arguments are replaced with their corresponding numeric "
+                   "values and combined with " (code "logior") " at "
+                   "compile-time.  The symbolic arguments known to this "
+                   "bitfield constructor are:")
+                  (para
+                   ,@(list-intersperse
+                      (map (lambda (name)
+                             `(code ,(symbol->string (strip-bit name))))
+                           (map car (gl-enumeration-values enum)))
+                     ", ")
+                   "."))
+               `(defmac (% (name ,(symbol->string (gl-enumeration-category enum)))
+                           (arguments "enum"))
+                  (para
+                   "Enumerated value.  The symbolic " (var "enum") "argument "
+                   "is replaced with its corresponding numeric value at "
+                   "compile-time.  The symbolic arguments known to this "
+                   "enumerated value form are:")
+                  (para
+                   ,@(list-intersperse
+                      (map (lambda (name) `(code ,(symbol->string name)))
+                           (map car (gl-enumeration-values enum)))
+                     ", ")
+                   "."))))
+         enums)))
    port))
 
 (define (write-enumerations mod-name enums)
   (call-with-output-file (module-name->scm-name mod-name)
     (lambda (port)
       (write-scm mod-name enums port)))
-  #;
   (call-with-output-file (module-name->texi-name mod-name)
     (lambda (port)
       (write-texi mod-name enums port))))
