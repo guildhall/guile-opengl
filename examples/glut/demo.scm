@@ -3,6 +3,7 @@
 
 (use-modules (figl glut low-level)
              (figl glut)
+             (figl gl enums)
              (figl gl low-level)
              (system foreign))
 
@@ -19,13 +20,9 @@
 (define GLUT_STEREO #x0100)
 (define GLUT_LUMINANCE #x0200)
 
-(define GL_COLOR_BUFFER_BIT #x4000)
-(define GL_DEPTH_BUFFER_BIT #x0100)
-(define GL_TRIANGLES #x0004)
-
 (define (render-scene)
-  (glClear (logior GL_COLOR_BUFFER_BIT GL_DEPTH_BUFFER_BIT))
-  (glBegin GL_TRIANGLES)
+  (glClear (attrib-mask color-buffer depth-buffer))
+  (glBegin (begin-mode triangles))
   (glVertex3f -0.5 -0.5 0.0)
   (glVertex3f 0.5 0.0 0.0)
   (glVertex3f 0.0 0.5 0.0)
