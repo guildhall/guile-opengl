@@ -716,9 +716,9 @@
                              (expansion valid-directions))
   (let ((direction (string->symbol str)))
     (cond
-     ((and (eq? direction '*) expansion)
+     ((eq? direction '*)
       expansion)
-     ((memq direction valid-directions)
+     ((memq direction expansion)
       (list direction))
      (else
       (error "unknown direction" str)))))
@@ -727,9 +727,9 @@
                                  (expansion valid-transfer-types))
   (let ((trans (string->symbol str)))
     (cond
-     ((and (eq? trans '*) expansion)
+     ((eq? trans '*)
       expansion)
-     ((memq trans valid-transfer-types)
+     ((memq trans expansion)
       (list trans))
      (else
       (error "unknown transfer-type" str)))))
