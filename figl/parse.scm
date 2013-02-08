@@ -23,16 +23,19 @@
 
 (define-module (figl parse)
   #:use-module (figl config)
+  #:use-module (figl contrib)
   #:use-module (sxml simple)
   #:use-module ((sxml xpath) #:hide (filter))
   #:use-module (sxml transform)
   #:use-module (sxml fold)
   #:use-module ((srfi srfi-1) #:select (filter fold append-map filter-map))
-  #:use-module (srfi srfi-9)
+  #:use-module (srfi srfi-9) ; define-record-type
+  #:use-module (srfi srfi-42) ; eager comprehensions
   #:use-module (texinfo docbook)
   #:use-module (ice-9 ftw)
   #:use-module (ice-9 rdelim)
   #:use-module (ice-9 match)
+  #:use-module (ice-9 regex)
   #:export (gl-definition?
             make-gl-definition
             gl-definition-name
@@ -45,7 +48,14 @@
             make-gl-enumeration
             gl-enumeration-category
             gl-enumeration-values
-            parse-gl-enumerations))
+            parse-gl-enumerations
+
+            gl-param-type?
+            make-gl-param-type
+            gl-param-type-type
+            gl-param-type-direction
+            gl-param-type-transfer-type
+            parse-gl-type-map))
 
 (define-record-type gl-definition
   (make-gl-definition name prototypes documentation copyright)
@@ -61,6 +71,18 @@
   gl-enumeration?
   (category gl-enumeration-category)
   (values gl-enumeration-values))
+
+;; Seed of gl-param and more.
+;; TODO: Is this not really gl-type?
+(define-record-type gl-param-type
+  (%make-gl-param-type type direction transfer-type)
+  gl-param-type?
+  (type gl-param-type-type)
+  (direction gl-param-type-direction)
+  (transfer-type gl-param-type-transfer-type))
+
+;; Memoized for eq?, hash, memory usage.
+(define make-gl-param-type (memoize %make-gl-param-type))
 
 (define *namespaces*
   '((mml . "http://www.w3.org/1998/Math/MathML")))
@@ -680,3 +702,88 @@
   (call-with-input-file (in-vicinity (upstream-doc)
                                      (in-vicinity "spec" spec))
     parse-enumerations-from-port))
+
+
+;;;
+;;; Type Map
+;;;
+
+(define valid-directions '(in out in/out))
+
+(define valid-transfer-types '(array reference value))
+
+(define* (string->directions str #:optional
+                             (expansion valid-directions))
+  (let ((direction (string->symbol str)))
+    (cond
+     ((and (eq? direction '*) expansion)
+      expansion)
+     ((memq direction valid-directions)
+      (list direction))
+     (else
+      (error "unknown direction" str)))))
+
+(define* (string->transfer-types str #:optional
+                                 (expansion valid-transfer-types))
+  (let ((trans (string->symbol str)))
+    (cond
+     ((and (eq? trans '*) expansion)
+      expansion)
+     ((memq trans valid-transfer-types)
+      (list trans))
+     (else
+      (error "unknown transfer-type" str)))))
+
+(define (expand-type-map-entry type
+                               direction
+                               transfer-type
+                               mapped-type
+                               mapped-direction
+                               mapped-transfer-type)
+  (let ((type (mangle-name type))
+        (mapped-type (string->gl-type mapped-type)))
+    (list-ec (:list direction (string->directions direction))
+             (:list transfer-type (string->transfer-types transfer-type))
+             (:list mapped-direction
+                    (string->directions mapped-direction
+                                        (list direction)))
+             (:list mapped-transfer-type
+                    (string->transfer-types mapped-transfer-type
+                                            (list transfer-type)))
+             (cons (make-gl-param-type type
+                                       direction
+                                       transfer-type)
+                   (make-gl-param-type mapped-type
+                                       mapped-direction
+                                       mapped-transfer-type)))))
+               
+(define (parse-type-map-from-port port)
+  (define delimiter (make-regexp "[ \t]*,[ \t]*"))
+
+  (let lp ((accum '()))
+    (let ((line (read-line-and-trim-comment port)))
+      (cond
+       ((eof-object? line)
+        (reverse accum))
+       ((string-null? line)
+        (lp accum))
+       (else
+        ;; TODO: Filter needed here to avoid formatting bug:
+        ;; http://www.khronos.org/bugzilla/show_bug.cgi?id=790
+        (match (filter (compose not string-null?)
+                       (string-split line delimiter))
+          ((type direction transfer-type
+            mapped-type mapped-direction mapped-transfer-type)
+           (lp (append (expand-type-map-entry type
+                                              direction
+                                              transfer-type
+                                              mapped-type
+                                              mapped-direction
+                                              mapped-transfer-type)
+                       accum)))
+          (x (error x))))))))
+
+(define (parse-gl-type-map tm)
+  (call-with-input-file (in-vicinity (upstream-doc)
+                                     (in-vicinity "spec" tm))
+    parse-type-map-from-port))
