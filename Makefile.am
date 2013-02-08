@@ -28,6 +28,7 @@ SOURCES = \
 	\
 	figl/glut/runtime.scm \
 	figl/glut/low-level.scm \
+	figl/glut/enums.scm \
 	figl/glut.scm
 
 update: figl/parse.go
