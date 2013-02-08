@@ -105,14 +105,14 @@ known to this enumerated value form are:
 
 @end defmac
 
-@defmac clear-buffer-mask enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
-known to this enumerated value form are:
+@defmac clear-buffer-mask bit...
+Bitfield constructor. The symbolic @var{bit} arguments are replaced with
+their corresponding numeric values and combined with @code{logior} at
+compile-time. The symbolic arguments known to this bitfield constructor
+are:
 
-@code{depth-buffer-bit}, @code{accum-buffer-bit},
-@code{stencil-buffer-bit}, @code{color-buffer-bit},
-@code{coverage-buffer-bit-nv}.
+@code{depth-buffer}, @code{accum-buffer}, @code{stencil-buffer},
+@code{color-buffer}, @code{coverage-buffer-bit-nv}.
 
 @end defmac
 
@@ -1262,10 +1262,11 @@ known to this enumerated value form are:
 
 @end defmac
 
-@defmac ffd-mask-sgix enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
-known to this enumerated value form are:
+@defmac ffd-mask-sgix bit...
+Bitfield constructor. The symbolic @var{bit} arguments are replaced with
+their corresponding numeric values and combined with @code{logior} at
+compile-time. The symbolic arguments known to this bitfield constructor
+are:
 
 @code{texture-deformation-bit-sgix},
 @code{geometry-deformation-bit-sgix}.

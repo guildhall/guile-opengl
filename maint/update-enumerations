@@ -6,6 +6,7 @@
              (ice-9 match)
              (sxml fold)
              ((srfi srfi-1) #:select (append-map))
+             (srfi srfi-69) ; alist->hash-table
              (texinfo serialize)
              (texinfo plain-text)
              (ice-9 pretty-print))
@@ -41,9 +42,34 @@
       (string->symbol (substring str 0 (- (string-length str) 5))))
      (else #f))))
 
+(define type-map-table (make-parameter #f))
+
+(define (use-type-map tm)
+  (type-map-table (alist->hash-table tm eq? hashq)))
+
+(define (type-map type)
+  (hash-table-ref/default (type-map-table) type #f))
+
+;; TODO: Some guesswork is applied here due to inconsistency between
+;; the various .spec and type map files.  Ideally, the type map can
+;; determine whether a type is a bitfield or enum.  However, some
+;; definitions in enum.spec use a different name to those in gl.spec
+;; and gl.tm.  For example, BufferAccessMask is known as
+;; ARB_map_buffer_range in enum.spec.
+;;
+;; Perhaps provide an additional map to translate these odd enum.spec
+;; names.
+
 (define (bitfield? enum)
-  (and-map (match-lambda ((name . value) (strip-bit name)))
-           (gl-enumeration-values enum)))
+  (let* ((type (make-gl-param-type (gl-enumeration-category enum)
+                                   'in
+                                   'value))
+         (mapped-type (type-map type)))
+    (if mapped-type
+        (eq? (gl-param-type-type mapped-type) 'GLbitfield)
+        ;; otherwise, resort to guesswork
+        (and-map (match-lambda ((name . value) (strip-bit name)))
+                 (gl-enumeration-values enum)))))
 
 (define (write-scm mod-name enums port)
   (display "\
@@ -83,7 +109,8 @@
       (if (bitfield? enum)
           `(define-bitfield ,(gl-enumeration-category enum)
              ,@(map (match-lambda
-                     ((name . value) (list (strip-bit name) value)))
+                     ((name . value) (list (or (strip-bit name) name)
+                                           value)))
                     (gl-enumeration-values enum)))
           `(define-enumeration ,(gl-enumeration-category enum)
              ,@(map (match-lambda
@@ -114,7 +141,8 @@
                   (para
                    ,@(list-intersperse
                       (map (lambda (name)
-                             `(code ,(symbol->string (strip-bit name))))
+                             `(code ,(symbol->string (or (strip-bit name)
+                                                         name))))
                            (map car (gl-enumeration-values enum)))
                      ", ")
                    "."))
@@ -143,7 +171,9 @@
       (write-texi mod-name enums port))))
 
 (define* (main arg0)
+  (use-type-map (parse-gl-type-map "gl.tm"))
   (write-enumerations 'gl (parse-gl-enumerations "enum.spec"))
+  (use-type-map (parse-gl-type-map "glx.tm"))
   (write-enumerations 'glx (parse-gl-enumerations "glxenum.spec")))
 
 (when (batch-mode?)

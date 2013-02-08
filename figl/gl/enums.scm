@@ -733,12 +733,12 @@
   (samples-3dfx 34484)
   (multisample-bit-3dfx 536870912))
 
-(define-enumeration
+(define-bitfield
   clear-buffer-mask
-  (depth-buffer-bit 256)
-  (accum-buffer-bit 512)
-  (stencil-buffer-bit 1024)
-  (color-buffer-bit 16384)
+  (depth-buffer 256)
+  (accum-buffer 512)
+  (stencil-buffer 1024)
+  (color-buffer 16384)
   (coverage-buffer-bit-nv 32768))
 
 (define-bitfield
@@ -2361,7 +2361,7 @@
   (copy-pixel-token 1798)
   (line-reset-token 1799))
 
-(define-enumeration
+(define-bitfield
   ffd-mask-sgix
   (texture-deformation-bit-sgix 1)
   (geometry-deformation-bit-sgix 2))
