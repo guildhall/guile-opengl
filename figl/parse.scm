@@ -229,30 +229,9 @@
                                 prefer-suffix)
                  all-names)))
 
-  (define (skip? s)
-    (or
-     ;; Skip double variants if we have a float variant.
-     ;; (http://www.opengl.org/wiki/Common_Mistakes#GL_DOUBLE).
-     (redundant-variant? s "d" "f")
-
-     ;; Skip byte variants if there is a short variant.
-     (redundant-variant? s "b" "s")
-
-     ;; Skip short variants if there is an int variant.
-     (redundant-variant? s "s" "i")
-
-     ;; Skip packed setters like glVertex3fv if e.g. glVertex3f exists.
-     (redundant-variant? s "v" "")
-     (redundant-variant? s "dv" "fv")
-     (redundant-variant? s "bv" "sv")
-     (redundant-variant? s "sv" "iv")))
-
   (filter-map
    (lambda (sxml)
      (match sxml
-       (('funcprototype ('funcdef return-type ('function (? skip?)))
-                        . _)
-        #f)
        (('funcprototype ('funcdef return-type ('function name))
                         ('paramdef ('parameter "void")))
         `(,(string->symbol name)

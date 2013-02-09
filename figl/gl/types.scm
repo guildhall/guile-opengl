@@ -45,28 +45,37 @@
             GLclampd
 
             GLboolean-*
+            GLbyte-*
+            GLubyte-*
             GLchar-*
-            GLdouble-*
+            GLshort-*
+            GLushort-*
+            GLint-*
+            GLuint-*
+            GLsizei-*
             GLenum-*
             GLfloat-*
-            GLint-*
-            GLsizei-*
-            GLubyte-*
-            GLuint-*
+            GLclampf-*
+            GLdouble-*
+            GLclampd-*
             GLvoid-*
             GLvoid-**
+
+            const-GLboolean-*
+            const-GLbyte-*
+            const-GLubyte-*
             const-GLchar-*
             const-GLchar-**
-            const-GLclampf-*
-            const-GLdouble-*
+            const-GLshort-*
+            const-GLushort-*
+            const-GLint-*
+            const-GLuint-*
+            const-GLsizei-*
             const-GLenum-*
             const-GLfloat-*
-            const-GLint-*
-            const-GLsizei-*
-            const-GLubyte*
-            const-GLubyte-*
-            const-GLubyte-*
-            const-GLuint-*
+            const-GLclampf-*
+            const-GLdouble-*
+            const-GLclampd-*
             const-GLvoid-*
             const-GLvoid-**
             void-*))
@@ -82,7 +91,7 @@
 (define-simple-foreign-type GLbyte ffi:int8)
 (define-simple-foreign-type GLubyte ffi:uint8)
 (define-simple-foreign-type GLchar ffi:int8)
-(define-simple-foreign-type Glshort ffi:int16)
+(define-simple-foreign-type GLshort ffi:int16)
 (define-simple-foreign-type GLushort ffi:uint16)
 (define-simple-foreign-type GLint ffi:int32)
 (define-simple-foreign-type GLuint ffi:uint32)
@@ -113,24 +122,33 @@
        (lambda (x) x)))))
 
 (define-array-foreign-type GLboolean-* GLboolean)
+(define-array-foreign-type GLbyte-* GLbyte)
+(define-array-foreign-type GLubyte-* GLubyte)
 (define-array-foreign-type GLchar-* GLchar)
-(define-array-foreign-type GLdouble-* GLdouble)
+(define-array-foreign-type GLshort-* GLshort)
+(define-array-foreign-type GLushort-* GLushort)
+(define-array-foreign-type GLint-* GLint)
+(define-array-foreign-type GLuint-* GLuint)
+(define-array-foreign-type GLsizei-* GLsizei)
 (define-array-foreign-type GLenum-* GLenum)
 (define-array-foreign-type GLfloat-* GLfloat)
-(define-array-foreign-type GLint-* GLint)
-(define-array-foreign-type GLsizei-* GLsizei)
-(define-array-foreign-type GLubyte-* GLubyte)
-(define-array-foreign-type GLuint-* GLuint)
+(define-array-foreign-type GLclampf-* GLclampf)
+(define-array-foreign-type GLdouble-* GLdouble)
+(define-array-foreign-type GLclampd-* GLclampd)
 
-(define-array-foreign-type const-GLclampf-* GLclampf)
-(define-array-foreign-type const-GLdouble-* GLdouble)
+(define-array-foreign-type const-GLboolean-* GLboolean)
+(define-array-foreign-type const-GLbyte-* GLbyte)
+(define-array-foreign-type const-GLubyte-* GLubyte)
+(define-array-foreign-type const-GLshort-* GLshort)
+(define-array-foreign-type const-GLushort-* GLushort)
+(define-array-foreign-type const-GLint-* GLint)
+(define-array-foreign-type const-GLuint-* GLuint)
+(define-array-foreign-type const-GLsizei-* GLsizei)
 (define-array-foreign-type const-GLenum-* GLenum)
 (define-array-foreign-type const-GLfloat-* GLfloat)
-(define-array-foreign-type const-GLint-* GLint)
-(define-array-foreign-type const-GLsizei-* GLsizei)
-(define-array-foreign-type const-GLubyte* GLubyte)
-(define-array-foreign-type const-GLubyte-* GLubyte)
-(define-array-foreign-type const-GLuint-* GLuint)
+(define-array-foreign-type const-GLclampf-* GLclampf)
+(define-array-foreign-type const-GLdouble-* GLdouble)
+(define-array-foreign-type const-GLclampd-* GLclampd)
 (define-array-foreign-type const-GLvoid-* GLvoid)
 
 (define-foreign-type const-GLchar-* '*

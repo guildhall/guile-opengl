@@ -85,12 +85,38 @@
     glColorTableParameterfv
     glColorTableParameteriv
     glColorTable
+    glColor3b
+    glColor3s
     glColor3i
     glColor3f
+    glColor3d
+    glColor3ub
+    glColor3us
     glColor3ui
+    glColor4b
+    glColor4s
     glColor4i
     glColor4f
+    glColor4d
+    glColor4ub
+    glColor4us
     glColor4ui
+    glColor3bv
+    glColor3sv
+    glColor3iv
+    glColor3fv
+    glColor3dv
+    glColor3ubv
+    glColor3usv
+    glColor3uiv
+    glColor4bv
+    glColor4sv
+    glColor4iv
+    glColor4fv
+    glColor4dv
+    glColor4ubv
+    glColor4usv
+    glColor4uiv
     glCompileShader
     glCompressedTexImage1D
     glCompressedTexImage2D
@@ -102,6 +128,8 @@
     glConvolutionFilter2D
     glConvolutionParameterf
     glConvolutionParameteri
+    glConvolutionParameterfv
+    glConvolutionParameteriv
     glCopyColorSubTable
     glCopyColorTable
     glCopyConvolutionFilter1D
@@ -133,6 +161,7 @@
     glDrawRangeElements
     glEdgeFlagPointer
     glEdgeFlag
+    glEdgeFlagv
     glEnableClientState
     glDisableClientState
     glEnableVertexAttribArray
@@ -140,7 +169,13 @@
     glEnable
     glDisable
     glEvalCoord1f
+    glEvalCoord1d
     glEvalCoord2f
+    glEvalCoord2d
+    glEvalCoord1fv
+    glEvalCoord1dv
+    glEvalCoord2fv
+    glEvalCoord2dv
     glEvalMesh1
     glEvalMesh2
     glEvalPoint1
@@ -149,9 +184,14 @@
     glFinish
     glFlush
     glFogCoordPointer
+    glFogCoordd
     glFogCoordf
+    glFogCoorddv
+    glFogCoordfv
     glFogf
     glFogi
+    glFogfv
+    glFogiv
     glFrontFace
     glFrustum
     glGenBuffers
@@ -179,6 +219,7 @@
     glGetHistogram
     glGetLightfv
     glGetLightiv
+    glGetMapdv
     glGetMapfv
     glGetMapiv
     glGetMaterialfv
@@ -188,6 +229,7 @@
     glGetMinmax
     glGetPixelMapfv
     glGetPixelMapuiv
+    glGetPixelMapusv
     glGetPointerv
     glGetPolygonStipple
     glGetProgramInfoLog
@@ -202,6 +244,7 @@
     glGetString
     glGetTexEnvfv
     glGetTexEnviv
+    glGetTexGendv
     glGetTexGenfv
     glGetTexGeniv
     glGetTexImage
@@ -213,6 +256,7 @@
     glGetUniformfv
     glGetUniformiv
     glGetVertexAttribPointerv
+    glGetVertexAttribdv
     glGetVertexAttribfv
     glGetVertexAttribiv
     glGetBooleanv
@@ -223,9 +267,16 @@
     glHistogram
     glIndexMask
     glIndexPointer
+    glIndexs
     glIndexi
     glIndexf
+    glIndexd
     glIndexub
+    glIndexsv
+    glIndexiv
+    glIndexfv
+    glIndexdv
+    glIndexubv
     glInitNames
     glInterleavedArrays
     glIsBuffer
@@ -237,48 +288,95 @@
     glIsTexture
     glLightModelf
     glLightModeli
+    glLightModelfv
+    glLightModeliv
     glLightf
     glLighti
+    glLightfv
+    glLightiv
     glLineStipple
     glLineWidth
     glLinkProgram
     glListBase
     glLoadIdentity
+    glLoadMatrixd
     glLoadMatrixf
     glLoadName
+    glLoadTransposeMatrixd
     glLoadTransposeMatrixf
     glLogicOp
     glMap1f
+    glMap1d
     glMap2f
+    glMap2d
     glMapBuffer
     glUnmapBuffer
+    glMapGrid1d
     glMapGrid1f
+    glMapGrid2d
     glMapGrid2f
     glMaterialf
     glMateriali
+    glMaterialfv
+    glMaterialiv
     glMatrixMode
     glMinmax
     glMultiDrawArrays
     glMultiDrawElements
+    glMultiTexCoord1s
     glMultiTexCoord1i
     glMultiTexCoord1f
+    glMultiTexCoord1d
+    glMultiTexCoord2s
     glMultiTexCoord2i
     glMultiTexCoord2f
+    glMultiTexCoord2d
+    glMultiTexCoord3s
     glMultiTexCoord3i
     glMultiTexCoord3f
+    glMultiTexCoord3d
+    glMultiTexCoord4s
     glMultiTexCoord4i
     glMultiTexCoord4f
+    glMultiTexCoord4d
+    glMultiTexCoord1sv
+    glMultiTexCoord1iv
+    glMultiTexCoord1fv
+    glMultiTexCoord1dv
+    glMultiTexCoord2sv
+    glMultiTexCoord2iv
+    glMultiTexCoord2fv
+    glMultiTexCoord2dv
+    glMultiTexCoord3sv
+    glMultiTexCoord3iv
+    glMultiTexCoord3fv
+    glMultiTexCoord3dv
+    glMultiTexCoord4sv
+    glMultiTexCoord4iv
+    glMultiTexCoord4fv
+    glMultiTexCoord4dv
+    glMultMatrixd
     glMultMatrixf
+    glMultTransposeMatrixd
     glMultTransposeMatrixf
     glNewList
     glEndList
     glNormalPointer
+    glNormal3b
+    glNormal3d
     glNormal3f
     glNormal3i
+    glNormal3s
+    glNormal3bv
+    glNormal3dv
+    glNormal3fv
+    glNormal3iv
+    glNormal3sv
     glOrtho
     glPassThrough
     glPixelMapfv
     glPixelMapuiv
+    glPixelMapusv
     glPixelStoref
     glPixelStorei
     glPixelTransferf
@@ -286,6 +384,8 @@
     glPixelZoom
     glPointParameterf
     glPointParameteri
+    glPointParameterfv
+    glPointParameteriv
     glPointSize
     glPolygonMode
     glPolygonOffset
@@ -299,27 +399,66 @@
     glPopMatrix
     glPushName
     glPopName
+    glRasterPos2s
     glRasterPos2i
     glRasterPos2f
+    glRasterPos2d
+    glRasterPos3s
     glRasterPos3i
     glRasterPos3f
+    glRasterPos3d
+    glRasterPos4s
     glRasterPos4i
     glRasterPos4f
+    glRasterPos4d
+    glRasterPos2sv
+    glRasterPos2iv
+    glRasterPos2fv
+    glRasterPos2dv
+    glRasterPos3sv
+    glRasterPos3iv
+    glRasterPos3fv
+    glRasterPos3dv
+    glRasterPos4sv
+    glRasterPos4iv
+    glRasterPos4fv
+    glRasterPos4dv
     glReadBuffer
     glReadPixels
+    glRectd
     glRectf
     glRecti
+    glRects
+    glRectdv
+    glRectfv
+    glRectiv
+    glRectsv
     glRenderMode
     glResetHistogram
     glResetMinmax
+    glRotated
     glRotatef
     glSampleCoverage
+    glScaled
     glScalef
     glScissor
     glSecondaryColorPointer
+    glSecondaryColor3b
+    glSecondaryColor3s
     glSecondaryColor3i
     glSecondaryColor3f
+    glSecondaryColor3d
+    glSecondaryColor3ub
+    glSecondaryColor3us
     glSecondaryColor3ui
+    glSecondaryColor3bv
+    glSecondaryColor3sv
+    glSecondaryColor3iv
+    glSecondaryColor3fv
+    glSecondaryColor3dv
+    glSecondaryColor3ubv
+    glSecondaryColor3usv
+    glSecondaryColor3uiv
     glSelectBuffer
     glSeparableFilter2D
     glShadeModel
@@ -331,26 +470,59 @@
     glStencilOpSeparate
     glStencilOp
     glTexCoordPointer
+    glTexCoord1s
     glTexCoord1i
     glTexCoord1f
+    glTexCoord1d
+    glTexCoord2s
     glTexCoord2i
     glTexCoord2f
+    glTexCoord2d
+    glTexCoord3s
     glTexCoord3i
     glTexCoord3f
+    glTexCoord3d
+    glTexCoord4s
     glTexCoord4i
     glTexCoord4f
+    glTexCoord4d
+    glTexCoord1sv
+    glTexCoord1iv
+    glTexCoord1fv
+    glTexCoord1dv
+    glTexCoord2sv
+    glTexCoord2iv
+    glTexCoord2fv
+    glTexCoord2dv
+    glTexCoord3sv
+    glTexCoord3iv
+    glTexCoord3fv
+    glTexCoord3dv
+    glTexCoord4sv
+    glTexCoord4iv
+    glTexCoord4fv
+    glTexCoord4dv
     glTexEnvf
     glTexEnvi
+    glTexEnvfv
+    glTexEnviv
     glTexGeni
     glTexGenf
+    glTexGend
+    glTexGeniv
+    glTexGenfv
+    glTexGendv
     glTexImage1D
     glTexImage2D
     glTexImage3D
     glTexParameterf
     glTexParameteri
+    glTexParameterfv
+    glTexParameteriv
     glTexSubImage1D
     glTexSubImage2D
     glTexSubImage3D
+    glTranslated
     glTranslatef
     glUniform1f
     glUniform2f
@@ -360,6 +532,14 @@
     glUniform2i
     glUniform3i
     glUniform4i
+    glUniform1fv
+    glUniform2fv
+    glUniform3fv
+    glUniform4fv
+    glUniform1iv
+    glUniform2iv
+    glUniform3iv
+    glUniform4iv
     glUniformMatrix2fv
     glUniformMatrix3fv
     glUniformMatrix4fv
@@ -374,29 +554,82 @@
     glVertexAttribPointer
     glVertexAttrib1f
     glVertexAttrib1s
+    glVertexAttrib1d
     glVertexAttrib2f
     glVertexAttrib2s
+    glVertexAttrib2d
     glVertexAttrib3f
     glVertexAttrib3s
+    glVertexAttrib3d
     glVertexAttrib4f
     glVertexAttrib4s
+    glVertexAttrib4d
     glVertexAttrib4Nub
+    glVertexAttrib1fv
+    glVertexAttrib1sv
+    glVertexAttrib1dv
+    glVertexAttrib2fv
+    glVertexAttrib2sv
+    glVertexAttrib2dv
+    glVertexAttrib3fv
+    glVertexAttrib3sv
+    glVertexAttrib3dv
+    glVertexAttrib4fv
+    glVertexAttrib4sv
+    glVertexAttrib4dv
     glVertexAttrib4iv
+    glVertexAttrib4bv
+    glVertexAttrib4ubv
+    glVertexAttrib4usv
     glVertexAttrib4uiv
+    glVertexAttrib4Nbv
+    glVertexAttrib4Nsv
     glVertexAttrib4Niv
+    glVertexAttrib4Nubv
+    glVertexAttrib4Nusv
     glVertexAttrib4Nuiv
     glVertexPointer
+    glVertex2s
     glVertex2i
     glVertex2f
+    glVertex2d
+    glVertex3s
     glVertex3i
     glVertex3f
+    glVertex3d
+    glVertex4s
     glVertex4i
     glVertex4f
+    glVertex4d
+    glVertex2sv
+    glVertex2iv
+    glVertex2fv
+    glVertex2dv
+    glVertex3sv
+    glVertex3iv
+    glVertex3fv
+    glVertex3dv
+    glVertex4sv
+    glVertex4iv
+    glVertex4fv
+    glVertex4dv
     glViewport
+    glWindowPos2s
     glWindowPos2i
     glWindowPos2f
+    glWindowPos2d
+    glWindowPos3s
     glWindowPos3i
-    glWindowPos3f))
+    glWindowPos3f
+    glWindowPos3d
+    glWindowPos2sv
+    glWindowPos2iv
+    glWindowPos2fv
+    glWindowPos2dv
+    glWindowPos3sv
+    glWindowPos3iv
+    glWindowPos3fv
+    glWindowPos3dv))
 
 (define-gl-procedures
   ((glAccum (op GLenum) (value GLfloat) -> void))
@@ -2693,7 +2926,19 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
-  ((glColor3i
+  ((glColor3b
+     (red GLbyte)
+     (green GLbyte)
+     (blue GLbyte)
+     ->
+     void)
+   (glColor3s
+     (red GLshort)
+     (green GLshort)
+     (blue GLshort)
+     ->
+     void)
+   (glColor3i
      (red GLint)
      (green GLint)
      (blue GLint)
@@ -2705,10 +2950,42 @@ between the execution of `glBegin' and the corresponding execution of
      (blue GLfloat)
      ->
      void)
+   (glColor3d
+     (red GLdouble)
+     (green GLdouble)
+     (blue GLdouble)
+     ->
+     void)
+   (glColor3ub
+     (red GLubyte)
+     (green GLubyte)
+     (blue GLubyte)
+     ->
+     void)
+   (glColor3us
+     (red GLushort)
+     (green GLushort)
+     (blue GLushort)
+     ->
+     void)
    (glColor3ui
      (red GLuint)
      (green GLuint)
      (blue GLuint)
+     ->
+     void)
+   (glColor4b
+     (red GLbyte)
+     (green GLbyte)
+     (blue GLbyte)
+     (alpha GLbyte)
+     ->
+     void)
+   (glColor4s
+     (red GLshort)
+     (green GLshort)
+     (blue GLshort)
+     (alpha GLshort)
      ->
      void)
    (glColor4i
@@ -2725,13 +3002,50 @@ between the execution of `glBegin' and the corresponding execution of
      (alpha GLfloat)
      ->
      void)
+   (glColor4d
+     (red GLdouble)
+     (green GLdouble)
+     (blue GLdouble)
+     (alpha GLdouble)
+     ->
+     void)
+   (glColor4ub
+     (red GLubyte)
+     (green GLubyte)
+     (blue GLubyte)
+     (alpha GLubyte)
+     ->
+     void)
+   (glColor4us
+     (red GLushort)
+     (green GLushort)
+     (blue GLushort)
+     (alpha GLushort)
+     ->
+     void)
    (glColor4ui
      (red GLuint)
      (green GLuint)
      (blue GLuint)
      (alpha GLuint)
      ->
-     void))
+     void)
+   (glColor3bv (v const-GLbyte-*) -> void)
+   (glColor3sv (v const-GLshort-*) -> void)
+   (glColor3iv (v const-GLint-*) -> void)
+   (glColor3fv (v const-GLfloat-*) -> void)
+   (glColor3dv (v const-GLdouble-*) -> void)
+   (glColor3ubv (v const-GLubyte-*) -> void)
+   (glColor3usv (v const-GLushort-*) -> void)
+   (glColor3uiv (v const-GLuint-*) -> void)
+   (glColor4bv (v const-GLbyte-*) -> void)
+   (glColor4sv (v const-GLshort-*) -> void)
+   (glColor4iv (v const-GLint-*) -> void)
+   (glColor4fv (v const-GLfloat-*) -> void)
+   (glColor4dv (v const-GLdouble-*) -> void)
+   (glColor4ubv (v const-GLubyte-*) -> void)
+   (glColor4usv (v const-GLushort-*) -> void)
+   (glColor4uiv (v const-GLuint-*) -> void))
   "Set the current color.
 
 RED
@@ -3798,6 +4112,18 @@ execution of `glEnd'.")
      (target GLenum)
      (pname GLenum)
      (params GLint)
+     ->
+     void)
+   (glConvolutionParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glConvolutionParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLint-*)
      ->
      void))
   "Set convolution parameters.
@@ -6124,7 +6450,8 @@ enabled, the edge flag array is used when `glDrawArrays',
 `GL_INVALID_ENUM' is generated if STRIDE is negative.")
 
 (define-gl-procedures
-  ((glEdgeFlag (flag GLboolean) -> void))
+  ((glEdgeFlag (flag GLboolean) -> void)
+   (glEdgeFlagv (flag const-GLboolean-*) -> void))
   "Flag edges as either boundary or nonboundary.
 
 FLAG
@@ -6718,7 +7045,13 @@ execution of `glEnd'.")
 
 (define-gl-procedures
   ((glEvalCoord1f (u GLfloat) -> void)
-   (glEvalCoord2f (u GLfloat) (v GLfloat) -> void))
+   (glEvalCoord1d (u GLdouble) -> void)
+   (glEvalCoord2f (u GLfloat) (v GLfloat) -> void)
+   (glEvalCoord2d (u GLdouble) (v GLdouble) -> void)
+   (glEvalCoord1fv (u const-GLfloat-*) -> void)
+   (glEvalCoord1dv (u const-GLdouble-*) -> void)
+   (glEvalCoord2fv (u const-GLfloat-*) -> void)
+   (glEvalCoord2dv (u const-GLdouble-*) -> void))
   "Evaluate enabled one- and two-dimensional maps.
 
 U
@@ -7168,7 +7501,10 @@ called.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedures
-  ((glFogCoordf (coord GLfloat) -> void))
+  ((glFogCoordd (coord GLdouble) -> void)
+   (glFogCoordf (coord GLfloat) -> void)
+   (glFogCoorddv (coord GLdouble-*) -> void)
+   (glFogCoordfv (coord GLfloat-*) -> void))
   "Set the current fog coordinates.
 
 COORD
@@ -7180,7 +7516,17 @@ interpolated and used in computing the fog color (see `glFog').")
 
 (define-gl-procedures
   ((glFogf (pname GLenum) (param GLfloat) -> void)
-   (glFogi (pname GLenum) (param GLint) -> void))
+   (glFogi (pname GLenum) (param GLint) -> void)
+   (glFogfv
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glFogiv
+     (pname GLenum)
+     (params const-GLint-*)
+     ->
+     void))
   "Specify fog parameters.
 
 PNAME
@@ -8866,7 +9212,13 @@ value.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
-  ((glGetMapfv
+  ((glGetMapdv
+     (target GLenum)
+     (query GLenum)
+     (v GLdouble-*)
+     ->
+     void)
+   (glGetMapfv
      (target GLenum)
      (query GLenum)
      (v GLfloat-*)
@@ -9209,6 +9561,11 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
    (glGetPixelMapuiv
      (map GLenum)
      (data GLuint-*)
+     ->
+     void)
+   (glGetPixelMapusv
+     (map GLenum)
+     (data GLushort-*)
      ->
      void))
   "Return the specified pixel map.
@@ -10097,7 +10454,13 @@ value.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
-  ((glGetTexGenfv
+  ((glGetTexGendv
+     (coord GLenum)
+     (pname GLenum)
+     (params GLdouble-*)
+     ->
+     void)
+   (glGetTexGenfv
      (coord GLenum)
      (pname GLenum)
      (params GLfloat-*)
@@ -10700,7 +11063,13 @@ object's data store.
 `GL_INVALID_ENUM' is generated if PNAME is not an accepted value.")
 
 (define-gl-procedures
-  ((glGetVertexAttribfv
+  ((glGetVertexAttribdv
+     (index GLuint)
+     (pname GLenum)
+     (params GLdouble-*)
+     ->
+     void)
+   (glGetVertexAttribfv
      (index GLuint)
      (pname GLenum)
      (params GLfloat-*)
@@ -13555,9 +13924,16 @@ enabled, the color index array is used when `glDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedures
-  ((glIndexi (c GLint) -> void)
+  ((glIndexs (c GLshort) -> void)
+   (glIndexi (c GLint) -> void)
    (glIndexf (c GLfloat) -> void)
-   (glIndexub (c GLubyte) -> void))
+   (glIndexd (c GLdouble) -> void)
+   (glIndexub (c GLubyte) -> void)
+   (glIndexsv (c const-GLshort-*) -> void)
+   (glIndexiv (c const-GLint-*) -> void)
+   (glIndexfv (c const-GLfloat-*) -> void)
+   (glIndexdv (c const-GLdouble-*) -> void)
+   (glIndexubv (c const-GLubyte-*) -> void))
   "Set the current color index.
 
 C
@@ -13994,6 +14370,16 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (pname GLenum)
      (param GLint)
      ->
+     void)
+   (glLightModelfv
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glLightModeliv
+     (pname GLenum)
+     (params const-GLint-*)
+     ->
      void))
   "Set the lighting model parameters.
 
@@ -14108,6 +14494,18 @@ between the execution of `glBegin' and the corresponding execution of
      (light GLenum)
      (pname GLenum)
      (param GLint)
+     ->
+     void)
+   (glLightfv
+     (light GLenum)
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glLightiv
+     (light GLenum)
+     (pname GLenum)
+     (params const-GLint-*)
      ->
      void))
   "Set light source parameters.
@@ -14475,7 +14873,8 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
-  ((glLoadMatrixf (m const-GLfloat-*) -> void))
+  ((glLoadMatrixd (m const-GLdouble-*) -> void)
+   (glLoadMatrixf (m const-GLfloat-*) -> void))
   "Replace the current matrix with the specified matrix.
 
 M
@@ -14531,7 +14930,11 @@ name stack is empty.
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
-  ((glLoadTransposeMatrixf
+  ((glLoadTransposeMatrixd
+     (m const-GLdouble-*)
+     ->
+     void)
+   (glLoadTransposeMatrixf
      (m const-GLfloat-*)
      ->
      void))
@@ -14661,6 +15064,15 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (stride GLint)
      (order GLint)
      (points const-GLfloat-*)
+     ->
+     void)
+   (glMap1d
+     (target GLenum)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     (stride GLint)
+     (order GLint)
+     (points const-GLdouble-*)
      ->
      void))
   "Define a one-dimensional evaluator.
@@ -14826,6 +15238,19 @@ of `GL_ACTIVE_TEXTURE' is not `GL_TEXTURE0'.")
      (vstride GLint)
      (vorder GLint)
      (points const-GLfloat-*)
+     ->
+     void)
+   (glMap2d
+     (target GLenum)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     (ustride GLint)
+     (uorder GLint)
+     (v1 GLdouble)
+     (v2 GLdouble)
+     (vstride GLint)
+     (vorder GLint)
+     (points const-GLdouble-*)
      ->
      void))
   "Define a two-dimensional evaluator.
@@ -15092,10 +15517,25 @@ is executed between the execution of `glBegin' and the corresponding
 execution of `glEnd'.")
 
 (define-gl-procedures
-  ((glMapGrid1f
+  ((glMapGrid1d
+     (un GLint)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     ->
+     void)
+   (glMapGrid1f
      (un GLint)
      (u1 GLfloat)
      (u2 GLfloat)
+     ->
+     void)
+   (glMapGrid2d
+     (un GLint)
+     (u1 GLdouble)
+     (u2 GLdouble)
+     (vn GLint)
+     (v1 GLdouble)
+     (v2 GLdouble)
      ->
      void)
    (glMapGrid2f
@@ -15174,6 +15614,18 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (face GLenum)
      (pname GLenum)
      (param GLint)
+     ->
+     void)
+   (glMaterialfv
+     (face GLenum)
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glMaterialiv
+     (face GLenum)
+     (pname GLenum)
+     (params const-GLint-*)
      ->
      void))
   "Specify material parameters for the lighting model.
@@ -15490,7 +15942,12 @@ data store is currently mapped.
 between the execution of `glBegin' and the corresponding `glEnd'.")
 
 (define-gl-procedures
-  ((glMultiTexCoord1i
+  ((glMultiTexCoord1s
+     (target GLenum)
+     (s GLshort)
+     ->
+     void)
+   (glMultiTexCoord1i
      (target GLenum)
      (s GLint)
      ->
@@ -15498,6 +15955,17 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
    (glMultiTexCoord1f
      (target GLenum)
      (s GLfloat)
+     ->
+     void)
+   (glMultiTexCoord1d
+     (target GLenum)
+     (s GLdouble)
+     ->
+     void)
+   (glMultiTexCoord2s
+     (target GLenum)
+     (s GLshort)
+     (t GLshort)
      ->
      void)
    (glMultiTexCoord2i
@@ -15510,6 +15978,19 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (target GLenum)
      (s GLfloat)
      (t GLfloat)
+     ->
+     void)
+   (glMultiTexCoord2d
+     (target GLenum)
+     (s GLdouble)
+     (t GLdouble)
+     ->
+     void)
+   (glMultiTexCoord3s
+     (target GLenum)
+     (s GLshort)
+     (t GLshort)
+     (r GLshort)
      ->
      void)
    (glMultiTexCoord3i
@@ -15526,6 +16007,21 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (r GLfloat)
      ->
      void)
+   (glMultiTexCoord3d
+     (target GLenum)
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     ->
+     void)
+   (glMultiTexCoord4s
+     (target GLenum)
+     (s GLshort)
+     (t GLshort)
+     (r GLshort)
+     (q GLshort)
+     ->
+     void)
    (glMultiTexCoord4i
      (target GLenum)
      (s GLint)
@@ -15540,6 +16036,94 @@ between the execution of `glBegin' and the corresponding `glEnd'.")
      (t GLfloat)
      (r GLfloat)
      (q GLfloat)
+     ->
+     void)
+   (glMultiTexCoord4d
+     (target GLenum)
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     (q GLdouble)
+     ->
+     void)
+   (glMultiTexCoord1sv
+     (target GLenum)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glMultiTexCoord1iv
+     (target GLenum)
+     (v const-GLint-*)
+     ->
+     void)
+   (glMultiTexCoord1fv
+     (target GLenum)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glMultiTexCoord1dv
+     (target GLenum)
+     (v const-GLdouble-*)
+     ->
+     void)
+   (glMultiTexCoord2sv
+     (target GLenum)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glMultiTexCoord2iv
+     (target GLenum)
+     (v const-GLint-*)
+     ->
+     void)
+   (glMultiTexCoord2fv
+     (target GLenum)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glMultiTexCoord2dv
+     (target GLenum)
+     (v const-GLdouble-*)
+     ->
+     void)
+   (glMultiTexCoord3sv
+     (target GLenum)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glMultiTexCoord3iv
+     (target GLenum)
+     (v const-GLint-*)
+     ->
+     void)
+   (glMultiTexCoord3fv
+     (target GLenum)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glMultiTexCoord3dv
+     (target GLenum)
+     (v const-GLdouble-*)
+     ->
+     void)
+   (glMultiTexCoord4sv
+     (target GLenum)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glMultiTexCoord4iv
+     (target GLenum)
+     (v const-GLint-*)
+     ->
+     void)
+   (glMultiTexCoord4fv
+     (target GLenum)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glMultiTexCoord4dv
+     (target GLenum)
+     (v const-GLdouble-*)
      ->
      void))
   "Set the current texture coordinates.
@@ -15573,7 +16157,8 @@ with each vertex and with the current raster position. Initially, the
 values for (S,TRQ) are (0,001) .")
 
 (define-gl-procedures
-  ((glMultMatrixf (m const-GLfloat-*) -> void))
+  ((glMultMatrixd (m const-GLdouble-*) -> void)
+   (glMultMatrixf (m const-GLfloat-*) -> void))
   "Multiply the current matrix with the specified matrix.
 
 M
@@ -15592,7 +16177,11 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
-  ((glMultTransposeMatrixf
+  ((glMultTransposeMatrixd
+     (m const-GLdouble-*)
+     ->
+     void)
+   (glMultTransposeMatrixf
      (m const-GLfloat-*)
      ->
      void))
@@ -15742,7 +16331,19 @@ the normal array is used when `glDrawArrays', `glMultiDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedures
-  ((glNormal3f
+  ((glNormal3b
+     (nx GLbyte)
+     (ny GLbyte)
+     (nz GLbyte)
+     ->
+     void)
+   (glNormal3d
+     (nx GLdouble)
+     (ny GLdouble)
+     (nz GLdouble)
+     ->
+     void)
+   (glNormal3f
      (nx GLfloat)
      (ny GLfloat)
      (nz GLfloat)
@@ -15753,7 +16354,18 @@ the normal array is used when `glDrawArrays', `glMultiDrawArrays',
      (ny GLint)
      (nz GLint)
      ->
-     void))
+     void)
+   (glNormal3s
+     (nx GLshort)
+     (ny GLshort)
+     (nz GLshort)
+     ->
+     void)
+   (glNormal3bv (v const-GLbyte-*) -> void)
+   (glNormal3dv (v const-GLdouble-*) -> void)
+   (glNormal3fv (v const-GLfloat-*) -> void)
+   (glNormal3iv (v const-GLint-*) -> void)
+   (glNormal3sv (v const-GLshort-*) -> void))
   "Set the current normal vector.
 
 NX
@@ -15880,6 +16492,12 @@ between the execution of `glBegin' and the corresponding execution of
      (map GLenum)
      (mapsize GLsizei)
      (values const-GLuint-*)
+     ->
+     void)
+   (glPixelMapusv
+     (map GLenum)
+     (mapsize GLsizei)
+     (values const-GLushort-*)
      ->
      void))
   "Set up pixel transfer maps.
@@ -16675,6 +17293,16 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
    (glPointParameteri
      (pname GLenum)
      (param GLint)
+     ->
+     void)
+   (glPointParameterfv
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glPointParameteriv
+     (pname GLenum)
+     (params const-GLint-*)
      ->
      void))
   "Specify point parameters.
@@ -17626,8 +18254,16 @@ executed between a call to `glBegin' and the corresponding call to
 `glEnd'.")
 
 (define-gl-procedures
-  ((glRasterPos2i (x GLint) (y GLint) -> void)
+  ((glRasterPos2s (x GLshort) (y GLshort) -> void)
+   (glRasterPos2i (x GLint) (y GLint) -> void)
    (glRasterPos2f (x GLfloat) (y GLfloat) -> void)
+   (glRasterPos2d (x GLdouble) (y GLdouble) -> void)
+   (glRasterPos3s
+     (x GLshort)
+     (y GLshort)
+     (z GLshort)
+     ->
+     void)
    (glRasterPos3i
      (x GLint)
      (y GLint)
@@ -17638,6 +18274,19 @@ executed between a call to `glBegin' and the corresponding call to
      (x GLfloat)
      (y GLfloat)
      (z GLfloat)
+     ->
+     void)
+   (glRasterPos3d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glRasterPos4s
+     (x GLshort)
+     (y GLshort)
+     (z GLshort)
+     (w GLshort)
      ->
      void)
    (glRasterPos4i
@@ -17653,7 +18302,26 @@ executed between a call to `glBegin' and the corresponding call to
      (z GLfloat)
      (w GLfloat)
      ->
-     void))
+     void)
+   (glRasterPos4d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     (w GLdouble)
+     ->
+     void)
+   (glRasterPos2sv (v const-GLshort-*) -> void)
+   (glRasterPos2iv (v const-GLint-*) -> void)
+   (glRasterPos2fv (v const-GLfloat-*) -> void)
+   (glRasterPos2dv (v const-GLdouble-*) -> void)
+   (glRasterPos3sv (v const-GLshort-*) -> void)
+   (glRasterPos3iv (v const-GLint-*) -> void)
+   (glRasterPos3fv (v const-GLfloat-*) -> void)
+   (glRasterPos3dv (v const-GLdouble-*) -> void)
+   (glRasterPos4sv (v const-GLshort-*) -> void)
+   (glRasterPos4iv (v const-GLint-*) -> void)
+   (glRasterPos4fv (v const-GLfloat-*) -> void)
+   (glRasterPos4dv (v const-GLdouble-*) -> void))
   "Specify the raster position for pixel operations.
 
 X
@@ -18007,7 +18675,14 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
-  ((glRectf
+  ((glRectd
+     (x1 GLdouble)
+     (y1 GLdouble)
+     (x2 GLdouble)
+     (y2 GLdouble)
+     ->
+     void)
+   (glRectf
      (x1 GLfloat)
      (y1 GLfloat)
      (x2 GLfloat)
@@ -18019,6 +18694,33 @@ between the execution of `glBegin' and the corresponding execution of
      (y1 GLint)
      (x2 GLint)
      (y2 GLint)
+     ->
+     void)
+   (glRects
+     (x1 GLshort)
+     (y1 GLshort)
+     (x2 GLshort)
+     (y2 GLshort)
+     ->
+     void)
+   (glRectdv
+     (v1 const-GLdouble-*)
+     (v2 const-GLdouble-*)
+     ->
+     void)
+   (glRectfv
+     (v1 const-GLfloat-*)
+     (v2 const-GLfloat-*)
+     ->
+     void)
+   (glRectiv
+     (v1 const-GLint-*)
+     (v2 const-GLint-*)
+     ->
+     void)
+   (glRectsv
+     (v1 const-GLshort-*)
+     (v2 const-GLshort-*)
      ->
      void))
   "Draw a rectangle.
@@ -18155,7 +18857,14 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
-  ((glRotatef
+  ((glRotated
+     (angle GLdouble)
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glRotatef
      (angle GLfloat)
      (x GLfloat)
      (y GLfloat)
@@ -18242,7 +18951,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
-  ((glScalef
+  ((glScaled
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glScalef
      (x GLfloat)
      (y GLfloat)
      (z GLfloat)
@@ -18380,7 +19095,19 @@ called.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedures
-  ((glSecondaryColor3i
+  ((glSecondaryColor3b
+     (red GLbyte)
+     (green GLbyte)
+     (blue GLbyte)
+     ->
+     void)
+   (glSecondaryColor3s
+     (red GLshort)
+     (green GLshort)
+     (blue GLshort)
+     ->
+     void)
+   (glSecondaryColor3i
      (red GLint)
      (green GLint)
      (blue GLint)
@@ -18392,12 +19119,47 @@ called.
      (blue GLfloat)
      ->
      void)
+   (glSecondaryColor3d
+     (red GLdouble)
+     (green GLdouble)
+     (blue GLdouble)
+     ->
+     void)
+   (glSecondaryColor3ub
+     (red GLubyte)
+     (green GLubyte)
+     (blue GLubyte)
+     ->
+     void)
+   (glSecondaryColor3us
+     (red GLushort)
+     (green GLushort)
+     (blue GLushort)
+     ->
+     void)
    (glSecondaryColor3ui
      (red GLuint)
      (green GLuint)
      (blue GLuint)
      ->
-     void))
+     void)
+   (glSecondaryColor3bv (v const-GLbyte-*) -> void)
+   (glSecondaryColor3sv (v const-GLshort-*) -> void)
+   (glSecondaryColor3iv (v const-GLint-*) -> void)
+   (glSecondaryColor3fv (v const-GLfloat-*) -> void)
+   (glSecondaryColor3dv
+     (v const-GLdouble-*)
+     ->
+     void)
+   (glSecondaryColor3ubv
+     (v const-GLubyte-*)
+     ->
+     void)
+   (glSecondaryColor3usv
+     (v const-GLushort-*)
+     ->
+     void)
+   (glSecondaryColor3uiv (v const-GLuint-*) -> void))
   "Set the current secondary color.
 
 RED
@@ -19325,10 +20087,20 @@ called.
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedures
-  ((glTexCoord1i (s GLint) -> void)
+  ((glTexCoord1s (s GLshort) -> void)
+   (glTexCoord1i (s GLint) -> void)
    (glTexCoord1f (s GLfloat) -> void)
+   (glTexCoord1d (s GLdouble) -> void)
+   (glTexCoord2s (s GLshort) (t GLshort) -> void)
    (glTexCoord2i (s GLint) (t GLint) -> void)
    (glTexCoord2f (s GLfloat) (t GLfloat) -> void)
+   (glTexCoord2d (s GLdouble) (t GLdouble) -> void)
+   (glTexCoord3s
+     (s GLshort)
+     (t GLshort)
+     (r GLshort)
+     ->
+     void)
    (glTexCoord3i
      (s GLint)
      (t GLint)
@@ -19339,6 +20111,19 @@ called.
      (s GLfloat)
      (t GLfloat)
      (r GLfloat)
+     ->
+     void)
+   (glTexCoord3d
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     ->
+     void)
+   (glTexCoord4s
+     (s GLshort)
+     (t GLshort)
+     (r GLshort)
+     (q GLshort)
      ->
      void)
    (glTexCoord4i
@@ -19354,7 +20139,30 @@ called.
      (r GLfloat)
      (q GLfloat)
      ->
-     void))
+     void)
+   (glTexCoord4d
+     (s GLdouble)
+     (t GLdouble)
+     (r GLdouble)
+     (q GLdouble)
+     ->
+     void)
+   (glTexCoord1sv (v const-GLshort-*) -> void)
+   (glTexCoord1iv (v const-GLint-*) -> void)
+   (glTexCoord1fv (v const-GLfloat-*) -> void)
+   (glTexCoord1dv (v const-GLdouble-*) -> void)
+   (glTexCoord2sv (v const-GLshort-*) -> void)
+   (glTexCoord2iv (v const-GLint-*) -> void)
+   (glTexCoord2fv (v const-GLfloat-*) -> void)
+   (glTexCoord2dv (v const-GLdouble-*) -> void)
+   (glTexCoord3sv (v const-GLshort-*) -> void)
+   (glTexCoord3iv (v const-GLint-*) -> void)
+   (glTexCoord3fv (v const-GLfloat-*) -> void)
+   (glTexCoord3dv (v const-GLdouble-*) -> void)
+   (glTexCoord4sv (v const-GLshort-*) -> void)
+   (glTexCoord4iv (v const-GLint-*) -> void)
+   (glTexCoord4fv (v const-GLfloat-*) -> void)
+   (glTexCoord4dv (v const-GLdouble-*) -> void))
   "Set the current texture coordinates.
 
 S
@@ -19388,6 +20196,18 @@ values for S, T, R, and Q are (0, 0, 0, 1).")
      (target GLenum)
      (pname GLenum)
      (param GLint)
+     ->
+     void)
+   (glTexEnvfv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glTexEnviv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLint-*)
      ->
      void))
   "Set texture environment parameters.
@@ -19742,6 +20562,30 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (coord GLenum)
      (pname GLenum)
      (param GLfloat)
+     ->
+     void)
+   (glTexGend
+     (coord GLenum)
+     (pname GLenum)
+     (param GLdouble)
+     ->
+     void)
+   (glTexGeniv
+     (coord GLenum)
+     (pname GLenum)
+     (params const-GLint-*)
+     ->
+     void)
+   (glTexGenfv
+     (coord GLenum)
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glTexGendv
+     (coord GLenum)
+     (pname GLenum)
+     (params const-GLdouble-*)
      ->
      void))
   "Control the generation of texture coordinates.
@@ -20852,6 +21696,18 @@ between the execution of `glBegin' and the corresponding execution of
      (pname GLenum)
      (param GLint)
      ->
+     void)
+   (glTexParameterfv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLfloat-*)
+     ->
+     void)
+   (glTexParameteriv
+     (target GLenum)
+     (pname GLenum)
+     (params const-GLint-*)
+     ->
      void))
   "Set texture parameters.
 
@@ -21527,7 +22383,13 @@ between the execution of `glBegin' and the corresponding execution of
 `glEnd'.")
 
 (define-gl-procedures
-  ((glTranslatef
+  ((glTranslated
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glTranslatef
      (x GLfloat)
      (y GLfloat)
      (z GLfloat)
@@ -21607,6 +22469,54 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (v1 GLint)
      (v2 GLint)
      (v3 GLint)
+     ->
+     void)
+   (glUniform1fv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniform2fv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniform3fv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniform4fv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLfloat-*)
+     ->
+     void)
+   (glUniform1iv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLint-*)
+     ->
+     void)
+   (glUniform2iv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLint-*)
+     ->
+     void)
+   (glUniform3iv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLint-*)
+     ->
+     void)
+   (glUniform4iv
+     (location GLint)
+     (count GLsizei)
+     (value const-GLint-*)
      ->
      void)
    (glUniformMatrix2fv
@@ -22004,6 +22914,11 @@ If enabled, the generic vertex attribute array is used when
      (v0 GLshort)
      ->
      void)
+   (glVertexAttrib1d
+     (index GLuint)
+     (v0 GLdouble)
+     ->
+     void)
    (glVertexAttrib2f
      (index GLuint)
      (v0 GLfloat)
@@ -22014,6 +22929,12 @@ If enabled, the generic vertex attribute array is used when
      (index GLuint)
      (v0 GLshort)
      (v1 GLshort)
+     ->
+     void)
+   (glVertexAttrib2d
+     (index GLuint)
+     (v0 GLdouble)
+     (v1 GLdouble)
      ->
      void)
    (glVertexAttrib3f
@@ -22028,6 +22949,13 @@ If enabled, the generic vertex attribute array is used when
      (v0 GLshort)
      (v1 GLshort)
      (v2 GLshort)
+     ->
+     void)
+   (glVertexAttrib3d
+     (index GLuint)
+     (v0 GLdouble)
+     (v1 GLdouble)
+     (v2 GLdouble)
      ->
      void)
    (glVertexAttrib4f
@@ -22046,6 +22974,14 @@ If enabled, the generic vertex attribute array is used when
      (v3 GLshort)
      ->
      void)
+   (glVertexAttrib4d
+     (index GLuint)
+     (v0 GLdouble)
+     (v1 GLdouble)
+     (v2 GLdouble)
+     (v3 GLdouble)
+     ->
+     void)
    (glVertexAttrib4Nub
      (index GLuint)
      (v0 GLubyte)
@@ -22054,9 +22990,84 @@ If enabled, the generic vertex attribute array is used when
      (v3 GLubyte)
      ->
      void)
+   (glVertexAttrib1fv
+     (index GLuint)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glVertexAttrib1sv
+     (index GLuint)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glVertexAttrib1dv
+     (index GLuint)
+     (v const-GLdouble-*)
+     ->
+     void)
+   (glVertexAttrib2fv
+     (index GLuint)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glVertexAttrib2sv
+     (index GLuint)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glVertexAttrib2dv
+     (index GLuint)
+     (v const-GLdouble-*)
+     ->
+     void)
+   (glVertexAttrib3fv
+     (index GLuint)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glVertexAttrib3sv
+     (index GLuint)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glVertexAttrib3dv
+     (index GLuint)
+     (v const-GLdouble-*)
+     ->
+     void)
+   (glVertexAttrib4fv
+     (index GLuint)
+     (v const-GLfloat-*)
+     ->
+     void)
+   (glVertexAttrib4sv
+     (index GLuint)
+     (v const-GLshort-*)
+     ->
+     void)
+   (glVertexAttrib4dv
+     (index GLuint)
+     (v const-GLdouble-*)
+     ->
+     void)
    (glVertexAttrib4iv
      (index GLuint)
      (v const-GLint-*)
+     ->
+     void)
+   (glVertexAttrib4bv
+     (index GLuint)
+     (v const-GLbyte-*)
+     ->
+     void)
+   (glVertexAttrib4ubv
+     (index GLuint)
+     (v const-GLubyte-*)
+     ->
+     void)
+   (glVertexAttrib4usv
+     (index GLuint)
+     (v const-GLushort-*)
      ->
      void)
    (glVertexAttrib4uiv
@@ -22064,9 +23075,29 @@ If enabled, the generic vertex attribute array is used when
      (v const-GLuint-*)
      ->
      void)
+   (glVertexAttrib4Nbv
+     (index GLuint)
+     (v const-GLbyte-*)
+     ->
+     void)
+   (glVertexAttrib4Nsv
+     (index GLuint)
+     (v const-GLshort-*)
+     ->
+     void)
    (glVertexAttrib4Niv
      (index GLuint)
      (v const-GLint-*)
+     ->
+     void)
+   (glVertexAttrib4Nubv
+     (index GLuint)
+     (v const-GLubyte-*)
+     ->
+     void)
+   (glVertexAttrib4Nusv
+     (index GLuint)
+     (v const-GLushort-*)
      ->
      void)
    (glVertexAttrib4Nuiv
@@ -22220,8 +23251,16 @@ the vertex array is used when `glArrayElement', `glDrawArrays',
 `GL_INVALID_VALUE' is generated if STRIDE is negative.")
 
 (define-gl-procedures
-  ((glVertex2i (x GLint) (y GLint) -> void)
+  ((glVertex2s (x GLshort) (y GLshort) -> void)
+   (glVertex2i (x GLint) (y GLint) -> void)
    (glVertex2f (x GLfloat) (y GLfloat) -> void)
+   (glVertex2d (x GLdouble) (y GLdouble) -> void)
+   (glVertex3s
+     (x GLshort)
+     (y GLshort)
+     (z GLshort)
+     ->
+     void)
    (glVertex3i
      (x GLint)
      (y GLint)
@@ -22232,6 +23271,19 @@ the vertex array is used when `glArrayElement', `glDrawArrays',
      (x GLfloat)
      (y GLfloat)
      (z GLfloat)
+     ->
+     void)
+   (glVertex3d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glVertex4s
+     (x GLshort)
+     (y GLshort)
+     (z GLshort)
+     (w GLshort)
      ->
      void)
    (glVertex4i
@@ -22247,7 +23299,26 @@ the vertex array is used when `glArrayElement', `glDrawArrays',
      (z GLfloat)
      (w GLfloat)
      ->
-     void))
+     void)
+   (glVertex4d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     (w GLdouble)
+     ->
+     void)
+   (glVertex2sv (v const-GLshort-*) -> void)
+   (glVertex2iv (v const-GLint-*) -> void)
+   (glVertex2fv (v const-GLfloat-*) -> void)
+   (glVertex2dv (v const-GLdouble-*) -> void)
+   (glVertex3sv (v const-GLshort-*) -> void)
+   (glVertex3iv (v const-GLint-*) -> void)
+   (glVertex3fv (v const-GLfloat-*) -> void)
+   (glVertex3dv (v const-GLdouble-*) -> void)
+   (glVertex4sv (v const-GLshort-*) -> void)
+   (glVertex4iv (v const-GLint-*) -> void)
+   (glVertex4fv (v const-GLfloat-*) -> void)
+   (glVertex4dv (v const-GLdouble-*) -> void))
   "Specify a vertex.
 
 X
@@ -22310,8 +23381,16 @@ on the implementation. To query this range, call `glGet' with argument
 the execution of `glBegin' and the corresponding execution of `glEnd'.")
 
 (define-gl-procedures
-  ((glWindowPos2i (x GLint) (y GLint) -> void)
+  ((glWindowPos2s (x GLshort) (y GLshort) -> void)
+   (glWindowPos2i (x GLint) (y GLint) -> void)
    (glWindowPos2f (x GLfloat) (y GLfloat) -> void)
+   (glWindowPos2d (x GLdouble) (y GLdouble) -> void)
+   (glWindowPos3s
+     (x GLshort)
+     (y GLshort)
+     (z GLshort)
+     ->
+     void)
    (glWindowPos3i
      (x GLint)
      (y GLint)
@@ -22323,7 +23402,21 @@ the execution of `glBegin' and the corresponding execution of `glEnd'.")
      (y GLfloat)
      (z GLfloat)
      ->
-     void))
+     void)
+   (glWindowPos3d
+     (x GLdouble)
+     (y GLdouble)
+     (z GLdouble)
+     ->
+     void)
+   (glWindowPos2sv (v const-GLshort-*) -> void)
+   (glWindowPos2iv (v const-GLint-*) -> void)
+   (glWindowPos2fv (v const-GLfloat-*) -> void)
+   (glWindowPos2dv (v const-GLdouble-*) -> void)
+   (glWindowPos3sv (v const-GLshort-*) -> void)
+   (glWindowPos3iv (v const-GLint-*) -> void)
+   (glWindowPos3fv (v const-GLfloat-*) -> void)
+   (glWindowPos3dv (v const-GLdouble-*) -> void))
   "Specify the raster position in window coordinates for pixel operations.
 
 X
