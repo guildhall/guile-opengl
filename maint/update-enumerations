@@ -149,7 +149,7 @@
                `(defmac (% (name ,(symbol->string (gl-enumeration-category enum)))
                            (arguments "enum"))
                   (para
-                   "Enumerated value.  The symbolic " (var "enum") "argument "
+                   "Enumerated value.  The symbolic " (var "enum") " argument "
                    "is replaced with its corresponding numeric value at "
                    "compile-time.  The symbolic arguments known to this "
                    "enumerated value form are:")

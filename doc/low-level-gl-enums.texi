@@ -23,7 +23,7 @@ are:
 @end defmac
 
 @defmac version-1-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -66,7 +66,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -79,7 +79,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -95,7 +95,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac 3dfx-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -128,7 +128,7 @@ are:
 @end defmac
 
 @defmac version-3-0 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -335,7 +335,7 @@ are:
 @end defmac
 
 @defmac ext-map-buffer-range enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -347,7 +347,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-4-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -357,7 +357,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac khr-debug enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -383,7 +383,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-robustness enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -396,7 +396,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-separate-shader-objects enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -409,7 +409,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-compute-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -431,7 +431,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-separate-shader-objects enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -443,7 +443,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-shader-image-load-store enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -487,7 +487,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-shader-image-load-store enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -533,7 +533,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-shader-storage-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -556,7 +556,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac intel-map-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -567,7 +567,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac boolean enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -576,7 +576,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac begin-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -587,7 +587,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-3-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -633,7 +633,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-geometry-shader-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -711,7 +711,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-geometry-program-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -731,7 +731,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-tessellation-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -762,7 +762,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-gpu-shader-5 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -782,7 +782,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac accum-op enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -791,7 +791,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac alpha-function enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -801,7 +801,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac blending-factor-dest enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -814,7 +814,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac blending-factor-src enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -827,7 +827,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac blend-equation-mode-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -838,7 +838,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac color-material-face enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -847,7 +847,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac color-material-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -857,7 +857,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac color-pointer-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -867,7 +867,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac color-table-parameter-p-name-sgi enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -876,7 +876,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac color-table-target-sgi enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -889,7 +889,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac convolution-border-mode-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -898,7 +898,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac convolution-parameter-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -908,7 +908,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac convolution-target-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -917,7 +917,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac cull-face-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -926,7 +926,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac depth-function enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -936,7 +936,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac draw-buffer-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -948,7 +948,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-framebuffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1026,7 +1026,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac enable-cap enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1078,7 +1078,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac error-code enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1090,7 +1090,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-framebuffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1175,7 +1175,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-framebuffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1242,7 +1242,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac feedback-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1252,7 +1252,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac feed-back-token enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1274,7 +1274,7 @@ are:
 @end defmac
 
 @defmac ffd-target-sgix enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1283,7 +1283,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac fog-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1292,7 +1292,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac fog-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1302,7 +1302,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac fragment-light-model-parameter-sgix enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1314,7 +1314,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac front-face-direction enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1323,7 +1323,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-color-table-parameter-p-name-sgi enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1337,7 +1337,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-convolution-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1349,7 +1349,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-histogram-parameter-p-name-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1361,7 +1361,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-map-query enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1370,7 +1370,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-minmax-parameter-p-name-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1379,7 +1379,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-pixel-map enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1392,7 +1392,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-pointerv-p-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1405,7 +1405,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-p-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1589,7 +1589,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac qcom-alpha-test enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1599,7 +1599,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-unpack-subimage enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1609,7 +1609,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-multiview-draw-buffers enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1620,7 +1620,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-read-buffer enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1629,7 +1629,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac get-texture-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1665,7 +1665,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-border-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1674,7 +1674,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac hint-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1683,7 +1683,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac hint-target enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1696,7 +1696,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac histogram-target-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1705,7 +1705,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac index-pointer-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1714,7 +1714,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac light-env-mode-sgix enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1723,7 +1723,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac light-env-parameter-sgix enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1732,7 +1732,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac light-model-color-control enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1741,7 +1741,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac light-model-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1751,7 +1751,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac light-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1763,7 +1763,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac list-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1772,7 +1772,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac data-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1793,7 +1793,7 @@ are:
 @end defmac
 
 @defmac oes-texture-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1802,7 +1802,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-vertex-attrib-64-bit enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1815,7 +1815,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-half-float-vertex enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1824,7 +1824,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-half-float-pixel enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1833,7 +1833,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-half-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1842,7 +1842,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-float-pixels enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1857,7 +1857,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-es2-compatibility enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1872,7 +1872,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-fixed-point enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1881,7 +1881,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vertex-attrib-integer-64-bit enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1890,7 +1890,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac list-name-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1901,7 +1901,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac list-parameter-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1910,7 +1910,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac logic-op enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1922,7 +1922,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac map-target enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1938,7 +1938,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac material-face enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1947,7 +1947,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac material-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1957,7 +1957,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac matrix-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1966,7 +1966,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesh-mode-1 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1975,7 +1975,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesh-mode-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1984,7 +1984,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac minmax-target-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -1993,7 +1993,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac normal-pointer-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2002,7 +2002,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-copy-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2011,7 +2011,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-discard-framebuffer enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2020,7 +2020,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-format enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2033,7 +2033,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-depth-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2042,7 +2042,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-rg enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2051,7 +2051,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-map enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2064,7 +2064,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-store-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2086,7 +2086,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-store-resample-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2096,7 +2096,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-store-subsample-rate enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2106,7 +2106,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-tex-gen-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2118,7 +2118,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-tex-gen-parameter-name-sgis enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2128,7 +2128,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-transfer-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2157,7 +2157,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2170,7 +2170,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac point-parameter-name-sgis enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2180,7 +2180,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac polygon-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2189,7 +2189,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac read-buffer-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2200,7 +2200,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac rendering-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2209,7 +2209,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sample-pattern-sgis enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2220,7 +2220,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac separable-target-ext enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2229,7 +2229,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac shading-model enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2238,7 +2238,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac stencil-function enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2248,7 +2248,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac stencil-op enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2258,7 +2258,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac string-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2267,7 +2267,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac tex-coord-pointer-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2276,7 +2276,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-coord-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2285,7 +2285,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-env-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2295,7 +2295,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-env-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2304,7 +2304,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-env-target enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2313,7 +2313,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-filter-func-sgis enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2322,7 +2322,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-gen-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2333,7 +2333,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-gen-parameter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2344,7 +2344,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-texture-cube-map enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2362,7 +2362,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-mag-filter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2376,7 +2376,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-min-filter enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2391,7 +2391,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-parameter-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2416,7 +2416,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-target enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2430,7 +2430,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac texture-wrap-mode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2440,7 +2440,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac pixel-internal-format enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2470,7 +2470,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-rgb-8-rgba-8 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2479,7 +2479,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac interleaved-array-format enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2491,7 +2491,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac vertex-pointer-type enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2500,7 +2500,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac clip-plane-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2510,7 +2510,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac light-name enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2524,7 +2524,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-abgr enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2533,7 +2533,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-1-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2598,7 +2598,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-blend-color enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2609,7 +2609,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-blend-minmax enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2620,7 +2620,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-2-0 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2689,7 +2689,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-blend-equation-separate enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2698,7 +2698,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-blend-equation-separate enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2707,7 +2707,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-blend-subtract enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2717,7 +2717,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-blend-subtract enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2727,7 +2727,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-cmyka enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2737,7 +2737,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-convolution enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2759,7 +2759,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-histogram enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2774,7 +2774,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-packed-pixels enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2790,7 +2790,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-type-2-10-10-10-rev enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2800,7 +2800,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-polygon-offset enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2810,7 +2810,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-rescale-normal enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2819,7 +2819,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2844,7 +2844,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2855,7 +2855,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-3d enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2868,7 +2868,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-texture-3d enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2880,7 +2880,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-vertex-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2906,7 +2906,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-interlace enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2915,7 +2915,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-detail-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2927,7 +2927,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2942,7 +2942,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-multisample-coverage enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2951,7 +2951,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-sharpen-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2962,7 +2962,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgi-color-matrix enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2980,7 +2980,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgi-texture-color-table enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2989,7 +2989,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-texture-add-env enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -2998,7 +2998,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-shadow-ambient enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3007,7 +3007,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-1-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3034,7 +3034,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-blend-func-separate enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3044,7 +3044,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-blend-func-separate enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3054,7 +3054,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-422-pixels enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3064,7 +3064,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgi-color-table enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3082,7 +3082,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-array-bgra enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3091,7 +3091,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-bgra enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3100,7 +3100,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-texture-select enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3119,7 +3119,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-point-parameters enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3130,7 +3130,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-point-parameters enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3140,7 +3140,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-point-parameters enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3150,7 +3150,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-fog-function enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3160,7 +3160,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-border-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3169,7 +3169,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-texture-border-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3178,7 +3178,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-texture-multi-buffer enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3187,7 +3187,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-texture-edge-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3196,7 +3196,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-texture-4d enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3209,7 +3209,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-pixel-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3218,7 +3218,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-texture-lod enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3228,7 +3228,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-pixel-tiles enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3241,7 +3241,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-texture-filter-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3250,7 +3250,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-sprite enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3261,7 +3261,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac hp-convolution-border-modes enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3271,7 +3271,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-clipmap enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3287,7 +3287,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-texture-scale-bias enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3299,7 +3299,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-reference-plane enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3308,7 +3308,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-ir-instrument-1 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3317,7 +3317,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-instruments enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3327,7 +3327,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-list-priority enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3336,7 +3336,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-calligraphic-fragment enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3345,7 +3345,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-impact-pixel-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3358,7 +3358,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-framezoom enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3368,7 +3368,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-texture-lod-bias enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3378,7 +3378,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-generate-mipmap enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3387,7 +3387,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-polynomial-ffd enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3397,7 +3397,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-fog-offset enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3406,7 +3406,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-shadow enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3416,7 +3416,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-depth-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3427,7 +3427,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-depth-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3437,7 +3437,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-depth-24 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3446,7 +3446,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-depth-32 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3455,7 +3455,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-compiled-vertex-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3465,7 +3465,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-cull-vertex enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3475,7 +3475,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-index-array-formats enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3486,7 +3486,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-index-func enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3496,7 +3496,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-index-material enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3506,7 +3506,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-ycrcb enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3515,7 +3515,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sunx-general-triangle-list enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3534,7 +3534,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sunx-constant-data enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3543,7 +3543,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sun-global-alpha enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3552,7 +3552,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-texture-color-mask enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3561,7 +3561,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-point-line-texgen enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3573,7 +3573,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-separate-specular-color enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3583,7 +3583,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-shared-texture-palette enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3592,7 +3592,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-text-fragment-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3601,7 +3601,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-color-buffer-half-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3612,7 +3612,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-surfaceless-context enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3621,7 +3621,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-rg enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3634,7 +3634,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-cl-event enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3643,7 +3643,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-debug-output enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3666,7 +3666,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-get-program-binary enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3676,7 +3676,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-viewport-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3689,7 +3689,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-explicit-uniform-location enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3698,7 +3698,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-internalformat-query-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3755,7 +3755,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-attrib-binding enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3767,7 +3767,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-view enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3778,7 +3778,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-depth-pass-instrument enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3789,7 +3789,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-fragments-instrument enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3800,7 +3800,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-convolution-accuracy enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3809,7 +3809,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-ycrcba enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3818,7 +3818,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-slim enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3829,7 +3829,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-blend-alpha-minmax enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3838,7 +3838,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-scalebias-hint enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3847,7 +3847,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-async enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3856,7 +3856,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-async-histogram enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3865,7 +3865,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-pixel-transform enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3879,7 +3879,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-light-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3892,7 +3892,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgis-pixel-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3902,7 +3902,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-line-quality-hint enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3911,7 +3911,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-async-pixel enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3922,7 +3922,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-texture-coordinate-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3932,7 +3932,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-mirrored-repeat enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3941,7 +3941,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ibm-texture-mirrored-repeat enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3950,7 +3950,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-texture-mirrored-repeat enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3959,7 +3959,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac s3-s-3-tc enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3969,7 +3969,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-vertex-preclip enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3978,7 +3978,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-compression-s-3-tc enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3990,7 +3990,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-texture-compression-dxt-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -3999,7 +3999,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-texture-compression-dxt-5 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4008,7 +4008,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac intel-parallel-arrays enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4021,7 +4021,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-fragment-lighting enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4042,7 +4042,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-resample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4053,7 +4053,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-1-5 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4084,7 +4084,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-fog-coord enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4098,7 +4098,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-secondary-color enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4112,7 +4112,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-program enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4167,7 +4167,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-2-1 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4182,7 +4182,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-icc-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4193,7 +4193,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac rend-screen-coordinates enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4202,7 +4202,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-multitexture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4222,7 +4222,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-texture-env-crossbar enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4238,7 +4238,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-transpose-matrix enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4249,7 +4249,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-env-combine enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4258,7 +4258,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-compression enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4273,7 +4273,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-fence enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4283,7 +4283,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-3-1 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4325,7 +4325,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-rectangle enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4336,7 +4336,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-rectangle enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4346,7 +4346,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-packed-depth-stencil enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4356,7 +4356,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-packed-depth-stencil enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4365,7 +4365,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-packed-depth-stencil enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4375,7 +4375,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-lod-bias enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4385,7 +4385,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-filter-anisotropic enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4395,7 +4395,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-vertex-weighting enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4410,7 +4410,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-light-max-exponent enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4419,7 +4419,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-stencil-wrap enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4428,7 +4428,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-stencil-wrap enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4437,7 +4437,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-cube-map enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4454,7 +4454,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texgen-reflection enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4463,7 +4463,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-cube-map enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4480,7 +4480,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vertex-array-range enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4492,7 +4492,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-vertex-array-range enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4504,7 +4504,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-register-combiners enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4536,7 +4536,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-register-combiners-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4545,7 +4545,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-primitive-restart enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4554,7 +4554,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-fog-distance enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4564,7 +4564,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texgen-emboss enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4573,7 +4573,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ingr-color-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4585,7 +4585,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ingr-interlace-read enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4594,7 +4594,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-env-combine enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4611,7 +4611,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-env-combine-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4621,7 +4621,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sgix-subsample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4632,7 +4632,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-perturb-normal enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4641,7 +4641,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-specular-vector enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4650,7 +4650,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-transform-hint enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4659,7 +4659,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-client-storage enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4668,7 +4668,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-object-purgeable enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4679,7 +4679,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-array-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4688,7 +4688,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-vertex-array-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4697,7 +4697,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-texture-range enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4708,7 +4708,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-ycbcr-422 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4718,7 +4718,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesa-ycbcr-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4728,7 +4728,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sun-slice-accum enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4737,7 +4737,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac sun-mesh-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4746,7 +4746,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vertex-program enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4794,7 +4794,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-depth-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4803,7 +4803,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-depth-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4812,7 +4812,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-fragment-program enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4876,7 +4876,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-blend enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4900,7 +4900,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-matrix-palette enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4918,7 +4918,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-env-dot-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4927,7 +4927,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac img-texture-env-enhanced-fixed-function enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4939,7 +4939,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac 3dfx-texture-compression-fxt1 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4948,7 +4948,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-evaluators enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4968,7 +4968,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-tessellation-program-5 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -4980,7 +4980,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5024,7 +5024,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vdpau-interop enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5034,7 +5034,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-shader-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5043,7 +5043,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-env-dot-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5052,7 +5052,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-program-binary-z400 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5061,7 +5061,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-get-program-binary enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5071,7 +5071,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-texture-mirror-once enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5080,7 +5080,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-mirror-clamp enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5090,7 +5090,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-texture-env-combine-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5100,7 +5100,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-stencil-operation-extended enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5110,7 +5110,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesa-packed-depth-stencil enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5121,7 +5121,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesa-trace enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5134,7 +5134,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesa-pack-invert enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5143,7 +5143,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesax-texture-stack enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5156,7 +5156,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesa-shader-debug enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5166,7 +5166,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-vertex-array-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5178,7 +5178,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5206,7 +5206,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-element-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5216,7 +5216,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-vertex-streams enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5229,7 +5229,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-envmap-bumpmap enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5241,7 +5241,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-vertex-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5302,7 +5302,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-compressed-atc-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5312,7 +5312,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-pn-triangles enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5327,7 +5327,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-compressed-3dc-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5336,7 +5336,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-meminfo enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5346,7 +5346,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-separate-stencil enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5356,7 +5356,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5373,7 +5373,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-texture-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5387,7 +5387,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-color-buffer-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5398,7 +5398,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-pixel-format-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5407,7 +5407,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac qcom-writeonly-rendering enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5416,7 +5416,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-draw-buffers enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5433,7 +5433,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-draw-buffers enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5450,7 +5450,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-draw-buffers enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5473,7 +5473,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-sample-positions enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5482,7 +5482,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-matrix-palette enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5496,7 +5496,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-shadow enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5506,7 +5506,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-shadow-samplers enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5516,7 +5516,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5529,7 +5529,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-seamless-cube-map enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5538,7 +5538,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-shader-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5559,7 +5559,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-point-sprite enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5568,7 +5568,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-point-sprite enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5578,7 +5578,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-point-sprite enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5587,7 +5587,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-occlusion-query enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5598,7 +5598,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-occlusion-query enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5608,7 +5608,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-occlusion-query-boolean enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5619,7 +5619,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-fragment-program enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5631,7 +5631,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-copy-depth-to-color enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5640,7 +5640,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-pixel-data-range enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5653,7 +5653,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-gpu-shader-5 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5666,7 +5666,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-float-buffer enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5680,7 +5680,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-expand-normal enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5689,7 +5689,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-depth-bounds-test enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5698,7 +5698,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-mapbuffer enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5708,7 +5708,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-shader-buffer-store enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5718,7 +5718,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-timer-query enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5727,7 +5727,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-timer-query enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5736,7 +5736,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-pixel-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5747,7 +5747,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-pixel-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5758,7 +5758,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-s-rgb-formats enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5772,7 +5772,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-stencil-clear-tag enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5781,7 +5781,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vertex-program-2-option enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5791,7 +5791,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-fragment-program-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5802,7 +5802,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-blend-func-extended enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5812,7 +5812,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vertex-program-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5821,7 +5821,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-3-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5830,7 +5830,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-instanced-arrays enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5839,7 +5839,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-instanced-arrays enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5848,7 +5848,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-instanced-arrays enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5857,7 +5857,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-gpu-program-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5872,7 +5872,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-stencil-two-side enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5881,7 +5881,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-sampler-objects enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5890,7 +5890,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ati-fragment-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5934,7 +5934,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oml-interlace enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5943,7 +5943,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oml-subsample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5952,7 +5952,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oml-resample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5963,7 +5963,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-point-size-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5974,7 +5974,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-matrix-get enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -5985,7 +5985,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-vertex-program-evaluators enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6002,7 +6002,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-fence enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6011,7 +6011,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-element-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6021,7 +6021,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-uniform-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6050,7 +6050,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-flush-buffer-range enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6060,7 +6060,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-aux-depth-stencil enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6069,7 +6069,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-row-bytes enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6078,7 +6078,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-rgb-422 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6088,7 +6088,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-s-rgb-decode enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6098,7 +6098,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-debug-label enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6109,7 +6109,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-shader-framebuffer-fetch enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6118,7 +6118,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac apple-sync enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6134,7 +6134,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-shader-objects enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6185,7 +6185,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6236,7 +6236,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-fragment-shader enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6287,7 +6287,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vertex-program-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6338,7 +6338,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-standard-derivatives enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6347,7 +6347,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-geometry-shader-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6361,7 +6361,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-compressed-paletted-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6374,7 +6374,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-read-format enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6384,7 +6384,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-draw-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6393,7 +6393,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac mesa-program-debug enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6409,7 +6409,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-performance-monitor enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6421,7 +6421,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac qcom-extended-get enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6435,7 +6435,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac img-texture-compression-pvrtc enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6447,7 +6447,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac img-shader-binary enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6456,7 +6456,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6468,7 +6468,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6480,7 +6480,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-occlusion-query-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6489,7 +6489,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-sample-shading enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6498,7 +6498,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-packed-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6508,7 +6508,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-shared-exponent enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6518,7 +6518,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-s-rgb enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6536,7 +6536,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-compression-latc enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6548,7 +6548,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-transform-feedback enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6599,7 +6599,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-transform-feedback enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6653,7 +6653,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-framebuffer-blit enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6664,7 +6664,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-framebuffer-blit enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6674,7 +6674,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-framebuffer-blit enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6684,7 +6684,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-framebuffer-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6695,7 +6695,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-framebuffer-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6705,7 +6705,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-framebuffer-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6715,7 +6715,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-framebuffer-multisample-coverage enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6727,7 +6727,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-depth-buffer-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6737,7 +6737,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-fbo-color-attachments enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6746,7 +6746,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-stencil-1 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6755,7 +6755,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-stencil-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6764,7 +6764,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-stencil-8 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6773,7 +6773,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-vertex-half-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6782,7 +6782,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac version-4-1 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6791,7 +6791,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-compressed-etc1-rgb8-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6800,7 +6800,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-egl-image-external enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6811,7 +6811,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-es3-compatibility enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6828,7 +6828,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-multisampled-render-to-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6837,7 +6837,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-integer enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6870,7 +6870,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-vertex-type-2-10-10-10-rev enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6879,7 +6879,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-parameter-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6892,7 +6892,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-depth-buffer-float enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6903,7 +6903,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-shading-language-include enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6913,7 +6913,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-framebuffer-s-rgb enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6922,7 +6922,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-framebuffer-s-rgb enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6931,7 +6931,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-compression-rgtc enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6941,7 +6941,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-compression-rgtc enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6952,7 +6952,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-gpu-shader-4 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6975,7 +6975,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-shadow-samplers-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6984,7 +6984,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-shadow-samplers-cube enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -6993,7 +6993,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-bindable-uniform enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7006,7 +7006,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-shader-subroutine enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7020,7 +7020,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac oes-vertex-type-10-10-10-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7029,7 +7029,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-conditional-render enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7039,7 +7039,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-transform-feedback-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7052,7 +7052,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-transform-feedback-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7064,7 +7064,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-present-video enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7075,7 +7075,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-depth-nonlinear enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7084,7 +7084,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-direct-state-access enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7094,7 +7094,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-swizzle enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7105,7 +7105,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-swizzle enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7116,7 +7116,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-provoking-vertex enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7127,7 +7127,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-provoking-vertex enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7138,7 +7138,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7161,7 +7161,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-explicit-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7176,7 +7176,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-gpu-program-5 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7192,7 +7192,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-gather enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7204,7 +7204,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-transform-feedback-3 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7213,7 +7213,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-compression-bptc enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7225,7 +7225,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-coverage-sample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7238,7 +7238,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-shader-buffer-load enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7248,7 +7248,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-vertex-buffer-unified-memory enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7271,7 +7271,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-copy-buffer enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7281,7 +7281,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-draw-indirect enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7290,7 +7290,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-gpu-shader-fp-64 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7302,7 +7302,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arm-mali-shader-binary enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7311,7 +7311,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac qcom-driver-control enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7320,7 +7320,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac qcom-binning-control enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7330,7 +7330,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac viv-shader-binary enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7339,7 +7339,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-vertex-shader-tesselator enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7351,7 +7351,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-cube-map-array enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7363,7 +7363,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-texture-snorm enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7377,7 +7377,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-blend-minmax-factor enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7386,7 +7386,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-depth-clamp-separate enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7395,7 +7395,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-video-capture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7424,7 +7424,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-texture-multisample enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7433,7 +7433,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-rgb-10-a-2-ui enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7442,7 +7442,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-path-rendering enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7516,7 +7516,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-framebuffer-multisample-blit-scaled enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7525,7 +7525,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-map-buffer-alignment enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7534,7 +7534,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-deep-texture-3d enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7544,7 +7544,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-x-11-sync-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7553,7 +7553,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-stencil-texturing enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7562,7 +7562,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-compute-program-5 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7571,7 +7571,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-sync enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7585,7 +7585,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-compressed-texture-pixel-storage enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7599,7 +7599,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-storage enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7608,7 +7608,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac img-program-binary enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7617,7 +7617,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac img-multisampled-render-to-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7628,7 +7628,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac img-texture-compression-pvrtc-2 enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7638,7 +7638,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-debug-output enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7656,7 +7656,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-name-gen-delete enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7667,7 +7667,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-pinned-memory enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7676,7 +7676,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-query-buffer-object enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7686,7 +7686,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac amd-sparse-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7699,7 +7699,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-texture-buffer-range enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7709,7 +7709,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac dmp-shader-binary enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7718,7 +7718,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac fj-shader-binary-gccso enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7727,7 +7727,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-shader-atomic-counters enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7762,7 +7762,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-program-interface-query enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7795,7 +7795,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-framebuffer-no-attachments enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7808,7 +7808,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-internalformat-query enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7817,7 +7817,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-translated-shader-source enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7826,7 +7826,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-texture-usage enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7836,7 +7836,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-pack-reverse-row-order enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7845,7 +7845,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac angle-depth-texture enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
@@ -7854,7 +7854,7 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac gl-khr-texture-compression-astc-ldr enum
-Enumerated value. The symbolic @var{enum}argument is replaced with its
+Enumerated value. The symbolic @var{enum} argument is replaced with its
 corresponding numeric value at compile-time. The symbolic arguments
 known to this enumerated value form are:
 
