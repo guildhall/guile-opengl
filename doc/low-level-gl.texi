@@ -2478,12 +2478,38 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glColor3i red green blue
+@deftypefun void glColor3b red green blue
+@deftypefunx void glColor3s red green blue
+@deftypefunx void glColor3i red green blue
 @deftypefunx void glColor3f red green blue
+@deftypefunx void glColor3d red green blue
+@deftypefunx void glColor3ub red green blue
+@deftypefunx void glColor3us red green blue
 @deftypefunx void glColor3ui red green blue
+@deftypefunx void glColor4b red green blue alpha
+@deftypefunx void glColor4s red green blue alpha
 @deftypefunx void glColor4i red green blue alpha
 @deftypefunx void glColor4f red green blue alpha
+@deftypefunx void glColor4d red green blue alpha
+@deftypefunx void glColor4ub red green blue alpha
+@deftypefunx void glColor4us red green blue alpha
 @deftypefunx void glColor4ui red green blue alpha
+@deftypefunx void glColor3bv v
+@deftypefunx void glColor3sv v
+@deftypefunx void glColor3iv v
+@deftypefunx void glColor3fv v
+@deftypefunx void glColor3dv v
+@deftypefunx void glColor3ubv v
+@deftypefunx void glColor3usv v
+@deftypefunx void glColor3uiv v
+@deftypefunx void glColor4bv v
+@deftypefunx void glColor4sv v
+@deftypefunx void glColor4iv v
+@deftypefunx void glColor4fv v
+@deftypefunx void glColor4dv v
+@deftypefunx void glColor4ubv v
+@deftypefunx void glColor4usv v
+@deftypefunx void glColor4uiv v
 Set the current color.
 
 @table @asis
@@ -3533,6 +3559,8 @@ corresponding execution of @code{glEnd}.
 
 @deftypefun void glConvolutionParameterf target pname params
 @deftypefunx void glConvolutionParameteri target pname params
+@deftypefunx void glConvolutionParameterfv target pname params
+@deftypefunx void glConvolutionParameteriv target pname params
 Set convolution parameters.
 
 @table @asis
@@ -5975,6 +6003,7 @@ used when @code{glDrawArrays}, @code{glMultiDrawArrays},
 @end deftypefun
 
 @deftypefun void glEdgeFlag flag
+@deftypefunx void glEdgeFlagv flag
 Flag edges as either boundary or nonboundary.
 
 @table @asis
@@ -6602,7 +6631,13 @@ the corresponding execution of @code{glEnd}.
 @end deftypefun
 
 @deftypefun void glEvalCoord1f u
+@deftypefunx void glEvalCoord1d u
 @deftypefunx void glEvalCoord2f u v
+@deftypefunx void glEvalCoord2d u v
+@deftypefunx void glEvalCoord1fv u
+@deftypefunx void glEvalCoord1dv u
+@deftypefunx void glEvalCoord2fv u
+@deftypefunx void glEvalCoord2dv u
 Evaluate enabled one- and two-dimensional maps.
 
 @table @asis
@@ -7083,7 +7118,10 @@ is used when @code{glDrawArrays}, @code{glMultiDrawArrays},
 
 @end deftypefun
 
-@deftypefun void glFogCoordf coord
+@deftypefun void glFogCoordd coord
+@deftypefunx void glFogCoordf coord
+@deftypefunx void glFogCoorddv coord
+@deftypefunx void glFogCoordfv coord
 Set the current fog coordinates.
 
 @table @asis
@@ -7100,6 +7138,8 @@ interpolated and used in computing the fog color (see @code{glFog}).
 
 @deftypefun void glFogf pname param
 @deftypefunx void glFogi pname param
+@deftypefunx void glFogfv pname params
+@deftypefunx void glFogiv pname params
 Specify fog parameters.
 
 @table @asis
@@ -8847,7 +8887,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glGetMapfv target query v
+@deftypefun void glGetMapdv target query v
+@deftypefunx void glGetMapfv target query v
 @deftypefunx void glGetMapiv target query v
 Return evaluator parameters.
 
@@ -9189,6 +9230,7 @@ execution of @code{glEnd}.
 
 @deftypefun void glGetPixelMapfv map data
 @deftypefunx void glGetPixelMapuiv map data
+@deftypefunx void glGetPixelMapusv map data
 Return the specified pixel map.
 
 @table @asis
@@ -10123,7 +10165,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glGetTexGenfv coord pname params
+@deftypefun void glGetTexGendv coord pname params
+@deftypefunx void glGetTexGenfv coord pname params
 @deftypefunx void glGetTexGeniv coord pname params
 Return texture coordinate generation parameters.
 
@@ -10736,7 +10779,8 @@ value.
 
 @end deftypefun
 
-@deftypefun void glGetVertexAttribfv index pname params
+@deftypefun void glGetVertexAttribdv index pname params
+@deftypefunx void glGetVertexAttribfv index pname params
 @deftypefunx void glGetVertexAttribiv index pname params
 Return a generic vertex attribute parameter.
 
@@ -13619,9 +13663,16 @@ value.
 
 @end deftypefun
 
-@deftypefun void glIndexi c
+@deftypefun void glIndexs c
+@deftypefunx void glIndexi c
 @deftypefunx void glIndexf c
+@deftypefunx void glIndexd c
 @deftypefunx void glIndexub c
+@deftypefunx void glIndexsv c
+@deftypefunx void glIndexiv c
+@deftypefunx void glIndexfv c
+@deftypefunx void glIndexdv c
+@deftypefunx void glIndexubv c
 Set the current color index.
 
 @table @asis
@@ -14103,6 +14154,8 @@ execution of @code{glEnd}.
 
 @deftypefun void glLightModelf pname param
 @deftypefunx void glLightModeli pname param
+@deftypefunx void glLightModelfv pname params
+@deftypefunx void glLightModeliv pname params
 Set the lighting model parameters.
 
 @table @asis
@@ -14217,6 +14270,8 @@ execution of @code{glEnd}.
 
 @deftypefun void glLightf light pname param
 @deftypefunx void glLighti light pname param
+@deftypefunx void glLightfv light pname params
+@deftypefunx void glLightiv light pname params
 Set light source parameters.
 
 @table @asis
@@ -14629,7 +14684,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glLoadMatrixf m
+@deftypefun void glLoadMatrixd m
+@deftypefunx void glLoadMatrixf m
 Replace the current matrix with the specified matrix.
 
 @table @asis
@@ -14697,7 +14753,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glLoadTransposeMatrixf m
+@deftypefun void glLoadTransposeMatrixd m
+@deftypefunx void glLoadTransposeMatrixf m
 Replace the current matrix with the specified row-major ordered matrix.
 
 @table @asis
@@ -14836,6 +14893,7 @@ of @code{glEnd}.
 @end deftypefun
 
 @deftypefun void glMap1f target u1 u2 stride order points
+@deftypefunx void glMap1d target u1 u2 stride order points
 Define a one-dimensional evaluator.
 
 @table @asis
@@ -15000,6 +15058,7 @@ the value of @code{GL_ACTIVE_TEXTURE} is not @code{GL_TEXTURE0}.
 @end deftypefun
 
 @deftypefun void glMap2f target u1 u2 ustride uorder v1 v2 vstride vorder points
+@deftypefunx void glMap2d target u1 u2 ustride uorder v1 v2 vstride vorder points
 Define a two-dimensional evaluator.
 
 @table @asis
@@ -15284,7 +15343,9 @@ and the corresponding execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glMapGrid1f un u1 u2
+@deftypefun void glMapGrid1d un u1 u2
+@deftypefunx void glMapGrid1f un u1 u2
+@deftypefunx void glMapGrid2d un u1 u2 vn v1 v2
 @deftypefunx void glMapGrid2f un u1 u2 vn v1 v2
 Define a one- or two-dimensional mesh.
 
@@ -15354,6 +15415,8 @@ of @code{glEnd}.
 
 @deftypefun void glMaterialf face pname param
 @deftypefunx void glMateriali face pname param
+@deftypefunx void glMaterialfv face pname params
+@deftypefunx void glMaterialiv face pname params
 Specify material parameters for the lighting model.
 
 @table @asis
@@ -15690,14 +15753,38 @@ corresponding @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glMultiTexCoord1i target s
+@deftypefun void glMultiTexCoord1s target s
+@deftypefunx void glMultiTexCoord1i target s
 @deftypefunx void glMultiTexCoord1f target s
+@deftypefunx void glMultiTexCoord1d target s
+@deftypefunx void glMultiTexCoord2s target s t
 @deftypefunx void glMultiTexCoord2i target s t
 @deftypefunx void glMultiTexCoord2f target s t
+@deftypefunx void glMultiTexCoord2d target s t
+@deftypefunx void glMultiTexCoord3s target s t r
 @deftypefunx void glMultiTexCoord3i target s t r
 @deftypefunx void glMultiTexCoord3f target s t r
+@deftypefunx void glMultiTexCoord3d target s t r
+@deftypefunx void glMultiTexCoord4s target s t r q
 @deftypefunx void glMultiTexCoord4i target s t r q
 @deftypefunx void glMultiTexCoord4f target s t r q
+@deftypefunx void glMultiTexCoord4d target s t r q
+@deftypefunx void glMultiTexCoord1sv target v
+@deftypefunx void glMultiTexCoord1iv target v
+@deftypefunx void glMultiTexCoord1fv target v
+@deftypefunx void glMultiTexCoord1dv target v
+@deftypefunx void glMultiTexCoord2sv target v
+@deftypefunx void glMultiTexCoord2iv target v
+@deftypefunx void glMultiTexCoord2fv target v
+@deftypefunx void glMultiTexCoord2dv target v
+@deftypefunx void glMultiTexCoord3sv target v
+@deftypefunx void glMultiTexCoord3iv target v
+@deftypefunx void glMultiTexCoord3fv target v
+@deftypefunx void glMultiTexCoord3dv target v
+@deftypefunx void glMultiTexCoord4sv target v
+@deftypefunx void glMultiTexCoord4iv target v
+@deftypefunx void glMultiTexCoord4fv target v
+@deftypefunx void glMultiTexCoord4dv target v
 Set the current texture coordinates.
 
 @table @asis
@@ -15735,7 +15822,8 @@ values for @r{(@var{s},@var{t}@var{r}@var{q})} are @r{(0,001)}.
 
 @end deftypefun
 
-@deftypefun void glMultMatrixf m
+@deftypefun void glMultMatrixd m
+@deftypefunx void glMultMatrixf m
 Multiply the current matrix with the specified matrix.
 
 @table @asis
@@ -15758,7 +15846,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glMultTransposeMatrixf m
+@deftypefun void glMultTransposeMatrixd m
+@deftypefunx void glMultTransposeMatrixf m
 Multiply the current matrix with the specified row-major ordered matrix.
 
 @table @asis
@@ -15927,8 +16016,16 @@ value.
 
 @end deftypefun
 
-@deftypefun void glNormal3f nx ny nz
+@deftypefun void glNormal3b nx ny nz
+@deftypefunx void glNormal3d nx ny nz
+@deftypefunx void glNormal3f nx ny nz
 @deftypefunx void glNormal3i nx ny nz
+@deftypefunx void glNormal3s nx ny nz
+@deftypefunx void glNormal3bv v
+@deftypefunx void glNormal3dv v
+@deftypefunx void glNormal3fv v
+@deftypefunx void glNormal3iv v
+@deftypefunx void glNormal3sv v
 Set the current normal vector.
 
 @table @asis
@@ -16049,6 +16146,7 @@ execution of @code{glEnd}.
 
 @deftypefun void glPixelMapfv map mapsize values
 @deftypefunx void glPixelMapuiv map mapsize values
+@deftypefunx void glPixelMapusv map mapsize values
 Set up pixel transfer maps.
 
 @table @asis
@@ -16898,6 +16996,8 @@ execution of @code{glEnd}.
 
 @deftypefun void glPointParameterf pname param
 @deftypefunx void glPointParameteri pname param
+@deftypefunx void glPointParameterfv pname params
+@deftypefunx void glPointParameteriv pname params
 Specify point parameters.
 
 @table @asis
@@ -17893,12 +17993,30 @@ corresponding call to @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glRasterPos2i x y
+@deftypefun void glRasterPos2s x y
+@deftypefunx void glRasterPos2i x y
 @deftypefunx void glRasterPos2f x y
+@deftypefunx void glRasterPos2d x y
+@deftypefunx void glRasterPos3s x y z
 @deftypefunx void glRasterPos3i x y z
 @deftypefunx void glRasterPos3f x y z
+@deftypefunx void glRasterPos3d x y z
+@deftypefunx void glRasterPos4s x y z w
 @deftypefunx void glRasterPos4i x y z w
 @deftypefunx void glRasterPos4f x y z w
+@deftypefunx void glRasterPos4d x y z w
+@deftypefunx void glRasterPos2sv v
+@deftypefunx void glRasterPos2iv v
+@deftypefunx void glRasterPos2fv v
+@deftypefunx void glRasterPos2dv v
+@deftypefunx void glRasterPos3sv v
+@deftypefunx void glRasterPos3iv v
+@deftypefunx void glRasterPos3fv v
+@deftypefunx void glRasterPos3dv v
+@deftypefunx void glRasterPos4sv v
+@deftypefunx void glRasterPos4iv v
+@deftypefunx void glRasterPos4fv v
+@deftypefunx void glRasterPos4dv v
 Specify the raster position for pixel operations.
 
 @table @asis
@@ -18279,8 +18397,14 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glRectf x1 y1 x2 y2
+@deftypefun void glRectd x1 y1 x2 y2
+@deftypefunx void glRectf x1 y1 x2 y2
 @deftypefunx void glRecti x1 y1 x2 y2
+@deftypefunx void glRects x1 y1 x2 y2
+@deftypefunx void glRectdv v1 v2
+@deftypefunx void glRectfv v1 v2
+@deftypefunx void glRectiv v1 v2
+@deftypefunx void glRectsv v1 v2
 Draw a rectangle.
 
 @table @asis
@@ -18439,7 +18563,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glRotatef angle x y z
+@deftypefun void glRotated angle x y z
+@deftypefunx void glRotatef angle x y z
 Multiply the current matrix by a rotation matrix.
 
 @table @asis
@@ -18535,7 +18660,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glScalef x y z
+@deftypefun void glScaled x y z
+@deftypefunx void glScalef x y z
 Multiply the current matrix by a general scaling matrix.
 
 @table @asis
@@ -18673,9 +18799,22 @@ value.
 
 @end deftypefun
 
-@deftypefun void glSecondaryColor3i red green blue
+@deftypefun void glSecondaryColor3b red green blue
+@deftypefunx void glSecondaryColor3s red green blue
+@deftypefunx void glSecondaryColor3i red green blue
 @deftypefunx void glSecondaryColor3f red green blue
+@deftypefunx void glSecondaryColor3d red green blue
+@deftypefunx void glSecondaryColor3ub red green blue
+@deftypefunx void glSecondaryColor3us red green blue
 @deftypefunx void glSecondaryColor3ui red green blue
+@deftypefunx void glSecondaryColor3bv v
+@deftypefunx void glSecondaryColor3sv v
+@deftypefunx void glSecondaryColor3iv v
+@deftypefunx void glSecondaryColor3fv v
+@deftypefunx void glSecondaryColor3dv v
+@deftypefunx void glSecondaryColor3ubv v
+@deftypefunx void glSecondaryColor3usv v
+@deftypefunx void glSecondaryColor3uiv v
 Set the current secondary color.
 
 @table @asis
@@ -19647,14 +19786,38 @@ value.
 
 @end deftypefun
 
-@deftypefun void glTexCoord1i s
+@deftypefun void glTexCoord1s s
+@deftypefunx void glTexCoord1i s
 @deftypefunx void glTexCoord1f s
+@deftypefunx void glTexCoord1d s
+@deftypefunx void glTexCoord2s s t
 @deftypefunx void glTexCoord2i s t
 @deftypefunx void glTexCoord2f s t
+@deftypefunx void glTexCoord2d s t
+@deftypefunx void glTexCoord3s s t r
 @deftypefunx void glTexCoord3i s t r
 @deftypefunx void glTexCoord3f s t r
+@deftypefunx void glTexCoord3d s t r
+@deftypefunx void glTexCoord4s s t r q
 @deftypefunx void glTexCoord4i s t r q
 @deftypefunx void glTexCoord4f s t r q
+@deftypefunx void glTexCoord4d s t r q
+@deftypefunx void glTexCoord1sv v
+@deftypefunx void glTexCoord1iv v
+@deftypefunx void glTexCoord1fv v
+@deftypefunx void glTexCoord1dv v
+@deftypefunx void glTexCoord2sv v
+@deftypefunx void glTexCoord2iv v
+@deftypefunx void glTexCoord2fv v
+@deftypefunx void glTexCoord2dv v
+@deftypefunx void glTexCoord3sv v
+@deftypefunx void glTexCoord3iv v
+@deftypefunx void glTexCoord3fv v
+@deftypefunx void glTexCoord3dv v
+@deftypefunx void glTexCoord4sv v
+@deftypefunx void glTexCoord4iv v
+@deftypefunx void glTexCoord4fv v
+@deftypefunx void glTexCoord4dv v
 Set the current texture coordinates.
 
 @table @asis
@@ -19685,6 +19848,8 @@ values for @var{s}, @var{t}, @var{r}, and @var{q} are (0, 0, 0, 1).
 
 @deftypefun void glTexEnvf target pname param
 @deftypefunx void glTexEnvi target pname param
+@deftypefunx void glTexEnvfv target pname params
+@deftypefunx void glTexEnviv target pname params
 Set texture environment parameters.
 
 @table @asis
@@ -20111,6 +20276,10 @@ of @code{glEnd}.
 
 @deftypefun void glTexGeni coord pname param
 @deftypefunx void glTexGenf coord pname param
+@deftypefunx void glTexGend coord pname param
+@deftypefunx void glTexGeniv coord pname params
+@deftypefunx void glTexGenfv coord pname params
+@deftypefunx void glTexGendv coord pname params
 Control the generation of texture coordinates.
 
 @table @asis
@@ -21261,6 +21430,8 @@ execution of @code{glEnd}.
 
 @deftypefun void glTexParameterf target pname param
 @deftypefunx void glTexParameteri target pname param
+@deftypefunx void glTexParameterfv target pname params
+@deftypefunx void glTexParameteriv target pname params
 Set texture parameters.
 
 @table @asis
@@ -21991,7 +22162,8 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glTranslatef x y z
+@deftypefun void glTranslated x y z
+@deftypefunx void glTranslatef x y z
 Multiply the current matrix by a translation matrix.
 
 @table @asis
@@ -22034,6 +22206,14 @@ execution of @code{glEnd}.
 @deftypefunx void glUniform2i location v0 v1
 @deftypefunx void glUniform3i location v0 v1 v2
 @deftypefunx void glUniform4i location v0 v1 v2 v3
+@deftypefunx void glUniform1fv location count value
+@deftypefunx void glUniform2fv location count value
+@deftypefunx void glUniform3fv location count value
+@deftypefunx void glUniform4fv location count value
+@deftypefunx void glUniform1iv location count value
+@deftypefunx void glUniform2iv location count value
+@deftypefunx void glUniform3iv location count value
+@deftypefunx void glUniform4iv location count value
 @deftypefunx void glUniformMatrix2fv location count transpose value
 @deftypefunx void glUniformMatrix3fv location count transpose value
 @deftypefunx void glUniformMatrix4fv location count transpose value
@@ -22415,16 +22595,39 @@ value.
 
 @deftypefun void glVertexAttrib1f index v0
 @deftypefunx void glVertexAttrib1s index v0
+@deftypefunx void glVertexAttrib1d index v0
 @deftypefunx void glVertexAttrib2f index v0 v1
 @deftypefunx void glVertexAttrib2s index v0 v1
+@deftypefunx void glVertexAttrib2d index v0 v1
 @deftypefunx void glVertexAttrib3f index v0 v1 v2
 @deftypefunx void glVertexAttrib3s index v0 v1 v2
+@deftypefunx void glVertexAttrib3d index v0 v1 v2
 @deftypefunx void glVertexAttrib4f index v0 v1 v2 v3
 @deftypefunx void glVertexAttrib4s index v0 v1 v2 v3
+@deftypefunx void glVertexAttrib4d index v0 v1 v2 v3
 @deftypefunx void glVertexAttrib4Nub index v0 v1 v2 v3
+@deftypefunx void glVertexAttrib1fv index v
+@deftypefunx void glVertexAttrib1sv index v
+@deftypefunx void glVertexAttrib1dv index v
+@deftypefunx void glVertexAttrib2fv index v
+@deftypefunx void glVertexAttrib2sv index v
+@deftypefunx void glVertexAttrib2dv index v
+@deftypefunx void glVertexAttrib3fv index v
+@deftypefunx void glVertexAttrib3sv index v
+@deftypefunx void glVertexAttrib3dv index v
+@deftypefunx void glVertexAttrib4fv index v
+@deftypefunx void glVertexAttrib4sv index v
+@deftypefunx void glVertexAttrib4dv index v
 @deftypefunx void glVertexAttrib4iv index v
+@deftypefunx void glVertexAttrib4bv index v
+@deftypefunx void glVertexAttrib4ubv index v
+@deftypefunx void glVertexAttrib4usv index v
 @deftypefunx void glVertexAttrib4uiv index v
+@deftypefunx void glVertexAttrib4Nbv index v
+@deftypefunx void glVertexAttrib4Nsv index v
 @deftypefunx void glVertexAttrib4Niv index v
+@deftypefunx void glVertexAttrib4Nubv index v
+@deftypefunx void glVertexAttrib4Nusv index v
 @deftypefunx void glVertexAttrib4Nuiv index v
 Specifies the value of a generic vertex attribute.
 
@@ -22578,12 +22781,30 @@ value.
 
 @end deftypefun
 
-@deftypefun void glVertex2i x y
+@deftypefun void glVertex2s x y
+@deftypefunx void glVertex2i x y
 @deftypefunx void glVertex2f x y
+@deftypefunx void glVertex2d x y
+@deftypefunx void glVertex3s x y z
 @deftypefunx void glVertex3i x y z
 @deftypefunx void glVertex3f x y z
+@deftypefunx void glVertex3d x y z
+@deftypefunx void glVertex4s x y z w
 @deftypefunx void glVertex4i x y z w
 @deftypefunx void glVertex4f x y z w
+@deftypefunx void glVertex4d x y z w
+@deftypefunx void glVertex2sv v
+@deftypefunx void glVertex2iv v
+@deftypefunx void glVertex2fv v
+@deftypefunx void glVertex2dv v
+@deftypefunx void glVertex3sv v
+@deftypefunx void glVertex3iv v
+@deftypefunx void glVertex3fv v
+@deftypefunx void glVertex3dv v
+@deftypefunx void glVertex4sv v
+@deftypefunx void glVertex4iv v
+@deftypefunx void glVertex4fv v
+@deftypefunx void glVertex4dv v
 Specify a vertex.
 
 @table @asis
@@ -22647,10 +22868,22 @@ execution of @code{glEnd}.
 
 @end deftypefun
 
-@deftypefun void glWindowPos2i x y
+@deftypefun void glWindowPos2s x y
+@deftypefunx void glWindowPos2i x y
 @deftypefunx void glWindowPos2f x y
+@deftypefunx void glWindowPos2d x y
+@deftypefunx void glWindowPos3s x y z
 @deftypefunx void glWindowPos3i x y z
 @deftypefunx void glWindowPos3f x y z
+@deftypefunx void glWindowPos3d x y z
+@deftypefunx void glWindowPos2sv v
+@deftypefunx void glWindowPos2iv v
+@deftypefunx void glWindowPos2fv v
+@deftypefunx void glWindowPos2dv v
+@deftypefunx void glWindowPos3sv v
+@deftypefunx void glWindowPos3iv v
+@deftypefunx void glWindowPos3fv v
+@deftypefunx void glWindowPos3dv v
 Specify the raster position in window coordinates for pixel operations.
 
 @table @asis
