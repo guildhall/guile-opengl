@@ -81,11 +81,9 @@
             const-GLvoid-**
             void-*))
 
-(define %ptr
-  (case (ffi:sizeof '*)
-    ((4) ffi:uint32)
-    ((8) ffi:uint64)
-    (else (error "unknown pointer size"))))
+;; TODO: Taken from Mesa headers for some types below.  Not clear what
+;; these types are on other platforms.
+(define %ptr ffi:ptrdiff_t)
 
 (define-simple-foreign-type void ffi:void)
 (define-simple-foreign-type GLboolean ffi:uint8)
