@@ -109,3 +109,67 @@
 ;;;
 
 (re-export (%glRectf gl-rectangle))
+
+
+;;;
+;;; 2.11 Coordinate Transformation
+;;;
+
+;;;
+;;; 2.11.1 Controlling the Viewport
+;;;
+
+(re-export (%glDepthRange gl-depth-range)
+           (%glViewport gl-viewport))
+
+;;;
+;;; 2.11.2 Matrices
+;;;
+
+;; OpengGL matrices are stored in column-major order.  This is
+;; different to the usual row-major order used in 2-dimensional
+;; arrays, which will have to be transposed as they loaded.
+
+(define* (gl-load-matrix m #:key (transpose #f))
+  ((if transpose
+       %glLoadTransposeMatrixf
+       %glLoadMatrixf)
+   (array-contents m)))
+
+(define* (gl-multiply-matrix m #:key (transpose #f))
+  ((if transpose
+       %glMultTransposeMatrixf
+       %glMultMatrixf)
+   (array-contents m)))
+
+(export gl-load-matrix
+        gl-multiply-matrix)
+
+(re-export (%glMatrixMode gl-matrix-mode)
+           (%glLoadIdentity gl-load-identity)
+           (%glRotatef gl-rotate)
+           (%glTranslatef gl-translate)
+           (%glScalef gl-scale)
+           (%glFrustum gl-frustum)
+           (%glOrtho gl-ortho)
+           (%glActiveTexture set-gl-active-texture)
+           (%glPushMatrix gl-push-matrix)
+           (%glPopMatrix gl-pop-matrix))
+
+(define-syntax with-gl-push-matrix
+  (syntax-rules ()
+    ((_ body ...)
+     (begin
+       (%glPushMatrix)
+       body ...
+       (%glPopMatrix)))))
+
+(export-syntax with-gl-push-matrix)
+
+;;;
+;;; 2.11.3 Normal Transformations
+;;;
+
+(re-export (%glEnable gl-enable)
+           (%glDisable gl-disable))
+
