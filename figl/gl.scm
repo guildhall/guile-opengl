@@ -41,6 +41,9 @@
 (module-use! (module-public-interface (current-module))
              (resolve-interface '(figl gl enums)))
 
+;; FIXME: There appears to be a Guile bug with the (re-export pair)
+;; syntax.
+
 ;;;
 ;;; 2.6 Begin/End Paradigm
 ;;;
