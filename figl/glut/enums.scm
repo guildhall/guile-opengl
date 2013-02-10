@@ -25,19 +25,19 @@
 (define-module (figl glut enums)
   #:use-module (figl runtime)
   #:export (display-mode
-            button
+            button-name
             button-state
             special-key
             entry-state
             menu-status
             visibility-state
             color-component
-            layer
+            layer-name
             glut-state
             device-info
             layer-info
             modifier-key-state
-            cursor))
+            cursor-name))
 
 (define-bitfield
   display-mode
@@ -55,7 +55,7 @@
   (luminance 512))
 
 (define-enumeration
-  button
+  button-name
   (left-button 0)
   (middle-button 1)
   (right-button 2))
@@ -113,7 +113,7 @@
   (blue 2))
 
 (define-enumeration
-  layer
+  layer-name
   (normal 0)
   (overlay 1))
 
@@ -211,7 +211,7 @@
   (active-alt 4))
 
 (define-enumeration
-  cursor
+  cursor-name
   ;; Basic arrows
   (cursor-right-arrow 0)
   (cursor-left-arrow 1)
