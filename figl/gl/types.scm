@@ -109,17 +109,23 @@
 (define-simple-foreign-type void-* '*)
 (define-simple-foreign-type const-GLvoid-* '*)
 
-(define (array->pointer x)
-  (lambda (x)
-    (if x
-        (ffi:bytevector->pointer x)
-        ffi:%null-pointer)))
+(define (coerce-array-pointer x)
+  (cond
+   ((ffi:pointer? x)
+    x)
+   ((bytevector? x)
+    (ffi:bytevector->pointer x))
+   ;; TODO: (typed-array? x element-type)
+   ((not x)
+    ffi:%null-pointer)
+   (else
+    (error "unhandled array-pointer type" x))))
 
 (define-syntax define-array-foreign-type
   (syntax-rules ()
     ((_ name element-type)
      (define-foreign-type name '*
-       array->pointer
+       coerce-array-pointer
        (lambda (x) x)))))
 
 (define-array-foreign-type GLboolean-* GLboolean)
