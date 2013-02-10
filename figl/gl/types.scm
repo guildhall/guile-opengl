@@ -64,6 +64,7 @@
             const-GLboolean-*
             const-GLbyte-*
             const-GLubyte-*
+            const-GLubyte*
             const-GLchar-*
             const-GLchar-**
             const-GLshort-*
@@ -159,3 +160,6 @@
 (define-simple-foreign-type GLvoid-** '*)
 (define-simple-foreign-type const-GLchar-** '*)
 (define-simple-foreign-type const-GLvoid-** '*)
+
+;; TODO: Hacked for a typo in glGetString.xml.
+(define-array-foreign-type const-GLubyte* GLubyte)
