@@ -86,11 +86,13 @@
    ((ffi:pointer? x)
     x)
    ((procedure? x)
-    (letrec ((wrapper (lambda args
-                        (gc-unprotect! wrapper)
-                        (apply x args))))
-      (gc-protect! wrapper)
-      (ffi:procedure->pointer return-type wrapper arg-types)))
+    (letrec ((ptr (ffi:procedure->pointer return-type
+                                          (lambda args
+                                            (gc-unprotect! ptr)
+                                            (apply x args))
+                                          arg-types)))
+      (gc-protect! ptr)
+      ptr))
    (else
     (error "unhandled callback-pointer type" x))))
 
@@ -99,8 +101,9 @@
    ((ffi:pointer? x)
     x)
    ((procedure? x)
-    (gc-protect! x)
-    (ffi:procedure->pointer return-type x arg-types))
+    (let ((ptr (ffi:procedure->pointer return-type x arg-types)))
+      (gc-protect! ptr)
+      ptr))
    (else
     (error "unhandled callback-pointer type" x))))
 
