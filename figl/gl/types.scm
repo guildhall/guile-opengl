@@ -83,7 +83,12 @@
 
 ;; TODO: Taken from Mesa headers for some types below.  Not clear what
 ;; these types are on other platforms.
-(define %ptr ffi:ptrdiff_t)
+(define %ptr
+  (cond
+   ((defined? 'ffi:ptrdiff_t) ffi:ptrdiff_t)
+   ((= (ffi:sizeof '*) 8) ffi:int64)
+   ((= (ffi:sizeof '*) 4) ffi:int32)
+   (else (error "unknown pointer size" (ffi:sizeof '*)))))
 
 (define-simple-foreign-type void ffi:void)
 (define-simple-foreign-type GLbyte ffi:int8)
