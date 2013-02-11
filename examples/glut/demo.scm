@@ -1,8 +1,7 @@
 #!/usr/bin/env guile
 !#
 
-(use-modules (figl glut low-level)
-             (figl glut)
+(use-modules (figl glut)
              (figl gl)
              (system foreign))
 
@@ -21,5 +20,5 @@
 
 (define main-window (make-window "glut"))
 
-(glutDisplayFunc (procedure->pointer void render-scene (list)))
+(set-display-callback render-scene)
 (glut-main-loop)

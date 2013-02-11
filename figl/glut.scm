@@ -249,6 +249,32 @@
 
 
 ;;;
+;;; 7 Callback Registration
+;;;
+
+(re-export (%glutDisplayFunc . set-display-callback)
+           (%glutOverlayDisplayFunc . set-overlay-display-callback)
+           (%glutReshapeFunc . set-reshape-callback)
+           (%glutKeyboardFunc . set-keyboard-callback)
+           (%glutMouseFunc . set-mouse-callback)
+           (%glutMotionFunc . set-motion-callback)
+           (%glutPassiveMotionFunc . set-passive-motion-callback)
+           (%glutVisibilityFunc . set-visibility-callback)
+           (%glutEntryFunc . set-entry-callback)
+           (%glutSpecialFunc . set-special-callback)
+           (%glutSpaceballMotionFunc . set-spaceball-motion-callback)
+           (%glutSpaceballRotateFunc . set-spaceball-rotate-callback)
+           (%glutSpaceballButtonFunc . set-spaceball-button-callback)
+           (%glutButtonBoxFunc . set-button-box-callback)
+           (%glutDialsFunc . set-dials-callback)
+           (%glutTabletMotionFunc . set-tablet-motion-callback)
+           (%glutTabletButtonFunc . set-tablet-button-callback)
+           (%glutMenuStatusFunc . set-menu-status-callback)
+           (%glutIdleFunc . set-idle-callback)
+           (%glutTimerFunc . add-timer-callback))
+
+
+;;;
 ;;; 9 State Retrieval
 ;;;
 

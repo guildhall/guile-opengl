@@ -66,64 +66,96 @@
 (define-simple-foreign-type int-* '*)
 (define-simple-foreign-type char-** '*)
 
-(define (coerce-callback-pointer x return-type arg-types)
+;; Callbacks are either "ephemeral" or "sticky".  Ephemeral callbacks
+;; are only called once, and are protected between the time they are
+;; wrapped and the time they are called.  Sticky callbacks can be called
+;; multiple times, and are protected for all time.  Perhaps we should
+;; allow sticky callbacks to be unprotected at some time, but it
+;; probably doesn't matter.
+
+(define *gc-protected* '())
+
+(define (gc-protect! proc)
+  (set! *gc-protected* (cons proc *gc-protected*)))
+
+(define (gc-unprotect! proc)
+  (set! *gc-protected* (delq! proc *gc-protected*)))
+
+(define (coerce-callback-pointer/ephemeral x return-type arg-types)
   (cond
    ((ffi:pointer? x)
     x)
    ((procedure? x)
+    (letrec ((wrapper (lambda args
+                        (gc-unprotect! wrapper)
+                        (apply x args))))
+      (gc-protect! wrapper)
+      (ffi:procedure->pointer return-type wrapper arg-types)))
+   (else
+    (error "unhandled callback-pointer type" x))))
+
+(define (coerce-callback-pointer/sticky x return-type arg-types)
+  (cond
+   ((ffi:pointer? x)
+    x)
+   ((procedure? x)
+    (gc-protect! x)
     (ffi:procedure->pointer return-type x arg-types))
    (else
     (error "unhandled callback-pointer type" x))))
 
-(define-syntax define-callback-pointer-type
+(define-syntax define-ephemeral-callback-pointer-type
   (syntax-rules (->)
     ((_ name ((pname ptype) ... -> type))
      (define-foreign-type name '*
-       (cute coerce-callback-pointer <> (type) (list (ptype) ...))
+       (cute coerce-callback-pointer/ephemeral <> (type) (list (ptype) ...))
        (lambda (x) x)))))
 
-;; TODO: These callback-pointer types are not used at, as it is not
-;; clear how to efficiently keep the pointers alive.  Defined now
-;; anyway as a stub, and users can access them if they keep the
-;; pointer alive themselves.
+(define-syntax define-sticky-callback-pointer-type
+  (syntax-rules (->)
+    ((_ name ((pname ptype) ... -> type))
+     (define-foreign-type name '*
+       (cute coerce-callback-pointer/sticky <> (type) (list (ptype) ...))
+       (lambda (x) x)))))
 
-(define-callback-pointer-type display-callback-*
+(define-sticky-callback-pointer-type display-callback-*
   (-> void))
-(define-callback-pointer-type overlay-display-callback-*
+(define-sticky-callback-pointer-type overlay-display-callback-*
   (-> void))
-(define-callback-pointer-type reshape-callback-*
+(define-sticky-callback-pointer-type reshape-callback-*
   ((width int) (height int) -> void))
-(define-callback-pointer-type keyboard-callback-*
+(define-sticky-callback-pointer-type keyboard-callback-*
   ((key unsigned-char) (x int) (y int) -> void))
-(define-callback-pointer-type mouse-callback-*
+(define-sticky-callback-pointer-type mouse-callback-*
   ((button int) (state int) (x int) (y int) -> void))
-(define-callback-pointer-type motion-callback-*
+(define-sticky-callback-pointer-type motion-callback-*
   ((x int) (y int) -> void))
-(define-callback-pointer-type passive-motion-callback-*
+(define-sticky-callback-pointer-type passive-motion-callback-*
   ((x int) (y int) -> void))
-(define-callback-pointer-type visibility-callback-*
+(define-sticky-callback-pointer-type visibility-callback-*
   ((state int) -> void))
-(define-callback-pointer-type entry-callback-*
+(define-sticky-callback-pointer-type entry-callback-*
   ((state int) -> void))
-(define-callback-pointer-type special-callback-*
+(define-sticky-callback-pointer-type special-callback-*
   ((key int) (x int) (y int) -> void))
-(define-callback-pointer-type spaceball-motion-callback-*
+(define-sticky-callback-pointer-type spaceball-motion-callback-*
   ((x int) (y int) (z int) -> void))
-(define-callback-pointer-type spaceball-rotate-callback-*
+(define-sticky-callback-pointer-type spaceball-rotate-callback-*
   ((x int) (y int) (z int) -> void))
-(define-callback-pointer-type spaceball-button-callback-*
+(define-sticky-callback-pointer-type spaceball-button-callback-*
   ((button int) (state int) -> void))
-(define-callback-pointer-type button-box-callback-*
+(define-sticky-callback-pointer-type button-box-callback-*
   ((button int) (state int) -> void))
-(define-callback-pointer-type dials-callback-*
+(define-sticky-callback-pointer-type dials-callback-*
   ((dial int) (value int) -> void))
-(define-callback-pointer-type tablet-motion-callback-*
+(define-sticky-callback-pointer-type tablet-motion-callback-*
   ((x int) (y int) -> void))
-(define-callback-pointer-type tablet-button-callback-*
+(define-sticky-callback-pointer-type tablet-button-callback-*
   ((button int) (state int) (x int) (y int) -> void))
-(define-callback-pointer-type menu-status-callback-*
+(define-sticky-callback-pointer-type menu-status-callback-*
   ((status int) (x int) (y int) -> void))
-(define-callback-pointer-type idle-callback-*
+(define-sticky-callback-pointer-type idle-callback-*
   (-> void))
-(define-callback-pointer-type timer-callback-*
+
+(define-ephemeral-callback-pointer-type timer-callback-*
   ((value int) -> void))

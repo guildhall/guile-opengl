@@ -345,84 +345,84 @@
 ;;;
 
 (define-glut-procedure
-  (glutDisplayFunc (func void-*) -> void)
+  (glutDisplayFunc (func display-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutOverlayDisplayFunc (func void-*) -> void)
+  (glutOverlayDisplayFunc (func overlay-display-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutReshapeFunc (func void-*) -> void)
+  (glutReshapeFunc (func reshape-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutKeyboardFunc (func void-*) -> void)
+  (glutKeyboardFunc (func keyboard-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutMouseFunc (func void-*) -> void)
+  (glutMouseFunc (func mouse-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutMotionFunc (func void-*) -> void)
+  (glutMotionFunc (func motion-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutPassiveMotionFunc (func void-*) -> void)
+  (glutPassiveMotionFunc (func passive-motion-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutVisibilityFunc (func void-*) -> void)
+  (glutVisibilityFunc (func visibility-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutEntryFunc (func void-*) -> void)
+  (glutEntryFunc (func entry-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutSpecialFunc (func void-*) -> void)
+  (glutSpecialFunc (func special-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutSpaceballMotionFunc (func void-*) -> void)
+  (glutSpaceballMotionFunc (func spaceball-motion-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutSpaceballRotateFunc (func void-*) -> void)
+  (glutSpaceballRotateFunc (func spaceball-rotate-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutSpaceballButtonFunc (func void-*) -> void)
+  (glutSpaceballButtonFunc (func spaceball-button-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutButtonBoxFunc (func void-*) -> void)
+  (glutButtonBoxFunc (func button-box-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutDialsFunc (func void-*) -> void)
+  (glutDialsFunc (func dials-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutTabletMotionFunc (func void-*) -> void)
+  (glutTabletMotionFunc (func tablet-motion-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutTabletButtonFunc (func void-*) -> void)
+  (glutTabletButtonFunc (func tablet-button-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutMenuStatusFunc (func void-*) -> void)
+  (glutMenuStatusFunc (func menu-status-callback-*) -> void)
   #f)
 
 (define-glut-procedure
-  (glutIdleFunc (func void-*) -> void)
+  (glutIdleFunc (func idle-callback-*) -> void)
   #f)
 
 (define-glut-procedure
   (glutTimerFunc (msecs unsigned-int)
-                 (func void-*)
+                 (func timer-callback-*)
                  (value int)
                  ->
                  void)
