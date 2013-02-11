@@ -45,23 +45,24 @@
 ;;; 2.6 Begin/End Paradigm
 ;;;
 
+;; emacs: (put! 'gl-begin 'scheme-indent-function 1)
+(define-syntax gl-begin
+  (syntax-rules ()
+    ((_ mode body1 body2 ...)
+     (call-with-values
+         (lambda ()
+           (%glBegin mode)
+           body1 body2 ...)
+       (lambda vals
+         (%glEnd)
+         (apply values vals))))))
+
 (define (gl-edge-flag flag)
   (%glEdgeFlag (if flag (boolean true) (boolean false))))
 
-(re-export (%glBegin . gl-begin)
-           (%glEnd . gl-end))
+(export-syntax gl-begin)
 
 (export gl-edge-flag)
-
-(define-syntax with-gl-begin ; terrible name
-  (syntax-rules ()
-    ((_ mode body ...)
-     (begin
-       (gl-begin mode)
-       body ...
-       (gl-end)))))
-
-(export-syntax with-gl-begin)
 
 ;;;
 ;;; 2.7 Vertex Specification
