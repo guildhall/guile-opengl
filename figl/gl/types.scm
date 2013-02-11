@@ -86,7 +86,6 @@
 (define %ptr ffi:ptrdiff_t)
 
 (define-simple-foreign-type void ffi:void)
-(define-simple-foreign-type GLboolean ffi:uint8)
 (define-simple-foreign-type GLbyte ffi:int8)
 (define-simple-foreign-type GLubyte ffi:uint8)
 (define-simple-foreign-type GLchar ffi:int8)
@@ -106,6 +105,13 @@
 (define-simple-foreign-type GLvoid-* '*)
 (define-simple-foreign-type void-* '*)
 (define-simple-foreign-type const-GLvoid-* '*)
+
+(define GL_FALSE 0)
+(define GL_TRUE 1)
+
+(define-foreign-type GLboolean ffi:uint8
+  (lambda (x) (if x GL_TRUE GL_FALSE))
+  (lambda (x) (eqv? x GL_TRUE)))
 
 (define (coerce-array-pointer x)
   (cond
