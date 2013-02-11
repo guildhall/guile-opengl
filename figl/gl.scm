@@ -41,9 +41,6 @@
 (module-use! (module-public-interface (current-module))
              (resolve-interface '(figl gl enums)))
 
-;; FIXME: There appears to be a Guile bug with the (re-export pair)
-;; syntax.
-
 ;;;
 ;;; 2.6 Begin/End Paradigm
 ;;;
@@ -51,8 +48,8 @@
 (define (gl-edge-flag flag)
   (%glEdgeFlag (if flag (boolean true) (boolean false))))
 
-(re-export (%glBegin gl-begin)
-           (%glEnd gl-end))
+(re-export (%glBegin . gl-begin)
+           (%glEnd . gl-end))
 
 (export gl-edge-flag)
 
@@ -60,9 +57,9 @@
   (syntax-rules ()
     ((_ mode body ...)
      (begin
-       (%glBegin mode)
+       (gl-begin mode)
        body ...
-       (%glEnd)))))
+       (gl-end)))))
 
 (export-syntax with-gl-begin)
 
@@ -102,16 +99,16 @@
         gl-multi-tex-coord
         gl-color)
 
-(re-export (%glNormal3f gl-normal)
-           (%glFogCoordf gl-fog-coord)
-           (%glSecondaryColor3f gl-secondary-color)
-           (%glIndexi gl-index))
+(re-export (%glNormal3f . gl-normal)
+           (%glFogCoordf . gl-fog-coord)
+           (%glSecondaryColor3f . gl-secondary-color)
+           (%glIndexi . gl-index))
 
 ;;;
 ;;; 2.10 Rectangles
 ;;;
 
-(re-export (%glRectf gl-rectangle))
+(re-export (%glRectf . gl-rectangle))
 
 
 ;;;
@@ -122,8 +119,8 @@
 ;;; 2.11.1 Controlling the Viewport
 ;;;
 
-(re-export (%glDepthRange gl-depth-range)
-           (%glViewport gl-viewport))
+(re-export (%glDepthRange . gl-depth-range)
+           (%glViewport . gl-viewport))
 
 ;;;
 ;;; 2.11.2 Matrices
@@ -148,16 +145,16 @@
 (export gl-load-matrix
         gl-multiply-matrix)
 
-(re-export (%glMatrixMode gl-matrix-mode)
-           (%glLoadIdentity gl-load-identity)
-           (%glRotatef gl-rotate)
-           (%glTranslatef gl-translate)
-           (%glScalef gl-scale)
-           (%glFrustum gl-frustum)
-           (%glOrtho gl-ortho)
-           (%glActiveTexture set-gl-active-texture)
-           (%glPushMatrix gl-push-matrix)
-           (%glPopMatrix gl-pop-matrix))
+(re-export (%glMatrixMode . gl-matrix-mode)
+           (%glLoadIdentity . gl-load-identity)
+           (%glRotatef . gl-rotate)
+           (%glTranslatef . gl-translate)
+           (%glScalef . gl-scale)
+           (%glFrustum . gl-frustum)
+           (%glOrtho . gl-ortho)
+           (%glActiveTexture . set-gl-active-texture)
+           (%glPushMatrix . gl-push-matrix)
+           (%glPopMatrix . gl-pop-matrix))
 
 (define-syntax with-gl-push-matrix
   (syntax-rules ()
@@ -173,6 +170,5 @@
 ;;; 2.11.3 Normal Transformations
 ;;;
 
-(re-export (%glEnable gl-enable)
-           (%glDisable gl-disable))
-
+(re-export (%glEnable . gl-enable)
+           (%glDisable . gl-disable))
