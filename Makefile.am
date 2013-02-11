@@ -26,6 +26,7 @@ SOURCES = \
 	figl/glx/enums.scm \
 	figl/glx.scm \
 	\
+	figl/glut/types.scm \
 	figl/glut/runtime.scm \
 	figl/glut/low-level.scm \
 	figl/glut/enums.scm \

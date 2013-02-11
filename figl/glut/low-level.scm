@@ -26,8 +26,8 @@
 ;;; Code:
 
 (define-module (figl glut low-level)
-  #:use-module (figl runtime)
   #:use-module (figl glut runtime)
+  #:use-module (figl glut types)
   #:use-module (figl gl types)
   #:use-module ((system foreign) #:renamer (symbol-prefix-proc 'ffi:))
   #:use-module (srfi srfi-26) ; cut
@@ -142,17 +142,6 @@
             glutSolidTeapot
             glutWireTeapot
             ))
-
-(define-simple-foreign-type int ffi:int)
-(define-simple-foreign-type unsigned-int ffi:unsigned-int)
-
-;; GLUT specifies that all strings are ASCII encoded.
-(define-foreign-type char-* '*
-  (cut ffi:string->pointer <> "ASCII")
-  (cut ffi:pointer->string <> -1 "ASCII"))
-
-(define-simple-foreign-type int-* '*)
-(define-simple-foreign-type char-** '*)
 
 ;;;
 ;;; 2 Initialization
@@ -425,10 +414,6 @@
 
 (define-glut-procedure
   (glutMenuStatusFunc (func void-*) -> void)
-  #f)
-
-(define-glut-procedure
-  (glutMenuStateFunc (func void-*) -> void)
   #f)
 
 (define-glut-procedure
