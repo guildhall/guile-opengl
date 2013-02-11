@@ -1,21 +1,17 @@
 #!/usr/bin/env guile
 !#
 
-(use-modules (figl glut enums)
-             (figl glut low-level)
+(use-modules (figl glut low-level)
              (figl glut)
-             (figl gl enums)
-             (figl gl low-level)
+             (figl gl)
              (system foreign))
 
 (define (render-scene)
-  (glClear (clear-buffer-mask color-buffer depth-buffer))
-  (glBegin (begin-mode triangles))
-  (glVertex3f -0.5 -0.5 0.0)
-  (glVertex3f 0.5 0.0 0.0)
-  (glVertex3f 0.0 0.5 0.0)
-  (glEnd)
-
+  (gl-clear (clear-buffer-mask color-buffer depth-buffer))
+  (gl-begin (begin-mode triangles)
+    (gl-vertex -0.5 -0.5 0.0)
+    (gl-vertex 0.5 0.0 0.0)
+    (gl-vertex 0.0 0.5 0.0))
   (glutSwapBuffers))
 
 (glutInitWindowSize 320 200)

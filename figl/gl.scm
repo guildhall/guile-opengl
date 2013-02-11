@@ -24,8 +24,10 @@
 
 (define-module (figl gl)
   #:use-module (figl runtime)
+  #:use-module (figl gl types)
   #:use-module (figl gl enums)
-  #:use-module ((figl gl low-level) #:renamer (symbol-prefix-proc '%)))
+  #:use-module ((figl gl low-level) #:renamer (symbol-prefix-proc '%))
+  #:use-module (system foreign))
 
 ;; Notice there is no #:export clause.  Exports are done inline to
 ;; facilitate re-exporting low-level bindings (and changing that
@@ -83,25 +85,26 @@
 (define* (gl-vertex x y #:optional (z 0.0) (w 1.0))
   (%glVertex4f x y z w))
 
-(define* (gl-tex-coord s #:optional (t 0.0) (r 0.0) (q 1.0))
+(define* (gl-texture-coordinate s #:optional (t 0.0) (r 0.0) (q 1.0))
   (%glTexCoord4f s t r q))
 
-(define* (gl-multi-tex-coord texture s #:optional (t 0.0) (r 0.0) (q 1.0))
+(define* (gl-multi-texture-coordinate texture s #:optional (t 0.0) (r 0.0) (q 1.0))
   (%glMultiTexCoord4f texture s t r q))
 
 (define* (gl-color red green blue #:optional (alpha 1.0))
   (%glColor4f red green blue alpha))
 
-(define* (gl-vertex-attrib index x #:optional (y 0.0) (z 0.0) (w 1.0))
+(define* (gl-vertex-attribute index x #:optional (y 0.0) (z 0.0) (w 1.0))
   (%glVertexAttrib4f index x y z w))
 
 (export gl-vertex
-        gl-tex-coord
-        gl-multi-tex-coord
-        gl-color)
+        gl-texture-coordinate
+        gl-multi-texture-coordinate
+        gl-color
+        gl-vertex-attribute)
 
 (re-export (%glNormal3f . gl-normal)
-           (%glFogCoordf . gl-fog-coord)
+           (%glFogCoordf . gl-fog-coordinate)
            (%glSecondaryColor3f . gl-secondary-color)
            (%glIndexi . gl-index))
 
@@ -173,3 +176,84 @@
 
 (re-export (%glEnable . gl-enable)
            (%glDisable . gl-disable))
+
+
+;;;
+;;; 4.1 Per-Fragment Operations
+;;;
+
+(define* (set-gl-stencil-function stencil-function k #:key
+                                  (mask #xFFFFFFFF) ; 32-bit mask
+                                  face)
+  (if face
+      (%glStencilFuncSeparate face stencil-function k mask)
+      (%glStencilFunc stencil-function k mask)))
+
+(define* (set-gl-stencil-operation stencil-fail depth-fail depth-pass #:key
+                                   face)
+  (if face
+      (%glStencilOpSeparate face stencil-fail depth-fail depth-pass)
+      (%glStencilOp stencil-fail depth-fail depth-pass)))
+
+;; TODO: 4.1.7 Occlusion Queries
+
+(define* (set-gl-blend-equation mode-rgb #:optional (mode-alpha mode-rgb))
+  (%glBlendEquationSeparate mode-rgb mode-alpha))
+
+(define* (set-gl-blend-function src-rgb dest-rgb #:optional
+                                (src-alpha src-rgb)
+                                (dest-alpha dest-rgb))
+  (%glBlendFuncSeparate src-rgb dest-rgb src-alpha dest-alpha))
+
+(export set-gl-stencil-function
+        set-gl-stencil-operation
+        set-gl-blend-equation
+        set-gl-blend-function
+        )
+
+(re-export (%glScissor . set-gl-scissor)
+           (%glSampleCoverage . set-gl-sample-coverage)
+           (%glAlphaFunc . set-gl-alpha-function)
+           (%glDepthFunc . set-gl-depth-function)
+           (%glBlendColor . set-gl-blend-color)
+           (%glLogicOp . set-gl-logic-operation)
+           )
+
+;;;
+;;; 4.2 Whole Framebuffer Operations
+;;;
+
+(define (set-gl-draw-buffers buffers)
+  (let* ((n (length buffers))
+         (buffers (make-c-struct (make-list n (GLenum))
+                                 buffers)))
+    (%glDrawBuffers n buffers)))
+
+(define* (set-gl-stencil-mask mask #:key face)
+  (if face
+      (%glStencilMaskSeparate face mask)
+      (%glStencilMask mask)))
+
+(export set-gl-draw-buffers
+        set-gl-stencil-mask)
+
+(re-export (%glDrawBuffer . set-gl-draw-buffer)
+           (%glIndexMask . set-gl-index-mask)
+           (%glColorMask . set-gl-color-mask)
+           (%glDepthMask . set-gl-depth-mask)
+           (%glClear . gl-clear)
+           (%glClearColor . set-gl-clear-color)
+           (%glClearIndex . set-gl-clear-index)
+           (%glClearDepth . set-gl-clear-depth)
+           (%glClearStencil . set-gl-clear-stencil-value)
+           (%glClearAccum . set-gl-clear-accumulation-color)
+           (%glAccum . set-gl-accumulation-buffer-operation))
+
+;;;
+;;; 4.3 Drawing, Reading, and Copying Pixels
+;;;
+
+;; TODO: read-pixels
+
+(re-export (%glReadBuffer . set-gl-read-buffer)
+           (%glCopyPixels . gl-copy-pixels))
