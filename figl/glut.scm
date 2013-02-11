@@ -23,6 +23,7 @@
 
 (define-module (figl glut)
   #:use-module (figl contrib)
+  #:use-module (figl glut runtime)
   #:use-module ((figl glut low-level) #:renamer (symbol-prefix-proc '%))
   #:use-module (figl glut enums)
   #:use-module (system foreign)
@@ -36,10 +37,13 @@
 ;;; 2 Initialization
 ;;;
 
-;; TODO: Most procedures should prevent themself from being called
-;; before glut-init.
+(re-export (%glutInitWindowPosition . set-initial-window-position)
+           (%glutInitWindowSize . set-initial-window-size)
+           (%glutInitDisplayMode . set-initial-display-mode))
 
-(define glut-init? (make-parameter #f))
+(define glut-init? #f)
+
+(define saved-c-strings '())
 
 ;; Note the use of 'saved-c-strings' to keep a reference to all of the
 ;; C string buffers that we ever pass to 'glutInit'. This is important
@@ -49,31 +53,42 @@
 ;; string buffer managed by the garbage collector, which means that
 ;; the string may be freed unless the GC can see a pointer to the
 ;; _beginning_ of the string.
-(define glut-init
-  (let ((saved-c-strings '()))
-    (lambda (args)
-      ;; Avoid calling init twice as GLUT will exit().
-      (unless (glut-init?)
-        (let* ((num-args (length args))
-               (c-strings (map string->pointer args))
-               (argcp (make-c-struct (list int)
-                                     (list num-args)))
-               (argv (make-c-struct (make-list (+ 1 num-args) '*)
-                                    (append c-strings
-                                            (list %null-pointer)))))
-          (set! saved-c-strings (append c-strings saved-c-strings))
-          (%glutInit argcp argv)
-          (glut-init? #t)
-          (let ((argc (car (parse-c-struct argcp (list int)))))
-            (map pointer->string
-                 (parse-c-struct argv
-                                 (make-list argc '*)))))))))
 
-(export glut-init)
+(define* (initialize-glut #:optional (args (program-arguments))
+                          #:key window-position window-size display-mode)
+  (when glut-init?
+    (error "GLUT already initialized"))
 
-(re-export (%glutInitWindowPosition . set-initial-window-position)
-           (%glutInitWindowSize . set-initial-window-size)
-           (%glutInitDisplayMode . set-initial-display-mode))
+  (when window-position
+    (%glutInitWindowPosition (car window-position) (cdr window-position)))
+
+  (when window-size
+    (%glutInitWindowSize (car window-size) (cdr window-size)))
+
+  (when display-mode
+    (%glutInitDisplayMode display-mode))
+
+  (let* ((num-args (length args))
+         (c-strings (map string->pointer args))
+         (argcp (make-c-struct (list int)
+                               (list num-args)))
+         (argv (make-c-struct (make-list (+ 1 num-args) '*)
+                              (append c-strings (list %null-pointer)))))
+    (set! saved-c-strings (append c-strings saved-c-strings))
+    (%glutInit argcp argv)
+    (set! glut-init? #t)
+    (let ((argc (car (parse-c-struct argcp (list int)))))
+      (map pointer->string
+           (parse-c-struct argv
+                           (make-list argc '*))))))
+
+(add-hook! *resolve-hook*
+           (lambda (name)
+             (unless (or glut-init? (string-prefix? "glutInit" name))
+               (initialize-glut))))
+
+(export initialize-glut)
+
 
 ;;;
 ;;; 3 Beginning Event Processing

@@ -13,10 +13,8 @@
     (gl-vertex 0.0 0.5 0.0))
   (swap-buffers))
 
-(set-initial-window-size 320 200)
-(set-initial-display-mode (display-mode rgb double depth))
-
-(glut-init (program-arguments))
+(initialize-glut #:window-size '(320 . 200)
+                 #:display-mode (display-mode rgb double depth))
 
 (define main-window (make-window "glut"))
 

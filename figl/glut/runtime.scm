@@ -25,7 +25,8 @@
   #:use-module (system foreign)
   #:use-module (figl runtime)
   #:use-module (figl gl runtime)
-  #:export (define-glut-procedure define-glut-procedures))
+  #:export (*resolve-hook*
+            define-glut-procedure))
 
 (define libglut
   (delay (dynamic-link "libglut")))
@@ -35,8 +36,12 @@
 
 (current-gl-get-dynamic-object get-libglut)
 
+(define *resolve-hook* (make-hook 1))
+
 (define (resolve name)
-  (dynamic-pointer (symbol->string name) (get-libglut)))
+  (let ((name-str (symbol->string name)))
+    (run-hook *resolve-hook* name-str)
+    (dynamic-pointer name-str (get-libglut))))
 
 (define-syntax define-glut-procedure
   (syntax-rules (->)
@@ -45,12 +50,3 @@
      (define-foreign-procedure (name (pname ptype) ... -> type)
        (resolve 'name)
        docstring))))
-
-(define-syntax define-glut-procedures
-  (syntax-rules ()
-    ((define-glut-procedures ((name prototype ...) ...)
-       docstring)
-     (begin
-       (define-glut-procedure (name prototype ...)
-         docstring)
-       ...))))
