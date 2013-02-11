@@ -38,7 +38,7 @@ update: figl/parse.go
 update-enums: figl/parse.go
 	$(top_builddir)/env $(GUILE) $(top_srcdir)/maint/update-enumerations
 
-EXTRA_DIST += env.in COPYING COPYING.LESSER
+EXTRA_DIST += env.in COPYING COPYING.LESSER examples upstream-doc
 
 info_TEXINFOS = doc/figl.texi
 figl_TEXINFOS = \
