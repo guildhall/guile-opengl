@@ -36,7 +36,7 @@
             glut-state
             device-info
             layer-info
-            modifier-key-state
+            modifiers
             cursor-name))
 
 (define-bitfield
@@ -205,7 +205,7 @@
   (overlay-damaged 805))
 
 (define-bitfield
-  modifier-key-state
+  modifiers
   (active-shift 1)
   (active-ctrl 2)
   (active-alt 4))
