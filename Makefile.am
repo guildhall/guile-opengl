@@ -45,6 +45,8 @@ info_TEXINFOS = doc/figl.texi
 figl_TEXINFOS = \
 	doc/gl.texi \
 	doc/glu.texi \
+	doc/glx.texi \
+	doc/glut.texi \
 	doc/low-level-gl.texi \
 	doc/low-level-glu.texi \
 	doc/low-level-glx.texi \

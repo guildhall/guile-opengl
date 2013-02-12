@@ -1,0 +1,405 @@
+@node GLUT
+@chapter GLUT
+
+Import the GLUT module to have access to these procedures:
+
+@example
+(use-modules (figl glut))
+@end example
+
+The GLUT specification is available at
+@uref{http://www.opengl.org/resources/libraries/glut/glut-3.spec.pdf}.
+
+@menu
+* GLUT Initialization::
+* Beginning Event Processing::
+* Window Management::
+* Overlay Management::
+* Menu Management::
+* Callback Registration::
+* Color Index Colormap Management::
+* State Retrieval::
+* Font Rendering::
+* Geometric Object Rendering::
+@end menu
+
+
+@node GLUT Initialization
+@section GLUT Initialization
+
+@anchor{set-initial-display-mode}
+@defun set-initial-display-mode mode
+@end defun
+
+@anchor{set-initial-window-position}
+@defun set-initial-window-position x y
+@end defun
+
+@anchor{set-initial-window-size}
+@defun set-initial-window-size width height
+@end defun
+
+@anchor{initialize-glut}
+@defun initialize-glut [args] [#:window-position] [#:window-size] [#:display-mode]
+@end defun
+
+
+@node Beginning Event Processing
+@section Beginning Event Processing
+
+@anchor{glut-main-loop}
+@defun glut-main-loop 
+@end defun
+
+
+@node Window Management
+@section Window Management
+
+@anchor{window-id}
+@defun window-id 
+@end defun
+
+@anchor{window-live?}
+@defun window-live? 
+@end defun
+
+@anchor{window?}
+@defun window? 
+@end defun
+
+@anchor{set-window-cursor!}
+@defun set-window-cursor! window cursor
+@end defun
+
+@anchor{set-window-icon-title!}
+@defun set-window-icon-title! window str
+@end defun
+
+@anchor{set-window-title!}
+@defun set-window-title! window str
+@end defun
+
+@anchor{show-window}
+@defun show-window [window]
+@end defun
+
+@anchor{sub-window?}
+@defun sub-window? window
+@end defun
+
+@anchor{swap-buffers}
+@defun swap-buffers [window]
+@end defun
+
+@anchor{top-level-window?}
+@defun top-level-window? window
+@end defun
+
+@anchor{with-window}
+@defmac with-window window body1 body2 ...
+@end defmac
+
+@anchor{with-window*}
+@defun with-window* _ _
+@end defun
+
+@anchor{make-sub-window}
+@defun make-sub-window window x y width height
+@end defun
+
+@anchor{make-window}
+@defun make-window str
+@end defun
+
+@anchor{pop-window}
+@defun pop-window 
+@end defun
+
+@anchor{position-window}
+@defun position-window window x y
+@end defun
+
+@anchor{post-redisplay}
+@defun post-redisplay [window]
+@end defun
+
+@anchor{push-window}
+@defun push-window 
+@end defun
+
+@anchor{reshape-window}
+@defun reshape-window window width height
+@end defun
+
+@anchor{current-window}
+@defun current-window 
+@end defun
+
+@anchor{destroy-window}
+@defun destroy-window window
+@end defun
+
+@anchor{full-screen}
+@defun full-screen window full-screen?
+@end defun
+
+@anchor{hide-window}
+@defun hide-window [window]
+@end defun
+
+@anchor{iconify-window}
+@defun iconify-window [window]
+@end defun
+
+
+@node Overlay Management
+@section Overlay Management
+
+
+@node Menu Management
+@section Menu Management
+
+
+@node Callback Registration
+@section Callback Registration
+
+@anchor{set-button-box-callback}
+@defun set-button-box-callback func
+@end defun
+
+@anchor{set-current-window}
+@defun set-current-window window
+@end defun
+
+@anchor{set-dials-callback}
+@defun set-dials-callback func
+@end defun
+
+@anchor{set-display-callback}
+@defun set-display-callback func
+@end defun
+
+@anchor{set-entry-callback}
+@defun set-entry-callback func
+@end defun
+
+@anchor{set-idle-callback}
+@defun set-idle-callback func
+@end defun
+
+@anchor{set-keyboard-callback}
+@defun set-keyboard-callback func
+@end defun
+
+@anchor{set-menu-status-callback}
+@defun set-menu-status-callback func
+@end defun
+
+@anchor{set-motion-callback}
+@defun set-motion-callback func
+@end defun
+
+@anchor{set-mouse-callback}
+@defun set-mouse-callback func
+@end defun
+
+@anchor{set-overlay-display-callback}
+@defun set-overlay-display-callback func
+@end defun
+
+@anchor{set-passive-motion-callback}
+@defun set-passive-motion-callback func
+@end defun
+
+@anchor{set-reshape-callback}
+@defun set-reshape-callback func
+@end defun
+
+@anchor{set-spaceball-button-callback}
+@defun set-spaceball-button-callback func
+@end defun
+
+@anchor{set-spaceball-motion-callback}
+@defun set-spaceball-motion-callback func
+@end defun
+
+@anchor{set-spaceball-rotate-callback}
+@defun set-spaceball-rotate-callback func
+@end defun
+
+@anchor{set-special-callback}
+@defun set-special-callback func
+@end defun
+
+@anchor{set-tablet-button-callback}
+@defun set-tablet-button-callback func
+@end defun
+
+@anchor{set-tablet-motion-callback}
+@defun set-tablet-motion-callback func
+@end defun
+
+@anchor{set-visibility-callback}
+@defun set-visibility-callback func
+@end defun
+
+@anchor{add-timer-callback}
+@defun add-timer-callback msecs func value
+@end defun
+
+
+@node Color Index Colormap Management
+@section Color Index Colormap Management
+
+
+@node State Retrieval
+@section State Retrieval
+
+@anchor{window-alpha-size}
+@defun window-alpha-size window
+@end defun
+
+@anchor{window-blue-size}
+@defun window-blue-size window
+@end defun
+
+@anchor{window-color-buffer-size}
+@defun window-color-buffer-size window
+@end defun
+
+@anchor{window-colormap-size}
+@defun window-colormap-size window
+@end defun
+
+@anchor{window-depth-buffer-size}
+@defun window-depth-buffer-size window
+@end defun
+
+@anchor{window-double-buffered?}
+@defun window-double-buffered? window
+@end defun
+
+@anchor{window-green-size}
+@defun window-green-size window
+@end defun
+
+@anchor{window-height}
+@defun window-height width
+@end defun
+
+@anchor{window-number-of-children}
+@defun window-number-of-children window
+@end defun
+
+@anchor{window-number-of-samples}
+@defun window-number-of-samples window
+@end defun
+
+@anchor{window-parent}
+@defun window-parent window
+@end defun
+
+@anchor{window-position}
+@defun window-position window
+@end defun
+
+@anchor{window-red-size}
+@defun window-red-size window
+@end defun
+
+@anchor{window-size}
+@defun window-size window
+@end defun
+
+@anchor{window-stencil-buffer-size}
+@defun window-stencil-buffer-size window
+@end defun
+
+@anchor{window-stereo?}
+@defun window-stereo? window
+@end defun
+
+@anchor{window-rgba?}
+@defun window-rgba window
+@end defun
+
+@anchor{window-width}
+@defun window-width width
+@end defun
+
+@anchor{window-x}
+@defun window-x width
+@end defun
+
+@anchor{window-y}
+@defun window-y width
+@end defun
+
+@anchor{screen-height}
+@defun screen-height 
+@end defun
+
+@anchor{screen-height-mm}
+@defun screen-height-mm 
+@end defun
+
+@anchor{screen-size}
+@defun screen-size 
+@end defun
+
+@anchor{screen-size-mm}
+@defun screen-size-mm 
+@end defun
+
+@anchor{screen-width}
+@defun screen-width 
+@end defun
+
+@anchor{screen-width-mm}
+@defun screen-width-mm 
+@end defun
+
+@anchor{display-mode-possible?}
+@defun display-mode-possible? 
+@end defun
+
+@anchor{initial-display-mode}
+@defun initial-display-mode 
+@end defun
+
+@anchor{initial-window-height}
+@defun initial-window-height 
+@end defun
+
+@anchor{initial-window-position}
+@defun initial-window-position 
+@end defun
+
+@anchor{initial-window-size}
+@defun initial-window-size 
+@end defun
+
+@anchor{initial-window-width}
+@defun initial-window-width 
+@end defun
+
+@anchor{initial-window-x}
+@defun initial-window-x 
+@end defun
+
+@anchor{initial-window-y}
+@defun initial-window-y 
+@end defun
+
+@anchor{elapsed-time}
+@defun elapsed-time 
+@end defun
+
+
+@node Font Rendering
+@section Font Rendering
+
+
+@node Geometric Object Rendering
+@section Geometric Object Rendering
+

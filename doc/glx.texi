@@ -1,0 +1,33 @@
+@node GLX
+@chapter GLX
+
+@menu
+* GLX API::                     The high-level interface to GLX.
+* GLX Enumerations::            GLX enumerated values.
+* Low-Level GLX::               Primitive interface to ``glx'' functionality.
+@end menu
+
+@node GLX API
+@section GLX API
+
+Import the GLX module to have access to these procedures:
+
+@example
+(use-modules (figl glx))
+@end example
+
+The GLX specification is available at
+@uref{http://www.opengl.org/registry/doc/glx1.3.pdf}.
+
+@menu
+@end menu
+
+
+@node GLX Enumerations
+@section GLX Enumerations
+@include low-level-glx-enums.texi
+
+
+@node Low-Level GLX
+@section Low-Level GLX
+@include low-level-glx.texi
