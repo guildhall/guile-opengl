@@ -1,0 +1,56 @@
+# -*- org -*-
+
+* Completeness
+
+** Complete the high-level GL binding.
+
+Would be nice to bind newer versions as well, while keeping the
+compatibility profile.
+
+** Complete the high-level GLU binding.
+
+** Complete the high-level GLX binding.
+
+** Complete the high-level GLUT binding.
+
+** Write an EGL binding.
+
+There is a wip-egl branch with upstream documentation.
+
+* Naming
+
+** Mangle low-level binding names.
+
+Probably we should do this only if this low-level bindings are good
+enough.  In practice this means that output arguments should be natively
+supported, and they low-level bindings should check errors as
+appropriate.
+
+** Document the naming convention.
+
+Specifically we should document when a name changes significantly, like
+when to use a "set-" prefix.
+
+* Documentation
+
+** Figure out how to incorporate low-level bindings into the
+   documentation.
+
+Often-times the high-level bindings just duplicate information from the
+low-level bindings, but poorly.  To do this, we'd have to make a map of
+how to organize the low-level bindings, probably according to their
+section in the specification.
+
+** Mangle enumeration names to link to the enumerator documentation.
+
+** Give an @anchor{} to each API element so that we can link back and
+   forth.
+
+* Meta
+
+** Mailing list?
+
+** Web page for documentation?
+
+Both of these point towards hosting on savannah at some point.  Figl
+could become a GNU project but it will not have copyright assignment.
