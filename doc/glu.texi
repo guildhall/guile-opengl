@@ -1,0 +1,67 @@
+@node GLU
+@chapter GLU
+
+@menu
+* GLU API::                     The high-level interface to GLU.
+* Low-Level GLU::               Primitive interface to ``glu'' functionality.
+@end menu
+
+@node GLU API
+@section GLU API
+
+Import the GLU module to have access to these procedures:
+
+@example
+(use-modules (figl glu))
+@end example
+
+The GLU specification is available at
+@uref{http://www.opengl.org/registry/doc/glu1.3.pdf}.
+
+@menu
+* Initialization::
+* Mipmapping::
+* Matrix Manipulation::
+* Polygon Tesselation::
+* Quadrics::
+* NURBS::
+* Errors::
+@end menu
+
+@node Initialization
+@subsection Initialization
+
+@node Mipmapping
+@subsection Mipmapping
+
+@node Matrix Manipulation
+@subsection Matrix Manipulation
+
+@defun glu-perspective fov-y aspect z-near z-far
+Set up a perspective projection matrix.
+
+@var{fov-y} is the field of view angle, in degrees, in the Y
+direction.  @var{aspect} is the ratio of width to height.
+@var{z-near} and @var{z-far} are the distances from the viewer to the
+near and far clipping planes, respectively.
+
+The resulting matrix is multiplied against the current matrix.
+@end defun
+
+@node Polygon Tesselation
+@subsection Polygon Tesselation
+
+@node Quadrics
+@subsection Quadrics
+
+@node NURBS
+@subsection NURBS
+
+@node Errors
+@subsection Errors
+
+@node Low-Level GLU
+@section Low-Level GLU
+@include low-level-glu.texi
+
+

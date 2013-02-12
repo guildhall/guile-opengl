@@ -138,16 +138,8 @@ example @code{(figl gl)}.
 @include gl.texi
 
 
-@node GLU
-@chapter GLU
-
-@menu
-* Low-Level GLU::               Primitive interface to ``glu'' functionality.
-@end menu
-
-@node Low-Level GLU
-@section Low-Level GLU
-@include low-level-glu.texi
+@c Defines the GLU node and chapter.
+@include glu.texi
 
 
 @node GLX
