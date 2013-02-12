@@ -111,11 +111,17 @@
 ;; Garbage collected windows are not automatically destroyed.  Permit
 ;; them to continue living inside GLUT.
 
+(define *window-table* '())
+
+(define (lookup-window id)
+  (assq-ref *window-table* id))
+
 (define-record-type window
-  (%%make-window id live?)
+  (%%make-window id live? subwindows)
   window?
   (id window-id)
-  (live? window-live? set-window-live?!))
+  (live? window-live? set-window-live?!)
+  (subwindows window-subwindows set-window-subwindows!))
 
 (define (assert-live-window! window)
   (unless (window-live? window)
@@ -132,21 +138,23 @@
   (unless (top-level-window? window)
     (error "not a top-level window" window)))
 
-;; Memoized so state requests can return the same object.
-(define %make-window (memoize %%make-window))
+(define (%make-window id)
+  (let ((window (%%make-window id #t '())))
+    (set! *window-table* (acons id window *window-table*))
+    window))
 
 (define (make-window str)
-  (let ((id (%glutCreateWindow str)))
-    (%make-window id #t)))
+  (%make-window (%glutCreateWindow str)))
 
-(define (make-sub-window window x y width height)
-  (let ((id (%glutCreateSubWindow (window-id window) x y width height)))
-    (%make-window id #t)))
+(define (make-subwindow window x y width height)
+  (let ((sub (%make-window (%glutCreateSubWindow
+                            (window-id window) x y width height))))
+    (set-window-subwindows! window
+                            (cons sub (window-subwindows window)))
+    sub))
 
 (define (current-window)
-  (let ((ret (%glutGetWindow)))
-    (and (not (zero? ret))
-         (%make-window ret #t))))
+  (lookup-window (%glutGetWindow)))
 
 (define (set-current-window window)
   (assert-live-window! window)
@@ -155,8 +163,11 @@
     old))
 
 (define (destroy-window window)
-  (set-window-live?! window #f)
-  ;; TODO: Also mark sub-windows.
+  (let lp ((windows (list window)))
+    (unless (null? windows)
+      (set-window-live?! (car windows) #f)
+      (lp (append (window-subwindows (car window))
+                  (cdr windows)))))
   (%glutDestroyWindow (window-id window)))
 
 ;; A short detour for some syntax forms, then most window procedures
@@ -371,9 +382,7 @@
 
 (define (window-parent window)
   (maybe-with-window window
-    (let ((ret (%glutGet (glut-state window-parent))))
-      (and (not (zero? ret))
-           (%make-window ret #t)))))
+    (lookup-window (%glutGet (glut-state window-parent)))))
 
 (define (window-number-of-children window)
   (maybe-with-window window
