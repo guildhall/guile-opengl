@@ -314,61 +314,62 @@
 ;;; 9.1 glutGet
 ;;;
 
-(define (window-x width)
-  (maybe-with-window window
-    (%glutGet (glut-state window-x))))
+(define-syntax define-glut-state
+  (syntax-rules ()
+    ((_ name param)
+     (define name
+       (lambda ()
+         (%glutGet (glut-state param)))))))
 
-(define (window-y width)
-  (maybe-with-window window
-    (%glutGet (glut-state window-y))))
+(define-syntax define-glut-states
+  (syntax-rules ()
+    ((_ (name param) ...)
+     (begin
+       (define-glut-state name param) ...))))
+
+(define-syntax define-glut-window-state
+  (syntax-rules ()
+    ((_ name param)
+     (define name
+       (lambda (window)
+         (maybe-with-window window
+           (%glutGet (glut-state param))))))))
+
+(define-syntax define-glut-window-states
+  (syntax-rules ()
+    ((_ (name param) ...)
+     (begin
+       (define-glut-window-state name param) ...))))
+
+(define-glut-window-states
+  (window-x window-x)
+  (window-y window-y)
+  (window-width window-width)
+  (window-height window-height)
+  (window-color-buffer-size window-buffer-size)
+  (window-stencil-buffer-size window-stencil-size)
+  (window-depth-buffer-size window-depth-size)
+  (window-color-buffer-red-size window-red-size)
+  (window-color-buffer-green-size window-green-size)
+  (window-color-buffer-blue-size window-blue-size)
+  (window-color-buffer-alpha-size window-alpha-size)
+  (window-accumulation-buffer-red-size window-accum-red-size)
+  (window-accumulation-buffer-green-size window-accum-green-size)
+  (window-accumulation-buffer-blue-size window-accum-blue-size)
+  (window-accumulation-buffer-alpha-size window-accum-alpha-size)
+  (window-number-of-children window-num-children)
+  (window-colormap-size window-colormap-size)
+  (window-number-of-samples window-num-samples))
 
 (define (window-position window)
   (maybe-with-window window
     (cons (window-x #t)
           (window-y #t))))
 
-(define (window-width width)
-  (maybe-with-window window
-    (%glutGet (glut-state window-width))))
-
-(define (window-height width)
-  (maybe-with-window window
-    (%glutGet (glut-state window-height))))
-
 (define (window-size window)
   (maybe-with-window window
     (cons (window-width #t)
           (window-height #t))))
-
-(define (window-color-buffer-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-buffer-size))))
-
-(define (window-stencil-buffer-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-stencil-size))))
-
-(define (window-depth-buffer-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-depth-size))))
-
-(define (window-red-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-red-size))))
-
-(define (window-green-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-green-size))))
-
-(define (window-blue-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-blue-size))))
-
-(define (window-alpha-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-alpha-size))))
-
-;; TODO: window-accum
 
 (define (window-rgba? window)
   (maybe-with-window window
@@ -383,18 +384,6 @@
 (define (window-parent window)
   (maybe-with-window window
     (lookup-window (%glutGet (glut-state window-parent)))))
-
-(define (window-number-of-children window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-num-children))))
-
-(define (window-colormap-size window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-colormap-size))))
-
-(define (window-number-of-samples window)
-  (maybe-with-window window
-    (%glutGet (glut-state window-num-samples))))
 
 (define (window-stereo? window)
   (maybe-with-window window
@@ -463,35 +452,25 @@
 
 ;; TODO: menu-number-of-items
 
+(define-glut-states
+  (initial-display-mode init-display-mode)
+  (initial-window-x init-window-x)
+  (initial-window-y init-window-y)
+  (initial-window-width init-window-width)
+  (initial-window-height init-window-height)
+  (elapsed-time elapsed-time))
+
 (define (display-mode-possible?)
   (eqv? (%glutGet (glut-state display-mode-possible))
         1))
-
-(define (initial-display-mode)
-  (%glutGet (glut-state init-display-mode)))
-
-(define (initial-window-x)
-  (%glutGet (glut-state init-window-x)))
-
-(define (initial-window-y)
-  (%glutGet (glut-state init-window-y)))
 
 (define (initial-window-position)
   (cons (initial-window-x)
         (initial-window-y)))
 
-(define (initial-window-width)
-  (%glutGet (glut-state init-window-width)))
-
-(define (initial-window-height)
-  (%glutGet (glut-state init-window-height)))
-
 (define (initial-window-size)
   (cons (initial-window-width)
         (initial-window-height)))
-
-(define (elapsed-time)
-  (%glutGet (glut-state elapsed-time)))
 
 (export display-mode-possible?
         initial-display-mode
