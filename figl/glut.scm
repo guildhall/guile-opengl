@@ -130,7 +130,7 @@
 (define (top-level-window? window)
   (not (window-parent window)))
 
-(define (sub-window? window)
+(define (subwindow? window)
   (and (window-parent window)
        #t))
 
@@ -258,10 +258,10 @@
 (export window?
         window-id
         top-level-window?
-        sub-window?
+        subwindow?
         window-live?
         make-window
-        make-sub-window
+        make-subwindow
         current-window
         set-current-window
         destroy-window
