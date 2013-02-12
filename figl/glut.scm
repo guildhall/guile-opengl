@@ -37,9 +37,16 @@
 ;;; 2 Initialization
 ;;;
 
-(re-export (%glutInitWindowPosition . set-initial-window-position)
-           (%glutInitWindowSize . set-initial-window-size)
-           (%glutInitDisplayMode . set-initial-display-mode))
+(define (set-initial-window-position position)
+  (%glutInitWindowPosition (car position) (cdr position)))
+
+(define (set-initial-window-size size)
+  (%glutInitWindowSize (car size) (cdr size)))
+
+(export set-initial-window-position
+        set-initial-window-size)
+
+(re-export (%glutInitDisplayMode . set-initial-display-mode))
 
 (define glut-init? #f)
 
@@ -285,8 +292,7 @@
            (%glutTabletMotionFunc . set-tablet-motion-callback)
            (%glutTabletButtonFunc . set-tablet-button-callback)
            (%glutMenuStatusFunc . set-menu-status-callback)
-           (%glutIdleFunc . set-idle-callback)
-           (%glutTimerFunc . add-timer-callback))
+           (%glutIdleFunc . set-idle-callback))
 
 
 ;;;
