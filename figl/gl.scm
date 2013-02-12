@@ -47,7 +47,7 @@
 ;;; 2.6 Begin/End Paradigm
 ;;;
 
-;; emacs: (put! 'gl-begin 'scheme-indent-function 1)
+;; emacs: (put 'gl-begin 'scheme-indent-function 1)
 (define-syntax gl-begin
   (syntax-rules ()
     ((_ mode body1 body2 ...)
@@ -149,7 +149,7 @@
 (export gl-load-matrix
         gl-multiply-matrix)
 
-(re-export (%glMatrixMode . gl-matrix-mode)
+(re-export (%glMatrixMode . set-gl-matrix-mode)
            (%glLoadIdentity . gl-load-identity)
            (%glRotatef . gl-rotate)
            (%glTranslatef . gl-translate)
@@ -160,6 +160,7 @@
            (%glPushMatrix . gl-push-matrix)
            (%glPopMatrix . gl-pop-matrix))
 
+;; emacs: (put 'with-gl-push-matrix 'scheme-indent-function 0)
 (define-syntax with-gl-push-matrix
   (syntax-rules ()
     ((_ body ...)
@@ -176,6 +177,12 @@
 
 (re-export (%glEnable . gl-enable)
            (%glDisable . gl-disable))
+
+;;;
+;;; 2.14 Colors and Coloring
+;;;
+
+(re-export (%glShadeModel . set-gl-shade-model))
 
 
 ;;;
@@ -257,3 +264,17 @@
 
 (re-export (%glReadBuffer . set-gl-read-buffer)
            (%glCopyPixels . gl-copy-pixels))
+
+;;;
+;;; 6.1 Querying GL State
+;;;
+
+;; emacs: (put 'with-gl-push-attrib 'scheme-indent-function 1)
+(define-syntax-rule (with-gl-push-attrib bits body ...)
+  (begin
+    (%glPushAttrib bits)
+    body
+    ...
+    (%glPopAttrib)))
+
+(export with-gl-push-attrib)
