@@ -405,7 +405,7 @@
         window-green-size
         window-blue-size
         window-alpha-size
-        window-rgba
+        window-rgba?
         window-double-buffered?
         window-parent
         window-number-of-children
