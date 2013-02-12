@@ -156,9 +156,7 @@
            (%glScalef . gl-scale)
            (%glFrustum . gl-frustum)
            (%glOrtho . gl-ortho)
-           (%glActiveTexture . set-gl-active-texture)
-           (%glPushMatrix . gl-push-matrix)
-           (%glPopMatrix . gl-pop-matrix))
+           (%glActiveTexture . set-gl-active-texture))
 
 ;; emacs: (put 'with-gl-push-matrix 'scheme-indent-function 0)
 (define-syntax with-gl-push-matrix
