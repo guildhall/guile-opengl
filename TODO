@@ -4,14 +4,34 @@
 
 ** Complete the high-level GL binding.
 
+*** Bind newer versions.
+
 Would be nice to bind newer versions as well, while keeping the
 compatibility profile.
+
+The newer versions are backwards compatible with only rare exceptions
+where some function's behaviour (but not prototype) is subtley
+redefined.  To support newer versions in a simple way we can export
+all bindings and the user effectively chooses which version they use
+by their choice of procedures.
+
+Exporting particular profiles is a nice addition to this.
 
 ** Complete the high-level GLU binding.
 
 ** Complete the high-level GLX binding.
 
 ** Complete the high-level GLUT binding.
+
+*** Do not keep alive callback pointers indefinitely.
+
+Perhaps by moving the gc-protect mechanism to the high-level bindings,
+and track which callbacks are active on each window and globally.
+
+Users of the low-level bindings can still use the foo-callback-*
+helpers, but must assume control of pointer lifetime.  Such an
+approach permits great flexibility for alternative high-level
+interfaces to reuse the low-level bindings.
 
 ** Write an EGL binding.
 
@@ -26,10 +46,25 @@ enough.  In practice this means that output arguments should be natively
 supported, and they low-level bindings should check errors as
 appropriate.
 
-** Document the naming convention.
+** TODO Document the naming convention.                                :wigs:
 
-Specifically we should document when a name changes significantly, like
-when to use a "set-" prefix.
+Specifically we should document when a name changes significantly,
+like when to use a "set-" prefix and the abbreviation expansions
+("accum" -> "accumulation-buffer", "coord" -> "coordinates").
+
+Getting this done early will permit implementing the policy more
+accurately.  Marking TODO and will work on a draft covering the
+conventions I have used/intend to use soon.
+
+** Maybe drop the "gl-" prefix for high-level bindings.
+
+The names for most gl, glu, etc.  procedures are unique enough to not
+conflict with each other, and most Scheme names generally.  Removing
+the prefix will make names where an additional prefix is used (such as
+"set-") much more natural.
+
+Users with specific namespace concerns can use selective and renaming
+imports.
 
 * Documentation
 
@@ -45,6 +80,23 @@ section in the specification.
 
 ** Give an @anchor{} to each API element so that we can link back and
    forth.
+
+* Examples
+
+** examples/README explaining the layout.
+
+** OpenGL standards.
+
+Language bindings typically provide ports of the standard examples, to
+demonstrate usage patterns and their own unique style.
+
+http://www.sgi.com/products/software/opengl/examples/index.html
+
+Implement at least a few of these, their licencing is permissive
+enough and they have been widely ported to Free Software language
+bindings already.
+
+** More interesting demos.
 
 * Meta
 
