@@ -83,6 +83,8 @@
 
 (define (coerce-callback-pointer/ephemeral x return-type arg-types)
   (cond
+   ((not x)
+    ffi:%null-pointer)
    ((ffi:pointer? x)
     x)
    ((procedure? x)
@@ -98,6 +100,8 @@
 
 (define (coerce-callback-pointer/sticky x return-type arg-types)
   (cond
+   ((not x)
+    ffi:%null-pointer)
    ((ffi:pointer? x)
     x)
    ((procedure? x)
