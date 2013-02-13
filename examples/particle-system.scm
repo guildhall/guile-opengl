@@ -1,0 +1,258 @@
+#!/usr/bin/env guile
+!#
+
+(use-modules (figl glut)
+             (figl gl)
+             (figl glu)
+             (ice-9 match)
+             (ice-9 format))
+
+;; FIXME: need a packed-struct / array abstraction.
+(define floats-per-particle 6) ;; Position and velocity.
+(define *n-particles* 0)
+(define *particles* #f32())
+
+(define (draw-particles)
+  (define (call-with-particle-position i proc)
+    (let ((offset (* i floats-per-particle)))
+      (proc (f32vector-ref *particles* (+ offset 0))
+            (f32vector-ref *particles* (+ offset 1))
+            (f32vector-ref *particles* (+ offset 2)))))
+
+  (gl-color 0.8 0.8 1.0)
+  ;; foo
+  (gl-begin (begin-mode triangles)
+    (let lp ((i 0))
+      (when (< i *n-particles*)
+        (call-with-particle-position
+         i
+         (lambda (x y z)
+           (gl-vertex (- x 0.5) (- y 0.5) z)
+           (gl-vertex (+ x 0.5) (- y 0.5) z)
+           (gl-vertex x (+ y 0.5) z)))
+         (lp (1+ i))))))
+
+(define (update-particles dt)
+  (define (update-particle i updater)
+    (let ((offset (* i floats-per-particle)))
+      (call-with-values (lambda ()
+                          (updater (f32vector-ref *particles* (+ offset 0))
+                                   (f32vector-ref *particles* (+ offset 1))
+                                   (f32vector-ref *particles* (+ offset 2))
+                                   (f32vector-ref *particles* (+ offset 3))
+                                   (f32vector-ref *particles* (+ offset 4))
+                                   (f32vector-ref *particles* (+ offset 5))))
+        (lambda (x y z vx vy vz)
+          (f32vector-set! *particles* (+ offset 0) x)
+          (f32vector-set! *particles* (+ offset 1) y)
+          (f32vector-set! *particles* (+ offset 2) z)
+          (f32vector-set! *particles* (+ offset 3) vx)
+          (f32vector-set! *particles* (+ offset 4) vy)
+          (f32vector-set! *particles* (+ offset 5) vz)))))
+
+  (let ((half-dt-squared (* 0.5 dt dt)))
+    (let lp ((i 0))
+      (when (< i *n-particles*)
+        (update-particle
+         i
+         (lambda (x y z vx vy vz)
+           (let* ((distance-squared (+ (* x x) (* y y) (* z z)))
+                  (distance (sqrt distance-squared))
+                  (F (/ -200 distance-squared))
+                  (ax (* F (/ x distance)))
+                  (ay (* F (/ y distance)))
+                  (az (* F (/ z distance))))
+             (values (+ x (* vx dt) (* ax half-dt-squared))
+                     (+ y (* vy dt) (* ay half-dt-squared))
+                     (+ z (* vz dt) (* az half-dt-squared))
+                     (+ vx (* ax dt))
+                     (+ vy (* ay dt))
+                     (+ vz (* az dt))))))
+        (lp (1+ i))))))
+
+(define (prepare-particles n)
+  (define (ensure-capacity! n)
+    (define (next-power-of-two n)
+      (let lp ((pot 1))
+        (if (<= n pot)
+            pot
+            (lp (* pot 2)))))
+    (let ((capacity (next-power-of-two n)))
+      (when (< (f32vector-length *particles*) (* capacity floats-per-particle))
+        (set! *particles*
+              (make-f32vector (* capacity floats-per-particle) 0)))))
+  
+  (define (prepare-particle offset)
+    ;; Position.
+    (f32vector-set! *particles* (+ offset 0) (* (random:normal) 30))
+    (f32vector-set! *particles* (+ offset 1) (* (random:normal) 30))
+    (f32vector-set! *particles* (+ offset 2) (* (random:normal) 30))
+
+    ;; Velocity.
+    (f32vector-set! *particles* (+ offset 3) (* (random:normal) 2))
+    (f32vector-set! *particles* (+ offset 4) (* (random:normal) 2))
+    (f32vector-set! *particles* (+ offset 5) (* (random:normal) 2)))
+
+  (ensure-capacity! n)
+  (set! *n-particles* n)
+
+  (let lp ((i 0))
+    (when (< i *n-particles*)
+      (prepare-particle (* i floats-per-particle))
+      (lp (1+ i)))))
+
+(define main-window #f)
+
+(define (make-fps-accumulator period)
+  (let* ((frame-count 0)
+         (last-fps-time (get-internal-real-time))
+         (last-fps-run-time (get-internal-run-time))
+         (last-frame-time (get-internal-real-time))
+         (max-frame-time (get-internal-real-time))
+         (last-frame-count 0)
+         (jiffies-per-sec (exact->inexact internal-time-units-per-second))
+         (jiffies-per-ms (/ jiffies-per-sec 1000)))
+    (lambda ()
+      (let ((now (get-internal-real-time)))
+        (set! frame-count (1+ frame-count))
+        (when (> (- now last-frame-time) max-frame-time)
+          (set! max-frame-time (- now last-frame-time)))
+        (set! last-frame-time now)
+        (when (> (- now last-fps-time) period)
+          (let* ((run (get-internal-run-time))
+                 (frames (- frame-count last-frame-count))
+                 (secs (/ (- now last-fps-time) jiffies-per-sec))
+                 (fps (/ frames secs))
+                 (ms-per-frame (/ (* secs 1000) frames))
+                 (max-ms-per-frame (/ max-frame-time jiffies-per-ms))
+                 (cpu (* 100.0 (/ (- run last-fps-run-time)
+                                  (- now last-fps-time)))))
+            (format
+             (current-error-port)
+             ";;; ~a frames in ~,2f sec = ~,2f fps; ~,2f ms/frame, ~,2f ms max; ~,2f% CPU\n"
+             frames secs fps ms-per-frame max-ms-per-frame cpu)
+            (set! last-frame-count frame-count)
+            (set! max-frame-time 0)
+            (set! last-fps-time now)
+            (set! last-fps-run-time run)))))))
+
+(define accumulate-fps!
+  (make-fps-accumulator (* 2 internal-time-units-per-second)))
+
+(define (draw-axis scale)
+  ;; Could disable lighting and depth test.
+  (gl-begin (begin-mode lines)
+    (gl-color 1 0 0)
+    (gl-vertex 0 0 0)
+    (gl-vertex scale 0 0)
+
+    (gl-color 0 1 0)
+    (gl-vertex 0 0 0)
+    (gl-vertex 0 scale 0)
+        
+    (gl-color 0 0 1)
+    (gl-vertex 0 0 0)
+    (gl-vertex 0 0 scale)))
+
+(define (on-display)
+  (accumulate-fps!)
+  (gl-clear (clear-buffer-mask color-buffer depth-buffer))
+
+  (draw-axis 10)
+
+  (draw-particles)
+
+  ;; With double-buffering, swap-buffers will wait for the frame rate.
+  (swap-buffers))
+
+(define (on-reshape width height)
+  (pk 'reshape! width height)
+  (gl-viewport 0 0 width height)
+
+  ;; Projection matrix.
+  (set-gl-matrix-mode (matrix-mode projection))
+  (gl-load-identity)
+  (glu-perspective 60 (/ width height) 0.1 1000))
+
+(define full-screen? #f)
+(define running? #t)
+
+(define (on-keyboard keycode x y)
+  (let ((c (integer->char keycode)))
+    (case c
+      ((#\f)
+       (set! full-screen? (not full-screen?))
+       (full-screen main-window full-screen?))
+      ((#\esc #\etx #\q)
+       (format #t "~s pressed; quitting.\n" c)
+       (exit))
+      ((#\space)
+       (set! running? (not running?))
+       (set-idle-callback (and running? (lambda () (on-idle)))))
+      (else
+       (pk 'keyboard c x y)))))
+
+(define (on-special keycode x y)
+  (pk 'special keycode x y))
+
+(define (on-mouse button state x y)
+  (pk 'mouse button state x y))
+
+(define (on-motion x y)
+  (pk 'motion x y))
+
+(define (on-visibility visible?)
+  (pk 'visible visible?))
+
+(define (on-idle)
+  (set-gl-matrix-mode (matrix-mode modelview))
+  ;; rotate the camera 0.1 degree per frame; at 60 fps that's 60 seconds per
+  ;; full rotation
+  #;
+  (gl-rotate 0.1 0 1 0)
+  (update-particles 0.016)
+  (post-redisplay main-window))
+
+(define (register-glut-callbacks)
+  ;; The trampolines allow the handlers to be overridden at runtime by
+  ;; an attached Guile REPL client.
+  (set-display-callback (lambda () (on-display)))
+  (set-reshape-callback (lambda (w h) (on-reshape w h)))
+  (set-keyboard-callback (lambda (k x y) (on-keyboard k x y)))
+  (set-special-callback (lambda (k x y) (on-special k x y)))
+  (set-mouse-callback (lambda (b s x y) (on-mouse b s x y)))
+  (set-motion-callback (lambda (x y) (on-motion x y)))
+  (set-visibility-callback (lambda (visible?) (on-visibility visible?)))
+  (set-idle-callback (lambda () (on-idle))))
+
+(define (main args)
+  (let ((args
+         (initialize-glut args
+                          #:window-size '(320 . 200)
+                          #:display-mode (display-mode rgba alpha double
+                                                       depth))))
+    (set! main-window (make-window "particle-system"))
+    (register-glut-callbacks)
+    (set-gl-clear-color 0 0 0 1)
+    (set-gl-clear-depth 1)
+    (set-gl-shade-model (shading-model smooth))
+
+    ;; Resetting the modelview matrix mode leaves the camera at the origin,
+    ;; oriented to look down the Z axis.  Move the camera away 100 units so that
+    ;; it can see the origin, and rotate it into the first octant so that it can
+    ;; see all the axes.
+    (set-gl-matrix-mode (matrix-mode modelview))
+    (gl-load-identity)
+    (gl-translate 0 0 -100)
+    (gl-rotate 30 1 0 0)
+    (gl-rotate -15 0 1 0)
+
+    (set! *random-state* (random-state-from-platform))
+    (prepare-particles (match args
+                         ((_) 1000)
+                         ((_ n) (string->number n))))
+
+    (glut-main-loop)))
+
+(when (batch-mode?)
+  (exit (main (program-arguments))))
