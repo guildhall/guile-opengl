@@ -37,6 +37,40 @@ interfaces to reuse the low-level bindings.
 
 There is a wip-egl branch with upstream documentation.
 
+** Packed structures.
+
+To facilitate passing data to buffer objects.  Rather than dealing
+with bytevectors, offsets, and strides directly, we can use a
+packed-struct. and field pair to compute the arguments for
+vertex-pointer and friends (size, type, stride, and pointer).
+
+Existing work:
+
+- make-structure-descriptor (r7rs-large):
+  http://trac.sacrideo.us/wg/wiki/StructuresCowan
+
+  : (define-structure my-vertex-type
+  :   (position 'f32 3 position-ref position-set!)
+  :   (normal 'f32 3 normal-ref normal-set!)
+  :   (color 'u8 4 color-ref color-set!)
+  :   (non-gl-data 'f32 2))
+  : (define foo (list->structure my-vertex-type ...))
+  : ;; (set-vertex-pointer FIELD BV)
+  : (set-vertex-pointer position foo)
+  : (set-color-pointer color foo)
+  : ;; position, normal, etc. are identifiers bound to the required
+  : ;; field specs. by the define-structure expression.
+
+- define-gl-array-format (cl-opengl):
+
+  Specifically maps each component to an OpenGL array type (one of
+  vertex, color, normal, ...).  This permits automatically binding an
+  entire structure to the relevent array pointers.
+
+  Additional per-component options include:
+  - named access to sub-components (e.g. vertex x, y, z);
+  - whether values are normalized on assignment.
+
 * Naming
 
 ** Mangle low-level binding names.
