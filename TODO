@@ -71,6 +71,64 @@ Existing work:
   - named access to sub-components (e.g. vertex x, y, z);
   - whether values are normalized on assignment.
 
+* Interface
+
+** Implement rest of spec parsing module.
+
+To parse functions (gl.spec, etc.), enums, and typemaps.
+
+** Do not export meta-enumerations (version-2-1, etc.).
+
+These are listed in the “Extensions” definition (enum.spec) and are
+defined only to indicate the version or extension that introduces
+various symbolic constants.  In theory, all useful constants that
+appear in version-2-1, for example, also appear in at least one other
+enumeration which is an actual data type as referred to by gl.spec.
+
+They can still be used to provide versioned interfaces and profiles,
+there is just no need to export them as enumerations at run time.
+
+Need to make sure all required symbolic constants will still be
+accessible before removing these.
+
+** Make using enumerations implicit.
+
+Instead of:
+
+: (gl-begin (begin-mode triangles) ...)
+: (gl-matrix-mode) => 123
+
+more like this:
+
+: (gl-begin #:triangles ...)
+: (gl-matrix-mode) => #:modelview
+
+and lists of symbols for bitfields.
+
+Enumeration type checking (i.e. does gl-begin accept #:foo?) can be
+done two ways.
+
+*** Type checking by Guile.
+
+Before this can be done we must parse gl.spec to know which enums to
+apply for each procedure argument.  _Probably_ foreign-types can no
+longer be syntax either.
+
+Requires also some manual overriding and mapping as there is some
+inconsistency between gl.spec, gl.tm, and enum.spec.  For example,
+gl.spec occasionally refers to an enumeration type that is not listed
+in enum.spec, or is listed under another name.
+
+*** Type checking by GL.
+
+Most GL procedures already check the range of enum and bitfield
+arguments, and flag an invalid-enum error as appropriate.  We can rely
+on this and create a single, super-enumeration to convert to and from
+symbols.
+
+This may incur a notable performance hit due to the large number of
+symbolic constants.
+
 * Naming
 
 ** Mangle low-level binding names.
