@@ -223,11 +223,11 @@ The following procedures modify the current per-vertex state.  Drawing
 a vertex captures the current state and associates it with the
 vertex.
 
-@defun gl-texture-coordinate s [t=0.0] [r=0.0] [q=1.0]
+@defun gl-texture-coordinates s [t=0.0] [r=0.0] [q=1.0]
 Set the current texture coordinate.
 @end defun
 
-@defun gl-multi-texture-coordinate texture s [t=0.0] [r=0.0] [q=1.0]
+@defun gl-multi-texture-coordinates texture s [t=0.0] [r=0.0] [q=1.0]
 Set the current texture coordinate for a specific texture unit.
 @end defun
 
