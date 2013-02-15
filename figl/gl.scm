@@ -27,6 +27,7 @@
   #:use-module (figl gl types)
   #:use-module (figl gl enums)
   #:use-module ((figl gl low-level) #:renamer (symbol-prefix-proc '%))
+  #:use-module (rnrs bytevectors)
   #:use-module (system foreign))
 
 ;; Notice there is no #:export clause.  Exports are done inline to
@@ -114,9 +115,13 @@
 
 
 (define (->pointer bv-or-pointer offset)
-  (if (zero? offset)
-      bv-or-pointer
-      (bytevector->pointer bv-or-pointer offset)))
+  (cond
+   ((zero? offset)
+    bv-or-pointer)
+   ((not bv-or-pointer)
+    (make-pointer offset))
+   (else
+    (bytevector->pointer bv-or-pointer offset))))
 
 (define-syntax define-gl-array-setter
   (syntax-rules ()
@@ -182,6 +187,37 @@
            (%glDrawArrays . gl-draw-arrays))
 
 ;; TODO: Rest of 2.8 procedures (interleaved-arrays, etc.).
+
+;;;
+;;; 2.9 Buffer Objects
+;;;
+
+(define (gl-generate-buffer)
+  (let ((bv (u32vector 0)))
+    (%glGenBuffers 1 bv)
+    (u32vector-ref bv 0)))
+
+(define (gl-delete-buffer n)
+  (let ((bv (u32vector n)))
+    (%glDeleteBuffers 1 bv)))
+
+(define* (set-gl-buffer-data target data usage
+                             #:optional (size (bytevector-length data)))
+  (%glBufferData target size data usage))
+
+(define* (update-gl-buffer-data target data
+                                #:optional (size (bytevector-length data))
+                                #:key (offset 0))
+  (%glBufferSubData target offset size data))
+
+(re-export (%glBindBuffer . gl-bind-buffer))
+
+(export gl-generate-buffer
+        gl-delete-buffer
+        set-gl-buffer-data
+        update-gl-buffer-data)
+
+;;; TODO: complete
 
 ;;;
 ;;; 2.10 Rectangles
