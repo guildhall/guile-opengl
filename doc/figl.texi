@@ -139,12 +139,12 @@ example @code{(figl gl)}.
 @node General API Conventions
 @chapter General API Conventions
 
-FIXME: A very rough draft.  Bindings and text are completely synced
+FIXME: A very rough draft.  Bindings and text are not fully synced
 until more work is done here.
 
 This chapter documents the general API conventions used by Figl's
 various low-level and high-level bindings.  Any conventions specific
-to a particular module are documented in that module's section.
+to a particular module are documented in the relevent section.
 
 As Figl is in very early stages of development these conventions are
 subject to change.  Feedback is certainly welcome, and nothing is set
