@@ -7,6 +7,7 @@ SOURCES = \
 	figl.scm \
 	figl/config.scm \
 	figl/contrib.scm \
+	figl/contrib/packed-struct.scm \
 	figl/parse.scm \
 	figl/runtime.scm \
 	\
