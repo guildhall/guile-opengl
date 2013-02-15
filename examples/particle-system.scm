@@ -5,101 +5,94 @@
              (figl gl)
              (figl glu)
              (ice-9 match)
-             (ice-9 format))
+             (ice-9 format)
+             (figl contrib packed-struct))
 
-;; FIXME: need a packed-struct / array abstraction.
-(define floats-per-particle 6) ;; Position and velocity.
-(define *n-particles* 0)
-(define *particles* #f32())
+(define-packed-struct zquad
+  (r float)
+  (g float)
+  (b float)
+
+  (x- float)
+  (y- float)
+  (x+ float)
+  (y+ float)
+
+  (z float))
+
+(define-packed-struct position
+  (x float)
+  (y float)
+  (z float)
+  (vx float)
+  (vy float)
+  (vz float))
+
+(define *zquads* (make-packed-array zquad 0))
+(define *particles* (make-packed-array position 0))
 
 (define (draw-particles)
-  (define (call-with-particle-position i proc)
-    (let ((offset (* i floats-per-particle)))
-      (proc (f32vector-ref *particles* (+ offset 0))
-            (f32vector-ref *particles* (+ offset 1))
-            (f32vector-ref *particles* (+ offset 2)))))
+  (gl-begin (begin-mode quads)
+    (unpack-each/serial *zquads* zquad
+                        (lambda (n r g b x- y- x+ y+ z)
+                          (gl-color r g b)
+                          (gl-vertex x- y- z)
+                          (gl-vertex x+ y- z)
+                          (gl-vertex x+ y+ z)
+                          (gl-vertex x- y+ z)))))
 
-  (gl-color 0.8 0.8 1.0)
-  ;; foo
-  (gl-begin (begin-mode triangles)
-    (let lp ((i 0))
-      (when (< i *n-particles*)
-        (call-with-particle-position
-         i
-         (lambda (x y z)
-           (gl-vertex (- x 0.5) (- y 0.5) z)
-           (gl-vertex (+ x 0.5) (- y 0.5) z)
-           (gl-vertex x (+ y 0.5) z)))
-         (lp (1+ i))))))
+(define (update-quads)
+  (unpack-each
+   *particles*
+   position
+   (lambda (n x y z vx vy vz)
+     (let ((r (/ (abs vx) 5))
+           (g (/ (abs vy) 5))
+           (b (/ (abs vz) 5))
+           (x- (- x 0.5))
+           (y- (- y 0.5))
+           (x+ (+ x 0.5))
+           (y+ (+ y 0.5)))
+       (pack *zquads* n zquad
+             r g b x- y- x+ y+ z)))))
 
 (define (update-particles dt)
-  (define (update-particle i updater)
-    (let ((offset (* i floats-per-particle)))
-      (call-with-values (lambda ()
-                          (updater (f32vector-ref *particles* (+ offset 0))
-                                   (f32vector-ref *particles* (+ offset 1))
-                                   (f32vector-ref *particles* (+ offset 2))
-                                   (f32vector-ref *particles* (+ offset 3))
-                                   (f32vector-ref *particles* (+ offset 4))
-                                   (f32vector-ref *particles* (+ offset 5))))
-        (lambda (x y z vx vy vz)
-          (f32vector-set! *particles* (+ offset 0) x)
-          (f32vector-set! *particles* (+ offset 1) y)
-          (f32vector-set! *particles* (+ offset 2) z)
-          (f32vector-set! *particles* (+ offset 3) vx)
-          (f32vector-set! *particles* (+ offset 4) vy)
-          (f32vector-set! *particles* (+ offset 5) vz)))))
-
   (let ((half-dt-squared (* 0.5 dt dt)))
-    (let lp ((i 0))
-      (when (< i *n-particles*)
-        (update-particle
-         i
-         (lambda (x y z vx vy vz)
-           (let* ((distance-squared (+ (* x x) (* y y) (* z z)))
-                  (distance (sqrt distance-squared))
-                  (F (/ -200 distance-squared))
-                  (ax (* F (/ x distance)))
-                  (ay (* F (/ y distance)))
-                  (az (* F (/ z distance))))
-             (values (+ x (* vx dt) (* ax half-dt-squared))
-                     (+ y (* vy dt) (* ay half-dt-squared))
-                     (+ z (* vz dt) (* az half-dt-squared))
-                     (+ vx (* ax dt))
-                     (+ vy (* ay dt))
-                     (+ vz (* az dt))))))
-        (lp (1+ i))))))
+    (repack-each
+     *particles*
+     position
+     (lambda (n x y z vx vy vz)
+       (let* ((distance-squared (+ (* x x) (* y y) (* z z)))
+              (distance (sqrt distance-squared))
+              (F (/ -200 distance-squared))
+              (ax (* F (/ x distance)))
+              (ay (* F (/ y distance)))
+              (az (* F (/ z distance))))
+         (values (+ x (* vx dt) (* ax half-dt-squared))
+                 (+ y (* vy dt) (* ay half-dt-squared))
+                 (+ z (* vz dt) (* az half-dt-squared))
+                 (+ vx (* ax dt))
+                 (+ vy (* ay dt))
+                 (+ vz (* az dt))))))))
 
 (define (prepare-particles n)
-  (define (ensure-capacity! n)
-    (define (next-power-of-two n)
-      (let lp ((pot 1))
-        (if (<= n pot)
-            pot
-            (lp (* pot 2)))))
-    (let ((capacity (next-power-of-two n)))
-      (when (< (f32vector-length *particles*) (* capacity floats-per-particle))
-        (set! *particles*
-              (make-f32vector (* capacity floats-per-particle) 0)))))
-  
-  (define (prepare-particle offset)
-    ;; Position.
-    (f32vector-set! *particles* (+ offset 0) (* (random:normal) 30))
-    (f32vector-set! *particles* (+ offset 1) (* (random:normal) 30))
-    (f32vector-set! *particles* (+ offset 2) (* (random:normal) 30))
+  (set! *particles* (make-packed-array position n))
+  (set! *zquads* (make-packed-array zquad n))
+  (pack-each
+   *particles*
+   position
+   (lambda (n)
+     (values
+      ;; Position.
+      (* (random:normal) 30)
+      (* (random:normal) 30)
+      (* (random:normal) 30)
 
-    ;; Velocity.
-    (f32vector-set! *particles* (+ offset 3) (* (random:normal) 2))
-    (f32vector-set! *particles* (+ offset 4) (* (random:normal) 2))
-    (f32vector-set! *particles* (+ offset 5) (* (random:normal) 2)))
-
-  (ensure-capacity! n)
-  (set! *n-particles* n)
-
-  (let lp ((i 0))
-    (when (< i *n-particles*)
-      (prepare-particle (* i floats-per-particle))
-      (lp (1+ i)))))
+      ;; Velocity.
+      (* (random:normal) 2)
+      (* (random:normal) 2)
+      (* (random:normal) 2))))
+  (update-quads))
 
 (define main-window #f)
 
@@ -162,7 +155,8 @@
 
   (draw-particles)
 
-  ;; With double-buffering, swap-buffers will wait for the frame rate.
+  ;; With double-buffering, swap-buffers will wait for the frame to be shown,
+  ;; which limits this program to the frame rate.
   (swap-buffers))
 
 (define (on-reshape width height)
@@ -186,6 +180,16 @@
       ((#\esc #\etx #\q)
        (format #t "~s pressed; quitting.\n" c)
        (exit))
+      ((#\+)
+       ;; The rotations are a hack to re-orient so that a translation in the Z
+       ;; axis will move us towards the origin.
+       (gl-rotate -10 1 0 0)
+       (gl-translate 0 0 10)
+       (gl-rotate 10 1 0 0))
+      ((#\-)
+       (gl-rotate -10 1 0 0)
+       (gl-translate 0 0 -10)
+       (gl-rotate 10 1 0 0))
       ((#\space)
        (set! running? (not running?))
        (set-idle-callback (and running? (lambda () (on-idle)))))
@@ -206,11 +210,12 @@
 
 (define (on-idle)
   (set-gl-matrix-mode (matrix-mode modelview))
-  ;; rotate the camera 0.1 degree per frame; at 60 fps that's 60 seconds per
-  ;; full rotation
-  #;
-  (gl-rotate 0.1 0 1 0)
+  ;; Rotate the camera 0.05 degree per frame about the Z axis.  At 60 fps that's
+  ;; 120 seconds per full rotation.  Rotating about the Z axis keeps all the
+  ;; quads facing our way.
+  (gl-rotate 0.05 0 0 1)
   (update-particles 0.016)
+  (update-quads)
   (post-redisplay main-window))
 
 (define (register-glut-callbacks)
@@ -228,7 +233,7 @@
 (define (main args)
   (let ((args
          (initialize-glut args
-                          #:window-size '(320 . 200)
+                          #:window-size '(640 . 480)
                           #:display-mode (display-mode rgba alpha double
                                                        depth))))
     (set! main-window (make-window "particle-system"))
@@ -238,14 +243,14 @@
     (set-gl-shade-model (shading-model smooth))
 
     ;; Resetting the modelview matrix mode leaves the camera at the origin,
-    ;; oriented to look down the Z axis.  Move the camera away 100 units so that
-    ;; it can see the origin, and rotate it into the first octant so that it can
-    ;; see all the axes.
+    ;; oriented to look down the Z axis.  Rotate up a bit so that we can see the
+    ;; Z axis.
     (set-gl-matrix-mode (matrix-mode modelview))
     (gl-load-identity)
     (gl-translate 0 0 -100)
-    (gl-rotate 30 1 0 0)
-    (gl-rotate -15 0 1 0)
+    (gl-rotate 10 1 0 0)
+
+    (gl-enable (enable-cap depth-test))
 
     (set! *random-state* (random-state-from-platform))
     (prepare-particles (match args
