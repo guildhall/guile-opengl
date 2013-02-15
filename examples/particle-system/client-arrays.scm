@@ -8,38 +8,14 @@
              (ice-9 format)
              (figl contrib packed-struct))
 
-(define-packed-struct color-quad
-  (x-- float)
-  (y-- float)
-  (z-- float)
+(define-packed-struct color-vertex
+  (x float)
+  (y float)
+  (z float)
 
-  (r-- float)
-  (g-- float)
-  (b-- float)
-
-  (x+- float)
-  (y+- float)
-  (z+- float)
-
-  (r+- float)
-  (g+- float)
-  (b+- float)
-
-  (x++ float)
-  (y++ float)
-  (z++ float)
-
-  (r++ float)
-  (g++ float)
-  (b++ float)
-
-  (x-+ float)
-  (y-+ float)
-  (z-+ float)
-
-  (r-+ float)
-  (g-+ float)
-  (b-+ float))
+  (r float)
+  (g float)
+  (b float))
 
 (define-packed-struct particle
   (x float)
@@ -49,21 +25,22 @@
   (vy float)
   (vz float))
 
-(define *quads* (make-packed-array color-quad 0))
+(define *vertices* (make-packed-array color-vertex 0))
 (define *particles* (make-packed-array particle 0))
 
 (define (draw-particles)
   (gl-enable-client-state (enable-cap vertex-array))
   (gl-enable-client-state (enable-cap color-array))
   (set-gl-vertex-array (vertex-pointer-type float)
-                       *quads*
-                       #:stride (/ (packed-struct-size color-quad) 4))
+                       *vertices*
+                       #:stride (packed-struct-size color-vertex)
+                       #:offset (packed-struct-offset color-vertex x))
   (set-gl-color-array (color-pointer-type float)
-                      *quads*
-                      #:stride (/ (packed-struct-size color-quad) 4)
-                      #:offset (/ (packed-struct-size color-quad) 8))
+                      *vertices*
+                      #:stride (packed-struct-size color-vertex)
+                      #:offset (packed-struct-offset color-vertex r))
   (gl-draw-arrays (begin-mode quads) 0
-                  (* 4 (packed-array-length *quads* color-quad)))
+                  (packed-array-length *vertices* color-vertex))
   (gl-disable-client-state (enable-cap color-array))
   (gl-disable-client-state (enable-cap vertex-array)))
 
@@ -78,14 +55,18 @@
            (x- (- x 0.5))
            (y- (- y 0.5))
            (x+ (+ x 0.5))
-           (y+ (+ y 0.5)))
-       (pack *quads* n color-quad
+           (y+ (+ y 0.5))
+           (base (* n 4)))
+       (pack *vertices* base color-vertex
              x- y- z
-             r g b
+             r g b)
+       (pack *vertices* (+ base 1) color-vertex
              x+ y- z
-             r g b
+             r g b)
+       (pack *vertices* (+ base 2) color-vertex
              x+ y+ z
-             r g b
+             r g b)
+       (pack *vertices* (+ base 3) color-vertex
              x- y+ z
              r g b)))))
 
@@ -110,7 +91,7 @@
 
 (define (prepare-particles n)
   (set! *particles* (make-packed-array particle n))
-  (set! *quads* (make-packed-array color-quad n))
+  (set! *vertices* (make-packed-array color-vertex (* n 4)))
   (pack-each
    *particles*
    particle

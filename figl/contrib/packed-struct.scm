@@ -27,6 +27,7 @@
   #:export (
             define-packed-struct
             packed-struct-size
+            packed-struct-offset
             pack pack* unpack unpack*
 
             make-packed-array
@@ -100,6 +101,11 @@
              #`(define-inlinable (name method field)
                  (case method
                    ((size) byte-size)
+                   ((offset)
+                    (case field
+                      ((field-name) field-offset)
+                      ...
+                      (else (error "unknown field" field))))
                    ((unpacker)
                     (lambda (bv offset k)
                       (k (field-ref bv (+ offset field-offset))
@@ -125,6 +131,9 @@
 
 (define-syntax-rule (packed-struct-size type)
   (type 'size #f))
+
+(define-syntax-rule (packed-struct-offset type field)
+  (type 'offset 'field))
 
 (define-syntax-rule (packed-struct-getter type field)
   (type 'getter 'field))
