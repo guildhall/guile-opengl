@@ -109,6 +109,81 @@
            (%glIndexi . gl-index))
 
 ;;;
+;;; 2.8 Vertex Arrays
+;;;
+
+
+(define (->pointer bv-or-pointer offset)
+  (if (zero? offset)
+      bv-or-pointer
+      (bytevector->pointer bv-or-pointer offset)))
+
+(define-syntax define-gl-array-setter
+  (syntax-rules ()
+    ((_ set-gl-foo-array glFooPointer default-size)
+     (define* (set-gl-foo-array type bv-or-pointer
+                                #:optional (size default-size)
+                                #:key (stride 0) (offset 0))
+       (glFooPointer size type stride
+                     (->pointer bv-or-pointer offset))))))
+
+(define-syntax define-gl-array-setters
+  (syntax-rules ()
+    ((_ (name binding default-size) ...)
+     (begin
+       (define-gl-array-setter name binding default-size)
+       ...))))
+
+(define-gl-array-setters
+  (set-gl-vertex-array %glVertexPointer 3)
+  (set-gl-color-array %glColorPointer 3)
+  (set-gl-secondary-color-array %glSecondaryColorPointer 3)
+  (set-gl-texture-coordinates-array %glTexCoordPointer 2))
+
+(define* (set-gl-normal-array type bv-or-pointer
+                              #:key (stride 0) (offset 0))
+  (%glNormalPointer type stride
+                    (->pointer bv-or-pointer offset)))
+
+(define* (set-gl-fog-coordinate-array type bv-or-pointer #:optional
+                                      (stride 0) (offset 0))
+  (%glFogCoordPointer type stride
+                      (->pointer bv-or-pointer offset)))
+
+(define* (set-gl-index-array type bv-or-pointer
+                             #:key (stride 0) (offset 0))
+  (%glIndexPointer type stride
+                   (->pointer bv-or-pointer offset)))
+
+(define* (set-gl-vertex-attribute-array index type normalized? bv-or-pointer
+                                        #:optional (size 4)
+                                        #:key (stride 0) (offset 0))
+  (%glVertexAttribPointer index size type normalized? stride
+                          (->pointer bv-or-pointer offset)))
+
+(export set-gl-vertex-array
+        set-gl-normal-array
+        set-gl-color-array
+        set-gl-secondary-color-array
+        set-gl-index-array
+        ;; set-gl-edge-flag-array
+        set-gl-fog-coordinate-array
+        set-gl-texture-coordinates-array
+        set-gl-vertex-attribute-array
+        )
+
+(re-export (%glEnableClientState . gl-enable-client-state)
+           (%glDisableClientState . gl-disable-client-state)
+           (%glEnableVertexAttribArray . gl-enable-vertex-attribute-array)
+           (%glDisableVertexAttribArray . gl-disable-vertex-attribute-array)
+           (%glClientActiveTexture . set-gl-client-active-texture))
+
+(re-export (%glArrayElement . gl-array-element)
+           (%glDrawArrays . gl-draw-arrays))
+
+;; TODO: Rest of 2.8 procedures (interleaved-arrays, etc.).
+
+;;;
 ;;; 2.10 Rectangles
 ;;;
 
