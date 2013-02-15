@@ -26,6 +26,7 @@
   #:use-module (rnrs bytevectors)
   #:export (
             define-packed-struct
+            packed-struct-size
             pack pack* unpack unpack*
 
             make-packed-array
