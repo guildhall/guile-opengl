@@ -59,6 +59,8 @@ prefixed with a specific copyright header.
 @menu
 * Introduction::                The what, why, and how of Figl.
 
+* General API Conventions::     Conventions used by the Figl APIs.
+
 * GL::                          A Scheme interface to OpenGL.
 * GLU::                         The GL Utility library.
 * GLX::                         Using OpenGL with the X Window System.
@@ -132,6 +134,112 @@ Low-level bindings are accessed by loading the @code{(figl
 
 The high-level modules are named like @code{(figl @var{module})}, for
 example @code{(figl gl)}.
+
+
+@node General API Conventions
+@chapter General API Conventions
+
+FIXME: A very rough draft.  Bindings and text are completely synced
+until more work is done here.
+
+This chapter documents the general API conventions used by Figl's
+various low-level and high-level bindings.  Any conventions specific
+to a particular module are documented in that module's section.
+
+As Figl is in very early stages of development these conventions are
+subject to change.  Feedback is certainly welcome, and nothing is set
+in stone.
+
+@menu
+* Enumerations::                Using symbolic constants.
+* Functions::                   Naming and behaviour.
+@c * State::                       Accessing and mutating GL* state.
+@end menu
+
+
+@node Enumerations
+@section Enumerations
+
+The OpenGL API defines many @dfn{symbolic constants}, most of which
+are collected together as named @dfn{enumerations} or @dfn{bitfields}.
+Access to these constants in Figl is the same for the low-level
+bindings and high-level interface.
+
+For each OpenGL enumeration type, there is a similarly named Scheme
+type whose constructor takes an unquoted Scheme symbol naming one of
+the values.  Figl translates the names to a more common Scheme style:
+
+@itemize @bullet
+@item any API prefix is removed (for example, GL_); and
+@item all names are lowercase, with underscores and CamelCase replaced by hyphens.
+@end itemize
+
+For example, the OpenGL API defines an enumeration with symbolic
+constants whose C names are GL_POINTS, GL_LINES, GL_TRIANGLES, and so
+on.  Collectively they form the BeginMode enumeration type.  To access
+these constants in Figl, apply the constant name to the enumeration
+type: @code{(begin-mode triangles)}.
+
+Bitfields are similar, though the constructor accepts multiple symbols
+and produces an appropriate mask..  In the GLUT API there is the
+DisplayMode bitfield, with symbolic constants GLUT_RGB, GLUT_INDEX,
+GLUT_SINGLE, and so on.  To create a mask representing a
+double-buffered, rgb display-mode with a depth buffer:
+@code{(display-mode double rgb depth)}.
+
+Enumeration and bitfield values, once constructed, can be compared
+using @code{eqv?}.  For example, to determine if @code{modelview} is
+the current matrix mode use
+@code{(eqv? (gl-matrix-mode) (matrix-mode modelview))}.
+
+
+@node Functions
+@section Functions
+
+The low-level bindings currently use names identical to their C API
+counterparts.
+
+High-level bindings adopt names that are closer to natural language,
+and a more common style for Scheme:
+
+@itemize @bullet
+@item the API prefix is always removed;
+@item abbreviations are avoided; and
+@item names are all lowercase with words separated by hyphens.
+@end itemize
+
+Some function names are altered in additional ways, to make clear
+which object is being operated on.  Functions that mutate objects or
+state will have their name prefixed with @code{set-}, such as
+@code{set-matrix-mode}. FIXME: This choice may be too unnatural for GL
+users.
+
+Where the C API specifies multiple functions that perform a similar
+task on varying number and types of arguments, the high-level bindings
+provide a single function that takes optional arguments, and, where
+appropriate, using only the most natural type.  Consider the group of
+C API functions including @code{glVertex2f}, @code{glVertex3f}, and so
+on; the high-level GL interface provides only a single function
+@code{glVertex}, with optional arguments.
+
+Packaged vector functions (such as @code{glColor3bv}) are combined in
+to a single high-level function with the suffice @code{-v}.  Such a
+function will dispatch to the correct low-level binding based on the
+length and type of it's argument.  There is no need to provide the
+length and type arguments specifically.  For example,
+@code{(color #f32(1.0 0.0 0.8 0.5))} will determine that the argument
+is a float vector of length four, and dispatch to the low-level
+@code{glColor4fv}.
+
+The high-level interfaces often differ in other ways, and it is
+important to refer to the specific documentation.
+
+It is generally fine to intermix functions from corresponding
+low-level and high-level bindings.  This can be useful if you know the
+specific type of data you are working with and want to avoid the
+overhead of dynamic dispatch at runtime.  Any cases where such
+intermixing causes problems will be noted in the documentation for the
+high-level bindings.
 
 
 @include gl.texi

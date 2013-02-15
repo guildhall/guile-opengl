@@ -138,15 +138,14 @@ enough.  In practice this means that output arguments should be natively
 supported, and they low-level bindings should check errors as
 appropriate.
 
-** TODO Document the naming convention.                                :wigs:
+** TODO Document the naming convention.
 
 Specifically we should document when a name changes significantly,
 like when to use a "set-" prefix and the abbreviation expansions
 ("accum" -> "accumulation-buffer", "coord" -> "coordinates").
 
 Getting this done early will permit implementing the policy more
-accurately.  Marking TODO and will work on a draft covering the
-conventions I have used/intend to use soon.
+accurately.
 
 ** Maybe drop the "gl-" prefix for high-level bindings.
 
