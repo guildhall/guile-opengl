@@ -59,7 +59,7 @@ prefixed with a specific copyright header.
 @menu
 * Introduction::                The what, why, and how of Figl.
 
-* General API Conventions::     Conventions used by the Figl APIs.
+* API Conventions::             General conventions used by the Figl APIs.
 
 * GL::                          A Scheme interface to OpenGL.
 * GLU::                         The GL Utility library.
@@ -136,8 +136,8 @@ The high-level modules are named like @code{(figl @var{module})}, for
 example @code{(figl gl)}.
 
 
-@node General API Conventions
-@chapter General API Conventions
+@node API Conventions
+@chapter API Conventions
 
 FIXME: A very rough draft.  Bindings and text are not fully synced
 until more work is done here.
