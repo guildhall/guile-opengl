@@ -85,10 +85,10 @@
 (define* (gl-vertex x y #:optional (z 0.0) (w 1.0))
   (%glVertex4f x y z w))
 
-(define* (gl-texture-coordinate s #:optional (t 0.0) (r 0.0) (q 1.0))
+(define* (gl-texture-coordinates s #:optional (t 0.0) (r 0.0) (q 1.0))
   (%glTexCoord4f s t r q))
 
-(define* (gl-multi-texture-coordinate texture s #:optional (t 0.0) (r 0.0) (q 1.0))
+(define* (gl-multi-texture-coordinates texture s #:optional (t 0.0) (r 0.0) (q 1.0))
   (%glMultiTexCoord4f texture s t r q))
 
 (define* (gl-color red green blue #:optional (alpha 1.0))
@@ -98,8 +98,8 @@
   (%glVertexAttrib4f index x y z w))
 
 (export gl-vertex
-        gl-texture-coordinate
-        gl-multi-texture-coordinate
+        gl-texture-coordinates
+        gl-multi-texture-coordinates
         gl-color
         gl-vertex-attribute)
 
