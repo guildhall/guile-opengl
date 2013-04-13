@@ -64,6 +64,8 @@ EXTRA_DIST += env.in COPYING COPYING.LESSER examples upstream-doc
 
 info_TEXINFOS = doc/figl.texi
 figl_TEXINFOS = \
+	doc/gpl.texi \
+	doc/lgpl.texi \
 	doc/gl.texi \
 	doc/glu.texi \
 	doc/glx.texi \

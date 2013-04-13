@@ -1,3 +1,7 @@
+@c This is part of the Figl Reference Manual.
+@c Copyright (C) 2013 Andy Wingo and others
+@c See the file figl.texi for copying conditions.
+
 @node GLUT
 @chapter GLUT
 

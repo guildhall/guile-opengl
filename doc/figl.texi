@@ -11,7 +11,7 @@
 This manual is for Figl (version @value{VERSION}, updated
 @value{UPDATED})
 
-Copyright 2013 Andy Wingo and others.
+Copyright @copyright{} 2013 Andy Wingo and others.
 
 @quotation 
 Figl is free software: you can redistribute and/or modify it and its
@@ -67,6 +67,13 @@ prefixed with a specific copyright header.
 * GLUT::                        The GL Utility Toolkit.
 
 * FAQ::                         Figl answers questions.
+
+Appendices
+
+* GNU General Public License::
+* GNU Lesser General Public License::
+
+Indices
 
 * Function Index::
 @end menu
@@ -256,6 +263,17 @@ high-level bindings.
 
 TODO: Write about things readers will want to know (instead of
 commenting them in the source :)
+
+
+@node GNU General Public License
+@appendix GNU General Public License
+
+@include gpl.texi
+
+@node GNU Lesser General Public License
+@appendix GNU Lesser General Public License
+
+@include lgpl.texi
 
 
 @node Function Index
