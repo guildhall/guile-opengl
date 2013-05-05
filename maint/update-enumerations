@@ -146,6 +146,15 @@
    enums))
 
 (define (write-texi mod-name enums port)
+  ;; FIXME: stexi->texi seems to have some issues with multiline
+  ;; comments, otherwise this notice should appear in the fragment
+  ;; itself.  Maybe I am not doing it right.
+  (display
+   (string-append
+    "@c This is part of the Figl Reference Manual.\n"
+    "@c Copyright (c) 2013 Andy Wingo and others\n"
+    "@c See the file figl.texi for copying conditions.\n")
+   port)
   (display
    (stexi->texi
     `(*fragment*

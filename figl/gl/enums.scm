@@ -1,5 +1,6 @@
 ;;; figl                           -*- mode: scheme; coding: utf-8 -*-
 ;;; Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
+;;; Copyright (C) 2013 Daniel Hartwig <mandyke@gmail.com>
 ;;;
 ;;; Figl is free software: you can redistribute it and/or modify it
 ;;; under the terms of the GNU Lesser General Public License as
