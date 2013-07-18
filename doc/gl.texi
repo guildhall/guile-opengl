@@ -399,7 +399,7 @@ enumerator.
 @defun set-gl-depth-function func
 Specify the depth test function.  See the @code{depth-function}
 enumerator.
-p@end defun
+@end defun
 
 @defun set-gl-blend-color r g b a
 Specify the blend color.
