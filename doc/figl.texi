@@ -37,7 +37,7 @@ prefixed with a specific copyright header.
 
 @dircategory The Algorithmic Language Scheme
 @direntry 
-* Figl: (figl.info).       An OpenGL interface for Guile.
+* Figl: (figl.info).       Guile Scheme interface to the OpenGL API.
 @end direntry
 
 @titlepage 
@@ -61,7 +61,7 @@ prefixed with a specific copyright header.
 
 * API Conventions::             General conventions used by the Figl APIs.
 
-* GL::                          A Scheme interface to OpenGL.
+* GL::                          A Scheme interface to the OpenGL API.
 * GLU::                         The GL Utility library.
 * GLX::                         Using OpenGL with the X Window System.
 * GLUT::                        The GL Utility Toolkit.
@@ -90,8 +90,9 @@ Indices
 
 Figl is the Foreign Interface to GL: an OpenGL binding for Guile.
 
-OpenGL is a family of APIs and layers.  The following chapters discuss
-the parts of OpenGL and how they are bound by Figl.
+In addition to the OpenGL API, Figl also provides access to related
+libraries and toolkits such as GLU, GLX, and GLUT.  The following
+chapters discuss the parts of OpenGL and how they are bound by Figl.
 
 But before that, some notes on the Figl binding as a whole.
 
@@ -103,8 +104,8 @@ But before that, some notes on the Figl binding as a whole.
 @node About Figl
 @section About Figl
 
-Figl is a @dfn{foreign} interface to OpenGL because it uses the
-dynamic @dfn{foreign function interface} provided by Guile 2.0,
+Figl is a @dfn{foreign} interface to the OpenGL API because it uses
+the dynamic @dfn{foreign function interface} provided by Guile 2.0,
 providing access to OpenGL without any C code at all.  In fact, much
 of Figl (and this manual) is automatically generated from upstream API
 specifications and documentation.
@@ -114,7 +115,7 @@ additionally have tried to provide a nice Scheme interface as well.
 Our strategy has been to separate the binding into low-level and
 high-level pieces.
 
-The low-level bindings correspond exactly with the GL specification,
+The low-level bindings correspond exactly with the OpenGL specification,
 and are well-documented.  However, these interfaces are not so nice to
 use from Scheme; output arguments have to be allocated by the caller,
 and there is only the most basic level of type checking, and no sanity
@@ -127,10 +128,10 @@ arrays, like @code{glGetTexImage}.
 
 The high-level bindings are currently a work in progress, and are
 being manually written.  They intend to be a complete interface to the
-GL, without the need to use the low-level bindings.  However, the
-low-level bindings will always be available for you to use if needed,
-and have the advantage that their behavior is better documented and
-specified by OpenGL itself.
+OpenGL API, without the need to use the low-level bindings.  However,
+the low-level bindings will always be available for you to use if
+needed, and have the advantage that their behavior is better
+documented and specified by OpenGL itself.
 
 Low-level bindings are accessed by loading the @code{(figl
 @var{module} low-level)}, for example via:

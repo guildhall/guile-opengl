@@ -20,10 +20,10 @@
 @node About OpenGL
 @section About OpenGL
 
-OpenGL is a standard API for drawing three-dimensional graphics.  From
-its origin in Silicon Graphics's workstations the early 1990s, today
-it has become ubiquitous, with implementations on mobile phones,
-televisions, tablets, desktops, and even web browsers.
+The OpenGL API is a standard interface for drawing three-dimensional
+graphics.  From its origin in Silicon Graphics's workstations the
+early 1990s, today it has become ubiquitous, with implementations on
+mobile phones, televisions, tablets, desktops, and even web browsers.
 
 OpenGL has been able to achieve such widespread adoption not just
 because it co-evolved with powerful graphics hardware, but also
@@ -518,10 +518,10 @@ The future is already here -- it's just not very evenly distributed.
 -- William Gibson
 @end quotation
 
-Before interfaces end up in core OpenGL, the are usually present as
-vendor-specific or candidate extensions.  Indeed, the making of an
-OpenGL standard these days seems to be a matter of simply collecting a
-set of mature extensions and making them coherent.
+Before interfaces end up in the core OpenGL API, the are usually
+present as vendor-specific or candidate extensions.  Indeed, the
+making of an OpenGL standard these days seems to be a matter of simply
+collecting a set of mature extensions and making them coherent.
 
 Figl doesn't currently provide specific interfaces for extensions.
 Perhaps it should, but that's a lot of work that we haven't had time
