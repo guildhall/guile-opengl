@@ -80,7 +80,7 @@
 ;; For access to non-float variants please use the appropriate
 ;; low-level binding.
 
-;; TODO: Maybe re-export packaged variants here.  Unpacked byte
+;; TODO: Maybe re-export packed variants here.  Unpacked byte
 ;; variants?
 
 (define* (gl-vertex x y #:optional (z 0.0) (w 1.0))

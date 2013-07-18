@@ -149,9 +149,9 @@ example @code{(figl gl)}.
 FIXME: A very rough draft.  Bindings and text are not fully synced
 until more work is done here.
 
-This chapter documents the general API conventions used by Figl's
-various low-level and high-level bindings.  Any conventions specific
-to a particular module are documented in the relevent section.
+This chapter documents the general conventions used by Figl's
+low-level and high-level bindings.  Any conventions specific to a
+particular module are documented in the relevent section.
 
 As Figl is in very early stages of development these conventions are
 subject to change.  Feedback is certainly welcome, and nothing is set
@@ -188,7 +188,7 @@ these constants in Figl, apply the constant name to the enumeration
 type: @code{(begin-mode triangles)}.
 
 Bitfields are similar, though the constructor accepts multiple symbols
-and produces an appropriate mask..  In the GLUT API there is the
+and produces an appropriate mask.  In the GLUT API there is the
 DisplayMode bitfield, with symbolic constants GLUT_RGB, GLUT_INDEX,
 GLUT_SINGLE, and so on.  To create a mask representing a
 double-buffered, rgb display-mode with a depth buffer:
@@ -218,8 +218,9 @@ and a more common style for Scheme:
 Some function names are altered in additional ways, to make clear
 which object is being operated on.  Functions that mutate objects or
 state will have their name prefixed with @code{set-}, such as
-@code{set-matrix-mode}. FIXME: This choice may be too unnatural for GL
-users.
+@code{set-matrix-mode}.
+
+FIXME: This choice may be too unnatural for GL users.
 
 Where the C API specifies multiple functions that perform a similar
 task on varying number and types of arguments, the high-level bindings
@@ -227,18 +228,19 @@ provide a single function that takes optional arguments, and, where
 appropriate, using only the most natural type.  Consider the group of
 C API functions including @code{glVertex2f}, @code{glVertex3f}, and so
 on; the high-level GL interface provides only a single function
-@code{glVertex}, with optional arguments.
+@code{glVertex} with optional arguments.
 
-Packaged vector functions (such as @code{glColor3bv}) are combined in
-to a single high-level function with the suffice @code{-v}.  Such a
-function will dispatch to the correct low-level binding based on the
-length and type of it's argument.  There is no need to provide the
-length and type arguments specifically.  For example,
-@code{(color #f32(1.0 0.0 0.8 0.5))} will determine that the argument
-is a float vector of length four, and dispatch to the low-level
-@code{glColor4fv}.
+@c FIXME: Not merged yet.
+@c Packed vector functions (such as @code{glColor3bv}) are combined in
+@c to a single high-level function with the suffix @code{-v}.  Such a
+@c function will dispatch to the correct low-level binding based on the
+@c length and type of it's argument.  There is no need to provide the
+@c length and type arguments specifically.  For example,
+@c @code{(color-v #f32(1.0 0.0 0.8 0.5))} will determine that the argument
+@c is a float vector of length four, and dispatch to the low-level
+@c @code{glColor4fv}.
 
-The high-level interfaces often differ in other ways, and it is
+The high-level interfaces may differ in other ways, and it is
 important to refer to the specific documentation.
 
 It is generally fine to intermix functions from corresponding
