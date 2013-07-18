@@ -872,31 +872,6 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term><constant>GL_LINE_WIDTH_GRANULARITY</constant></term>
-                <listitem>
-              <para>
-              </para>
-                    <para>
-                        <parameter>params</parameter> returns one value,
-                        the width difference between adjacent supported widths for antialiased lines.
-                        See <citerefentry><refentrytitle>glLineWidth</refentrytitle></citerefentry>.
-                    </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><constant>GL_LINE_WIDTH_RANGE</constant></term>
-                <listitem>
-              <para>
-              </para>
-                    <para>
-                        <parameter>params</parameter> returns two values:
-                        the smallest and largest supported widths for antialiased
-                        lines.
-                        See <citerefentry><refentrytitle>glLineWidth</refentrytitle></citerefentry>.
-                    </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
                 <term><constant>GL_LOGIC_OP_MODE</constant></term>
                 <listitem>
               <para>
@@ -1086,7 +1061,7 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term><constant>GL_MAX_DUALSOURCE_DRAW_BUFFERS</constant></term>
+                <term><constant>GL_MAX_DUAL_SOURCE_DRAW_BUFFERS</constant></term>
                 <listitem>
               <para>
               </para>
@@ -1394,7 +1369,7 @@
                         <parameter>params</parameter> returns one value.
                         The value gives a rough estimate of the largest rectangular texture that
                         the GL can handle. The value must be at least 1024.
-                        Use <constant>GL_PROXY_RECTANGLE_TEXTURE</constant>
+                        Use <constant>GL_PROXY_TEXTURE_RECTANGLE</constant>
                         to determine if a texture is too large.
                         See <citerefentry><refentrytitle>glTexImage2D</refentrytitle></citerefentry>.
                     </para>
@@ -1969,6 +1944,21 @@
                         <parameter>params</parameter> a single value, the name of the currently bound program pipeline
                         object, or zero if no program pipeline object is bound.
                         See <citerefentry><refentrytitle>glBindProgramPipeline</refentrytitle></citerefentry>.
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><constant>GL_PROGRAM_POINT_SIZE</constant></term>
+                <listitem>
+              <para>
+              </para>
+                    <para>
+                        <parameter>params</parameter> returns a single boolean value indicating whether vertex
+                        program point size mode is enabled. If enabled, then the
+                        point size is taken from the shader built-in <code>gl_PointSize</code>. If disabled,
+                        then the point size is taken from the point state as specified
+                        by <citerefentry><refentrytitle>glPointSize</refentrytitle></citerefentry>.
+                        The initial value is <constant>GL_FALSE</constant>.
                     </para>
                 </listitem>
             </varlistentry>
@@ -2711,7 +2701,7 @@
                 </listitem>
             </varlistentry>
             <varlistentry>
-                <term><constant>GL_TEXTURE_BUFFER_BINDING</constant></term>
+                <term><constant>GL_TEXTURE_BINDING_BUFFER</constant></term>
                 <listitem>
               <para>
               </para>
@@ -2947,21 +2937,6 @@
                         two-byte and four-byte pixel indices and components are swapped after being
                         read from memory. The initial value is <constant>GL_FALSE</constant>.
                         See <citerefentry><refentrytitle>glPixelStore</refentrytitle></citerefentry>.
-                    </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><constant>GL_VERTEX_PROGRAM_POINT_SIZE</constant></term>
-                <listitem>
-              <para>
-              </para>
-                    <para>
-                        <parameter>params</parameter> returns a single boolean value indicating whether vertex
-                        program point size mode is enabled. If enabled, and a vertex shader is active, then the
-                        point size is taken from the shader built-in <code>gl_PointSize</code>. If disabled,
-                        and a vertex shader is active, then the point size is taken from the point state as specified
-                        by <citerefentry><refentrytitle>glPointSize</refentrytitle></citerefentry>.
-                        The initial value is <constant>GL_FALSE</constant>.
                     </para>
                 </listitem>
             </varlistentry>

@@ -88,7 +88,7 @@
             than from main memory, as is the case for <citerefentry><refentrytitle>glTexSubImage1D</refentrytitle></citerefentry>).
         </para>
         <para>
-            The screen-aligned pixel row with left corner at (<parameter>x</parameter>,\ <parameter>y</parameter>), and with
+            The screen-aligned pixel row with left corner at (<parameter>x</parameter>, <parameter>y</parameter>), and with
             length <parameter>width</parameter> replaces the portion of the
             texture array with x indices <parameter>xoffset</parameter> through 
             <inlineequation><mml:math>
@@ -128,8 +128,7 @@
             rendering context, then the values obtained for those pixels are undefined.
         </para>
         <para>
-            No change is made to the <emphasis>internalformat</emphasis>, <emphasis>width</emphasis>,
-            or <emphasis>border</emphasis> parameters of the specified texture
+            No change is made to the <emphasis>internalformat</emphasis> or <emphasis>width</emphasis> parameters of the specified texture
             array or to texel values outside the specified subregion.
         </para>
     </refsect1>
@@ -140,7 +139,7 @@
     </refsect1>
     <refsect1 id="errors"><title>Errors</title>
         <para>
-            <constant>GL_INVALID_ENUM</constant> is generated if /<parameter>target</parameter> is not <constant>GL_TEXTURE_1D</constant>.
+            <constant>GL_INVALID_ENUM</constant> is generated if <parameter>target</parameter> is not <constant>GL_TEXTURE_1D</constant>.
         </para>
         <para>
             <constant>GL_INVALID_OPERATION</constant> is generated if the texture array has not
@@ -176,10 +175,7 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">xoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mrow>
-                        <mml:mo>-</mml:mo>
-                        <mml:mi mathvariant="italic">b</mml:mi>
-                    </mml:mrow>
+                    <mml:mn>0</mml:mn>
                 </mml:mrow>
             </mml:math></inlineequation>,
             or
@@ -194,26 +190,13 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mfenced open="(" close=")">
-                        <mml:mrow>
-                            <mml:mi mathvariant="italic">w</mml:mi>
-                            <mml:mo>-</mml:mo>
-                            <mml:mi mathvariant="italic">b</mml:mi>
-                        </mml:mrow>
-                    </mml:mfenced>
+                    <mml:mi mathvariant="italic">w</mml:mi>
                 </mml:mrow>
             </mml:math></inlineequation>,
             where 
             <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_WIDTH</constant> and 
-            <inlineequation><mml:math><mml:mi mathvariant="italic">b</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_BORDER</constant>
+            is the <constant>GL_TEXTURE_WIDTH</constant>
             of the texture image being modified.
-            Note that 
-            <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>
-            includes twice the border width.
-        </para>
-        <para>
         </para>
     </refsect1>
     <refsect1 id="associatedgets"><title>Associated Gets</title>

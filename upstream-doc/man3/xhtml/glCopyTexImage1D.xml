@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "xhtml1-transitional.dtd">
 <!-- saved from url=(0013)about:internet -->
-<?xml-stylesheet type="text/xsl" href="mathml.xsl"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" pref:renderer="mathplayer-dl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="opengl-man.css" /><title>glCopyTexImage1D</title><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /></head><body><div class="refentry" lang="en" xml:lang="en"><a id="glCopyTexImage1D"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>glCopyTexImage1D — copy pixels into a 1D texture image</p></div><div class="refsynopsisdiv"><h2>C Specification</h2><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glCopyTexImage1D</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">internalformat</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">x</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">y</var>, </td></tr><tr><td> </td><td>GLsizei  </td><td><var class="pdparam">width</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">border</var><code>)</code>;</td></tr></table></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="parameters"></a><h2>Parameters</h2><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>target</code></em></span></dt><dd><p>
+<?xml-stylesheet type="text/xsl" href="mathml.xsl"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" pref:renderer="mathplayer-dl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="opengl-man.css" /><title>glCopyTexImage1D - OpenGL 3.3 Reference Pages</title><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /></head><body><div class="refentry" lang="en" xml:lang="en"><a id="glCopyTexImage1D"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>glCopyTexImage1D — copy pixels into a 1D texture image</p></div><div class="refsynopsisdiv"><h2>C Specification</h2><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glCopyTexImage1D</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">internalformat</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">x</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">y</var>, </td></tr><tr><td> </td><td>GLsizei  </td><td><var class="pdparam">width</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">border</var><code>)</code>;</td></tr></table></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="parameters"></a><h2>Parameters</h2><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>target</code></em></span></dt><dd><p>
                     Specifies the target texture.
                     Must be <code class="constant">GL_TEXTURE_1D</code>.
                 </p></dd><dt><span class="term"><em class="parameter"><code>level</code></em></span></dt><dd><p>
@@ -48,29 +48,9 @@
                     of the row of pixels to be copied.
                 </p></dd><dt><span class="term"><em class="parameter"><code>width</code></em></span></dt><dd><p>
                     Specifies the width of the texture image.
-                    Must be 0 or 
-                    <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll">
-                        
-                        <mml:mrow>
-                            <mml:msup><mml:mn>2</mml:mn>
-                            <mml:mi mathvariant="italic">n</mml:mi>
-                            </mml:msup>
-                            <mml:mo>+</mml:mo>
-                            <mml:mrow>
-                                <mml:mn>2</mml:mn>
-                                <mml:mo>⁡</mml:mo>
-                                <mml:mfenced open="(" close=")">
-                                    <mml:mi mathvariant="italic">border</mml:mi>
-                                </mml:mfenced>
-                            </mml:mrow>
-                        </mml:mrow>
-                    </mml:math>
-                    for some integer 
-                    <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">n</mml:mi></mml:math>.
                     The height of the texture image is 1.
                 </p></dd><dt><span class="term"><em class="parameter"><code>border</code></em></span></dt><dd><p>
-                    Specifies the width of the border.
-                    Must be either 0 or 1.
+                    Must be 0.
                 </p></dd></dl></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="description"></a><h2>Description</h2><p>
             <code class="function">glCopyTexImage1D</code> defines a one-dimensional texture image with pixels from the current
             <code class="constant">GL_READ_BUFFER</code>.
@@ -88,14 +68,6 @@
                 
                 <mml:mrow>
                     <mml:mi mathvariant="italic">width</mml:mi>
-                    <mml:mo>+</mml:mo>
-                    <mml:mrow>
-                        <mml:mn>2</mml:mn>
-                        <mml:mo>⁡</mml:mo>
-                        <mml:mfenced open="(" close=")">
-                            <mml:mi mathvariant="italic">border</mml:mi>
-                        </mml:mfenced>
-                    </mml:mrow>
                 </mml:mrow>
             </mml:math>
             defines the texture array
@@ -159,26 +131,7 @@
             <code class="constant">GL_INVALID_VALUE</code> is generated if <em class="parameter"><code>width</code></em> is less than 0 or greater than
             <code class="constant">GL_MAX_TEXTURE_SIZE</code>.
         </p><p>
-            <code class="constant">GL_INVALID_VALUE</code> is generated if non-power-of-two textures are not supported and the <em class="parameter"><code>width</code></em> cannot be represented as 
-            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll">
-                
-                <mml:mrow>
-                    <mml:msup><mml:mn>2</mml:mn>
-                    <mml:mi mathvariant="italic">n</mml:mi>
-                    </mml:msup>
-                    <mml:mo>+</mml:mo>
-                    <mml:mrow>
-                        <mml:mn>2</mml:mn>
-                        <mml:mo>⁡</mml:mo>
-                        <mml:mfenced open="(" close=")">
-                            <mml:mi mathvariant="italic">border</mml:mi>
-                        </mml:mfenced>
-                    </mml:mrow>
-                </mml:mrow>
-            </mml:math>
-            for some integer value of <span class="emphasis"><em>n</em></span>.
-        </p><p>
-            <code class="constant">GL_INVALID_VALUE</code> is generated if <em class="parameter"><code>border</code></em> is not 0 or 1.
+            <code class="constant">GL_INVALID_VALUE</code> is generated if <em class="parameter"><code>border</code></em> is not 0.
         </p><p>
             <code class="constant">GL_INVALID_OPERATION</code> is generated if <em class="parameter"><code>internalformat</code></em> is
             <code class="constant">GL_DEPTH_COMPONENT</code>, <code class="constant">GL_DEPTH_COMPONENT16</code>,

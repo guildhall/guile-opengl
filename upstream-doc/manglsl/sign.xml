@@ -50,12 +50,8 @@
     </refsect1>
     <refsect1 id="description"><title>Description</title>
         <para>
-            <function>abs</function> returns 1.0 if
-            <inlineequation><mml:math><mml:apply><mml:lt /><mml:mi>x</mml:mi><mml:mn>0.0</mml:mn></mml:apply></mml:math></inlineequation>,
-            0.0 if
-            <inlineequation><mml:math><mml:apply><mml:eq /><mml:mi>x</mml:mi><mml:mn>0.0</mml:mn></mml:apply></mml:math></inlineequation> and
-            1.0 if
-            <inlineequation><mml:math><mml:apply><mml:gt /><mml:mi>x</mml:mi><mml:mn>0.0</mml:mn></mml:apply></mml:math></inlineequation>.
+            <function>sign</function> returns -1.0 if <parameter>x</parameter> is less than 0.0, 0.0 if <parameter>x</parameter>
+            is equal to 0.0, and +1.0 if <parameter>x</parameter> is greater than 0.0.
         </para>
     </refsect1>
     <refsect1 id="versions"><title>Version Support</title>
@@ -78,12 +74,12 @@
     </refsect1>
     <refsect1 id="seealso"><title>See Also</title>
         <para>
-            <citerefentry><refentrytitle>sign</refentrytitle></citerefentry>
+            <citerefentry><refentrytitle>abs</refentrytitle></citerefentry>
         </para>
     </refsect1>
     <refsect1 id="Copyright"><title>Copyright</title>
         <para>
-            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            Copyright <trademark class="copyright"></trademark> 2011-2013 Khronos Group. 
             This material may be distributed subject to the terms and conditions set forth in 
             the Open Publication License, v 1.0, 8 June 1999.
             <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.

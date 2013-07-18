@@ -138,7 +138,7 @@
             but will not directly affect transform feedback state. Instead, the indexed <constant>GL_TRANSFORM_FEEDBACK_BUFFER</constant>
             bindings must be used through a call to <citerefentry><refentrytitle>glBindBufferBase</refentrytitle></citerefentry>
             or <citerefentry><refentrytitle>glBindBufferRange</refentrytitle></citerefentry>. This will affect the generic
-            <constant>GL_TRANSFORM_FEEDABCK_BUFFER</constant> binding.
+            <constant>GL_TRANSFORM_FEEDBACK_BUFFER</constant> binding.
         </para>
         <para>
             Likewise, the <constant>GL_UNIFORM_BUFFER</constant> buffer binding point may be used, but does not directly affect

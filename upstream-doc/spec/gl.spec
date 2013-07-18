@@ -1,13 +1,18 @@
 # gl.spec file
 # DON'T REMOVE PREVIOUS LINE!!! libspec depends on it!
 #
+# THIS FILE IS OBSOLETE. Please migrate away from using the
+# ".spec" files to the XML Registry. See
+#   http://www.opengl.org/registry/api/README.txt
+# for more information.
+#
 # Copyright (c) 1991-2005 Silicon Graphics, Inc. All Rights Reserved.
 # Copyright (c) 2006-2013 The Khronos Group Inc.
 #
 # This document is licensed under the SGI Free Software B License Version
 # 2.0. For details, see http://oss.sgi.com/projects/FreeB/ .
 #
-# $Revision: 20495 $ on $Date: 2013-02-06 13:01:10 -0800 (Wed, 06 Feb 2013) $
+# $Revision: 22136 $ on $Date: 2013-06-24 04:04:33 -0700 (Mon, 24 Jun 2013) $
 
 required-props:
 # Description of a parameter
@@ -24,7 +29,7 @@ vectorequiv:	*
 category: display-list drawing drawing-control feedback framebuf misc modeling pixel-op pixel-rw state-req xform
 category: VERSION_1_0 VERSION_1_1 VERSION_1_2 VERSION_1_3 VERSION_1_4 VERSION_1_5 VERSION_2_0 VERSION_2_1 VERSION_3_0 VERSION_3_1 VERSION_3_2 VERSION_3_3 VERSION_4_0 VERSION_4_1 VERSION_4_2 VERSION_4_3
 category: 3DFX_tbuffer
-category: AMD_conservative_depth AMD_debug_output AMD_draw_buffers_blend AMD_multi_draw_indirect AMD_name_gen_delete AMD_performance_monitor AMD_sample_positions AMD_sparse_texture AMD_stencil_operation_extended AMD_vertex_shader_tesselator
+category: AMD_conservative_depth AMD_debug_output AMD_draw_buffers_blend AMD_multi_draw_indirect AMD_name_gen_delete AMD_performance_monitor AMD_sample_positions AMD_sparse_texture AMD_stencil_operation_extended AMD_vertex_shader_tessellator
 category: APPLE_aux_depth_stencil APPLE_element_array APPLE_fence APPLE_float_pixels APPLE_flush_buffer_range APPLE_object_purgeable APPLE_row_bytes APPLE_texture_range APPLE_vertex_array_object APPLE_vertex_array_range APPLE_vertex_program_evaluators
 category: ARB_ES2_compatibility ARB_base_instance ARB_blend_func_extended ARB_cl_event ARB_color_buffer_float ARB_copy_buffer ARB_debug_output ARB_depth_buffer_float ARB_draw_buffers ARB_draw_buffers_blend ARB_draw_elements_base_vertex ARB_draw_indirect ARB_draw_instanced ARB_fragment_program ARB_fragment_shader ARB_framebuffer_object ARB_framebuffer_sRGB ARB_geometry_shader4 ARB_get_program_binary ARB_gpu_shader_fp64 ARB_half_float_vertex ARB_instanced_arrays ARB_internalformat_query ARB_map_buffer_range ARB_matrix_palette ARB_multisample ARB_multitexture ARB_occlusion_query ARB_point_parameters ARB_provoking_vertex ARB_robustness ARB_sample_shading ARB_sampler_objects ARB_separate_shader_objects ARB_shader_atomic_counters ARB_shader_image_load_store ARB_shader_objects ARB_shader_subroutine ARB_shading_language_include ARB_sync ARB_tessellation_shader ARB_texture_buffer_object ARB_texture_compression ARB_texture_compression_rgtc ARB_texture_multisample ARB_texture_rectangle ARB_texture_rg ARB_texture_storage ARB_timer_query ARB_transform_feedback2 ARB_transform_feedback3 ARB_transform_feedback_instanced ARB_transpose_matrix ARB_uniform_buffer_object ARB_vertex_array_object ARB_vertex_attrib_64bit ARB_vertex_blend ARB_vertex_buffer_object ARB_vertex_program ARB_vertex_shader ARB_vertex_type_2_10_10_10_rev ARB_viewport_array ARB_window_pos
 category: ARB_clear_buffer_object ARB_compute_shader ARB_copy_image ARB_framebuffer_no_attachments ARB_internalformat_query2 ARB_invalidate_subdata ARB_multi_draw_indirect ARB_program_interface_query ARB_shader_storage_buffer_object ARB_texture_buffer_range ARB_texture_storage_multisample ARB_texture_view ARB_vertex_attrib_binding
@@ -32,7 +37,7 @@ category: ATI_draw_buffers ATI_draw_buffers ATI_element_array ATI_envmap_bumpmap
 category: EXT_bindable_uniform EXT_blend_color EXT_blend_equation_separate EXT_blend_func_separate EXT_blend_minmax EXT_color_subtable EXT_compiled_vertex_array EXT_convolution EXT_coordinate_frame EXT_copy_texture EXT_cull_vertex EXT_depth_bounds_test EXT_direct_state_access EXT_draw_buffers2 EXT_draw_instanced EXT_draw_range_elements EXT_fog_coord EXT_framebuffer_blit EXT_framebuffer_multisample EXT_framebuffer_object EXT_geometry_shader4 EXT_gpu_program_parameters EXT_gpu_shader4 EXT_histogram EXT_index_func EXT_index_material EXT_light_texture EXT_multi_draw_arrays EXT_multisample EXT_paletted_texture EXT_pixel_transform EXT_point_parameters EXT_polygon_offset EXT_provoking_vertex EXT_secondary_color EXT_separate_shader_objects EXT_shader_image_load_store EXT_stencil_clear_tag EXT_stencil_two_side EXT_subtexture EXT_texture3D EXT_texture_buffer_object EXT_texture_integer EXT_texture_object EXT_texture_perturb_normal EXT_texture_snorm EXT_texture_swizzle EXT_timer_query EXT_transform_feedback EXT_vertex_array EXT_vertex_array_bgra EXT_vertex_attrib_64bit EXT_vertex_shader EXT_vertex_weighting EXT_x11_sync_object
 category: GREMEDY_frame_terminator GREMEDY_string_marker
 category: HP_image_transform
-category: IBM_multimode_draw_arrays IBM_vertex_array_lists
+category: IBM_multimode_draw_arrays IBM_static_data IBM_vertex_array_lists
 category: INGR_blend_func_separate
 category: INTEL_parallel_arrays INTEL_map_texture
 category: KHR_debug
@@ -884,7 +889,7 @@ ListBase(base)
 
 Begin(mode)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	category	VERSION_1_0		   # old: drawing
 	profile		compatibility
 	version		1.0
@@ -3807,7 +3812,7 @@ Translatef(x, y, z)
 
 DrawArrays(mode, first, count)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in value
 	param		count		SizeI in value
 	category	VERSION_1_1
@@ -3819,7 +3824,7 @@ DrawArrays(mode, first, count)
 
 DrawElements(mode, count, type, indices)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		count		SizeI in value
 	param		type		DrawElementsType in value
 	param		indices		Void in array [COMPSIZE(count/type)]
@@ -4214,7 +4219,7 @@ BlendEquation(mode)
 
 DrawRangeElements(mode, start, end, count, type, indices)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		start		UInt32 in value
 	param		end		UInt32 in value
 	param		count		SizeI in value
@@ -4245,7 +4250,6 @@ TexImage3D(target, level, internalformat, width, height, depth, border, format, 
 	dlflags		handcode
 	glxflags	client-handcode server-handcode EXT
 	version		1.2
-	deprecated	3.1
 	glxropcode	4114
 	offset		371
 
@@ -5419,7 +5423,7 @@ BlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha)
 # first and count are really 'in'
 MultiDrawArrays(mode, first, count, drawcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in array [COMPSIZE(count)]
 	param		count		SizeI in array [COMPSIZE(drawcount)]
 	param		drawcount	SizeI in value
@@ -5430,7 +5434,7 @@ MultiDrawArrays(mode, first, count, drawcount)
 
 MultiDrawElements(mode, count, type, indices, drawcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		count		SizeI in array [COMPSIZE(drawcount)]
 	param		type		DrawElementsType in value
 	param		indices		ConstVoidPointer in array [COMPSIZE(drawcount)]
@@ -8127,7 +8131,7 @@ passthru: /* ARB_vertex_array_object */
 
 DrawArraysInstanced(mode, first, count, instancecount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in value
 	param		count		SizeI in value
 	param		instancecount	SizeI in value
@@ -8141,7 +8145,7 @@ DrawArraysInstanced(mode, first, count, instancecount)
 
 DrawElementsInstanced(mode, count, type, indices, instancecount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		count		SizeI in value
 	param		type		DrawElementsType in value
 	param		indices		Void in array [COMPSIZE(count/type)]
@@ -11075,7 +11079,7 @@ newcategory: ARB_depth_buffer_float
 
 DrawArraysInstancedARB(mode, first, count, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in value
 	param		count		SizeI in value
 	param		primcount	SizeI in value
@@ -11090,7 +11094,7 @@ DrawArraysInstancedARB(mode, first, count, primcount)
 
 DrawElementsInstancedARB(mode, count, type, indices, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		count		SizeI in value
 	param		type		DrawElementsType in value
 	param		indices		Void in array [COMPSIZE(count/type)]
@@ -17557,7 +17561,7 @@ ColorPointerEXT(size, type, stride, count, pointer)
 
 DrawArraysEXT(mode, first, count)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in value
 	param		count		SizeI in value
 	category	EXT_vertex_array
@@ -17784,12 +17788,16 @@ newcategory: SGIX_pixel_tiles
 ###############################################################################
 #
 # Extension #51
-# SGIX_texture_select commands
+# SGIS_texture_select commands
+#
+# This used to be SGIX_texture_select, which was inconsistent with
+# enumext.spec and wrong according to the SGI extension spec.
 #
 ###############################################################################
 
 # (none)
-newcategory: SGIX_texture_select
+newcategory: SGIS_texture_select
+passthru: /* This used to be SGIX prefix, which was an error in the header */
 
 ###############################################################################
 #
@@ -18924,7 +18932,7 @@ newcategory: HP_texture_lighting
 # Spec entries to be written
 DrawRangeElementsEXT(mode, start, end, count, type, indices)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		start		UInt32 in value
 	param		end		UInt32 in value
 	param		count		SizeI in value
@@ -19514,7 +19522,7 @@ TextureNormalEXT(mode)
 # first and count are really 'in'
 MultiDrawArraysEXT(mode, first, count, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in array [COMPSIZE(primcount)]
 	param		count		SizeI in array [COMPSIZE(primcount)]
 	param		primcount	SizeI in value
@@ -19525,7 +19533,7 @@ MultiDrawArraysEXT(mode, first, count, primcount)
 
 MultiDrawElementsEXT(mode, count, type, indices, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		count		SizeI in array [COMPSIZE(primcount)]
 	param		type		DrawElementsType in value
 	param		indices		VoidPointer in array [COMPSIZE(primcount)]
@@ -21226,7 +21234,7 @@ WindowPos4svMESA(v)
 #
 ###############################################################################
 
-#@@ (none yet)
+newcategory: EXT_texture_compression_s3tc
 
 ###############################################################################
 #
@@ -21247,7 +21255,7 @@ newcategory: IBM_cull_vertex
 
 MultiModeDrawArraysIBM(mode, first, count, primcount, modestride)
 	return		void
-	param		mode		BeginMode in array [COMPSIZE(primcount)]
+	param		mode		PrimitiveType in array [COMPSIZE(primcount)]
 	param		first		Int32 in array [COMPSIZE(primcount)]
 	param		count		SizeI in array [COMPSIZE(primcount)]
 	param		primcount	SizeI in value
@@ -21260,7 +21268,7 @@ MultiModeDrawArraysIBM(mode, first, count, primcount, modestride)
 
 MultiModeDrawElementsIBM(mode, count, type, indices, primcount, modestride)
 	return		void
-	param		mode		BeginMode in array [COMPSIZE(primcount)]
+	param		mode		PrimitiveType in array [COMPSIZE(primcount)]
 	param		count		SizeI in array [COMPSIZE(primcount)]
 	param		type		DrawElementsType in value
 	param		indices		ConstVoidPointer in array [COMPSIZE(primcount)]
@@ -21663,6 +21671,29 @@ SetFenceNV(fence, condition)
 	extension	soft WINSOFT NV10
 	glxflags	ignore
 	offset		653
+
+###############################################################################
+#
+# Extension #223
+# IBM_static_data commands
+#
+###############################################################################
+
+FlushStaticDataIBM(target)
+	return		void
+	param		target		GLenum in value
+	category	IBM_static_data
+	version		1.0
+	glxflags	ignore
+
+###############################################################################
+#
+# Extension #224
+# IBM_texture_mirrored_repeat commands
+#
+###############################################################################
+# (none)
+newcategory: IBM_texture_mirrored_repeat
 
 ###############################################################################
 #
@@ -24316,7 +24347,7 @@ ElementPointerATI(type, pointer)
 
 DrawElementArrayATI(mode, count)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		count		SizeI in value
 	category	ATI_element_array
 	dlflags		handcode
@@ -24326,7 +24357,7 @@ DrawElementArrayATI(mode, count)
 
 DrawRangeElementArrayATI(mode, start, end, count)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		start		UInt32 in value
 	param		end		UInt32 in value
 	param		count		SizeI in value
@@ -24345,7 +24376,7 @@ DrawRangeElementArrayATI(mode, start, end, count)
 
 DrawMeshArraysSUN(mode, first, count, width)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in value
 	param		count		SizeI in value
 	param		width		SizeI in value
@@ -24578,7 +24609,7 @@ ElementPointerAPPLE(type, pointer)
 
 DrawElementArrayAPPLE(mode, first, count)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in value
 	param		count		SizeI in value
 	category	APPLE_element_array
@@ -24590,7 +24621,7 @@ DrawElementArrayAPPLE(mode, first, count)
 
 DrawRangeElementArrayAPPLE(mode, start, end, first, count)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		start		UInt32 in value
 	param		end		UInt32 in value
 	param		first		Int32 in value
@@ -24604,7 +24635,7 @@ DrawRangeElementArrayAPPLE(mode, start, end, first, count)
 
 MultiDrawElementArrayAPPLE(mode, first, count, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		first		Int32 in array [primcount]
 	param		count		SizeI in array [primcount]
 	param		primcount	SizeI in value
@@ -24617,7 +24648,7 @@ MultiDrawElementArrayAPPLE(mode, first, count, primcount)
 
 MultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		start		UInt32 in value
 	param		end		UInt32 in value
 	param		first		Int32 in array [primcount]
@@ -27228,7 +27259,7 @@ ClipPlanefOES(plane, equation)
 
 ClearDepthfOES(depth)
 	return		void
-	param		depth		ClampedFloat64 in value
+	param		depth		ClampedFloat32 in value
 	category	OES_single_precision
 	version		4.3
 	extension
@@ -27277,8 +27308,8 @@ newcategory: OES_read_format
 
 QueryMatrixxOES(mantissa, exponent)
 	return		GLbitfield
-	param		mantissa	ConstFixed in array [16]
-	param		exponent	ConstInt32 in array [16]
+	param		mantissa	Fixed out array [16]
+	param		exponent	Int32 out array [16]
 	category	OES_query_matrix
 	version		4.3
 	extension
@@ -28572,7 +28603,7 @@ Uniform4uivEXT(location, count, value)
 
 DrawArraysInstancedEXT(mode, start, count, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		start		Int32 in value
 	param		count		SizeI in value
 	param		primcount	SizeI in value
@@ -28587,7 +28618,7 @@ DrawArraysInstancedEXT(mode, start, count, primcount)
 
 DrawElementsInstancedEXT(mode, count, type, indices, primcount)
 	return		void
-	param		mode		BeginMode in value
+	param		mode		PrimitiveType in value
 	param		count		SizeI in value
 	param		type		DrawElementsType in value
 	param		indices		Void in array [COMPSIZE(count/type)]
@@ -29130,7 +29161,6 @@ GetTexParameterIivEXT(target, pname, params)
 	param		params		Int32 out array [COMPSIZE(pname)]
 	category	EXT_texture_integer
 	dlflags		notlistable
-	version		1.0
 	version		2.0
 	extension	soft WINSOFT NV50
 	glfflags	ignore
@@ -29144,7 +29174,6 @@ GetTexParameterIuivEXT(target, pname, params)
 	param		params		UInt32 out array [COMPSIZE(pname)]
 	category	EXT_texture_integer
 	dlflags		notlistable
-	version		1.0
 	version		2.0
 	extension	soft WINSOFT NV50
 	glfflags	ignore
@@ -32107,7 +32136,7 @@ ProgramUniform2dvEXT(program, location, count, value)
 	param		program		UInt32 in value
 	param		location	Int32 in value
 	param		count		SizeI in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*2]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32121,7 +32150,7 @@ ProgramUniform3dvEXT(program, location, count, value)
 	param		program		UInt32 in value
 	param		location	Int32 in value
 	param		count		SizeI in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*3]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32135,7 +32164,7 @@ ProgramUniform4dvEXT(program, location, count, value)
 	param		program		UInt32 in value
 	param		location	Int32 in value
 	param		count		SizeI in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*4]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32150,7 +32179,7 @@ ProgramUniformMatrix2dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*4]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32165,7 +32194,7 @@ ProgramUniformMatrix3dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*9]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32180,7 +32209,7 @@ ProgramUniformMatrix4dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*16]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32195,7 +32224,7 @@ ProgramUniformMatrix2x3dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*6]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32210,7 +32239,7 @@ ProgramUniformMatrix2x4dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*8]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32225,7 +32254,7 @@ ProgramUniformMatrix3x2dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*6]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32240,7 +32269,7 @@ ProgramUniformMatrix3x4dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*12]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32255,7 +32284,7 @@ ProgramUniformMatrix4x2dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*8]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32270,7 +32299,7 @@ ProgramUniformMatrix4x3dvEXT(program, location, count, transpose, value)
 	param		location	Int32 in value
 	param		count		SizeI in value
 	param		transpose	Boolean in value
-	param		value		Float64 in array [count]
+	param		value		Float64 in array [count*12]
 	category	EXT_direct_state_access
 	subcategory	ARB_gpu_shader_fp64
 	version		1.2
@@ -32582,14 +32611,14 @@ newcategory: AMD_texture_texture4
 ###############################################################################
 #
 # Extension #363
-# AMD_vertex_shader_tesselator commands
+# AMD_vertex_shader_tessellator commands
 #
 ###############################################################################
 
 TessellationFactorAMD(factor)
 	return		void
 	param		factor		Float32 in value
-	category	AMD_vertex_shader_tesselator
+	category	AMD_vertex_shader_tessellator
 	version		2.0
 	glxsingle	?
 	glxflags	ignore
@@ -32598,7 +32627,7 @@ TessellationFactorAMD(factor)
 TessellationModeAMD(mode)
 	return		void
 	param		mode		GLenum in value
-	category	AMD_vertex_shader_tesselator
+	category	AMD_vertex_shader_tessellator
 	version		2.0
 	glxsingle	?
 	glxflags	ignore

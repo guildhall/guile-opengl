@@ -9,12 +9,12 @@ The functions from this section may be had by loading the module:
 
 @copying 
 This section of the manual was derived from the upstream OpenGL
-documentation. Each function's documentation has its own copyright
-statement; for full details, see the upstream documentation. The
+documentation.  Each function's documentation has its own copyright
+statement; for full details, see the upstream documentation.  The
 copyright notices and licenses present in this section are as follows.
 
-Copyright @copyright{} 1991-2006 Silicon Graphics, Inc. This document is
-licensed under the SGI Free Software B License. For details, see
+Copyright @copyright{} 1991-2006 Silicon Graphics, Inc.  This document
+is licensed under the SGI Free Software B License.  For details, see
 @uref{http://oss.sgi.com/projects/FreeB/,http://oss.sgi.com/projects/FreeB/}.
 
 @end copying
@@ -31,7 +31,7 @@ Specifies the connection to the X server.
 Specifies the screen number.
 
 @item @var{attrib_list}
-Specifies a list of attribute/value pairs. The last attribute must be
+Specifies a list of attribute/value pairs.  The last attribute must be
 @code{None}.
 
 @item @var{nelements}
@@ -42,31 +42,31 @@ Returns the number of elements in the list returned by
 
 @code{glXChooseFBConfig} returns GLX frame buffer configurations that
 match the attributes specified in @var{attrib_list}, or @code{NULL} if
-no matches are found. If @var{attrib_list} is @code{NULL}, then
+no matches are found.  If @var{attrib_list} is @code{NULL}, then
 @code{glXChooseFBConfig} returns an array of GLX frame buffer
-configurations that are available on the specified screen. If an error
+configurations that are available on the specified screen.  If an error
 occurs, no frame buffer configurations exist on the specified screen, or
 if no frame buffer configurations match the specified attributes, then
-@code{NULL} is returned. Use @code{XFree} to free the memory returned by
-@code{glXChooseFBConfig}.
+@code{NULL} is returned.  Use @code{XFree} to free the memory returned
+by @code{glXChooseFBConfig}.
 
 All attributes in @var{attrib_list}, including boolean attributes, are
-immediately followed by the corresponding desired value. The list is
-terminated with @code{None}. If an attribute is not specified in
+immediately followed by the corresponding desired value.  The list is
+terminated with @code{None}.  If an attribute is not specified in
 @var{attrib_list}, then the default value (see below) is used (and the
-attribute is said to be specified implicitly). For example, if
+attribute is said to be specified implicitly).  For example, if
 @code{GLX_STEREO} is not specified, then it is assumed to be
-@code{False}. For some attributes, the default is @code{GLX_DONT_CARE},
+@code{False}.  For some attributes, the default is @code{GLX_DONT_CARE},
 meaning that any value is OK for this attribute, so the attribute will
 not be checked.
 
-Attributes are matched in an attribute-specific manner. Some of the
+Attributes are matched in an attribute-specific manner.  Some of the
 attributes, such as @code{GLX_LEVEL}, must match the specified value
 exactly; others, such as, @code{GLX_RED_SIZE} must meet or exceed the
-specified minimum values. If more than one GLX frame buffer
+specified minimum values.  If more than one GLX frame buffer
 configuration is found, then a list of configurations, sorted according
-to the ``best'' match criteria, is returned. The match criteria for each
-attribute and the exact sorting order is defined below.
+to the ``best'' match criteria, is returned.  The match criteria for
+each attribute and the exact sorting order is defined below.
 
 The interpretations of the various GLX visual attributes are as follows:
 
@@ -75,146 +75,147 @@ The interpretations of the various GLX visual attributes are as follows:
 
 
 Must be followed by a valid XID that indicates the desired GLX frame
-buffer configuration. When a @code{GLX_FBCONFIG_ID} is specified, all
-attributes are ignored. The default value is @code{GLX_DONT_CARE}.
+buffer configuration.  When a @code{GLX_FBCONFIG_ID} is specified, all
+attributes are ignored.  The default value is @code{GLX_DONT_CARE}.
 
 @item @code{GLX_BUFFER_SIZE}
 
 
 Must be followed by a nonnegative integer that indicates the desired
-color index buffer size. The smallest index buffer of at least the
-specified size is preferred. This attribute is ignored if
-@code{GLX_COLOR_INDEX_BIT} is not set in @code{GLX_RENDER_TYPE}. The
+color index buffer size.  The smallest index buffer of at least the
+specified size is preferred.  This attribute is ignored if
+@code{GLX_COLOR_INDEX_BIT} is not set in @code{GLX_RENDER_TYPE}.  The
 default value is 0.
 
 @item @code{GLX_LEVEL}
 
 
-Must be followed by an integer buffer-level specification. This
-specification is honored exactly. Buffer level 0 corresponds to the
-default frame buffer of the display. Buffer level 1 is the first overlay
-frame buffer, level two the second overlay frame buffer, and so on.
-Negative buffer levels correspond to underlay frame buffers. The default
-value is 0.
+Must be followed by an integer buffer-level specification.  This
+specification is honored exactly.  Buffer level 0 corresponds to the
+default frame buffer of the display.  Buffer level 1 is the first
+overlay frame buffer, level two the second overlay frame buffer, and so
+on.  Negative buffer levels correspond to underlay frame buffers.  The
+default value is 0.
 
 @item @code{GLX_DOUBLEBUFFER}
 
 
-Must be followed by @code{True} or @code{False}. If @code{True} is
+Must be followed by @code{True} or @code{False}.  If @code{True} is
 specified, then only double-buffered frame buffer configurations are
 considered; if @code{False} is specified, then only single-buffered
-frame buffer configurations are considered. The default value is
+frame buffer configurations are considered.  The default value is
 @code{GLX_DONT_CARE}.
 
 @item @code{GLX_STEREO}
 
 
-Must be followed by @code{True} or @code{False}. If @code{True} is
+Must be followed by @code{True} or @code{False}.  If @code{True} is
 specified, then only stereo frame buffer configurations are considered;
 if @code{False} is specified, then only monoscopic frame buffer
-configurations are considered. The default value is @code{False}.
+configurations are considered.  The default value is @code{False}.
 
 @item @code{GLX_AUX_BUFFERS}
 
 
 Must be followed by a nonnegative integer that indicates the desired
-number of auxiliary buffers. Configurations with the smallest number of
+number of auxiliary buffers.  Configurations with the smallest number of
 auxiliary buffers that meet or exceed the specified number are
-preferred. The default value is 0.
+preferred.  The default value is 0.
 
 @item @code{GLX_RED_SIZE}, @code{GLX_GREEN_SIZE}, @code{GLX_BLUE_SIZE}, @code{GLX_ALPHA_SIZE}
 
 
 Each attribute, if present, must be followed by a nonnegative minimum
-size specification or @code{GLX_DONT_CARE}. The largest available total
+size specification or @code{GLX_DONT_CARE}.  The largest available total
 RGBA color buffer size (sum of @code{GLX_RED_SIZE},
 @code{GLX_GREEN_SIZE}, @code{GLX_BLUE_SIZE}, and @code{GLX_ALPHA_SIZE})
 of at least the minimum size specified for each color component is
-preferred. If the requested number of bits for a color component is 0 or
-@code{GLX_DONT_CARE}, it is not considered. The default value for each
-color component is 0.
+preferred.  If the requested number of bits for a color component is 0
+or @code{GLX_DONT_CARE}, it is not considered.  The default value for
+each color component is 0.
 
 @item @code{GLX_DEPTH_SIZE}
 
 
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, frame buffer configurations with no depth buffer are
-preferred. Otherwise, the largest available depth buffer of at least the
-minimum size is preferred. The default value is 0.
+preferred.  Otherwise, the largest available depth buffer of at least
+the minimum size is preferred.  The default value is 0.
 
 @item @code{GLX_STENCIL_SIZE}
 
 
 Must be followed by a nonnegative integer that indicates the desired
-number of stencil bitplanes. The smallest stencil buffer of at least the
-specified size is preferred. If the desired value is zero, frame buffer
-configurations with no stencil buffer are preferred. The default value
-is 0.
+number of stencil bitplanes.  The smallest stencil buffer of at least
+the specified size is preferred.  If the desired value is zero, frame
+buffer configurations with no stencil buffer are preferred.  The default
+value is 0.
 
 @item @code{GLX_ACCUM_RED_SIZE}
 
 
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, frame buffer configurations with no red accumulation
-buffer are preferred. Otherwise, the largest possible red accumulation
-buffer of at least the minimum size is preferred. The default value is
+buffer are preferred.  Otherwise, the largest possible red accumulation
+buffer of at least the minimum size is preferred.  The default value is
 0.
 
 @item @code{GLX_ACCUM_GREEN_SIZE}
 
 
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, frame buffer configurations with no green accumulation
-buffer are preferred. Otherwise, the largest possible green accumulation
-buffer of at least the minimum size is preferred. The default value is
-0.
+buffer are preferred.  Otherwise, the largest possible green
+accumulation buffer of at least the minimum size is preferred.  The
+default value is 0.
 
 @item @code{GLX_ACCUM_BLUE_SIZE}
 
 
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, frame buffer configurations with no blue accumulation
-buffer are preferred. Otherwise, the largest possible blue accumulation
-buffer of at least the minimum size is preferred. The default value is
+buffer are preferred.  Otherwise, the largest possible blue accumulation
+buffer of at least the minimum size is preferred.  The default value is
 0.
 
 @item @code{GLX_ACCUM_ALPHA_SIZE}
 
 
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, frame buffer configurations with no alpha accumulation
-buffer are preferred. Otherwise, the largest possible alpha accumulation
-buffer of at least the minimum size is preferred. The default value is
-0.
+buffer are preferred.  Otherwise, the largest possible alpha
+accumulation buffer of at least the minimum size is preferred.  The
+default value is 0.
 
 @item @code{GLX_RENDER_TYPE}
 
 
 Must be followed by a mask indicating which OpenGL rendering modes the
-frame buffer configuration must support. Valid bits are
-@code{GLX_RGBA_BIT} and @code{GLX_COLOR_INDEX_BIT}. If the mask is set
+frame buffer configuration must support.  Valid bits are
+@code{GLX_RGBA_BIT} and @code{GLX_COLOR_INDEX_BIT}.  If the mask is set
 to @code{GLX_RGBA_BIT} | @code{GLX_COLOR_INDEX_BIT}, then only frame
 buffer configurations that can be bound to both RGBA contexts and color
-index contexts will be considered. The default value is
+index contexts will be considered.  The default value is
 @code{GLX_RGBA_BIT}.
 
 @item @code{GLX_DRAWABLE_TYPE}
 
 
 Must be followed by a mask indicating which GLX drawable types the frame
-buffer configuration must support. Valid bits are @code{GLX_WINDOW_BIT},
-@code{GLX_PIXMAP_BIT}, and @code{GLX_PBUFFER_BIT}. For example, if mask
-is set to @code{GLX_WINDOW_BIT} | @code{GLX_PIXMAP_BIT}, only frame
-buffer configurations that support both windows and GLX pixmaps will be
-considered. The default value is @code{GLX_WINDOW_BIT}.
+buffer configuration must support.  Valid bits are
+@code{GLX_WINDOW_BIT}, @code{GLX_PIXMAP_BIT}, and
+@code{GLX_PBUFFER_BIT}.  For example, if mask is set to
+@code{GLX_WINDOW_BIT} | @code{GLX_PIXMAP_BIT}, only frame buffer
+configurations that support both windows and GLX pixmaps will be
+considered.  The default value is @code{GLX_WINDOW_BIT}.
 
 @item @code{GLX_X_RENDERABLE}
 
 
-Must be followed by @code{True} or @code{False}. If @code{True} is
+Must be followed by @code{True} or @code{False}.  If @code{True} is
 specified, then only frame buffer configurations that have associated X
 visuals (and can be used to render to Windows and/or GLX pixmaps) will
-be considered. The default value is @code{GLX_DONT_CARE}.
+be considered.  The default value is @code{GLX_DONT_CARE}.
 
 @item @code{GLX_X_VISUAL_TYPE}
 
@@ -222,51 +223,51 @@ be considered. The default value is @code{GLX_DONT_CARE}.
 Must be followed by one of @code{GLX_TRUE_COLOR},
 @code{GLX_DIRECT_COLOR}, @code{GLX_PSEUDO_COLOR},
 @code{GLX_STATIC_COLOR}, @code{GLX_GRAY_SCALE}, or
-@code{GLX_STATIC_GRAY}, indicating the desired X visual type. Not all
-frame buffer configurations have an associated X visual. If
+@code{GLX_STATIC_GRAY}, indicating the desired X visual type.  Not all
+frame buffer configurations have an associated X visual.  If
 @code{GLX_DRAWABLE_TYPE} is specified in @var{attrib_list} and the mask
 that follows does not have @code{GLX_WINDOW_BIT} set, then this value is
-ignored. It is also ignored if @code{GLX_X_RENDERABLE} is specified as
-@code{False}. RGBA rendering may be supported for visuals of type
+ignored.  It is also ignored if @code{GLX_X_RENDERABLE} is specified as
+@code{False}.  RGBA rendering may be supported for visuals of type
 @code{GLX_TRUE_COLOR}, @code{GLX_DIRECT_COLOR}, @code{GLX_PSEUDO_COLOR},
 or @code{GLX_STATIC_COLOR}, but color index rendering is only supported
 for visuals of type @code{GLX_PSEUDO_COLOR} or @code{GLX_STATIC_COLOR}
-(i.e., single-channel visuals). The tokens @code{GLX_GRAY_SCALE} and
+(i.e., single-channel visuals).  The tokens @code{GLX_GRAY_SCALE} and
 @code{GLX_STATIC_GRAY} will not match current OpenGL enabled visuals,
-but are included for future use. The default value for
+but are included for future use.  The default value for
 @code{GLX_X_VISUAL_TYPE} is @code{GLX_DONT_CARE}.
 
 @item @code{GLX_CONFIG_CAVEAT}
 
 
 Must be followed by one of @code{GLX_NONE}, @code{GLX_SLOW_CONFIG},
-@code{GLX_NON_CONFORMANT_CONFIG}. If @code{GLX_NONE} is specified, then
+@code{GLX_NON_CONFORMANT_CONFIG}.  If @code{GLX_NONE} is specified, then
 only frame buffer configurations with no caveats will be considered; if
 @code{GLX_SLOW_CONFIG} is specified, then only slow frame buffer
 configurations will be considered; if @code{GLX_NON_CONFORMANT_CONFIG}
 is specified, then only nonconformant frame buffer configurations will
-be considered. The default value is @code{GLX_DONT_CARE}.
+be considered.  The default value is @code{GLX_DONT_CARE}.
 
 @item @code{GLX_TRANSPARENT_TYPE}
 
 
 Must be followed by one of @code{GLX_NONE}, @code{GLX_TRANSPARENT_RGB},
-@code{GLX_TRANSPARENT_INDEX}. If @code{GLX_NONE} is specified, then only
-opaque frame buffer configurations will be considered; if
+@code{GLX_TRANSPARENT_INDEX}.  If @code{GLX_NONE} is specified, then
+only opaque frame buffer configurations will be considered; if
 @code{GLX_TRANSPARENT_RGB} is specified, then only transparent frame
 buffer configurations that support RGBA rendering will be considered; if
 @code{GLX_TRANSPARENT_INDEX} is specified, then only transparent frame
 buffer configurations that support color index rendering will be
-considered. The default value is @code{GLX_NONE}.
+considered.  The default value is @code{GLX_NONE}.
 
 @item @code{GLX_TRANSPARENT_INDEX_VALUE}
 
 
 Must be followed by an integer value indicating the transparent index
 value; the value must be between 0 and the maximum frame buffer value
-for indices. Only frame buffer configurations that use the specified
-transparent index value will be considered. The default value is
-@code{GLX_DONT_CARE}. This attribute is ignored unless
+for indices.  Only frame buffer configurations that use the specified
+transparent index value will be considered.  The default value is
+@code{GLX_DONT_CARE}.  This attribute is ignored unless
 @code{GLX_TRANSPARENT_TYPE} is included in @var{attrib_list} and
 specified as @code{GLX_TRANSPARENT_INDEX}.
 
@@ -275,9 +276,9 @@ specified as @code{GLX_TRANSPARENT_INDEX}.
 
 Must be followed by an integer value indicating the transparent red
 value; the value must be between 0 and the maximum frame buffer value
-for red. Only frame buffer configurations that use the specified
-transparent red value will be considered. The default value is
-@code{GLX_DONT_CARE}. This attribute is ignored unless
+for red.  Only frame buffer configurations that use the specified
+transparent red value will be considered.  The default value is
+@code{GLX_DONT_CARE}.  This attribute is ignored unless
 @code{GLX_TRANSPARENT_TYPE} is included in @var{attrib_list} and
 specified as @code{GLX_TRANSPARENT_RGB}.
 
@@ -286,9 +287,9 @@ specified as @code{GLX_TRANSPARENT_RGB}.
 
 Must be followed by an integer value indicating the transparent green
 value; the value must be between 0 and the maximum frame buffer value
-for green. Only frame buffer configurations that use the specified
-transparent green value will be considered. The default value is
-@code{GLX_DONT_CARE}. This attribute is ignored unless
+for green.  Only frame buffer configurations that use the specified
+transparent green value will be considered.  The default value is
+@code{GLX_DONT_CARE}.  This attribute is ignored unless
 @code{GLX_TRANSPARENT_TYPE} is included in @var{attrib_list} and
 specified as @code{GLX_TRANSPARENT_RGB}.
 
@@ -297,9 +298,9 @@ specified as @code{GLX_TRANSPARENT_RGB}.
 
 Must be followed by an integer value indicating the transparent blue
 value; the value must be between 0 and the maximum frame buffer value
-for blue. Only frame buffer configurations that use the specified
-transparent blue value will be considered. The default value is
-@code{GLX_DONT_CARE}. This attribute is ignored unless
+for blue.  Only frame buffer configurations that use the specified
+transparent blue value will be considered.  The default value is
+@code{GLX_DONT_CARE}.  This attribute is ignored unless
 @code{GLX_TRANSPARENT_TYPE} is included in @var{attrib_list} and
 specified as @code{GLX_TRANSPARENT_RGB}.
 
@@ -308,14 +309,14 @@ specified as @code{GLX_TRANSPARENT_RGB}.
 
 Must be followed by an integer value indicating the transparent alpha
 value; the value must be between 0 and the maximum frame buffer value
-for alpha. Only frame buffer configurations that use the specified
-transparent alpha value will be considered. The default value is
+for alpha.  Only frame buffer configurations that use the specified
+transparent alpha value will be considered.  The default value is
 @code{GLX_DONT_CARE}.
 
 @end table
 
 When more than one GLX frame buffer configuration matches the specified
-attributes, a list of matching configurations is returned. The list is
+attributes, a list of matching configurations is returned.  The list is
 sorted according to the following precedence rules, which are applied in
 ascending order (i.e., configurations that are considered equal by a
 lower numbered rule are sorted by the higher numbered rule):
@@ -328,7 +329,7 @@ By @code{GLX_CONFIG_CAVEAT} where the precedence is @code{GLX_NONE},
 @item 2.
 Larger total number of RGBA color components (@code{GLX_RED_SIZE},
 @code{GLX_GREEN_SIZE}, @code{GLX_BLUE_SIZE}, plus @code{GLX_ALPHA_SIZE})
-that have higher number of bits. If the requested number of bits in
+that have higher number of bits.  If the requested number of bits in
 @var{attrib_list} is zero or @code{GLX_DONT_CARE} for a particular color
 component, then the number of bits for that component is not considered.
 
@@ -352,7 +353,7 @@ Smaller @code{GLX_STENCIL_SIZE}.
 Larger total number of accumulation buffer color components
 (@code{GLX_ACCUM_RED_SIZE}, @code{GLX_ACCUM_GREEN_SIZE},
 @code{GLX_ACCUM_BLUE_SIZE}, plus @code{GLX_ACCUM_ALPHA_SIZE}) that have
-higher number of bits. If the requested number of bits in
+higher number of bits.  If the requested number of bits in
 @var{attrib_list} is zero or @code{GLX_DONT_CARE} for a particular color
 component, then the number of bits for that component is not considered.
 
@@ -381,44 +382,44 @@ Specifies the screen number.
 
 @item @var{attribList}
 Specifies a list of boolean attributes and integer attribute/value
-pairs. The last attribute must be @code{None}.
+pairs.  The last attribute must be @code{None}.
 
 @end table
 
 @code{glXChooseVisual} returns a pointer to an XVisualInfo structure
-describing the visual that best meets a minimum specification. The
+describing the visual that best meets a minimum specification.  The
 boolean GLX attributes of the visual that is returned will match the
 specified values, and the integer GLX attributes will meet or exceed the
-specified minimum values. If all other attributes are equivalent, then
+specified minimum values.  If all other attributes are equivalent, then
 TrueColor and PseudoColor visuals have priority over DirectColor and
-StaticColor visuals, respectively. If no conforming visual exists,
-@code{NULL} is returned. To free the data returned by this function, use
-@code{XFree}.
+StaticColor visuals, respectively.  If no conforming visual exists,
+@code{NULL} is returned.  To free the data returned by this function,
+use @code{XFree}.
 
 All boolean GLX attributes default to @code{False} except
-@code{GLX_USE_GL}, which defaults to @code{True}. All integer GLX
-attributes default to zero. Default specifications are superseded by
-attributes included in @var{attribList}. Boolean attributes included in
-@var{attribList} are understood to be @code{True}. Integer attributes
+@code{GLX_USE_GL}, which defaults to @code{True}.  All integer GLX
+attributes default to zero.  Default specifications are superseded by
+attributes included in @var{attribList}.  Boolean attributes included in
+@var{attribList} are understood to be @code{True}.  Integer attributes
 and enumerated type attributes are followed immediately by the
-corresponding desired or minimum value. The list must be terminated with
-@code{None}.
+corresponding desired or minimum value.  The list must be terminated
+with @code{None}.
 
 The interpretations of the various GLX visual attributes are as follows:
 
 @table @asis
 @item @code{GLX_USE_GL}
-Ignored. Only visuals that can be rendered with GLX are considered.
+Ignored.  Only visuals that can be rendered with GLX are considered.
 
 @item @code{GLX_BUFFER_SIZE}
 Must be followed by a nonnegative integer that indicates the desired
-color index buffer size. The smallest index buffer of at least the
-specified size is preferred. Ignored if @code{GLX_RGBA} is asserted.
+color index buffer size.  The smallest index buffer of at least the
+specified size is preferred.  Ignored if @code{GLX_RGBA} is asserted.
 
 @item @code{GLX_LEVEL}
-Must be followed by an integer buffer-level specification. This
-specification is honored exactly. Buffer level zero corresponds to the
-main frame buffer of the display. Buffer level one is the first overlay
+Must be followed by an integer buffer-level specification.  This
+specification is honored exactly.  Buffer level zero corresponds to the
+main frame buffer of the display.  Buffer level one is the first overlay
 frame buffer, level two the second overlay frame buffer, and so on.
 Negative buffer levels correspond to underlay frame buffers.
 
@@ -427,75 +428,75 @@ If present, only TrueColor and DirectColor visuals are considered.
 Otherwise, only PseudoColor and StaticColor visuals are considered.
 
 @item @code{GLX_DOUBLEBUFFER}
-If present, only double-buffered visuals are considered. Otherwise, only
-single-buffered visuals are considered.
+If present, only double-buffered visuals are considered.  Otherwise,
+only single-buffered visuals are considered.
 
 @item @code{GLX_STEREO}
-If present, only stereo visuals are considered. Otherwise, only
+If present, only stereo visuals are considered.  Otherwise, only
 monoscopic visuals are considered.
 
 @item @code{GLX_AUX_BUFFERS}
 Must be followed by a nonnegative integer that indicates the desired
-number of auxiliary buffers. Visuals with the smallest number of
+number of auxiliary buffers.  Visuals with the smallest number of
 auxiliary buffers that meets or exceeds the specified number are
 preferred.
 
 @item @code{GLX_RED_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, the smallest available red buffer is preferred.
 Otherwise, the largest available red buffer of at least the minimum size
 is preferred.
 
 @item @code{GLX_GREEN_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, the smallest available green buffer is preferred.
 Otherwise, the largest available green buffer of at least the minimum
 size is preferred.
 
 @item @code{GLX_BLUE_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, the smallest available blue buffer is preferred.
 Otherwise, the largest available blue buffer of at least the minimum
 size is preferred.
 
 @item @code{GLX_ALPHA_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, the smallest available alpha buffer is preferred.
 Otherwise, the largest available alpha buffer of at least the minimum
 size is preferred.
 
 @item @code{GLX_DEPTH_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
-value is zero, visuals with no depth buffer are preferred. Otherwise,
+Must be followed by a nonnegative minimum size specification.  If this
+value is zero, visuals with no depth buffer are preferred.  Otherwise,
 the largest available depth buffer of at least the minimum size is
 preferred.
 
 @item @code{GLX_STENCIL_SIZE}
 Must be followed by a nonnegative integer that indicates the desired
-number of stencil bitplanes. The smallest stencil buffer of at least the
-specified size is preferred. If the desired value is zero, visuals with
-no stencil buffer are preferred.
+number of stencil bitplanes.  The smallest stencil buffer of at least
+the specified size is preferred.  If the desired value is zero, visuals
+with no stencil buffer are preferred.
 
 @item @code{GLX_ACCUM_RED_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, visuals with no red accumulation buffer are preferred.
 Otherwise, the largest possible red accumulation buffer of at least the
 minimum size is preferred.
 
 @item @code{GLX_ACCUM_GREEN_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, visuals with no green accumulation buffer are preferred.
 Otherwise, the largest possible green accumulation buffer of at least
 the minimum size is preferred.
 
 @item @code{GLX_ACCUM_BLUE_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, visuals with no blue accumulation buffer are preferred.
 Otherwise, the largest possible blue accumulation buffer of at least the
 minimum size is preferred.
 
 @item @code{GLX_ACCUM_ALPHA_SIZE}
-Must be followed by a nonnegative minimum size specification. If this
+Must be followed by a nonnegative minimum size specification.  If this
 value is zero, visuals with no alpha accumulation buffer are preferred.
 Otherwise, the largest possible alpha accumulation buffer of at least
 the minimum size is preferred.
@@ -527,24 +528,24 @@ Specifies which portions of @var{src} state are to be copied to
 @end table
 
 @code{glXCopyContext} copies selected groups of state variables from
-@var{src} to @var{dst}. @var{mask} indicates which groups of state
-variables are to be copied. @var{mask} contains the bitwise OR of the
+@var{src} to @var{dst}.  @var{mask} indicates which groups of state
+variables are to be copied.  @var{mask} contains the bitwise OR of the
 same symbolic names that are passed to the GL command
-@code{glPushAttrib}. The single symbolic constant
+@code{glPushAttrib}.  The single symbolic constant
 @code{GLX_ALL_ATTRIB_BITS} can be used to copy the maximum possible
 portion of rendering state.
 
 The copy can be done only if the renderers named by @var{src} and
-@var{dst} share an address space. Two rendering contexts share an
+@var{dst} share an address space.  Two rendering contexts share an
 address space if both are nondirect using the same server, or if both
-are direct and owned by a single process. Note that in the nondirect
+are direct and owned by a single process.  Note that in the nondirect
 case it is not necessary for the calling threads to share an address
 space, only for their related rendering contexts to share an address
 space.
 
-Not all values for GL state can be copied. For example, pixel pack and
+Not all values for GL state can be copied.  For example, pixel pack and
 unpack state, render mode state, and select and feedback state are not
-copied. The state that can be copied is exactly the state that is
+copied.  The state that can be copied is exactly the state that is
 manipulated by the GL command @code{glPushAttrib}.
 
 An implicit @code{glFlush} is done by @code{glXCopyContext} if @var{src}
@@ -575,11 +576,11 @@ Specifies the connection to the X server.
 
 @item @var{vis}
 Specifies the visual that defines the frame buffer resources available
-to the rendering context. It is a pointer to an @code{XVisualInfo}
+to the rendering context.  It is a pointer to an @code{XVisualInfo}
 structure, not a visual ID or a pointer to a @code{Visual}.
 
 @item @var{shareList}
-Specifies the context with which to share display lists. @code{NULL}
+Specifies the context with which to share display lists.  @code{NULL}
 indicates that no sharing is to take place.
 
 @item @var{direct}
@@ -590,26 +591,26 @@ the graphics system if possible (@code{True}) or through the X server
 @end table
 
 @code{glXCreateContext} creates a GLX rendering context and returns its
-handle. This context can be used to render into both windows and GLX
-pixmaps. If @code{glXCreateContext} fails to create a rendering context,
-@code{NULL} is returned.
+handle.  This context can be used to render into both windows and GLX
+pixmaps.  If @code{glXCreateContext} fails to create a rendering
+context, @code{NULL} is returned.
 
 If @var{direct} is @code{True}, then a direct rendering context is
 created if the implementation supports direct rendering, if the
 connection is to an X server that is local, and if a direct rendering
-context is available. (An implementation may return an indirect context
+context is available.  (An implementation may return an indirect context
 when @var{direct} is @code{True}.) If @var{direct} is @code{False}, then
 a rendering context that renders through the X server is always created.
 Direct rendering provides a performance advantage in some
-implementations. However, direct rendering contexts cannot be shared
+implementations.  However, direct rendering contexts cannot be shared
 outside a single process, and they may be unable to render to GLX
 pixmaps.
 
 If @var{shareList} is not @code{NULL}, then all display-list indexes and
 definitions are shared by context @var{shareList} and by the newly
-created context. An arbitrary number of contexts can share a single
-display-list space. However, all rendering contexts that share a single
-display-list space must themselves exist in the same address space. Two
+created context.  An arbitrary number of contexts can share a single
+display-list space.  However, all rendering contexts that share a single
+display-list space must themselves exist in the same address space.  Two
 rendering contexts share an address space if both are nondirect using
 the same server, or if both are direct and owned by a single process.
 Note that in the nondirect case, it is not necessary for the calling
@@ -655,16 +656,16 @@ of the off-screen rendering area.
 @end table
 
 @code{glXCreateGLXPixmap} creates an off-screen rendering area and
-returns its XID. Any GLX rendering context that was created with respect
-to @var{vis} can be used to render into this off-screen area. Use
-@code{glXMakeCurrent} to associate the rendering area with a GLX
+returns its XID.  Any GLX rendering context that was created with
+respect to @var{vis} can be used to render into this off-screen area.
+Use @code{glXMakeCurrent} to associate the rendering area with a GLX
 rendering context.
 
 The X pixmap identified by @var{pixmap} is used as the front left buffer
-of the resulting off-screen rendering area. All other buffers specified
+of the resulting off-screen rendering area.  All other buffers specified
 by @var{vis}, including color buffers other than the front left buffer,
-are created without externally visible names. GLX pixmaps with
-double-buffering are supported. However, @code{glXSwapBuffers} is
+are created without externally visible names.  GLX pixmaps with
+double-buffering are supported.  However, @code{glXSwapBuffers} is
 ignored by these pixmaps.
 
 Some implementations may not support GLX pixmaps with direct rendering
@@ -697,11 +698,11 @@ Specifies the GLXFBConfig structure with the desired attributes for the
 context.
 
 @item @var{render_type}
-Specifies the type of the context to be created. Must be one of
+Specifies the type of the context to be created.  Must be one of
 @code{GLX_RGBA_TYPE} or @code{GLX_COLOR_INDEX_TYPE}.
 
 @item @var{share_list}
-Specifies the context with which to share display lists. @code{NULL}
+Specifies the context with which to share display lists.  @code{NULL}
 indicates that no sharing is to take place.
 
 @item @var{share_list}
@@ -712,20 +713,20 @@ the graphics system if possible (@code{True}) or through the X server
 @end table
 
 @code{glXCreateNewContext} creates a GLX rendering context and returns
-its handle. This context can be used to render into GLX windows,
-pixmaps, or pixel buffers. If @code{glXCreateNewContext} fails to create
-a rendering context, @code{NULL} is returned.
+its handle.  This context can be used to render into GLX windows,
+pixmaps, or pixel buffers.  If @code{glXCreateNewContext} fails to
+create a rendering context, @code{NULL} is returned.
 
 If @var{render_type} is @code{GLX_RGBA_TYPE}, then a context that
-supports RGBA rendering is created. If @var{config} is
+supports RGBA rendering is created.  If @var{config} is
 @code{GLX_COLOR_INDEX_TYPE}, then context supporting color-index
 rendering is created.
 
 If @var{render_type} is not @code{NULL}, then all display-list indexes
 and definitions are shared by context @var{render_type} and by the newly
-created context. An arbitrary number of contexts can share a single
-display-list space. However, all rendering contexts that share a single
-display-list space must themselves exist in the same address space. Two
+created context.  An arbitrary number of contexts can share a single
+display-list space.  However, all rendering contexts that share a single
+display-list space must themselves exist in the same address space.  Two
 rendering contexts share an address space if both are nondirect using
 the same server, or if both are direct and owned by a single process.
 Note that in the nondirect case, it is not necessary for the calling
@@ -735,11 +736,11 @@ contexts to share an address space.
 If @var{share_list} is @code{True}, then a direct-rendering context is
 created if the implementation supports direct rendering, if the
 connection is to an X server that is local, and if a direct-rendering
-context is available. (An implementation may return an indirect context
+context is available.  (An implementation may return an indirect context
 when @var{share_list} is @code{True}.) If @var{share_list} is
 @code{False}, then a rendering context that renders through the X server
-is always created. Direct rendering provides a performance advantage in
-some implementations. However, direct-rendering contexts cannot be
+is always created.  Direct rendering provides a performance advantage in
+some implementations.  However, direct-rendering contexts cannot be
 shared outside a single process, and they may be unable to render to GLX
 pixmaps.
 
@@ -776,15 +777,15 @@ window.
 
 @item @var{attrib_list}
 Specifies a list of attribute value pairs, which must be terminated with
-@code{None} or @code{NULL}. Accepted attributes are
+@code{None} or @code{NULL}.  Accepted attributes are
 @code{GLX_PBUFFER_WIDTH}, @code{GLX_PBUFFER_HEIGHT},
 @code{GLX_PRESERVED_CONTENTS}, and @code{GLX_LARGEST_PBUFFER}.
 
 @end table
 
 @code{glXCreatePbuffer} creates an off-screen rendering area and returns
-its XID. Any GLX rendering context that was created with respect to
-@var{config} can be used to render into this window. Use
+its XID.  Any GLX rendering context that was created with respect to
+@var{config} can be used to render into this window.  Use
 @code{glXMakeContextCurrent} to associate the rendering area with a GLX
 rendering context.
 
@@ -792,28 +793,28 @@ The accepted attributes for a GLXPbuffer are:
 
 @table @asis
 @item @code{GLX_PBUFFER_WIDTH}
-Specify the pixel width of the requested GLXPbuffer. The default value
+Specify the pixel width of the requested GLXPbuffer.  The default value
 is 0.
 
 @item @code{GLX_PBUFFER_HEIGHT}
-Specify the pixel height of the requested GLXPbuffer. The default value
+Specify the pixel height of the requested GLXPbuffer.  The default value
 is 0.
 
 @item @code{GLX_LARGEST_PBUFFER}
 Specify to obtain the largest available pixel buffer, if the requested
-allocation would have failed. The width and height of the allocated
+allocation would have failed.  The width and height of the allocated
 pixel buffer will never exceed the specified @code{GLX_PBUFFER_WIDTH} or
-@code{GLX_PBUFFER_HEIGHT}, respectively. Use @code{glXQueryDrawable} to
-retrieve the dimensions of the allocated pixel buffer. The default value
-is @code{False}.
+@code{GLX_PBUFFER_HEIGHT}, respectively.  Use @code{glXQueryDrawable} to
+retrieve the dimensions of the allocated pixel buffer.  The default
+value is @code{False}.
 
 @item @code{GLX_PRESERVED_CONTENTS}
 Specify if the contents of the pixel buffer should be preserved when a
-resource conflict occurs. If set to @code{False}, the contents of the
-pixel buffer may be lost at any time. If set to @code{True}, or not
+resource conflict occurs.  If set to @code{False}, the contents of the
+pixel buffer may be lost at any time.  If set to @code{True}, or not
 specified in @var{attrib_list}, then the contents of the pixel buffer
 will be preserved (most likely by copying the contents into main system
-memory from the frame buffer). In either case, the client can register
+memory from the frame buffer).  In either case, the client can register
 (using @code{glXSelectEvent}, to receive pixel buffer clobber events
 that are generated when the pbuffer contents have been preserved or
 damaged.
@@ -821,7 +822,7 @@ damaged.
 @end table
 
 GLXPbuffers contain the color and ancillary buffers specified by
-@var{config}. It is possible to create a pixel buffer with back buffers
+@var{config}.  It is possible to create a pixel buffer with back buffers
 and to swap those buffers using @code{glXSwapBuffers}.
 
 @code{BadAlloc} is generated if there are insufficient resources to
@@ -851,14 +852,14 @@ window.
 Specifies the X pixmap to be used as the rendering area.
 
 @item @var{attrib_list}
-Currently unused. This must be set to @code{NULL} or be an empty list
+Currently unused.  This must be set to @code{NULL} or be an empty list
 (i.e., one in which the first element is @code{None}).
 
 @end table
 
 @code{glXCreatePixmap} creates an off-screen rendering area and returns
-its XID. Any GLX rendering context that was created with respect to
-@var{config} can be used to render into this window. Use
+its XID.  Any GLX rendering context that was created with respect to
+@var{config} can be used to render into this window.  Use
 @code{glXMakeCurrent} to associate the rendering area with a GLX
 rendering context.
 
@@ -898,17 +899,17 @@ window.
 Specifies the X window to be used as the rendering area.
 
 @item @var{attrib_list}
-Currently unused. This must be set to @code{NULL} or be an empty list
+Currently unused.  This must be set to @code{NULL} or be an empty list
 (i.e., one in which the first element is @code{None}).
 
 @end table
 
 @code{glXCreateWindow} creates an on-screen rendering area from an
 existing X window that was created with a visual matching @var{config}.
-The XID of the GLXWindow is returned. Any GLX rendering context that was
-created with respect to @var{config} can be used to render into this
-window. Use @code{glXMakeContextCurrent} to associate the rendering area
-with a GLX rendering context.
+The XID of the GLXWindow is returned.  Any GLX rendering context that
+was created with respect to @var{config} can be used to render into this
+window.  Use @code{glXMakeContextCurrent} to associate the rendering
+area with a GLX rendering context.
 
 @code{BadMatch} is generated if @var{win} was not created with a visual
 that corresponds to @var{config}.
@@ -945,8 +946,8 @@ Specifies the GLX context to be destroyed.
 @end table
 
 If the GLX rendering context @var{ctx} is not current to any thread,
-@code{glXDestroyContext} destroys it immediately. Otherwise, @var{ctx}
-is destroyed when it becomes not current to any thread. In either case,
+@code{glXDestroyContext} destroys it immediately.  Otherwise, @var{ctx}
+is destroyed when it becomes not current to any thread.  In either case,
 the resource ID referenced by @var{ctx} is freed immediately.
 
 @code{GLXBadContext} is generated if @var{ctx} is not a valid GLX
@@ -967,9 +968,9 @@ Specifies the GLX pixmap to be destroyed.
 @end table
 
 If the GLX pixmap @var{pix} is not current to any client,
-@code{glXDestroyGLXPixmap} destroys it immediately. Otherwise, @var{pix}
-is destroyed when it becomes not current to any client. In either case,
-the resource ID is freed immediately.
+@code{glXDestroyGLXPixmap} destroys it immediately.  Otherwise,
+@var{pix} is destroyed when it becomes not current to any client.  In
+either case, the resource ID is freed immediately.
 
 @code{GLXBadPixmap} is generated if @var{pix} is not a valid GLX pixmap.
 
@@ -1047,12 +1048,12 @@ Specifies a GLX rendering context.
 @end table
 
 @code{glXFreeContextEXT} frees the client-side part of a GLXContext that
-was created with @code{glXImportContextEXT}. @code{glXFreeContextEXT}
+was created with @code{glXImportContextEXT}.  @code{glXFreeContextEXT}
 does not free the server-side context information or the XID associated
 with the server-side context.
 
 @code{glXFreeContextEXT} is part of the @code{EXT_import_context}
-extension, not part of the core GLX command set. If
+extension, not part of the core GLX command set.  If
 _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_vertex_array} is supported.
@@ -1070,21 +1071,21 @@ Return a string describing the client.
 Specifies the connection to the X server.
 
 @item @var{name}
-Specifies which string is returned. The symbolic constants
+Specifies which string is returned.  The symbolic constants
 @code{GLX_VENDOR}, @code{GLX_VERSION}, and @code{GLX_EXTENSIONS} are
 accepted.
 
 @end table
 
 @code{glXGetClientString} returns a string describing some aspect of the
-client library. The possible values for @var{name} are
-@code{GLX_VENDOR}, @code{GLX_VERSION}, and @code{GLX_EXTENSIONS}. If
+client library.  The possible values for @var{name} are
+@code{GLX_VENDOR}, @code{GLX_VERSION}, and @code{GLX_EXTENSIONS}.  If
 @var{name} is not set to one of these values, @code{glXGetClientString}
-returns @code{NULL}. The format and contents of the vendor string is
+returns @code{NULL}.  The format and contents of the vendor string is
 implementation dependent.
 
 The extensions string is null-terminated and contains a space-separated
-list of extension names. (The extension names never contain spaces.) If
+list of extension names.  (The extension names never contain spaces.) If
 there are no extensions to GLX, then the empty string is returned.
 
 The version string is laid out as follows:
@@ -1092,7 +1093,7 @@ The version string is laid out as follows:
 <major_version.minor_version><space><vendor-specific info>
 
 Both the major and minor portions of the version number are of arbitrary
-length. The vendor-specific information is optional. However, if it is
+length.  The vendor-specific information is optional.  However, if it is
 present, the format and contents are implementation specific.
 
 @end deftypefun
@@ -1105,7 +1106,7 @@ Return information about GLX visuals.
 Specifies the connection to the X server.
 
 @item @var{vis}
-Specifies the visual to be queried. It is a pointer to an
+Specifies the visual to be queried.  It is a pointer to an
 @code{XVisualInfo} structure, not a visual ID or a pointer to a
 @code{Visual}.
 
@@ -1132,15 +1133,15 @@ Otherwise, zero is returned.
 @code{False} otherwise.
 
 @item @code{GLX_BUFFER_SIZE}
-Number of bits per color buffer. For RGBA visuals,
+Number of bits per color buffer.  For RGBA visuals,
 @code{GLX_BUFFER_SIZE} is the sum of @code{GLX_RED_SIZE},
 @code{GLX_GREEN_SIZE}, @code{GLX_BLUE_SIZE}, and @code{GLX_ALPHA_SIZE}.
 For color index visuals, @code{GLX_BUFFER_SIZE} is the size of the color
 indexes.
 
 @item @code{GLX_LEVEL}
-Frame buffer level of the visual. Level zero is the default frame
-buffer. Positive levels correspond to frame buffers that overlay the
+Frame buffer level of the visual.  Level zero is the default frame
+buffer.  Positive levels correspond to frame buffers that overlay the
 default buffer, and negative levels correspond to frame buffers that
 underlay the default buffer.
 
@@ -1157,23 +1158,23 @@ swapped, @code{False} otherwise.
 otherwise.
 
 @item @code{GLX_AUX_BUFFERS}
-Number of auxiliary color buffers that are available. Zero indicates
+Number of auxiliary color buffers that are available.  Zero indicates
 that no auxiliary color buffers exist.
 
 @item @code{GLX_RED_SIZE}
-Number of bits of red stored in each color buffer. Undefined if
+Number of bits of red stored in each color buffer.  Undefined if
 @code{GLX_RGBA} is @code{False}.
 
 @item @code{GLX_GREEN_SIZE}
-Number of bits of green stored in each color buffer. Undefined if
+Number of bits of green stored in each color buffer.  Undefined if
 @code{GLX_RGBA} is @code{False}.
 
 @item @code{GLX_BLUE_SIZE}
-Number of bits of blue stored in each color buffer. Undefined if
+Number of bits of blue stored in each color buffer.  Undefined if
 @code{GLX_RGBA} is @code{False}.
 
 @item @code{GLX_ALPHA_SIZE}
-Number of bits of alpha stored in each color buffer. Undefined if
+Number of bits of alpha stored in each color buffer.  Undefined if
 @code{GLX_RGBA} is @code{False}.
 
 @item @code{GLX_DEPTH_SIZE}
@@ -1197,15 +1198,15 @@ Number of bits of alpha stored in the accumulation buffer.
 @end table
 
 The X protocol allows a single visual ID to be instantiated with
-different numbers of bits per pixel. Windows or GLX pixmaps that will be
-rendered with OpenGL, however, must be instantiated with a color buffer
-depth of @code{GLX_BUFFER_SIZE}.
+different numbers of bits per pixel.  Windows or GLX pixmaps that will
+be rendered with OpenGL, however, must be instantiated with a color
+buffer depth of @code{GLX_BUFFER_SIZE}.
 
 Although a GLX implementation can export many visuals that support GL
-rendering, it must support at least one RGBA visual. This visual must
+rendering, it must support at least one RGBA visual.  This visual must
 have at least one color buffer, a stencil buffer of at least 1 bit, a
-depth buffer of at least 12 bits, and an accumulation buffer. Alpha
-bitplanes are optional in this visual. However, its color buffer size
+depth buffer of at least 12 bits, and an accumulation buffer.  Alpha
+bitplanes are optional in this visual.  However, its color buffer size
 must be as great as that of the deepest @code{TrueColor},
 @code{DirectColor}, @code{PseudoColor}, or @code{StaticColor} visual
 supported on level zero, and it must itself be made available on level
@@ -1213,13 +1214,13 @@ zero.
 
 In addition, if the X server exports a @code{PseudoColor} or
 @code{StaticColor} visual on framebuffer level 0, a color index visual
-is also required on that level. It must have at least one color buffer,
+is also required on that level.  It must have at least one color buffer,
 a stencil buffer of at least 1 bit, and a depth buffer of at least 12
-bits. This visual must have as many color bitplanes as the deepest
+bits.  This visual must have as many color bitplanes as the deepest
 @code{PseudoColor} or @code{StaticColor} visual supported on level 0.
 
 Applications are best written to select the visual that most closely
-meets their requirements. Creating windows or GLX pixmaps with
+meets their requirements.  Creating windows or GLX pixmaps with
 unnecessary buffers can result in reduced rendering performance as well
 as poor resource allocation.
 
@@ -1252,7 +1253,7 @@ No round trip is forced to the server; unlike most X calls that return a
 value, @code{glXGetContextIDEXT} does not flush any pending events.
 
 @code{glXGetContextIDEXT} is part of the @code{EXT_import_context}
-extension, not part of the core GLX command set. If
+extension, not part of the core GLX command set.  If
 _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_import_context} is supported.
@@ -1266,11 +1267,11 @@ context.
 Return the current context.
 
 @code{glXGetCurrentContext} returns the current context, as specified by
-@code{glXMakeCurrent}. If there is no current context, @code{NULL} is
+@code{glXMakeCurrent}.  If there is no current context, @code{NULL} is
 returned.
 
-@code{glXGetCurrentContext} returns client-side information. It does not
-make a round trip to the server.
+@code{glXGetCurrentContext} returns client-side information.  It does
+not make a round trip to the server.
 
 
 
@@ -1282,8 +1283,8 @@ Get display for current context.
 @code{glXGetCurrentDisplay} returns the display for the current context.
 If no context is current, @code{NULL} is returned.
 
-@code{glXGetCurrentDisplay} returns client-side information. It does not
-make a round-trip to the server, and therefore does not flush any
+@code{glXGetCurrentDisplay} returns client-side information.  It does
+not make a round-trip to the server, and therefore does not flush any
 pending events.
 
 @end deftypefun
@@ -1292,10 +1293,10 @@ pending events.
 Return the current drawable.
 
 @code{glXGetCurrentDrawable} returns the current drawable, as specified
-by @code{glXMakeCurrent}. If there is no current drawable, @code{None}
+by @code{glXMakeCurrent}.  If there is no current drawable, @code{None}
 is returned.
 
-@code{glXGetCurrentDrawable} returns client-side information. It does
+@code{glXGetCurrentDrawable} returns client-side information.  It does
 not make a round trip to the server.
 
 @end deftypefun
@@ -1304,10 +1305,10 @@ not make a round trip to the server.
 Return the current drawable.
 
 @code{glXGetCurrentReadDrawable} returns the current read drawable, as
-specified by @code{read} parameter of @code{glXMakeContextCurrent}. If
+specified by @code{read} parameter of @code{glXMakeContextCurrent}.  If
 there is no current drawable, @code{None} is returned.
 
-@code{glXGetCurrentReadDrawable} returns client-side information. It
+@code{glXGetCurrentReadDrawable} returns client-side information.  It
 does not make a round-trip to the server.
 
 @end deftypefun
@@ -1333,7 +1334,7 @@ Returns the requested value.
 @code{glXGetFBConfigAttrib} sets @var{value} to the @var{attribute}
 value of GLX drawables created with respect to @var{config}.
 @code{glXGetFBConfigAttrib} returns an error code if it fails for any
-reason. Otherwise, @code{Success} is returned.
+reason.  Otherwise, @code{Success} is returned.
 
 @var{attribute} is one of the following:
 
@@ -1346,19 +1347,19 @@ XID of the given GLXFBConfig.
 @item @code{GLX_BUFFER_SIZE}
 
 
-Number of bits per color buffer. If the frame buffer configuration
+Number of bits per color buffer.  If the frame buffer configuration
 supports RGBA contexts, then @code{GLX_BUFFER_SIZE} is the sum of
 @code{GLX_RED_SIZE}, @code{GLX_GREEN_SIZE}, @code{GLX_BLUE_SIZE}, and
-@code{GLX_ALPHA_SIZE}. If the frame buffer configuration supports only
+@code{GLX_ALPHA_SIZE}.  If the frame buffer configuration supports only
 color index contexts, @code{GLX_BUFFER_SIZE} is the size of the color
 indexes.
 
 @item @code{GLX_LEVEL}
 
 
-Frame buffer level of the configuration. Level zero is the default frame
-buffer. Positive levels correspond to frame buffers that overlay the
-default buffer, and negative levels correspond to frame buffers that
+Frame buffer level of the configuration.  Level zero is the default
+frame buffer.  Positive levels correspond to frame buffers that overlay
+the default buffer, and negative levels correspond to frame buffers that
 underlie the default buffer.
 
 @item @code{GLX_DOUBLEBUFFER}
@@ -1376,31 +1377,31 @@ otherwise.
 @item @code{GLX_AUX_BUFFERS}
 
 
-Number of auxiliary color buffers that are available. Zero indicates
+Number of auxiliary color buffers that are available.  Zero indicates
 that no auxiliary color buffers exist.
 
 @item @code{GLX_RED_SIZE}
 
 
-Number of bits of red stored in each color buffer. Undefined if RGBA
+Number of bits of red stored in each color buffer.  Undefined if RGBA
 contexts are not supported by the frame buffer configuration.
 
 @item @code{GLX_GREEN_SIZE}
 
 
-Number of bits of green stored in each color buffer. Undefined if RGBA
+Number of bits of green stored in each color buffer.  Undefined if RGBA
 contexts are not supported by the frame buffer configuration.
 
 @item @code{GLX_BLUE_SIZE}
 
 
-Number of bits of blue stored in each color buffer. Undefined if RGBA
+Number of bits of blue stored in each color buffer.  Undefined if RGBA
 contexts are not supported by the frame buffer configuration.
 
 @item @code{GLX_ALPHA_SIZE}
 
 
-Number of bits of alpha stored in each color buffer. Undefined if RGBA
+Number of bits of alpha stored in each color buffer.  Undefined if RGBA
 contexts are not supported by the frame buffer configuration.
 
 @item @code{GLX_DEPTH_SIZE}
@@ -1437,14 +1438,14 @@ Number of bits of alpha stored in the accumulation buffer.
 
 
 Mask indicating what type of GLX contexts can be made current to the
-frame buffer configuration. Valid bits are @code{GLX_RGBA_BIT} and
+frame buffer configuration.  Valid bits are @code{GLX_RGBA_BIT} and
 @code{GLX_COLOR_INDEX_BIT}.
 
 @item @code{GLX_DRAWABLE_TYPE}
 
 
 Mask indicating what drawable types the frame buffer configuration
-supports. Valid bits are @code{GLX_WINDOW_BIT}, @code{GLX_PIXMAP_BIT},
+supports.  Valid bits are @code{GLX_WINDOW_BIT}, @code{GLX_PIXMAP_BIT},
 and @code{GLX_PBUFFER_BIT}.
 
 @item @code{GLX_X_RENDERABLE}
@@ -1464,7 +1465,7 @@ set).
 @item @code{GLX_X_VISUAL_TYPE}
 
 
-Visual type of associated visual. The returned value will be one of:
+Visual type of associated visual.  The returned value will be one of:
 @code{GLX_TRUE_COLOR}, @code{GLX_DIRECT_COLOR}, @code{GLX_PSEUDO_COLOR},
 @code{GLX_STATIC_COLOR}, @code{GLX_GRAY_SCALE}, @code{GLX_STATIC_GRAY},
 or @code{GLX_NONE}, if there is no associated visual (i.e., if
@@ -1495,7 +1496,7 @@ respectively.
 
 Integer value between 0 and the maximum frame buffer value for indices,
 indicating the transparent index value for the frame buffer
-configuration. Undefined if @code{GLX_TRANSPARENT_TYPE} is not
+configuration.  Undefined if @code{GLX_TRANSPARENT_TYPE} is not
 @code{GLX_TRANSPARENT_INDEX}.
 
 @item @code{GLX_TRANSPARENT_RED_VALUE}
@@ -1511,7 +1512,7 @@ Undefined if @code{GLX_TRANSPARENT_TYPE} is not
 
 Integer value between 0 and the maximum frame buffer value for green,
 indicating the transparent green value for the frame buffer
-configuration. Undefined if @code{GLX_TRANSPARENT_TYPE} is not
+configuration.  Undefined if @code{GLX_TRANSPARENT_TYPE} is not
 @code{GLX_TRANSPARENT_RGB}.
 
 @item @code{GLX_TRANSPARENT_BLUE_VALUE}
@@ -1519,7 +1520,7 @@ configuration. Undefined if @code{GLX_TRANSPARENT_TYPE} is not
 
 Integer value between 0 and the maximum frame buffer value for blue,
 indicating the transparent blue value for the frame buffer
-configuration. Undefined if @code{GLX_TRANSPARENT_TYPE} is not
+configuration.  Undefined if @code{GLX_TRANSPARENT_TYPE} is not
 @code{GLX_TRANSPARENT_RGB}.
 
 @item @code{GLX_TRANSPARENT_ALPHA_VALUE}
@@ -1527,7 +1528,7 @@ configuration. Undefined if @code{GLX_TRANSPARENT_TYPE} is not
 
 Integer value between 0 and the maximum frame buffer value for alpha,
 indicating the transparent blue value for the frame buffer
-configuration. Undefined if @code{GLX_TRANSPARENT_TYPE} is not
+configuration.  Undefined if @code{GLX_TRANSPARENT_TYPE} is not
 @code{GLX_TRANSPARENT_RGB}.
 
 @item @code{GLX_MAX_PBUFFER_WIDTH}
@@ -1545,20 +1546,20 @@ The maximum height that can be specified to @code{glXCreatePbuffer}.
 
 The maximum number of pixels (width times height) for a pixel buffer.
 Note that this value may be less than @code{GLX_MAX_PBUFFER_WIDTH} times
-@code{GLX_MAX_PBUFFER_HEIGHT}. Also, this value is static and assumes
+@code{GLX_MAX_PBUFFER_HEIGHT}.  Also, this value is static and assumes
 that no other pixel buffers or X resources are contending for the frame
-buffer memory. As a result, it may not be possible to allocate a pixel
+buffer memory.  As a result, it may not be possible to allocate a pixel
 buffer of the size given by @code{GLX_MAX_PBUFFER_PIXELS}.
 
 @end table
 
 Applications should choose the frame buffer configuration that most
-closely meets their requirements. Creating windows, GLX pixmaps, or GLX
+closely meets their requirements.  Creating windows, GLX pixmaps, or GLX
 pixel buffers with unnecessary buffers can result in reduced rendering
 performance as well as poor resource allocation.
 
 @code{GLX_NO_EXTENSION} is returned if @var{dpy} does not support the
-GLX extension. @code{GLX_BAD_ATTRIBUTE} is returned if @var{attribute}
+GLX extension.  @code{GLX_BAD_ATTRIBUTE} is returned if @var{attribute}
 is not a valid GLX attribute.
 
 @end deftypefun
@@ -1579,8 +1580,8 @@ Returns the number of GLXFBConfigs returned.
 @end table
 
 @code{glXGetFBConfigs} returns a list of all GLXFBConfigs available on
-the screen specified by @var{screen}. Use @code{glXGetFBConfigAttrib} to
-obtain attribute values from a specific GLXFBConfig.
+the screen specified by @var{screen}.  Use @code{glXGetFBConfigAttrib}
+to obtain attribute values from a specific GLXFBConfig.
 
 @end deftypefun
 
@@ -1595,7 +1596,7 @@ returned.
 @end table
 
 @code{glXGetProcAddress} returns the address of the function specified
-in @var{procName}. This is necessary in environments where the OpenGL
+in @var{procName}.  This is necessary in environments where the OpenGL
 link library exports a different set of functions than the runtime
 library.
 
@@ -1609,7 +1610,7 @@ Returns GLX events that are selected for a window or a GLX pixel buffer.
 Specifies the connection to the X server.
 
 @item @var{draw}
-Specifies a GLX drawable. Must be a GLX pixel buffer or a window.
+Specifies a GLX drawable.  Must be a GLX pixel buffer or a window.
 
 @item @var{event_mask}
 Returns the events that are selected for @var{draw}.
@@ -1638,7 +1639,7 @@ Specifies the GLX frame buffer configuration.
 
 If @var{config} is a valid GLX frame buffer configuration and it has an
 associated X Visual, then information describing that visual is
-returned; otherwise @code{NULL} is returned. Use @code{XFree} to free
+returned; otherwise @code{NULL} is returned.  Use @code{XFree} to free
 the data returned.
 
 Returns @code{NULL} if @var{config} is not a valid GLXFBConfig.
@@ -1658,27 +1659,28 @@ Specifies a GLX rendering context.
 @end table
 
 @code{glXImportContextEXT} creates a GLXContext given the XID of an
-existing GLXContext. It may be used in place of @code{glXCreateContext},
-to share another process's indirect rendering context.
+existing GLXContext.  It may be used in place of
+@code{glXCreateContext}, to share another process's indirect rendering
+context.
 
 Only the server-side context information can be shared between X
 clients; client-side state, such as pixel storage modes, cannot be
-shared. Thus, @code{glXImportContextEXT} must allocate memory to store
-client-side information. This memory is freed by calling
+shared.  Thus, @code{glXImportContextEXT} must allocate memory to store
+client-side information.  This memory is freed by calling
 @code{glXFreeContextEXT}.
 
-This call does not create a new XID. It merely makes an existing object
-available to the importing client (Display *). Like any XID, it goes
+This call does not create a new XID.  It merely makes an existing object
+available to the importing client (Display *).  Like any XID, it goes
 away when the creating client drops its connection or the ID is
-explicitly deleted. Note that this is when the XID goes away. The object
-goes away when the XID goes away AND the context is not current to any
-thread.
+explicitly deleted.  Note that this is when the XID goes away.  The
+object goes away when the XID goes away AND the context is not current
+to any thread.
 
 If @var{contextID} refers to a direct rendering context then no error is
 generated but @code{glXImportContextEXT} returns NULL.
 
 @code{glXImportContextEXT} is part of the @code{EXT_import_context}
-extension, not part of the core GLX command set. If
+extension, not part of the core GLX command set.  If
 _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_import_context} is supported.
@@ -1701,9 +1703,9 @@ Specifies the GLX context that is being queried.
 @end table
 
 @code{glXIsDirect} returns @code{True} if @var{ctx} is a direct
-rendering context, @code{False} otherwise. Direct rendering contexts
+rendering context, @code{False} otherwise.  Direct rendering contexts
 pass rendering commands directly from the calling process's address
-space to the rendering system, bypassing the X server. Nondirect
+space to the rendering system, bypassing the X server.  Nondirect
 rendering contexts pass all rendering commands to the X server.
 
 @code{GLXBadContext} is generated if @var{ctx} is not a valid GLX
@@ -1719,11 +1721,11 @@ Attach a GLX context to a GLX drawable.
 Specifies the connection to the X server.
 
 @item @var{draw}
-Specifies a GLX drawable to render into. Must be an XID representing a
+Specifies a GLX drawable to render into.  Must be an XID representing a
 GLXWindow, GLXPixmap, or GLXPbuffer.
 
 @item @var{read}
-Specifies a GLX drawable to read from. Must be an XID representing a
+Specifies a GLX drawable to read from.  Must be an XID representing a
 GLXWindow, GLXPixmap, or GLXPbuffer.
 
 @item @var{ctx}
@@ -1732,13 +1734,13 @@ Specifies the GLX context to be bound to @var{read} and @var{ctx}.
 @end table
 
 @code{glXMakeContextCurrent} binds @var{ctx} to the current rendering
-thread and to the @var{draw} and @var{read} GLX drawables. @var{draw}
+thread and to the @var{draw} and @var{read} GLX drawables.  @var{draw}
 and @var{read} may be the same.
 
 @var{draw} is used for all OpenGL operations except:
 
 Any pixel data that are read based on the value of
-@code{GLX_READ_BUFFER}. Note that accumulation operations use the value
+@code{GLX_READ_BUFFER}.  Note that accumulation operations use the value
 of @code{GLX_READ_BUFFER}, but are not allowed unless @var{draw} is
 identical to @var{read}.
 
@@ -1754,7 +1756,7 @@ If the current rendering thread has a current rendering context, that
 context is flushed and replaced by @var{ctx}.
 
 The first time that @var{ctx} is made current, the viewport and scissor
-dimensions are set to the size of the @var{draw} drawable. The viewport
+dimensions are set to the size of the @var{draw} drawable.  The viewport
 and scissor are not modified when @var{ctx} is subsequently made
 current.
 
@@ -1763,7 +1765,7 @@ To release the current context without assigning a new one, call
 @code{None} and @var{ctx} set to @code{NULL}.
 
 @code{glXMakeContextCurrent} returns @code{True} if it is successful,
-@code{False} otherwise. If @code{False} is returned, the previously
+@code{False} otherwise.  If @code{False} is returned, the previously
 current rendering context and drawable (if any) remain unchanged.
 
 @code{BadMatch} is generated if @var{draw} and @var{read} are not
@@ -1816,7 +1818,7 @@ Attach a GLX context to a window or a GLX pixmap.
 Specifies the connection to the X server.
 
 @item @var{drawable}
-Specifies a GLX drawable. Must be either an X window ID or a GLX pixmap
+Specifies a GLX drawable.  Must be either an X window ID or a GLX pixmap
 ID.
 
 @item @var{ctx}
@@ -1828,9 +1830,9 @@ Specifies a GLX rendering context that is to be attached to
 @code{glXMakeCurrent} does two things: It makes @var{ctx} the current
 GLX rendering context of the calling thread, replacing the previously
 current context if there was one, and it attaches @var{ctx} to a GLX
-drawable, either a window or a GLX pixmap. As a result of these two
+drawable, either a window or a GLX pixmap.  As a result of these two
 actions, subsequent GL rendering calls use rendering context @var{ctx}
-to modify GLX drawable @var{drawable} (for reading and writing). Because
+to modify GLX drawable @var{drawable} (for reading and writing).  Because
 @code{glXMakeCurrent} always replaces the current rendering context with
 @var{ctx}, there can be only one current context per thread.
 
@@ -1838,7 +1840,7 @@ Pending commands to the previous context, if any, are flushed before it
 is released.
 
 The first time @var{ctx} is made current to any thread, its viewport is
-set to the full size of @var{drawable}. Subsequent calls by any thread
+set to the full size of @var{drawable}.  Subsequent calls by any thread
 to @code{glXMakeCurrent} with @var{ctx} have no effect on its viewport.
 
 To release the current context without assigning a new one, call
@@ -1846,11 +1848,11 @@ To release the current context without assigning a new one, call
 @var{ctx} set to @code{NULL}.
 
 @code{glXMakeCurrent} returns @code{True} if it is successful,
-@code{False} otherwise. If @code{False} is returned, the previously
+@code{False} otherwise.  If @code{False} is returned, the previously
 current rendering context and drawable (if any) remain unchanged.
 
 @code{BadMatch} is generated if @var{drawable} was not created with the
-same X screen and visual as @var{ctx}. It is also generated if
+same X screen and visual as @var{ctx}.  It is also generated if
 @var{drawable} is @code{None} and @var{ctx} is not @code{NULL}.
 
 @code{BadAccess} is generated if @var{ctx} was current to another thread
@@ -1891,7 +1893,7 @@ Specifies the connection to the X server.
 Specifies a GLX rendering context.
 
 @item @var{attribute}
-Specifies that a context parameter should be retrieved. Must be one of
+Specifies that a context parameter should be retrieved.  Must be one of
 @code{GLX_SHARED_CONTEXT_EXT}, @code{GLX_VISUAL_ID_EXT}, or
 @code{GLX_SCREEN_EXT}.
 
@@ -1901,8 +1903,8 @@ Contains the return value for @var{attribute}.
 @end table
 
 @code{glXQueryContextInfoEXT} sets @var{value} to the value of
-@var{attribute} with respect to @var{ctx}. @code{glXQueryContextInfoEXT}
-returns an error code if it fails for any reason. Otherwise,
+@var{attribute} with respect to @var{ctx}.  @code{glXQueryContextInfoEXT}
+returns an error code if it fails for any reason.  Otherwise,
 @code{Success} is returned.
 
 @var{attribute} may be one of the following:
@@ -1923,7 +1925,7 @@ Returns the screen number associated with @var{ctx}.
 This call may cause a round-trip to the server.
 
 @code{glXQueryContextInfoEXT} is part of the @code{EXT_import_context}
-extension, not part of the core GLX command set. If
+extension, not part of the core GLX command set.  If
 _glxextstring(EXT_import_context) is included in the string returned by
 @code{glXQueryExtensionsString}, when called with argument
 @code{GLX_EXTENSIONS}, extension @code{EXT_import_context} is supported.
@@ -1950,7 +1952,7 @@ Specifies the connection to the X server.
 Specifies a GLX rendering context.
 
 @item @var{attribute}
-Specifies that a context parameter should be retrieved. Must be one of
+Specifies that a context parameter should be retrieved.  Must be one of
 @code{GLX_FBCONFIG_ID}, @code{GLX_RENDER_TYPE}, or @code{GLX_SCREEN}.
 
 @item @var{value}
@@ -1959,7 +1961,7 @@ Contains the return value for @var{attribute}.
 @end table
 
 @code{glXQueryContext} sets @var{value} to the value of @var{attribute}
-with respect to @var{ctx}. @var{attribute} may be one of the following:
+with respect to @var{ctx}.  @var{attribute} may be one of the following:
 
 @table @asis
 @item @code{GLX_FBCONFIG_ID}
@@ -1994,8 +1996,8 @@ Specifies the connection to the X server.
 Specifies the GLX drawable to be queried.
 
 @item @var{attribute}
-Specifies the attribute to be returned. Must be one of @code{GLX_WIDTH},
-@code{GLX_HEIGHT}, @code{GLX_PRESERVED_CONTENTS},
+Specifies the attribute to be returned.  Must be one of
+@code{GLX_WIDTH}, @code{GLX_HEIGHT}, @code{GLX_PRESERVED_CONTENTS},
 @code{GLX_LARGEST_PBUFFER}, or @code{GLX_FBCONFIG_ID}.
 
 @item @var{value}
@@ -2021,10 +2023,10 @@ resource conflict occurs; @code{False} otherwise.
 
 @item @code{GLX_LARGEST_PBUFFER}
 Returns the value set when @code{glXCreatePbuffer} was called to create
-the GLXPbuffer. If @code{False} is returned, then the call to
+the GLXPbuffer.  If @code{False} is returned, then the call to
 @code{glXCreatePbuffer} will fail to create a GLXPbuffer if the
 requested size is larger than the implementation maximum or available
-resources. If @code{True} is returned, a GLXPbuffer of the maximum
+resources.  If @code{True} is returned, a GLXPbuffer of the maximum
 availble size (if less than the requested width and height) is created.
 
 @item @code{GLX_FBCONFIG_ID}
@@ -2034,7 +2036,7 @@ Returns the XID for @var{draw}.
 
 If @var{draw} is a GLXWindow or GLXPixmap and @var{attribute} is set to
 @code{GLX_PRESERVED_CONTENTS} or @code{GLX_LARGETST_PBUFFER}, the
-contents of @var{value} are undefined. If @var{attribute} is not one of
+contents of @var{value} are undefined.  If @var{attribute} is not one of
 the attributes listed above, the contents of @var{value} are unedfined.
 
 A @code{GLXBadDrawable} is generated if @var{draw} is not a valid
@@ -2055,7 +2057,7 @@ Specifies the screen number.
 @end table
 
 @code{glXQueryExtensionsString} returns a pointer to a string describing
-which GLX extensions are supported on the connection. The string is
+which GLX extensions are supported on the connection.  The string is
 null-terminated and contains a space-separated list of extension names.
 (The extension names themselves never contain spaces.) If there are no
 extensions to GLX, then the empty string is returned.
@@ -2080,9 +2082,9 @@ Returns the base event code of the GLX server extension.
 @code{glXQueryExtension} returns @code{True} if the X server of
 connection @var{dpy} supports the GLX extension, @code{False} otherwise.
 If @code{True} is returned, then @var{errorBase} and @var{eventBase}
-return the error base and event base of the GLX extension. These values
+return the error base and event base of the GLX extension.  These values
 should be added to the constant error and event values to determine the
-actual event or error values. Otherwise, @var{errorBase} and
+actual event or error values.  Otherwise, @var{errorBase} and
 @var{eventBase} are unchanged.
 
 @var{errorBase} and @var{eventBase} do not return values if they are
@@ -2108,8 +2110,8 @@ Specifies which string is returned: one of @code{GLX_VENDOR},
 
 @code{glXQueryServerString} returns a pointer to a static,
 null-terminated string describing some aspect of the server's GLX
-extension. The possible values for @var{name} and the format of the
-strings is the same as for @code{glXGetClientString}. If @var{name} is
+extension.  The possible values for @var{name} and the format of the
+strings is the same as for @code{glXGetClientString}.  If @var{name} is
 not set to a recognized value, @code{NULL} is returned.
 
 @end deftypefun
@@ -2131,9 +2133,9 @@ Returns the minor version number of the GLX server extension.
 
 @code{glXQueryVersion} returns the major and minor version numbers of
 the GLX extension implemented by the server associated with connection
-@var{dpy}. Implementations with the same major version number are upward
-compatible, meaning that the implementation with the higher minor number
-is a superset of the version with the lower minor number.
+@var{dpy}.  Implementations with the same major version number are
+upward compatible, meaning that the implementation with the higher minor
+number is a superset of the version with the lower minor number.
 
 @var{major} and @var{minor} do not return values if they are specified
 as @code{NULL}.
@@ -2154,7 +2156,7 @@ Select GLX events for a window or a GLX pixel buffer.
 Specifies the connection to the X server.
 
 @item @var{draw}
-Specifies a GLX drawable. Must be a GLX pixel buffer or a window.
+Specifies a GLX drawable.  Must be a GLX pixel buffer or a window.
 
 @item @var{event_mask}
 Specifies the events to be returned for @var{draw}.
@@ -2162,14 +2164,14 @@ Specifies the events to be returned for @var{draw}.
 @end table
 
 @code{glXSelectEvent} sets the GLX event mask for a GLX pixel buffer or
-a window. Calling @code{glXSelectEvent} overrides any previous event
-mask that was set by the client for @var{draw}. Note that it does not
+a window.  Calling @code{glXSelectEvent} overrides any previous event
+mask that was set by the client for @var{draw}.  Note that it does not
 affect the event masks that other clients may have specified for
 @var{draw} since each client rendering to @var{draw} has a separate
 event mask for it.
 
 Currently, only one GLX event, @code{GLX_PBUFFER_CLOBBER_MASK}, can be
-selected. The following data is returned to the client when a
+selected.  The following data is returned to the client when a
 @code{GLX_PBUFFER_CLOBBER_MASK} event occurs:
 
 typedef struct @{
@@ -2197,7 +2199,7 @@ Display @var{*display};
 
 @item 
 GLXDrawable @var{drawable}; 
-/* i.d. of Drawable */
+/* i.d.  of Drawable */
 
 @item 
 unsigned int @var{buffer_mask}; 
@@ -2253,41 +2255,41 @@ Accumulation buffer
 @end table
 
 A single X server operation can cause several buffer clobber events to
-be sent. (e.g., a single GLX pixel buffer may be damaged and cause
-multiple buffer clobber events to be generated). Each event specifies
+be sent.  (e.g., a single GLX pixel buffer may be damaged and cause
+multiple buffer clobber events to be generated).  Each event specifies
 one region of the GLX drawable that was affected by the X Server
-operation. The @var{buffer_mask} field indicates which color buffers and
-ancillary buffers were affected. All the buffer clobber events generated
-by a single X server action are guaranteed to be contiguous in the event
-queue. The conditions under which this event is generated and the
-@var{event_type} varies, depending on the type of the GLX drawable.
+operation.  The @var{buffer_mask} field indicates which color buffers
+and ancillary buffers were affected.  All the buffer clobber events
+generated by a single X server action are guaranteed to be contiguous in
+the event queue.  The conditions under which this event is generated and
+the @var{event_type} varies, depending on the type of the GLX drawable.
 
 When the @code{GLX_AUX_BUFFERS_BIT} is set in @var{buffer_mask}, then
-@var{aux_buffer} is set to indicate which buffer was affected. If more
+@var{aux_buffer} is set to indicate which buffer was affected.  If more
 than one aux buffer was affected, then additional events are generated
-as part of the same contiguous event group. Each additional event will
+as part of the same contiguous event group.  Each additional event will
 have only the @code{GLX_AUX_BUFFERS_BIT} set in @var{buffer_mask}, and
-the @var{aux_buffer} field will be set appropriately. For nonstereo
+the @var{aux_buffer} field will be set appropriately.  For nonstereo
 drawables, @code{GLX_FRONT_LEFT_BUFFER_BIT} and
 @code{GLX_BACK_LEFT_BUFFER_BIT} are used to specify the front and back
 color buffers.
 
 For preserved GLX pixel buffers, a buffer clobber event with type
 @code{GLX_SAVED} is generated whenever the contents of the GLX pixel
-buffer is moved out of offscreen memory. The event(s) describes which
-portions of the GLX pixel buffer were affected. Clients who receive many
-buffer clobber events, referring to different save actions, should
+buffer is moved out of offscreen memory.  The event(s) describes which
+portions of the GLX pixel buffer were affected.  Clients who receive
+many buffer clobber events, referring to different save actions, should
 consider freeing the GLX pixel buffer resource in order to prevent the
 system from thrashing due to insufficient resources.
 
 For an unpreserved GLXPbuffer, a buffer clobber event, with type
 @code{GLX_DAMAGED}, is generated whenever a portion of the GLX pixel
-buffer becomes invalid. The client may wish to regenerate the invalid
+buffer becomes invalid.  The client may wish to regenerate the invalid
 portions of the GLX pixel buffer.
 
 For Windows, buffer clobber events, with type @code{GLX_SAVED}, occur
 whenever an ancillary buffer, associated with the window, gets clobbered
-or moved out of off-screen memory. The event contains information
+or moved out of off-screen memory.  The event contains information
 indicating which color buffers and ancillary buffers\(emand which
 portions of those buffers\(emwere affected.
 
@@ -2310,12 +2312,12 @@ Specifies the drawable whose buffers are to be swapped.
 
 @code{glXSwapBuffers} promotes the contents of the back buffer of
 @var{drawable} to become the contents of the front buffer of
-@var{drawable}. The contents of the back buffer then become undefined.
+@var{drawable}.  The contents of the back buffer then become undefined.
 The update typically takes place during the vertical retrace of the
 monitor, rather than immediately after @code{glXSwapBuffers} is called.
 
 @code{glXSwapBuffers} performs an implicit @code{glFlush} before it
-returns. Subsequent OpenGL commands may be issued immediately after
+returns.  Subsequent OpenGL commands may be issued immediately after
 calling @code{glXSwapBuffers}, but are not executed until the buffer
 exchange is completed.
 
@@ -2352,14 +2354,14 @@ Specifies the index of the first display list to be generated.
 
 @code{glXUseXFont} generates @var{count} display lists, named
 @var{listBase} through @r{@var{listBase}+@var{count}-1}, each containing
-a single @code{glBitmap} command. The parameters of the @code{glBitmap}
+a single @code{glBitmap} command.  The parameters of the @code{glBitmap}
 command of display list @r{@var{listBase}+@var{i}} are derived from
-glyph @r{@var{first}+@var{i}}. Bitmap parameters @r{@var{xorig}},
+glyph @r{@var{first}+@var{i}}.  Bitmap parameters @r{@var{xorig}},
 @r{@var{yorig}}, @r{@var{width}}, and @r{@var{height}} are computed from
 font metrics as @r{@var{descent}-1}, @r{-@var{lbearing}},
 @r{@var{rbearing}-@var{lbearing}}, and @r{@var{ascent}+@var{descent}},
-respectively. @r{@var{xmove}} is taken from the glyph's @r{@var{width}}
-metric, and @r{@var{ymove}} is set to zero. Finally, the glyph's image
+respectively.  @r{@var{xmove}} is taken from the glyph's @r{@var{width}}
+metric, and @r{@var{ymove}} is set to zero.  Finally, the glyph's image
 is converted to the appropriate format for @code{glBitmap}.
 
 Using @code{glXUseXFont} may be more efficient than accessing the X font
@@ -2369,8 +2371,8 @@ glyph data, and because the server may choose to delay the creation of
 each bitmap until it is accessed.
 
 Empty display lists are created for all glyphs that are requested and
-are not defined in @var{font}. @code{glXUseXFont} is ignored if there is
-no current GLX context.
+are not defined in @var{font}.  @code{glXUseXFont} is ignored if there
+is no current GLX context.
 
 @code{BadFont} is generated if @var{font} is not a valid font.
 
@@ -2387,7 +2389,7 @@ is no longer valid.
 Complete GL execution prior to subsequent X calls.
 
 GL rendering calls made prior to @code{glXWaitGL} are guaranteed to be
-executed before X rendering calls made after @code{glXWaitGL}. Although
+executed before X rendering calls made after @code{glXWaitGL}.  Although
 this same result can be achieved using @code{glFinish}, @code{glXWaitGL}
 does not require a round trip to the server, and it is therefore more
 efficient in cases where client and server are on separate machines.
@@ -2404,7 +2406,7 @@ is no longer valid.
 Complete X execution prior to subsequent GL calls.
 
 X rendering calls made prior to @code{glXWaitX} are guaranteed to be
-executed before GL rendering calls made after @code{glXWaitX}. Although
+executed before GL rendering calls made after @code{glXWaitX}.  Although
 the same result can be achieved using @code{XSync}, @code{glXWaitX} does
 not require a round trip to the server, and it is therefore more
 efficient in cases where client and server are on separate machines.

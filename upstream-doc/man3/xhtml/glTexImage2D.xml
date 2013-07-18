@@ -121,32 +121,23 @@
                         Each element is a single red component.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for green and blue, and 1 for alpha.
-                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component is clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RG</code></span></dt><dd><p>
                         Each element is a red/green double.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for blue, and 1 for alpha.
-                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component is clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RGB</code></span></dt><dd></dd><dt><span class="term"><code class="constant">GL_BGR</code></span></dt><dd><p>
                         Each element is an RGB triple.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 1 for alpha.
-                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RGBA</code></span></dt><dd></dd><dt><span class="term"><code class="constant">GL_BGRA</code></span></dt><dd><p>
                         Each element contains all four components.
-                        Each component is multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component is clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_DEPTH_COMPONENT</code></span></dt><dd><p>
                         Each element is a single depth value.
-                        The GL converts it to floating point, multiplies by the signed scale factor
-                        <code class="constant">GL_DEPTH_SCALE</code>, adds the signed bias <code class="constant">GL_DEPTH_BIAS</code>,
+                        The GL converts it to floating point,
                         and clamps to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_DEPTH_STENCIL</code></span></dt><dd><p>
                         Each element is a pair of depth and stencil values. The depth component of

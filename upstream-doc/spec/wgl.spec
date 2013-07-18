@@ -1,10 +1,16 @@
+# THIS FILE IS OBSOLETE. Please migrate away from using the
+# ".spec" files to the XML Registry. See
+#   http://www.opengl.org/registry/api/README.txt
+# for more information.
+#
+
 # Copyright (c) 1991-2002 Silicon Graphics, Inc. All Rights Reserved.
-# Copyright (c) 2006-2010 The Khronos Group, Inc.
+# Copyright (c) 2006-2013 The Khronos Group, Inc.
 #
 # This document is licensed under the SGI Free Software B License Version
 # 2.0. For details, see http://oss.sgi.com/projects/FreeB/ .
 #
-# $Revision: 10796 $ on $Date: 2010-03-19 17:31:10 -0700 (Fri, 19 Mar 2010) $
+# $Revision: 21963 $ on $Date: 2013-06-13 02:52:31 -0700 (Thu, 13 Jun 2013) $
 
 required-props:
 param:		retval retained
@@ -64,6 +70,7 @@ DescribePixelFormat( hdc, ipfd, cjpfd, ppfd )
 	param		ipfd		int in value
 	param		cjpfd		UINT in value
 	param		ppfd		PIXELFORMATDESCRIPTOR in reference
+	category	wgl
 
 GetCurrentDC( )
 	return		HDC

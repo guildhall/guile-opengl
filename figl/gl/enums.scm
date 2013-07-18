@@ -48,7 +48,7 @@
     arb-shader-storage-buffer-object
     intel-map-texture
     boolean
-    begin-mode
+    primitive-type
     version-3-2
     arb-geometry-shader-4
     nv-geometry-program-4
@@ -91,6 +91,7 @@
     get-pixel-map
     get-pointerv-p-name
     get-p-name
+    ext-vertex-weighting
     qcom-alpha-test
     ext-unpack-subimage
     ext-multiview-draw-buffers
@@ -189,6 +190,7 @@
     ext-polygon-offset
     ext-rescale-normal
     ext-texture
+    arm-rgba-8
     ext-texture-object
     ext-texture-3d
     oes-texture-3d
@@ -196,11 +198,11 @@
     sgix-interlace
     sgis-detail-texture
     sgis-multisample
-    nv-multisample-coverage
     sgis-sharpen-texture
     sgi-color-matrix
     sgi-texture-color-table
     sgix-texture-add-env
+    arb-shadow-ambient
     sgix-shadow-ambient
     version-1-4
     ext-blend-func-separate
@@ -209,6 +211,11 @@
     sgi-color-table
     arb-vertex-array-bgra
     ext-bgra
+    ext-paletted-texture
+    ext-draw-range-elements
+    win-phong-shading
+    win-specular-fog
+    ext-clip-volume-hint
     sgis-texture-select
     arb-point-parameters
     ext-point-parameters
@@ -225,6 +232,9 @@
     sgis-texture-filter-4
     sgix-sprite
     hp-convolution-border-modes
+    hp-image-transform
+    hp-occlusion-test
+    hp-texture-lighting
     sgix-clipmap
     sgix-texture-scale-bias
     sgix-reference-plane
@@ -294,12 +304,12 @@
     intel-parallel-arrays
     sgix-fragment-lighting
     sgix-resample
+    ext-coordinate-frame
     version-1-5
     ext-fog-coord
     ext-secondary-color
     arb-vertex-program
     version-2-1
-    sgix-icc-texture
     rend-screen-coordinates
     arb-multitexture
     oes-texture-env-crossbar
@@ -315,7 +325,7 @@
     oes-packed-depth-stencil
     ext-texture-lod-bias
     ext-texture-filter-anisotropic
-    ext-vertex-weighting
+    nv-texture-env-combine-4
     nv-light-max-exponent
     ext-stencil-wrap
     oes-stencil-wrap
@@ -332,7 +342,6 @@
     ingr-color-clamp
     ingr-interlace-read
     ext-texture-env-combine
-    nv-texture-env-combine-4
     sgix-subsample
     ext-texture-perturb-normal
     apple-specular-vector
@@ -506,6 +515,7 @@
     arb-shader-subroutine
     oes-vertex-type-10-10-10-2
     nv-conditional-render
+    nv-multisample-coverage
     arb-transform-feedback-2
     nv-transform-feedback-2
     nv-present-video
@@ -518,6 +528,7 @@
     arb-texture-multisample
     nv-explicit-multisample
     nv-gpu-program-5
+    version-4-0
     arb-texture-gather
     arb-transform-feedback-3
     arb-texture-compression-bptc
@@ -528,10 +539,11 @@
     arb-draw-indirect
     arb-gpu-shader-fp-64
     arm-mali-shader-binary
+    arm-mali-program-binary
     qcom-driver-control
     qcom-binning-control
     viv-shader-binary
-    amd-vertex-shader-tesselator
+    amd-vertex-shader-tessellator
     arb-texture-cube-map-array
     ext-texture-snorm
     amd-blend-minmax-factor
@@ -568,7 +580,12 @@
     angle-texture-usage
     angle-pack-reverse-row-order
     angle-depth-texture
-    gl-khr-texture-compression-astc-ldr))
+    gl-khr-texture-compression-astc-ldr
+    ibm-rasterpos-clip
+    ibm-cull-vertex
+    ibm-static-data
+    pgi-misc-hints
+    pgi-vertex-hints))
 
 (define-bitfield
   attrib-mask
@@ -1233,7 +1250,6 @@
   (fragment-shader-bit-ext 2)
   (all-shader-bits-ext 4294967295)
   (program-separable-ext 33368)
-  (active-program-ext 33369)
   (program-pipeline-binding-ext 33370)
   (active-program-ext 35725))
 
@@ -1396,7 +1412,7 @@
 (define-enumeration boolean (false 0) (true 1))
 
 (define-enumeration
-  begin-mode
+  primitive-type
   (points 0)
   (lines 1)
   (line-loop 2)
@@ -2857,6 +2873,22 @@
   (texture-color-table-sgi 32956))
 
 (define-enumeration
+  ext-vertex-weighting
+  (modelview0-stack-depth-ext 2979)
+  (modelview0-matrix-ext 2982)
+  (modelview0-ext 5888)
+  (modelview1-stack-depth-ext 34050)
+  (modelview1-matrix-ext 34054)
+  (vertex-weighting-ext 34057)
+  (modelview1-ext 34058)
+  (current-vertex-weight-ext 34059)
+  (vertex-weight-array-ext 34060)
+  (vertex-weight-array-size-ext 34061)
+  (vertex-weight-array-type-ext 34062)
+  (vertex-weight-array-stride-ext 34063)
+  (vertex-weight-array-pointer-ext 34064))
+
+(define-enumeration
   qcom-alpha-test
   (alpha-test-qcom 3008)
   (alpha-test-func-qcom 3009)
@@ -3224,24 +3256,7 @@
   (depth-ext 6145)
   (stencil-ext 6146))
 
-(define-enumeration
-  pixel-format
-  (color-index 6400)
-  (stencil-index 6401)
-  (depth-component 6402)
-  (red 6403)
-  (green 6404)
-  (blue 6405)
-  (alpha 6406)
-  (rgb 6407)
-  (rgba 6408)
-  (luminance 6409)
-  (luminance-alpha 6410)
-  (abgr-ext 32768)
-  (cmyk-ext 32780)
-  (cmyka-ext 32781)
-  (ycrcb-422-sgix 33211)
-  (ycrcb-444-sgix 33212))
+(define-enumeration pixel-format (red-ext 6403))
 
 (define-enumeration
   oes-depth-texture
@@ -3315,10 +3330,6 @@
 (define-enumeration
   pixel-tex-gen-mode
   (none 0)
-  (rgb 6407)
-  (rgba 6408)
-  (luminance 6409)
-  (luminance-alpha 6410)
   (pixel-tex-gen-alpha-replace-sgix 33159)
   (pixel-tex-gen-alpha-no-replace-sgix 33160)
   (pixel-tex-gen-alpha-ms-sgix 33162)
@@ -4167,6 +4178,8 @@
   (proxy-texture-2d-ext 32868)
   (texture-too-large-ext 32869))
 
+(define-enumeration arm-rgba-8 (rgba8-oes 32856))
+
 (define-enumeration
   ext-texture-object
   (texture-priority-ext 32870)
@@ -4267,11 +4280,6 @@
   (sample-pattern-sgis 32940))
 
 (define-enumeration
-  nv-multisample-coverage
-  (coverage-samples-nv 32937)
-  (color-samples-nv 36384))
-
-(define-enumeration
   sgis-sharpen-texture
   (linear-sharpen-sgis 32941)
   (linear-sharpen-alpha-sgis 32942)
@@ -4300,6 +4308,10 @@
 (define-enumeration
   sgix-texture-add-env
   (texture-env-bias-sgix 32958))
+
+(define-enumeration
+  arb-shadow-ambient
+  (texture-compare-fail-value-arb 32959))
 
 (define-enumeration
   sgix-shadow-ambient
@@ -4396,6 +4408,34 @@
   ext-bgra
   (bgr-ext 32992)
   (bgra-ext 32993))
+
+(define-enumeration
+  ext-paletted-texture
+  (color-index1-ext 32994)
+  (color-index2-ext 32995)
+  (color-index4-ext 32996)
+  (color-index8-ext 32997)
+  (color-index12-ext 32998)
+  (color-index16-ext 32999)
+  (texture-index-size-ext 33005))
+
+(define-enumeration
+  ext-draw-range-elements
+  (max-elements-vertices-ext 33000)
+  (max-elements-indices-ext 33001))
+
+(define-enumeration
+  win-phong-shading
+  (phong-win 33002)
+  (phong-hint-win 33003))
+
+(define-enumeration
+  win-specular-fog
+  (fog-specular-texture-win 33004))
+
+(define-enumeration
+  ext-clip-volume-hint
+  (clip-volume-clipping-hint-ext 33008))
 
 (define-enumeration
   sgis-texture-select
@@ -4522,6 +4562,35 @@
   (constant-border-hp 33105)
   (replicate-border-hp 33107)
   (convolution-border-color-hp 33108))
+
+(define-enumeration
+  hp-image-transform
+  (image-scale-x-hp 33109)
+  (image-scale-y-hp 33110)
+  (image-translate-x-hp 33111)
+  (image-translate-y-hp 33112)
+  (image-rotate-angle-hp 33113)
+  (image-rotate-origin-x-hp 33114)
+  (image-rotate-origin-y-hp 33115)
+  (image-mag-filter-hp 33116)
+  (image-min-filter-hp 33117)
+  (image-cubic-weight-hp 33118)
+  (cubic-hp 33119)
+  (average-hp 33120)
+  (image-transform-2d-hp 33121)
+  (post-image-transform-color-table-hp 33122)
+  (proxy-post-image-transform-color-table-hp 33123))
+
+(define-enumeration
+  hp-occlusion-test
+  (occlusion-test-hp 33125)
+  (occlusion-test-result-hp 33126))
+
+(define-enumeration
+  hp-texture-lighting
+  (texture-lighting-mode-hp 33127)
+  (texture-post-specular-hp 33128)
+  (texture-pre-specular-hp 33129))
 
 (define-enumeration
   sgix-clipmap
@@ -5042,8 +5111,7 @@
   sgix-texture-coordinate-clamp
   (texture-max-clamp-s-sgix 33641)
   (texture-max-clamp-t-sgix 33642)
-  (texture-max-clamp-r-sgix 33643)
-  (fog-factor-to-alpha-sgix 33647))
+  (texture-max-clamp-r-sgix 33643))
 
 (define-enumeration
   arb-texture-mirrored-repeat
@@ -5126,6 +5194,23 @@
   (resample-replicate-sgix 33838)
   (resample-zero-fill-sgix 33839)
   (resample-decimate-sgix 33840))
+
+(define-enumeration
+  ext-coordinate-frame
+  (tangent-array-ext 33849)
+  (binormal-array-ext 33850)
+  (current-tangent-ext 33851)
+  (current-binormal-ext 33852)
+  (tangent-array-type-ext 33854)
+  (tangent-array-stride-ext 33855)
+  (binormal-array-type-ext 33856)
+  (binormal-array-stride-ext 33857)
+  (tangent-array-pointer-ext 33858)
+  (binormal-array-pointer-ext 33859)
+  (map1-tangent-ext 33860)
+  (map2-tangent-ext 33861)
+  (map1-binormal-ext 33862)
+  (map2-binormal-ext 33863))
 
 (define-enumeration
   version-1-5
@@ -5306,15 +5391,6 @@
   (compressed-sluminance-alpha 35915))
 
 (define-enumeration
-  sgix-icc-texture
-  (smooth-point-size-range 2834)
-  (smooth-point-size-granularity 2835)
-  (smooth-line-width-range 2850)
-  (smooth-line-width-granularity 2851)
-  (aliased-point-size-range 33901)
-  (aliased-line-width-range 33902))
-
-(define-enumeration
   rend-screen-coordinates
   (screen-coordinates-rend 33936)
   (inverted-screen-w-rend 33937))
@@ -5401,6 +5477,28 @@
 
 (define-enumeration
   arb-texture-env-combine
+  (subtract-arb 34023)
+  (combine-arb 34160)
+  (combine-rgb-arb 34161)
+  (combine-alpha-arb 34162)
+  (rgb-scale-arb 34163)
+  (add-signed-arb 34164)
+  (interpolate-arb 34165)
+  (constant-arb 34166)
+  (primary-color-arb 34167)
+  (previous-arb 34168)
+  (source0-rgb-arb 34176)
+  (source1-rgb-arb 34177)
+  (source2-rgb-arb 34178)
+  (source0-alpha-arb 34184)
+  (source1-alpha-arb 34185)
+  (source2-alpha-arb 34186)
+  (operand0-rgb-arb 34192)
+  (operand1-rgb-arb 34193)
+  (operand2-rgb-arb 34194)
+  (operand0-alpha-arb 34200)
+  (operand1-alpha-arb 34201)
+  (operand2-alpha-arb 34202)
   (subtract-arb 34023))
 
 (define-enumeration
@@ -5537,17 +5635,12 @@
   (max-texture-max-anisotropy-ext 34047))
 
 (define-enumeration
-  ext-vertex-weighting
-  (modelview1-stack-depth-ext 34050)
-  (modelview-matrix1-ext 34054)
-  (vertex-weighting-ext 34057)
-  (modelview1-ext 34058)
-  (current-vertex-weight-ext 34059)
-  (vertex-weight-array-ext 34060)
-  (vertex-weight-array-size-ext 34061)
-  (vertex-weight-array-type-ext 34062)
-  (vertex-weight-array-stride-ext 34063)
-  (vertex-weight-array-pointer-ext 34064))
+  nv-texture-env-combine-4
+  (combine4-nv 34051)
+  (source3-rgb-nv 34179)
+  (source3-alpha-nv 34187)
+  (operand3-rgb-nv 34195)
+  (operand3-alpha-nv 34203))
 
 (define-enumeration
   nv-light-max-exponent
@@ -5581,8 +5674,8 @@
 
 (define-enumeration
   nv-texgen-reflection
-  (normal-map 34065)
-  (reflection-map 34066))
+  (normal-map-nv 34065)
+  (reflection-map-nv 34066))
 
 (define-enumeration
   arb-texture-cube-map
@@ -5645,7 +5738,7 @@
   (half-bias-normal-nv 34106)
   (half-bias-negate-nv 34107)
   (signed-identity-nv 34108)
-  (unsigned-negate-nv 34109)
+  (signed-negate-nv 34109)
   (scale-by-two-nv 34110)
   (scale-by-four-nv 34111)
   (scale-by-one-half-nv 34112)
@@ -5684,7 +5777,7 @@
 
 (define-enumeration
   nv-fog-distance
-  (fog-gen-mode-nv 34138)
+  (fog-distance-mode-nv 34138)
   (eye-radial-nv 34139)
   (eye-plane-absolute-nv 34140))
 
@@ -5732,14 +5825,6 @@
   (operand0-alpha-ext 34200)
   (operand1-alpha-ext 34201)
   (operand2-alpha-ext 34202))
-
-(define-enumeration
-  nv-texture-env-combine-4
-  (combine4-nv 34051)
-  (source3-rgb-nv 34179)
-  (source3-alpha-nv 34187)
-  (operand3-rgb-nv 34195)
-  (operand3-alpha-nv 34203))
 
 (define-enumeration
   sgix-subsample
@@ -6093,22 +6178,22 @@
   (map-attrib-u-order-nv 34499)
   (map-attrib-v-order-nv 34500)
   (eval-fractional-tessellation-nv 34501)
-  (eval-vertex-atrrib0-nv 34502)
-  (eval-vertex-atrrib1-nv 34503)
-  (eval-vertex-atrrib2-nv 34504)
-  (eval-vertex-atrrib3-nv 34505)
-  (eval-vertex-atrrib4-nv 34506)
-  (eval-vertex-atrrib5-nv 34507)
-  (eval-vertex-atrrib6-nv 34508)
-  (eval-vertex-atrrib7-nv 34509)
-  (eval-vertex-atrrib8-nv 34510)
-  (eval-vertex-atrrib9-nv 34511)
-  (eval-vertex-atrrib10-nv 34512)
-  (eval-vertex-atrrib11-nv 34513)
-  (eval-vertex-atrrib12-nv 34514)
-  (eval-vertex-atrrib13-nv 34515)
-  (eval-vertex-atrrib14-nv 34516)
-  (eval-vertex-atrrib15-nv 34517)
+  (eval-vertex-attrib0-nv 34502)
+  (eval-vertex-attrib1-nv 34503)
+  (eval-vertex-attrib2-nv 34504)
+  (eval-vertex-attrib3-nv 34505)
+  (eval-vertex-attrib4-nv 34506)
+  (eval-vertex-attrib5-nv 34507)
+  (eval-vertex-attrib6-nv 34508)
+  (eval-vertex-attrib7-nv 34509)
+  (eval-vertex-attrib8-nv 34510)
+  (eval-vertex-attrib9-nv 34511)
+  (eval-vertex-attrib10-nv 34512)
+  (eval-vertex-attrib11-nv 34513)
+  (eval-vertex-attrib12-nv 34514)
+  (eval-vertex-attrib13-nv 34515)
+  (eval-vertex-attrib14-nv 34516)
+  (eval-vertex-attrib15-nv 34517)
   (max-map-tessellation-nv 34518)
   (max-rational-eval-order-nv 34519))
 
@@ -6135,10 +6220,10 @@
   (shader-operation-nv 34527)
   (cull-modes-nv 34528)
   (offset-texture-matrix-nv 34529)
-  (offset-texture-scale-nv 34530)
-  (offset-texture-bias-nv 34531)
   (offset-texture-2d-matrix-nv 34529)
+  (offset-texture-scale-nv 34530)
   (offset-texture-2d-scale-nv 34530)
+  (offset-texture-bias-nv 34531)
   (offset-texture-2d-bias-nv 34531)
   (previous-texture-input-nv 34532)
   (const-eye-nv 34533)
@@ -6560,7 +6645,7 @@
 
 (define-enumeration
   ati-pixel-format-float
-  (type-rgba-float-ati 34848)
+  (rgba-float-mode-ati 34848)
   (color-clear-unclamped-value-ati 34869))
 
 (define-enumeration
@@ -8137,6 +8222,10 @@
   (query-by-region-no-wait-nv 36374))
 
 (define-enumeration
+  nv-multisample-coverage
+  (color-samples-nv 36384))
+
+(define-enumeration
   arb-transform-feedback-2
   (transform-feedback 36386)
   (transform-feedback-paused 36387)
@@ -8253,11 +8342,22 @@
   (max-program-subroutine-num-nv 36677))
 
 (define-enumeration
-  arb-texture-gather
+  version-4-0
   (min-program-texture-gather-offset 36446)
   (max-program-texture-gather-offset 36447)
-  (max-program-texture-gather-components-arb 36767)
-  (max-program-texture-gather-components 36767))
+  (texture-cube-map-array 36873)
+  (texture-binding-cube-map-array 36874)
+  (proxy-texture-cube-map-array 36875)
+  (sampler-cube-map-array 36876)
+  (sampler-cube-map-array-shadow 36877)
+  (int-sampler-cube-map-array 36878)
+  (unsigned-int-sampler-cube-map-array 36879))
+
+(define-enumeration
+  arb-texture-gather
+  (min-program-texture-gather-offset-arb 36446)
+  (max-program-texture-gather-offset-arb 36447)
+  (max-program-texture-gather-components-arb 36767))
 
 (define-enumeration
   arb-transform-feedback-3
@@ -8349,6 +8449,10 @@
   (mali-shader-binary-arm 36704))
 
 (define-enumeration
+  arm-mali-program-binary
+  (mali-program-binary-arm 36705))
+
+(define-enumeration
   qcom-driver-control
   (perfmon-global-mode-qcom 36768))
 
@@ -8364,7 +8468,7 @@
   (shader-binary-viv 36804))
 
 (define-enumeration
-  amd-vertex-shader-tesselator
+  amd-vertex-shader-tessellator
   (sampler-buffer-amd 36865)
   (int-sampler-buffer-amd 36866)
   (unsigned-int-sampler-buffer-amd 36867)
@@ -8751,10 +8855,10 @@
   (max-fragment-atomic-counters 37590)
   (max-combined-atomic-counters 37591)
   (max-atomic-counter-buffer-size 37592)
-  (max-atomic-counter-buffer-bindings 37596)
   (active-atomic-counter-buffers 37593)
   (uniform-atomic-counter-buffer-index 37594)
-  (unsigned-int-atomic-counter 37595))
+  (unsigned-int-atomic-counter 37595)
+  (max-atomic-counter-buffer-bindings 37596))
 
 (define-enumeration
   arb-program-interface-query
@@ -8871,4 +8975,81 @@
   (compressed-srgb8-alpha8-astc-10x10-khr 37851)
   (compressed-srgb8-alpha8-astc-12x10-khr 37852)
   (compressed-srgb8-alpha8-astc-12x12-khr 37853))
+
+(define-enumeration
+  ibm-rasterpos-clip
+  (raster-position-unclipped-ibm 103010))
+
+(define-enumeration
+  ibm-cull-vertex
+  (cull-vertex-ibm 103050))
+
+(define-enumeration
+  ibm-static-data
+  (all-static-data-ibm 103060)
+  (static-vertex-array-ibm 103061)
+  (vertex-array-list-ibm 103070)
+  (normal-array-list-ibm 103071)
+  (color-array-list-ibm 103072)
+  (index-array-list-ibm 103073)
+  (texture-coord-array-list-ibm 103074)
+  (edge-flag-array-list-ibm 103075)
+  (fog-coordinate-array-list-ibm 103076)
+  (secondary-color-array-list-ibm 103077)
+  (vertex-array-list-stride-ibm 103080)
+  (normal-array-list-stride-ibm 103081)
+  (color-array-list-stride-ibm 103082)
+  (index-array-list-stride-ibm 103083)
+  (texture-coord-array-list-stride-ibm 103084)
+  (edge-flag-array-list-stride-ibm 103085)
+  (fog-coordinate-array-list-stride-ibm 103086)
+  (secondary-color-array-list-stride-ibm 103087))
+
+(define-enumeration
+  pgi-misc-hints
+  (prefer-doublebuffer-hint-pgi 107000)
+  (conserve-memory-hint-pgi 107005)
+  (reclaim-memory-hint-pgi 107006)
+  (native-graphics-handle-pgi 107010)
+  (native-graphics-begin-hint-pgi 107011)
+  (native-graphics-end-hint-pgi 107012)
+  (always-fast-hint-pgi 107020)
+  (always-soft-hint-pgi 107021)
+  (allow-draw-obj-hint-pgi 107022)
+  (allow-draw-win-hint-pgi 107023)
+  (allow-draw-frg-hint-pgi 107024)
+  (allow-draw-mem-hint-pgi 107025)
+  (strict-depthfunc-hint-pgi 107030)
+  (strict-lighting-hint-pgi 107031)
+  (strict-scissor-hint-pgi 107032)
+  (full-stipple-hint-pgi 107033)
+  (clip-near-hint-pgi 107040)
+  (clip-far-hint-pgi 107041)
+  (wide-line-hint-pgi 107042)
+  (back-normals-hint-pgi 107043))
+
+(define-enumeration
+  pgi-vertex-hints
+  (vertex-data-hint-pgi 107050)
+  (vertex-consistent-hint-pgi 107051)
+  (material-side-hint-pgi 107052)
+  (max-vertex-hint-pgi 107053)
+  (vertex23-bit-pgi 4)
+  (vertex4-bit-pgi 8)
+  (color3-bit-pgi 65536)
+  (color4-bit-pgi 131072)
+  (edgeflag-bit-pgi 262144)
+  (index-bit-pgi 524288)
+  (mat-ambient-bit-pgi 1048576)
+  (mat-ambient-and-diffuse-bit-pgi 2097152)
+  (mat-diffuse-bit-pgi 4194304)
+  (mat-emission-bit-pgi 8388608)
+  (mat-color-indexes-bit-pgi 16777216)
+  (mat-shininess-bit-pgi 33554432)
+  (mat-specular-bit-pgi 67108864)
+  (normal-bit-pgi 134217728)
+  (texcoord1-bit-pgi 268435456)
+  (texcoord2-bit-pgi 536870912)
+  (texcoord3-bit-pgi 1073741824)
+  (texcoord4-bit-pgi 2147483648))
 

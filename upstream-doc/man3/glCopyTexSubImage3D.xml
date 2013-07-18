@@ -170,7 +170,7 @@
         </para>
         <para>
             No change is made to the <emphasis>internalformat</emphasis>, <emphasis>width</emphasis>,
-            <emphasis>height</emphasis>, <emphasis>depth</emphasis>, or <emphasis>border</emphasis> parameters of the specified texture
+            <emphasis>height</emphasis>, or <emphasis>depth</emphasis> parameters of the specified texture
             array or to texel values outside the specified subregion.
         </para>
     </refsect1>
@@ -181,7 +181,7 @@
     </refsect1>
     <refsect1 id="errors"><title>Errors</title>
         <para>
-            <constant>GL_INVALID_ENUM</constant> is generated if /<parameter>target</parameter> is not <constant>GL_TEXTURE_3D</constant>.
+            <constant>GL_INVALID_ENUM</constant> is generated if <parameter>target</parameter> is not <constant>GL_TEXTURE_3D</constant> or <constant>GL_TEXTURE_2D_ARRAY</constant>.
         </para>
         <para>
             <constant>GL_INVALID_OPERATION</constant> is generated if the texture array has not
@@ -220,10 +220,7 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">xoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mrow>
-                        <mml:mo>-</mml:mo>
-                        <mml:mi mathvariant="italic">b</mml:mi>
-                    </mml:mrow>
+                    <mml:mn>0</mml:mn>
                 </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
@@ -237,13 +234,7 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mfenced open="(" close=")">
-                        <mml:mrow>
-                            <mml:mi mathvariant="italic">w</mml:mi>
-                            <mml:mo>-</mml:mo>
-                            <mml:mi mathvariant="italic">b</mml:mi>
-                        </mml:mrow>
-                    </mml:mfenced>
+                    <mml:mi mathvariant="italic">w</mml:mi>
                 </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
@@ -251,10 +242,7 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">yoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mrow>
-                        <mml:mo>-</mml:mo>
-                        <mml:mi mathvariant="italic">b</mml:mi>
-                    </mml:mrow>
+                    <mml:mn>0</mml:mn>
                 </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
@@ -268,13 +256,7 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mfenced open="(" close=")">
-                        <mml:mrow>
-                            <mml:mi mathvariant="italic">h</mml:mi>
-                            <mml:mo>-</mml:mo>
-                            <mml:mi mathvariant="italic">b</mml:mi>
-                        </mml:mrow>
-                    </mml:mfenced>
+                    <mml:mi mathvariant="italic">h</mml:mi>
                 </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
@@ -282,10 +264,7 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">zoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mrow>
-                        <mml:mo>-</mml:mo>
-                        <mml:mi mathvariant="italic">b</mml:mi>
-                    </mml:mrow>
+                    <mml:mn>0</mml:mn>
                 </mml:mrow>
             </mml:math></inlineequation>,
             or 
@@ -300,32 +279,17 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mfenced open="(" close=")">
-                        <mml:mrow>
-                            <mml:mi mathvariant="italic">d</mml:mi>
-                            <mml:mo>-</mml:mo>
-                            <mml:mi mathvariant="italic">b</mml:mi>
-                        </mml:mrow>
-                    </mml:mfenced>
+                    <mml:mi mathvariant="italic">d</mml:mi>
                 </mml:mrow>
             </mml:math></inlineequation>,
             where 
             <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>
             is the <constant>GL_TEXTURE_WIDTH</constant>,
             <inlineequation><mml:math><mml:mi mathvariant="italic">h</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_HEIGHT</constant>,
+            is the <constant>GL_TEXTURE_HEIGHT</constant>, and
             <inlineequation><mml:math><mml:mi mathvariant="italic">d</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_DEPTH</constant>,
-            and 
-            <inlineequation><mml:math><mml:mi mathvariant="italic">b</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_BORDER</constant>
+            is the <constant>GL_TEXTURE_DEPTH</constant>
             of the texture image being modified.
-            Note that 
-            <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>, 
-            <inlineequation><mml:math><mml:mi mathvariant="italic">h</mml:mi></mml:math></inlineequation>,
-            and 
-            <inlineequation><mml:math><mml:mi mathvariant="italic">d</mml:mi></mml:math></inlineequation>
-            include twice the border width.
         </para>
     </refsect1>
     <refsect1 id="associatedgets"><title>Associated Gets</title>

@@ -88,7 +88,7 @@
                 <thead>
                     #FUNCTABLEHEADER#
                     <row>
-                        <entry>fma (genType)</entry>#newin11#
+                        <entry>fma (genType)</entry>#newin40#
                     </row>
                     <row>
                         <entry>fma (genDType)</entry>#newin40#
@@ -99,7 +99,7 @@
     </refsect1>
     <refsect1 id="Copyright"><title>Copyright</title>
         <para>
-            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group. 
+            Copyright <trademark class="copyright"></trademark> 2011-2013 Khronos Group. 
             This material may be distributed subject to the terms and conditions set forth in 
             the Open Publication License, v 1.0, 8 June 1999.
             <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.

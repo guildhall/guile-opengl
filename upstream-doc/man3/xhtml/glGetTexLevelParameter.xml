@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "xhtml1-transitional.dtd">
 <!-- saved from url=(0013)about:internet -->
-<?xml-stylesheet type="text/xsl" href="mathml.xsl"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" pref:renderer="mathplayer-dl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="opengl-man.css" /><title>glGetTexLevelParameter</title><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /></head><body><div class="refentry" lang="en" xml:lang="en"><a id="glGetTexLevelParameter"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>glGetTexLevelParameter — return texture parameter values for a specific level of detail</p></div><div class="refsynopsisdiv"><h2>C Specification</h2><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glGetTexLevelParameterfv</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">pname</var>, </td></tr><tr><td> </td><td>GLfloat *  </td><td><var class="pdparam">params</var><code>)</code>;</td></tr></table></div><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glGetTexLevelParameteriv</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">pname</var>, </td></tr><tr><td> </td><td>GLint *  </td><td><var class="pdparam">params</var><code>)</code>;</td></tr></table></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="parameters"></a><h2>Parameters</h2><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>target</code></em></span></dt><dd><p>
+<?xml-stylesheet type="text/xsl" href="mathml.xsl"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" pref:renderer="mathplayer-dl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="opengl-man.css" /><title>glGetTexLevelParameter - OpenGL 3.3 Reference Pages</title><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /></head><body><div class="refentry" lang="en" xml:lang="en"><a id="glGetTexLevelParameter"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>glGetTexLevelParameter — return texture parameter values for a specific level of detail</p></div><div class="refsynopsisdiv"><h2>C Specification</h2><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glGetTexLevelParameterfv</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">pname</var>, </td></tr><tr><td> </td><td>GLfloat *  </td><td><var class="pdparam">params</var><code>)</code>;</td></tr></table></div><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glGetTexLevelParameteriv</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">pname</var>, </td></tr><tr><td> </td><td>GLint *  </td><td><var class="pdparam">params</var><code>)</code>;</td></tr></table></div></div><div class="refsect1" lang="en" xml:lang="en"><a id="parameters"></a><h2>Parameters</h2><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>target</code></em></span></dt><dd><p>
                     Specifies the symbolic name of the target texture,
                     one of
                     <code class="constant">GL_TEXTURE_1D</code>,
@@ -42,7 +42,6 @@
                     <code class="constant">GL_TEXTURE_HEIGHT</code>,
                     <code class="constant">GL_TEXTURE_DEPTH</code>,
                     <code class="constant">GL_TEXTURE_INTERNAL_FORMAT</code>,
-                    <code class="constant">GL_TEXTURE_BORDER</code>,
                     <code class="constant">GL_TEXTURE_RED_SIZE</code>,
                     <code class="constant">GL_TEXTURE_GREEN_SIZE</code>,
                     <code class="constant">GL_TEXTURE_BLUE_SIZE</code>,
@@ -73,8 +72,8 @@
             <code class="constant">GL_MAX_TEXTURE_SIZE</code>, and <code class="constant">GL_MAX_3D_TEXTURE_SIZE</code> are not really
             descriptive enough.
             It has to report the largest square texture image that can be
-            accommodated with mipmaps and borders,
-            but a long skinny texture, or a texture without mipmaps and borders, may
+            accommodated with mipmaps
+            but a long skinny texture, or a texture without mipmaps may
             easily fit in texture memory.
             The proxy targets allow the user to more accurately query
             whether the GL can accommodate a texture of a given configuration.
@@ -91,20 +90,17 @@
                     </p><p>
                         <em class="parameter"><code>params</code></em> returns a single value,
                         the width of the texture image.
-                        This value includes the border of the texture image. The initial value is
-                        0.
+                        The initial value is 0.
                     </p></dd><dt><span class="term"><code class="constant">GL_TEXTURE_HEIGHT</code></span></dt><dd><p>
                     </p><p>
                         <em class="parameter"><code>params</code></em> returns a single value,
                         the height of the texture image.
-                        This value includes the border of the texture image. The initial value is
-                        0.
+                        The initial value is 0.
                     </p></dd><dt><span class="term"><code class="constant">GL_TEXTURE_DEPTH</code></span></dt><dd><p>
                     </p><p>
                         <em class="parameter"><code>params</code></em> returns a single value,
                         the depth of the texture image.
-                        This value includes the border of the texture image. The initial value is
-                        0.
+                        The initial value is 0.
                     </p></dd><dt><span class="term"><code class="constant">GL_TEXTURE_INTERNAL_FORMAT</code></span></dt><dd><p>
                     </p><p>
                         <em class="parameter"><code>params</code></em> returns a single value,

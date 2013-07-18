@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "xhtml1-transitional.dtd">
 <!-- saved from url=(0013)about:internet -->
-<?xml-stylesheet type="text/xsl" href="mathml.xsl"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" pref:renderer="mathplayer-dl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="opengl-man.css" /><title>glTexImage1D</title><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /></head><body><div class="refentry" lang="en" xml:lang="en"><a id="glTexImage1D"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>glTexImage1D — specify a one-dimensional texture image</p></div><div class="refsynopsisdiv"><h2>C Specification</h2><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glTexImage1D</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">internalFormat</var>, </td></tr><tr><td> </td><td>GLsizei  </td><td><var class="pdparam">width</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">border</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">format</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">type</var>, </td></tr><tr><td> </td><td>const GLvoid *  </td><td><var class="pdparam">data</var><code>)</code>;</td></tr></table></div></div><p>
+<?xml-stylesheet type="text/xsl" href="mathml.xsl"?><html xmlns="http://www.w3.org/1999/xhtml" xmlns:pref="http://www.w3.org/2002/Math/preference" pref:renderer="mathplayer-dl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="opengl-man.css" /><title>glTexImage1D - OpenGL 3.3 Reference Pages</title><meta name="generator" content="DocBook XSL Stylesheets V1.69.1" /></head><body><div class="refentry" lang="en" xml:lang="en"><a id="glTexImage1D"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>glTexImage1D — specify a one-dimensional texture image</p></div><div class="refsynopsisdiv"><h2>C Specification</h2><div class="funcsynopsis"><table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0"><tr><td><code class="funcdef">void <b class="fsfunc">glTexImage1D</b>(</code></td><td>GLenum  </td><td><var class="pdparam">target</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">level</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">internalFormat</var>, </td></tr><tr><td> </td><td>GLsizei  </td><td><var class="pdparam">width</var>, </td></tr><tr><td> </td><td>GLint  </td><td><var class="pdparam">border</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">format</var>, </td></tr><tr><td> </td><td>GLenum  </td><td><var class="pdparam">type</var>, </td></tr><tr><td> </td><td>const GLvoid *  </td><td><var class="pdparam">data</var><code>)</code>;</td></tr></table></div></div><p>
     </p><div class="refsect1" lang="en" xml:lang="en"><a id="parameters"></a><h2>Parameters</h2><div class="variablelist"><dl><dt><span class="term"><em class="parameter"><code>target</code></em></span></dt><dd><p>
                     Specifies the target texture.
                     Must be <code class="constant">GL_TEXTURE_1D</code> or <code class="constant">GL_PROXY_TEXTURE_1D</code>.
@@ -139,32 +139,23 @@
                         Each element is a single red component.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for green and blue, and 1 for alpha.
-                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component is clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RG</code></span></dt><dd><p>
                         Each element is a single red/green double
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for blue, and 1 for alpha.
-                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component is clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RGB</code></span></dt><dd></dd><dt><span class="term"><code class="constant">GL_BGR</code></span></dt><dd><p>
                         Each element is an RGB triple.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 1 for alpha.
-                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component is clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RGBA</code></span></dt><dd></dd><dt><span class="term"><code class="constant">GL_BGRA</code></span></dt><dd><p>
                         Each element contains all four components.
-                        Each component is multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
-                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
-                        and clamped to the range [0,1].
+                        Each component is clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_DEPTH_COMPONENT</code></span></dt><dd><p>
                         Each element is a single depth value.
-                        The GL converts it to floating point, multiplies by the signed scale factor
-                        <code class="constant">GL_DEPTH_SCALE</code>, adds the signed bias <code class="constant">GL_DEPTH_BIAS</code>,
+                        The GL converts it to floating point
                         and clamps to the range [0,1].
                     </p></dd></dl></div><p>
             If an application wants to store the texture at a certain

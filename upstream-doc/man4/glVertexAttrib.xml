@@ -463,7 +463,7 @@
         <term><parameter>type</parameter></term>
         <listitem>
             <para>Type of packing used on the data. This parameter must be
-                    <constant>GL_INT_10_10_10_2</constant> or <constant>GL_UNSIGNED_INT_10_10_10_2</constant>
+                    <constant>GL_INT_2_10_10_10_REV</constant> or <constant>GL_UNSIGNED_INT_2_10_10_10_REV</constant>
                     to specify signed or unsigned data, respectively.</para>
         </listitem>
         </varlistentry>
@@ -619,8 +619,8 @@
     <para><constant>GL_INVALID_ENUM</constant> is generated if
     <function>glVertexAttribP</function> is used with a 
         <parameter>type</parameter> other than
-    <constant>GL_INT_10_10_10_2</constant> or
-        <constant>GL_UNSIGNED_INT_10_10_10_2</constant>.</para>
+    <constant>GL_INT_2_10_10_10_REV</constant> or
+        <constant>GL_UNSIGNED_INT_2_10_10_10_REV</constant>.</para>
 
     <para><constant>GL_INVALID_ENUM</constant> is generated if
     <function>glVertexAttribL</function> is used with a 

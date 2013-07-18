@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook MathML Module V1.1b1//EN"
               "http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd">
-<refentry id="glGetBufferParameteriv">
+<refentry id="glGetBufferParameter">
     <refmeta>
         <refmetainfo>
             <copyright>
@@ -23,6 +23,14 @@
                 <paramdef>GLenum <parameter>target</parameter></paramdef>
                 <paramdef>GLenum <parameter>value</parameter></paramdef>
                 <paramdef>GLint * <parameter>data</parameter></paramdef>
+            </funcprototype>
+        </funcsynopsis>
+        <funcsynopsis>
+            <funcprototype>
+                <funcdef>void <function>glGetBufferParameteri64v</function></funcdef>
+                <paramdef>GLenum <parameter>target</parameter></paramdef>
+                <paramdef>GLenum <parameter>value</parameter></paramdef>
+                <paramdef>GLint64 * <parameter>data</parameter></paramdef>
             </funcprototype>
         </funcsynopsis>
     </refsynopsisdiv>
@@ -117,6 +125,9 @@
             If an error is generated,
             no change is made to the contents of <parameter>data</parameter>.
         </para>
+        <para>
+            <function>glGetBufferParameteri64v</function> is available only if the GL version is 3.2 or higher.
+        </para>
     </refsect1>
     <refsect1 id="errors"><title>Errors</title>
         <para>
@@ -138,6 +149,7 @@
     <refsect1 id="Copyright"><title>Copyright</title>
         <para>
             Copyright <trademark class="copyright"></trademark> 2005 Addison-Wesley. 
+            Copyright <trademark class="copyright"></trademark> 2010-2013 Khronos Group. 
             This material may be distributed subject to the terms and conditions set forth in 
             the Open Publication License, v 1.0, 8 June 1999.
             <ulink url="http://opencontent.org/openpub/">http://opencontent.org/openpub/</ulink>.

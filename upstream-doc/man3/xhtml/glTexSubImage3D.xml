@@ -140,10 +140,7 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">xoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mrow>
-                        <mml:mo>-</mml:mo>
-                        <mml:mi mathvariant="italic">b</mml:mi>
-                    </mml:mrow>
+                    <mml:mn>0</mml:mn>
                 </mml:mrow>
             </mml:math>,
             <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll">
@@ -157,13 +154,7 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mfenced open="(" close=")">
-                        <mml:mrow>
-                            <mml:mi mathvariant="italic">w</mml:mi>
-                            <mml:mo>-</mml:mo>
-                            <mml:mi mathvariant="italic">b</mml:mi>
-                        </mml:mrow>
-                    </mml:mfenced>
+                    <mml:mi mathvariant="italic">w</mml:mi>
                 </mml:mrow>
             </mml:math>,
             <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll">
@@ -171,10 +162,7 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">yoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mrow>
-                        <mml:mo>-</mml:mo>
-                        <mml:mi mathvariant="italic">b</mml:mi>
-                    </mml:mrow>
+                    <mml:mn>0</mml:mn>
                 </mml:mrow>
             </mml:math>,
             or 
@@ -189,13 +177,7 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mfenced open="(" close=")">
-                        <mml:mrow>
-                            <mml:mi mathvariant="italic">h</mml:mi>
-                            <mml:mo>-</mml:mo>
-                            <mml:mi mathvariant="italic">b</mml:mi>
-                        </mml:mrow>
-                    </mml:mfenced>
+                    <mml:mi mathvariant="italic">h</mml:mi>
                 </mml:mrow>
             </mml:math>,
             or 
@@ -204,10 +186,7 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">zoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mrow>
-                        <mml:mo>-</mml:mo>
-                        <mml:mi mathvariant="italic">b</mml:mi>
-                    </mml:mrow>
+                    <mml:mn>0</mml:mn>
                 </mml:mrow>
             </mml:math>,
             or 
@@ -222,31 +201,17 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mfenced open="(" close=")">
-                        <mml:mrow>
-                            <mml:mi mathvariant="italic">d</mml:mi>
-                            <mml:mo>-</mml:mo>
-                            <mml:mi mathvariant="italic">b</mml:mi>
-                        </mml:mrow>
-                    </mml:mfenced>
+                    <mml:mi mathvariant="italic">d</mml:mi>
                 </mml:mrow>
             </mml:math>,
             where 
             <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">w</mml:mi></mml:math>
             is the <code class="constant">GL_TEXTURE_WIDTH</code>,
             <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">h</mml:mi></mml:math>
-            is the <code class="constant">GL_TEXTURE_HEIGHT</code>, 
+            is the <code class="constant">GL_TEXTURE_HEIGHT</code>, and
             <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">d</mml:mi></mml:math>
             is the <code class="constant">GL_TEXTURE_DEPTH</code>
-            and 
-            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">b</mml:mi></mml:math>
-            is the border width of the texture image being modified.
-            Note that 
-            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">w</mml:mi></mml:math>,
-            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">h</mml:mi></mml:math>,
-            and 
-            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll"><mml:mi mathvariant="italic">d</mml:mi></mml:math>
-            include twice the border width.
+            of the texture image being modified.
         </p><p>
             <code class="constant">GL_INVALID_VALUE</code> is generated if <em class="parameter"><code>width</code></em>, <em class="parameter"><code>height</code></em>, or <em class="parameter"><code>depth</code></em>
             is less than 0.

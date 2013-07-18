@@ -1,23 +1,20 @@
+# THIS FILE IS OBSOLETE. Please migrate away from using the
+# ".spec" files to the XML Registry. See
+#   http://www.opengl.org/registry/api/README.txt
+# for more information.
+
 # Copyright (c) 1991-2005 Silicon Graphics, Inc. All Rights Reserved.
-# Copyright (c) 2006-2010 The Khronos Group, Inc.
+# Copyright (c) 2006-2013 The Khronos Group, Inc.
 #
 # This document is licensed under the SGI Free Software B License Version
 # 2.0. For details, see http://oss.sgi.com/projects/FreeB/ .
 #
-# $Revision: 17770 $ on $Date: 2012-05-10 14:18:27 -0700 (Thu, 10 May 2012) $
+# $Revision: 21963 $ on $Date: 2013-06-13 02:52:31 -0700 (Thu, 13 Jun 2013) $
 
-# This is the master WGL enumerant registry.
-#
-# It is an extremely important file. Do not mess with it unless
-# you know what you're doing and have permission to do so.
-#
-# Rules for modification are similar to the rules for the OpenGL
-# enumerant registry (gl.spec). Basically, don't modify this file
-# unless you're Khronos API Registrar. In principle Microsoft owns
-# the WGL registry, but they have for practical purposes ceded
-# administration of it to Khronos.
-#
-# Finally, note that this registry does not currently include
+# This is the old (no longer canonical) WGL enumerant registry. It is
+# no longer maintained or used for current header file generation.
+
+# Note that this registry does not currently include
 # any core WGL enumerants - only enumerants defined by WGL
 # extensions.
 
@@ -396,9 +393,9 @@ NV_video_capture enum:
 	WGL_UNIQUE_ID_NV				= 0x20CE
 	WGL_NUM_VIDEO_CAPTURE_SLOTS_NV			= 0x20CF
 
-WGL_NV_gpu_affinity:
-	WGL_ERROR_INCOMPATIBLE_AFFINITY_MASKS_NV	= 0x20D0
-	WGL_ERROR_MISSING_AFFINITY_MASK_NV		= 0x20D1
+WGL_NV_gpu_affinity enum:
+	ERROR_INCOMPATIBLE_AFFINITY_MASKS_NV		= 0x20D0
+	ERROR_MISSING_AFFINITY_MASK_NV			= 0x20D1
 
 # NV_future_use: 0x20D2-0x20EF
 
@@ -446,7 +443,7 @@ WGL_AMD_gpu_association enum:
 
 # Also includes a bitmask - see ContextFlags above
 # All values are shared with GLX and GL
-WGL_ARB_create_context_robustness:
+WGL_ARB_create_context_robustness enum:
 	WGL_LOSE_CONTEXT_ON_RESET_ARB			= 0x8252    # shared with GLX and GL
 	WGL_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB	= 0x8256    # shared with GLX and GL
 	WGL_NO_RESET_NOTIFICATION_ARB			= 0x8261    # shared with GLX and GL

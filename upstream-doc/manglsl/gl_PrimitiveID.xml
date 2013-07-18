@@ -45,74 +45,14 @@
     </refsect1>
     <refsect1 id="versions"><title>Version Support</title>
         <informaltable frame="topbot">
-            <tgroup cols="3" align="left">
-                <colspec colwidth="1.1*" />
-                <colspec colwidth="1*" align="center" />
-                <colspec colwidth="1*" align="center" />
-                <colspec colwidth="1*" align="center" />
-                <colspec colwidth="1*" align="center" />
-                <colspec colwidth="1*" align="center" />
-                <colspec colwidth="1*" align="center" />
-                <colspec colwidth="1*" align="center" />
-                <colspec colwidth="1*" align="center" />
+            #VARTABLECOLS#
                 <thead>
+                    #FUNCTABLEHEADER#
                     <row>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Variable
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 1.10
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 1.20
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 1.30
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 1.40
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 1.50
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 3.30
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 4.00
-                        </emphasis></entry>
-                        <entry rowsep="1" align="left"><emphasis role="bold">
-                        Version 4.10
-                        </emphasis></entry>
+                        <entry><function>gl_PrimitiveID</function> (Fragment and Geometry Languages)</entry>#newin15#
                     </row>
                     <row>
-                        <entry>
-                            gl_PrimitiveID
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 1.10, OpenGL 2.0 -->
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 1.20, OpenGL 2.1 -->
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 1.30, OpenGL 3.0 -->
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 1.40, OpenGL 3.1 -->
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 1.50, OpenGL 3.2 -->
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 3.30, OpenGL 3.3 -->
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 4.00, OpenGL 4.0 -->
-                        </entry>
-                        <entry>
-                            <emphasis>Y</emphasis>  <!-- 4.10, OpenGL 4.1 -->
-                        </entry>
+                        <entry><function>gl_PrimitiveID</function> (Tessellation Control and Evaluation Languages)</entry>#newin40#
                     </row>
                 </thead>
             </tgroup>

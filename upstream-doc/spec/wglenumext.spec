@@ -1,16 +1,19 @@
+# THIS FILE IS OBSOLETE. Please migrate away from using the
+# ".spec" files to the XML Registry. See
+#   http://www.opengl.org/registry/api/README.txt
+# for more information.
+
 # Copyright (c) 1991-2005 Silicon Graphics, Inc. All Rights Reserved.
-# Copyright (c) 2006-2010 The Khronos Group, Inc.
+# Copyright (c) 2006-2013 The Khronos Group, Inc.
 #
 # This document is licensed under the SGI Free Software B License Version
 # 2.0. For details, see http://oss.sgi.com/projects/FreeB/ .
 #
-# $Revision: 17027 $ on $Date: 2012-03-05 11:19:50 -0800 (Mon, 05 Mar 2012) $
+# $Revision: 21963 $ on $Date: 2013-06-13 02:52:31 -0700 (Thu, 13 Jun 2013) $
 
 # List of WGL enumerants for wglext.h header
 #
-# This is not the master WGL enumerant registry. Microsoft used
-#   to maintain that, but given their limited interest in OpenGL, the
-#   Khronos API Registrar maintains the registry in wglenum.spec.
+# This is derived from the deprecated WGL enumerant registry (wglenum.spec).
 #
 # Unlike wglenum.spec, wglenumext.spec is
 #   (1) In order by extension number
@@ -26,9 +29,9 @@
 
 passthru:
 passthru: /* Header file version number */
-passthru: /* wglext.h last updated 2012/01/04 */
+passthru: /* wglext.h last updated 2013/06/10 */
 passthru: /* Current version at http://www.opengl.org/registry/ */
-passthru: #define WGL_WGLEXT_VERSION 24
+passthru: #define WGL_WGLEXT_VERSION 26
 
 ###############################################################################
 #
@@ -450,8 +453,8 @@ WGL_NV_swap_group enum:
 
 # Extension #355
 WGL_NV_gpu_affinity enum:
-	WGL_ERROR_INCOMPATIBLE_AFFINITY_MASKS_NV	= 0x20D0
-	WGL_ERROR_MISSING_AFFINITY_MASK_NV		= 0x20D1
+	ERROR_INCOMPATIBLE_AFFINITY_MASKS_NV		= 0x20D0
+	ERROR_MISSING_AFFINITY_MASK_NV			= 0x20D1
 
 ###############################################################################
 
