@@ -184,9 +184,9 @@ the values.  Figl translates the names to a more common Scheme style:
 
 For example, the OpenGL API defines an enumeration with symbolic
 constants whose C names are GL_POINTS, GL_LINES, GL_TRIANGLES, and so
-on.  Collectively they form the BeginMode enumeration type.  To access
+on.  Collectively they form the PrimitiveType enumeration.  To access
 these constants in Figl, apply the constant name to the enumeration
-type: @code{(begin-mode triangles)}.
+type: @code{(primitive-type triangles)}.
 
 Bitfields are similar, though the constructor accepts multiple symbols
 and produces an appropriate mask.  In the GLUT API there is the

@@ -64,7 +64,7 @@
                       #f
                       #:stride (packed-struct-size color-vertex)
                       #:offset (packed-struct-offset color-vertex r))
-  (gl-draw-arrays (begin-mode quads) 0
+  (gl-draw-arrays (primitive-type quads) 0
                   (packed-array-length *vertices* color-vertex))
   (gl-disable-client-state (enable-cap color-array))
   (gl-disable-client-state (enable-cap vertex-array))
@@ -186,7 +186,7 @@
 
 (define (draw-axis scale)
   ;; Could disable lighting and depth test.
-  (gl-begin (begin-mode lines)
+  (gl-begin (primitive-type lines)
     (gl-color 1 0 0)
     (gl-vertex 0 0 0)
     (gl-vertex scale 0 0)
