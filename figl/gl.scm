@@ -273,10 +273,13 @@
 (define-syntax with-gl-push-matrix
   (syntax-rules ()
     ((_ body ...)
-     (begin
-       (%glPushMatrix)
-       body ...
-       (%glPopMatrix)))))
+     (call-with-values
+         (lambda ()
+           (%glPushmatrix)
+           body ...)
+       (lambda vals
+         (%glPopMatrix)
+         (apply values vals))))))
 
 (export-syntax with-gl-push-matrix)
 
@@ -380,10 +383,12 @@
 
 ;; emacs: (put 'with-gl-push-attrib 'scheme-indent-function 1)
 (define-syntax-rule (with-gl-push-attrib bits body ...)
-  (begin
-    (%glPushAttrib bits)
-    body
-    ...
-    (%glPopAttrib)))
+  (call-with-values
+      (lambda ()
+        (%glPushAttrib bits)
+        body ...)
+    (lambda vals
+      (%glPopAttrib)
+      (apply values vals))))
 
 (export with-gl-push-attrib)
