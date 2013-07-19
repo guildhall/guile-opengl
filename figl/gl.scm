@@ -296,6 +296,24 @@
 
 (re-export (%glShadeModel . set-gl-shade-model))
 
+;;;
+;;; 3.8.12 Texture Objects
+;;;
+
+(define (gl-generate-texture)
+  (let ((tv (u32vector 0)))
+    (%glGenTextures 1 tv)
+    (u32vector-ref tv 0)))
+
+(define (gl-delete-texture n)
+  (let ((tv (u32vector n)))
+    (%glDeleteTextures 1 tv)))
+
+(export gl-generate-texture
+        gl-delete-texture)
+
+(re-export (%glBindTexture . gl-bind-texture))
+
 
 ;;;
 ;;; 4.1 Per-Fragment Operations
