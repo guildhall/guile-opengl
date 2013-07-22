@@ -275,7 +275,7 @@
     ((_ body ...)
      (call-with-values
          (lambda ()
-           (%glPushmatrix)
+           (%glPushMatrix)
            body ...)
        (lambda vals
          (%glPopMatrix)
