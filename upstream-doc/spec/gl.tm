@@ -1,6 +1,7 @@
 AccumOp,*,*,			    GLenum,*,*
 AlphaFunction,*,*,		    GLenum,*,*
 AttribMask,*,*,			    GLbitfield,*,*
+BeginMode,*,*,			    GLenum,*,*
 BinormalPointerTypeEXT,*,*,	    GLenum,*,*
 BlendEquationMode,*,*,		    GLenum,*,*
 BlendEquationModeEXT,*,*,	    GLenum,*,*
@@ -16,6 +17,7 @@ CheckedFloat32,*,*,		    GLfloat,*,*
 CheckedInt32,*,*,		    GLint,*,*
 ClampColorTargetARB,*,*,	    GLenum,*,*
 ClampColorModeARB,*,*,		    GLenum,*,*
+ClampedColorF,*,*,		    GLclampf,*,*
 ClampedFixed,*,*,		    GLfixed,*,*
 ClampedFloat32,*,*,		    GLclampf,*,*
 ClampedFloat64,*,*,		    GLclampd,*,*
@@ -52,6 +54,8 @@ CombinerScaleNV,*,*,		    GLenum,*,*
 CombinerStageNV,*,*,		    GLenum,*,*
 CombinerVariableNV,*,*,		    GLenum,*,*
 CompressedTextureARB,*,*,	    GLvoid,*,*
+ControlPointNV,*,*,		    GLvoid,*,*
+ControlPointTypeNV,*,*,		    GLenum,*,*
 ConvolutionParameter,*,*,	    GLenum,*,*
 ConvolutionParameterEXT,*,*,	    GLenum,*,*
 ConvolutionTarget,*,*,		    GLenum,*,*
@@ -91,7 +95,6 @@ FragmentLightModelParameterSGIX,*,*,GLenum,*,*
 FragmentLightNameSGIX,*,*,	    GLenum,*,*
 FragmentLightParameterSGIX,*,*,     GLenum,*,*
 FramebufferAttachment,*,*,	    GLenum,*,*
-FramebufferStatus,*,*,		    GLenum,*,*
 FramebufferTarget,*,*,		    GLenum,*,*
 FrontFaceDirection,*,*,		    GLenum,*,*
 FunctionPointer,*,*,		    _GLfuncptr,*,*
@@ -137,6 +140,7 @@ LogicOp,*,*,			    GLenum,*,*
 MapAttribParameterNV,*,*,	    GLenum,*,*
 MapParameterNV,*,*,		    GLenum,*,*
 MapTarget,*,*,			    GLenum,*,*
+MapTargetNV,*,*,		    GLenum,*,*
 MapTypeNV,*,*,			    GLenum,*,*
 MaskedColorIndexValueF,*,*,	    GLfloat,*,*
 MaskedColorIndexValueI,*,*,	    GLuint,*,*
@@ -145,11 +149,16 @@ MaterialFace,*,*,		    GLenum,*,*
 MaterialParameter,*,*,		    GLenum,*,*
 MatrixIndexPointerTypeARB,*,*,	    GLenum,*,*
 MatrixMode,*,*,			    GLenum,*,*
+MatrixTransformNV,*,*,		    GLenum,*,*
 MeshMode1,*,*,			    GLenum,*,*
 MeshMode2,*,*,			    GLenum,*,*
 MinmaxTarget,*,*,		    GLenum,*,*
 MinmaxTargetEXT,*,*,		    GLenum,*,*
 NormalPointerType,*,*,		    GLenum,*,*
+NurbsCallback,*,*,		    GLenum,*,*
+NurbsObj,*,*,			    GLUnurbs*,*,*
+NurbsProperty,*,*,		    GLenum,*,*
+NurbsTrim,*,*,			    GLenum,*,*
 OcclusionQueryParameterNameNV,*,*,  GLenum,*,*
 PixelCopyType,*,*,		    GLenum,*,*
 PixelFormat,*,*,		    GLenum,*,*
@@ -164,14 +173,21 @@ PixelTransformTargetEXT,*,*,	    GLenum,*,*
 PixelType,*,*,			    GLenum,*,*
 PointParameterNameARB,*,*,	    GLenum,*,*
 PolygonMode,*,*,		    GLenum,*,*
-PrimitiveType,*,*,		    GLenum,*,*
+ProgramNV,*,*,			    GLuint,*,*
 ProgramCharacterNV,*,*,		    GLubyte,*,*
+ProgramParameterNV,*,*,		    GLenum,*,*
 ProgramParameterPName,*,*,	    GLenum,*,*
+QuadricCallback,*,*,		    GLenum,*,*
+QuadricDrawStyle,*,*,		    GLenum,*,*
+QuadricNormal,*,*,		    GLenum,*,*
+QuadricObj,*,*,			    GLUquadric*,*,*
+QuadricOrientation,*,*,		    GLenum,*,*
 ReadBufferMode,*,*,		    GLenum,*,*
 RenderbufferTarget,*,*,		    GLenum,*,*
 RenderingMode,*,*,		    GLenum,*,*
 ReplacementCodeSUN,*,*,		    GLuint,*,*
 ReplacementCodeTypeSUN,*,*,	    GLenum,*,*
+SamplePassARB,*,*,		    GLenum,*,*
 SamplePatternEXT,*,*,		    GLenum,*,*
 SamplePatternSGIS,*,*,		    GLenum,*,*
 SecondaryColorPointerTypeIBM,*,*,   GLenum,*,*
@@ -188,6 +204,10 @@ StencilValue,*,*,		    GLint,*,*
 String,*,*,			    const GLubyte *,*,*
 StringName,*,*,			    GLenum,*,*
 TangentPointerTypeEXT,*,*,	    GLenum,*,*
+TessCallback,*,*,		    GLenum,*,*
+TessContour,*,*,		    GLenum,*,*
+TessProperty,*,*,		    GLenum,*,*
+TesselatorObj,*,*,		    GLUtesselator*,*,*
 TexCoordPointerType,*,*,	    GLenum,*,*
 Texture,*,*,			    GLuint,*,*
 TextureComponentCount,*,*,	    GLint,*,*
@@ -205,6 +225,7 @@ UInt32,*,*,			    GLuint,*,*
 UInt8,*,*,			    GLubyte,*,*
 VertexAttribEnum,*,*,		    GLenum,*,*
 VertexAttribEnumNV,*,*,		    GLenum,*,*
+VertexAttribPointerTypeNV,*,*,	    GLenum,*,*
 VertexPointerType,*,*,		    GLenum,*,*
 VertexWeightPointerTypeEXT,*,*,     GLenum,*,*
 Void,*,*,			    GLvoid,*,*
@@ -214,7 +235,7 @@ WeightPointerTypeARB,*,*,	    GLenum,*,*
 WinCoord,*,*,			    GLint,*,*
 void,*,*,			    *,*,*
 ArrayObjectPNameATI,*,*,	    GLenum,*,*
-ArrayObjectUsageATI,*,*,	    GLenum,*,*
+ArrayObjectUsageATI,*,*,	    GLenum,*,*,
 ConstByte,*,*,			    GLbyte,*,*
 ConstUByte,*,*,			    GLubyte,*,*
 ConstFloat32,*,*,		    GLfloat,*,*
@@ -277,13 +298,14 @@ UInt64,*,*,			    GLuint64,*,*
 handleARB,*,*,			    GLhandleARB,*,*
 charARB,*,*,			    GLcharARB,*,*
 charPointerARB,*,*,		    GLcharARB*,*,*
-sync,*,*,			    GLsync,*,*
+sync,*,*,			    GLsync,*,*,
 # EXT_timer_query
 Int64EXT,*,*,			    GLint64EXT,*,*
 UInt64EXT,*,*,			    GLuint64EXT,*,*
 # EXT_direct_state_access
 FramebufferAttachmentParameterName,*,*, GLenum,*,*
 Framebuffer,*,*,		    GLuint,*,*
+FramebufferStatus,*,*,		    GLenum,*,*
 GetFramebufferParameter,*,*,	    GLenum,*,*
 Intptr,*,*,			    GLintptr,*,*
 ProgramFormat,*,*,		    GLenum,*,*
@@ -308,7 +330,7 @@ GLDEBUGPROCARB,*,*,		    GLDEBUGPROCARB,*,*
 # AMD_debug_output
 GLDEBUGPROCAMD,*,*,		    GLDEBUGPROCAMD,*,*
 # NV_vdpau_interop
-vdpauSurfaceNV,*,*,		    GLvdpauSurfaceNV,*,*
+vdpauSurfaceNV,*,*,		    GLvdpauSurfaceNV,*,*,
 # External API types
 cl_context,*,*,			    struct _cl_context *,*,*
 cl_event,*,*,			    struct _cl_event *,*,*
@@ -330,29 +352,3 @@ PathParameter,*,*,		    GLenum,*,*
 PathStringFormat,*,*,		    GLenum,*,*
 PathTransformType,*,*,		    GLenum,*,*
 PathHandleMissingGlyphs,*,*,	    GLenum,*,*
-
-# No longer used in gl.spec
-# ClampedColorF,*,*,		      GLclampf,*,*
-# ControlPointNV,*,*,		      GLvoid,*,*
-# ControlPointTypeNV,*,*,	      GLenum,*,*
-# MapTargetNV,*,*,		      GLenum,*,*
-# MatrixTransformNV,*,*,	      GLenum,*,*
-# ProgramNV,*,*,		      GLuint,*,*
-# ProgramParameterNV,*,*,	      GLenum,*,*
-# SamplePassARB,*,*,		      GLenum,*,*
-# VertexAttribPointerTypeNV,*,*,      GLenum,*,*
-
-# Used only in glu.spec
-# NurbsCallback,*,*,		      GLenum,*,*
-# NurbsObj,*,*,			      GLUnurbs*,*,*
-# NurbsProperty,*,*,		      GLenum,*,*
-# NurbsTrim,*,*,		      GLenum,*,*
-# QuadricCallback,*,*,		      GLenum,*,*
-# QuadricDrawStyle,*,*,		      GLenum,*,*
-# QuadricNormal,*,*,		      GLenum,*,*
-# QuadricObj,*,*,		      GLUquadric*,*,*
-# QuadricOrientation,*,*,	      GLenum,*,*
-# TessCallback,*,*,		      GLenum,*,*
-# TessContour,*,*,		      GLenum,*,*
-# TessProperty,*,*,		      GLenum,*,*
-# TesselatorObj,*,*,		      GLUtesselator*,*,*

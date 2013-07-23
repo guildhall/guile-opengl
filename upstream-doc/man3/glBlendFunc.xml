@@ -1418,16 +1418,10 @@
     </refsect1>
     <refsect1 id="associatedgets"><title>Associated Gets</title>
         <para>
-            <citerefentry><refentrytitle>glGet</refentrytitle></citerefentry> with argument <constant>GL_BLEND_SRC_RGB</constant>
+            <citerefentry><refentrytitle>glGet</refentrytitle></citerefentry> with argument <constant>GL_BLEND_SRC</constant>
         </para>
         <para>
-            <citerefentry><refentrytitle>glGet</refentrytitle></citerefentry> with argument <constant>GL_BLEND_SRC_ALPHA</constant>
-        </para>
-        <para>
-            <citerefentry><refentrytitle>glGet</refentrytitle></citerefentry> with argument <constant>GL_BLEND_DST_RGB</constant>
-        </para>
-        <para>
-            <citerefentry><refentrytitle>glGet</refentrytitle></citerefentry> with argument <constant>GL_BLEND_DST_ALPHA</constant>
+            <citerefentry><refentrytitle>glGet</refentrytitle></citerefentry> with argument <constant>GL_BLEND_DST</constant>
         </para>
         <para>
             <citerefentry><refentrytitle>glIsEnabled</refentrytitle></citerefentry> with argument <constant>GL_BLEND</constant>

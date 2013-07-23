@@ -17,8 +17,8 @@
 ;;;
 ;;; Derived from upstream OpenGL documentation.
 ;;; 
-;;; Copyright (C) 1991-2006 Silicon Graphics, Inc.  This document is
-;;; licensed under the SGI Free Software B License.  For details, see
+;;; Copyright (C) 1991-2006 Silicon Graphics, Inc. This document is licensed
+;;; under the SGI Free Software B License. For details, see
 ;;; http://oss.sgi.com/projects/FreeB/ (http://oss.sgi.com/projects/FreeB/).
 ;;;
 ;;; Automatically generated; you probably don't want to edit this.  To
@@ -102,14 +102,14 @@ NURB
 
 Use `gluBeginCurve' to mark the beginning of a NURBS curve definition.
 After calling `gluBeginCurve', make one or more calls to `gluNurbsCurve'
-to define the attributes of the curve.  Exactly one of the calls to
+to define the attributes of the curve. Exactly one of the calls to
 `gluNurbsCurve' must have a curve type of `GLU_MAP1_VERTEX_3' or
-`GLU_MAP1_VERTEX_4'.  To mark the end of the NURBS curve definition,
-call `gluEndCurve'.
+`GLU_MAP1_VERTEX_4'. To mark the end of the NURBS curve definition, call
+`gluEndCurve'.
 
 GL evaluators are used to render the NURBS curve as a series of line
-segments.  Evaluator state is preserved during rendering with
-`glPushAttrib'(`GLU_EVAL_BIT') and `glPopAttrib'().  See the
+segments. Evaluator state is preserved during rendering with
+`glPushAttrib'(`GLU_EVAL_BIT') and `glPopAttrib'(). See the
 `glPushAttrib' reference page for details on exactly what state these
 calls preserve.")
 
@@ -122,15 +122,15 @@ TESS
      Specifies the tessellation object (created with `gluNewTess').
 
 `gluBeginPolygon' and `gluEndPolygon' delimit the definition of a
-nonconvex polygon.  To define such a polygon, first call
-`gluBeginPolygon'.  Then define the contours of the polygon by calling
+nonconvex polygon. To define such a polygon, first call
+`gluBeginPolygon'. Then define the contours of the polygon by calling
 `gluTessVertex' for each vertex and `gluNextContour' to start each new
-contour.  Finally, call `gluEndPolygon' to signal the end of the
-definition.  See the `gluTessVertex' and `gluNextContour' reference
-pages for more details.
+contour. Finally, call `gluEndPolygon' to signal the end of the
+definition. See the `gluTessVertex' and `gluNextContour' reference pages
+for more details.
 
 Once `gluEndPolygon' is called, the polygon is tessellated, and the
-resulting triangles are described through callbacks.  See
+resulting triangles are described through callbacks. See
 `gluTessCallback' for descriptions of the callback functions.")
 
 (define-glu-procedures
@@ -142,21 +142,20 @@ NURB
      Specifies the NURBS object (created with `gluNewNurbsRenderer').
 
 Use `gluBeginSurface' to mark the beginning of a NURBS surface
-definition.  After calling `gluBeginSurface', make one or more calls to
-`gluNurbsSurface' to define the attributes of the surface.  Exactly one
+definition. After calling `gluBeginSurface', make one or more calls to
+`gluNurbsSurface' to define the attributes of the surface. Exactly one
 of these calls to `gluNurbsSurface' must have a surface type of
-`GLU_MAP2_VERTEX_3' or `GLU_MAP2_VERTEX_4'.  To mark the end of the
-NURBS surface definition, call `gluEndSurface'.
+`GLU_MAP2_VERTEX_3' or `GLU_MAP2_VERTEX_4'. To mark the end of the NURBS
+surface definition, call `gluEndSurface'.
 
 Trimming of NURBS surfaces is supported with `gluBeginTrim',
-`gluPwlCurve', `gluNurbsCurve', and `gluEndTrim'.  See the
-`gluBeginTrim' reference page for details.
+`gluPwlCurve', `gluNurbsCurve', and `gluEndTrim'. See the `gluBeginTrim'
+reference page for details.
 
 GL evaluators are used to render the NURBS surface as a set of polygons.
 Evaluator state is preserved during rendering with
-`glPushAttrib'(`GLU_EVAL_BIT') and `glPopAttrib'.  See the
-`glPushAttrib' reference page for details on exactly what state these
-calls preserve.")
+`glPushAttrib'(`GLU_EVAL_BIT') and `glPopAttrib'. See the `glPushAttrib'
+reference page for details on exactly what state these calls preserve.")
 
 (define-glu-procedures
   ((gluBeginTrim (nurb GLUnurbs*) -> void)
@@ -167,30 +166,30 @@ NURB
      Specifies the NURBS object (created with `gluNewNurbsRenderer').
 
 Use `gluBeginTrim' to mark the beginning of a trimming loop and
-`gluEndTrim' to mark the end of a trimming loop.  A trimming loop is a
+`gluEndTrim' to mark the end of a trimming loop. A trimming loop is a
 set of oriented curve segments (forming a closed curve) that define
-boundaries of a NURBS surface.  You include these trimming loops in the
+boundaries of a NURBS surface. You include these trimming loops in the
 definition of a NURBS surface, between calls to `gluBeginSurface' and
 `gluEndSurface'.
 
-The definition for a NURBS surface can contain many trimming loops.  For
+The definition for a NURBS surface can contain many trimming loops. For
 example, if you wrote a definition for a NURBS surface that resembled a
 rectangle with a hole punched out, the definition would contain two
-trimming loops.  One loop would define the outer edge of the rectangle;
-the other would define the hole punched out of the rectangle.  The
+trimming loops. One loop would define the outer edge of the rectangle;
+the other would define the hole punched out of the rectangle. The
 definitions of each of these trimming loops would be bracketed by a
 `gluBeginTrim'/`gluEndTrim' pair.
 
 The definition of a single closed trimming loop can consist of multiple
 curve segments, each described as a piecewise linear curve (see
 `gluPwlCurve') or as a single NURBS curve (see `gluNurbsCurve'), or as a
-combination of both in any order.  The only library calls that can
-appear in a trimming loop definition (between the calls to
-`gluBeginTrim' and `gluEndTrim') are `gluPwlCurve' and `gluNurbsCurve'.
+combination of both in any order. The only library calls that can appear
+in a trimming loop definition (between the calls to `gluBeginTrim' and
+`gluEndTrim') are `gluPwlCurve' and `gluNurbsCurve'.
 
 The area of the NURBS surface that is displayed is the region in the
 domain to the left of the trimming curve as the curve parameter
-increases.  Thus, the retained region of the NURBS surface is inside a
+increases. Thus, the retained region of the NURBS surface is inside a
 counterclockwise trimming loop and outside a clockwise trimming loop.
 For the rectangle mentioned earlier, the trimming loop for the outer
 edge of the rectangle runs counterclockwise, while the trimming loop for
@@ -199,15 +198,15 @@ the punched-out hole runs clockwise.
 If you use more than one curve to define a single trimming loop, the
 curve segments must form a closed loop (that is, the endpoint of each
 curve must be the starting point of the next curve, and the endpoint of
-the final curve must be the starting point of the first curve).  If the
+the final curve must be the starting point of the first curve). If the
 endpoints of the curve are sufficiently close together but not exactly
-coincident, they will be coerced to match.  If the endpoints are not
+coincident, they will be coerced to match. If the endpoints are not
 sufficiently close, an error results (see `gluNurbsCallback').
 
 If a trimming loop definition contains multiple curves, the direction of
 the curves must be consistent (that is, the inside must be to the left
-of all of the curves).  Nested trimming loops are legal as long as the
-curve orientations alternate correctly.  If trimming curves are
+of all of the curves). Nested trimming loops are legal as long as the
+curve orientations alternate correctly. If trimming curves are
 self-intersecting, or intersect one another, an error results.
 
 If no trimming information is given for a NURBS surface, the entire
@@ -229,43 +228,43 @@ surface is drawn.")
   "Builds a subset of one-dimensional mipmap levels.
 
 TARGET
-     Specifies the target texture.  Must be `GLU_TEXTURE_1D'.
+     Specifies the target texture. Must be `GLU_TEXTURE_1D'.
 
 INTERNALFORMAT
-     Requests the internal storage format of the texture image.  The
-     most current version of the SGI implementation of GLU does not
-     check this value for validity before passing it on to the
-     underlying OpenGL implementation.  A value that is not accepted by
-     the OpenGL implementation will lead to an OpenGL error.  The
-     benefit of not checking this value at the GLU level is that OpenGL
-     extensions can add new internal texture formats without requiring a
-     revision of the GLU implementation.  Older implementations of GLU
-     check this value and raise a GLU error if it is not 1, 2, 3, or 4
-     or one of the following symbolic constants: `GLU_ALPHA',
-     `GLU_ALPHA4', `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16',
-     `GLU_LUMINANCE', `GLU_LUMINANCE4', `GLU_LUMINANCE8',
-     `GLU_LUMINANCE12', `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA',
-     `GLU_LUMINANCE4_ALPHA4', `GLU_LUMINANCE6_ALPHA2',
-     `GLU_LUMINANCE8_ALPHA8', `GLU_LUMINANCE12_ALPHA4',
-     `GLU_LUMINANCE12_ALPHA12', `GLU_LUMINANCE16_ALPHA16',
-     `GLU_INTENSITY', `GLU_INTENSITY4', `GLU_INTENSITY8',
-     `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB', `GLU_R3_G3_B2',
-     `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10', `GLU_RGB12',
-     `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4', `GLU_RGB5_A1',
-     `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or `GLU_RGBA16'.
+     Requests the internal storage format of the texture image. The most
+     current version of the SGI implementation of GLU does not check
+     this value for validity before passing it on to the underlying
+     OpenGL implementation. A value that is not accepted by the OpenGL
+     implementation will lead to an OpenGL error. The benefit of not
+     checking this value at the GLU level is that OpenGL extensions can
+     add new internal texture formats without requiring a revision of
+     the GLU implementation. Older implementations of GLU check this
+     value and raise a GLU error if it is not 1, 2, 3, or 4 or one of
+     the following symbolic constants: `GLU_ALPHA', `GLU_ALPHA4',
+     `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16', `GLU_LUMINANCE',
+     `GLU_LUMINANCE4', `GLU_LUMINANCE8', `GLU_LUMINANCE12',
+     `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA', `GLU_LUMINANCE4_ALPHA4',
+     `GLU_LUMINANCE6_ALPHA2', `GLU_LUMINANCE8_ALPHA8',
+     `GLU_LUMINANCE12_ALPHA4', `GLU_LUMINANCE12_ALPHA12',
+     `GLU_LUMINANCE16_ALPHA16', `GLU_INTENSITY', `GLU_INTENSITY4',
+     `GLU_INTENSITY8', `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB',
+     `GLU_R3_G3_B2', `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10',
+     `GLU_RGB12', `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4',
+     `GLU_RGB5_A1', `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or
+     `GLU_RGBA16'.
 
 WIDTH
-     Specifies the width in pixels of the texture image.  This should be
+     Specifies the width in pixels of the texture image. This should be
      a power of 2.
 
 FORMAT
-     Specifies the format of the pixel data.  Must be one of:
+     Specifies the format of the pixel data. Must be one of:
      `GLU_COLOR_INDEX', `GLU_DEPTH_COMPONENT', `GLU_RED', `GLU_GREEN',
      `GLU_BLUE', `GLU_ALPHA', `GLU_RGB', `GLU_RGBA', `GLU_BGR',
      `GLU_BGRA', `GLU_LUMINANCE', or `GLU_LUMINANCE_ALPHA'.
 
 TYPE
-     Specifies the data type for DATA.  Must be one of:
+     Specifies the data type for DATA. Must be one of:
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -289,32 +288,32 @@ DATA
      Specifies a pointer to the image data in memory.
 
 `gluBuild1DMipmapLevels' builds a subset of prefiltered one-dimensional
-texture maps of decreasing resolutions called a mipmap.  This is used
-for the antialiasing of texture mapped primitives.
+texture maps of decreasing resolutions called a mipmap. This is used for
+the antialiasing of texture mapped primitives.
 
 A return value of zero indicates success, otherwise a GLU error code is
 returned (see `gluErrorString').
 
 A series of mipmap levels from BASE to MAX is built by decimating DATA
-in half until size 1×1 is reached.  At each level, each texel in the
+in half until size 1×1 is reached. At each level, each texel in the
 halved mipmap level is an average of the corresponding two texels in the
-larger mipmap level.  `glTexImage1D' is called to load these mipmap
-levels from BASE to MAX.  If MAX is larger than the highest mipmap level
+larger mipmap level. `glTexImage1D' is called to load these mipmap
+levels from BASE to MAX. If MAX is larger than the highest mipmap level
 for the texture of the specified size, then a GLU error code is returned
 (see `gluErrorString') and nothing is loaded.
 
 For example, if LEVEL is 2 and WIDTH is 16, the following levels are
-possible: 16×1 , 8×1 , 4×1 , 2×1 , 1×1 .  These correspond to levels 2
-through 6 respectively.  If BASE is 3 and MAX is 5, then only mipmap
-levels 8×1 , 4×1 and 2×1 are loaded.  However, if MAX is 7, then an
-error is returned and nothing is loaded since MAX is larger than the
-highest mipmap level which is, in this case, 6.
+possible: 16×1 , 8×1 , 4×1 , 2×1 , 1×1 . These correspond to levels 2
+through 6 respectively. If BASE is 3 and MAX is 5, then only mipmap
+levels 8×1 , 4×1 and 2×1 are loaded. However, if MAX is 7, then an error
+is returned and nothing is loaded since MAX is larger than the highest
+mipmap level which is, in this case, 6.
 
 The highest mipmap level can be derived from the formula
 LOG_2\u2061(WIDTH×2^LEVEL,) .
 
 See the `glTexImage1D' reference page for a description of the
-acceptable values for TYPE parameter.  See the `glDrawPixels' reference
+acceptable values for TYPE parameter. See the `glDrawPixels' reference
 page for a description of the acceptable values for LEVEL parameter.
 
 `GLU_INVALID_VALUE' is returned if LEVEL > BASE, BASE < 0, MAX < BASE or
@@ -361,42 +360,42 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
   "Builds a one-dimensional mipmap.
 
 TARGET
-     Specifies the target texture.  Must be `GLU_TEXTURE_1D'.
+     Specifies the target texture. Must be `GLU_TEXTURE_1D'.
 
 INTERNALFORMAT
-     Requests the internal storage format of the texture image.  The
-     most current version of the SGI implementation of GLU does not
-     check this value for validity before passing it on to the
-     underlying OpenGL implementation.  A value that is not accepted by
-     the OpenGL implementation will lead to an OpenGL error.  The
-     benefit of not checking this value at the GLU level is that OpenGL
-     extensions can add new internal texture formats without requiring a
-     revision of the GLU implementation.  Older implementations of GLU
-     check this value and raise a GLU error if it is not 1, 2, 3, or 4
-     or one of the following symbolic constants: `GLU_ALPHA',
-     `GLU_ALPHA4', `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16',
-     `GLU_LUMINANCE', `GLU_LUMINANCE4', `GLU_LUMINANCE8',
-     `GLU_LUMINANCE12', `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA',
-     `GLU_LUMINANCE4_ALPHA4', `GLU_LUMINANCE6_ALPHA2',
-     `GLU_LUMINANCE8_ALPHA8', `GLU_LUMINANCE12_ALPHA4',
-     `GLU_LUMINANCE12_ALPHA12', `GLU_LUMINANCE16_ALPHA16',
-     `GLU_INTENSITY', `GLU_INTENSITY4', `GLU_INTENSITY8',
-     `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB', `GLU_R3_G3_B2',
-     `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10', `GLU_RGB12',
-     `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4', `GLU_RGB5_A1',
-     `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or `GLU_RGBA16'.
+     Requests the internal storage format of the texture image. The most
+     current version of the SGI implementation of GLU does not check
+     this value for validity before passing it on to the underlying
+     OpenGL implementation. A value that is not accepted by the OpenGL
+     implementation will lead to an OpenGL error. The benefit of not
+     checking this value at the GLU level is that OpenGL extensions can
+     add new internal texture formats without requiring a revision of
+     the GLU implementation. Older implementations of GLU check this
+     value and raise a GLU error if it is not 1, 2, 3, or 4 or one of
+     the following symbolic constants: `GLU_ALPHA', `GLU_ALPHA4',
+     `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16', `GLU_LUMINANCE',
+     `GLU_LUMINANCE4', `GLU_LUMINANCE8', `GLU_LUMINANCE12',
+     `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA', `GLU_LUMINANCE4_ALPHA4',
+     `GLU_LUMINANCE6_ALPHA2', `GLU_LUMINANCE8_ALPHA8',
+     `GLU_LUMINANCE12_ALPHA4', `GLU_LUMINANCE12_ALPHA12',
+     `GLU_LUMINANCE16_ALPHA16', `GLU_INTENSITY', `GLU_INTENSITY4',
+     `GLU_INTENSITY8', `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB',
+     `GLU_R3_G3_B2', `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10',
+     `GLU_RGB12', `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4',
+     `GLU_RGB5_A1', `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or
+     `GLU_RGBA16'.
 
 WIDTH
      Specifies the width, in pixels, of the texture image.
 
 FORMAT
-     Specifies the format of the pixel data.  Must be one of
+     Specifies the format of the pixel data. Must be one of
      `GLU_COLOR_INDEX', `GLU_DEPTH_COMPONENT', `GLU_RED', `GLU_GREEN',
      `GLU_BLUE', `GLU_ALPHA', `GLU_RGB', `GLU_RGBA', `GLU_BGR',
      `GLU_BGRA', `GLU_LUMINANCE', or `GLU_LUMINANCE_ALPHA'.
 
 TYPE
-     Specifies the data type for DATA.  Must be one of
+     Specifies the data type for DATA. Must be one of
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -411,36 +410,36 @@ DATA
      Specifies a pointer to the image data in memory.
 
 `gluBuild1DMipmaps' builds a series of prefiltered one-dimensional
-texture maps of decreasing resolutions called a mipmap.  This is used
-for the antialiasing of texture mapped primitives.
+texture maps of decreasing resolutions called a mipmap. This is used for
+the antialiasing of texture mapped primitives.
 
 A return value of zero indicates success, otherwise a GLU error code is
 returned (see `gluErrorString').
 
-Initially, the WIDTH of DATA is checked to see if it is a power of 2.  If
-not, a copy of DATA is scaled up or down to the nearest power of 2.  (If
+Initially, the WIDTH of DATA is checked to see if it is a power of 2. If
+not, a copy of DATA is scaled up or down to the nearest power of 2. (If
 WIDTH is exactly between powers of 2, then the copy of DATA will scale
 upwards.) This copy will be used for subsequent mipmapping operations
-described below.  For example, if WIDTH is 57, then a copy of DATA will
+described below. For example, if WIDTH is 57, then a copy of DATA will
 scale up to 64 before mipmapping takes place.
 
 Then, proxy textures (see `glTexImage1D') are used to determine if the
-implementation can fit the requested texture.  If not, WIDTH is
+implementation can fit the requested texture. If not, WIDTH is
 continually halved until it fits.
 
 Next, a series of mipmap levels is built by decimating a copy of DATA in
-half until size 1×1 is reached.  At each level, each texel in the halved
+half until size 1×1 is reached. At each level, each texel in the halved
 mipmap level is an average of the corresponding two texels in the larger
 mipmap level.
 
-`glTexImage1D' is called to load each of these mipmap levels.  Level 0
-is a copy of DATA.  The highest level is LOG_2,\u2061(WIDTH,) .  For example,
-if WIDTH is 64 and the implementation can store a texture of this size,
-the following mipmap levels are built: 64×1 , 32×1 , 16×1 , 8×1 , 4×1 ,
-2×1 , and 1×1 .  These correspond to levels 0 through 6, respectively.
+`glTexImage1D' is called to load each of these mipmap levels. Level 0 is
+a copy of DATA. The highest level is LOG_2,\u2061(WIDTH,) . For example, if
+WIDTH is 64 and the implementation can store a texture of this size, the
+following mipmap levels are built: 64×1 , 32×1 , 16×1 , 8×1 , 4×1 , 2×1
+, and 1×1 . These correspond to levels 0 through 6, respectively.
 
 See the `glTexImage1D' reference page for a description of the
-acceptable values for the TYPE parameter.  See the `glDrawPixels'
+acceptable values for the TYPE parameter. See the `glDrawPixels'
 reference page for a description of the acceptable values for the DATA
 parameter.
 
@@ -488,45 +487,45 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
   "Builds a subset of two-dimensional mipmap levels.
 
 TARGET
-     Specifies the target texture.  Must be `GLU_TEXTURE_2D'.
+     Specifies the target texture. Must be `GLU_TEXTURE_2D'.
 
 INTERNALFORMAT
-     Requests the internal storage format of the texture image.  The
-     most current version of the SGI implementation of GLU does not
-     check this value for validity before passing it on to the
-     underlying OpenGL implementation.  A value that is not accepted by
-     the OpenGL implementation will lead to an OpenGL error.  The
-     benefit of not checking this value at the GLU level is that OpenGL
-     extensions can add new internal texture formats without requiring a
-     revision of the GLU implementation.  Older implementations of GLU
-     check this value and raise a GLU error if it is not 1, 2, 3, or 4
-     or one of the following symbolic constants: `GLU_ALPHA',
-     `GLU_ALPHA4', `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16',
-     `GLU_LUMINANCE', `GLU_LUMINANCE4', `GLU_LUMINANCE8',
-     `GLU_LUMINANCE12', `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA',
-     `GLU_LUMINANCE4_ALPHA4', `GLU_LUMINANCE6_ALPHA2',
-     `GLU_LUMINANCE8_ALPHA8', `GLU_LUMINANCE12_ALPHA4',
-     `GLU_LUMINANCE12_ALPHA12', `GLU_LUMINANCE16_ALPHA16',
-     `GLU_INTENSITY', `GLU_INTENSITY4', `GLU_INTENSITY8',
-     `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB', `GLU_R3_G3_B2',
-     `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10', `GLU_RGB12',
-     `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4', `GLU_RGB5_A1',
-     `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or `GLU_RGBA16'.
+     Requests the internal storage format of the texture image. The most
+     current version of the SGI implementation of GLU does not check
+     this value for validity before passing it on to the underlying
+     OpenGL implementation. A value that is not accepted by the OpenGL
+     implementation will lead to an OpenGL error. The benefit of not
+     checking this value at the GLU level is that OpenGL extensions can
+     add new internal texture formats without requiring a revision of
+     the GLU implementation. Older implementations of GLU check this
+     value and raise a GLU error if it is not 1, 2, 3, or 4 or one of
+     the following symbolic constants: `GLU_ALPHA', `GLU_ALPHA4',
+     `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16', `GLU_LUMINANCE',
+     `GLU_LUMINANCE4', `GLU_LUMINANCE8', `GLU_LUMINANCE12',
+     `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA', `GLU_LUMINANCE4_ALPHA4',
+     `GLU_LUMINANCE6_ALPHA2', `GLU_LUMINANCE8_ALPHA8',
+     `GLU_LUMINANCE12_ALPHA4', `GLU_LUMINANCE12_ALPHA12',
+     `GLU_LUMINANCE16_ALPHA16', `GLU_INTENSITY', `GLU_INTENSITY4',
+     `GLU_INTENSITY8', `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB',
+     `GLU_R3_G3_B2', `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10',
+     `GLU_RGB12', `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4',
+     `GLU_RGB5_A1', `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or
+     `GLU_RGBA16'.
 
 WIDTH
      HEIGHT
 
      Specifies the width and height, respectively, in pixels of the
-     texture image.  These should be a power of 2.
+     texture image. These should be a power of 2.
 
 FORMAT
-     Specifies the format of the pixel data.  Must be one of
+     Specifies the format of the pixel data. Must be one of
      `GLU_COLOR_INDEX', `GLU_DEPTH_COMPONENT', `GLU_RED', `GLU_GREEN',
      `GLU_BLUE', `GLU_ALPHA', `GLU_RGB', `GLU_RGBA', `GLU_BGR',
      `GLU_BGRA', `GLU_LUMINANCE', or `GLU_LUMINANCE_ALPHA'.
 
 TYPE
-     Specifies the data type for DATA.  Must be one of
+     Specifies the data type for DATA. Must be one of
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -550,27 +549,27 @@ DATA
      Specifies a pointer to the image data in memory.
 
 `gluBuild2DMipmapLevels' builds a subset of prefiltered two-dimensional
-texture maps of decreasing resolutions called a mipmap.  This is used
-for the antialiasing of texture mapped primitives.
+texture maps of decreasing resolutions called a mipmap. This is used for
+the antialiasing of texture mapped primitives.
 
 A return value of zero indicates success, otherwise a GLU error code is
 returned (see `gluErrorString').
 
 A series of mipmap levels from BASE to MAX is built by decimating DATA
-in half along both dimensions until size 1×1 is reached.  At each level,
+in half along both dimensions until size 1×1 is reached. At each level,
 each texel in the halved mipmap level is an average of the corresponding
-four texels in the larger mipmap level.  (In the case of rectangular
+four texels in the larger mipmap level. (In the case of rectangular
 images, the decimation will ultimately reach an N×1 or 1×N
-configuration.  Here, two texels are averaged instead.) `glTexImage2D'
-is called to load these mipmap levels from BASE to MAX.  If MAX is
-larger than the highest mipmap level for the texture of the specified
-size, then a GLU error code is returned (see `gluErrorString') and
-nothing is loaded.
+configuration. Here, two texels are averaged instead.) `glTexImage2D' is
+called to load these mipmap levels from BASE to MAX. If MAX is larger
+than the highest mipmap level for the texture of the specified size,
+then a GLU error code is returned (see `gluErrorString') and nothing is
+loaded.
 
 For example, if LEVEL is 2 and WIDTH is 16 and HEIGHT is 8, the
-following levels are possible: 16×8 , 8×4 , 4×2 , 2×1 , 1×1 .  These
-correspond to levels 2 through 6 respectively.  If BASE is 3 and MAX is
-5, then only mipmap levels 8×4 , 4×2 , and 2×1 are loaded.  However, if
+following levels are possible: 16×8 , 8×4 , 4×2 , 2×1 , 1×1 . These
+correspond to levels 2 through 6 respectively. If BASE is 3 and MAX is
+5, then only mipmap levels 8×4 , 4×2 , and 2×1 are loaded. However, if
 MAX is 7, then an error is returned and nothing is loaded since MAX is
 larger than the highest mipmap level which is, in this case, 6.
 
@@ -578,9 +577,8 @@ The highest mipmap level can be derived from the formula
 LOG_2\u2061(MAX\u2061(WIDTH,HEIGHT)×2^LEVEL,) .
 
 See the `glTexImage1D' reference page for a description of the
-acceptable values for FORMAT parameter.  See the `glDrawPixels'
-reference page for a description of the acceptable values for TYPE
-parameter.
+acceptable values for FORMAT parameter. See the `glDrawPixels' reference
+page for a description of the acceptable values for TYPE parameter.
 
 `GLU_INVALID_VALUE' is returned if LEVEL > BASE, BASE < 0, MAX < BASE,
 or MAX is > the highest mipmap level for DATA.
@@ -627,30 +625,30 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
   "Builds a two-dimensional mipmap.
 
 TARGET
-     Specifies the target texture.  Must be `GLU_TEXTURE_2D'.
+     Specifies the target texture. Must be `GLU_TEXTURE_2D'.
 
 INTERNALFORMAT
-     Requests the internal storage format of the texture image.  The
-     most current version of the SGI implementation of GLU does not
-     check this value for validity before passing it on to the
-     underlying OpenGL implementation.  A value that is not accepted by
-     the OpenGL implementation will lead to an OpenGL error.  The
-     benefit of not checking this value at the GLU level is that OpenGL
-     extensions can add new internal texture formats without requiring a
-     revision of the GLU implementation.  Older implementations of GLU
-     check this value and raise a GLU error if it is not 1, 2, 3, or 4
-     or one of the following symbolic constants: `GLU_ALPHA',
-     `GLU_ALPHA4', `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16',
-     `GLU_LUMINANCE', `GLU_LUMINANCE4', `GLU_LUMINANCE8',
-     `GLU_LUMINANCE12', `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA',
-     `GLU_LUMINANCE4_ALPHA4', `GLU_LUMINANCE6_ALPHA2',
-     `GLU_LUMINANCE8_ALPHA8', `GLU_LUMINANCE12_ALPHA4',
-     `GLU_LUMINANCE12_ALPHA12', `GLU_LUMINANCE16_ALPHA16',
-     `GLU_INTENSITY', `GLU_INTENSITY4', `GLU_INTENSITY8',
-     `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB', `GLU_R3_G3_B2',
-     `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10', `GLU_RGB12',
-     `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4', `GLU_RGB5_A1',
-     `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or `GLU_RGBA16'.
+     Requests the internal storage format of the texture image. The most
+     current version of the SGI implementation of GLU does not check
+     this value for validity before passing it on to the underlying
+     OpenGL implementation. A value that is not accepted by the OpenGL
+     implementation will lead to an OpenGL error. The benefit of not
+     checking this value at the GLU level is that OpenGL extensions can
+     add new internal texture formats without requiring a revision of
+     the GLU implementation. Older implementations of GLU check this
+     value and raise a GLU error if it is not 1, 2, 3, or 4 or one of
+     the following symbolic constants: `GLU_ALPHA', `GLU_ALPHA4',
+     `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16', `GLU_LUMINANCE',
+     `GLU_LUMINANCE4', `GLU_LUMINANCE8', `GLU_LUMINANCE12',
+     `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA', `GLU_LUMINANCE4_ALPHA4',
+     `GLU_LUMINANCE6_ALPHA2', `GLU_LUMINANCE8_ALPHA8',
+     `GLU_LUMINANCE12_ALPHA4', `GLU_LUMINANCE12_ALPHA12',
+     `GLU_LUMINANCE16_ALPHA16', `GLU_INTENSITY', `GLU_INTENSITY4',
+     `GLU_INTENSITY8', `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB',
+     `GLU_R3_G3_B2', `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10',
+     `GLU_RGB12', `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4',
+     `GLU_RGB5_A1', `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or
+     `GLU_RGBA16'.
 
 WIDTH
      HEIGHT
@@ -659,13 +657,13 @@ WIDTH
      texture image.
 
 FORMAT
-     Specifies the format of the pixel data.  Must be one of
+     Specifies the format of the pixel data. Must be one of
      `GLU_COLOR_INDEX', `GLU_DEPTH_COMPONENT', `GLU_RED', `GLU_GREEN',
      `GLU_BLUE', `GLU_ALPHA', `GLU_RGB', `GLU_RGBA', `GLU_BGR',
      `GLU_BGRA', `GLU_LUMINANCE', or `GLU_LUMINANCE_ALPHA'.
 
 TYPE
-     Specifies the data type for DATA.  Must be one of
+     Specifies the data type for DATA. Must be one of
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -680,45 +678,43 @@ DATA
      Specifies a pointer to the image data in memory.
 
 `gluBuild2DMipmaps' builds a series of prefiltered two-dimensional
-texture maps of decreasing resolutions called a mipmap.  This is used
-for the antialiasing of texture-mapped primitives.
+texture maps of decreasing resolutions called a mipmap. This is used for
+the antialiasing of texture-mapped primitives.
 
 A return value of zero indicates success, otherwise a GLU error code is
 returned (see `gluErrorString').
 
 Initially, the WIDTH and HEIGHT of DATA are checked to see if they are a
-power of 2.  If not, a copy of DATA (not DATA), is scaled up or down to
-the nearest power of 2.  This copy will be used for subsequent
-mipmapping operations described below.  (If WIDTH or HEIGHT is exactly
-between powers of 2, then the copy of DATA will scale upwards.) For
-example, if WIDTH is 57 and HEIGHT is 23, then a copy of DATA will scale
-up to 64 in WIDTH and down to 16 in depth, before mipmapping takes
-place.
+power of 2. If not, a copy of DATA (not DATA), is scaled up or down to
+the nearest power of 2. This copy will be used for subsequent mipmapping
+operations described below. (If WIDTH or HEIGHT is exactly between
+powers of 2, then the copy of DATA will scale upwards.) For example, if
+WIDTH is 57 and HEIGHT is 23, then a copy of DATA will scale up to 64 in
+WIDTH and down to 16 in depth, before mipmapping takes place.
 
 Then, proxy textures (see `glTexImage2D') are used to determine if the
-implementation can fit the requested texture.  If not, both dimensions
-are continually halved until it fits.  (If the OpenGL version is \\(<=
+implementation can fit the requested texture. If not, both dimensions
+are continually halved until it fits. (If the OpenGL version is \\(<=
 1.0, both maximum texture dimensions are clamped to the value returned
 by `glGetIntegerv' with the argument `GLU_MAX_TEXTURE_SIZE'.)
 
 Next, a series of mipmap levels is built by decimating a copy of DATA in
-half along both dimensions until size 1×1 is reached.  At each level,
+half along both dimensions until size 1×1 is reached. At each level,
 each texel in the halved mipmap level is an average of the corresponding
-four texels in the larger mipmap level.  (In the case of rectangular
+four texels in the larger mipmap level. (In the case of rectangular
 images, the decimation will ultimately reach an N×1 or 1×N
-configuration.  Here, two texels are averaged instead.)
+configuration. Here, two texels are averaged instead.)
 
-`glTexImage2D' is called to load each of these mipmap levels.  Level 0
-is a copy of DATA.  The highest level is LOG_2,\u2061(MAX\u2061(WIDTH,HEIGHT),) .
-For example, if WIDTH is 64 and HEIGHT is 16 and the implementation can
+`glTexImage2D' is called to load each of these mipmap levels. Level 0 is
+a copy of DATA. The highest level is LOG_2,\u2061(MAX\u2061(WIDTH,HEIGHT),) . For
+example, if WIDTH is 64 and HEIGHT is 16 and the implementation can
 store a texture of this size, the following mipmap levels are built:
 64×16 , 32×8 , 16×4 , 8×2 , 4×1 , 2×1 , and 1×1 These correspond to
 levels 0 through 6, respectively.
 
 See the `glTexImage1D' reference page for a description of the
-acceptable values for FORMAT parameter.  See the `glDrawPixels'
-reference page for a description of the acceptable values for TYPE
-parameter.
+acceptable values for FORMAT parameter. See the `glDrawPixels' reference
+page for a description of the acceptable values for TYPE parameter.
 
 `GLU_INVALID_VALUE' is returned if WIDTH or HEIGHT is < 1.
 
@@ -766,30 +762,30 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
   "Builds a subset of three-dimensional mipmap levels.
 
 TARGET
-     Specifies the target texture.  Must be `GLU_TEXTURE_3D'.
+     Specifies the target texture. Must be `GLU_TEXTURE_3D'.
 
 INTERNALFORMAT
-     Requests the internal storage format of the texture image.  The
-     most current version of the SGI implementation of GLU does not
-     check this value for validity before passing it on to the
-     underlying OpenGL implementation.  A value that is not accepted by
-     the OpenGL implementation will lead to an OpenGL error.  The
-     benefit of not checking this value at the GLU level is that OpenGL
-     extensions can add new internal texture formats without requiring a
-     revision of the GLU implementation.  Older implementations of GLU
-     check this value and raise a GLU error if it is not 1, 2, 3, or 4
-     or one of the following symbolic constants: `GLU_ALPHA',
-     `GLU_ALPHA4', `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16',
-     `GLU_LUMINANCE', `GLU_LUMINANCE4', `GLU_LUMINANCE8',
-     `GLU_LUMINANCE12', `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA',
-     `GLU_LUMINANCE4_ALPHA4', `GLU_LUMINANCE6_ALPHA2',
-     `GLU_LUMINANCE8_ALPHA8', `GLU_LUMINANCE12_ALPHA4',
-     `GLU_LUMINANCE12_ALPHA12', `GLU_LUMINANCE16_ALPHA16',
-     `GLU_INTENSITY', `GLU_INTENSITY4', `GLU_INTENSITY8',
-     `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB', `GLU_R3_G3_B2',
-     `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10', `GLU_RGB12',
-     `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4', `GLU_RGB5_A1',
-     `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or `GLU_RGBA16'.
+     Requests the internal storage format of the texture image. The most
+     current version of the SGI implementation of GLU does not check
+     this value for validity before passing it on to the underlying
+     OpenGL implementation. A value that is not accepted by the OpenGL
+     implementation will lead to an OpenGL error. The benefit of not
+     checking this value at the GLU level is that OpenGL extensions can
+     add new internal texture formats without requiring a revision of
+     the GLU implementation. Older implementations of GLU check this
+     value and raise a GLU error if it is not 1, 2, 3, or 4 or one of
+     the following symbolic constants: `GLU_ALPHA', `GLU_ALPHA4',
+     `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16', `GLU_LUMINANCE',
+     `GLU_LUMINANCE4', `GLU_LUMINANCE8', `GLU_LUMINANCE12',
+     `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA', `GLU_LUMINANCE4_ALPHA4',
+     `GLU_LUMINANCE6_ALPHA2', `GLU_LUMINANCE8_ALPHA8',
+     `GLU_LUMINANCE12_ALPHA4', `GLU_LUMINANCE12_ALPHA12',
+     `GLU_LUMINANCE16_ALPHA16', `GLU_INTENSITY', `GLU_INTENSITY4',
+     `GLU_INTENSITY8', `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB',
+     `GLU_R3_G3_B2', `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10',
+     `GLU_RGB12', `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4',
+     `GLU_RGB5_A1', `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or
+     `GLU_RGBA16'.
 
 WIDTH
      HEIGHT
@@ -797,16 +793,16 @@ WIDTH
      DEPTH
 
      Specifies in pixels the width, height and depth respectively, of
-     the texture image.  These should be a power of 2.
+     the texture image. These should be a power of 2.
 
 FORMAT
-     Specifies the format of the pixel data.  Must be one of
+     Specifies the format of the pixel data. Must be one of
      `GLU_COLOR_INDEX', `GLU_DEPTH_COMPONENT', `GLU_RED', `GLU_GREEN',
      `GLU_BLUE', `GLU_ALPHA', `GLU_RGB', `GLU_RGBA', `GLU_BGR',
      `GLU_BGRA', `GLU_LUMINANCE', or `GLU_LUMINANCE_ALPHA'.
 
 TYPE
-     Specifies the data type for DATA.  Must be one of
+     Specifies the data type for DATA. Must be one of
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -831,26 +827,26 @@ DATA
 
 `gluBuild3DMipmapLevels' builds a subset of prefiltered
 three-dimensional texture maps of decreasing resolutions called a
-mipmap.  This is used for the antialiasing of texture mapped primitives.
+mipmap. This is used for the antialiasing of texture mapped primitives.
 
 A return value of zero indicates success, otherwise a GLU error code is
 returned (see `gluErrorString').
 
 A series of mipmap levels from BASE to MAX is built by decimating DATA
-in half along both dimensions until size 1×1×1 is reached.  At each
+in half along both dimensions until size 1×1×1 is reached. At each
 level, each texel in the halved mipmap level is an average of the
-corresponding eight texels in the larger mipmap level.  (If exactly one
-of the dimensions is 1, four texels are averaged.  If exactly two of the
+corresponding eight texels in the larger mipmap level. (If exactly one
+of the dimensions is 1, four texels are averaged. If exactly two of the
 dimensions are 1, two texels are averaged.) `glTexImage3D' is called to
-load these mipmap levels from BASE to MAX.  If MAX is larger than the
+load these mipmap levels from BASE to MAX. If MAX is larger than the
 highest mipmap level for the texture of the specified size, then a GLU
 error code is returned (see `gluErrorString') and nothing is loaded.
 
 For example, if LEVEL is 2 and WIDTH is 16, HEIGHT is 8 and DEPTH is 4,
 the following levels are possible: 16×8×4 , 8×4×2 , 4×2×1 , 2×1×1 ,
-1×1×1 .  These correspond to levels 2 through 6 respectively.  If BASE
-is 3 and MAX is 5, then only mipmap levels 8×4×2 , 4×2×1 , and 2×1×1 are
-loaded.  However, if MAX is 7, then an error is returned and nothing is
+1×1×1 . These correspond to levels 2 through 6 respectively. If BASE is
+3 and MAX is 5, then only mipmap levels 8×4×2 , 4×2×1 , and 2×1×1 are
+loaded. However, if MAX is 7, then an error is returned and nothing is
 loaded, since MAX is larger than the highest mipmap level which is, in
 this case, 6.
 
@@ -858,9 +854,8 @@ The highest mipmap level can be derived from the formula
 LOG_2\u2061(MAX\u2061(WIDTH,HEIGHTDEPTH)×2^LEVEL,) .
 
 See the `glTexImage1D' reference page for a description of the
-acceptable values for FORMAT parameter.  See the `glDrawPixels'
-reference page for a description of the acceptable values for TYPE
-parameter.
+acceptable values for FORMAT parameter. See the `glDrawPixels' reference
+page for a description of the acceptable values for TYPE parameter.
 
 `GLU_INVALID_VALUE' is returned if LEVEL > BASE, BASE < 0, MAX < BASE,
 or MAX is > the highest mipmap level for DATA.
@@ -908,30 +903,30 @@ FORMAT is neither `GLU_RGBA' nor `GLU_BGRA'.")
   "Builds a three-dimensional mipmap.
 
 TARGET
-     Specifies the target texture.  Must be `GLU_TEXTURE_3D'.
+     Specifies the target texture. Must be `GLU_TEXTURE_3D'.
 
 INTERNALFORMAT
-     Requests the internal storage format of the texture image.  The
-     most current version of the SGI implementation of GLU does not
-     check this value for validity before passing it on to the
-     underlying OpenGL implementation.  A value that is not accepted by
-     the OpenGL implementation will lead to an OpenGL error.  The
-     benefit of not checking this value at the GLU level is that OpenGL
-     extensions can add new internal texture formats without requiring a
-     revision of the GLU implementation.  Older implementations of GLU
-     check this value and raise a GLU error if it is not 1, 2, 3, or 4
-     or one of the following symbolic constants: `GLU_ALPHA',
-     `GLU_ALPHA4', `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16',
-     `GLU_LUMINANCE', `GLU_LUMINANCE4', `GLU_LUMINANCE8',
-     `GLU_LUMINANCE12', `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA',
-     `GLU_LUMINANCE4_ALPHA4', `GLU_LUMINANCE6_ALPHA2',
-     `GLU_LUMINANCE8_ALPHA8', `GLU_LUMINANCE12_ALPHA4',
-     `GLU_LUMINANCE12_ALPHA12', `GLU_LUMINANCE16_ALPHA16',
-     `GLU_INTENSITY', `GLU_INTENSITY4', `GLU_INTENSITY8',
-     `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB', `GLU_R3_G3_B2',
-     `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10', `GLU_RGB12',
-     `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4', `GLU_RGB5_A1',
-     `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or `GLU_RGBA16'.
+     Requests the internal storage format of the texture image. The most
+     current version of the SGI implementation of GLU does not check
+     this value for validity before passing it on to the underlying
+     OpenGL implementation. A value that is not accepted by the OpenGL
+     implementation will lead to an OpenGL error. The benefit of not
+     checking this value at the GLU level is that OpenGL extensions can
+     add new internal texture formats without requiring a revision of
+     the GLU implementation. Older implementations of GLU check this
+     value and raise a GLU error if it is not 1, 2, 3, or 4 or one of
+     the following symbolic constants: `GLU_ALPHA', `GLU_ALPHA4',
+     `GLU_ALPHA8', `GLU_ALPHA12', `GLU_ALPHA16', `GLU_LUMINANCE',
+     `GLU_LUMINANCE4', `GLU_LUMINANCE8', `GLU_LUMINANCE12',
+     `GLU_LUMINANCE16', `GLU_LUMINANCE_ALPHA', `GLU_LUMINANCE4_ALPHA4',
+     `GLU_LUMINANCE6_ALPHA2', `GLU_LUMINANCE8_ALPHA8',
+     `GLU_LUMINANCE12_ALPHA4', `GLU_LUMINANCE12_ALPHA12',
+     `GLU_LUMINANCE16_ALPHA16', `GLU_INTENSITY', `GLU_INTENSITY4',
+     `GLU_INTENSITY8', `GLU_INTENSITY12', `GLU_INTENSITY16', `GLU_RGB',
+     `GLU_R3_G3_B2', `GLU_RGB4', `GLU_RGB5', `GLU_RGB8', `GLU_RGB10',
+     `GLU_RGB12', `GLU_RGB16', `GLU_RGBA', `GLU_RGBA2', `GLU_RGBA4',
+     `GLU_RGB5_A1', `GLU_RGBA8', `GLU_RGB10_A2', `GLU_RGBA12', or
+     `GLU_RGBA16'.
 
 WIDTH
      HEIGHT
@@ -942,13 +937,13 @@ WIDTH
      pixels of the texture image.
 
 FORMAT
-     Specifies the format of the pixel data.  Must be one of
+     Specifies the format of the pixel data. Must be one of
      `GLU_COLOR_INDEX', `GLU_DEPTH_COMPONENT', `GLU_RED', `GLU_GREEN',
      `GLU_BLUE', `GLU_ALPHA', `GLU_RGB', `GLU_RGBA', `GLU_BGR',
      `GLU_BGRA', `GLU_LUMINANCE', or `GLU_LUMINANCE_ALPHA'.
 
 TYPE
-     Specifies the data type for DATA.  Must be one of:
+     Specifies the data type for DATA. Must be one of:
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -963,15 +958,15 @@ DATA
      Specifies a pointer to the image data in memory.
 
 `gluBuild3DMipmaps' builds a series of prefiltered three-dimensional
-texture maps of decreasing resolutions called a mipmap.  This is used
-for the antialiasing of texture-mapped primitives.
+texture maps of decreasing resolutions called a mipmap. This is used for
+the antialiasing of texture-mapped primitives.
 
 A return value of zero indicates success, otherwise a GLU error code is
 returned (see `gluErrorString').
 
 Initially, the WIDTH, HEIGHT and DEPTH of DATA are checked to see if
-they are a power of 2.  If not, a copy of DATA is made and scaled up or
-down to the nearest power of 2.  (If WIDTH, HEIGHT, or DEPTH is exactly
+they are a power of 2. If not, a copy of DATA is made and scaled up or
+down to the nearest power of 2. (If WIDTH, HEIGHT, or DEPTH is exactly
 between powers of 2, then the copy of DATA will scale upwards.) This
 copy will be used for subsequent mipmapping operations described below.
 For example, if WIDTH is 57, HEIGHT is 23, and DEPTH is 24, then a copy
@@ -979,28 +974,26 @@ of DATA will scale up to 64 in width, down to 16 in height, and up to 32
 in depth before mipmapping takes place.
 
 Then, proxy textures (see `glTexImage3D') are used to determine if the
-implementation can fit the requested texture.  If not, all three
+implementation can fit the requested texture. If not, all three
 dimensions are continually halved until it fits.
 
 Next, a series of mipmap levels is built by decimating a copy of DATA in
-half along all three dimensions until size 1×1×1 is reached.  At each
+half along all three dimensions until size 1×1×1 is reached. At each
 level, each texel in the halved mipmap level is an average of the
-corresponding eight texels in the larger mipmap level.  (If exactly one
-of the dimensions is 1, four texels are averaged.  If exactly two of the
+corresponding eight texels in the larger mipmap level. (If exactly one
+of the dimensions is 1, four texels are averaged. If exactly two of the
 dimensions are 1, two texels are averaged.)
 
-`glTexImage3D' is called to load each of these mipmap levels.  Level 0
-is a copy of DATA.  The highest level is
-LOG_2,\u2061(MAX\u2061(WIDTH,HEIGHTDEPTH),) .  For example, if WIDTH is 64, HEIGHT
-is 16, and DEPTH is 32, and the implementation can store a texture of
-this size, the following mipmap levels are built: 64×16×32 , 32×8×16 ,
-16×4×8 , 8×2×4 , 4×1×2 , 2×1×1 , and 1×1×1 .  These correspond to levels
-0 through 6, respectively.
+`glTexImage3D' is called to load each of these mipmap levels. Level 0 is
+a copy of DATA. The highest level is LOG_2,\u2061(MAX\u2061(WIDTH,HEIGHTDEPTH),) .
+For example, if WIDTH is 64, HEIGHT is 16, and DEPTH is 32, and the
+implementation can store a texture of this size, the following mipmap
+levels are built: 64×16×32 , 32×8×16 , 16×4×8 , 8×2×4 , 4×1×2 , 2×1×1 ,
+and 1×1×1 . These correspond to levels 0 through 6, respectively.
 
 See the `glTexImage1D' reference page for a description of the
-acceptable values for FORMAT parameter.  See the `glDrawPixels'
-reference page for a description of the acceptable values for TYPE
-parameter.
+acceptable values for FORMAT parameter. See the `glDrawPixels' reference
+page for a description of the acceptable values for TYPE parameter.
 
 `GLU_INVALID_VALUE' is returned if WIDTH, HEIGHT, or DEPTH is < 1.
 
@@ -1082,16 +1075,16 @@ SLICES
 STACKS
      Specifies the number of subdivisions along the Z axis.
 
-`gluCylinder' draws a cylinder oriented along the Z axis.  The base of
-the cylinder is placed at Z = 0 and the top at Z=HEIGHT .  Like a
-sphere, a cylinder is subdivided around the Z axis into slices and along
-the Z axis into stacks.
+`gluCylinder' draws a cylinder oriented along the Z axis. The base of
+the cylinder is placed at Z = 0 and the top at Z=HEIGHT . Like a sphere,
+a cylinder is subdivided around the Z axis into slices and along the Z
+axis into stacks.
 
 Note that if TOP is set to 0.0, this routine generates a cone.
 
 If the orientation is set to `GLU_OUTSIDE' (with
 `gluQuadricOrientation'), then any generated normals point away from the
-Z axis.  Otherwise, they point toward the Z axis.
+Z axis. Otherwise, they point toward the Z axis.
 
 If texturing is turned on (with `gluQuadricTexture'), then texture
 coordinates are generated so that T ranges linearly from 0.0 at Z = 0 to
@@ -1107,7 +1100,7 @@ NURB
      Specifies the NURBS object to be destroyed.
 
 `gluDeleteNurbsRenderer' destroys the NURBS object (which was created
-with `gluNewNurbsRenderer') and frees any memory it uses.  Once
+with `gluNewNurbsRenderer') and frees any memory it uses. Once
 `gluDeleteNurbsRenderer' has been called, NURB cannot be used again.")
 
 (define-glu-procedures
@@ -1118,7 +1111,7 @@ QUAD
      Specifies the quadrics object to be destroyed.
 
 `gluDeleteQuadric' destroys the quadrics object (created with
-`gluNewQuadric') and frees any memory it uses.  Once `gluDeleteQuadric'
+`gluNewQuadric') and frees any memory it uses. Once `gluDeleteQuadric'
 has been called, QUAD cannot be used again.")
 
 (define-glu-procedures
@@ -1158,16 +1151,16 @@ LOOPS
      Specifies the number of concentric rings about the origin into
      which the disk is subdivided.
 
-`gluDisk' renders a disk on the Z = 0 plane.  The disk has a radius of
-OUTER and contains a concentric circular hole with a radius of INNER.  If
-INNER is 0, then no hole is generated.  The disk is subdivided around
-the Z axis into slices (like pizza slices) and also about the Z axis
-into rings (as specified by SLICES and LOOPS, respectively).
+`gluDisk' renders a disk on the Z = 0 plane. The disk has a radius of
+OUTER and contains a concentric circular hole with a radius of INNER. If
+INNER is 0, then no hole is generated. The disk is subdivided around the
+Z axis into slices (like pizza slices) and also about the Z axis into
+rings (as specified by SLICES and LOOPS, respectively).
 
 With respect to orientation, the +Z side of the disk is considered to be
-``outside'' (see `gluQuadricOrientation').  This means that if the
+``outside'' (see `gluQuadricOrientation'). This means that if the
 orientation is set to `GLU_OUTSIDE', then any normals generated point
-along the +Z axis.  Otherwise, they point along the \\-Z axis.
+along the +Z axis. Otherwise, they point along the \\-Z axis.
 
 If texturing has been turned on (with `gluQuadricTexture'), texture
 coordinates are generated linearly such that where R=OUTER , the value
@@ -1185,12 +1178,12 @@ ERROR
      Specifies a GL or GLU error code.
 
 `gluErrorString' produces an error string from a GL or GLU error code.
-The string is in ISO Latin 1 format.  For example,
+The string is in ISO Latin 1 format. For example,
 `gluErrorString'(`GLU_OUT_OF_MEMORY') returns the string OUT OF MEMORY.
 
 The standard GLU error codes are `GLU_INVALID_ENUM',
-`GLU_INVALID_VALUE', and `GLU_OUT_OF_MEMORY'.  Certain other GLU
-functions can return specialized error codes through callbacks.  See the
+`GLU_INVALID_VALUE', and `GLU_OUT_OF_MEMORY'. Certain other GLU
+functions can return specialized error codes through callbacks. See the
 `glGetError' reference page for the list of GL error codes.
 
 `NULL' is returned if ERROR is not a valid GL or GLU error code.")
@@ -1208,7 +1201,7 @@ NURB
      Specifies the NURBS object (created with `gluNewNurbsRenderer').
 
 PROPERTY
-     Specifies the property whose value is to be fetched.  Valid values
+     Specifies the property whose value is to be fetched. Valid values
      are `GLU_CULLING', `GLU_SAMPLING_TOLERANCE', `GLU_DISPLAY_MODE',
      `GLU_AUTO_LOAD_MATRIX', `GLU_PARAMETRIC_TOLERANCE',
      `GLU_SAMPLING_METHOD', `GLU_U_STEP', `GLU_V_STEP', and
@@ -1220,7 +1213,7 @@ DATA
 
 `gluGetNurbsProperty' retrieves properties stored in a NURBS object.
 These properties affect the way that NURBS curves and surfaces are
-rendered.  See the `gluNurbsProperty' reference page for information
+rendered. See the `gluNurbsProperty' reference page for information
 about what the properties are and what they do.")
 
 (define-glu-procedures
@@ -1242,14 +1235,14 @@ The version string is of the following form:
 
 VERSION NUMBER<SPACE>VENDOR-SPECIFIC INFORMATION
 
-Vendor-specific information is optional.  Its format and contents depend
+Vendor-specific information is optional. Its format and contents depend
 on the implementation.
 
-The standard GLU contains a basic set of features and capabilities.  If
-a company or group of companies wish to support other features, these
-may be included as extensions to the GLU.  If NAME is `GLU_EXTENSIONS',
-then `gluGetString' returns a space-separated list of names of supported
-GLU extensions.  (Extension names never contain spaces.)
+The standard GLU contains a basic set of features and capabilities. If a
+company or group of companies wish to support other features, these may
+be included as extensions to the GLU. If NAME is `GLU_EXTENSIONS', then
+`gluGetString' returns a space-separated list of names of supported GLU
+extensions. (Extension names never contain spaces.)
 
 All strings are null-terminated.
 
@@ -1268,7 +1261,7 @@ TESS
      Specifies the tessellation object (created with `gluNewTess').
 
 WHICH
-     Specifies the property whose value is to be fetched.  Valid values
+     Specifies the property whose value is to be fetched. Valid values
      are `GLU_TESS_WINDING_RULE', `GLU_TESS_BOUNDARY_ONLY', and
      `GLU_TESS_TOLERANCE'.
 
@@ -1277,8 +1270,8 @@ DATA
      named property is written.
 
 `gluGetTessProperty' retrieves properties stored in a tessellation
-object.  These properties affect the way that tessellation objects are
-interpreted and rendered.  See the `gluTessProperty' reference page for
+object. These properties affect the way that tessellation objects are
+interpreted and rendered. See the `gluTessProperty' reference page for
 information about the properties and what they do.")
 
 (define-glu-procedures
@@ -1304,17 +1297,17 @@ VIEW
      Specifies a viewport (as from a `glGetIntegerv' call).
 
 `gluLoadSamplingMatrices' uses MODEL, PERSPECTIVE, and VIEW to recompute
-the sampling and culling matrices stored in NURB.  The sampling matrix
+the sampling and culling matrices stored in NURB. The sampling matrix
 determines how finely a NURBS curve or surface must be tessellated to
 satisfy the sampling tolerance (as determined by the
-`GLU_SAMPLING_TOLERANCE' property).  The culling matrix is used in
+`GLU_SAMPLING_TOLERANCE' property). The culling matrix is used in
 deciding if a NURBS curve or surface should be culled before rendering
 (when the `GLU_CULLING' property is turned on).
 
 `gluLoadSamplingMatrices' is necessary only if the
 `GLU_AUTO_LOAD_MATRIX' property is turned off (see `gluNurbsProperty').
 Although it can be convenient to leave the `GLU_AUTO_LOAD_MATRIX'
-property turned on, there can be a performance penalty for doing so.  (A
+property turned on, there can be a performance penalty for doing so. (A
 round trip to the GL server is needed to fetch the current values of the
 modelview matrix, projection matrix, and viewport.)")
 
@@ -1358,12 +1351,12 @@ UPX
 reference point indicating the center of the scene, and an UP vector.
 
 The matrix maps the reference point to the negative Z axis and the eye
-point to the origin.  When a typical projection matrix is used, the
+point to the origin. When a typical projection matrix is used, the
 center of the scene therefore maps to the center of the viewport.
 Similarly, the direction described by the UP vector projected onto the
 viewing plane is mapped to the positive Y axis so that it points upward
-in the viewport.  The UP vector must not be parallel to the line of
-sight from the eye point to the reference point.
+in the viewport. The UP vector must not be parallel to the line of sight
+from the eye point to the reference point.
 
 Let
 
@@ -1397,9 +1390,9 @@ and `gluLookAt' is equivalent to
   "Create a NURBS object.
 
 `gluNewNurbsRenderer' creates and returns a pointer to a new NURBS
-object.  This object must be referred to when calling NURBS rendering
-and control functions.  A return value of 0 means that there is not
-enough memory to allocate the object.")
+object. This object must be referred to when calling NURBS rendering and
+control functions. A return value of 0 means that there is not enough
+memory to allocate the object.")
 
 (define-glu-procedures
   ((gluNewQuadric -> GLUquadric*))
@@ -1407,7 +1400,7 @@ enough memory to allocate the object.")
 
 `gluNewQuadric' creates and returns a pointer to a new quadrics object.
 This object must be referred to when calling quadrics rendering and
-control functions.  A return value of 0 means that there is not enough
+control functions. A return value of 0 means that there is not enough
 memory to allocate the object.")
 
 (define-glu-procedures
@@ -1415,7 +1408,7 @@ memory to allocate the object.")
   "Create a tessellation object.
 
 `gluNewTess' creates and returns a pointer to a new tessellation object.
-This object must be referred to when calling tessellation functions.  A
+This object must be referred to when calling tessellation functions. A
 return value of 0 means that there is not enough memory to allocate the
 object.")
 
@@ -1431,7 +1424,7 @@ TESS
      Specifies the tessellation object (created with `gluNewTess').
 
 TYPE
-     Specifies the type of the contour being defined.  Valid values are
+     Specifies the type of the contour being defined. Valid values are
      `GLU_EXTERIOR', `GLU_INTERIOR', `GLU_UNKNOWN', `GLU_CCW', and
      `GLU_CW'.
 
@@ -1439,11 +1432,11 @@ TYPE
 After the first contour has been described through a series of
 `gluTessVertex' calls, a `gluNextContour' call indicates that the
 previous contour is complete and that the next contour is about to
-begin.  Another series of `gluTessVertex' calls is then used to describe
-the new contour.  This process can be repeated until all contours have
+begin. Another series of `gluTessVertex' calls is then used to describe
+the new contour. This process can be repeated until all contours have
 been described.
 
-TYPE defines what type of contour follows.  The legal contour types are
+TYPE defines what type of contour follows. The legal contour types are
 as follows:
 
 `GLU_EXTERIOR'
@@ -1460,7 +1453,7 @@ as follows:
 `GLU_CCW',
 `GLU_CW'
      The first `GLU_CCW' or `GLU_CW' contour defined is considered to be
-     exterior.  All other contours are considered to be exterior if they
+     exterior. All other contours are considered to be exterior if they
      are oriented in the same direction (clockwise or counterclockwise)
      as the first contour, and interior if they are not.
 
@@ -1472,12 +1465,12 @@ Note that there is no real difference between the `GLU_CCW' and `GLU_CW'
 contour types.
 
 Before the first contour is described, `gluNextContour' can be called to
-define the type of the first contour.  If `gluNextContour' is not called
+define the type of the first contour. If `gluNextContour' is not called
 before the first contour, then the first contour is marked
 `GLU_EXTERIOR'.
 
 This command is obsolete and is provided for backward compatibility
-only.  Calls to `gluNextContour' are mapped to `gluTessEndContour'
+only. Calls to `gluNextContour' are mapped to `gluTessEndContour'
 followed by `gluTessBeginContour'.")
 
 (define-glu-procedures
@@ -1495,7 +1488,7 @@ USERDATA
      Specifies a pointer to the user's data.
 
 `gluNurbsCallbackDataEXT' is used to pass a pointer to the application's
-data to NURBS tessellator.  A copy of this pointer will be passed by the
+data to NURBS tessellator. A copy of this pointer will be passed by the
 tessellator in the NURBS callback functions (set by `gluNurbsCallback').")
 
 (define-glu-procedures
@@ -1513,7 +1506,7 @@ USERDATA
      Specifies a pointer to the user's data.
 
 `gluNurbsCallbackData' is used to pass a pointer to the application's
-data to NURBS tessellator.  A copy of this pointer will be passed by the
+data to NURBS tessellator. A copy of this pointer will be passed by the
 tessellator in the NURBS callback functions (set by `gluNurbsCallback').")
 
 (define-glu-procedures
@@ -1529,7 +1522,7 @@ NURB
      Specifies the NURBS object (created with `gluNewNurbsRenderer').
 
 WHICH
-     Specifies the callback being defined.  Valid values are
+     Specifies the callback being defined. Valid values are
      `GLU_NURBS_BEGIN', `GLU_NURBS_VERTEX', `GLU_NURBS_NORMAL',
      `GLU_NURBS_COLOR', `GLU_NURBS_TEXTURE_COORD', `GLU_NURBS_END',
      `GLU_NURBS_BEGIN_DATA', `GLU_NURBS_VERTEX_DATA',
@@ -1541,21 +1534,21 @@ CALLBACKFUNC
      Specifies the function that the callback calls.
 
 `gluNurbsCallback' is used to define a callback to be used by a NURBS
-object.  If the specified callback is already defined, then it is
-replaced.  If CALLBACKFUNC is NULL, then this callback will not get
+object. If the specified callback is already defined, then it is
+replaced. If CALLBACKFUNC is NULL, then this callback will not get
 invoked and the related data, if any, will be lost.
 
 Except the error callback, these callbacks are used by NURBS tessellator
 (when `GLU_NURBS_MODE' is set to be `GLU_NURBS_TESSELLATOR') to return
-back the OpenGL polygon primitives resulting from the tessellation.  Note
+back the OpenGL polygon primitives resulting from the tessellation. Note
 that there are two versions of each callback: one with a user data
-pointer and one without.  If both versions for a particular callback are
+pointer and one without. If both versions for a particular callback are
 specified then the callback with the user data pointer will be used.
 Note that ``userData'' is a copy of the pointer that was specified at
 the last call to `gluNurbsCallbackData'.
 
 The error callback function is effective no matter which value that
-`GLU_NURBS_MODE' is set to.  All other callback functions are effective
+`GLU_NURBS_MODE' is set to. All other callback functions are effective
 only when `GLU_NURBS_MODE' is set to `GLU_NURBS_TESSELLATOR'.
 
 The legal callbacks are as follows:
@@ -1563,39 +1556,39 @@ The legal callbacks are as follows:
 `GLU_NURBS_BEGIN'
 
 
-     The begin callback indicates the start of a primitive.  The
-     function takes a single argument of type GLenum, which can be one
-     of `GLU_LINES', `GLU_LINE_STRIP', `GLU_TRIANGLE_FAN',
-     `GLU_TRIANGLE_STRIP', `GLU_TRIANGLES', or `GLU_QUAD_STRIP'.  The
-     default begin callback function is NULL.  The function prototype
-     for this callback looks like:
+     The begin callback indicates the start of a primitive. The function
+     takes a single argument of type GLenum, which can be one of
+     `GLU_LINES', `GLU_LINE_STRIP', `GLU_TRIANGLE_FAN',
+     `GLU_TRIANGLE_STRIP', `GLU_TRIANGLES', or `GLU_QUAD_STRIP'. The
+     default begin callback function is NULL. The function prototype for
+     this callback looks like:
 
 `GLU_NURBS_BEGIN_DATA'
 
 
      The same as the `GLU_NURBS_BEGIN' callback except that it takes an
-     additional pointer argument.  This pointer is a copy of the pointer
-     that was specified at the last call to `gluNurbsCallbackData'.  The
-     default callback function is NULL.  The function prototype for this
+     additional pointer argument. This pointer is a copy of the pointer
+     that was specified at the last call to `gluNurbsCallbackData'. The
+     default callback function is NULL. The function prototype for this
      callback function looks like:
 
 `GLU_NURBS_VERTEX'
 
 
-     The vertex callback indicates a vertex of the primitive.  The
+     The vertex callback indicates a vertex of the primitive. The
      coordinates of the vertex are stored in the parameter ``vertex''.
      All the generated vertices have dimension 3; that is, homogeneous
-     coordinates have been transformed into affine coordinates.  The
-     default vertex callback function is NULL.  The function prototype
+     coordinates have been transformed into affine coordinates. The
+     default vertex callback function is NULL. The function prototype
      for this callback function looks like:
 
 `GLU_NURBS_VERTEX_DATA'
 
 
      This is the same as the `GLU_NURBS_VERTEX' callback, except that it
-     takes an additional pointer argument.  This pointer is a copy of
-     the pointer that was specified at the last call to
-     `gluNurbsCallbackData'.  The default callback function is NULL.  The
+     takes an additional pointer argument. This pointer is a copy of the
+     pointer that was specified at the last call to
+     `gluNurbsCallbackData'. The default callback function is NULL. The
      function prototype for this callback function looks like:
 
 `GLU_NURBS_NORMAL'
@@ -1605,90 +1598,90 @@ The legal callbacks are as follows:
      The components of the normal are stored in the parameter
      ``normal.'' In the case of a NURBS curve, the callback function is
      effective only when the user provides a normal map
-     (`GLU_MAP1_NORMAL').  In the case of a NURBS surface, if a normal
+     (`GLU_MAP1_NORMAL'). In the case of a NURBS surface, if a normal
      map (`GLU_MAP2_NORMAL') is provided, then the generated normal is
-     computed from the normal map.  If a normal map is not provided,
-     then a surface normal is computed in a manner similar to that
-     described for evaluators when `GLU_AUTO_NORMAL' is enabled.  The
-     default normal callback function is NULL.  The function prototype
-     for this callback function looks like:
+     computed from the normal map. If a normal map is not provided, then
+     a surface normal is computed in a manner similar to that described
+     for evaluators when `GLU_AUTO_NORMAL' is enabled. The default
+     normal callback function is NULL. The function prototype for this
+     callback function looks like:
 
 `GLU_NURBS_NORMAL_DATA'
 
 
      The same as the `GLU_NURBS_NORMAL' callback except that it takes an
-     additional pointer argument.  This pointer is a copy of the pointer
-     that was specified at the last call to `gluNurbsCallbackData'.  The
-     default callback function is NULL.  The function prototype for this
+     additional pointer argument. This pointer is a copy of the pointer
+     that was specified at the last call to `gluNurbsCallbackData'. The
+     default callback function is NULL. The function prototype for this
      callback function looks like:
 
 `GLU_NURBS_COLOR'
 
 
      The color callback is invoked as the color of a vertex is
-     generated.  The components of the color are stored in the parameter
+     generated. The components of the color are stored in the parameter
      ``color.'' This callback is effective only when the user provides a
-     color map (`GLU_MAP1_COLOR_4' or `GLU_MAP2_COLOR_4').  ``color''
-     contains four components: R, G, B, A.  The default color callback
-     function is NULL.  The prototype for this callback function looks
+     color map (`GLU_MAP1_COLOR_4' or `GLU_MAP2_COLOR_4'). ``color''
+     contains four components: R, G, B, A. The default color callback
+     function is NULL. The prototype for this callback function looks
      like:
 
 `GLU_NURBS_COLOR_DATA'
 
 
      The same as the `GLU_NURBS_COLOR' callback except that it takes an
-     additional pointer argument.  This pointer is a copy of the pointer
-     that was specified at the last call to `gluNurbsCallbackData'.  The
-     default callback function is NULL.  The function prototype for this
+     additional pointer argument. This pointer is a copy of the pointer
+     that was specified at the last call to `gluNurbsCallbackData'. The
+     default callback function is NULL. The function prototype for this
      callback function looks like:
 
 `GLU_NURBS_TEXTURE_COORD'
 
 
      The texture callback is invoked as the texture coordinates of a
-     vertex are generated.  These coordinates are stored in the
-     parameter ``texCoord.'' The number of texture coordinates can be 1,
-     2, 3, or 4 depending on which type of texture map is specified
+     vertex are generated. These coordinates are stored in the parameter
+     ``texCoord.'' The number of texture coordinates can be 1, 2, 3, or
+     4 depending on which type of texture map is specified
      (`GLU_MAP1_TEXTURE_COORD_1', `GLU_MAP1_TEXTURE_COORD_2',
      `GLU_MAP1_TEXTURE_COORD_3', `GLU_MAP1_TEXTURE_COORD_4',
      `GLU_MAP2_TEXTURE_COORD_1', `GLU_MAP2_TEXTURE_COORD_2',
-     `GLU_MAP2_TEXTURE_COORD_3', `GLU_MAP2_TEXTURE_COORD_4').  If no
+     `GLU_MAP2_TEXTURE_COORD_3', `GLU_MAP2_TEXTURE_COORD_4'). If no
      texture map is specified, this callback function will not be
-     called.  The default texture callback function is NULL.  The
-     function prototype for this callback function looks like:
+     called. The default texture callback function is NULL. The function
+     prototype for this callback function looks like:
 
 `GLU_NURBS_TEXTURE_COORD_DATA'
 
 
      This is the same as the `GLU_NURBS_TEXTURE_COORD' callback, except
-     that it takes an additional pointer argument.  This pointer is a
+     that it takes an additional pointer argument. This pointer is a
      copy of the pointer that was specified at the last call to
-     `gluNurbsCallbackData'.  The default callback function is NULL.  The
+     `gluNurbsCallbackData'. The default callback function is NULL. The
      function prototype for this callback function looks like:
 
 `GLU_NURBS_END'
 
 
-     The end callback is invoked at the end of a primitive.  The default
-     end callback function is NULL.  The function prototype for this
+     The end callback is invoked at the end of a primitive. The default
+     end callback function is NULL. The function prototype for this
      callback function looks like:
 
 `GLU_NURBS_END_DATA'
 
 
      This is the same as the `GLU_NURBS_END' callback, except that it
-     takes an additional pointer argument.  This pointer is a copy of
-     the pointer that was specified at the last call to
-     `gluNurbsCallbackData'.  The default callback function is NULL.  The
+     takes an additional pointer argument. This pointer is a copy of the
+     pointer that was specified at the last call to
+     `gluNurbsCallbackData'. The default callback function is NULL. The
      function prototype for this callback function looks like:
 
 `GLU_NURBS_ERROR'
 
 
-     The error function is called when an error is encountered.  Its
+     The error function is called when an error is encountered. Its
      single argument is of type GLenum, and it indicates the specific
-     error that occurred.  There are 37 errors unique to NURBS, named
-     `GLU_NURBS_ERROR1' through `GLU_NURBS_ERROR37'.  Character strings
+     error that occurred. There are 37 errors unique to NURBS, named
+     `GLU_NURBS_ERROR1' through `GLU_NURBS_ERROR37'. Character strings
      describing these errors can be retrieved with `gluErrorString'.
 
      
@@ -1744,8 +1737,8 @@ NURB
      Specifies the NURBS object (created with `gluNewNurbsRenderer').
 
 KNOTCOUNT
-     Specifies the number of knots in KNOTS.  KNOTCOUNT equals the
-     number of control points plus the order.
+     Specifies the number of knots in KNOTS. KNOTCOUNT equals the number
+     of control points plus the order.
 
 KNOTS
      Specifies an array of KNOTCOUNT nondecreasing knot values.
@@ -1755,38 +1748,37 @@ STRIDE
      floating-point values) between successive curve control points.
 
 CONTROL
-     Specifies a pointer to an array of control points.  The coordinates
+     Specifies a pointer to an array of control points. The coordinates
      must agree with TYPE, specified below.
 
 ORDER
-     Specifies the order of the NURBS curve.  ORDER equals degree + 1,
+     Specifies the order of the NURBS curve. ORDER equals degree + 1,
      hence a cubic curve has an order of 4.
 
 TYPE
-     Specifies the type of the curve.  If this curve is defined within a
+     Specifies the type of the curve. If this curve is defined within a
      `gluBeginCurve'/`gluEndCurve' pair, then the type can be any of the
      valid one-dimensional evaluator types (such as `GLU_MAP1_VERTEX_3'
-     or `GLU_MAP1_COLOR_4').  Between a `gluBeginTrim'/`gluEndTrim'
-     pair, the only valid types are `GLU_MAP1_TRIM_2' and
-     `GLU_MAP1_TRIM_3'.
+     or `GLU_MAP1_COLOR_4'). Between a `gluBeginTrim'/`gluEndTrim' pair,
+     the only valid types are `GLU_MAP1_TRIM_2' and `GLU_MAP1_TRIM_3'.
 
 Use `gluNurbsCurve' to describe a NURBS curve.
 
 When `gluNurbsCurve' appears between a `gluBeginCurve'/`gluEndCurve'
-pair, it is used to describe a curve to be rendered.  Positional,
+pair, it is used to describe a curve to be rendered. Positional,
 texture, and color coordinates are associated by presenting each as a
 separate `gluNurbsCurve' between a `gluBeginCurve'/`gluEndCurve' pair.
 No more than one call to `gluNurbsCurve' for each of color, position,
 and texture data can be made within a single
-`gluBeginCurve'/`gluEndCurve' pair.  Exactly one call must be made to
+`gluBeginCurve'/`gluEndCurve' pair. Exactly one call must be made to
 describe the position of the curve (a TYPE of `GLU_MAP1_VERTEX_3' or
 `GLU_MAP1_VERTEX_4').
 
 When `gluNurbsCurve' appears between a `gluBeginTrim'/`gluEndTrim' pair,
-it is used to describe a trimming curve on a NURBS surface.  If TYPE is
+it is used to describe a trimming curve on a NURBS surface. If TYPE is
 `GLU_MAP1_TRIM_2', then it describes a curve in two-dimensional (U and
-V) parameter space.  If it is `GLU_MAP1_TRIM_3', then it describes a
-curve in two-dimensional homogeneous (U, V, and W) parameter space.  See
+V) parameter space. If it is `GLU_MAP1_TRIM_3', then it describes a
+curve in two-dimensional homogeneous (U, V, and W) parameter space. See
 the `gluBeginTrim' reference page for more discussion about trimming
 curves.")
 
@@ -1803,39 +1795,39 @@ NURB
      Specifies the NURBS object (created with `gluNewNurbsRenderer').
 
 PROPERTY
-     Specifies the property to be set.  Valid values are
+     Specifies the property to be set. Valid values are
      `GLU_SAMPLING_TOLERANCE', `GLU_DISPLAY_MODE', `GLU_CULLING',
      `GLU_AUTO_LOAD_MATRIX', `GLU_PARAMETRIC_TOLERANCE',
      `GLU_SAMPLING_METHOD', `GLU_U_STEP', `GLU_V_STEP', or
      `GLU_NURBS_MODE'.
 
 VALUE
-     Specifies the value of the indicated property.  It may be a numeric
+     Specifies the value of the indicated property. It may be a numeric
      value or one of `GLU_OUTLINE_POLYGON', `GLU_FILL',
      `GLU_OUTLINE_PATCH', `GLU_TRUE', `GLU_FALSE', `GLU_PATH_LENGTH',
      `GLU_PARAMETRIC_ERROR', `GLU_DOMAIN_DISTANCE',
      `GLU_NURBS_RENDERER', or `GLU_NURBS_TESSELLATOR'.
 
 `gluNurbsProperty' is used to control properties stored in a NURBS
-object.  These properties affect the way that a NURBS curve is rendered.
+object. These properties affect the way that a NURBS curve is rendered.
 The accepted values for PROPERTY are as follows:
 
 `GLU_NURBS_MODE'
      VALUE should be set to be either `GLU_NURBS_RENDERER' or
-     `GLU_NURBS_TESSELLATOR'.  When set to `GLU_NURBS_RENDERER', NURBS
+     `GLU_NURBS_TESSELLATOR'. When set to `GLU_NURBS_RENDERER', NURBS
      objects are tessellated into OpenGL primitives and sent to the
-     pipeline for rendering.  When set to `GLU_NURBS_TESSELLATOR', NURBS
+     pipeline for rendering. When set to `GLU_NURBS_TESSELLATOR', NURBS
      objects are tessellated into OpenGL primitives but the vertices,
      normals, colors, and/or textures are retrieved back through a
-     callback interface (see `gluNurbsCallback').  This allows the user
-     to cache the tessellated results for further processing.  The
+     callback interface (see `gluNurbsCallback'). This allows the user
+     to cache the tessellated results for further processing. The
      initial value is `GLU_NURBS_RENDERER'.
 
 `GLU_SAMPLING_METHOD'
-     Specifies how a NURBS surface should be tessellated.  VALUE may be
+     Specifies how a NURBS surface should be tessellated. VALUE may be
      one of `GLU_PATH_LENGTH', `GLU_PARAMETRIC_ERROR',
      `GLU_DOMAIN_DISTANCE', `GLU_OBJECT_PATH_LENGTH', or
-     `GLU_OBJECT_PARAMETRIC_ERROR'.  When set to `GLU_PATH_LENGTH', the
+     `GLU_OBJECT_PARAMETRIC_ERROR'. When set to `GLU_PATH_LENGTH', the
      surface is rendered so that the maximum length, in pixels, of the
      edges of the tessellation polygons is no greater than what is
      specified by `GLU_SAMPLING_TOLERANCE'.
@@ -1867,42 +1859,42 @@ The accepted values for PROPERTY are as follows:
 `GLU_SAMPLING_TOLERANCE'
      Specifies the maximum length, in pixels or in object space length
      unit, to use when the sampling method is set to `GLU_PATH_LENGTH'
-     or `GLU_OBJECT_PATH_LENGTH'.  The NURBS code is conservative when
+     or `GLU_OBJECT_PATH_LENGTH'. The NURBS code is conservative when
      rendering a curve or surface, so the actual length can be somewhat
-     shorter.  The initial value is 50.0 pixels.
+     shorter. The initial value is 50.0 pixels.
 
 `GLU_PARAMETRIC_TOLERANCE'
      Specifies the maximum distance, in pixels or in object space length
      unit, to use when the sampling method is `GLU_PARAMETRIC_ERROR' or
-     `GLU_OBJECT_PARAMETRIC_ERROR'.  The initial value is 0.5.
+     `GLU_OBJECT_PARAMETRIC_ERROR'. The initial value is 0.5.
 
 `GLU_U_STEP'
      Specifies the number of sample points per unit length taken along
-     the U axis in parametric coordinates.  It is needed when
-     `GLU_SAMPLING_METHOD' is set to `GLU_DOMAIN_DISTANCE'.  The initial
+     the U axis in parametric coordinates. It is needed when
+     `GLU_SAMPLING_METHOD' is set to `GLU_DOMAIN_DISTANCE'. The initial
      value is 100.
 
 `GLU_V_STEP'
      Specifies the number of sample points per unit length taken along
-     the V axis in parametric coordinate.  It is needed when
-     `GLU_SAMPLING_METHOD' is set to `GLU_DOMAIN_DISTANCE'.  The initial
+     the V axis in parametric coordinate. It is needed when
+     `GLU_SAMPLING_METHOD' is set to `GLU_DOMAIN_DISTANCE'. The initial
      value is 100.
 
 `GLU_DISPLAY_MODE'
      VALUE can be set to `GLU_OUTLINE_POLYGON', `GLU_FILL', or
-     `GLU_OUTLINE_PATCH'.  When `GLU_NURBS_MODE' is set to be
+     `GLU_OUTLINE_PATCH'. When `GLU_NURBS_MODE' is set to be
      `GLU_NURBS_RENDERER', VALUE defines how a NURBS surface should be
-     rendered.  When VALUE is set to `GLU_FILL', the surface is rendered
-     as a set of polygons.  When VALUE is set to `GLU_OUTLINE_POLYGON',
+     rendered. When VALUE is set to `GLU_FILL', the surface is rendered
+     as a set of polygons. When VALUE is set to `GLU_OUTLINE_POLYGON',
      the NURBS library draws only the outlines of the polygons created
-     by tessellation.  When VALUE is set to `GLU_OUTLINE_PATCH' just the
+     by tessellation. When VALUE is set to `GLU_OUTLINE_PATCH' just the
      outlines of patches and trim curves defined by the user are drawn.
 
      When `GLU_NURBS_MODE' is set to be `GLU_NURBS_TESSELLATOR', VALUE
-     defines how a NURBS surface should be tessellated.  When
+     defines how a NURBS surface should be tessellated. When
      `GLU_DISPLAY_MODE' is set to `GLU_FILL' or `GLU_OUTLINE_POLYGON',
      the NURBS surface is tessellated into OpenGL triangle primitives
-     that can be retrieved back through callback functions.  If
+     that can be retrieved back through callback functions. If
      `GLU_DISPLAY_MODE' is set to `GLU_OUTLINE_PATCH', only the outlines
      of the patches and trim curves are generated as a sequence of line
      strips that can be retrieved back through callback functions.
@@ -1912,14 +1904,14 @@ The accepted values for PROPERTY are as follows:
 `GLU_CULLING'
      VALUE is a boolean value that, when set to `GLU_TRUE', indicates
      that a NURBS curve should be discarded prior to tessellation if its
-     control points lie outside the current viewport.  The initial value
+     control points lie outside the current viewport. The initial value
      is `GLU_FALSE'.
 
 `GLU_AUTO_LOAD_MATRIX'
-     VALUE is a boolean value.  When set to `GLU_TRUE', the NURBS code
+     VALUE is a boolean value. When set to `GLU_TRUE', the NURBS code
      downloads the projection matrix, the modelview matrix, and the
      viewport from the GL server to compute sampling and culling
-     matrices for each NURBS curve that is rendered.  Sampling and
+     matrices for each NURBS curve that is rendered. Sampling and
      culling matrices are required to determine the tessellation of a
      NURBS surface into line segments or polygons and to cull a NURBS
      surface if it lies outside the viewport.
@@ -1927,8 +1919,8 @@ The accepted values for PROPERTY are as follows:
      If this mode is set to `GLU_FALSE', then the program needs to
      provide a projection matrix, a modelview matrix, and a viewport for
      the NURBS renderer to use to construct sampling and culling
-     matrices.  This can be done with the `gluLoadSamplingMatrices'
-     function.  This mode is initially set to `GLU_TRUE'.  Changing it
+     matrices. This can be done with the `gluLoadSamplingMatrices'
+     function. This mode is initially set to `GLU_TRUE'. Changing it
      from `GLU_TRUE' to `GLU_FALSE' does not affect the sampling and
      culling matrices until `gluLoadSamplingMatrices' is called.")
 
@@ -1983,32 +1975,32 @@ CONTROL
 
 SORDER
      Specifies the order of the NURBS surface in the parametric U
-     direction.  The order is one more than the degree, hence a surface
+     direction. The order is one more than the degree, hence a surface
      that is cubic in U has a U order of 4.
 
 TORDER
      Specifies the order of the NURBS surface in the parametric V
-     direction.  The order is one more than the degree, hence a surface
+     direction. The order is one more than the degree, hence a surface
      that is cubic in V has a V order of 4.
 
 TYPE
-     Specifies type of the surface.  TYPE can be any of the valid
+     Specifies type of the surface. TYPE can be any of the valid
      two-dimensional evaluator types (such as `GLU_MAP2_VERTEX_3' or
      `GLU_MAP2_COLOR_4').
 
 Use `gluNurbsSurface' within a NURBS (Non-Uniform Rational B-Spline)
 surface definition to describe the shape of a NURBS surface (before any
-trimming).  To mark the beginning of a NURBS surface definition, use the
-`gluBeginSurface' command.  To mark the end of a NURBS surface
-definition, use the `gluEndSurface' command.  Call `gluNurbsSurface'
+trimming). To mark the beginning of a NURBS surface definition, use the
+`gluBeginSurface' command. To mark the end of a NURBS surface
+definition, use the `gluEndSurface' command. Call `gluNurbsSurface'
 within a NURBS surface definition only.
 
 Positional, texture, and color coordinates are associated with a surface
 by presenting each as a separate `gluNurbsSurface' between a
-`gluBeginSurface'/`gluEndSurface' pair.  No more than one call to
+`gluBeginSurface'/`gluEndSurface' pair. No more than one call to
 `gluNurbsSurface' for each of color, position, and texture data can be
-made within a single `gluBeginSurface'/`gluEndSurface' pair.  Exactly
-one call must be made to describe the position of the surface (a TYPE of
+made within a single `gluBeginSurface'/`gluEndSurface' pair. Exactly one
+call must be made to describe the position of the surface (a TYPE of
 `GLU_MAP2_VERTEX_3' or `GLU_MAP2_VERTEX_4').
 
 A NURBS surface can be trimmed by using the commands `gluNurbsCurve' and
@@ -2041,7 +2033,7 @@ BOTTOM
      Specify the coordinates for the bottom and top horizontal clipping
      planes.
 
-`gluOrtho2D' sets up a two-dimensional orthographic viewing region.  This
+`gluOrtho2D' sets up a two-dimensional orthographic viewing region. This
 is equivalent to calling `glOrtho' with NEAR=-1 and FAR=1 .")
 
 (define-glu-procedures
@@ -2079,22 +2071,22 @@ START
 SWEEP
      Specifies the sweep angle, in degrees, of the disk portion.
 
-`gluPartialDisk' renders a partial disk on the Z=0 plane.  A partial
-disk is similar to a full disk, except that only the subset of the disk
-from START through START + SWEEP is included (where 0 degrees is along
-the +\\f2y\\f axis, 90 degrees along the +X axis, 180 degrees along the
-\\-Y axis, and 270 degrees along the \\-X axis).
+`gluPartialDisk' renders a partial disk on the Z=0 plane. A partial disk
+is similar to a full disk, except that only the subset of the disk from
+START through START + SWEEP is included (where 0 degrees is along the
++\\f2y\\f axis, 90 degrees along the +X axis, 180 degrees along the \\-Y
+axis, and 270 degrees along the \\-X axis).
 
 The partial disk has a radius of OUTER and contains a concentric
-circular hole with a radius of INNER.  If INNER is 0, then no hole is
-generated.  The partial disk is subdivided around the Z axis into slices
+circular hole with a radius of INNER. If INNER is 0, then no hole is
+generated. The partial disk is subdivided around the Z axis into slices
 (like pizza slices) and also about the Z axis into rings (as specified
 by SLICES and LOOPS, respectively).
 
 With respect to orientation, the +Z side of the partial disk is
-considered to be outside (see `gluQuadricOrientation').  This means that
+considered to be outside (see `gluQuadricOrientation'). This means that
 if the orientation is set to `GLU_OUTSIDE', then any normals generated
-point along the +Z axis.  Otherwise, they point along the \\-Z axis.
+point along the +Z axis. Otherwise, they point along the \\-Z axis.
 
 If texturing is turned on (with `gluQuadricTexture'), texture
 coordinates are generated linearly such that where R=OUTER , the value
@@ -2116,7 +2108,7 @@ FOVY
 
 ASPECT
      Specifies the aspect ratio that determines the field of view in the
-     X direction.  The aspect ratio is the ratio of X (width) to Y
+     X direction. The aspect ratio is the ratio of X (width) to Y
      (height).
 
 ZNEAR
@@ -2128,9 +2120,9 @@ ZFAR
      (always positive).
 
 `gluPerspective' specifies a viewing frustum into the world coordinate
-system.  In general, the aspect ratio in `gluPerspective' should match
-the aspect ratio of the associated viewport.  For example, ASPECT=2.0
-means the viewer's angle of view is twice as wide in X as it is in Y.  If
+system. In general, the aspect ratio in `gluPerspective' should match
+the aspect ratio of the associated viewport. For example, ASPECT=2.0
+means the viewer's angle of view is twice as wide in X as it is in Y. If
 the viewport is twice as wide as it is tall, it displays the image
 without distortion.
 
@@ -2172,22 +2164,22 @@ VIEWPORT
      Specifies the current viewport (as from a `glGetIntegerv' call).
 
 `gluPickMatrix' creates a projection matrix that can be used to restrict
-drawing to a small region of the viewport.  This is typically useful to
-determine what objects are being drawn near the cursor.  Use
+drawing to a small region of the viewport. This is typically useful to
+determine what objects are being drawn near the cursor. Use
 `gluPickMatrix' to restrict drawing to a small region around the cursor.
 Then, enter selection mode (with `glRenderMode') and rerender the scene.
 All primitives that would have been drawn near the cursor are identified
 and stored in the selection buffer.
 
 The matrix created by `gluPickMatrix' is multiplied by the current
-matrix just as if `glMultMatrix' is called with the generated matrix.  To
+matrix just as if `glMultMatrix' is called with the generated matrix. To
 effectively use the generated pick matrix for picking, first call
 `glLoadIdentity' to load an identity matrix onto the perspective matrix
-stack.  Then call `gluPickMatrix', and, finally, call a command (such as
+stack. Then call `gluPickMatrix', and, finally, call a command (such as
 `gluPerspective') to multiply the perspective matrix by the pick matrix.
 
 When using `gluPickMatrix' to pick NURBS, be careful to turn off the
-NURBS property `GLU_AUTO_LOAD_MATRIX'.  If `GLU_AUTO_LOAD_MATRIX' is not
+NURBS property `GLU_AUTO_LOAD_MATRIX'. If `GLU_AUTO_LOAD_MATRIX' is not
 turned off, then any NURBS surface rendered is subdivided differently
 with the pick matrix than the way it was subdivided without the pick
 matrix.")
@@ -2233,12 +2225,12 @@ WINX
      Return the computed window coordinates.
 
 `gluProject' transforms the specified object coordinates into window
-coordinates using MODEL, PROJ, and VIEW.  The result is stored in WINX,
-WINY, and WINZ.  A return value of `GLU_TRUE' indicates success, a
-return value of `GLU_FALSE' indicates failure.
+coordinates using MODEL, PROJ, and VIEW. The result is stored in WINX,
+WINY, and WINZ. A return value of `GLU_TRUE' indicates success, a return
+value of `GLU_FALSE' indicates failure.
 
 To compute the coordinates, let V=(OBJX,OBJYOBJZ1.0) represented as a
-matrix with 4 rows and 1 column.  Then `gluProject' computes V^″ as
+matrix with 4 rows and 1 column. Then `gluProject' computes V^″ as
 follows:
 
 V^″=P×M×V
@@ -2277,21 +2269,21 @@ STRIDE
      values) between points on the curve.
 
 TYPE
-     Specifies the type of curve.  Must be either `GLU_MAP1_TRIM_2' or
+     Specifies the type of curve. Must be either `GLU_MAP1_TRIM_2' or
      `GLU_MAP1_TRIM_3'.
 
 `gluPwlCurve' describes a piecewise linear trimming curve for a NURBS
-surface.  A piecewise linear curve consists of a list of coordinates of
-points in the parameter space for the NURBS surface to be trimmed.  These
-points are connected with line segments to form a curve.  If the curve
-is an approximation to a curve that is not piecewise linear, the points
+surface. A piecewise linear curve consists of a list of coordinates of
+points in the parameter space for the NURBS surface to be trimmed. These
+points are connected with line segments to form a curve. If the curve is
+an approximation to a curve that is not piecewise linear, the points
 should be close enough in parameter space that the resulting path
 appears curved at the resolution used in the application.
 
 If TYPE is `GLU_MAP1_TRIM_2', then it describes a curve in
-two-dimensional (U and V) parameter space.  If it is `GLU_MAP1_TRIM_3',
+two-dimensional (U and V) parameter space. If it is `GLU_MAP1_TRIM_3',
 then it describes a curve in two-dimensional homogeneous (U, V, and W)
-parameter space.  See the `gluBeginTrim' reference page for more
+parameter space. See the `gluBeginTrim' reference page for more
 information about trimming curves.")
 
 (define-glu-procedures
@@ -2307,23 +2299,23 @@ QUAD
      Specifies the quadrics object (created with `gluNewQuadric').
 
 WHICH
-     Specifies the callback being defined.  The only valid value is
+     Specifies the callback being defined. The only valid value is
      `GLU_ERROR'.
 
 CALLBACKFUNC
      Specifies the function to be called.
 
 `gluQuadricCallback' is used to define a new callback to be used by a
-quadrics object.  If the specified callback is already defined, then it
-is replaced.  If CALLBACKFUNC is NULL, then any existing callback is
+quadrics object. If the specified callback is already defined, then it
+is replaced. If CALLBACKFUNC is NULL, then any existing callback is
 erased.
 
 The one legal callback is `GLU_ERROR':
 
 `GLU_ERROR'
-     The function is called when an error is encountered.  Its single
+     The function is called when an error is encountered. Its single
      argument is of type GLenum, and it indicates the specific error
-     that occurred.  Character strings describing these errors can be
+     that occurred. Character strings describing these errors can be
      retrieved with the `gluErrorString' call.")
 
 (define-glu-procedures
@@ -2338,14 +2330,14 @@ QUAD
      Specifies the quadrics object (created with `gluNewQuadric').
 
 DRAW
-     Specifies the desired draw style.  Valid values are `GLU_FILL',
+     Specifies the desired draw style. Valid values are `GLU_FILL',
      `GLU_LINE', `GLU_SILHOUETTE', and `GLU_POINT'.
 
 `gluQuadricDrawStyle' specifies the draw style for quadrics rendered
-with QUAD.  The legal values are as follows:
+with QUAD. The legal values are as follows:
 
 `GLU_FILL'
-     Quadrics are rendered with polygon primitives.  The polygons are
+     Quadrics are rendered with polygon primitives. The polygons are
      drawn in a counterclockwise fashion with respect to their normals
      (as defined with `gluQuadricOrientation').
 
@@ -2371,11 +2363,11 @@ QUAD
      Specifies the quadrics object (created with `gluNewQuadric').
 
 NORMAL
-     Specifies the desired type of normals.  Valid values are
-     `GLU_NONE', `GLU_FLAT', and `GLU_SMOOTH'.
+     Specifies the desired type of normals. Valid values are `GLU_NONE',
+     `GLU_FLAT', and `GLU_SMOOTH'.
 
 `gluQuadricNormals' specifies what kind of normals are desired for
-quadrics rendered with QUAD.  The legal values are as follows:
+quadrics rendered with QUAD. The legal values are as follows:
 
 `GLU_NONE'
      No normals are generated.
@@ -2384,7 +2376,7 @@ quadrics rendered with QUAD.  The legal values are as follows:
      One normal is generated for every facet of a quadric.
 
 `GLU_SMOOTH'
-     One normal is generated for every vertex of a quadric.  This is the
+     One normal is generated for every vertex of a quadric. This is the
      initial value.")
 
 (define-glu-procedures
@@ -2399,11 +2391,11 @@ QUAD
      Specifies the quadrics object (created with `gluNewQuadric').
 
 ORIENTATION
-     Specifies the desired orientation.  Valid values are `GLU_OUTSIDE'
+     Specifies the desired orientation. Valid values are `GLU_OUTSIDE'
      and `GLU_INSIDE'.
 
 `gluQuadricOrientation' specifies what kind of orientation is desired
-for quadrics rendered with QUAD.  The ORIENTATION values are as follows:
+for quadrics rendered with QUAD. The ORIENTATION values are as follows:
 
 `GLU_OUTSIDE'
      Quadrics are drawn with normals pointing outward (the initial
@@ -2431,9 +2423,9 @@ TEXTURE
      generated.
 
 `gluQuadricTexture' specifies if texture coordinates should be generated
-for quadrics rendered with QUAD.  If the value of TEXTURE is `GLU_TRUE',
+for quadrics rendered with QUAD. If the value of TEXTURE is `GLU_TRUE',
 then texture coordinates are generated, and if TEXTURE is `GLU_FALSE',
-they are not.  The initial value is `GLU_FALSE'.
+they are not. The initial value is `GLU_FALSE'.
 
 The manner in which texture coordinates are generated depends upon the
 specific quadric rendered.")
@@ -2454,7 +2446,7 @@ specific quadric rendered.")
   "Scale an image to an arbitrary size.
 
 FORMAT
-     Specifies the format of the pixel data.  The following symbolic
+     Specifies the format of the pixel data. The following symbolic
      values are valid: `GLU_COLOR_INDEX', `GLU_STENCIL_INDEX',
      `GLU_DEPTH_COMPONENT', `GLU_RED', `GLU_GREEN', `GLU_BLUE',
      `GLU_ALPHA', `GLU_RGB', `GLU_RGBA', `GLU_BGR', `GLU_BGRA',
@@ -2467,7 +2459,7 @@ WIN
      image.
 
 TYPEIN
-     Specifies the data type for DATAIN.  Must be one of
+     Specifies the data type for DATAIN. Must be one of
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -2488,7 +2480,7 @@ WOUT
      destination image.
 
 TYPEOUT
-     Specifies the data type for DATAOUT.  Must be one of
+     Specifies the data type for DATAOUT. Must be one of
      `GLU_UNSIGNED_BYTE', `GLU_BYTE', `GLU_BITMAP',
      `GLU_UNSIGNED_SHORT', `GLU_SHORT', `GLU_UNSIGNED_INT', `GLU_INT',
      `GLU_FLOAT', `GLU_UNSIGNED_BYTE_3_3_2',
@@ -2507,7 +2499,7 @@ modes to unpack data from the source image and pack data into the
 destination image.
 
 When shrinking an image, `gluScaleImage' uses a box filter to sample the
-source image and create pixels for the destination image.  When
+source image and create pixels for the destination image. When
 magnifying an image, the pixels from the source image are linearly
 interpolated to create the destination image.
 
@@ -2571,13 +2563,12 @@ STACKS
      lines of latitude).
 
 `gluSphere' draws a sphere of the given radius centered around the
-origin.  The sphere is subdivided around the Z axis into slices and
-along the Z axis into stacks (similar to lines of longitude and
-latitude).
+origin. The sphere is subdivided around the Z axis into slices and along
+the Z axis into stacks (similar to lines of longitude and latitude).
 
 If the orientation is set to `GLU_OUTSIDE' (with
 `gluQuadricOrientation'), then any normals generated point away from the
-center of the sphere.  Otherwise, they point toward the center of the
+center of the sphere. Otherwise, they point toward the center of the
 sphere.
 
 If texturing is turned on (with `gluQuadricTexture'), then texture
@@ -2598,13 +2589,12 @@ TESS
      Specifies the tessellation object (created with `gluNewTess').
 
 `gluTessBeginContour' and `gluTessEndContour' delimit the definition of
-a polygon contour.  Within each
-`gluTessBeginContour'/`gluTessEndContour' pair, there can be zero or
-more calls to `gluTessVertex'.  The vertices specify a closed contour
-(the last vertex of each contour is automatically linked to the first).
-See the `gluTessVertex' reference page for more details.
-`gluTessBeginContour' can only be called between `gluTessBeginPolygon'
-and `gluTessEndPolygon'.")
+a polygon contour. Within each `gluTessBeginContour'/`gluTessEndContour'
+pair, there can be zero or more calls to `gluTessVertex'. The vertices
+specify a closed contour (the last vertex of each contour is
+automatically linked to the first). See the `gluTessVertex' reference
+page for more details. `gluTessBeginContour' can only be called between
+`gluTessBeginPolygon' and `gluTessEndPolygon'.")
 
 (define-glu-procedures
   ((gluTessBeginPolygon
@@ -2621,22 +2611,22 @@ DATA
      Specifies a pointer to user polygon data.
 
 `gluTessBeginPolygon' and `gluTessEndPolygon' delimit the definition of
-a convex, concave or self-intersecting polygon.  Within each
+a convex, concave or self-intersecting polygon. Within each
 `gluTessBeginPolygon'/`gluTessEndPolygon' pair, there must be one or
-more calls to `gluTessBeginContour'/`gluTessEndContour'.  Within each
-contour, there are zero or more calls to `gluTessVertex'.  The vertices
+more calls to `gluTessBeginContour'/`gluTessEndContour'. Within each
+contour, there are zero or more calls to `gluTessVertex'. The vertices
 specify a closed contour (the last vertex of each contour is
-automatically linked to the first).  See the `gluTessVertex',
+automatically linked to the first). See the `gluTessVertex',
 `gluTessBeginContour', and `gluTessEndContour' reference pages for more
 details.
 
-DATA is a pointer to a user-defined data structure.  If the appropriate
+DATA is a pointer to a user-defined data structure. If the appropriate
 callback(s) are specified (see `gluTessCallback'), then this pointer is
-returned to the callback function(s).  Thus, it is a convenient way to
+returned to the callback function(s). Thus, it is a convenient way to
 store per-polygon information.
 
 Once `gluTessEndPolygon' is called, the polygon is tessellated, and the
-resulting triangles are described through callbacks.  See
+resulting triangles are described through callbacks. See
 `gluTessCallback' for descriptions of the callback functions.")
 
 (define-glu-procedures
@@ -2652,7 +2642,7 @@ TESS
      Specifies the tessellation object (created with `gluNewTess').
 
 WHICH
-     Specifies the callback being defined.  The following values are
+     Specifies the callback being defined. The following values are
      valid: `GLU_TESS_BEGIN', `GLU_TESS_BEGIN_DATA',
      `GLU_TESS_EDGE_FLAG', `GLU_TESS_EDGE_FLAG_DATA', `GLU_TESS_VERTEX',
      `GLU_TESS_VERTEX_DATA', `GLU_TESS_END', `GLU_TESS_END_DATA',
@@ -2663,83 +2653,81 @@ CALLBACKFUNC
      Specifies the function to be called.
 
 `gluTessCallback' is used to indicate a callback to be used by a
-tessellation object.  If the specified callback is already defined, then
-it is replaced.  If CALLBACKFUNC is NULL, then the existing callback
+tessellation object. If the specified callback is already defined, then
+it is replaced. If CALLBACKFUNC is NULL, then the existing callback
 becomes undefined.
 
 These callbacks are used by the tessellation object to describe how a
-polygon specified by the user is broken into triangles.  Note that there
+polygon specified by the user is broken into triangles. Note that there
 are two versions of each callback: one with user-specified polygon data
-and one without.  If both versions of a particular callback are
+and one without. If both versions of a particular callback are
 specified, then the callback with user-specified polygon data will be
-used.  Note that the POLYGON_DATA parameter used by some of the
-functions is a copy of the pointer that was specified when
-`gluTessBeginPolygon' was called.  The legal callbacks are as follows:
+used. Note that the POLYGON_DATA parameter used by some of the functions
+is a copy of the pointer that was specified when `gluTessBeginPolygon'
+was called. The legal callbacks are as follows:
 
 `GLU_TESS_BEGIN'
      The begin callback is invoked like `glBegin' to indicate the start
-     of a (triangle) primitive.  The function takes a single argument of
-     type GLenum.  If the `GLU_TESS_BOUNDARY_ONLY' property is set to
+     of a (triangle) primitive. The function takes a single argument of
+     type GLenum. If the `GLU_TESS_BOUNDARY_ONLY' property is set to
      `GLU_FALSE', then the argument is set to either `GLU_TRIANGLE_FAN',
-     `GLU_TRIANGLE_STRIP', or `GLU_TRIANGLES'.  If the
+     `GLU_TRIANGLE_STRIP', or `GLU_TRIANGLES'. If the
      `GLU_TESS_BOUNDARY_ONLY' property is set to `GLU_TRUE', then the
-     argument will be set to `GLU_LINE_LOOP'.  The function prototype
-     for this callback is:
+     argument will be set to `GLU_LINE_LOOP'. The function prototype for
+     this callback is:
 
 `GLU_TESS_BEGIN_DATA'
      The same as the `GLU_TESS_BEGIN' callback except that it takes an
-     additional pointer argument.  This pointer is identical to the
-     opaque pointer provided when `gluTessBeginPolygon' was called.  The
+     additional pointer argument. This pointer is identical to the
+     opaque pointer provided when `gluTessBeginPolygon' was called. The
      function prototype for this callback is:
 
 `GLU_TESS_EDGE_FLAG'
-     The edge flag callback is similar to `glEdgeFlag'.  The function
+     The edge flag callback is similar to `glEdgeFlag'. The function
      takes a single boolean flag that indicates which edges lie on the
-     polygon boundary.  If the flag is `GLU_TRUE', then each vertex that
+     polygon boundary. If the flag is `GLU_TRUE', then each vertex that
      follows begins an edge that lies on the polygon boundary, that is,
-     an edge that separates an interior region from an exterior one.  If
+     an edge that separates an interior region from an exterior one. If
      the flag is `GLU_FALSE', then each vertex that follows begins an
-     edge that lies in the polygon interior.  The edge flag callback (if
+     edge that lies in the polygon interior. The edge flag callback (if
      defined) is invoked before the first vertex callback.
 
      Since triangle fans and triangle strips do not support edge flags,
      the begin callback is not called with `GLU_TRIANGLE_FAN' or
      `GLU_TRIANGLE_STRIP' if a non-NULL edge flag callback is provided.
      (If the callback is initialized to NULL, there is no impact on
-     performance).  Instead, the fans and strips are converted to
-     independent triangles.  The function prototype for this callback
-     is:
+     performance). Instead, the fans and strips are converted to
+     independent triangles. The function prototype for this callback is:
 
 `GLU_TESS_EDGE_FLAG_DATA'
      The same as the `GLU_TESS_EDGE_FLAG' callback except that it takes
-     an additional pointer argument.  This pointer is identical to the
-     opaque pointer provided when `gluTessBeginPolygon' was called.  The
+     an additional pointer argument. This pointer is identical to the
+     opaque pointer provided when `gluTessBeginPolygon' was called. The
      function prototype for this callback is:
 
 `GLU_TESS_VERTEX'
      The vertex callback is invoked between the begin and end callbacks.
      It is similar to `glVertex', and it defines the vertices of the
-     triangles created by the tessellation process.  The function takes
-     a pointer as its only argument.  This pointer is identical to the
+     triangles created by the tessellation process. The function takes a
+     pointer as its only argument. This pointer is identical to the
      opaque pointer provided by the user when the vertex was described
-     (see `gluTessVertex').  The function prototype for this callback
-     is:
+     (see `gluTessVertex'). The function prototype for this callback is:
 
 `GLU_TESS_VERTEX_DATA'
      The same as the `GLU_TESS_VERTEX' callback except that it takes an
-     additional pointer argument.  This pointer is identical to the
-     opaque pointer provided when `gluTessBeginPolygon' was called.  The
+     additional pointer argument. This pointer is identical to the
+     opaque pointer provided when `gluTessBeginPolygon' was called. The
      function prototype for this callback is:
 
 `GLU_TESS_END'
-     The end callback serves the same purpose as `glEnd'.  It indicates
-     the end of a primitive and it takes no arguments.  The function
+     The end callback serves the same purpose as `glEnd'. It indicates
+     the end of a primitive and it takes no arguments. The function
      prototype for this callback is:
 
 `GLU_TESS_END_DATA'
      The same as the `GLU_TESS_END' callback except that it takes an
-     additional pointer argument.  This pointer is identical to the
-     opaque pointer provided when `gluTessBeginPolygon' was called.  The
+     additional pointer argument. This pointer is identical to the
+     opaque pointer provided when `gluTessBeginPolygon' was called. The
      function prototype for this callback is:
 
 `GLU_TESS_COMBINE'
@@ -2747,18 +2735,18 @@ functions is a copy of the pointer that was specified when
      tessellation detects an intersection or wishes to merge features.
      The function takes four arguments: an array of three elements each
      of type GLdouble, an array of four pointers, an array of four
-     elements each of type GLfloat, and a pointer to a pointer.  The
+     elements each of type GLfloat, and a pointer to a pointer. The
      prototype is:
 
      The vertex is defined as a linear combination of up to four
-     existing vertices, stored in VERTEX_DATA.  The coefficients of the
+     existing vertices, stored in VERTEX_DATA. The coefficients of the
      linear combination are given by WEIGHT; these weights always add up
-     to 1.  All vertex pointers are valid even when some of the weights
-     are 0.  COORDS gives the location of the new vertex.
+     to 1. All vertex pointers are valid even when some of the weights
+     are 0. COORDS gives the location of the new vertex.
 
      The user must allocate another vertex, interpolate parameters using
      VERTEX_DATA and WEIGHT, and return the new vertex pointer in
-     OUTDATA.  This handle is supplied during rendering callbacks.  The
+     OUTDATA. This handle is supplied during rendering callbacks. The
      user is responsible for freeing the memory some time after
      `gluTessEndPolygon' is called.
 
@@ -2774,37 +2762,37 @@ functions is a copy of the pointer that was specified when
 
 `GLU_TESS_COMBINE_DATA'
      The same as the `GLU_TESS_COMBINE' callback except that it takes an
-     additional pointer argument.  This pointer is identical to the
-     opaque pointer provided when `gluTessBeginPolygon' was called.  The
+     additional pointer argument. This pointer is identical to the
+     opaque pointer provided when `gluTessBeginPolygon' was called. The
      function prototype for this callback is:
 
 `GLU_TESS_ERROR'
-     The error callback is called when an error is encountered.  The one
+     The error callback is called when an error is encountered. The one
      argument is of type GLenum; it indicates the specific error that
      occurred and will be set to one of
      `GLU_TESS_MISSING_BEGIN_POLYGON', `GLU_TESS_MISSING_END_POLYGON',
      `GLU_TESS_MISSING_BEGIN_CONTOUR', `GLU_TESS_MISSING_END_CONTOUR',
      `GLU_TESS_COORD_TOO_LARGE', `GLU_TESS_NEED_COMBINE_CALLBACK', or
-     `GLU_OUT_OF_MEMORY'.  Character strings describing these errors can
-     be retrieved with the `gluErrorString' call.  The function
-     prototype for this callback is:
+     `GLU_OUT_OF_MEMORY'. Character strings describing these errors can
+     be retrieved with the `gluErrorString' call. The function prototype
+     for this callback is:
 
      The GLU library will recover from the first four errors by
-     inserting the missing call(s).  `GLU_TESS_COORD_TOO_LARGE'
-     indicates that some vertex coordinate exceeded the predefined
-     constant `GLU_TESS_MAX_COORD' in absolute value, and that the value
-     has been clamped.  (Coordinate values must be small enough so that
-     two can be multiplied together without overflow.)
+     inserting the missing call(s). `GLU_TESS_COORD_TOO_LARGE' indicates
+     that some vertex coordinate exceeded the predefined constant
+     `GLU_TESS_MAX_COORD' in absolute value, and that the value has been
+     clamped. (Coordinate values must be small enough so that two can be
+     multiplied together without overflow.)
      `GLU_TESS_NEED_COMBINE_CALLBACK' indicates that the tessellation
      detected an intersection between two edges in the input data, and
      the `GLU_TESS_COMBINE' or `GLU_TESS_COMBINE_DATA' callback was not
-     provided.  No output is generated.  `GLU_OUT_OF_MEMORY' indicates
+     provided. No output is generated. `GLU_OUT_OF_MEMORY' indicates
      that there is not enough memory so no output is generated.
 
 `GLU_TESS_ERROR_DATA'
      The same as the `GLU_TESS_ERROR' callback except that it takes an
-     additional pointer argument.  This pointer is identical to the
-     opaque pointer provided when `gluTessBeginPolygon' was called.  The
+     additional pointer argument. This pointer is identical to the
+     opaque pointer provided when `gluTessBeginPolygon' was called. The
      function prototype for this callback is:
 
      
@@ -2870,17 +2858,17 @@ TESS
      Specifies the tessellation object (created with `gluNewTess').
 
 `gluTessBeginPolygon' and `gluTessEndPolygon' delimit the definition of
-a convex, concave, or self-intersecting polygon.  Within each
+a convex, concave, or self-intersecting polygon. Within each
 `gluTessBeginPolygon'/`gluTessEndPolygon' pair, there must be one or
-more calls to `gluTessBeginContour'/`gluTessEndContour'.  Within each
-contour, there are zero or more calls to `gluTessVertex'.  The vertices
+more calls to `gluTessBeginContour'/`gluTessEndContour'. Within each
+contour, there are zero or more calls to `gluTessVertex'. The vertices
 specify a closed contour (the last vertex of each contour is
-automatically linked to the first).  See the `gluTessVertex',
+automatically linked to the first). See the `gluTessVertex',
 `gluTessBeginContour', and `gluTessEndContour' reference pages for more
 details.
 
 Once `gluTessEndPolygon' is called, the polygon is tessellated, and the
-resulting triangles are described through callbacks.  See
+resulting triangles are described through callbacks. See
 `gluTessCallback' for descriptions of the callback functions.")
 
 (define-glu-procedures
@@ -2906,20 +2894,20 @@ VALUEZ
      Specifies the third component of the normal.
 
 `gluTessNormal' describes a normal for a polygon that the program is
-defining.  All input data will be projected onto a plane perpendicular
-to one of the three coordinate axes before tessellation and all output
+defining. All input data will be projected onto a plane perpendicular to
+one of the three coordinate axes before tessellation and all output
 triangles will be oriented CCW with respect to the normal (CW
 orientation can be obtained by reversing the sign of the supplied
-normal).  For example, if you know that all polygons lie in the x-y
+normal). For example, if you know that all polygons lie in the x-y
 plane, call `gluTessNormal'(tess, 0.0, 0.0, 1.0) before rendering any
 polygons.
 
 If the supplied normal is (0.0, 0.0, 0.0) (the initial value), the
-normal is determined as follows.  The direction of the normal, up to its
+normal is determined as follows. The direction of the normal, up to its
 sign, is found by fitting a plane to the vertices, without regard to how
-the vertices are connected.  It is expected that the input data lies
+the vertices are connected. It is expected that the input data lies
 approximately in the plane; otherwise, projection perpendicular to one
-of the three coordinate axes may substantially change the geometry.  The
+of the three coordinate axes may substantially change the geometry. The
 sign of the normal is chosen so that the sum of the signed areas of all
 input contours is nonnegative (where a CCW contour has positive area).
 
@@ -2939,7 +2927,7 @@ TESS
      Specifies the tessellation object (created with `gluNewTess').
 
 WHICH
-     Specifies the property to be set.  Valid values are
+     Specifies the property to be set. Valid values are
      `GLU_TESS_WINDING_RULE', `GLU_TESS_BOUNDARY_ONLY', and
      `GLU_TESS_TOLERANCE'.
 
@@ -2947,62 +2935,62 @@ DATA
      Specifies the value of the indicated property.
 
 `gluTessProperty' is used to control properties stored in a tessellation
-object.  These properties affect the way that the polygons are
-interpreted and rendered.  The legal values for WHICH are as follows:
+object. These properties affect the way that the polygons are
+interpreted and rendered. The legal values for WHICH are as follows:
 
 `GLU_TESS_WINDING_RULE'
-     Determines which parts of the polygon are on the ``interior''.  DATA
+     Determines which parts of the polygon are on the ``interior''. DATA
      may be set to one of `GLU_TESS_WINDING_ODD',
      `GLU_TESS_WINDING_NONZERO', `GLU_TESS_WINDING_POSITIVE',
      `GLU_TESS_WINDING_NEGATIVE', or `GLU_TESS_WINDING_ABS_GEQ_TWO'.
 
      To understand how the winding rule works, consider that the input
-     contours partition the plane into regions.  The winding rule
+     contours partition the plane into regions. The winding rule
      determines which of these regions are inside the polygon.
 
      For a single contour C, the winding number of a point x is simply
      the signed number of revolutions we make around x as we travel once
-     around C (where CCW is positive).  When there are several contours,
-     the individual winding numbers are summed.  This procedure
+     around C (where CCW is positive). When there are several contours,
+     the individual winding numbers are summed. This procedure
      associates a signed integer value with each point x in the plane.
      Note that the winding number is the same for all points in a single
      region.
 
      The winding rule classifies a region as ``inside'' if its winding
      number belongs to the chosen category (odd, nonzero, positive,
-     negative, or absolute value of at least two).  The previous GLU
-     tessellator (prior to GLU 1.2) used the ``odd'' rule.  The
-     ``nonzero'' rule is another common way to define the interior.  The
+     negative, or absolute value of at least two). The previous GLU
+     tessellator (prior to GLU 1.2) used the ``odd'' rule. The
+     ``nonzero'' rule is another common way to define the interior. The
      other three rules are useful for polygon CSG operations.
 
 `GLU_TESS_BOUNDARY_ONLY'
      Is a boolean value (``value'' should be set to GL_TRUE or
-     GL_FALSE).  When set to GL_TRUE, a set of closed contours
-     separating the polygon interior and exterior are returned instead
-     of a tessellation.  Exterior contours are oriented CCW with respect
-     to the normal; interior contours are oriented CW.  The
-     `GLU_TESS_BEGIN' and `GLU_TESS_BEGIN_DATA' callbacks use the type
-     GL_LINE_LOOP for each contour.
+     GL_FALSE). When set to GL_TRUE, a set of closed contours separating
+     the polygon interior and exterior are returned instead of a
+     tessellation. Exterior contours are oriented CCW with respect to
+     the normal; interior contours are oriented CW. The `GLU_TESS_BEGIN'
+     and `GLU_TESS_BEGIN_DATA' callbacks use the type GL_LINE_LOOP for
+     each contour.
 
 `GLU_TESS_TOLERANCE'
      Specifies a tolerance for merging features to reduce the size of
-     the output.  For example, two vertices that are very close to each
-     other might be replaced by a single vertex.  The tolerance is
+     the output. For example, two vertices that are very close to each
+     other might be replaced by a single vertex. The tolerance is
      multiplied by the largest coordinate magnitude of any input vertex;
      this specifies the maximum distance that any feature can move as
-     the result of a single merge operation.  If a single feature takes
+     the result of a single merge operation. If a single feature takes
      part in several merge operations, the total distance moved could be
      larger.
 
      Feature merging is completely optional; the tolerance is only a
-     hint.  The implementation is free to merge in some cases and not in
-     others, or to never merge features at all.  The initial tolerance
-     is 0.
+     hint. The implementation is free to merge in some cases and not in
+     others, or to never merge features at all. The initial tolerance is
+     0.
 
      The current implementation merges vertices only if they are exactly
-     coincident, regardless of the current tolerance.  A vertex is
+     coincident, regardless of the current tolerance. A vertex is
      spliced into an edge only if the implementation is unable to
-     distinguish which side of the edge the vertex lies on.  Two edges
+     distinguish which side of the edge the vertex lies on. Two edges
      are merged only when both endpoints are identical.")
 
 (define-glu-procedures
@@ -3025,13 +3013,13 @@ DATA
      vertex callback (as specified by `gluTessCallback').
 
 `gluTessVertex' describes a vertex on a polygon that the program
-defines.  Successive `gluTessVertex' calls describe a closed contour.
-For example, to describe a quadrilateral, `gluTessVertex' should be
-called four times.  `gluTessVertex' can only be called between
+defines. Successive `gluTessVertex' calls describe a closed contour. For
+example, to describe a quadrilateral, `gluTessVertex' should be called
+four times. `gluTessVertex' can only be called between
 `gluTessBeginContour' and `gluTessEndContour'.
 
 DATA normally points to a structure containing the vertex location, as
-well as other per-vertex attributes such as color and normal.  This
+well as other per-vertex attributes such as color and normal. This
 pointer is passed back to the user through the `GLU_TESS_VERTEX' or
 `GLU_TESS_VERTEX_DATA' callback after tessellation (see the
 `gluTessCallback' reference page).")
@@ -3090,11 +3078,11 @@ OBJX
 
 `gluUnProject4' maps the specified window coordinatesi: WINX, WINY, and
 WINZ and its clip w coordinate CLIPW into object coordinates
-(OBJX,OBJYOBJZOBJW) using MODEL, PROJ, and VIEW.  CLIPW can be other
-than 1 as for vertices in `glFeedbackBuffer' when data type
-`GLU_4D_COLOR_TEXTURE' is returned.  This also handles the case where
-the NEARVAL and FARVAL planes are different from the default, 0 and 1,
-respectively.  A return value of `GLU_TRUE' indicates success; a return
+(OBJX,OBJYOBJZOBJW) using MODEL, PROJ, and VIEW. CLIPW can be other than
+1 as for vertices in `glFeedbackBuffer' when data type
+`GLU_4D_COLOR_TEXTURE' is returned. This also handles the case where the
+NEARVAL and FARVAL planes are different from the default, 0 and 1,
+respectively. A return value of `GLU_TRUE' indicates success; a return
 value of `GLU_FALSE' indicates failure.
 
 To compute the coordinates (OBJX,OBJYOBJZOBJW) , `gluUnProject4'
@@ -3150,9 +3138,9 @@ OBJX
      Returns the computed object coordinates.
 
 `gluUnProject' maps the specified window coordinates into object
-coordinates using MODEL, PROJ, and VIEW.  The result is stored in OBJX,
-OBJY, and OBJZ.  A return value of `GLU_TRUE' indicates success; a
-return value of `GLU_FALSE' indicates failure.
+coordinates using MODEL, PROJ, and VIEW. The result is stored in OBJX,
+OBJY, and OBJZ. A return value of `GLU_TRUE' indicates success; a return
+value of `GLU_FALSE' indicates failure.
 
 To compute the coordinates (OBJX,OBJYOBJZ) , `gluUnProject' multiplies
 the normalized device coordinates by the inverse of MODEL * PROJ as
@@ -3161,6 +3149,6 @@ follows:
 ((OBJX), (OBJY), (OBJZ),
 (W),)=INV\u2061(P\u2062M,)\u2062((2\u2061(WINX-VIEW\u2061[0,],),/VIEW\u2061[2,],-1),
 (2\u2061(WINY-VIEW\u2061[1,],),/VIEW\u2061[3,],-1), (2\u2061(WINZ,)-1), (1),) INV denotes
-matrix inversion.  W is an unused variable, included for consistent
+matrix inversion. W is an unused variable, included for consistent
 matrix notation.")
 

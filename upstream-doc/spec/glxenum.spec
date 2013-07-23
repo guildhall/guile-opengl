@@ -1,18 +1,19 @@
-# THIS FILE IS OBSOLETE. Please migrate away from using the
-# ".spec" files to the XML Registry. See
-#   http://www.opengl.org/registry/api/README.txt
-# for more information.
-
-# This is the old (no longer canonical) GLX enumerant registry. It is
-# no longer maintained or used for current header file generation.
-
 # Copyright (c) 1991-2005 Silicon Graphics, Inc. All Rights Reserved.
-# Copyright (c) 2006-2013 The Khronos Group, Inc.
+# Copyright (c) 2006-2010 The Khronos Group, Inc.
 #
 # This document is licensed under the SGI Free Software B License Version
 # 2.0. For details, see http://oss.sgi.com/projects/FreeB/ .
 #
-# $Revision: 21963 $ on $Date: 2013-06-13 02:52:31 -0700 (Thu, 13 Jun 2013) $
+# $Revision: 20030 $ on $Date: 2013-01-02 02:39:38 -0800 (Wed, 02 Jan 2013) $
+
+# This is the GLX enumerant registry.
+#
+# It is an extremely important file. Do not mess with it unless
+# you know what you're doing and have permission to do so.
+#
+# Rules for modification are the same as the rules for the OpenGL
+# enumerant registry (gl.spec). Basically, don't modify this
+# file unless you're the Khronos API Registrar.
 
 Extensions define:
 	VERSION_1_1					= 1

@@ -240,8 +240,11 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">xoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mn>0</mml:mn>
+                    <mml:mrow>
+                        <mml:mo>-</mml:mo>
+                        <mml:mi mathvariant="italic">b</mml:mi>
                     </mml:mrow>
+                </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
                 <!-- eqn: (xoffset + width)  >  (w - b): -->
@@ -254,7 +257,13 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mi mathvariant="italic">w</mml:mi>
+                    <mml:mfenced open="(" close=")">
+                        <mml:mrow>
+                            <mml:mi mathvariant="italic">w</mml:mi>
+                            <mml:mo>-</mml:mo>
+                            <mml:mi mathvariant="italic">b</mml:mi>
+                        </mml:mrow>
+                    </mml:mfenced>
                 </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
@@ -262,7 +271,10 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">yoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mn>0</mml:mn>
+                    <mml:mrow>
+                        <mml:mo>-</mml:mo>
+                        <mml:mi mathvariant="italic">b</mml:mi>
+                    </mml:mrow>
                 </mml:mrow>
             </mml:math></inlineequation>,
             or 
@@ -277,15 +289,28 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mi mathvariant="italic">h</mml:mi>
+                    <mml:mfenced open="(" close=")">
+                        <mml:mrow>
+                            <mml:mi mathvariant="italic">h</mml:mi>
+                            <mml:mo>-</mml:mo>
+                            <mml:mi mathvariant="italic">b</mml:mi>
+                        </mml:mrow>
+                    </mml:mfenced>
                 </mml:mrow>
             </mml:math></inlineequation>,
             where 
             <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_WIDTH</constant>, and
+            is the <constant>GL_TEXTURE_WIDTH</constant>,
             <inlineequation><mml:math><mml:mi mathvariant="italic">h</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_HEIGHT</constant>
+            is the <constant>GL_TEXTURE_HEIGHT</constant>, and 
+            <inlineequation><mml:math><mml:mi mathvariant="italic">b</mml:mi></mml:math></inlineequation>
+            is the border width
             of the texture image being modified.
+            Note that 
+            <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>
+            and 
+            <inlineequation><mml:math><mml:mi mathvariant="italic">h</mml:mi></mml:math></inlineequation>
+            include twice the border width.
         </para>
         <para>
             <constant>GL_INVALID_VALUE</constant> is generated if <parameter>width</parameter> or <parameter>height</parameter> is less than 0.

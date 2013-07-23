@@ -121,23 +121,33 @@
                         Each element is a single red component.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for green and blue, and 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
+                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
+                        and clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RG</code></span></dt><dd><p>
                         Each element is a red/green double.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for blue, and 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
+                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
+                        and clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RGB</code></span></dt><dd></dd><dt><span class="term"><code class="constant">GL_BGR</code></span></dt><dd><p>
                         Each element is an RGB triple.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
+                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
+                        and clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_RGBA</code></span></dt><dd></dd><dt><span class="term"><code class="constant">GL_BGRA</code></span></dt><dd><p>
                         Each element contains all four components.
-                        Each component is clamped to the range [0,1].
+                        Each component is multiplied by the signed scale factor <code class="constant">GL_c_SCALE</code>,
+                        added to the signed bias <code class="constant">GL_c_BIAS</code>,
+                        and clamped to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_DEPTH_COMPONENT</code></span></dt><dd><p>
                         Each element is a single depth value.
-                        The GL converts it to floating point and clamps to the range [0,1].
+                        The GL converts it to floating point, multiplies by the signed scale factor
+                        <code class="constant">GL_DEPTH_SCALE</code>, adds the signed bias <code class="constant">GL_DEPTH_BIAS</code>,
+                        and clamps to the range [0,1].
                     </p></dd><dt><span class="term"><code class="constant">GL_DEPTH_STENCIL</code></span></dt><dd><p>
                         Each element is a pair of depth and stencil values. The depth component of
                         the pair is interpreted as in <code class="constant">GL_DEPTH_COMPONENT</code>. The stencil
@@ -155,7 +165,7 @@
             <em class="parameter"><code>internalFormat</code></em> may be one of the base internal formats shown in
             Table 1, below
         </p><p>
-            </p><div class="table"><a id="id4865593"></a><p class="title"><b>Table 1. Base Internal Formats</b></p><table summary="Base Internal Formats" border="1"><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th align="left"><span class="bold"><strong>
+            </p><div class="table"><a id="id4865719"></a><p class="title"><b>Table 1. Base Internal Formats</b></p><table summary="Base Internal Formats" border="1"><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th align="left"><span class="bold"><strong>
             Base Internal Format
             </strong></span></th><th align="left"><span class="bold"><strong>
             RGBA, Depth and Stencil Values
@@ -166,7 +176,7 @@
             <em class="parameter"><code>internalFormat</code></em> may also be one of the sized internal formats
             shown in Table 2, below
         </p><p>
-            </p><div class="table"><a id="id4837909"></a><p class="title"><b>Table 2. Sized Internal Formats</b></p><table summary="Sized Internal Formats" border="1"><colgroup><col align="left" /><col align="left" /><col align="center" /><col align="center" /><col align="center" /><col align="center" /><col align="center" /></colgroup><thead><tr><th align="left"><span class="bold"><strong>
+            </p><div class="table"><a id="id4840913"></a><p class="title"><b>Table 2. Sized Internal Formats</b></p><table summary="Sized Internal Formats" border="1"><colgroup><col align="left" /><col align="left" /><col align="center" /><col align="center" /><col align="center" /><col align="center" /><col align="center" /></colgroup><thead><tr><th align="left"><span class="bold"><strong>
             Sized Internal Format
             </strong></span></th><th align="left"><span class="bold"><strong>
             Base Internal Format
@@ -185,7 +195,7 @@
             Finally, <em class="parameter"><code>internalFormat</code></em> may also be one of the generic or compressed
             compressed texture formats shown in Table 3 below
         </p><p>
-            </p><div class="table"><a id="id4857450"></a><p class="title"><b>Table 3. Compressed Internal Formats</b></p><table summary="Compressed Internal Formats" border="1"><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th align="left"><span class="bold"><strong>
+            </p><div class="table"><a id="id4865100"></a><p class="title"><b>Table 3. Compressed Internal Formats</b></p><table summary="Compressed Internal Formats" border="1"><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th align="left"><span class="bold"><strong>
             Compressed Internal Format
             </strong></span></th><th align="left"><span class="bold"><strong>
             Base Internal Format
@@ -380,6 +390,26 @@
             <code class="constant">GL_INVALID_VALUE</code> is generated if <em class="parameter"><code>width</code></em> or <em class="parameter"><code>height</code></em> is less than 0
             or greater than <code class="constant">GL_MAX_TEXTURE_SIZE</code>.
         </p><p>
+            <code class="constant">GL_INVALID_VALUE</code> is generated if non-power-of-two textures are not supported and the <em class="parameter"><code>width</code></em> or <em class="parameter"><code>height</code></em> cannot be represented as 
+            <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" overflow="scroll">
+                
+                <mml:mrow>
+                    <mml:msup><mml:mn>2</mml:mn>
+                    <mml:mi mathvariant="italic">k</mml:mi>
+                    </mml:msup>
+                    <mml:mo>+</mml:mo>
+                    <mml:mrow>
+                        <mml:mn>2</mml:mn>
+                        <mml:mo>⁡</mml:mo>
+                        <mml:mfenced open="(" close=")">
+                            <mml:mi mathvariant="italic">border</mml:mi>
+                        </mml:mfenced>
+                    </mml:mrow>
+                </mml:mrow>
+            </mml:math>
+            for some
+            integer value of <span class="emphasis"><em>k</em></span>.
+        </p><p>
             <code class="constant">GL_INVALID_VALUE</code> is generated if <em class="parameter"><code>border</code></em> is not 0.
         </p><p>
             <code class="constant">GL_INVALID_OPERATION</code> is generated if <em class="parameter"><code>type</code></em> is one of
@@ -452,7 +482,7 @@
             <a href="glTexParameter.xml"><span class="citerefentry"><span class="refentrytitle">glTexParameter</span></span></a>
         </p></div><div class="refsect1" lang="en" xml:lang="en"><a id="Copyright"></a><h2>Copyright</h2><p>
             Copyright <span class="trademark"></span>© 1991-2006 Silicon Graphics, Inc.
-            Copyright <span class="trademark"></span>© 2011-2013 Khronos Group.
+            Copyright <span class="trademark"></span>© 2011 Khronos Group.
             This document is licensed under the SGI
             Free Software B License. For details, see
             <a href="http://oss.sgi.com/projects/FreeB/" target="_top">http://oss.sgi.com/projects/FreeB/</a>.

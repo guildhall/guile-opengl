@@ -5,8 +5,8 @@
     <refmeta>
         <refmetainfo>
             <copyright>
-                <year>2013</year>
-                <holder>Khronos Group</holder>
+                <year>1991-2006</year>
+                <holder>Silicon Graphics, Inc.</holder>
             </copyright>
         </refmetainfo>
         <refentrytitle>glCopyTexSubImage2D</refentrytitle>
@@ -180,8 +180,8 @@
             rendering context, then the values obtained for those pixels are undefined.
         </para>
         <para>
-            No change is made to the <emphasis>internalformat</emphasis>, <emphasis>width</emphasis>, or
-            <emphasis>height</emphasis>, parameters of the specified texture
+            No change is made to the <emphasis>internalformat</emphasis>, <emphasis>width</emphasis>,
+            <emphasis>height</emphasis>, or <emphasis>border</emphasis> parameters of the specified texture
             array or to texel values outside the specified subregion.
         </para>
     </refsect1>
@@ -237,7 +237,10 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">xoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mn>0</mml:mn>
+                    <mml:mrow>
+                        <mml:mo>-</mml:mo>
+                        <mml:mi mathvariant="italic">b</mml:mi>
+                    </mml:mrow>
                 </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
@@ -251,7 +254,13 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mi mathvariant="italic">w</mml:mi>
+                    <mml:mfenced open="(" close=")">
+                        <mml:mrow>
+                            <mml:mi mathvariant="italic">w</mml:mi>
+                            <mml:mo>-</mml:mo>
+                            <mml:mi mathvariant="italic">b</mml:mi>
+                        </mml:mrow>
+                    </mml:mfenced>
                 </mml:mrow>
             </mml:math></inlineequation>,
             <inlineequation><mml:math>
@@ -259,7 +268,10 @@
                 <mml:mrow>
                     <mml:mi mathvariant="italic">yoffset</mml:mi>
                     <mml:mo>&lt;</mml:mo>
-                    <mml:mn>0</mml:mn>
+                    <mml:mrow>
+                        <mml:mo>-</mml:mo>
+                        <mml:mi mathvariant="italic">b</mml:mi>
+                    </mml:mrow>
                 </mml:mrow>
             </mml:math></inlineequation>,
             or
@@ -274,15 +286,29 @@
                         </mml:mrow>
                     </mml:mfenced>
                     <mml:mo>&gt;</mml:mo>
-                    <mml:mn>0</mml:mn>
+                    <mml:mfenced open="(" close=")">
+                        <mml:mrow>
+                            <mml:mi mathvariant="italic">h</mml:mi>
+                            <mml:mo>-</mml:mo>
+                            <mml:mi mathvariant="italic">b</mml:mi>
+                        </mml:mrow>
+                    </mml:mfenced>
                 </mml:mrow>
             </mml:math></inlineequation>,
             where 
             <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>
             is the <constant>GL_TEXTURE_WIDTH</constant>,
             <inlineequation><mml:math><mml:mi mathvariant="italic">h</mml:mi></mml:math></inlineequation>
-            is the <constant>GL_TEXTURE_HEIGHT</constant> and
+            is the <constant>GL_TEXTURE_HEIGHT</constant>,
+            and 
+            <inlineequation><mml:math><mml:mi mathvariant="italic">b</mml:mi></mml:math></inlineequation>
+            is the <constant>GL_TEXTURE_BORDER</constant>
             of the texture image being modified.
+            Note that 
+            <inlineequation><mml:math><mml:mi mathvariant="italic">w</mml:mi></mml:math></inlineequation>
+            and 
+            <inlineequation><mml:math><mml:mi mathvariant="italic">h</mml:mi></mml:math></inlineequation>
+            include twice the border width.
         </para>
     </refsect1>
     <refsect1 id="associatedgets"><title>Associated Gets</title>
@@ -310,7 +336,7 @@
     <refsect1 id="Copyright"><title>Copyright</title>
         <para>
             Copyright <trademark class="copyright"></trademark> 1991-2006
-            Silicon Graphics, Inc. Copyright <trademark class="copyright"></trademark> 2012-2013 Khronos Group.
+            Silicon Graphics, Inc. Copyright <trademark class="copyright"></trademark> 2012 Khronos Group.
             This document is licensed under the SGI
             Free Software B License. For details, see
             <ulink url="http://oss.sgi.com/projects/FreeB/">http://oss.sgi.com/projects/FreeB/</ulink>.

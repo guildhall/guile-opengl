@@ -1,15 +1,10 @@
-# THIS FILE IS OBSOLETE. Please migrate away from using the
-# ".spec" files to the XML Registry. See
-#   http://www.opengl.org/registry/api/README.txt
-# for more information.
-
 # Copyright (c) 1991-2005 Silicon Graphics, Inc. All Rights Reserved.
-# Copyright (c) 2006-2013 The Khronos Group, Inc.
+# Copyright (c) 2006-2010 The Khronos Group, Inc.
 #
 # This document is licensed under the SGI Free Software B License Version
 # 2.0. For details, see http://oss.sgi.com/projects/FreeB/ .
 #
-# $Revision: 21963 $ on $Date: 2013-06-13 02:52:31 -0700 (Thu, 13 Jun 2013) $
+# $Revision: 17025 $ on $Date: 2012-03-05 03:01:59 -0800 (Mon, 05 Mar 2012) $
 
 required-props:
 param:		retval retained

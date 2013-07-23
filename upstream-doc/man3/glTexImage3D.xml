@@ -84,8 +84,8 @@
                     <constant>GL_RGBA8UI</constant>,
                     <constant>GL_SRGB8_ALPHA8</constant>,
                     <constant>GL_RGB10_A2</constant>,
-                    <constant>GL_RGB10_A2UI</constant>,
-                    <constant>GL_R11F_G11F_B10F</constant>,
+                    <constant>GL_RGBA10_A2UI</constant>,
+                    <constant>GL_R11_G11_B10F</constant>,
                     <constant>GL_RG32F</constant>,
                     <constant>GL_RG32I</constant>,
                     <constant>GL_RG32UI</constant>,
@@ -96,7 +96,7 @@
                     <constant>GL_RG8</constant>,
                     <constant>GL_RG8I</constant>,
                     <constant>GL_RG8UI</constant>,
-                    <constant>GL_R32F</constant>,
+                    <constant>GL_R23F</constant>,
                     <constant>GL_R32I</constant>,
                     <constant>GL_R32UI</constant>,
                     <constant>GL_R16F</constant>,
@@ -105,7 +105,7 @@
                     <constant>GL_R8</constant>,
                     <constant>GL_R8I</constant>,
                     <constant>GL_R8UI</constant>,
-                    <constant>GL_RGBA16_SNORM</constant>,
+                    <constant>GL_RGBA16_UNORM</constant>,
                     <constant>GL_RGBA8_SNORM</constant>,
                     <constant>GL_RGB32F</constant>,
                     <constant>GL_RGB32I</constant>,
@@ -300,7 +300,9 @@
                         Each element is a single red component.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for green and blue, and 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>
@@ -311,7 +313,9 @@
                         Each element is a red and green pair.
                         The GL converts each to floating point and assembles it into an RGBA element
                         by attaching 0 for blue, and 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>
@@ -327,7 +331,9 @@
                         Each element is an RGB triple.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>
@@ -341,7 +347,9 @@
                 <listitem>
                     <para>
                         Each element contains all four components.
-                        Each component is clamped to the range [0,1].
+                        Each component is multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>

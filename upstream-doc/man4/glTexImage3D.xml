@@ -5,8 +5,8 @@
     <refmeta>
         <refmetainfo>
             <copyright>
-                <year>2013</year>
-                <holder>Khronos Group</holder>
+                <year>1991-2006</year>
+                <holder>Silicon Graphics, Inc.</holder>
             </copyright>
         </refmetainfo>
         <refentrytitle>glTexImage3D</refentrytitle>
@@ -241,7 +241,9 @@
                         Each element is a single red component.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 0 for green and blue, and 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>
@@ -252,7 +254,9 @@
                         Each element is a red and green pair.
                         The GL converts each to floating point and assembles it into an RGBA element
                         by attaching 0 for blue, and 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>
@@ -268,7 +272,9 @@
                         Each element is an RGB triple.
                         The GL converts it to floating point and assembles it into an RGBA element
                         by attaching 1 for alpha.
-                        Each component is clamped to the range [0,1].
+                        Each component is then multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>
@@ -282,7 +288,9 @@
                 <listitem>
                     <para>
                         Each element contains all four components.
-                        Each component is clamped to the range [0,1].
+                        Each component is multiplied by the signed scale factor <constant>GL_c_SCALE</constant>,
+                        added to the signed bias <constant>GL_c_BIAS</constant>,
+                        and clamped to the range [0,1].
                     </para>
                 </listitem>
             </varlistentry>
@@ -502,7 +510,28 @@
             <constant>GL_INVALID_VALUE</constant> is generated if <parameter>width</parameter>, <parameter>height</parameter>, or <parameter>depth</parameter> is less than 0 or greater than <constant>GL_MAX_TEXTURE_SIZE</constant>.
         </para>
         <para>
-            <constant>GL_INVALID_VALUE</constant> is generated if <parameter>border</parameter> is not 0.
+            <constant>GL_INVALID_VALUE</constant> is generated if non-power-of-two textures are not supported and the <parameter>width</parameter>, <parameter>height</parameter>, or <parameter>depth</parameter> cannot be represented as 
+            <inlineequation><mml:math>
+                <!-- eqn: 2 sup k  +  2( border ): -->
+                <mml:mrow>
+                    <mml:msup><mml:mn>2</mml:mn>
+                    <mml:mi mathvariant="italic">k</mml:mi>
+                    </mml:msup>
+                    <mml:mo>+</mml:mo>
+                    <mml:mrow>
+                        <mml:mn>2</mml:mn>
+                        <mml:mo>&af;</mml:mo>
+                        <mml:mfenced open="(" close=")">
+                            <mml:mi mathvariant="italic">border</mml:mi>
+                        </mml:mfenced>
+                    </mml:mrow>
+                </mml:mrow>
+            </mml:math></inlineequation>
+            for some
+            integer value of <emphasis>k</emphasis>.
+        </para>
+        <para>
+            <constant>GL_INVALID_VALUE</constant> is generated if <parameter>border</parameter> is not 0 or 1.
         </para>
         <para>
             <constant>GL_INVALID_OPERATION</constant> is generated if <parameter>type</parameter> is one of
@@ -579,7 +608,7 @@
     <refsect1 id="Copyright"><title>Copyright</title>
         <para>
             Copyright <trademark class="copyright"></trademark> 1991-2006 Silicon Graphics, Inc.
-            Copyright <trademark class="copyright"></trademark> 2011-2013 Khronos Group.
+            Copyright <trademark class="copyright"></trademark> 2011 Khronos Group.
             This document is licensed under the SGI
             Free Software B License. For details, see
             <ulink url="http://oss.sgi.com/projects/FreeB/">http://oss.sgi.com/projects/FreeB/</ulink>.

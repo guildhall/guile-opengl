@@ -1,19 +1,14 @@
-# THIS FILE IS OBSOLETE. Please migrate away from using the
-# ".spec" files to the XML Registry. See
-#   http://www.opengl.org/registry/api/README.txt
-# for more information.
-
 # Copyright (c) 1991-2005 Silicon Graphics, Inc. All Rights Reserved.
-# Copyright (c) 2006-2013 The Khronos Group, Inc.
+# Copyright (c) 2006-2010 The Khronos Group, Inc.
 #
 # This document is licensed under the SGI Free Software B License Version
 # 2.0. For details, see http://oss.sgi.com/projects/FreeB/ .
 #
-# $Revision: 21963 $ on $Date: 2013-06-13 02:52:31 -0700 (Thu, 13 Jun 2013) $
+# $Revision: 20030 $ on $Date: 2013-01-02 02:39:38 -0800 (Wed, 02 Jan 2013) $
 
 # List of GLX enumerants for glxext.h header
 #
-# This is derived from the deprecated GLX enumerant registry (glxenum.spec).
+# This is NOT the master GLX enumerant registry (glxenum.spec).
 #
 # Unlike glxenum.spec, glxenumext.spec is
 #   (1) In order by extension number.
@@ -30,9 +25,9 @@
 
 passthru:
 passthru: /* Header file version number, required by OpenGL ABI for Linux */
-passthru: /* glxext.h last updated 2013/06/10 */
+passthru: /* glxext.h last updated 2013/01/02 */
 passthru: /* Current version at http://www.opengl.org/registry/ */
-passthru: #define GLX_GLXEXT_VERSION 36
+passthru: #define GLX_GLXEXT_VERSION 34
 
 ###############################################################################
 #
