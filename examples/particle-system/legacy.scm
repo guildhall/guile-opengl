@@ -49,7 +49,7 @@
 (define *particles* (make-packed-array position 0))
 
 (define (draw-particles)
-  (gl-begin (primitive-type quads)
+  (gl-begin (begin-mode quads)
     (unpack-each/serial *zquads* zquad
                         (lambda (n r g b x- y- x+ y+ z)
                           (gl-color r g b)
@@ -151,7 +151,7 @@
 
 (define (draw-axis scale)
   ;; Could disable lighting and depth test.
-  (gl-begin (primitive-type lines)
+  (gl-begin (begin-mode lines)
     (gl-color 1 0 0)
     (gl-vertex 0 0 0)
     (gl-vertex scale 0 0)

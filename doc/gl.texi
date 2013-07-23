@@ -201,8 +201,8 @@ for more information.
 
 @subsubsection Begin/End Paradigm
 
-@defmac gl-begin primitive-type body ...
-Begin immediate-mode drawing with @var{primitive-type}, evaluate
+@defmac gl-begin begin-mode body ...
+Begin immediate-mode drawing with @var{begin-mode}, evaluate
 the sequence of @var{body} expressions, and then end drawing (as with
 @code{glBegin} and @code{glEnd}).
 
