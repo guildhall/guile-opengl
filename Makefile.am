@@ -20,8 +20,8 @@
 
 include guile.am
 
-moddir=$(prefix)/share/guile/site/2.0
-godir=$(libdir)/guile/2.0/ccache
+moddir=$(prefix)/share/guile/site/$(GUILE_EFFECTIVE_VERSION)
+godir=$(libdir)/guile/$(GUILE_EFFECTIVE_VERSION)/ccache
 
 SOURCES = \
 	figl.scm \
