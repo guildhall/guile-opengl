@@ -19154,8 +19154,7 @@ vertex specifies the flat-shaded color.
 
 
 @table @asis
-@item @strong{
-Primitive Type of Polygon @r{@var{i}}}
+@item @strong{ Primitive Type of Polygon @r{@var{i}}}
 @strong{Vertex}
 
 @item  Single polygon                          (@r{@var{i}==1}) 

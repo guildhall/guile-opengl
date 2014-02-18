@@ -310,11 +310,13 @@
      ;; Some headings are empty.  makeinfo wants them to be present, so
      ;; appease.
      '("."))
-    (heading
+    (else
      (map (lambda (x)
-            (if (string? x)
-                (string-join (string-split x #\newline) " ")
-                x))
+            (cond
+             ((string? x)
+              (string-join (string-split x #\newline) " "))
+             ((symbol? x) x)
+             (else (canonicalize-heading x))))
           heading))))
 
 (define *rules*
