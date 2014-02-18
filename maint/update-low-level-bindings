@@ -2,7 +2,7 @@
 !#
 
 ;;; figl
-;;; Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
+;;; Copyright (C) 2013, 2014 Andy Wingo <wingo@pobox.com>
 ;;; 
 ;;; Figl is free software: you can redistribute it and/or modify it
 ;;; under the terms of the GNU Lesser General Public License as
@@ -133,14 +133,13 @@
       (para "The functions from this section may be had by loading "
             "the module:")
       (example "(use-modules (figl " ,(object->string mod-name) " low-level)")
-      (copying
-       (para
-        "This section of the manual was derived from the upstream "
-        "OpenGL documentation.  Each function's documentation has "
-        "its own copyright statement; for full details, see the "
-        "upstream documentation.  The copyright notices and licenses "
-        "present in this section are as follows.")
-       ,@(append-map cdr (unique-copyrights defs)))
+      (para
+       "This section of the manual was derived from the upstream "
+       "OpenGL documentation.  Each function's documentation has "
+       "its own copyright statement; for full details, see the "
+       "upstream documentation.  The copyright notices and licenses "
+       "present in this section are as follows.")
+      ,@(append-map cdr (unique-copyrights defs))
       ,@(map
          (lambda (def)
            (match (gl-definition-prototypes def)

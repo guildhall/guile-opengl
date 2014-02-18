@@ -1,5 +1,5 @@
 ;;; figl
-;;; Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
+;;; Copyright (C) 2013, 2014 Andy Wingo <wingo@pobox.com>
 ;;; 
 ;;; Figl is free software: you can redistribute it and/or modify it
 ;;; under the terms of the GNU Lesser General Public License as
@@ -304,6 +304,19 @@
               (reverse block)
               ))))
 
+(define (canonicalize-heading heading)
+  (match heading
+    (()
+     ;; Some headings are empty.  makeinfo wants them to be present, so
+     ;; appease.
+     '("."))
+    (heading
+     (map (lambda (x)
+            (if (string? x)
+                (string-join (string-split x #\newline) " ")
+                x))
+          heading))))
+
 (define *rules*
   `((refsect1
      *preorder*
@@ -320,7 +333,9 @@
     (variablelist
      ((varlistentry
        . ,(lambda (tag term . body)
-            `(entry (% (heading ,@(cdar term))) ,@(apply append body))))
+            `(entry (% (heading ,@(canonicalize-heading
+                                   (cdar term))))
+                    ,@(apply append body))))
       (listitem
        . ,(lambda (tag . body)
             (map (lambda (x)
@@ -386,7 +401,7 @@
             rows))
       (row
        . ,(lambda (tag first . rest)
-            `(entry (% (heading ,@first))
+            `(entry (% (heading ,@(canonicalize-heading first)))
                     (para ,@(apply
                              append
                              (list-intersperse rest '(", ")))))))
