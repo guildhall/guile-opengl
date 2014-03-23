@@ -58,7 +58,7 @@ update-enums: gl/parse.go
 	$(top_builddir)/env $(GUILE) $(top_srcdir)/maint/update-enumerations
 
 update-manual:
-	cd $(top_srcdir)/doc; ../build-aux/gendocs.sh -o ~/www/guile-opengl/manual --email bug-guile@gnu.org guile-opengl "GNU Guile-OpenGL manual"
+	cd $(top_srcdir)/doc; ../build-aux/gendocs.sh --email bug-guile@gnu.org guile-opengl "GNU Guile-OpenGL manual"
 
 EXTRA_DIST += env.in COPYING COPYING.LESSER examples upstream-doc
 
