@@ -24,7 +24,7 @@ License along with this program.  If not, see
 
 AC_CONFIG_SRCDIR(gl.scm)
 AC_CONFIG_AUX_DIR([build-aux])
-AM_INIT_AUTOMAKE([color-tests -Wall -Wno-portability foreign])
+AM_INIT_AUTOMAKE([color-tests -Wall -Wno-portability foreign serial-tests])
 AM_SILENT_RULES([yes])
 
 GUILE_PKG([2.2 2.0])
