@@ -7,7 +7,7 @@
 The functions from this section may be had by loading the module:
 
 @example 
-(use-modules (gl glx enums)
+(use-modules (glx enums)
 @end example
 
 @defmac glx-string-name enum

@@ -1,6 +1,6 @@
 @c This is part of the Guile-OpenGL Reference Manual.
 @c Copyright (C) 2014 Free Software Foundation, Inc. and others.
-@c See the file figl.texi for copying conditions.
+@c See the file guile-opengl.texi for copying conditions.
 
 @node GLUT
 @chapter GLUT
@@ -8,7 +8,7 @@
 Import the GLUT module to have access to these procedures:
 
 @example
-(use-modules (gl glut))
+(use-modules (glut))
 @end example
 
 The GLUT specification is available at

@@ -1,6 +1,6 @@
 @c This is part of the Guile-OpenGL Reference Manual.
 @c Copyright (C) 2014 Free Software Foundation, Inc. and others.
-@c See the file figl.texi for copying conditions.
+@c See the file guile-opengl.texi for copying conditions.
 
 @node GL
 @chapter GL
@@ -69,10 +69,10 @@ impementation only began supporting it in 2012, so it is currently
 (@value{UPDATED}) less common.
 @end table
 
-Figl wraps the OpenGL 2.1 API.  It's a ubiquitous subset of the OpenGL
-implementations that are actually deployed in the wild; its legacy API
-looks back to OpenGL 1.x, while the buffer-oriented API is compatible
-with OpenGL ES.
+Guile wraps the OpenGL 2.1 API.  It's a ubiquitous subset of the
+OpenGL implementations that are actually deployed in the wild; its
+legacy API looks back to OpenGL 1.x, while the buffer-oriented API is
+compatible with OpenGL ES.
 
 The full OpenGL 2.1 specification is available at
 @uref{http://www.opengl.org/registry/doc/glspec21.20061201.pdf}.
@@ -115,7 +115,7 @@ unchanged since the mid-1990s, it is still widely used on desktops.
 
 EGL is technically part of OpenGL ES, and was designed with the modern
 OpenGL API and mobile hardware in mind, though it also works on the
-desktop.  Figl does not yet have an EGL binding.
+desktop.  Guile does not yet have an EGL binding.
 
 
 @node Rendering
@@ -176,12 +176,12 @@ thing.
 @node GL API
 @section GL API
 
-The procedures exported from the @code{(gl gl)} module are
+The procedures exported from the @code{(gl)} module are
 documented below, organized by their corresponding section in the
 OpenGL 2.1 specification.
 
 @example
-(use-modules (gl gl))
+(use-modules (gl))
 @end example
 
 See @uref{http://www.opengl.org/registry/doc/glspec21.20061201.pdf},
@@ -523,13 +523,13 @@ present as vendor-specific or candidate extensions.  Indeed, the
 making of an OpenGL standard these days seems to be a matter of simply
 collecting a set of mature extensions and making them coherent.
 
-Figl doesn't currently provide specific interfaces for extensions.
+Guile doesn't currently provide specific interfaces for GL extensions.
 Perhaps it should, but that's a lot of work that we haven't had time
 to do.  Contributions are welcome.
 
 In the meantime, if you know enough about GL to know that you need an
-extension, you can define one yourself -- after all, Figl is all a
-bunch of Scheme code anyway.
+extension, you can define one yourself -- after all, this library is
+all a bunch of Scheme code anyway.
 
 For example, let's say you decide that you need to render to a
 framebuffer object.  You go to @uref{http://www.opengl.org/registry/}
@@ -540,7 +540,7 @@ This extension defines a procedure, @code{GLboolean
 glIsRenderBuffer(GLuint)}.  So you define it:
 
 @example
-(use-modules (gl gl runtime) (gl gl types))
+(use-modules (gl runtime) (gl types))
 (define-gl-procedure (glIsRenderBuffer (buf GLuint) -> GLboolean)
   "Render buffer predicate.  Other docs here.")
 @end example

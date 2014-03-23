@@ -59,16 +59,14 @@ prefixed with a specific copyright header.
 @insertcopying 
 
 @menu
-* Introduction::                The what, why, and how of this library.
+* Introduction::                About Guile-OpenGL.
 
 * API Conventions::             General conventions used by OpenGL APIs.
 
-* GL::                          A Scheme interface to the OpenGL API.
+* GL::                          The OpenGL API.
 * GLU::                         The GL Utility library.
 * GLX::                         Using OpenGL with the X Window System.
 * GLUT::                        The GL Utility Toolkit.
-
-* FAQ::                         Figl answers questions.
 
 Appendices
 
@@ -90,27 +88,27 @@ Indices
 @node Introduction
 @chapter Introduction
 
-Figl is the Foreign Interface to GL: an OpenGL binding for Guile.
+Guile-OpenGL is Guile's interface to OpenGL.
 
-In addition to the OpenGL API, Figl also provides access to related
+In addition to the OpenGL API, Guile also provides access to related
 libraries and toolkits such as GLU, GLX, and GLUT.  The following
-chapters discuss the parts of OpenGL and how they are bound by Figl.
+chapters discuss the parts of OpenGL and how Guile binds them.
 
-But before that, some notes on the Figl binding as a whole.
+But before that, some notes on the binding as a whole.
 
 @menu
-* About Figl::                  The structure of the binding.
+* About::                       The structure of the binding.
 @end menu
 
 
-@node About Figl
-@section About Figl
+@node About
+@section About
 
-Figl is a @dfn{foreign} interface to the OpenGL API because it uses
-the dynamic @dfn{foreign function interface} provided by Guile 2.0,
-providing access to OpenGL without any C code at all.  In fact, much
-of Figl (and this manual) is automatically generated from upstream API
-specifications and documentation.
+Guile-OpenGL uses the dynamic @dfn{foreign function interface}
+provided by Guile 2.0, providing access to OpenGL without any C code
+at all.  In fact, much of Guile-OpenGL (and this manual) is
+automatically generated from upstream API specifications and
+documentation.
 
 We have tried to do a very complete job at wrapping OpenGL, and
 additionally have tried to provide a nice Scheme interface as well.
@@ -135,15 +133,15 @@ the low-level bindings will always be available for you to use if
 needed, and have the advantage that their behavior is better
 documented and specified by OpenGL itself.
 
-Low-level bindings are accessed by loading the @code{(gl
-@var{module} low-level)}, for example via:
+Low-level bindings are accessed by loading the @code{(@var{module}
+low-level)}, for example via:
 
 @example
-(use-modules (gl gl low-level))
+(use-modules (gl low-level))
 @end example
 
-The high-level modules are named like @code{(gl @var{module})}, for
-example @code{(gl gl)}.
+The high-level modules are named like @code{(@var{module})}, for
+example @code{(gl)}.
 
 
 @node API Conventions
@@ -152,13 +150,13 @@ example @code{(gl gl)}.
 FIXME: A very rough draft.  Bindings and text are not fully synced
 until more work is done here.
 
-This chapter documents the general conventions used by Figl's
-low-level and high-level bindings.  Any conventions specific to a
-particular module are documented in the relevent section.
+This chapter documents the general conventions used by the low-level
+and high-level bindings.  Any conventions specific to a particular
+module are documented in the relevent section.
 
-As Figl is in very early stages of development these conventions are
-subject to change.  Feedback is certainly welcome, and nothing is set
-in stone.
+As Guile-OpenGL is in very early stages of development these
+conventions are subject to change.  Feedback is certainly welcome, and
+nothing is set in stone.
 
 @menu
 * Enumerations::                Using symbolic constants.
@@ -172,12 +170,13 @@ in stone.
 
 The OpenGL API defines many @dfn{symbolic constants}, most of which
 are collected together as named @dfn{enumerations} or @dfn{bitfields}.
-Access to these constants in Figl is the same for the low-level
-bindings and high-level interface.
+Access to these constants is the same for the low-level bindings and
+high-level interface.
 
 For each OpenGL enumeration type, there is a similarly named Scheme
 type whose constructor takes an unquoted Scheme symbol naming one of
-the values.  Figl translates the names to a more common Scheme style:
+the values.  Guile-OpenGL translates the names to a more common Scheme
+style:
 
 @itemize @bullet
 @item any API prefix is removed (for example, GL_); and
@@ -187,7 +186,7 @@ the values.  Figl translates the names to a more common Scheme style:
 For example, the OpenGL API defines an enumeration with symbolic
 constants whose C names are GL_POINTS, GL_LINES, GL_TRIANGLES, and so
 on.  Collectively they form the BeginMode enumeration type.  To access
-these constants in Figl, apply the constant name to the enumeration
+these constants in Guile, apply the constant name to the enumeration
 type: @code{(begin-mode triangles)}.
 
 Bitfields are similar, though the constructor accepts multiple symbols
@@ -261,13 +260,6 @@ high-level bindings.
 @include glx.texi
 
 @include glut.texi
-
-
-@node FAQ
-@chapter FAQ
-
-TODO: Write about things readers will want to know (instead of
-commenting them in the source :)
 
 
 @node GNU General Public License

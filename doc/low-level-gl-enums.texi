@@ -7,7 +7,7 @@
 The functions from this section may be had by loading the module:
 
 @example 
-(use-modules (gl gl enums)
+(use-modules (gl enums)
 @end example
 
 @defmac attrib-mask bit...
