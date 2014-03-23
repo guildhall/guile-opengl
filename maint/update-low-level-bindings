@@ -1,18 +1,18 @@
 #!/usr/bin/env guile
 !#
 
-;;; figl
-;;; Copyright (C) 2013, 2014 Andy Wingo <wingo@pobox.com>
+;;; Guile-OpenGL
+;;; Copyright (C) 2014 Free Software Foundation, Inc.
 ;;; 
-;;; Figl is free software: you can redistribute it and/or modify it
-;;; under the terms of the GNU Lesser General Public License as
+;;; Guile-OpenGL is free software: you can redistribute it and/or modify
+;;; it under the terms of the GNU Lesser General Public License as
 ;;; published by the Free Software Foundation, either version 3 of the
 ;;; License, or (at your option) any later version.
 ;;; 
-;;; Figl is distributed in the hope that it will be useful, but WITHOUT
-;;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-;;; or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General
-;;; Public License for more details.
+;;; Guile-OpenGL is distributed in the hope that it will be useful, but
+;;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;;; Lesser General Public License for more details.
 ;;; 
 ;;; You should have received a copy of the GNU Lesser General Public
 ;;; License along with this program.  If not, see
@@ -24,8 +24,8 @@
 ;;
 ;;; Code:
 
-(use-modules (figl parse)
-             (figl config)
+(use-modules (gl parse)
+             (gl config)
              (ice-9 match)
              (sxml fold)
              ((srfi srfi-1) #:select (append-map))
@@ -67,18 +67,18 @@
 
 (define (write-scm mod-name defs port)
   (display "\
-;;; figl                           -*- mode: scheme; coding: utf-8 -*-
-;;; Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
+;;; Guile-OpenGL
+;;; Copyright (C) 2014 Free Software Foundation, Inc.
 ;;;
-;;; Figl is free software: you can redistribute it and/or modify it
-;;; under the terms of the GNU Lesser General Public License as
+;;; Guile-OpenGL is free software: you can redistribute it and/or modify
+;;; it under the terms of the GNU Lesser General Public License as
 ;;; published by the Free Software Foundation, either version 3 of the
 ;;; License, or (at your option) any later version.
 ;;; 
-;;; Figl is distributed in the hope that it will be useful, but WITHOUT
-;;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-;;; or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General
-;;; Public License for more details.
+;;; Guile-OpenGL is distributed in the hope that it will be useful, but
+;;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;;; Lesser General Public License for more details.
 ;;; 
 ;;; You should have received a copy of the GNU Lesser General Public
 ;;; License along with this program.  If not, see
@@ -106,9 +106,9 @@
 " port)
   (newline port)
   (pretty-print
-   `(define-module (figl ,mod-name low-level)
-      #:use-module (figl ,mod-name runtime)
-      #:use-module (figl ,mod-name types)
+   `(define-module (gl ,mod-name low-level)
+      #:use-module (gl ,mod-name runtime)
+      #:use-module (gl ,mod-name types)
       #:export ,(append-map (lambda (def)
                               (map car (gl-definition-prototypes def)))
                             defs))
@@ -132,7 +132,7 @@
     `(*fragment*
       (para "The functions from this section may be had by loading "
             "the module:")
-      (example "(use-modules (figl " ,(object->string mod-name) " low-level)")
+      (example "(use-modules (gl " ,(object->string mod-name) " low-level)")
       (para
        "This section of the manual was derived from the upstream "
        "OpenGL documentation.  Each function's documentation has "

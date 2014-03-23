@@ -1,18 +1,17 @@
 ## Process this file with automake to produce Makefile.in.
 ##
-## figl
-## Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
-## Copyright (C) 2013 Daniel Hartwig <mandyke@gmail.com>
+## Guile-OpenGL
+## Copyright (C) 2014 Free Software Foundation, Inc.
 ## 
-## Figl is free software: you can redistribute it and/or modify it
-## under the terms of the GNU Lesser General Public License as
+## Guile-OpenGL is free software: you can redistribute it and/or modify
+## it under the terms of the GNU Lesser General Public License as
 ## published by the Free Software Foundation, either version 3 of the
 ## License, or (at your option) any later version.
 ## 
-## Figl is distributed in the hope that it will be useful, but WITHOUT
-## ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-## or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General
-## Public License for more details.
+## Guile-OpenGL is distributed in the hope that it will be useful, but
+## WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+## Lesser General Public License for more details.
 ## 
 ## You should have received a copy of the GNU Lesser General Public
 ## License along with this program.  If not, see
@@ -24,46 +23,46 @@ moddir=$(prefix)/share/guile/site/$(GUILE_EFFECTIVE_VERSION)
 godir=$(libdir)/guile/$(GUILE_EFFECTIVE_VERSION)/ccache
 
 SOURCES = \
-	figl.scm \
-	figl/config.scm \
-	figl/contrib.scm \
-	figl/contrib/packed-struct.scm \
-	figl/parse.scm \
-	figl/runtime.scm \
+	gl.scm \
+	gl/config.scm \
+	gl/contrib.scm \
+	gl/contrib/packed-struct.scm \
+	gl/parse.scm \
+	gl/runtime.scm \
 	\
-	figl/gl/types.scm \
-	figl/gl/runtime.scm \
-	figl/gl/low-level.scm \
-	figl/gl/enums.scm \
-	figl/gl.scm \
+	gl/gl/types.scm \
+	gl/gl/runtime.scm \
+	gl/gl/low-level.scm \
+	gl/gl/enums.scm \
+	gl/gl.scm \
 	\
-	figl/glu/types.scm \
-	figl/glu/runtime.scm \
-	figl/glu/low-level.scm \
-	figl/glu.scm \
+	gl/glu/types.scm \
+	gl/glu/runtime.scm \
+	gl/glu/low-level.scm \
+	gl/glu.scm \
 	\
-	figl/glx/types.scm \
-	figl/glx/runtime.scm \
-	figl/glx/low-level.scm \
-	figl/glx/enums.scm \
-	figl/glx.scm \
+	gl/glx/types.scm \
+	gl/glx/runtime.scm \
+	gl/glx/low-level.scm \
+	gl/glx/enums.scm \
+	gl/glx.scm \
 	\
-	figl/glut/types.scm \
-	figl/glut/runtime.scm \
-	figl/glut/low-level.scm \
-	figl/glut/enums.scm \
-	figl/glut.scm
+	gl/glut/types.scm \
+	gl/glut/runtime.scm \
+	gl/glut/low-level.scm \
+	gl/glut/enums.scm \
+	gl/glut.scm
 
-update: figl/parse.go
+update: gl/parse.go
 	$(top_builddir)/env $(GUILE) $(top_srcdir)/maint/update-low-level-bindings
 
-update-enums: figl/parse.go
+update-enums: gl/parse.go
 	$(top_builddir)/env $(GUILE) $(top_srcdir)/maint/update-enumerations
 
 EXTRA_DIST += env.in COPYING COPYING.LESSER examples upstream-doc
 
-info_TEXINFOS = doc/figl.texi
-figl_TEXINFOS = \
+info_TEXINFOS = doc/guile-opengl.texi
+guile_opengl_TEXINFOS = \
 	doc/gpl.texi \
 	doc/lgpl.texi \
 	doc/gl.texi \
@@ -79,4 +78,4 @@ figl_TEXINFOS = \
 TESTS = \
 	tests/basic.test
 TESTS_ENVIRONMENT = $(top_builddir)/env $(GUILE) --no-auto-compile
-EXTRA_DIST += $(TESTS) $(figl_TEXINFOS)
+EXTRA_DIST += $(TESTS) $(guile_opengl_TEXINFOS)

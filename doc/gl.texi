@@ -1,5 +1,5 @@
-@c This is part of the Figl Reference Manual.
-@c Copyright (C) 2013 Andy Wingo and others
+@c This is part of the Guile-OpenGL Reference Manual.
+@c Copyright (C) 2014 Free Software Foundation, Inc. and others.
 @c See the file figl.texi for copying conditions.
 
 @node GL
@@ -176,12 +176,12 @@ thing.
 @node GL API
 @section GL API
 
-The procedures exported from the @code{(figl gl)} module are
+The procedures exported from the @code{(gl gl)} module are
 documented below, organized by their corresponding section in the
 OpenGL 2.1 specification.
 
 @example
-(use-modules (figl gl))
+(use-modules (gl gl))
 @end example
 
 See @uref{http://www.opengl.org/registry/doc/glspec21.20061201.pdf},
@@ -540,7 +540,7 @@ This extension defines a procedure, @code{GLboolean
 glIsRenderBuffer(GLuint)}.  So you define it:
 
 @example
-(use-modules (figl gl runtime) (figl gl types))
+(use-modules (gl gl runtime) (gl gl types))
 (define-gl-procedure (glIsRenderBuffer (buf GLuint) -> GLboolean)
   "Render buffer predicate.  Other docs here.")
 @end example

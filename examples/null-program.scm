@@ -1,18 +1,18 @@
 #!/usr/bin/env guile
 !#
 
-;;; figl
-;;; Copyright (C) 2013 Andy Wingo <wingo@pobox.com>
+;;; Guile-OpenGL
+;;; Copyright (C) 2014 Free Software Foundation, Inc.
 ;;; 
-;;; Figl is free software: you can redistribute it and/or modify it
-;;; under the terms of the GNU Lesser General Public License as
+;;; Guile-OpenGL is free software: you can redistribute it and/or modify
+;;; it under the terms of the GNU Lesser General Public License as
 ;;; published by the Free Software Foundation, either version 3 of the
 ;;; License, or (at your option) any later version.
 ;;; 
-;;; Figl is distributed in the hope that it will be useful, but WITHOUT
-;;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-;;; or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General
-;;; Public License for more details.
+;;; Guile-OpenGL is distributed in the hope that it will be useful, but
+;;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;;; Lesser General Public License for more details.
 ;;; 
 ;;; You should have received a copy of the GNU Lesser General Public
 ;;; License along with this program.  If not, see
@@ -25,8 +25,8 @@
 ;;
 ;;; Code:
 
-(use-modules (figl glut)
-             (figl gl))
+(use-modules (opengl glut)
+             (opengl gl))
 
 (define main-window #f)
 

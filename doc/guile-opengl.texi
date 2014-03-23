@@ -1,0 +1,283 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename figl.info
+@settitle Figl
+@c %**end of header
+
+@set VERSION 2.0.0
+@set UPDATED 1 February 2013
+
+@copying 
+This manual is for Figl (version @value{VERSION}, updated
+@value{UPDATED})
+
+Copyright @copyright{} 2014 Free Software Foundation, Inc. and others.
+
+@quotation 
+Guile-OpenGL is free software: you can redistribute and/or modify it
+and its documentation under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version.
+
+Guile-OpenGL is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this program.  If not, see
+@uref{http://www.gnu.org/licenses/}.
+@end quotation
+
+Portions of this document were generated from the upstream OpenGL
+documentation.  The work as a whole is redistributable under the
+license above.  Sections containing generated documentation are
+prefixed with a specific copyright header.
+@end copying
+
+@dircategory The Algorithmic Language Scheme
+@direntry 
+* Figl: (gl.info).       Guile Scheme interface to the OpenGL API.
+@end direntry
+
+@titlepage 
+@title Guile-OpenGL
+@subtitle version @value{VERSION}, updated @value{UPDATED}
+@page 
+@vskip 0pt plus 1filll
+@insertcopying 
+@end titlepage
+
+@ifnottex 
+@node Top
+@top Figl
+
+@insertcopying 
+
+@menu
+* Introduction::                The what, why, and how of Figl.
+
+* API Conventions::             General conventions used by the Figl APIs.
+
+* GL::                          A Scheme interface to the OpenGL API.
+* GLU::                         The GL Utility library.
+* GLX::                         Using OpenGL with the X Window System.
+* GLUT::                        The GL Utility Toolkit.
+
+* FAQ::                         Figl answers questions.
+
+Appendices
+
+* GNU General Public License::
+* GNU Lesser General Public License::
+
+Indices
+
+* Function Index::
+@end menu
+
+@end ifnottex
+
+@iftex 
+@shortcontents 
+@end iftex
+
+
+@node Introduction
+@chapter Introduction
+
+Figl is the Foreign Interface to GL: an OpenGL binding for Guile.
+
+In addition to the OpenGL API, Figl also provides access to related
+libraries and toolkits such as GLU, GLX, and GLUT.  The following
+chapters discuss the parts of OpenGL and how they are bound by Figl.
+
+But before that, some notes on the Figl binding as a whole.
+
+@menu
+* About Figl::                  The structure of the binding.
+@end menu
+
+
+@node About Figl
+@section About Figl
+
+Figl is a @dfn{foreign} interface to the OpenGL API because it uses
+the dynamic @dfn{foreign function interface} provided by Guile 2.0,
+providing access to OpenGL without any C code at all.  In fact, much
+of Figl (and this manual) is automatically generated from upstream API
+specifications and documentation.
+
+We have tried to do a very complete job at wrapping OpenGL, and
+additionally have tried to provide a nice Scheme interface as well.
+Our strategy has been to separate the binding into low-level and
+high-level pieces.
+
+The low-level bindings correspond exactly with the OpenGL specification,
+and are well-documented.  However, these interfaces are not so nice to
+use from Scheme; output arguments have to be allocated by the caller,
+and there is only the most basic level of type checking, and no sanity
+checking at all.  For example, you can pass a bytevector of image data
+to the low-level @code{glTexImage2D} procedure, but no check is made
+that the dimensions you specify actually correspond to the size of the
+bytevector.  This function could end up reading past the end of the
+bytevector.  Worse things can happen with procedures that write to
+arrays, like @code{glGetTexImage}.
+
+The high-level bindings are currently a work in progress, and are
+being manually written.  They intend to be a complete interface to the
+OpenGL API, without the need to use the low-level bindings.  However,
+the low-level bindings will always be available for you to use if
+needed, and have the advantage that their behavior is better
+documented and specified by OpenGL itself.
+
+Low-level bindings are accessed by loading the @code{(gl
+@var{module} low-level)}, for example via:
+
+@example
+(use-modules (gl gl low-level))
+@end example
+
+The high-level modules are named like @code{(gl @var{module})}, for
+example @code{(gl gl)}.
+
+
+@node API Conventions
+@chapter API Conventions
+
+FIXME: A very rough draft.  Bindings and text are not fully synced
+until more work is done here.
+
+This chapter documents the general conventions used by Figl's
+low-level and high-level bindings.  Any conventions specific to a
+particular module are documented in the relevent section.
+
+As Figl is in very early stages of development these conventions are
+subject to change.  Feedback is certainly welcome, and nothing is set
+in stone.
+
+@menu
+* Enumerations::                Using symbolic constants.
+* Functions::                   Naming and behaviour.
+@c * State::                       Accessing and mutating GL* state.
+@end menu
+
+
+@node Enumerations
+@section Enumerations
+
+The OpenGL API defines many @dfn{symbolic constants}, most of which
+are collected together as named @dfn{enumerations} or @dfn{bitfields}.
+Access to these constants in Figl is the same for the low-level
+bindings and high-level interface.
+
+For each OpenGL enumeration type, there is a similarly named Scheme
+type whose constructor takes an unquoted Scheme symbol naming one of
+the values.  Figl translates the names to a more common Scheme style:
+
+@itemize @bullet
+@item any API prefix is removed (for example, GL_); and
+@item all names are lowercase, with underscores and CamelCase replaced by hyphens.
+@end itemize
+
+For example, the OpenGL API defines an enumeration with symbolic
+constants whose C names are GL_POINTS, GL_LINES, GL_TRIANGLES, and so
+on.  Collectively they form the BeginMode enumeration type.  To access
+these constants in Figl, apply the constant name to the enumeration
+type: @code{(begin-mode triangles)}.
+
+Bitfields are similar, though the constructor accepts multiple symbols
+and produces an appropriate mask.  In the GLUT API there is the
+DisplayMode bitfield, with symbolic constants GLUT_RGB, GLUT_INDEX,
+GLUT_SINGLE, and so on.  To create a mask representing a
+double-buffered, rgb display-mode with a depth buffer:
+@code{(display-mode double rgb depth)}.
+
+Enumeration and bitfield values, once constructed, can be compared
+using @code{eqv?}.  For example, to determine if @code{modelview} is
+the current matrix mode use
+@code{(eqv? (gl-matrix-mode) (matrix-mode modelview))}.
+
+
+@node Functions
+@section Functions
+
+The low-level bindings currently use names identical to their C API
+counterparts.
+
+High-level bindings adopt names that are closer to natural language,
+and a more common style for Scheme:
+
+@itemize @bullet
+@item the API prefix is always removed;
+@item abbreviations are avoided; and
+@item names are all lowercase with words separated by hyphens.
+@end itemize
+
+Some function names are altered in additional ways, to make clear
+which object is being operated on.  Functions that mutate objects or
+state will have their name prefixed with @code{set-}, such as
+@code{set-matrix-mode}.
+
+FIXME: This choice may be too unnatural for GL users.
+
+Where the C API specifies multiple functions that perform a similar
+task on varying number and types of arguments, the high-level bindings
+provide a single function that takes optional arguments, and, where
+appropriate, using only the most natural type.  Consider the group of
+C API functions including @code{glVertex2f}, @code{glVertex3f}, and so
+on; the high-level GL interface provides only a single function
+@code{glVertex} with optional arguments.
+
+@c FIXME: Not merged yet.
+@c Packed vector functions (such as @code{glColor3bv}) are combined in
+@c to a single high-level function with the suffix @code{-v}.  Such a
+@c function will dispatch to the correct low-level binding based on the
+@c length and type of it's argument.  There is no need to provide the
+@c length and type arguments specifically.  For example,
+@c @code{(color-v #f32(1.0 0.0 0.8 0.5))} will determine that the argument
+@c is a float vector of length four, and dispatch to the low-level
+@c @code{glColor4fv}.
+
+The high-level interfaces may differ in other ways, and it is
+important to refer to the specific documentation.
+
+It is generally fine to intermix functions from corresponding
+low-level and high-level bindings.  This can be useful if you know the
+specific type of data you are working with and want to avoid the
+overhead of dynamic dispatch at runtime.  Any cases where such
+intermixing causes problems will be noted in the documentation for the
+high-level bindings.
+
+
+@include gl.texi
+
+@include glu.texi
+
+@include glx.texi
+
+@include glut.texi
+
+
+@node FAQ
+@chapter FAQ
+
+TODO: Write about things readers will want to know (instead of
+commenting them in the source :)
+
+
+@node GNU General Public License
+@appendix GNU General Public License
+
+@include gpl.texi
+
+@node GNU Lesser General Public License
+@appendix GNU Lesser General Public License
+
+@include lgpl.texi
+
+
+@node Function Index
+@unnumbered Function Index
+@printindex fn
+@bye

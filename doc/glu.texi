@@ -1,5 +1,5 @@
-@c This is part of the Figl Reference Manual.
-@c Copyright (C) 2013 Andy Wingo and others
+@c This is part of the Guile-OpenGL Reference Manual.
+@c Copyright (C) 2014 Free Software Foundation, Inc. and others.
 @c See the file figl.texi for copying conditions.
 
 @node GLU
@@ -16,7 +16,7 @@
 Import the GLU module to have access to these procedures:
 
 @example
-(use-modules (figl glu))
+(use-modules (gl glu))
 @end example
 
 The GLU specification is available at

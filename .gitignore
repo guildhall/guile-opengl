@@ -8,9 +8,9 @@
 *.go
 /config.status
 /Makefile
-/figl/config.scm
+/opengl/config.scm
 /build-aux/texinfo.tex
-/doc/figl.info
-/doc/figl.info-*
+/doc/guile-opengl.info
+/doc/guile-opengl.info-*
 /env
 /doc/.dirstamp
