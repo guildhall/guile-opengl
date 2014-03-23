@@ -1,14 +1,14 @@
 \input texinfo   @c -*-texinfo-*-
 @c %**start of header
-@setfilename figl.info
-@settitle Figl
+@setfilename guile-opengl.info
+@settitle Guile-OpenGL
 @c %**end of header
 
 @set VERSION 2.0.0
-@set UPDATED 1 February 2013
+@set UPDATED 23 March 2014
 
 @copying 
-This manual is for Figl (version @value{VERSION}, updated
+This manual is for Guile-OpenGL (version @value{VERSION}, updated
 @value{UPDATED})
 
 Copyright @copyright{} 2014 Free Software Foundation, Inc. and others.
@@ -37,7 +37,11 @@ prefixed with a specific copyright header.
 
 @dircategory The Algorithmic Language Scheme
 @direntry 
-* Figl: (gl.info).       Guile Scheme interface to the OpenGL API.
+* opengl: (guile-opengl).              OpenGL for Guile.
+* gl: (guile-opengl)GL.                A Scheme interface to the OpenGL API.
+* glx: (guile-opengl)GLX.              Using OpenGL with the X Window System.
+* glu: (guile-opengl)GLU.              The GL Utility library.
+* glut: (guile-opengl)GLUT.            The GL Utility Toolkit.
 @end direntry
 
 @titlepage 
@@ -50,14 +54,14 @@ prefixed with a specific copyright header.
 
 @ifnottex 
 @node Top
-@top Figl
+@top Guile-OpenGL
 
 @insertcopying 
 
 @menu
-* Introduction::                The what, why, and how of Figl.
+* Introduction::                The what, why, and how of this library.
 
-* API Conventions::             General conventions used by the Figl APIs.
+* API Conventions::             General conventions used by OpenGL APIs.
 
 * GL::                          A Scheme interface to the OpenGL API.
 * GLU::                         The GL Utility library.
