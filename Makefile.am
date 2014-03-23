@@ -61,6 +61,19 @@ update-manual:
 	cd $(top_srcdir)/doc; ../build-aux/gendocs.sh --email bug-guile@gnu.org guile-opengl "GNU Guile-OpenGL manual"
 
 EXTRA_DIST += env.in COPYING COPYING.LESSER examples upstream-doc
+EXTRA_DIST += LICENSE README AUTHORS NEWS
+
+dist-hook: gen-ChangeLog
+
+gen_start_rev = 4a07fe280dea895ef4f127b11a481c1dff335d90
+.PHONY: gen-ChangeLog
+gen-ChangeLog:
+	if test -d .git; then						\
+	  $(top_srcdir)/build-aux/gitlog-to-changelog			\
+	    $(gen_start_rev)..HEAD > $(distdir)/cl-t;			\
+	  rm -f $(distdir)/ChangeLog;					\
+	  mv $(distdir)/cl-t $(distdir)/ChangeLog;			\
+	fi
 
 info_TEXINFOS = doc/guile-opengl.texi
 guile_opengl_TEXINFOS = \

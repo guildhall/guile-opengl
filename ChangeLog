@@ -1,0 +1,13 @@
+-*- text -*-
+
+Guile-OpenGL does not store change logs in `ChangeLog' files.  Instead,
+changes are detailed in the version control system's logs.  They can be
+seen by downloading a copy of the Git repository:
+
+    git clone git://git.sv.gnu.org/guile-opengl.git
+    git log
+
+Alternatively, they can be seen on the web, using the Gitweb interface
+at:
+
+    http://git.sv.gnu.org/gitweb/?p=guile-opengl.git

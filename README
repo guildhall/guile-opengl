@@ -1,0 +1,28 @@
+This is GNU Guile-OpenGL, an OpenGL interface for GNU Guile.  See
+http://www.gnu.org/project/guile/ for more on Guile.
+
+Guile-OpenGL is available under the GNU Lesser General Public License,
+either version 3 or, at your option, any later version.  See LICENSE for
+all details.
+
+Note that for any copyright year range specified as YYYY-ZZZZ in this
+package, the range specifies every single year in that closed interval.
+
+Guile-OpenGL requires Guile version 2.0.0 or later.
+
+To use Guile-OpenGL without installing it, use the "env" script that is
+created in the top of the build directory.
+
+Guile-OpenGL has a complete manual.  Once you install it, you can read
+it via "info guile-opengl", or even just "info gl".  It is also
+available in other forms; see
+http://www.gnu.org/project/guile-opengl/manual/ for details.
+
+To contribute to Guile-OpenGL, check out the source code from git:
+
+  git clone git://git.sv.gnu.org/guile-opengl.git
+
+See https://savannah.gnu.org/projects/guile-opengl/ for more details
+
+Please send problem reports to <bug-guile@gnu.org>.  Discussion of
+Guile-OpenGL takes place at <guile-user@gnu.org>.
