@@ -17,28 +17,34 @@
 
 ;;; Commentary:
 ;;
-;; OpenGL binding.
+;; figl is the Foreign Interface to GL.
 ;;
 ;;; Code:
 
-(define-module (gl glu)
+(define-module (glu runtime)
+  #:use-module (system foreign)
   #:use-module (gl runtime)
-  #:use-module (gl glu types)
-  #:use-module ((gl glu low-level) #:renamer (symbol-prefix-proc '%)))
+  #:export (define-glu-procedure define-glu-procedures))
 
-;; Notice there is no #:export clause.  Exports are done inline to
-;; facilitate re-exporting low-level bindings (and changing that
-;; choice), and identifying gaps in the API.
-;;
-;; There are two sets of exports for each section.  The first is for
-;; bindings defined in the specification, exported in order.  The
-;; second is for additional procedures not defined by the spec. but
-;; relevant to the section, for example with-gl-begin.
-;;
-;; At least keep this format until the bindings are fairly complete.
+(define libGLU
+  (delay (dynamic-link "libGLU")))
 
-;;;
-;;; 4 Matrix Manipulation
-;;;
+(define (resolve name)
+  (dynamic-pointer (symbol->string name) (force libGLU)))
 
-(re-export (%gluPerspective . glu-perspective))
+(define-syntax define-glu-procedure
+  (syntax-rules (->)
+    ((define-glu-procedure (name (pname ptype) ... -> type)
+       docstring)
+     (define-foreign-procedure (name (pname ptype) ... -> type)
+       (resolve 'name)
+       docstring))))
+
+(define-syntax define-glu-procedures
+  (syntax-rules ()
+    ((define-glu-procedures ((name prototype ...) ...)
+       docstring)
+     (begin
+       (define-glu-procedure (name prototype ...)
+         docstring)
+       ...))))

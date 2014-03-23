@@ -21,17 +21,17 @@
 ;;
 ;;; Code:
 
-(define-module (gl glut)
+(define-module (glut)
   #:use-module (gl contrib)
-  #:use-module (gl glut runtime)
-  #:use-module ((gl glut low-level) #:renamer (symbol-prefix-proc '%))
-  #:use-module (gl glut enums)
+  #:use-module (glut runtime)
+  #:use-module ((glut low-level) #:renamer (symbol-prefix-proc '%))
+  #:use-module (glut enums)
   #:use-module (system foreign)
   #:use-module (srfi srfi-9)
   #:use-module (srfi srfi-39)) ; parameter objects
 
 (module-use! (module-public-interface (current-module))
-             (resolve-interface '(gl glut enums)))
+             (resolve-interface '(glut enums)))
 
 ;;;
 ;;; 2 Initialization

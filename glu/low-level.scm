@@ -26,11 +26,11 @@
 ;;;
 
 (define-module
-  (gl glu low-level)
+  (glu low-level)
   #:use-module
-  (gl glu runtime)
+  (glu runtime)
   #:use-module
-  (gl glu types)
+  (glu types)
   #:export
   (gluBeginCurve
     gluEndCurve

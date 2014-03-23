@@ -45,7 +45,6 @@
 
 (define (module-name->scm-name mod-name)
   (string-join (list (abs-top-srcdir)
-                     "gl"
                      (symbol->string mod-name)
                      "low-level.scm")
                "/"))
@@ -106,9 +105,9 @@
 " port)
   (newline port)
   (pretty-print
-   `(define-module (gl ,mod-name low-level)
-      #:use-module (gl ,mod-name runtime)
-      #:use-module (gl ,mod-name types)
+   `(define-module (,mod-name low-level)
+      #:use-module (,mod-name runtime)
+      #:use-module (,mod-name types)
       #:export ,(append-map (lambda (def)
                               (map car (gl-definition-prototypes def)))
                             defs))
@@ -132,7 +131,7 @@
     `(*fragment*
       (para "The functions from this section may be had by loading "
             "the module:")
-      (example "(use-modules (gl " ,(object->string mod-name) " low-level)")
+      (example "(use-modules (" ,(object->string mod-name) " low-level)")
       (para
        "This section of the manual was derived from the upstream "
        "OpenGL documentation.  Each function's documentation has "

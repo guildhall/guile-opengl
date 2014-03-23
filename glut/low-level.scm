@@ -25,10 +25,10 @@
 ;;
 ;;; Code:
 
-(define-module (gl glut low-level)
-  #:use-module (gl glut runtime)
-  #:use-module (gl glut types)
-  #:use-module (gl gl types)
+(define-module (glut low-level)
+  #:use-module (glut runtime)
+  #:use-module (glut types)
+  #:use-module (gl types)
   #:use-module ((system foreign) #:renamer (symbol-prefix-proc 'ffi:))
   #:use-module (srfi srfi-26) ; cut
   #:export (;; 2 Initialization

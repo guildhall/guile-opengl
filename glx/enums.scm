@@ -23,7 +23,7 @@
 ;;;
 
 (define-module
-  (gl glx enums)
+  (glx enums)
   #:use-module
   (gl runtime)
   #:export

@@ -17,36 +17,12 @@
 
 ;;; Commentary:
 ;;
-;; figl is the Foreign Interface to GL.
+;; OpenGL binding.
 ;;
 ;;; Code:
 
-(define-module (gl glut runtime)
+(define-module (glx)
   #:use-module (system foreign)
   #:use-module (gl runtime)
-  #:use-module (gl gl runtime)
-  #:export (*resolve-hook*
-            define-glut-procedure))
+  #:use-module (glx low-level))
 
-(define libglut
-  (delay (dynamic-link "libglut")))
-
-(define (get-libglut)
-  (force libglut))
-
-(current-gl-get-dynamic-object get-libglut)
-
-(define *resolve-hook* (make-hook 1))
-
-(define (resolve name)
-  (let ((name-str (symbol->string name)))
-    (run-hook *resolve-hook* name-str)
-    (dynamic-pointer name-str (get-libglut))))
-
-(define-syntax define-glut-procedure
-  (syntax-rules (->)
-    ((define-glut-procedure (name (pname ptype) ... -> type)
-       docstring)
-     (define-foreign-procedure (name (pname ptype) ... -> type)
-       (resolve 'name)
-       docstring))))

@@ -41,11 +41,11 @@
 ;;;
 
 (define-module
-  (gl gl low-level)
+  (gl low-level)
   #:use-module
-  (gl gl runtime)
+  (gl runtime)
   #:use-module
-  (gl gl types)
+  (gl types)
   #:export
   (glAccum
     glActiveTexture

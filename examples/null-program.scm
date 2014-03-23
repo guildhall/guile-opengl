@@ -25,8 +25,7 @@
 ;;
 ;;; Code:
 
-(use-modules (opengl glut)
-             (opengl gl))
+(use-modules (glut) (gl))
 
 (define main-window #f)
 

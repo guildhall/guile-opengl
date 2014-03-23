@@ -21,7 +21,7 @@
 ;;
 ;;; Code:
 
-(define-module (gl glx types)
+(define-module (glx types)
   #:use-module ((system foreign) #:renamer (symbol-prefix-proc 'ffi:))
   #:use-module (gl runtime)
   #:export (int
@@ -52,7 +52,7 @@
             ))
 
 (module-use! (module-public-interface (current-module))
-             (resolve-interface '(gl gl types)))
+             (resolve-interface '(gl types)))
 
 (define-simple-foreign-type int ffi:int)
 (define-simple-foreign-type unsigned-long ffi:unsigned-long)

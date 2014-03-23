@@ -23,35 +23,33 @@ moddir=$(prefix)/share/guile/site/$(GUILE_EFFECTIVE_VERSION)
 godir=$(libdir)/guile/$(GUILE_EFFECTIVE_VERSION)/ccache
 
 SOURCES = \
-	gl.scm \
 	gl/config.scm \
 	gl/contrib.scm \
 	gl/contrib/packed-struct.scm \
 	gl/parse.scm \
+	\
+	gl/types.scm \
 	gl/runtime.scm \
+	gl/low-level.scm \
+	gl/enums.scm \
+	gl.scm \
 	\
-	gl/gl/types.scm \
-	gl/gl/runtime.scm \
-	gl/gl/low-level.scm \
-	gl/gl/enums.scm \
-	gl/gl.scm \
+	glu/types.scm \
+	glu/runtime.scm \
+	glu/low-level.scm \
+	glu.scm \
 	\
-	gl/glu/types.scm \
-	gl/glu/runtime.scm \
-	gl/glu/low-level.scm \
-	gl/glu.scm \
+	glx/types.scm \
+	glx/runtime.scm \
+	glx/low-level.scm \
+	glx/enums.scm \
+	glx.scm \
 	\
-	gl/glx/types.scm \
-	gl/glx/runtime.scm \
-	gl/glx/low-level.scm \
-	gl/glx/enums.scm \
-	gl/glx.scm \
-	\
-	gl/glut/types.scm \
-	gl/glut/runtime.scm \
-	gl/glut/low-level.scm \
-	gl/glut/enums.scm \
-	gl/glut.scm
+	glut/types.scm \
+	glut/runtime.scm \
+	glut/low-level.scm \
+	glut/enums.scm \
+	glut.scm
 
 update: gl/parse.go
 	$(top_builddir)/env $(GUILE) $(top_srcdir)/maint/update-low-level-bindings

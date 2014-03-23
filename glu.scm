@@ -17,29 +17,28 @@
 
 ;;; Commentary:
 ;;
-;; Mappings from OpenGL to FFI types.
+;; OpenGL binding.
 ;;
 ;;; Code:
 
-(define-module (gl glu types)
+(define-module (glu)
   #:use-module (gl runtime)
-  #:export (GLUnurbs*
-            GLUquadric*
-            GLUtesselator*
-            GLdouble*
-            GLfloat*
-            GLvoid*
-            _GLUfuncptr
-            const-void-*))
+  #:use-module (glu types)
+  #:use-module ((glu low-level) #:renamer (symbol-prefix-proc '%)))
 
-(module-use! (module-public-interface (current-module))
-             (resolve-interface '(gl gl types)))
+;; Notice there is no #:export clause.  Exports are done inline to
+;; facilitate re-exporting low-level bindings (and changing that
+;; choice), and identifying gaps in the API.
+;;
+;; There are two sets of exports for each section.  The first is for
+;; bindings defined in the specification, exported in order.  The
+;; second is for additional procedures not defined by the spec. but
+;; relevant to the section, for example with-gl-begin.
+;;
+;; At least keep this format until the bindings are fairly complete.
 
-(define-simple-foreign-type GLUnurbs* '*)
-(define-simple-foreign-type GLUquadric* '*)
-(define-simple-foreign-type GLUtesselator* '*)
-(define-simple-foreign-type GLdouble* '*)
-(define-simple-foreign-type GLfloat* '*)
-(define-simple-foreign-type GLvoid* '*)
-(define-simple-foreign-type _GLUfuncptr '*)
-(define-simple-foreign-type const-void-* '*)
+;;;
+;;; 4 Matrix Manipulation
+;;;
+
+(re-export (%gluPerspective . glu-perspective))

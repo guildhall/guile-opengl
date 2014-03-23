@@ -17,12 +17,29 @@
 
 ;;; Commentary:
 ;;
-;; OpenGL binding.
+;; Mappings from OpenGL to FFI types.
 ;;
 ;;; Code:
 
-(define-module (gl glx)
-  #:use-module (system foreign)
+(define-module (glu types)
   #:use-module (gl runtime)
-  #:use-module (gl glx low-level))
+  #:export (GLUnurbs*
+            GLUquadric*
+            GLUtesselator*
+            GLdouble*
+            GLfloat*
+            GLvoid*
+            _GLUfuncptr
+            const-void-*))
 
+(module-use! (module-public-interface (current-module))
+             (resolve-interface '(gl types)))
+
+(define-simple-foreign-type GLUnurbs* '*)
+(define-simple-foreign-type GLUquadric* '*)
+(define-simple-foreign-type GLUtesselator* '*)
+(define-simple-foreign-type GLdouble* '*)
+(define-simple-foreign-type GLfloat* '*)
+(define-simple-foreign-type GLvoid* '*)
+(define-simple-foreign-type _GLUfuncptr '*)
+(define-simple-foreign-type const-void-* '*)

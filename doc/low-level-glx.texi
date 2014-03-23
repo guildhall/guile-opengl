@@ -4,7 +4,7 @@
 The functions from this section may be had by loading the module:
 
 @example 
-(use-modules (gl glx low-level)
+(use-modules (glx low-level)
 @end example
 
 This section of the manual was derived from the upstream OpenGL

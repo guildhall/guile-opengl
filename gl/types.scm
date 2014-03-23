@@ -21,7 +21,7 @@
 ;;
 ;;; Code:
 
-(define-module (gl gl types)
+(define-module (gl types)
   #:use-module (gl runtime)
   #:use-module (rnrs bytevectors)
   #:use-module ((system foreign) #:renamer (symbol-prefix-proc 'ffi:))

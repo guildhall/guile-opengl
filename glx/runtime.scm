@@ -21,30 +21,47 @@
 ;;
 ;;; Code:
 
-(define-module (gl glu runtime)
+(define-module (glx runtime)
   #:use-module (system foreign)
+  #:use-module (gl types)
   #:use-module (gl runtime)
-  #:export (define-glu-procedure define-glu-procedures))
+  #:export (define-glx-procedure define-glx-procedures))
 
-(define libGLU
-  (delay (dynamic-link "libGLU")))
+(define libGL
+  (delay (dynamic-link "libGL")))
+
+(define (get-libGL)
+  (force libGL))
+
+(define (dladdr-resolve name)
+  (dynamic-pointer (symbol->string name) (get-libGL)))
+
+(define-foreign-procedure (glx-resolve (name const-GLchar-*) -> void-*)
+  (dladdr-resolve 'glXGetProcAddress)
+  "The GLX resolver.")
+
+(current-gl-resolver glx-resolve)
+(current-gl-get-dynamic-object get-libGL)
 
 (define (resolve name)
-  (dynamic-pointer (symbol->string name) (force libGLU)))
+  (let ((ptr (glx-resolve (symbol->string name))))
+    (if (null-pointer? ptr)
+        (dladdr-resolve name)
+        ptr)))
 
-(define-syntax define-glu-procedure
+(define-syntax define-glx-procedure
   (syntax-rules (->)
-    ((define-glu-procedure (name (pname ptype) ... -> type)
+    ((define-glx-procedure (name (pname ptype) ... -> type)
        docstring)
      (define-foreign-procedure (name (pname ptype) ... -> type)
        (resolve 'name)
        docstring))))
 
-(define-syntax define-glu-procedures
+(define-syntax define-glx-procedures
   (syntax-rules ()
-    ((define-glu-procedures ((name prototype ...) ...)
+    ((define-glx-procedures ((name prototype ...) ...)
        docstring)
      (begin
-       (define-glu-procedure (name prototype ...)
+       (define-glx-procedure (name prototype ...)
          docstring)
        ...))))

@@ -21,9 +21,9 @@
 ;;
 ;;; Code:
 
-(define-module (gl glut types)
+(define-module (glut types)
   #:use-module (gl runtime)
-  #:use-module (gl gl types)
+  #:use-module (gl types)
   #:use-module ((system foreign) #:renamer (symbol-prefix-proc 'ffi:))
   #:use-module (srfi srfi-26) ; cut
   #:export (unsigned-char

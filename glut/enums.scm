@@ -22,7 +22,7 @@
 ;;
 ;;; Code:
 
-(define-module (gl glut enums)
+(define-module (glut enums)
   #:use-module (gl runtime)
   #:export (display-mode
             button-name

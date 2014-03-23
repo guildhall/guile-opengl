@@ -26,11 +26,11 @@
 ;;;
 
 (define-module
-  (gl glx low-level)
+  (glx low-level)
   #:use-module
-  (gl glx runtime)
+  (glx runtime)
   #:use-module
-  (gl glx types)
+  (glx types)
   #:export
   (glXChooseFBConfig
     glXChooseVisual

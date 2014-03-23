@@ -18,9 +18,9 @@
 ;;; License along with this program.  If not, see
 ;;; <http://www.gnu.org/licenses/>.
 
-(use-modules (gl glut)
-             (gl gl)
-             (gl glu)
+(use-modules (glut)
+             (gl)
+             (glu)
              (ice-9 match)
              (ice-9 format)
              (gl contrib packed-struct))

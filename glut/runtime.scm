@@ -21,48 +21,31 @@
 ;;
 ;;; Code:
 
-(define-module (gl glx runtime)
+(define-module (glut runtime)
   #:use-module (system foreign)
-  #:use-module (gl gl types)
-  #:use-module (gl gl runtime)
   #:use-module (gl runtime)
-  #:export (define-glx-procedure define-glx-procedures))
+  #:export (*resolve-hook*
+            define-glut-procedure))
 
-(define libGL
-  (delay (dynamic-link "libGL")))
+(define libglut
+  (delay (dynamic-link "libglut")))
 
-(define (get-libGL)
-  (force libGL))
+(define (get-libglut)
+  (force libglut))
 
-(define (dladdr-resolve name)
-  (dynamic-pointer (symbol->string name) (get-libGL)))
+(current-gl-get-dynamic-object get-libglut)
 
-(define-foreign-procedure (glx-resolve (name const-GLchar-*) -> void-*)
-  (dladdr-resolve 'glXGetProcAddress)
-  "The GLX resolver.")
-
-(current-gl-resolver glx-resolve)
-(current-gl-get-dynamic-object get-libGL)
+(define *resolve-hook* (make-hook 1))
 
 (define (resolve name)
-  (let ((ptr (glx-resolve (symbol->string name))))
-    (if (null-pointer? ptr)
-        (dladdr-resolve name)
-        ptr)))
+  (let ((name-str (symbol->string name)))
+    (run-hook *resolve-hook* name-str)
+    (dynamic-pointer name-str (get-libglut))))
 
-(define-syntax define-glx-procedure
+(define-syntax define-glut-procedure
   (syntax-rules (->)
-    ((define-glx-procedure (name (pname ptype) ... -> type)
+    ((define-glut-procedure (name (pname ptype) ... -> type)
        docstring)
      (define-foreign-procedure (name (pname ptype) ... -> type)
        (resolve 'name)
        docstring))))
-
-(define-syntax define-glx-procedures
-  (syntax-rules ()
-    ((define-glx-procedures ((name prototype ...) ...)
-       docstring)
-     (begin
-       (define-glx-procedure (name prototype ...)
-         docstring)
-       ...))))
