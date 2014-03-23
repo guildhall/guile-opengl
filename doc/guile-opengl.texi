@@ -4,8 +4,7 @@
 @settitle Guile-OpenGL
 @c %**end of header
 
-@set VERSION 2.0.0
-@set UPDATED 23 March 2014
+@include version.texi
 
 @copying 
 This manual is for Guile-OpenGL (version @value{VERSION}, updated

@@ -26,3 +26,6 @@
 /doc/guile-opengl.tp
 /doc/guile-opengl.vr
 /doc/gendocs_template
+/doc/stamp-vti
+/doc/version.texi
+/build-aux/mdate-sh
