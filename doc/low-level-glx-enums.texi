@@ -1,6 +1,6 @@
 @c This is part of the Guile-OpenGL Reference Manual.
-@c Copyright (C) 2014 Free Software Foundation, Inc. and others.
-@c See the file figl.texi for copying conditions.
+@c Copyright (c) 2014 Free Software Foundation, Inc. and others
+@c See the file guile-opengl.texi for copying conditions.
 
 @c %start of fragment
 
@@ -11,8 +11,8 @@ The functions from this section may be had by loading the module:
 @end example
 
 @defmac glx-string-name enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{vendor}, @code{version}, @code{extensions}.
@@ -20,8 +20,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-error-code enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{bad-screen}, @code{bad-attribute}, @code{no-extension},
@@ -32,8 +32,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-drawable-type-mask enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{window-bit}, @code{pixmap-bit}, @code{pbuffer-bit},
@@ -42,8 +42,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-render-type-mask enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{rgba-bit}, @code{color-index-bit}, @code{rgba-bit-sgix},
@@ -53,8 +53,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-sync-type enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{sync-frame-sgix}, @code{sync-swap-sgix}.
@@ -62,8 +62,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-event-mask enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{pbuffer-clobber-mask}, @code{buffer-clobber-mask-sgix},
@@ -72,8 +72,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-pbuffer-clobber-mask enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{front-left-buffer-bit}, @code{front-right-buffer-bit},
@@ -89,8 +89,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-hyperpipe-type-mask enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{hyperpipe-display-pipe-sgix}, @code{hyperpipe-render-pipe-sgix}.
@@ -98,8 +98,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-hyperpipe-attrib enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{pipe-rect-sgix}, @code{pipe-rect-limits-sgix},
@@ -108,8 +108,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-hyperpipe-misc enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{hyperpipe-pipe-name-length-sgix}.
@@ -117,8 +117,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-bind-to-texture-target-mask enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{texture-1d-bit-ext}, @code{texture-2d-bit-ext},
@@ -127,8 +127,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-context-flags enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{context-debug-bit-arb}, @code{context-forward-compatible-bit-arb},
@@ -138,8 +138,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-context-profile-mask enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{context-core-profile-bit-arb},
@@ -149,8 +149,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-attribute enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{use-gl}, @code{buffer-size}, @code{level}, @code{rgba},
@@ -229,8 +229,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac nv-present-video enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{num-video-slots-nv}.
@@ -238,8 +238,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-swap-control enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{swap-interval-ext}, @code{max-swap-interval-ext}.
@@ -247,8 +247,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-swap-control-tear enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{late-swaps-tear-ext}.
@@ -256,8 +256,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac ext-buffer-age enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{back-buffer-age-ext}.
@@ -265,8 +265,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-amd-gpu-association enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{gpu-vendor-amd}, @code{gpu-renderer-string-amd},
@@ -278,8 +278,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac glx-arb-create-context-robustness enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{lose-context-on-reset-arb},
@@ -289,8 +289,8 @@ known to this enumerated value form are:
 @end defmac
 
 @defmac arb-create-context-profile enum
-Enumerated value. The symbolic @var{enum} argument is replaced with its
-corresponding numeric value at compile-time. The symbolic arguments
+Enumerated value.  The symbolic @var{enum} argument is replaced with its
+corresponding numeric value at compile-time.  The symbolic arguments
 known to this enumerated value form are:
 
 @code{context-profile-mask-arb}.

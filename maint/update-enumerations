@@ -46,7 +46,7 @@
 
 (define (module-name->scm-name mod-name)
   (string-join (list (abs-top-srcdir)
-                     "figl"
+                     "gl"
                      (symbol->string mod-name)
                      "enums.scm")
                "/"))
@@ -150,9 +150,9 @@
   ;; itself.  Maybe I am not doing it right.
   (display
    (string-append
-    "@c This is part of the Figl Reference Manual.\n"
+    "@c This is part of the Guile-OpenGL Reference Manual.\n"
     "@c Copyright (c) 2014 Free Software Foundation, Inc. and others\n"
-    "@c See the file figl.texi for copying conditions.\n")
+    "@c See the file guile-opengl.texi for copying conditions.\n")
    port)
   (display
    (stexi->texi

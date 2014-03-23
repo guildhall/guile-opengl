@@ -45,7 +45,7 @@
 
 (define (module-name->scm-name mod-name)
   (string-join (list (abs-top-srcdir)
-                     "figl"
+                     "gl"
                      (symbol->string mod-name)
                      "low-level.scm")
                "/"))
