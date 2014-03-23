@@ -15,3 +15,14 @@
 /env
 /doc/.dirstamp
 /build-aux/test-driver
+/doc/guile-opengl.aux
+/doc/guile-opengl.cp
+/doc/guile-opengl.fn
+/doc/guile-opengl.fns
+/doc/guile-opengl.ky
+/doc/guile-opengl.log
+/doc/guile-opengl.pg
+/doc/guile-opengl.toc
+/doc/guile-opengl.tp
+/doc/guile-opengl.vr
+/doc/gendocs_template
