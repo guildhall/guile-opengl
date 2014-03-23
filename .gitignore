@@ -8,9 +8,10 @@
 *.go
 /config.status
 /Makefile
-/opengl/config.scm
+/gl/config.scm
 /build-aux/texinfo.tex
 /doc/guile-opengl.info
 /doc/guile-opengl.info-*
 /env
 /doc/.dirstamp
+/build-aux/test-driver
