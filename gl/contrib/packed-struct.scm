@@ -1,5 +1,5 @@
 ;;; Guile-OpenGL
-;;; Copyright (C) 2014 Free Software Foundation, Inc.
+;;; Copyright (C) 2014, 2019 Andy Wingo <wingo@pobox.com>
 ;;;
 ;;; Guile-OpenGL is free software: you can redistribute it and/or modify
 ;;; it under the terms of the GNU Lesser General Public License as
@@ -23,6 +23,7 @@
 
 (define-module (gl contrib packed-struct)
   #:use-module (ice-9 futures)
+  #:use-module (ice-9 threads)
   #:use-module (rnrs bytevectors)
   #:export (
             define-packed-struct
@@ -33,10 +34,19 @@
             make-packed-array
             packed-array-length
 
-            pack-each pack-each/serial
-            unpack-each unpack-each/serial
-            repack-each repack-each/serial
+            parallel-visit iota-visitor
+
+            pack-visitor pack-each pack-each/serial
+            unpack-visitor unpack-each unpack-each/serial
+            repack-visitor repack-each repack-each/serial
             ))
+
+(define-syntax-parameter struct-size (syntax-rules ()))
+(define-syntax-parameter struct-offset (syntax-rules ()))
+(define-syntax-parameter struct-packer (syntax-rules ()))
+(define-syntax-parameter struct-unpacker (syntax-rules ()))
+(define-syntax-parameter struct-getter (syntax-rules ()))
+(define-syntax-parameter struct-setter (syntax-rules ()))
 
 (define-syntax define-packed-struct
   (lambda (stx)
@@ -98,54 +108,57 @@
          (lambda (accessors byte-size)
            (with-syntax ((((field-offset field-ref field-set) ...) accessors)
                          (byte-size byte-size))
-             #`(define-inlinable (name method field)
-                 (case method
-                   ((size) byte-size)
-                   ((offset)
-                    (case field
+             #`(define-syntax name
+                 (syntax-rules (struct-size
+                                struct-offset
+                                struct-unpacker struct-packer
+                                struct-getter struct-setter)
+                   ((_ struct-size) byte-size)
+                   ((_ struct-offset field)
+                    (case 'field
                       ((field-name) field-offset)
                       ...
-                      (else (error "unknown field" field))))
-                   ((unpacker)
+                      (else (error "unknown field" 'field))))
+                   ((_ struct-unpacker)
                     (lambda (bv offset k)
                       (k (field-ref bv (+ offset field-offset))
                          ...)))
-                   ((packer)
+                   ((_ struct-packer)
                     (lambda (bv offset field-name ...)
                       (field-set bv (+ offset field-offset) field-name)
                       ...))
-                   ((getter)
-                    (case field
+                   ((_ struct-getter field)
+                    (case 'field
                       ((field-name)
                        (lambda (bv offset)
                          (field-ref bv (+ offset field-offset))))
                       ...
-                      (else (error "unknown field" field))))
-                   ((setter)
-                    (case field
+                      (else (error "unknown field" 'field))))
+                   ((_ struct-setter field)
+                    (case 'field
                       ((field-name)
                        (lambda (bv offset val)
                          (field-set bv (+ offset field-offset) val)))
                       ...
-                      (else (error "unknown field" field)))))))))))))
+                      (else (error "unknown field" 'field)))))))))))))
 
 (define-syntax-rule (packed-struct-size type)
-  (type 'size #f))
+  (type struct-size))
 
 (define-syntax-rule (packed-struct-offset type field)
-  (type 'offset 'field))
+  (type struct-offset field))
 
 (define-syntax-rule (packed-struct-getter type field)
-  (type 'getter 'field))
+  (type struct-getter field))
 
 (define-syntax-rule (packed-struct-setter type field)
-  (type 'setter 'field))
+  (type struct-setter field))
 
 (define-syntax-rule (packed-struct-unpacker type)
-  (type 'unpacker #f))
+  (type struct-unpacker))
 
 (define-syntax-rule (packed-struct-packer type)
-  (type 'packer #f))
+  (type struct-packer))
 
 (define-syntax-rule (unpack* bv offset type k)
   ((packed-struct-unpacker type) bv offset k))
@@ -165,31 +178,45 @@
 (define-syntax-rule (packed-array-length bv type)
   (/ (bytevector-length bv) (packed-struct-size type)))
 
-(define* (parallel-iota n proc #:optional (nprocs (current-processor-count)))
-  (let lp ((start 0) (end n) (nprocs nprocs))
-    (cond
-     ((= start end))
-     ((= nprocs 1)
-      (let lp ((n start))
-        (when (< n end)
-          (proc n)
-          (lp (1+ n)))))
-     (else
-      (let* ((pivot (+ start (ceiling/ (- end start) nprocs)))
-             (left (future (lp start pivot 1))))
-        (lp pivot end (1- nprocs))
-        (touch left))))))
+(define-syntax parallel-visit
+  (syntax-rules ()
+    ((parallel-visit n visit 1)
+     (let ((end n))
+       (unless (= end 0)
+         (visit 0 end))))
+    ((parallel-visit n visit nprocs*)
+     (let lp ((start 0) (end n) (nprocs nprocs*))
+       (cond
+        ((= start end))
+        ((eqv? nprocs 1)
+         (visit start end))
+        (else
+         (let* ((pivot (+ start (ceiling/ (- end start) nprocs)))
+                (left (future (lp start pivot 1))))
+           (lp pivot end (1- nprocs))
+           (touch left))))))))
+
+(define-syntax-rule (iota-visitor proc)
+  (lambda (start end)
+    (let lp ((n start))
+      (when (< n end)
+        (proc n)
+        (lp (1+ n))))))
+
+(define-syntax-rule (pack-visitor bv type proc)
+  (iota-visitor
+   (lambda (n)
+     (call-with-values (lambda () (proc n))
+       (lambda args
+         (apply (packed-struct-packer type)
+                bv
+                (* n (packed-struct-size type))
+                args))))))
 
 (define-syntax-rule (pack-each* bv type proc nprocs)
-  (parallel-iota (packed-array-length bv type)
-                 (lambda (n)
-                   (call-with-values (lambda () (proc n))
-                     (lambda args
-                       (apply (packed-struct-packer type)
-                              bv
-                              (* n (packed-struct-size type))
-                              args))))
-                 nprocs))
+  (parallel-visit (packed-array-length bv type)
+                  (pack-visitor bv type proc)
+                  nprocs))
 
 (define-syntax-rule (pack-each bv type proc)
   (pack-each* bv type proc (current-processor-count)))
@@ -197,15 +224,19 @@
 (define-syntax-rule (pack-each/serial bv type proc)
   (pack-each* bv type proc 1))
 
+(define-syntax-rule (unpack-visitor bv type proc)
+  (iota-visitor
+   (lambda (n)
+     ((packed-struct-unpacker type)
+      bv
+      (* n (packed-struct-size type))
+      (lambda args
+        (apply proc n args))))))
+
 (define-syntax-rule (unpack-each* bv type proc nprocs)
-  (parallel-iota (packed-array-length bv type)
-                 (lambda (n)
-                   ((packed-struct-unpacker type)
-                    bv
-                    (* n (packed-struct-size type))
-                    (lambda args
-                      (apply proc n args))))
-                 nprocs))
+  (parallel-visit (packed-array-length bv type)
+                  (unpack-visitor bv type proc)
+                  nprocs))
 
 (define-syntax-rule (unpack-each bv type proc)
   (unpack-each* bv type proc (current-processor-count)))
@@ -213,15 +244,21 @@
 (define-syntax-rule (unpack-each/serial bv type proc)
   (unpack-each* bv type proc 1))
 
+(define-syntax-rule (repack-visitor bv type proc)
+  (pack-visitor
+   bv
+   type
+   (lambda (n)
+     ((packed-struct-unpacker type)
+      bv
+      (* n (packed-struct-size type))
+      (lambda args
+        (apply proc n args))))))
+
 (define-syntax-rule (repack-each* bv type proc nprocs)
-  (pack-each* bv type
-              (lambda (n)
-                ((packed-struct-unpacker type)
-                 bv
-                 (* n (packed-struct-size type))
-                 (lambda args
-                   (apply proc n args))))
-              nprocs))
+  (parallel-visit (packed-array-length bv type)
+                  (repack-visitor bv type proc)
+                  nprocs))
 
 (define-syntax-rule (repack-each bv type proc)
   (repack-each* bv type proc (current-processor-count)))
